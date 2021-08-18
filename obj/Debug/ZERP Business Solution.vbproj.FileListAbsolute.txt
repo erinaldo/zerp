@@ -1,0 +1,976 @@
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ZERP Business Solution.exe.config
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ZERP Business Solution.exe
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ZERP Business Solution.pdb
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ZERP Business Solution.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Google.Protobuf.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Guna.UI2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\MySql.Data.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Renci.SshNet.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\System.Buffers.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\System.Memory.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Zstandard.Net.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Google.Protobuf.pdb
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Google.Protobuf.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\MySql.Data.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\Renci.SshNet.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\System.Buffers.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\System.Memory.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.ResolveComReference.cache
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.control_inventory_side.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_cheque.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_delivery_list.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_invoice_receipt.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_payment_voucher.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_purchase_order.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_transfer_request.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_generate_voucher.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_payables.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_generate_cheque.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_payment_cheques.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_payment_vouchers.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_view_transaction.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_approval.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_transfer_view.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque_books.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque_customer.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque_view.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_hold.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_payments.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cash.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_connection_panel.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_customers.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_customers_new.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_splash_screen.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_deliveries.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_delivery_logs.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_homepage.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_login.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_logistics_deliveries.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_packing_list.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_packing_list_view.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_price_book.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_logistics_receipts.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_import.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_inventory.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_edit.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_new.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_list.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_delivery_receipts.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_delivery_receive.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_orders.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_view_order.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_view_quotation.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_settings.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_stores.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_store_add.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_supplier.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_new.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_main.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_supplier_add.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_users.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_users_role.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.Resources.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_packing_list.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.GenerateResource.cache
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.exe.licenses
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.CoreCompileInputs.cache
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.CopyComplete
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.exe
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.pdb
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbprojAssemblyReference.cache
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_order_history.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_view_active_orders.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_catalogue.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_password_required.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Charts.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Data.Desktop.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Data.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v20.2.UI.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.DataVisualization.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Images.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Office.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.PivotGrid.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Printing.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.RichEdit.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.RichEdit.v20.2.Export.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Sparkline.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Spreadsheet.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Utils.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Utils.v20.2.UI.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Xpo.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraBars.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraEditors.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraGauges.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraGrid.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraLayout.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraNavBar.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraPivotGrid.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraPrinting.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v20.2.Extensions.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraRichEdit.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v20.2.Core.Desktop.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraSpreadsheet.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraTreeList.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraVerticalGrid.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.CodeParser.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraDiagram.v20.2.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Diagram.v20.2.Core.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v20.2.Drawing.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v20.2.Wizard.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v20.2.Extensions.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Data.Desktop.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Data.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v20.2.UI.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Office.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Printing.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.RichEdit.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Sparkline.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Spreadsheet.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Utils.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Utils.v20.2.UI.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Xpo.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraBars.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraEditors.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraGauges.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraGrid.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraLayout.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraNavBar.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.PivotGrid.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraPivotGrid.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraPrinting.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v20.2.Extensions.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraRichEdit.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v20.2.Core.Desktop.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraSpreadsheet.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraTreeList.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraVerticalGrid.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraDiagram.v20.2.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Diagram.v20.2.Core.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v20.2.Drawing.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v20.2.Wizard.xml
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Data.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Data.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Data.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Data.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.DataAccess.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.DataAccess.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.DataAccess.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.DataAccess.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.DataAccess.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.DataAccess.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.DataAccess.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.DataAccess.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Office.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Office.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Office.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Office.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Pdf.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Pdf.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Pdf.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Pdf.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Printing.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Printing.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Printing.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Printing.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.RichEdit.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.RichEdit.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.RichEdit.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.RichEdit.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Sparkline.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Sparkline.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Sparkline.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Sparkline.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Spreadsheet.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Spreadsheet.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Spreadsheet.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Spreadsheet.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Utils.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Utils.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Utils.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Utils.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Utils.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Utils.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Utils.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Utils.v20.2.UI.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Xpo.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Xpo.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Xpo.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Xpo.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraBars.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraBars.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraBars.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraBars.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraCharts.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraCharts.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraCharts.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraCharts.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraEditors.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraEditors.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraEditors.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraEditors.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraGauges.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraGauges.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraGauges.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraGauges.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraLayout.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraLayout.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraLayout.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraLayout.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraNavBar.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraNavBar.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraNavBar.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraNavBar.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.PivotGrid.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.PivotGrid.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.PivotGrid.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.PivotGrid.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraPivotGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraPivotGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraPivotGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraPivotGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraPrinting.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraPrinting.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraPrinting.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraPrinting.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraReports.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraReports.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraReports.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraReports.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraReports.v20.2.Extensions.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraReports.v20.2.Extensions.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraReports.v20.2.Extensions.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraReports.v20.2.Extensions.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraRichEdit.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraRichEdit.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraRichEdit.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraRichEdit.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraScheduler.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraScheduler.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraScheduler.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraScheduler.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraScheduler.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraScheduler.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraScheduler.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraScheduler.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraSpreadsheet.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraSpreadsheet.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraSpreadsheet.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraSpreadsheet.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraTreeList.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraTreeList.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraTreeList.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraTreeList.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraVerticalGrid.v20.2.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.Diagram.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.Diagram.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.Diagram.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.Diagram.v20.2.Core.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\de\DevExpress.XtraCharts.v20.2.Wizard.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\es\DevExpress.XtraCharts.v20.2.Wizard.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraCharts.v20.2.Wizard.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraCharts.v20.2.Wizard.resources.dll
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_refund.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_soa.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_soa_new.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_soa.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_create_quotation.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_create_order.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_quotation.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_report.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_dispatch_dialog.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_inventory.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_transfer_reports.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_new.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive_dialog.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_new.resources
+C:\Users\WINLAND\source\repos\ZERP Business Solution\obj\Debug\Inventory_Management.doc_draft_receipt.resources
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ZERP Business Solution.exe.config
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ZERP Business Solution.exe
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ZERP Business Solution.pdb
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ZERP Business Solution.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\BouncyCastle.Crypto.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Google.Protobuf.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\K4os.Hash.xxHash.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\MySql.Data.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Renci.SshNet.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\System.Buffers.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\System.Memory.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Ubiety.Dns.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Zstandard.Net.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Google.Protobuf.pdb
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Google.Protobuf.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\K4os.Hash.xxHash.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\MySql.Data.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\Renci.SshNet.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\System.Buffers.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\System.Memory.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.ResolveComReference.cache
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.control_inventory_side.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_cheque.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_delivery_list.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_draft_receipt.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_invoice_receipt.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_payment_voucher.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_purchase_order.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_quotation.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_soa.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_transfer_request.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_generate_voucher.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_payables.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_generate_cheque.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_payment_cheques.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_payment_vouchers.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_accounting_view_transaction.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_approval.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_transfer_reports.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_transfer_view.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque_books.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque_customer.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cheque_view.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_hold.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_order_history.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_payments.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_cash.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_refund.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_soa.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_collection_soa_new.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_connection_panel.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_view_active_orders.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_create_quotation.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_customers.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_customers_new.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_password_required.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_splash_screen.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_deliveries.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_delivery_logs.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_homepage.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_login.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_logistics_deliveries.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_packing_list.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_packing_list_view.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_price_book.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_import.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_inventory.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_edit.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_new.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_purchaseorder_list.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_delivery_receipts.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_delivery_receive.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_create_order.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_orders.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_view_order.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_view_quotation.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_settings.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_new.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_dispatch_dialog.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive_dialog.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_inventory.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_stores.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_store_add.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_supplier.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_new.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_product_catalogue.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_main.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_supplier_add.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_users.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_admin_users_role.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_new.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_report.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.Resources.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.doc_packing_list.resources
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.GenerateResource.cache
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.exe.licenses
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.CoreCompileInputs.cache
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbproj.CopyComplete
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.exe
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.xml
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.pdb
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\Inventory_Management.frm_sales_transaction_invoice.resources
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Charts.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Data.Desktop.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Data.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v21.1.UI.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.DataVisualization.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Images.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Office.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.PivotGrid.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Printing.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.RichEdit.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.RichEdit.v21.1.Export.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Sparkline.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Spreadsheet.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Utils.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Utils.v21.1.UI.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Xpo.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraBars.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraEditors.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraGauges.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraGrid.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraLayout.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraNavBar.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraPivotGrid.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraPrinting.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v21.1.Extensions.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraRichEdit.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.Desktop.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraTreeList.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.CodeParser.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraDiagram.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Diagram.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v21.1.Drawing.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v21.1.Extensions.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraTreeMap.v21.1.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.TreeMap.v21.1.Core.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Data.Desktop.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Data.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.DataAccess.v21.1.UI.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Office.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Printing.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.RichEdit.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Sparkline.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Spreadsheet.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Utils.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Utils.v21.1.UI.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Xpo.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraBars.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraEditors.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraGauges.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraGrid.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraLayout.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraNavBar.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.PivotGrid.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraPivotGrid.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraPrinting.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraReports.v21.1.Extensions.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraRichEdit.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.Desktop.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraTreeList.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraDiagram.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Diagram.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.Pdf.v21.1.Drawing.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.XtraTreeMap.v21.1.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\DevExpress.TreeMap.v21.1.Core.xml
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\de\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\es\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ja\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\ZERP Business Solution\bin\Debug\ru\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\ZERP Business Solution\obj\Debug\ZERP Business Solution.vbprojAssemblyReference.cache
+D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.exe.config
+D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.exe
+D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.pdb
+D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.xml
+D:\_workstation\source code\zerp\bin\Debug\BouncyCastle.Crypto.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Charts.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.Desktop.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.DataAccess.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.DataAccess.v21.1.UI.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.DataVisualization.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Images.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Office.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Pdf.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.PivotGrid.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Printing.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.RichEdit.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.RichEdit.v21.1.Export.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Sparkline.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Spreadsheet.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Utils.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Utils.v21.1.UI.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Xpo.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraBars.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraEditors.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGauges.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGrid.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraLayout.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraNavBar.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraPivotGrid.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraPrinting.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraReports.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraReports.v21.1.Extensions.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraRichEdit.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.Desktop.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeList.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.dll
+D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.dll
+D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\_workstation\source code\zerp\bin\Debug\K4os.Hash.xxHash.dll
+D:\_workstation\source code\zerp\bin\Debug\MySql.Data.dll
+D:\_workstation\source code\zerp\bin\Debug\Renci.SshNet.dll
+D:\_workstation\source code\zerp\bin\Debug\System.Buffers.dll
+D:\_workstation\source code\zerp\bin\Debug\System.Memory.dll
+D:\_workstation\source code\zerp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\_workstation\source code\zerp\bin\Debug\Ubiety.Dns.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\Zstandard.Net.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.CodeParser.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraDiagram.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Diagram.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Pdf.v21.1.Drawing.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Extensions.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeMap.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.TreeMap.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.Desktop.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.DataAccess.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.DataAccess.v21.1.UI.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Office.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Pdf.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Printing.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.RichEdit.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Sparkline.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Spreadsheet.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Utils.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Utils.v21.1.UI.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Xpo.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraBars.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraEditors.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGauges.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGrid.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraLayout.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraNavBar.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.PivotGrid.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraPivotGrid.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraPrinting.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraReports.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraReports.v21.1.Extensions.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraRichEdit.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.Desktop.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeList.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.pdb
+D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.xml
+D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.xml
+D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\_workstation\source code\zerp\bin\Debug\K4os.Hash.xxHash.xml
+D:\_workstation\source code\zerp\bin\Debug\MySql.Data.xml
+D:\_workstation\source code\zerp\bin\Debug\Renci.SshNet.xml
+D:\_workstation\source code\zerp\bin\Debug\System.Buffers.xml
+D:\_workstation\source code\zerp\bin\Debug\System.Memory.xml
+D:\_workstation\source code\zerp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraDiagram.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Diagram.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.Pdf.v21.1.Drawing.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeMap.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.TreeMap.v21.1.Core.xml
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Data.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.DataAccess.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.DataAccess.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Office.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Pdf.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Printing.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.RichEdit.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Sparkline.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Spreadsheet.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Utils.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Utils.v21.1.UI.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Xpo.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraBars.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraEditors.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraGauges.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraLayout.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraNavBar.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.PivotGrid.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraPivotGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraPrinting.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraReports.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraReports.v21.1.Extensions.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraRichEdit.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraScheduler.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraScheduler.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraSpreadsheet.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraTreeList.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraVerticalGrid.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Diagram.v21.1.Core.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.ResolveComReference.cache
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.control_inventory_side.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_cheque.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_delivery_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_draft_receipt.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_payment_voucher.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_order.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_quotation.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_sales_order_receipt.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_soa.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_transfer_request.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_voucher.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_new_payable.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payables.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_cheque.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cheques.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_vouchers.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_view_transaction.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_approval.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_transfer_reports.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_transfer_view.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque_books.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque_customer.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque_view.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_epayment.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_hold.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_order_history.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_payments.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cash.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_refund.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_soa.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_soa_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_terms.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_connection_panel.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_details.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_approval_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_view_ordered_items.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_create_quotation.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_customers.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_customers_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_logistics.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_logistics_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_order_epayment_proofs.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_order_history.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_password_required.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_start_packing.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_splash_screen.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_deliveries.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_logs.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_homepage.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_login.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_logistics_deliveries.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_main.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_packing_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_packing_list_view.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_price_book.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_transaction_invoice.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_import.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_inventory.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_edit.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_receipts.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_receive.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_create_order.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_orders.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_order.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_quotation.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_settings.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_dispatch_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_inventory.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_stores.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_store_add.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_supplier.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_catalogue.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_supplier_add.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_users.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_users_role.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_report.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.Resources.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_packing_list.resources
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.GenerateResource.cache
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe.licenses
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CoreCompileInputs.cache
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CopyComplete
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.xml
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.pdb

@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="server" Type="System.String" Scope="User">
+      <Value Profile="(Default)">172.16.1.10</Value>
+    </Setting>
+    <Setting Name="database" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wms_db</Value>
+    </Setting>
+    <Setting Name="username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">winland</Value>
+    </Setting>
+    <Setting Name="password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Electronics&amp;electrical</Value>
+    </Setting>
+    <Setting Name="UserFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">user_photo</Value>
+    </Setting>
+    <Setting Name="FTPusername" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wlftp</Value>
+    </Setting>
+    <Setting Name="FTPpass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ftpmaster22</Value>
+    </Setting>
+    <Setting Name="login" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="login_user" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zen</Value>
+    </Setting>
+    <Setting Name="port" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="FTPport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21</Value>
+    </Setting>
+    <Setting Name="FTPserver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">172.16.1.11</Value>
+    </Setting>
+    <Setting Name="folder_product" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Product Photos</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
