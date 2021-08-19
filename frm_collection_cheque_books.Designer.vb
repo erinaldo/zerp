@@ -149,35 +149,38 @@ Partial Class frm_collection_cheque_books
         '
         'btn_open
         '
-        Me.btn_open.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.article_16x16
+        Me.btn_open.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.btn_open.Appearance.Options.UseFont = True
+        Me.btn_open.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.article_32x32
         Me.btn_open.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_open.ImageOptions.ImageToTextIndent = 10
         Me.btn_open.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.btn_open.Location = New System.Drawing.Point(20, 95)
+        Me.btn_open.Location = New System.Drawing.Point(12, 95)
         Me.btn_open.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_open.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_open.Name = "btn_open"
-        Me.btn_open.Size = New System.Drawing.Size(98, 37)
+        Me.btn_open.Size = New System.Drawing.Size(201, 46)
         Me.btn_open.TabIndex = 6
-        Me.btn_open.Text = "Open"
+        Me.btn_open.Text = "View Cheque Details"
         '
         'grid_cheque_book
         '
         Me.grid_cheque_book.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_cheque_book.Location = New System.Drawing.Point(20, 138)
+        Me.grid_cheque_book.Location = New System.Drawing.Point(12, 151)
         Me.grid_cheque_book.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_cheque_book.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_cheque_book.MainView = Me.grid_cheque_view
         Me.grid_cheque_book.Name = "grid_cheque_book"
-        Me.grid_cheque_book.Size = New System.Drawing.Size(1121, 537)
+        Me.grid_cheque_book.Size = New System.Drawing.Size(1137, 535)
         Me.grid_cheque_book.TabIndex = 19
         Me.grid_cheque_book.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_cheque_view})
         '
         'grid_cheque_view
         '
         Me.grid_cheque_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.White
-        Me.grid_cheque_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_cheque_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_cheque_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_cheque_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_cheque_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
@@ -198,10 +201,6 @@ Partial Class frm_collection_cheque_books
         '
         Me.GridColumn12.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn12.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn12.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn12.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn12.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn12.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn12.Caption = "Cheque No."
@@ -209,16 +208,12 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.Visible = True
         Me.GridColumn12.VisibleIndex = 2
-        Me.GridColumn12.Width = 74
+        Me.GridColumn12.Width = 100
         '
         'GridColumn13
         '
         Me.GridColumn13.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn13.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn13.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn13.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn13.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn13.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn13.Caption = "Cheque Date"
@@ -227,16 +222,12 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn13.Name = "GridColumn13"
         Me.GridColumn13.Visible = True
         Me.GridColumn13.VisibleIndex = 1
-        Me.GridColumn13.Width = 151
+        Me.GridColumn13.Width = 159
         '
         'GridColumn14
         '
         Me.GridColumn14.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn14.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn14.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn14.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn14.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn14.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn14.Caption = "Amount"
@@ -246,29 +237,21 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True
         Me.GridColumn14.VisibleIndex = 3
-        Me.GridColumn14.Width = 125
+        Me.GridColumn14.Width = 128
         '
         'GridColumn1
         '
-        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn1.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn1.Caption = "Customer"
         Me.GridColumn1.FieldName = "first_name"
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.Visible = True
         Me.GridColumn1.VisibleIndex = 5
-        Me.GridColumn1.Width = 130
+        Me.GridColumn1.Width = 133
         '
         'GridColumn16
         '
         Me.GridColumn16.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn16.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn16.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn16.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn16.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn16.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn16.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn16.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn16.Caption = "Account No."
@@ -276,14 +259,10 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn16.Name = "GridColumn16"
         Me.GridColumn16.Visible = True
         Me.GridColumn16.VisibleIndex = 7
-        Me.GridColumn16.Width = 140
+        Me.GridColumn16.Width = 143
         '
         'GridColumn17
         '
-        Me.GridColumn17.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn17.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn17.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn17.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn17.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn17.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn17.Caption = "Account Name"
@@ -291,16 +270,12 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn17.Name = "GridColumn17"
         Me.GridColumn17.Visible = True
         Me.GridColumn17.VisibleIndex = 8
-        Me.GridColumn17.Width = 129
+        Me.GridColumn17.Width = 138
         '
         'GridColumn21
         '
         Me.GridColumn21.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn21.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.GridColumn21.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn21.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn21.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn21.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn21.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn21.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn21.Caption = "Bank"
@@ -308,14 +283,10 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn21.Name = "GridColumn21"
         Me.GridColumn21.Visible = True
         Me.GridColumn21.VisibleIndex = 6
-        Me.GridColumn21.Width = 106
+        Me.GridColumn21.Width = 108
         '
         'GridColumn15
         '
-        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn15.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn15.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn15.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn15.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn15.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn15.Caption = "Payee"
@@ -326,16 +297,12 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn15.Name = "GridColumn15"
         Me.GridColumn15.Visible = True
         Me.GridColumn15.VisibleIndex = 4
-        Me.GridColumn15.Width = 91
+        Me.GridColumn15.Width = 93
         '
         'GridColumn20
         '
         Me.GridColumn20.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn20.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn20.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn20.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn20.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn20.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn20.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn20.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn20.Caption = "Status"
@@ -343,7 +310,7 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn20.Name = "GridColumn20"
         Me.GridColumn20.Visible = True
         Me.GridColumn20.VisibleIndex = 0
-        Me.GridColumn20.Width = 96
+        Me.GridColumn20.Width = 101
         '
         'frm_collection_cheque_books
         '

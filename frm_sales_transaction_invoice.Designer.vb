@@ -89,20 +89,20 @@ Partial Class frm_sales_transaction_invoice
         Me.grid_deliveries.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_deliveries.Location = New System.Drawing.Point(23, 88)
+        Me.grid_deliveries.Location = New System.Drawing.Point(12, 82)
         Me.grid_deliveries.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_deliveries.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_deliveries.MainView = Me.grid_deliveries_view
         Me.grid_deliveries.Name = "grid_deliveries"
         Me.grid_deliveries.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_print})
-        Me.grid_deliveries.Size = New System.Drawing.Size(1231, 623)
+        Me.grid_deliveries.Size = New System.Drawing.Size(1253, 637)
         Me.grid_deliveries.TabIndex = 32
         Me.grid_deliveries.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_deliveries_view})
         '
         'grid_deliveries_view
         '
         Me.grid_deliveries_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.White
-        Me.grid_deliveries_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_deliveries_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_deliveries_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_deliveries_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_deliveries_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
@@ -126,10 +126,6 @@ Partial Class frm_sales_transaction_invoice
         Me.col_id.AppearanceCell.Options.UseForeColor = True
         Me.col_id.AppearanceCell.Options.UseTextOptions = True
         Me.col_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_id.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.col_id.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_id.AppearanceHeader.Options.UseFont = True
-        Me.col_id.AppearanceHeader.Options.UseForeColor = True
         Me.col_id.AppearanceHeader.Options.UseTextOptions = True
         Me.col_id.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_id.Caption = "Order ID"
@@ -147,10 +143,6 @@ Partial Class frm_sales_transaction_invoice
         '
         Me.GridColumn4.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn4.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn4.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn4.Caption = "Order Date"
@@ -166,10 +158,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'col_shipping_method
         '
-        Me.col_shipping_method.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_shipping_method.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_shipping_method.AppearanceHeader.Options.UseFont = True
-        Me.col_shipping_method.AppearanceHeader.Options.UseForeColor = True
         Me.col_shipping_method.AppearanceHeader.Options.UseTextOptions = True
         Me.col_shipping_method.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_shipping_method.Caption = "Ship Type"
@@ -181,10 +169,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'col_status
         '
-        Me.col_status.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_status.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_status.AppearanceHeader.Options.UseFont = True
-        Me.col_status.AppearanceHeader.Options.UseForeColor = True
         Me.col_status.AppearanceHeader.Options.UseTextOptions = True
         Me.col_status.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_status.Caption = "Status"
@@ -196,10 +180,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'col_payment_type
         '
-        Me.col_payment_type.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_payment_type.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_payment_type.AppearanceHeader.Options.UseFont = True
-        Me.col_payment_type.AppearanceHeader.Options.UseForeColor = True
         Me.col_payment_type.AppearanceHeader.Options.UseTextOptions = True
         Me.col_payment_type.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_payment_type.Caption = "Payment Type"
@@ -213,10 +193,6 @@ Partial Class frm_sales_transaction_invoice
         '
         Me.col_payment_status.AppearanceCell.Options.UseTextOptions = True
         Me.col_payment_status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_payment_status.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_payment_status.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_payment_status.AppearanceHeader.Options.UseFont = True
-        Me.col_payment_status.AppearanceHeader.Options.UseForeColor = True
         Me.col_payment_status.AppearanceHeader.Options.UseTextOptions = True
         Me.col_payment_status.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_payment_status.Caption = "Payment Status"
@@ -230,10 +206,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'col_customer
         '
-        Me.col_customer.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.col_customer.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_customer.AppearanceHeader.Options.UseFont = True
-        Me.col_customer.AppearanceHeader.Options.UseForeColor = True
         Me.col_customer.AppearanceHeader.Options.UseTextOptions = True
         Me.col_customer.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_customer.Caption = "Customer"
@@ -248,10 +220,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'GridColumn3
         '
-        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn3.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn3.Caption = "Representative"
@@ -265,10 +233,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'GridColumn7
         '
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn7.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn7.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn7.Caption = "Trucking"
@@ -282,10 +246,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'GridColumn9
         '
-        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn9.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn9.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn9.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn9.Caption = "Ship To"
@@ -301,10 +261,6 @@ Partial Class frm_sales_transaction_invoice
         '
         Me.col_invoice.AppearanceCell.Options.UseTextOptions = True
         Me.col_invoice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_invoice.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_invoice.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_invoice.AppearanceHeader.Options.UseFont = True
-        Me.col_invoice.AppearanceHeader.Options.UseForeColor = True
         Me.col_invoice.AppearanceHeader.Options.UseTextOptions = True
         Me.col_invoice.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_invoice.Caption = "Invoice"
@@ -326,10 +282,6 @@ Partial Class frm_sales_transaction_invoice
         '
         'col_sales_agent
         '
-        Me.col_sales_agent.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.col_sales_agent.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_sales_agent.AppearanceHeader.Options.UseFont = True
-        Me.col_sales_agent.AppearanceHeader.Options.UseForeColor = True
         Me.col_sales_agent.AppearanceHeader.Options.UseTextOptions = True
         Me.col_sales_agent.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_sales_agent.Caption = "Sales Agent"

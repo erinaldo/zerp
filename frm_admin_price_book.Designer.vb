@@ -41,6 +41,9 @@ Partial Class frm_admin_price_book
         Me.col_dealer_price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_vip_price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.col_main_category = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_sub_category = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_brand = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -57,7 +60,7 @@ Partial Class frm_admin_price_book
         Me.panel_top.Dock = System.Windows.Forms.DockStyle.Top
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1068, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1277, 78)
         Me.panel_top.TabIndex = 10
         '
         'GunaPanel5
@@ -68,7 +71,7 @@ Partial Class frm_admin_price_book
         Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
         Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(1028, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(1237, 27)
         Me.GunaPanel5.TabIndex = 5
         '
         'GunaPanel1
@@ -159,19 +162,19 @@ Partial Class frm_admin_price_book
         Me.grid_pricebooks.MainView = Me.DeliveryView
         Me.grid_pricebooks.Name = "grid_pricebooks"
         Me.grid_pricebooks.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1})
-        Me.grid_pricebooks.Size = New System.Drawing.Size(1044, 518)
+        Me.grid_pricebooks.Size = New System.Drawing.Size(1253, 570)
         Me.grid_pricebooks.TabIndex = 12
         Me.grid_pricebooks.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DeliveryView})
         '
         'DeliveryView
         '
-        Me.DeliveryView.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.DeliveryView.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.DeliveryView.Appearance.HeaderPanel.Options.UseFont = True
         Me.DeliveryView.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.DeliveryView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.DeliveryView.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DeliveryView.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeliveryView.Appearance.Row.Options.UseFont = True
-        Me.DeliveryView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_pid, Me.col_model, Me.col_action, Me.col_base_price, Me.col_cost, Me.col_discount, Me.col_regular_price, Me.col_dealer_price, Me.col_vip_price})
+        Me.DeliveryView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_pid, Me.col_model, Me.col_action, Me.col_main_category, Me.col_sub_category, Me.col_brand, Me.col_base_price, Me.col_cost, Me.col_discount, Me.col_regular_price, Me.col_dealer_price, Me.col_vip_price})
         Me.DeliveryView.GridControl = Me.grid_pricebooks
         Me.DeliveryView.Name = "DeliveryView"
         Me.DeliveryView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace
@@ -191,7 +194,7 @@ Partial Class frm_admin_price_book
         Me.col_pid.OptionsColumn.ReadOnly = True
         Me.col_pid.Visible = True
         Me.col_pid.VisibleIndex = 0
-        Me.col_pid.Width = 80
+        Me.col_pid.Width = 66
         '
         'col_model
         '
@@ -206,7 +209,7 @@ Partial Class frm_admin_price_book
         Me.col_model.OptionsColumn.ReadOnly = True
         Me.col_model.Visible = True
         Me.col_model.VisibleIndex = 1
-        Me.col_model.Width = 111
+        Me.col_model.Width = 92
         '
         'col_action
         '
@@ -219,7 +222,7 @@ Partial Class frm_admin_price_book
         Me.col_action.OptionsColumn.ReadOnly = True
         Me.col_action.Visible = True
         Me.col_action.VisibleIndex = 2
-        Me.col_action.Width = 319
+        Me.col_action.Width = 248
         '
         'col_base_price
         '
@@ -229,8 +232,8 @@ Partial Class frm_admin_price_book
         Me.col_base_price.FieldName = "base_price"
         Me.col_base_price.Name = "col_base_price"
         Me.col_base_price.Visible = True
-        Me.col_base_price.VisibleIndex = 3
-        Me.col_base_price.Width = 80
+        Me.col_base_price.VisibleIndex = 6
+        Me.col_base_price.Width = 61
         '
         'col_cost
         '
@@ -240,8 +243,8 @@ Partial Class frm_admin_price_book
         Me.col_cost.FieldName = "cost"
         Me.col_cost.Name = "col_cost"
         Me.col_cost.Visible = True
-        Me.col_cost.VisibleIndex = 4
-        Me.col_cost.Width = 84
+        Me.col_cost.VisibleIndex = 7
+        Me.col_cost.Width = 66
         '
         'col_discount
         '
@@ -252,8 +255,8 @@ Partial Class frm_admin_price_book
         Me.col_discount.FieldName = "discount"
         Me.col_discount.Name = "col_discount"
         Me.col_discount.Visible = True
-        Me.col_discount.VisibleIndex = 5
-        Me.col_discount.Width = 85
+        Me.col_discount.VisibleIndex = 8
+        Me.col_discount.Width = 67
         '
         'col_regular_price
         '
@@ -263,8 +266,8 @@ Partial Class frm_admin_price_book
         Me.col_regular_price.FieldName = "regular_price"
         Me.col_regular_price.Name = "col_regular_price"
         Me.col_regular_price.Visible = True
-        Me.col_regular_price.VisibleIndex = 6
-        Me.col_regular_price.Width = 79
+        Me.col_regular_price.VisibleIndex = 9
+        Me.col_regular_price.Width = 61
         '
         'col_dealer_price
         '
@@ -274,8 +277,8 @@ Partial Class frm_admin_price_book
         Me.col_dealer_price.FieldName = "dealer_price"
         Me.col_dealer_price.Name = "col_dealer_price"
         Me.col_dealer_price.Visible = True
-        Me.col_dealer_price.VisibleIndex = 7
-        Me.col_dealer_price.Width = 80
+        Me.col_dealer_price.VisibleIndex = 10
+        Me.col_dealer_price.Width = 61
         '
         'col_vip_price
         '
@@ -285,23 +288,62 @@ Partial Class frm_admin_price_book
         Me.col_vip_price.FieldName = "vip_price"
         Me.col_vip_price.Name = "col_vip_price"
         Me.col_vip_price.Visible = True
-        Me.col_vip_price.VisibleIndex = 8
-        Me.col_vip_price.Width = 83
+        Me.col_vip_price.VisibleIndex = 11
+        Me.col_vip_price.Width = 82
         '
         'RepositoryItemTextEdit1
         '
         Me.RepositoryItemTextEdit1.AutoHeight = False
         Me.RepositoryItemTextEdit1.Name = "RepositoryItemTextEdit1"
         '
-        'frm_price_book
+        'col_main_category
+        '
+        Me.col_main_category.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_main_category.AppearanceCell.Options.UseBackColor = True
+        Me.col_main_category.Caption = "Main Category"
+        Me.col_main_category.FieldName = "main_category"
+        Me.col_main_category.Name = "col_main_category"
+        Me.col_main_category.OptionsColumn.AllowFocus = False
+        Me.col_main_category.OptionsColumn.ReadOnly = True
+        Me.col_main_category.Visible = True
+        Me.col_main_category.VisibleIndex = 3
+        Me.col_main_category.Width = 85
+        '
+        'col_sub_category
+        '
+        Me.col_sub_category.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_sub_category.AppearanceCell.Options.UseBackColor = True
+        Me.col_sub_category.Caption = "Sub Category"
+        Me.col_sub_category.FieldName = "sub_category"
+        Me.col_sub_category.Name = "col_sub_category"
+        Me.col_sub_category.OptionsColumn.AllowFocus = False
+        Me.col_sub_category.OptionsColumn.ReadOnly = True
+        Me.col_sub_category.Visible = True
+        Me.col_sub_category.VisibleIndex = 4
+        Me.col_sub_category.Width = 80
+        '
+        'col_brand
+        '
+        Me.col_brand.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_brand.AppearanceCell.Options.UseBackColor = True
+        Me.col_brand.Caption = "Brand"
+        Me.col_brand.FieldName = "brand"
+        Me.col_brand.Name = "col_brand"
+        Me.col_brand.OptionsColumn.AllowFocus = False
+        Me.col_brand.OptionsColumn.ReadOnly = True
+        Me.col_brand.Visible = True
+        Me.col_brand.VisibleIndex = 5
+        Me.col_brand.Width = 57
+        '
+        'frm_admin_price_book
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(1068, 628)
+        Me.ClientSize = New System.Drawing.Size(1277, 680)
         Me.Controls.Add(Me.grid_pricebooks)
         Me.Controls.Add(Me.panel_top)
-        Me.Name = "frm_price_book"
+        Me.Name = "frm_admin_price_book"
         Me.Text = "frm_price_book"
         Me.panel_top.ResumeLayout(False)
         Me.panel_top.PerformLayout()
@@ -334,4 +376,7 @@ Partial Class frm_admin_price_book
     Friend WithEvents col_regular_price As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_vip_price As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_dealer_price As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_main_category As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_sub_category As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_brand As DevExpress.XtraGrid.Columns.GridColumn
 End Class

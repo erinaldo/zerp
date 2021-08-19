@@ -20,7 +20,7 @@ Public Class frm_admin_price_book
 
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("SELECT LPAD(pid, 6, 0) as pid, winmodel, description, base_price, cost, discount, regular_price, dealer_price, vip_price FROM ims_inventory", conn)
+            Dim cmd = New MySqlCommand("SELECT LPAD(pid, 6, 0) as pid, winmodel, description, main_category, sub_category, brand, base_price, cost, discount, regular_price, dealer_price, vip_price FROM ims_inventory", conn)
             cmd.ExecuteNonQuery()
 
             Dim dt = New DataTable

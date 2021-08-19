@@ -91,7 +91,7 @@ Public Class frm_warehouse_delivery_receive
             Dim discount As String
 
             Select Case cbb_discount.SelectedIndex
-                Case 0 : discount = txt_discount.Text & "Pesos OFF"
+                Case 0 : discount = txt_discount.Text & " Pesos OFF"
                 Case 1 : discount = txt_discount.Text & "% OFF"
                 Case Else : discount = ""
             End Select

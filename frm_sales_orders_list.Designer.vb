@@ -51,6 +51,11 @@ Partial Class frm_sales_orders
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim EditorButtonImageOptions10 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject37 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject38 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject39 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject40 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.panel_top = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -69,7 +74,9 @@ Partial Class frm_sales_orders
         Me.btn_order = New DevExpress.XtraEditors.SimpleButton()
         Me.grid_orders = New DevExpress.XtraGrid.GridControl()
         Me.grid_orders_view = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_view = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_view_order = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_order_id = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -94,6 +101,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel2.SuspendLayout()
         CType(Me.grid_orders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_orders_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_view_order, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_quotes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_quotes_view, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -106,7 +114,7 @@ Partial Class frm_sales_orders
         Me.panel_top.Dock = System.Windows.Forms.DockStyle.Top
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1367, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1525, 78)
         Me.panel_top.TabIndex = 11
         '
         'GunaPanel5
@@ -118,7 +126,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
         Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(1345, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(1503, 27)
         Me.GunaPanel5.TabIndex = 5
         '
         'Panel1
@@ -126,7 +134,7 @@ Partial Class frm_sales_orders
         Me.Panel1.Controls.Add(Me.PictureEdit1)
         Me.Panel1.Controls.Add(Me.cbb_timer)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(1233, 0)
+        Me.Panel1.Location = New System.Drawing.Point(1391, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(112, 27)
         Me.Panel1.TabIndex = 7
@@ -248,7 +256,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 78)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(1367, 638)
+        Me.GunaPanel2.Size = New System.Drawing.Size(1525, 638)
         Me.GunaPanel2.TabIndex = 12
         '
         'btn_order_history
@@ -262,7 +270,7 @@ Partial Class frm_sales_orders
         Me.btn_order_history.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.historyitem_32x321
         Me.btn_order_history.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_order_history.ImageOptions.ImageToTextIndent = 5
-        Me.btn_order_history.Location = New System.Drawing.Point(684, 15)
+        Me.btn_order_history.Location = New System.Drawing.Point(842, 15)
         Me.btn_order_history.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_order_history.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_order_history.Name = "btn_order_history"
@@ -281,7 +289,7 @@ Partial Class frm_sales_orders
         Me.btn_refresh.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.refresh_32x32
         Me.btn_refresh.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_refresh.ImageOptions.ImageToTextIndent = 5
-        Me.btn_refresh.Location = New System.Drawing.Point(850, 15)
+        Me.btn_refresh.Location = New System.Drawing.Point(1008, 15)
         Me.btn_refresh.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_refresh.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_refresh.Name = "btn_refresh"
@@ -348,81 +356,85 @@ Partial Class frm_sales_orders
         Me.grid_orders.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_orders.Font = New System.Drawing.Font("Calibri", 9.75!)
+        Me.grid_orders.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_orders.Location = New System.Drawing.Point(20, 72)
         Me.grid_orders.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_orders.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_orders.MainView = Me.grid_orders_view
         Me.grid_orders.Name = "grid_orders"
-        Me.grid_orders.Size = New System.Drawing.Size(990, 554)
+        Me.grid_orders.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_view_order})
+        Me.grid_orders.Size = New System.Drawing.Size(1148, 554)
         Me.grid_orders.TabIndex = 8
         Me.grid_orders.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_orders_view})
         '
         'grid_orders_view
         '
         Me.grid_orders_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.White
-        Me.grid_orders_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_orders_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_orders_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_orders_view.Appearance.HeaderPanel.Options.UseFont = True
-        Me.grid_orders_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_orders_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_orders_view.Appearance.Row.Options.UseFont = True
         Me.grid_orders_view.Appearance.SelectedRow.BackColor = System.Drawing.Color.White
         Me.grid_orders_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_orders_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_orders_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_orders_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.GridColumn10, Me.GridColumn5, Me.col_date_ordered, Me.col_date_packed, Me.col_date_released})
+        Me.grid_orders_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_order_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.GridColumn10, Me.GridColumn5, Me.col_date_ordered, Me.col_date_packed, Me.col_date_released})
         Me.grid_orders_view.GridControl = Me.grid_orders
         Me.grid_orders_view.Name = "grid_orders_view"
-        Me.grid_orders_view.OptionsBehavior.Editable = False
         Me.grid_orders_view.OptionsBehavior.ReadOnly = True
         Me.grid_orders_view.OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = True
         Me.grid_orders_view.OptionsView.ShowFooter = True
-        Me.grid_orders_view.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.[False]
-        Me.grid_orders_view.RowHeight = 25
         '
-        'GridColumn1
+        'col_view
         '
-        Me.GridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.GridColumn1.AppearanceCell.Options.UseForeColor = True
-        Me.GridColumn1.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn1.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.AppearanceHeader.Options.UseForeColor = True
-        Me.GridColumn1.AppearanceHeader.Options.UseTextOptions = True
-        Me.GridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn1.Caption = "Order ID"
-        Me.GridColumn1.FieldName = "order_id"
-        Me.GridColumn1.MaxWidth = 70
-        Me.GridColumn1.MinWidth = 70
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
-        Me.GridColumn1.Width = 70
+        Me.col_view.Caption = "Action"
+        Me.col_view.ColumnEdit = Me.btn_view_order
+        Me.col_view.MaxWidth = 50
+        Me.col_view.MinWidth = 50
+        Me.col_view.Name = "col_view"
+        Me.col_view.Visible = True
+        Me.col_view.VisibleIndex = 0
+        Me.col_view.Width = 50
+        '
+        'btn_view_order
+        '
+        Me.btn_view_order.AutoHeight = False
+        EditorButtonImageOptions10.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
+        Me.btn_view_order.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions10, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject37, SerializableAppearanceObject38, SerializableAppearanceObject39, SerializableAppearanceObject40, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_view_order.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_view_order.Name = "btn_view_order"
+        Me.btn_view_order.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'col_order_id
+        '
+        Me.col_order_id.AppearanceCell.Options.UseTextOptions = True
+        Me.col_order_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_order_id.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_order_id.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_order_id.Caption = "Order ID"
+        Me.col_order_id.FieldName = "order_id"
+        Me.col_order_id.MaxWidth = 70
+        Me.col_order_id.MinWidth = 70
+        Me.col_order_id.Name = "col_order_id"
+        Me.col_order_id.Visible = True
+        Me.col_order_id.VisibleIndex = 1
+        Me.col_order_id.Width = 70
         '
         'GridColumn2
         '
-        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn2.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn2.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn2.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn2.Caption = "Customer"
         Me.GridColumn2.FieldName = "first_name"
-        Me.GridColumn2.MinWidth = 120
+        Me.GridColumn2.MinWidth = 150
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 1
-        Me.GridColumn2.Width = 120
+        Me.GridColumn2.VisibleIndex = 2
+        Me.GridColumn2.Width = 150
         '
         'GridColumn3
         '
-        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn3.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn3.Caption = "Representative"
@@ -431,17 +443,13 @@ Partial Class frm_sales_orders
         Me.GridColumn3.MinWidth = 130
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 2
+        Me.GridColumn3.VisibleIndex = 3
         Me.GridColumn3.Width = 130
         '
         'GridColumn7
         '
         Me.GridColumn7.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn7.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn7.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn7.Caption = "Payment Type"
@@ -450,17 +458,13 @@ Partial Class frm_sales_orders
         Me.GridColumn7.MinWidth = 100
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 4
+        Me.GridColumn7.VisibleIndex = 5
         Me.GridColumn7.Width = 100
         '
         'GridColumn9
         '
         Me.GridColumn9.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn9.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn9.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn9.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn9.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn9.Caption = "Shipping"
@@ -469,17 +473,13 @@ Partial Class frm_sales_orders
         Me.GridColumn9.MinWidth = 100
         Me.GridColumn9.Name = "GridColumn9"
         Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 3
+        Me.GridColumn9.VisibleIndex = 4
         Me.GridColumn9.Width = 100
         '
         'GridColumn10
         '
         Me.GridColumn10.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn10.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn10.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn10.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn10.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn10.Caption = "Payment Status"
@@ -488,17 +488,13 @@ Partial Class frm_sales_orders
         Me.GridColumn10.MinWidth = 120
         Me.GridColumn10.Name = "GridColumn10"
         Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 5
+        Me.GridColumn10.VisibleIndex = 6
         Me.GridColumn10.Width = 120
         '
         'GridColumn5
         '
         Me.GridColumn5.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn5.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn5.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn5.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn5.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn5.Caption = "Package Status"
@@ -507,17 +503,13 @@ Partial Class frm_sales_orders
         Me.GridColumn5.MinWidth = 100
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 6
+        Me.GridColumn5.VisibleIndex = 7
         Me.GridColumn5.Width = 100
         '
         'col_date_ordered
         '
         Me.col_date_ordered.AppearanceCell.Options.UseTextOptions = True
         Me.col_date_ordered.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_date_ordered.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_date_ordered.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_date_ordered.AppearanceHeader.Options.UseFont = True
-        Me.col_date_ordered.AppearanceHeader.Options.UseForeColor = True
         Me.col_date_ordered.AppearanceHeader.Options.UseTextOptions = True
         Me.col_date_ordered.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_date_ordered.Caption = "Date Ordered"
@@ -528,17 +520,13 @@ Partial Class frm_sales_orders
         Me.col_date_ordered.MinWidth = 100
         Me.col_date_ordered.Name = "col_date_ordered"
         Me.col_date_ordered.Visible = True
-        Me.col_date_ordered.VisibleIndex = 7
+        Me.col_date_ordered.VisibleIndex = 8
         Me.col_date_ordered.Width = 100
         '
         'col_date_packed
         '
         Me.col_date_packed.AppearanceCell.Options.UseTextOptions = True
         Me.col_date_packed.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_date_packed.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.col_date_packed.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_date_packed.AppearanceHeader.Options.UseFont = True
-        Me.col_date_packed.AppearanceHeader.Options.UseForeColor = True
         Me.col_date_packed.AppearanceHeader.Options.UseTextOptions = True
         Me.col_date_packed.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_date_packed.Caption = "Date Packed"
@@ -549,15 +537,13 @@ Partial Class frm_sales_orders
         Me.col_date_packed.MinWidth = 100
         Me.col_date_packed.Name = "col_date_packed"
         Me.col_date_packed.Visible = True
-        Me.col_date_packed.VisibleIndex = 8
+        Me.col_date_packed.VisibleIndex = 9
         Me.col_date_packed.Width = 100
         '
         'col_date_released
         '
         Me.col_date_released.AppearanceCell.Options.UseTextOptions = True
         Me.col_date_released.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_date_released.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_date_released.AppearanceHeader.Options.UseFont = True
         Me.col_date_released.AppearanceHeader.Options.UseTextOptions = True
         Me.col_date_released.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_date_released.Caption = "Date Released"
@@ -568,14 +554,14 @@ Partial Class frm_sales_orders
         Me.col_date_released.MinWidth = 100
         Me.col_date_released.Name = "col_date_released"
         Me.col_date_released.Visible = True
-        Me.col_date_released.VisibleIndex = 9
+        Me.col_date_released.VisibleIndex = 10
         Me.col_date_released.Width = 100
         '
         'grid_quotes
         '
         Me.grid_quotes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_quotes.Location = New System.Drawing.Point(1018, 20)
+        Me.grid_quotes.Location = New System.Drawing.Point(1176, 20)
         Me.grid_quotes.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_quotes.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_quotes.MainView = Me.grid_quotes_view
@@ -658,7 +644,7 @@ Partial Class frm_sales_orders
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1367, 716)
+        Me.ClientSize = New System.Drawing.Size(1525, 716)
         Me.Controls.Add(Me.GunaPanel2)
         Me.Controls.Add(Me.panel_top)
         Me.KeyPreview = True
@@ -676,6 +662,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel2.ResumeLayout(False)
         CType(Me.grid_orders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_orders_view, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_view_order, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_quotes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_quotes_view, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -692,7 +679,7 @@ Partial Class frm_sales_orders
     Friend WithEvents GunaPanel2 As Guna.UI.WinForms.GunaPanel
     Friend WithEvents grid_orders As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_orders_view As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_order_id As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
@@ -718,4 +705,6 @@ Partial Class frm_sales_orders
     Friend WithEvents col_date_ordered As GridColumn
     Friend WithEvents col_date_released As GridColumn
     Friend WithEvents col_status As GridColumn
+    Friend WithEvents col_view As GridColumn
+    Friend WithEvents btn_view_order As RepositoryItemButtonEdit
 End Class

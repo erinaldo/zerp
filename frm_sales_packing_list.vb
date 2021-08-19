@@ -80,19 +80,19 @@ Public Class frm_sales_packing_list
                 conn.Open()
 
                 'Label for Pending for Arrangement
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Pending for Arrangement'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Pending for Arrangement' AND NOT ims_orders.deleted='1'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_pending.Caption = "Pending Arrangements (" & count & ")"
                 End Using
 
                 'Label for On-Going
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='On-Going'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='On-Going' AND NOT ims_orders.deleted='1'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_ongoing.Caption = "On-Going (" & count & ")"
                 End Using
 
                 'Label for Packed
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Packed'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Packed' AND NOT ims_orders.deleted='1'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_completed.Caption = "Completed (" & count & ")"
                 End Using

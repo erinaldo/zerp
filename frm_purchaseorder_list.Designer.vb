@@ -27,6 +27,11 @@ Partial Class frm_purchaseorder_list
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_purchaseorder_list))
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.panel_top = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -38,9 +43,11 @@ Partial Class frm_purchaseorder_list
         Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel2 = New Guna.UI.WinForms.GunaLabel()
         Me.btn_new = New DevExpress.XtraEditors.SimpleButton()
-        Me.grid_created = New DevExpress.XtraGrid.GridControl()
+        Me.grid_po = New DevExpress.XtraGrid.GridControl()
         Me.grid_po_view = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_view = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_view = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -51,7 +58,6 @@ Partial Class frm_purchaseorder_list
         Me.col_edd = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_date_generated = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_created_by = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.btn_fulfilled = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.btn_ordered_items = New DevExpress.XtraEditors.SimpleButton()
@@ -66,11 +72,11 @@ Partial Class frm_purchaseorder_list
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_timer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaPanel1.SuspendLayout()
-        CType(Me.grid_created, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_po, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemHyperLinkEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaPanel2.SuspendLayout()
         Me.panel_sub_content.SuspendLayout()
         Me.SuspendLayout()
@@ -214,7 +220,7 @@ Partial Class frm_purchaseorder_list
         '
         'btn_new
         '
-        Me.btn_new.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.btn_new.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.btn_new.Appearance.Options.UseFont = True
         Me.btn_new.Appearance.Options.UseTextOptions = True
         Me.btn_new.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -223,7 +229,7 @@ Partial Class frm_purchaseorder_list
         Me.btn_new.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_new.ImageOptions.ImageToTextIndent = 8
         Me.btn_new.ImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.btn_new.Location = New System.Drawing.Point(20, 15)
+        Me.btn_new.Location = New System.Drawing.Point(12, 15)
         Me.btn_new.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_new.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_new.Name = "btn_new"
@@ -231,25 +237,25 @@ Partial Class frm_purchaseorder_list
         Me.btn_new.TabIndex = 0
         Me.btn_new.Text = "New Purchase"
         '
-        'grid_created
+        'grid_po
         '
-        Me.grid_created.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.grid_po.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_created.Location = New System.Drawing.Point(20, 72)
-        Me.grid_created.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.grid_created.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.grid_created.MainView = Me.grid_po_view
-        Me.grid_created.Name = "grid_created"
-        Me.grid_created.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemHyperLinkEdit1, Me.RepositoryItemDateEdit1})
-        Me.grid_created.Size = New System.Drawing.Size(1329, 554)
-        Me.grid_created.TabIndex = 8
-        Me.grid_created.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_po_view})
+        Me.grid_po.Location = New System.Drawing.Point(12, 72)
+        Me.grid_po.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_po.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_po.MainView = Me.grid_po_view
+        Me.grid_po.Name = "grid_po"
+        Me.grid_po.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemDateEdit1, Me.btn_view})
+        Me.grid_po.Size = New System.Drawing.Size(1343, 554)
+        Me.grid_po.TabIndex = 8
+        Me.grid_po.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_po_view})
         '
         'grid_po_view
         '
         Me.grid_po_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.White
-        Me.grid_po_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.grid_po_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_po_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_po_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_po_view.Appearance.HeaderPanel.Options.UseTextOptions = True
@@ -260,39 +266,47 @@ Partial Class frm_purchaseorder_list
         Me.grid_po_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_po_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_po_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_po_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn6, Me.GridColumn7, Me.col_lead_time_status, Me.col_edd, Me.col_date_generated, Me.col_created_by})
-        Me.grid_po_view.GridControl = Me.grid_created
+        Me.grid_po_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn6, Me.GridColumn7, Me.col_lead_time_status, Me.col_edd, Me.col_date_generated, Me.col_created_by})
+        Me.grid_po_view.GridControl = Me.grid_po
         Me.grid_po_view.Name = "grid_po_view"
-        Me.grid_po_view.OptionsBehavior.Editable = False
         Me.grid_po_view.OptionsBehavior.ReadOnly = True
         Me.grid_po_view.OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = True
         '
-        'GridColumn1
+        'col_view
         '
-        Me.GridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.GridColumn1.AppearanceCell.Options.UseForeColor = True
-        Me.GridColumn1.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn1.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn1.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn1.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn1.AppearanceHeader.Options.UseForeColor = True
-        Me.GridColumn1.AppearanceHeader.Options.UseTextOptions = True
-        Me.GridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn1.FieldName = "ID"
-        Me.GridColumn1.MaxWidth = 100
-        Me.GridColumn1.MinWidth = 50
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
-        Me.GridColumn1.Width = 90
+        Me.col_view.Caption = "Action"
+        Me.col_view.ColumnEdit = Me.btn_view
+        Me.col_view.Name = "col_view"
+        Me.col_view.Visible = True
+        Me.col_view.VisibleIndex = 0
+        Me.col_view.Width = 54
+        '
+        'btn_view
+        '
+        Me.btn_view.AutoHeight = False
+        Me.btn_view.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
+        Me.btn_view.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_view.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_view.Name = "btn_view"
+        Me.btn_view.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'col_id
+        '
+        Me.col_id.AppearanceCell.Options.UseTextOptions = True
+        Me.col_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_id.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_id.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_id.FieldName = "ID"
+        Me.col_id.MaxWidth = 80
+        Me.col_id.MinWidth = 50
+        Me.col_id.Name = "col_id"
+        Me.col_id.Visible = True
+        Me.col_id.VisibleIndex = 1
+        Me.col_id.Width = 80
         '
         'GridColumn2
         '
-        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn2.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn2.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn2.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn2.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn2.Caption = "Delivery Site"
@@ -301,30 +315,22 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn2.MinWidth = 50
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 2
-        Me.GridColumn2.Width = 170
+        Me.GridColumn2.VisibleIndex = 3
+        Me.GridColumn2.Width = 186
         '
         'GridColumn3
         '
-        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn3.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn3.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn3.Caption = "Supplier"
         Me.GridColumn3.FieldName = "supplier"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 1
-        Me.GridColumn3.Width = 229
+        Me.GridColumn3.VisibleIndex = 2
+        Me.GridColumn3.Width = 238
         '
         'GridColumn4
         '
-        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn4.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn4.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn4.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn4.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn4.Caption = "Amount (PHP)"
@@ -334,17 +340,13 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn4.MaxWidth = 100
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 3
-        Me.GridColumn4.Width = 92
+        Me.GridColumn4.VisibleIndex = 4
+        Me.GridColumn4.Width = 100
         '
         'GridColumn6
         '
         Me.GridColumn6.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.GridColumn6.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn6.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn6.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn6.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn6.Caption = "Date of Sent"
@@ -355,8 +357,8 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn6.MaxWidth = 150
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 6
-        Me.GridColumn6.Width = 98
+        Me.GridColumn6.VisibleIndex = 7
+        Me.GridColumn6.Width = 114
         '
         'RepositoryItemDateEdit1
         '
@@ -367,10 +369,6 @@ Partial Class frm_purchaseorder_list
         '
         'GridColumn7
         '
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GridColumn7.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn7.AppearanceHeader.Options.UseFont = True
-        Me.GridColumn7.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn7.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn7.Caption = "Status"
@@ -378,8 +376,8 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn7.MinWidth = 120
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 4
-        Me.GridColumn7.Width = 120
+        Me.GridColumn7.VisibleIndex = 5
+        Me.GridColumn7.Width = 125
         '
         'col_lead_time_status
         '
@@ -389,8 +387,8 @@ Partial Class frm_purchaseorder_list
         Me.col_lead_time_status.FieldName = "lead_time_status"
         Me.col_lead_time_status.Name = "col_lead_time_status"
         Me.col_lead_time_status.Visible = True
-        Me.col_lead_time_status.VisibleIndex = 8
-        Me.col_lead_time_status.Width = 102
+        Me.col_lead_time_status.VisibleIndex = 9
+        Me.col_lead_time_status.Width = 105
         '
         'col_edd
         '
@@ -403,8 +401,8 @@ Partial Class frm_purchaseorder_list
         Me.col_edd.FieldName = "edd"
         Me.col_edd.Name = "col_edd"
         Me.col_edd.Visible = True
-        Me.col_edd.VisibleIndex = 7
-        Me.col_edd.Width = 83
+        Me.col_edd.VisibleIndex = 8
+        Me.col_edd.Width = 97
         '
         'col_date_generated
         '
@@ -416,8 +414,8 @@ Partial Class frm_purchaseorder_list
         Me.col_date_generated.FieldName = "date_generated"
         Me.col_date_generated.Name = "col_date_generated"
         Me.col_date_generated.Visible = True
-        Me.col_date_generated.VisibleIndex = 5
-        Me.col_date_generated.Width = 95
+        Me.col_date_generated.VisibleIndex = 6
+        Me.col_date_generated.Width = 98
         '
         'col_created_by
         '
@@ -425,22 +423,17 @@ Partial Class frm_purchaseorder_list
         Me.col_created_by.FieldName = "created_by"
         Me.col_created_by.Name = "col_created_by"
         Me.col_created_by.Visible = True
-        Me.col_created_by.VisibleIndex = 9
-        Me.col_created_by.Width = 97
-        '
-        'RepositoryItemHyperLinkEdit1
-        '
-        Me.RepositoryItemHyperLinkEdit1.AutoHeight = False
-        Me.RepositoryItemHyperLinkEdit1.Name = "RepositoryItemHyperLinkEdit1"
+        Me.col_created_by.VisibleIndex = 10
+        Me.col_created_by.Width = 115
         '
         'btn_fulfilled
         '
-        Me.btn_fulfilled.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.btn_fulfilled.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.btn_fulfilled.Appearance.Options.UseFont = True
         Me.btn_fulfilled.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.historyitem_32x32
         Me.btn_fulfilled.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_fulfilled.ImageOptions.ImageToTextIndent = 5
-        Me.btn_fulfilled.Location = New System.Drawing.Point(186, 15)
+        Me.btn_fulfilled.Location = New System.Drawing.Point(178, 15)
         Me.btn_fulfilled.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_fulfilled.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_fulfilled.Name = "btn_fulfilled"
@@ -454,7 +447,7 @@ Partial Class frm_purchaseorder_list
         Me.GunaPanel2.Controls.Add(Me.btn_ordered_items)
         Me.GunaPanel2.Controls.Add(Me.btn_obsolete)
         Me.GunaPanel2.Controls.Add(Me.btn_new)
-        Me.GunaPanel2.Controls.Add(Me.grid_created)
+        Me.GunaPanel2.Controls.Add(Me.grid_po)
         Me.GunaPanel2.Controls.Add(Me.btn_fulfilled)
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 0)
@@ -465,11 +458,11 @@ Partial Class frm_purchaseorder_list
         'btn_ordered_items
         '
         Me.btn_ordered_items.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_ordered_items.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.btn_ordered_items.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.btn_ordered_items.Appearance.Options.UseFont = True
         Me.btn_ordered_items.ImageOptions.Image = CType(resources.GetObject("btn_ordered_items.ImageOptions.Image"), System.Drawing.Image)
         Me.btn_ordered_items.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_ordered_items.Location = New System.Drawing.Point(1189, 15)
+        Me.btn_ordered_items.Location = New System.Drawing.Point(1195, 15)
         Me.btn_ordered_items.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_ordered_items.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_ordered_items.Name = "btn_ordered_items"
@@ -479,12 +472,12 @@ Partial Class frm_purchaseorder_list
         '
         'btn_obsolete
         '
-        Me.btn_obsolete.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.btn_obsolete.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.btn_obsolete.Appearance.Options.UseFont = True
         Me.btn_obsolete.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.switchtimescalesto_32x32
         Me.btn_obsolete.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_obsolete.ImageOptions.ImageToTextIndent = 5
-        Me.btn_obsolete.Location = New System.Drawing.Point(352, 15)
+        Me.btn_obsolete.Location = New System.Drawing.Point(344, 15)
         Me.btn_obsolete.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_obsolete.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_obsolete.Name = "btn_obsolete"
@@ -550,11 +543,11 @@ Partial Class frm_purchaseorder_list
         CType(Me.cbb_timer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaPanel1.ResumeLayout(False)
         Me.GunaPanel1.PerformLayout()
-        CType(Me.grid_created, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_po, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemHyperLinkEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaPanel2.ResumeLayout(False)
         Me.panel_sub_content.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -564,18 +557,16 @@ Partial Class frm_purchaseorder_list
     Friend WithEvents panel_top As Guna.UI.WinForms.GunaPanel
     Friend WithEvents GunaPanel5 As Guna.UI.WinForms.GunaPanel
     Friend WithEvents GunaLabel2 As Guna.UI.WinForms.GunaLabel
-    Friend WithEvents grid_created As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grid_po As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_po_view As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents btn_new As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_ordered_items As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_id As DevExpress.XtraGrid.Columns.GridColumn
 
     Friend WithEvents col_created_by As GridColumn
-
-    Friend WithEvents RepositoryItemHyperLinkEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit
     Friend WithEvents GunaPanel1 As Guna.UI.WinForms.GunaPanel
     Friend WithEvents link_po_list As DevExpress.XtraEditors.HyperlinkLabelControl
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
@@ -598,4 +589,6 @@ Partial Class frm_purchaseorder_list
     Friend WithEvents col_date_generated As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_active_orders As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents col_purchaser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_view As GridColumn
+    Friend WithEvents btn_view As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
 End Class

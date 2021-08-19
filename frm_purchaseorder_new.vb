@@ -413,37 +413,40 @@ Public Class frm_purchaseorder_new
                         conn.Open()
                         Dim cmd = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", conn)
                         cmd.Parameters.AddWithValue("@winmodel", grid_order.CurrentCell.Value)
-                        Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                        Using rdr As MySqlDataReader = cmd.ExecuteReader
+                            While rdr.Read
 
-                        While rdr.Read
+                                'Validation of Unit Status
+                                If rdr("status").Equals("Active") Then
 
-                            'SET VALUE TO grid_stocks
-                            If grid_stocks.Rows.Count <= e.RowIndex Then
-                                grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
-                            Else
-                                grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
-                            End If
+                                    'SET VALUE TO grid_stocks
+                                    If grid_stocks.Rows.Count <= e.RowIndex Then
+                                        grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
+                                    Else
+                                        grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
+                                    End If
 
-                            'Validation of Unit Status
-                            If Not rdr("status").Equals("Active") Then
-                                MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                                grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                                Exit Sub
-                            End If
+                                    'SET VALUE to grid_order
+                                    grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
+                                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
+                                    grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
+                                    Dim cost As Decimal = rdr("cost")
+                                    grid_order.Rows(e.RowIndex).Cells(6).Value = cost
+                                    If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
+                                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
+                                        grid_order.Rows(e.RowIndex).Cells(7).Value = total
+                                    End If
 
-                            grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
-                            grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
-                            grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
-                            grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
-                            grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
-                            Dim cost As Decimal = rdr("cost")
-                            grid_order.Rows(e.RowIndex).Cells(6).Value = cost
-                            If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
-                                Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
-                                grid_order.Rows(e.RowIndex).Cells(7).Value = total
-                            End If
+                                Else
+                                    MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                                    grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                                    Return
+                                End If
 
-                        End While
+                            End While
+                        End Using
 
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
@@ -472,29 +475,40 @@ Public Class frm_purchaseorder_new
                         conn.Open()
                         Dim cmd = New MySqlCommand(get_query() & " WHERE description=@description", conn)
                         cmd.Parameters.AddWithValue("@description", grid_order.CurrentCell.Value)
-                        Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                        Using rdr As MySqlDataReader = cmd.ExecuteReader
+                            While rdr.Read
 
-                        While rdr.Read
+                                'Validation of Unit Status
+                                If rdr("status").Equals("Active") Then
 
-                            'Validation of Unit Status
-                            If Not rdr("status").Equals("Active") Then
-                                MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                                grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                                Exit Sub
-                            End If
+                                    'SET VALUE TO grid_stocks
+                                    If grid_stocks.Rows.Count <= e.RowIndex Then
+                                        grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
+                                    Else
+                                        grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
+                                    End If
 
-                            grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
-                            grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
-                            grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
-                            grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
-                            grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
-                            Dim cost As Decimal = rdr("cost")
-                            grid_order.Rows(e.RowIndex).Cells(6).Value = cost
-                            If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
-                                Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
-                                grid_order.Rows(e.RowIndex).Cells(7).Value = total
-                            End If
-                        End While
+                                    'SET VALUE to grid_order
+                                    grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
+                                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
+                                    grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
+                                    Dim cost As Decimal = rdr("cost")
+                                    grid_order.Rows(e.RowIndex).Cells(6).Value = cost
+                                    If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
+                                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
+                                        grid_order.Rows(e.RowIndex).Cells(7).Value = total
+                                    End If
+
+                                Else
+                                    MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                                    grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                                    Return
+                                End If
+
+                            End While
+                        End Using
 
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
@@ -620,7 +634,7 @@ Public Class frm_purchaseorder_new
             Return
         End If
 
-        Dim openFileDialog As System.Windows.Forms.OpenFileDialog = New System.Windows.Forms.OpenFileDialog() With
+        Dim openFileDialog = New OpenFileDialog() With
           {
              .Title = "Open File Dialog",
              .Filter = "CSV file (*.csv)|*.csv",
@@ -631,58 +645,64 @@ Public Class frm_purchaseorder_new
         If openFileDialog.ShowDialog() = DialogResult.OK Then
             If MsgBox("Click 'Yes' to continue.", vbQuestion + vbYesNo, "Confirmation") = vbYes Then
 
-                Try
-                    'Stream Data from CSV
-                    Dim csvData As String = File.ReadAllText(openFileDialog.FileName)
+                'Try
+                'Stream Data from CSV
+                Dim csvData As String = File.ReadAllText(openFileDialog.FileName)
                     'Get grid_order DataTable
                     Dim dataSource As DataTable = DirectCast(grid_order.DataSource, DataTable)
 
-                    conn.Open()
-                    Dim not_found_unit = String.Empty, not_active = String.Empty
+                    Using connection = New MySqlConnection(str)
+                        conn.Open()
+                        Dim not_found_unit = String.Empty, not_active = String.Empty
 
-                    For Each row As String In csvData.Split(ControlChars.Lf)
+                        For Each row As String In csvData.Split(ControlChars.Lf)
 
-                        If Not String.IsNullOrEmpty(row) Then
+                            If Not String.IsNullOrEmpty(row) Then
                             Dim values = row.Split(","c)
 
                             'SKip if Row is Empty
                             If String.IsNullOrWhiteSpace(values(0)) Or String.IsNullOrWhiteSpace(values(1)) Then Continue For
 
-                            Dim cmd = New MySqlCommand("SELECT * FROM ims_inventory 
+                                Dim cmd = New MySqlCommand("SELECT * FROM ims_inventory 
                                 WHERE winmodel=@winmodel AND supplier=(SELECT id FROM ims_suppliers WHERE supplier=@supname)", conn)
-                            cmd.Parameters.AddWithValue("@winmodel", values(1).ToString.Trim)
-                            cmd.Parameters.AddWithValue("@supname", cbb_supplier.Text.Trim)
-                            Dim rdr = cmd.ExecuteReader
+                                cmd.Parameters.AddWithValue("@winmodel", values(1).ToString.Trim)
+                                cmd.Parameters.AddWithValue("@supname", cbb_supplier.Text.Trim)
 
-                            If Not rdr.HasRows Then not_found_unit = vbCrLf & "- " & values(1)
+                                Using reader = cmd.ExecuteReader
+                                    If Not reader.HasRows Then not_found_unit = vbCrLf & "- " & values(1)
 
-                            While rdr.Read
-                                If rdr("status").ToString().Equals("Active") Then
-                                    dataSource.Rows.Add(rdr("pid"), values(0), 0, rdr("winmodel"), rdr("supmodel"), rdr("description"), rdr("cost"), values(0) * rdr("cost"))
-                                Else
-                                    not_active += "" & vbCrLf & "   > " & rdr("winmodel") & " is " & rdr("status")
-                                End If
+                                    While reader.Read
+                                        If reader("status").ToString().Equals("Active") Then
+                                            dataSource.Rows.Add(reader("pid"), values(0), 0, reader("winmodel"), reader("supmodel"), reader("description"), reader("cost"), values(0) * reader("cost"))
+                                        Else
+                                            not_active += "" & vbCrLf & "   > " & reader("winmodel") & " is " & reader("status")
+                                        End If
 
-                            End While
-                            rdr.Close()
+                                    End While
+                                End Using
 
+                            End If
+                        Next
+
+                        grid_order.DataSource = dataSource
+                        ComputeTotal()
+
+                        'IF Has Error or Not Active
+                        If Not String.IsNullOrEmpty(not_found_unit) Or Not String.IsNullOrEmpty(not_active) Then
+                            MsgBox(String.Concat("Couldn't import item(s) below:", not_found_unit, not_active), vbExclamation, "Failed")
                         End If
-                    Next
 
-                    grid_order.DataSource = dataSource
-                    ComputeTotal()
+                    End Using
 
-                    'IF Has Error or Not Active
-                    If Not String.IsNullOrEmpty(not_found_unit) Or Not String.IsNullOrEmpty(not_active) Then
-                        MsgBox(String.Concat("Couldn't import item(s) below:", not_found_unit, not_active), vbExclamation, "Failed")
-                    End If
 
-                Catch ex As Exception
-                    MsgBox(ex.Message, vbCritical, "Error")
-                Finally
-                    conn.Close()
+                    Try
+                    Catch ex As Exception
+                        MsgBox(ex.Message, vbCritical, "Error")
+                    Finally
+                        conn.Close()
                 End Try
-
+                'Load All Stocks
+                load_AllStocks()
             End If
         End If
 

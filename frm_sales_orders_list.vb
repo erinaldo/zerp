@@ -91,16 +91,6 @@ Public Class frm_sales_orders
         load_quotes()
     End Sub
 
-    'View Order
-    Private Sub grid_orders_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_orders_view.RowCellClick
-        If grid_orders_view.FocusedColumn.FieldName = "order_id" Then
-            Dim orderid As String = grid_orders_view.GetRowCellValue(e.RowHandle, "order_id")
-
-            Dim view_order = New frm_sales_view_order
-            view_order.LoadData(orderid.Replace("SO", ""))
-            view_order.Show()
-        End If
-    End Sub
 
     'View Quotation
     Private Sub grid_quotes_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_quotes_view.RowCellClick
@@ -155,6 +145,15 @@ Public Class frm_sales_orders
     'btn_order_history
     Private Sub btn_order_history_Click(sender As Object, e As EventArgs) Handles btn_order_history.Click
         frm_sales_order_history.Show()
+    End Sub
+
+    'btn_view_order | View Order
+    Private Sub btn_view_order_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view_order.ButtonClick
+        Dim orderid As String = grid_orders_view.GetFocusedRowCellValue(col_order_id)
+
+        Dim view_order = New frm_sales_view_order
+        view_order.LoadData(orderid.Replace("SO", ""))
+        view_order.Show()
     End Sub
 
 End Class

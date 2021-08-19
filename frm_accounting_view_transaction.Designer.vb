@@ -90,11 +90,11 @@ Partial Class frm_accounting_view_transaction
         '
         'grid_transaction_view
         '
-        Me.grid_transaction_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_transaction_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_transaction_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_transaction_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_transaction_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_transaction_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_transaction_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_transaction_view.Appearance.Row.Options.UseFont = True
         Me.grid_transaction_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_qty, Me.col_winmodel, Me.col_supmodel, Me.col_description, Me.col_cost, Me.col_total_cost})
         Me.grid_transaction_view.GridControl = Me.grid_transaction
@@ -229,8 +229,6 @@ Partial Class frm_accounting_view_transaction
         '
         'PanelControl1
         '
-        Me.PanelControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelControl1.Controls.Add(Me.txt_counted_by)
         Me.PanelControl1.Controls.Add(Me.LabelControl9)
         Me.PanelControl1.Controls.Add(Me.txt_encoded_by)
@@ -311,14 +309,15 @@ Partial Class frm_accounting_view_transaction
         '
         'PanelControl2
         '
-        Me.PanelControl2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelControl2.Controls.Add(Me.LabelControl2)
         Me.PanelControl2.Controls.Add(Me.LabelControl3)
         Me.PanelControl2.Controls.Add(Me.lbl_type)
         Me.PanelControl2.Controls.Add(Me.lbl_ref)
         Me.PanelControl2.Location = New System.Drawing.Point(754, 66)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(219, 75)
+        Me.PanelControl2.Size = New System.Drawing.Size(278, 75)
         Me.PanelControl2.TabIndex = 29
         '
         'lbl_type

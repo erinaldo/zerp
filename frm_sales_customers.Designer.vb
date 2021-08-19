@@ -30,18 +30,21 @@ Partial Class frm_sales_customers
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.grid_customer = New DevExpress.XtraGrid.GridControl()
         Me.gridview_customer = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col_edit = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_edit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_fname = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_contact_person = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_type = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_contact = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_addr = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_terms = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_shipping = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_trucking = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_terms = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_credit_limit = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_edit = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btn_edit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_used_credit = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_remaining_credit = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_other_notes = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel3 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
@@ -49,7 +52,6 @@ Partial Class frm_sales_customers
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.HyperlinkLabelControl2 = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
-        Me.col_other_notes = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.grid_customer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridview_customer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_edit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,164 +71,35 @@ Partial Class frm_sales_customers
         Me.grid_customer.MainView = Me.gridview_customer
         Me.grid_customer.Name = "grid_customer"
         Me.grid_customer.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_edit})
-        Me.grid_customer.Size = New System.Drawing.Size(1048, 442)
+        Me.grid_customer.Size = New System.Drawing.Size(1266, 494)
         Me.grid_customer.TabIndex = 53
         Me.grid_customer.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gridview_customer})
         '
         'gridview_customer
         '
-        Me.gridview_customer.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Bold)
+        Me.gridview_customer.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
         Me.gridview_customer.Appearance.HeaderPanel.Options.UseFont = True
         Me.gridview_customer.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.gridview_customer.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.gridview_customer.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.gridview_customer.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.gridview_customer.Appearance.Row.Options.UseFont = True
         Me.gridview_customer.Appearance.Row.Options.UseTextOptions = True
         Me.gridview_customer.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.gridview_customer.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_fname, Me.col_contact_person, Me.col_type, Me.col_contact, Me.col_addr, Me.col_terms, Me.col_shipping, Me.col_trucking, Me.col_credit_limit, Me.col_edit, Me.col_other_notes})
+        Me.gridview_customer.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_edit, Me.col_id, Me.col_fname, Me.col_contact_person, Me.col_type, Me.col_contact, Me.col_addr, Me.col_shipping, Me.col_trucking, Me.col_terms, Me.col_credit_limit, Me.col_used_credit, Me.col_remaining_credit, Me.col_other_notes})
         Me.gridview_customer.GridControl = Me.grid_customer
         Me.gridview_customer.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.gridview_customer.Name = "gridview_customer"
         Me.gridview_customer.OptionsBehavior.ReadOnly = True
         Me.gridview_customer.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.[False]
         '
-        'col_id
-        '
-        Me.col_id.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_id.AppearanceHeader.Options.UseFont = True
-        Me.col_id.Caption = "ID"
-        Me.col_id.FieldName = "customer_id"
-        Me.col_id.Name = "col_id"
-        Me.col_id.Visible = True
-        Me.col_id.VisibleIndex = 0
-        Me.col_id.Width = 49
-        '
-        'col_fname
-        '
-        Me.col_fname.AppearanceCell.Options.UseTextOptions = True
-        Me.col_fname.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.col_fname.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_fname.AppearanceHeader.Options.UseFont = True
-        Me.col_fname.Caption = "Customer"
-        Me.col_fname.FieldName = "first_name"
-        Me.col_fname.Name = "col_fname"
-        Me.col_fname.Visible = True
-        Me.col_fname.VisibleIndex = 1
-        Me.col_fname.Width = 99
-        '
-        'col_contact_person
-        '
-        Me.col_contact_person.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_contact_person.AppearanceHeader.Options.UseFont = True
-        Me.col_contact_person.Caption = "Contact Person"
-        Me.col_contact_person.FieldName = "contact_person"
-        Me.col_contact_person.Name = "col_contact_person"
-        Me.col_contact_person.Visible = True
-        Me.col_contact_person.VisibleIndex = 2
-        Me.col_contact_person.Width = 139
-        '
-        'col_type
-        '
-        Me.col_type.AppearanceCell.Options.UseTextOptions = True
-        Me.col_type.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.col_type.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_type.AppearanceHeader.Options.UseFont = True
-        Me.col_type.Caption = "Type"
-        Me.col_type.FieldName = "account_type"
-        Me.col_type.Name = "col_type"
-        Me.col_type.Visible = True
-        Me.col_type.VisibleIndex = 3
-        Me.col_type.Width = 71
-        '
-        'col_contact
-        '
-        Me.col_contact.AppearanceCell.Options.UseTextOptions = True
-        Me.col_contact.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.col_contact.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_contact.AppearanceHeader.Options.UseFont = True
-        Me.col_contact.Caption = "Contact No."
-        Me.col_contact.FieldName = "contact"
-        Me.col_contact.Name = "col_contact"
-        Me.col_contact.Visible = True
-        Me.col_contact.VisibleIndex = 4
-        Me.col_contact.Width = 70
-        '
-        'col_addr
-        '
-        Me.col_addr.AppearanceCell.Options.UseTextOptions = True
-        Me.col_addr.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.col_addr.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_addr.AppearanceHeader.Options.UseFont = True
-        Me.col_addr.Caption = "Address"
-        Me.col_addr.FieldName = "address"
-        Me.col_addr.Name = "col_addr"
-        Me.col_addr.Visible = True
-        Me.col_addr.VisibleIndex = 5
-        Me.col_addr.Width = 153
-        '
-        'col_terms
-        '
-        Me.col_terms.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_terms.AppearanceHeader.Options.UseFont = True
-        Me.col_terms.Caption = "Terms (Days)"
-        Me.col_terms.FieldName = "terms"
-        Me.col_terms.Name = "col_terms"
-        Me.col_terms.Visible = True
-        Me.col_terms.VisibleIndex = 8
-        Me.col_terms.Width = 69
-        '
-        'col_shipping
-        '
-        Me.col_shipping.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_shipping.AppearanceHeader.Options.UseFont = True
-        Me.col_shipping.Caption = "Shipping Option"
-        Me.col_shipping.FieldName = "preferred_shipping"
-        Me.col_shipping.Name = "col_shipping"
-        Me.col_shipping.Visible = True
-        Me.col_shipping.VisibleIndex = 6
-        Me.col_shipping.Width = 80
-        '
-        'col_trucking
-        '
-        Me.col_trucking.AppearanceCell.Options.UseTextOptions = True
-        Me.col_trucking.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.col_trucking.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_trucking.AppearanceHeader.Options.UseFont = True
-        Me.col_trucking.Caption = "Trucking"
-        Me.col_trucking.FieldName = "trucking_note"
-        Me.col_trucking.MinWidth = 120
-        Me.col_trucking.Name = "col_trucking"
-        Me.col_trucking.Visible = True
-        Me.col_trucking.VisibleIndex = 7
-        Me.col_trucking.Width = 120
-        '
-        'col_credit_limit
-        '
-        Me.col_credit_limit.AppearanceCell.Options.UseTextOptions = True
-        Me.col_credit_limit.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.col_credit_limit.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_credit_limit.AppearanceHeader.Options.UseFont = True
-        Me.col_credit_limit.AppearanceHeader.Options.UseTextOptions = True
-        Me.col_credit_limit.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_credit_limit.Caption = "Credit Limit"
-        Me.col_credit_limit.DisplayFormat.FormatString = "c2"
-        Me.col_credit_limit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.col_credit_limit.FieldName = "credit_limit"
-        Me.col_credit_limit.Name = "col_credit_limit"
-        Me.col_credit_limit.Visible = True
-        Me.col_credit_limit.VisibleIndex = 9
-        Me.col_credit_limit.Width = 129
-        '
         'col_edit
         '
-        Me.col_edit.AppearanceHeader.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.col_edit.AppearanceHeader.Options.UseFont = True
         Me.col_edit.Caption = "Edit"
         Me.col_edit.ColumnEdit = Me.btn_edit
         Me.col_edit.Name = "col_edit"
         Me.col_edit.Visible = True
-        Me.col_edit.VisibleIndex = 10
-        Me.col_edit.Width = 51
+        Me.col_edit.VisibleIndex = 0
+        Me.col_edit.Width = 55
         '
         'btn_edit
         '
@@ -237,6 +110,142 @@ Partial Class frm_sales_customers
         Me.btn_edit.Name = "btn_edit"
         Me.btn_edit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
+        'col_id
+        '
+        Me.col_id.Caption = "ID"
+        Me.col_id.FieldName = "customer_id"
+        Me.col_id.MaxWidth = 50
+        Me.col_id.Name = "col_id"
+        Me.col_id.Visible = True
+        Me.col_id.VisibleIndex = 1
+        Me.col_id.Width = 50
+        '
+        'col_fname
+        '
+        Me.col_fname.AppearanceCell.Options.UseTextOptions = True
+        Me.col_fname.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.col_fname.Caption = "Customer"
+        Me.col_fname.FieldName = "first_name"
+        Me.col_fname.Name = "col_fname"
+        Me.col_fname.Visible = True
+        Me.col_fname.VisibleIndex = 2
+        Me.col_fname.Width = 108
+        '
+        'col_contact_person
+        '
+        Me.col_contact_person.Caption = "Contact Person"
+        Me.col_contact_person.FieldName = "contact_person"
+        Me.col_contact_person.Name = "col_contact_person"
+        Me.col_contact_person.Visible = True
+        Me.col_contact_person.VisibleIndex = 3
+        Me.col_contact_person.Width = 153
+        '
+        'col_type
+        '
+        Me.col_type.AppearanceCell.Options.UseTextOptions = True
+        Me.col_type.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.col_type.Caption = "Type"
+        Me.col_type.FieldName = "account_type"
+        Me.col_type.Name = "col_type"
+        Me.col_type.Visible = True
+        Me.col_type.VisibleIndex = 4
+        Me.col_type.Width = 76
+        '
+        'col_contact
+        '
+        Me.col_contact.AppearanceCell.Options.UseTextOptions = True
+        Me.col_contact.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.col_contact.Caption = "Contact No."
+        Me.col_contact.FieldName = "contact"
+        Me.col_contact.Name = "col_contact"
+        Me.col_contact.Visible = True
+        Me.col_contact.VisibleIndex = 5
+        '
+        'col_addr
+        '
+        Me.col_addr.AppearanceCell.Options.UseTextOptions = True
+        Me.col_addr.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.col_addr.Caption = "Address"
+        Me.col_addr.FieldName = "address"
+        Me.col_addr.Name = "col_addr"
+        Me.col_addr.Visible = True
+        Me.col_addr.VisibleIndex = 6
+        Me.col_addr.Width = 169
+        '
+        'col_shipping
+        '
+        Me.col_shipping.Caption = "Shipping Option"
+        Me.col_shipping.FieldName = "preferred_shipping"
+        Me.col_shipping.Name = "col_shipping"
+        Me.col_shipping.Visible = True
+        Me.col_shipping.VisibleIndex = 7
+        Me.col_shipping.Width = 86
+        '
+        'col_trucking
+        '
+        Me.col_trucking.AppearanceCell.Options.UseTextOptions = True
+        Me.col_trucking.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.col_trucking.Caption = "Trucking"
+        Me.col_trucking.FieldName = "trucking_note"
+        Me.col_trucking.Name = "col_trucking"
+        Me.col_trucking.Visible = True
+        Me.col_trucking.VisibleIndex = 8
+        Me.col_trucking.Width = 80
+        '
+        'col_terms
+        '
+        Me.col_terms.Caption = "Terms"
+        Me.col_terms.FieldName = "terms"
+        Me.col_terms.MaxWidth = 60
+        Me.col_terms.Name = "col_terms"
+        Me.col_terms.Visible = True
+        Me.col_terms.VisibleIndex = 9
+        Me.col_terms.Width = 50
+        '
+        'col_credit_limit
+        '
+        Me.col_credit_limit.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_credit_limit.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_credit_limit.Caption = "Credit Limit"
+        Me.col_credit_limit.DisplayFormat.FormatString = "c2"
+        Me.col_credit_limit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_credit_limit.FieldName = "credit_limit"
+        Me.col_credit_limit.MaxWidth = 80
+        Me.col_credit_limit.Name = "col_credit_limit"
+        Me.col_credit_limit.Visible = True
+        Me.col_credit_limit.VisibleIndex = 10
+        Me.col_credit_limit.Width = 80
+        '
+        'col_used_credit
+        '
+        Me.col_used_credit.Caption = "Used Credit"
+        Me.col_used_credit.DisplayFormat.FormatString = "c2"
+        Me.col_used_credit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_used_credit.FieldName = "used_credit"
+        Me.col_used_credit.MaxWidth = 80
+        Me.col_used_credit.Name = "col_used_credit"
+        Me.col_used_credit.Visible = True
+        Me.col_used_credit.VisibleIndex = 11
+        Me.col_used_credit.Width = 80
+        '
+        'col_remaining_credit
+        '
+        Me.col_remaining_credit.Caption = "Remaining Credit"
+        Me.col_remaining_credit.DisplayFormat.FormatString = "c2"
+        Me.col_remaining_credit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_remaining_credit.FieldName = "remaining_credit"
+        Me.col_remaining_credit.MaxWidth = 80
+        Me.col_remaining_credit.Name = "col_remaining_credit"
+        Me.col_remaining_credit.Visible = True
+        Me.col_remaining_credit.VisibleIndex = 12
+        Me.col_remaining_credit.Width = 80
+        '
+        'col_other_notes
+        '
+        Me.col_other_notes.Caption = "Other Notes"
+        Me.col_other_notes.FieldName = "other_notes"
+        Me.col_other_notes.Name = "col_other_notes"
+        '
         'panel_top
         '
         Me.panel_top.BackColor = System.Drawing.Color.GhostWhite
@@ -245,7 +254,7 @@ Partial Class frm_sales_customers
         Me.panel_top.Dock = System.Windows.Forms.DockStyle.Top
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1072, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1290, 78)
         Me.panel_top.TabIndex = 54
         '
         'GunaPanel3
@@ -256,7 +265,7 @@ Partial Class frm_sales_customers
         Me.GunaPanel3.Controls.Add(Me.GunaPanel4)
         Me.GunaPanel3.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel3.Name = "GunaPanel3"
-        Me.GunaPanel3.Size = New System.Drawing.Size(1032, 27)
+        Me.GunaPanel3.Size = New System.Drawing.Size(1250, 27)
         Me.GunaPanel3.TabIndex = 5
         '
         'GunaPanel4
@@ -336,18 +345,12 @@ Partial Class frm_sales_customers
         Me.GunaLabel1.TabIndex = 1
         Me.GunaLabel1.Text = "Customers"
         '
-        'col_other_notes
-        '
-        Me.col_other_notes.Caption = "Other Notes"
-        Me.col_other_notes.FieldName = "other_notes"
-        Me.col_other_notes.Name = "col_other_notes"
-        '
         'frm_sales_customers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1072, 551)
+        Me.ClientSize = New System.Drawing.Size(1290, 603)
         Me.Controls.Add(Me.panel_top)
         Me.Controls.Add(Me.grid_customer)
         Me.Name = "frm_sales_customers"
@@ -385,4 +388,6 @@ Partial Class frm_sales_customers
     Friend WithEvents btn_edit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents col_contact_person As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_other_notes As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_remaining_credit As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_used_credit As DevExpress.XtraGrid.Columns.GridColumn
 End Class

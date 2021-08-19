@@ -93,7 +93,7 @@ Public Class frm_purchaseorder_list
             Dim da = New MySqlDataAdapter(cmd)
             da.Fill(dt)
 
-            grid_created.DataSource = dt
+            grid_po.DataSource = dt
             grid_po_view.ClearSelection()
 
         Catch ex As Exception
@@ -151,5 +151,21 @@ Public Class frm_purchaseorder_list
     'Show Ordered Items
     Private Sub btn_ordered_items_Click(sender As Object, e As EventArgs) Handles btn_ordered_items.Click
         frm_purchaseorder_view_ordered_items.Show()
+    End Sub
+
+    'btn_view | Show Purchase Edit View
+    Private Sub btn_view_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view.ButtonClick
+        Dim pid = grid_po_view.GetFocusedRowCellValue(col_id)
+
+        Dim frm = New frm_purchaseorder_edit
+        frm.txt_poid.Text = pid
+
+        If Equals(grid_po_view.GetFocusedRowCellValue(col_lead_time_status), "Obsolete") Then
+            frm.lbl_dispose.Visible = True
+        End If
+
+        frm.Init("_view")
+        frm.ShowDialog()
+        int_load("All")
     End Sub
 End Class

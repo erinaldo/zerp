@@ -14,7 +14,7 @@ Public Class frm_sales_customers
     '--- FUNCTION ----
     Private Sub LoadGrid()
         conn.Open()
-        Dim cmd = New MySqlCommand("SELECT * FROM ims_customers", conn)
+        Dim cmd = New MySqlCommand("SELECT *, (credit_limit - used_credit) AS remaining_credit FROM ims_customers", conn)
         cmd.ExecuteNonQuery()
 
         Dim dt = New DataTable
