@@ -4,7 +4,7 @@ Imports DevExpress.XtraEditors
 Public Class frm_splash_screen
     Sub New()
         InitializeComponent()
-        Me.labelCopyright.Text = "Copyright © 2020 - " & DateTime.Now.Year.ToString() & " - Winlandene Electronics and Electrical Center" & vbCrLf _
+        Me.labelCopyright.Text = "Copyright © 2020 - " & DateTime.Now.Year.ToString() & " Winlandene Electronics and Electrical Center" & vbCrLf _
         & "All Rights reserved."
 
         Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
@@ -27,4 +27,7 @@ Public Class frm_splash_screen
         set_status
     End Enum
 
+    Private Sub panel_top_Click(sender As Object, e As EventArgs) Handles panel_top.Click
+
+    End Sub
 End Class

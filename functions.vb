@@ -159,6 +159,9 @@ Module functions
                         Case "price_book"
                             .menu_administration.Visible = True
                             .submenu_price_books.Visible = True
+                        Case "reports"
+                            .menu_administration.Visible = True
+                            .submenu_reports.Visible = True
                         Case "stores"
                             .menu_administration.Visible = True
                             .submenu_warehouse.Visible = True

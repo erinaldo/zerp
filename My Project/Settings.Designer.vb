@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("zerp_db")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("zerpdb")>  _
         Public Property database() As String
             Get
                 Return CType(Me("database"),String)
@@ -104,7 +104,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("user_photo")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("User Photos")>  _
         Public Property UserFolder() As String
             Get
                 Return CType(Me("UserFolder"),String)
@@ -128,7 +128,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("@Ftpmaster22")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("@Ftpmaster2297")>  _
         Public Property FTPpass() As String
             Get
                 Return CType(Me("FTPpass"),String)
@@ -140,7 +140,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property login() As Boolean
             Get
                 Return CType(Me("login"),Boolean)
@@ -152,7 +152,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("zen")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property login_user() As String
             Get
                 Return CType(Me("login_user"),String)

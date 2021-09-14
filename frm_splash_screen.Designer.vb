@@ -100,11 +100,13 @@ Partial Class frm_splash_screen
         '
         'labelCopyright
         '
+        Me.labelCopyright.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelCopyright.Appearance.Options.UseFont = True
         Me.labelCopyright.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.labelCopyright.LineVisible = True
         Me.labelCopyright.Location = New System.Drawing.Point(16, 266)
         Me.labelCopyright.Name = "labelCopyright"
-        Me.labelCopyright.Size = New System.Drawing.Size(309, 26)
+        Me.labelCopyright.Size = New System.Drawing.Size(353, 28)
         Me.labelCopyright.TabIndex = 11
         Me.labelCopyright.Text = "Copyright © 2020 - Winlandene Electronics and Electrical Center" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "All Rights reser" &
     "ved."

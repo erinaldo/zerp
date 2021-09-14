@@ -974,3 +974,8 @@ D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CopyCom
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.xml
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.pdb
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_reports.resources
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.xml

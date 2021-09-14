@@ -6,7 +6,7 @@
       <Value Profile="(Default)">winlandene.synology.me</Value>
     </Setting>
     <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">zerp_db</Value>
+      <Value Profile="(Default)">zerpdb</Value>
     </Setting>
     <Setting Name="username" Type="System.String" Scope="User">
       <Value Profile="(Default)">zerp</Value>
@@ -15,19 +15,19 @@
       <Value Profile="(Default)">zerpconnectsall</Value>
     </Setting>
     <Setting Name="UserFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">user_photo</Value>
+      <Value Profile="(Default)">User Photos</Value>
     </Setting>
     <Setting Name="FTPusername" Type="System.String" Scope="User">
       <Value Profile="(Default)">wlftp</Value>
     </Setting>
     <Setting Name="FTPpass" Type="System.String" Scope="User">
-      <Value Profile="(Default)">@Ftpmaster22</Value>
+      <Value Profile="(Default)">@Ftpmaster2297</Value>
     </Setting>
     <Setting Name="login" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="login_user" Type="System.String" Scope="User">
-      <Value Profile="(Default)">zen</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="port" Type="System.String" Scope="User">
       <Value Profile="(Default)">63306</Value>

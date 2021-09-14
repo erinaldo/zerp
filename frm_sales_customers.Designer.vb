@@ -45,6 +45,7 @@ Partial Class frm_sales_customers
         Me.col_used_credit = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_remaining_credit = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_other_notes = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_assigned_agents = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel3 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
@@ -85,12 +86,12 @@ Partial Class frm_sales_customers
         Me.gridview_customer.Appearance.Row.Options.UseFont = True
         Me.gridview_customer.Appearance.Row.Options.UseTextOptions = True
         Me.gridview_customer.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.gridview_customer.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_edit, Me.col_id, Me.col_fname, Me.col_contact_person, Me.col_type, Me.col_contact, Me.col_addr, Me.col_shipping, Me.col_trucking, Me.col_terms, Me.col_credit_limit, Me.col_used_credit, Me.col_remaining_credit, Me.col_other_notes})
+        Me.gridview_customer.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_edit, Me.col_id, Me.col_fname, Me.col_contact_person, Me.col_type, Me.col_contact, Me.col_addr, Me.col_shipping, Me.col_trucking, Me.col_terms, Me.col_credit_limit, Me.col_used_credit, Me.col_remaining_credit, Me.col_other_notes, Me.col_assigned_agents})
         Me.gridview_customer.GridControl = Me.grid_customer
         Me.gridview_customer.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.gridview_customer.Name = "gridview_customer"
         Me.gridview_customer.OptionsBehavior.ReadOnly = True
-        Me.gridview_customer.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.[False]
+        Me.gridview_customer.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.[True]
         '
         'col_edit
         '
@@ -99,14 +100,13 @@ Partial Class frm_sales_customers
         Me.col_edit.Name = "col_edit"
         Me.col_edit.Visible = True
         Me.col_edit.VisibleIndex = 0
-        Me.col_edit.Width = 55
+        Me.col_edit.Width = 56
         '
         'btn_edit
         '
-        Me.btn_edit.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
         Me.btn_edit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-        Me.btn_edit.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
+        Me.btn_edit.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_edit.Name = "btn_edit"
         Me.btn_edit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -129,16 +129,18 @@ Partial Class frm_sales_customers
         Me.col_fname.Name = "col_fname"
         Me.col_fname.Visible = True
         Me.col_fname.VisibleIndex = 2
-        Me.col_fname.Width = 108
+        Me.col_fname.Width = 228
         '
         'col_contact_person
         '
+        Me.col_contact_person.AppearanceCell.Options.UseTextOptions = True
+        Me.col_contact_person.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
         Me.col_contact_person.Caption = "Contact Person"
         Me.col_contact_person.FieldName = "contact_person"
         Me.col_contact_person.Name = "col_contact_person"
         Me.col_contact_person.Visible = True
         Me.col_contact_person.VisibleIndex = 3
-        Me.col_contact_person.Width = 153
+        Me.col_contact_person.Width = 137
         '
         'col_type
         '
@@ -149,7 +151,7 @@ Partial Class frm_sales_customers
         Me.col_type.Name = "col_type"
         Me.col_type.Visible = True
         Me.col_type.VisibleIndex = 4
-        Me.col_type.Width = 76
+        Me.col_type.Width = 67
         '
         'col_contact
         '
@@ -160,6 +162,7 @@ Partial Class frm_sales_customers
         Me.col_contact.Name = "col_contact"
         Me.col_contact.Visible = True
         Me.col_contact.VisibleIndex = 5
+        Me.col_contact.Width = 77
         '
         'col_addr
         '
@@ -170,7 +173,7 @@ Partial Class frm_sales_customers
         Me.col_addr.Name = "col_addr"
         Me.col_addr.Visible = True
         Me.col_addr.VisibleIndex = 6
-        Me.col_addr.Width = 169
+        Me.col_addr.Width = 148
         '
         'col_shipping
         '
@@ -179,7 +182,7 @@ Partial Class frm_sales_customers
         Me.col_shipping.Name = "col_shipping"
         Me.col_shipping.Visible = True
         Me.col_shipping.VisibleIndex = 7
-        Me.col_shipping.Width = 86
+        Me.col_shipping.Width = 74
         '
         'col_trucking
         '
@@ -190,7 +193,7 @@ Partial Class frm_sales_customers
         Me.col_trucking.Name = "col_trucking"
         Me.col_trucking.Visible = True
         Me.col_trucking.VisibleIndex = 8
-        Me.col_trucking.Width = 80
+        Me.col_trucking.Width = 69
         '
         'col_terms
         '
@@ -200,7 +203,7 @@ Partial Class frm_sales_customers
         Me.col_terms.Name = "col_terms"
         Me.col_terms.Visible = True
         Me.col_terms.VisibleIndex = 9
-        Me.col_terms.Width = 50
+        Me.col_terms.Width = 43
         '
         'col_credit_limit
         '
@@ -213,8 +216,8 @@ Partial Class frm_sales_customers
         Me.col_credit_limit.MaxWidth = 80
         Me.col_credit_limit.Name = "col_credit_limit"
         Me.col_credit_limit.Visible = True
-        Me.col_credit_limit.VisibleIndex = 10
-        Me.col_credit_limit.Width = 80
+        Me.col_credit_limit.VisibleIndex = 11
+        Me.col_credit_limit.Width = 65
         '
         'col_used_credit
         '
@@ -225,8 +228,8 @@ Partial Class frm_sales_customers
         Me.col_used_credit.MaxWidth = 80
         Me.col_used_credit.Name = "col_used_credit"
         Me.col_used_credit.Visible = True
-        Me.col_used_credit.VisibleIndex = 11
-        Me.col_used_credit.Width = 80
+        Me.col_used_credit.VisibleIndex = 12
+        Me.col_used_credit.Width = 72
         '
         'col_remaining_credit
         '
@@ -237,7 +240,7 @@ Partial Class frm_sales_customers
         Me.col_remaining_credit.MaxWidth = 80
         Me.col_remaining_credit.Name = "col_remaining_credit"
         Me.col_remaining_credit.Visible = True
-        Me.col_remaining_credit.VisibleIndex = 12
+        Me.col_remaining_credit.VisibleIndex = 13
         Me.col_remaining_credit.Width = 80
         '
         'col_other_notes
@@ -245,6 +248,15 @@ Partial Class frm_sales_customers
         Me.col_other_notes.Caption = "Other Notes"
         Me.col_other_notes.FieldName = "other_notes"
         Me.col_other_notes.Name = "col_other_notes"
+        '
+        'col_assigned_agents
+        '
+        Me.col_assigned_agents.Caption = "Assigned Agents"
+        Me.col_assigned_agents.FieldName = "assigned_agents"
+        Me.col_assigned_agents.Name = "col_assigned_agents"
+        Me.col_assigned_agents.Visible = True
+        Me.col_assigned_agents.VisibleIndex = 10
+        Me.col_assigned_agents.Width = 82
         '
         'panel_top
         '
@@ -390,4 +402,5 @@ Partial Class frm_sales_customers
     Friend WithEvents col_other_notes As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_remaining_credit As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_used_credit As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_assigned_agents As DevExpress.XtraGrid.Columns.GridColumn
 End Class

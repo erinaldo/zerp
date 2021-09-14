@@ -191,9 +191,11 @@ Public Class frm_collection_cheque
                 'UPDATE ORDERS
                 For i = 0 To selectedRowHandles.Length - 1
                     Dim id = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id)
+                    Dim amount As Decimal = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_amount)
 
-                    Dim order_cmd = New MySqlCommand("UPDATE ims_orders SET payment_option=@option, payment_details=@details, status=IF((status='Released' AND shipping_method='Deliver'), 'Cleared', status) , payment_status='PAID' WHERE order_id=" & id, conn)
+                    Dim order_cmd = New MySqlCommand("UPDATE ims_orders SET paid_amount=@amount, payment_option=@option, payment_details=@details, status=IF((status='Released' AND shipping_method='Deliver'), 'Cleared', status) , payment_status='PAID' WHERE order_id=" & id, conn)
                     order_cmd.Parameters.AddWithValue("@option", "Cheque")
+                    order_cmd.Parameters.AddWithValue("@amount", amount)
                     order_cmd.Parameters.AddWithValue("@details", Date.Today & " - " & cheque_number)
                     order_cmd.ExecuteNonQuery()
                 Next

@@ -12,6 +12,10 @@ Public Class frm_sales_customers_new
     '--- ONLOAD ----
 
     Private Sub frm_sales_customers_new_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Load Sales Agents Name
+        LoadAgents()
+
         If frm_main.user_role_id.Text = "1" Then
             panel_admin.Visible = True
             cbb_account_type.Enabled = True
@@ -67,8 +71,8 @@ Public Class frm_sales_customers_new
                 'Set Query
                 Dim query = ""
                 If lbl_title.Text.Equals("New Customer") Then
-                    query = "INSERT INTO ims_customers (first_name, contact_person, contact, address, terms, account_type, preferred_shipping, trucking_note, other_notes, credit_limit) 
-                                            VALUES (@fname, @contact_person, @contact, @address, @terms, @type, @shipping, @trucking, @other_notes, @credit_limit)"
+                    query = "INSERT INTO ims_customers (first_name, contact_person, contact, address, terms, account_type, preferred_shipping, trucking_note, assigned_agent, other_notes, credit_limit) 
+                                            VALUES (@fname, @contact_person, @contact, @address, @terms, @type, @shipping, @trucking, (SELECT usr_id FROM ims_users WHERE first_name=@assigned_agent), @other_notes, @credit_limit)"
                 End If
 
                 Dim cmd = New MySqlCommand(query, conn)
@@ -80,6 +84,7 @@ Public Class frm_sales_customers_new
                 cmd.Parameters.AddWithValue("@shipping", preferred_shipping)
                 cmd.Parameters.AddWithValue("@trucking", .ToTitleCase(txt_trucking.Text))
                 cmd.Parameters.AddWithValue("@other_notes", If(String.IsNullOrEmpty(data), "", data))
+                cmd.Parameters.AddWithValue("@assigned_agent", cbb_agents.Text.Trim())
                 'Admin Only
                 cmd.Parameters.AddWithValue("@terms", num_terms.Value)
                 cmd.Parameters.AddWithValue("@credit_limit", CDec(txt_credit_limit.Text))
@@ -132,7 +137,7 @@ Public Class frm_sales_customers_new
 
                 'Set Query
                 Dim query = "UPDATE ims_customers SET first_name=@fname, contact_person=@contact_person, contact=@contact, address=@address, terms=@terms, account_type=@type, 
-                                                        preferred_shipping=@shipping, trucking_note=@trucking, credit_limit=@credit_limit, other_notes=@other_notes WHERE customer_id=" & lbl_customer_id.Text
+                                                        preferred_shipping=@shipping, trucking_note=@trucking, assigned_agent=(SELECT usr_id FROM ims_users WHERE first_name=@assigned_agent), credit_limit=@credit_limit, other_notes=@other_notes WHERE customer_id=" & lbl_customer_id.Text
                 Dim cmd = New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@fname", .ToTitleCase(txt_fname.Text.Trim))
                 cmd.Parameters.AddWithValue("@contact_person", .ToTitleCase(txt_contact_person.Text))
@@ -142,6 +147,7 @@ Public Class frm_sales_customers_new
                 cmd.Parameters.AddWithValue("@shipping", preferred_shipping)
                 cmd.Parameters.AddWithValue("@trucking", .ToTitleCase(txt_trucking.Text))
                 cmd.Parameters.AddWithValue("@other_notes", If(String.IsNullOrEmpty(data), "", data))
+                cmd.Parameters.AddWithValue("@assigned_agent", cbb_agents.Text.Trim())
                 'Admin Only
                 cmd.Parameters.AddWithValue("@credit_limit", CDec(txt_credit_limit.Text))
                 cmd.Parameters.AddWithValue("@terms", num_terms.Value)
@@ -186,6 +192,23 @@ Public Class frm_sales_customers_new
         End If
     End Sub
 
+    'Load Agents
+    Private Sub LoadAgents()
+        Try
+            Using conn
+                conn.Open()
+                Using cmd = New MySqlCommand("SELECT first_name FROM ims_users WHERE role_id='10'", conn)
+                    Using rdr As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+                        While rdr.Read()
+                            cbb_agents.Properties.Items.Add(rdr("first_name"))
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch exception As System.Exception
+            MsgBox(exception.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
 
 
 
@@ -232,5 +255,19 @@ Public Class frm_sales_customers_new
         txt_trucking.Text = ""
     End Sub
 
+    'btn_delete
+    Private Sub btn_delete_customer_Click(sender As Object, e As EventArgs) Handles btn_delete_customer.Click
+        If MsgBox("Remove this Customer?" & Environment.NewLine & "Press 'Yes' to confirm.", vbQuestion + vbYesNo, "Delete Customer") = vbYes Then
+            Using connection As New MySqlConnection(str)
+                connection.Open()
+                Using cmd = New MySqlCommand("UPDATE ims_customers SET is_deleted='1' WHERE customer_id=@id", connection)
+                    cmd.Parameters.AddWithValue("@id", lbl_customer_id.Text)
+                    If cmd.ExecuteNonQuery() > 0 Then
+                        MsgBox("Successfully Removed!", vbInformation, "Information")
+                    End If
+                End Using
+            End Using
+        End If
+    End Sub
 
 End Class

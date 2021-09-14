@@ -2,9 +2,6 @@
 
 Public Class frm_sales_customers
 
-    ReadOnly conn As New MySqlConnection(str)
-
-
     '--- ONLOAD ----
     Private Sub frm_customers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGrid()
@@ -13,15 +10,20 @@ Public Class frm_sales_customers
 
     '--- FUNCTION ----
     Private Sub LoadGrid()
-        conn.Open()
-        Dim cmd = New MySqlCommand("SELECT *, (credit_limit - used_credit) AS remaining_credit FROM ims_customers", conn)
-        cmd.ExecuteNonQuery()
+        Using conn As New MySqlConnection(str)
+            conn.Open()
+            Dim cmd = New MySqlCommand("SELECT *, (credit_limit - used_credit) AS remaining_credit, ims_users.first_name AS assigned_agents
+                        FROM ims_customers 
+                        LEFT JOIN ims_users ON ims_users.usr_id=assigned_agent
+                        WHERE is_deleted='0'", conn)
+            cmd.ExecuteNonQuery()
 
-        Dim dt = New DataTable
-        Dim da = New MySqlDataAdapter(cmd)
-        da.Fill(dt)
+            Dim dt = New DataTable
+            Dim da = New MySqlDataAdapter(cmd)
+            da.Fill(dt)
 
-        grid_customer.DataSource = dt
+            grid_customer.DataSource = dt
+        End Using
     End Sub
 
 
@@ -42,7 +44,8 @@ Public Class frm_sales_customers
         Dim frm = New frm_sales_customers_new
 
         With gridview_customer
-            frm.lbl_title.Text = "Edit Customer Info"
+            frm.Text = "Edit Customer Details"
+            frm.lbl_title.Text = "Edit Customer Details"
             frm.lbl_customer_id.Text = .GetFocusedRowCellValue(col_id)
             frm.txt_fname.Text = .GetFocusedRowCellValue(col_fname)
             frm.txt_contact_person.Text = .GetFocusedRowCellValue(col_contact_person)
@@ -55,7 +58,7 @@ Public Class frm_sales_customers
             frm.cbb_shipping.Text = .GetFocusedRowCellValue(col_shipping)
             frm.txt_credit_limit.Text = .GetFocusedRowCellValue(col_credit_limit)
             frm.LoadSheet(IIf(IsDBNull(.GetFocusedRowCellValue(col_other_notes)), "", .GetFocusedRowCellValue(col_other_notes)))
-            frm.txt_fname.Enabled = False
+            frm.btn_delete_customer.Visible = True
 
             'Access for Admin
             If frm_main.user_role_id.Text = 1 Then
@@ -69,8 +72,8 @@ Public Class frm_sales_customers
         End With
 
         Dim res = frm.ShowDialog()
-        If res = DialogResult.OK Then
-            frm_main.LoadFrm(New frm_sales_customers)
+        If res = DialogResult.OK Or DialogResult.Yes Then
+            LoadGrid()
         End If
 
     End Sub

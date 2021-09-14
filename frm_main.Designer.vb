@@ -82,6 +82,8 @@ Partial Class frm_main
         Me.submenu_user_accounts = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_approvals = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_price_books = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_reports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_banks = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_warehouse = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu2_new_warehouse = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu2_registered_warehouse = New System.Windows.Forms.ToolStripMenuItem()
@@ -192,7 +194,7 @@ Partial Class frm_main
         Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 2, 0, 5)
         Me.MenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.MenuStrip.ShowItemToolTips = True
-        Me.MenuStrip.Size = New System.Drawing.Size(901, 31)
+        Me.MenuStrip.Size = New System.Drawing.Size(1021, 31)
         Me.MenuStrip.TabIndex = 0
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -461,7 +463,7 @@ Partial Class frm_main
         '
         'menu_administration
         '
-        Me.menu_administration.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_user_accounts, Me.submenu_approvals, Me.submenu_price_books, Me.submenu_warehouse, Me.submenu_suppliers, Me.submenu_settings})
+        Me.menu_administration.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_user_accounts, Me.submenu_approvals, Me.submenu_price_books, Me.submenu_reports, Me.submenu_banks, Me.submenu_warehouse, Me.submenu_suppliers, Me.submenu_settings})
         Me.menu_administration.Name = "menu_administration"
         Me.menu_administration.Size = New System.Drawing.Size(119, 24)
         Me.menu_administration.Text = "Administration"
@@ -469,29 +471,42 @@ Partial Class frm_main
         'submenu_user_accounts
         '
         Me.submenu_user_accounts.Name = "submenu_user_accounts"
-        Me.submenu_user_accounts.Size = New System.Drawing.Size(171, 24)
+        Me.submenu_user_accounts.Size = New System.Drawing.Size(180, 24)
         Me.submenu_user_accounts.Text = "User Accounts"
         Me.submenu_user_accounts.Visible = False
         '
         'submenu_approvals
         '
         Me.submenu_approvals.Name = "submenu_approvals"
-        Me.submenu_approvals.Size = New System.Drawing.Size(171, 24)
+        Me.submenu_approvals.Size = New System.Drawing.Size(180, 24)
         Me.submenu_approvals.Text = "Approvals"
         Me.submenu_approvals.Visible = False
         '
         'submenu_price_books
         '
         Me.submenu_price_books.Name = "submenu_price_books"
-        Me.submenu_price_books.Size = New System.Drawing.Size(171, 24)
+        Me.submenu_price_books.Size = New System.Drawing.Size(180, 24)
         Me.submenu_price_books.Text = "Price Book"
         Me.submenu_price_books.Visible = False
+        '
+        'submenu_reports
+        '
+        Me.submenu_reports.Name = "submenu_reports"
+        Me.submenu_reports.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_reports.Text = "Reports"
+        Me.submenu_reports.Visible = False
+        '
+        'submenu_banks
+        '
+        Me.submenu_banks.Name = "submenu_banks"
+        Me.submenu_banks.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_banks.Text = "Banks"
         '
         'submenu_warehouse
         '
         Me.submenu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu2_new_warehouse, Me.submenu2_registered_warehouse})
         Me.submenu_warehouse.Name = "submenu_warehouse"
-        Me.submenu_warehouse.Size = New System.Drawing.Size(171, 24)
+        Me.submenu_warehouse.Size = New System.Drawing.Size(180, 24)
         Me.submenu_warehouse.Text = "Warehouse"
         Me.submenu_warehouse.Visible = False
         '
@@ -511,7 +526,7 @@ Partial Class frm_main
         '
         Me.submenu_suppliers.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewSupplierToolStripMenuItem, Me.RegisteredSupplierToolStripMenuItem})
         Me.submenu_suppliers.Name = "submenu_suppliers"
-        Me.submenu_suppliers.Size = New System.Drawing.Size(171, 24)
+        Me.submenu_suppliers.Size = New System.Drawing.Size(180, 24)
         Me.submenu_suppliers.Text = "Suppliers"
         Me.submenu_suppliers.Visible = False
         '
@@ -530,7 +545,7 @@ Partial Class frm_main
         'submenu_settings
         '
         Me.submenu_settings.Name = "submenu_settings"
-        Me.submenu_settings.Size = New System.Drawing.Size(171, 24)
+        Me.submenu_settings.Size = New System.Drawing.Size(180, 24)
         Me.submenu_settings.Text = "Settings"
         Me.submenu_settings.Visible = False
         '
@@ -642,7 +657,7 @@ Partial Class frm_main
         Me.MinimumSize = New System.Drawing.Size(1440, 900)
         Me.Name = "frm_main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ZERP Business Solution (Evaluation Copy)"
+        Me.Text = "ZERP Business Solution"
         Me.panel_main.ResumeLayout(False)
         Me.panel_top.ResumeLayout(False)
         Me.panel_top.PerformLayout()
@@ -723,4 +738,6 @@ Partial Class frm_main
     Friend WithEvents submenu2_new_warehouse As ToolStripMenuItem
     Friend WithEvents submenu2_registered_warehouse As ToolStripMenuItem
     Private WithEvents PictureEdit1 As PictureEdit
+    Friend WithEvents submenu_banks As ToolStripMenuItem
+    Friend WithEvents submenu_reports As ToolStripMenuItem
 End Class

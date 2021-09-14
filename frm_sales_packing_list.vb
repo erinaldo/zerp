@@ -16,6 +16,7 @@ Public Class frm_sales_packing_list
     '---- FUNCTIONS ----
 
     'Load Orders
+
     Private Sub load_orders(classification As String)
 
         Try
@@ -23,7 +24,7 @@ Public Class frm_sales_packing_list
             Dim query = String.Empty
             Select Case classification
                 Case "Pending for Arrangement", "0"
-                    query = "SELECT order_id, date_ordered,  ims_users.first_name as agent, ims_customers.first_name, transaction_type, status FROM ims_orders 
+                    query = "SELECT order_id, date_ordered, ims_users.first_name as agent, ims_customers.first_name, transaction_type, status FROM ims_orders 
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
                             INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
                             WHERE status='Pending for Arrangement' AND NOT ims_orders.deleted='1' ORDER BY date_ordered ASC"
@@ -37,6 +38,11 @@ Public Class frm_sales_packing_list
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
                             INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
                             WHERE status='Packed' AND NOT ims_orders.deleted='1' ORDER BY date_ordered ASC"
+                Case "Cancelled", "3"
+                    query = "SELECT order_id, date_ordered,  ims_users.first_name as agent, ims_customers.first_name, transaction_type, status FROM ims_orders 
+                            INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
+                            INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
+                            WHERE status='Cancelled' AND NOT ims_orders.deleted='1' ORDER BY date_ordered ASC"
             End Select
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
@@ -80,21 +86,27 @@ Public Class frm_sales_packing_list
                 conn.Open()
 
                 'Label for Pending for Arrangement
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Pending for Arrangement' AND NOT ims_orders.deleted='1'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Pending for Arrangement' AND deleted='0'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_pending.Caption = "Pending Arrangements (" & count & ")"
                 End Using
 
                 'Label for On-Going
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='On-Going' AND NOT ims_orders.deleted='1'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='On-Going' AND deleted='0'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_ongoing.Caption = "On-Going (" & count & ")"
                 End Using
 
                 'Label for Packed
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Packed' AND NOT ims_orders.deleted='1'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Packed' AND deleted='0'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_completed.Caption = "Completed (" & count & ")"
+                End Using
+
+                'Label for UnPacked
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Cancelled' AND deleted='0'", conn)
+                    Dim count As Integer = cmd.ExecuteScalar()
+                    tab_cancelled.Caption = "For Unpacking (" & count & ")"
                 End Using
 
             Catch ex As Exception
@@ -130,6 +142,15 @@ Public Class frm_sales_packing_list
                 frm.LoadData(order_id, order_status)
                 load_orders("On-Going")
             End If
+
+        ElseIf tabpane.SelectedPage.Equals(tab_cancelled) Then
+            If grid_orders_view.FocusedColumn.FieldName.Equals("order_id") Then
+                Dim order_id = grid_orders_view.GetRowCellValue(e.RowHandle, "order_id")
+                Dim order_status As String = grid_orders_view.GetRowCellValue(e.RowHandle, "status")
+                Dim frm As frm_sales_packing_list_view = New frm_sales_packing_list_view()
+                frm.LoadData(order_id, order_status)
+                load_orders("Cancelled")
+            End If
         End If
 
     End Sub
@@ -152,6 +173,8 @@ Public Class frm_sales_packing_list
             load_orders("On-Going")
         ElseIf tabpane.SelectedPage.Equals(tab_completed) Then
             load_orders("Packed")
+        ElseIf tabpane.SelectedPage.Equals(tab_cancelled) Then
+            load_orders("Cancelled")
         End If
     End Sub
 

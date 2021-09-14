@@ -269,6 +269,24 @@ Public Class frm_purchaseorder_edit
             btn_save_draft.Enabled = False
         End If
 
+        'Admin Access
+        If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial") Then
+            grid_order.AllowUserToDeleteRows = False
+            grid_order.AllowUserToAddRows = True
+            btn_print.Enabled = True
+            btn_approval.Enabled = True
+            btn_approval.Text = "Save"
+            grid_order.Columns(1).ReadOnly = False
+            grid_order.Columns(3).ReadOnly = False
+            grid_order.Columns(4).ReadOnly = False
+            grid_order.Columns(5).ReadOnly = False
+
+            For i = 1 To 6
+                If i = 5 Then Continue For
+                grid_order.Columns(i).DefaultCellStyle.BackColor = Color.White
+            Next
+        End If
+
     End Sub
 
     'Load Deliver Location to ComboBox
@@ -519,6 +537,22 @@ Public Class frm_purchaseorder_edit
         End If
     End Sub
 
+    'Grid Value Checking | For Null, Empty Values
+    Private Function GridCheck()
+        For i = 0 To grid_order.Rows.Count - 1
+            If IsDBNull(grid_order.Rows(i).Cells(0).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(1).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(2).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(3).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(4).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(5).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(6).Value) Or
+                IsDBNull(grid_order.Rows(i).Cells(7).Value) Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
 
 
 
@@ -527,8 +561,18 @@ Public Class frm_purchaseorder_edit
     'btn_save_drafts
     Private Sub btn_save_draft_Click(sender As Object, e As EventArgs) Handles btn_save_draft.Click
 
-        If String.IsNullOrEmpty(cbb_supplier.Text) Or String.IsNullOrEmpty(cbb_deliver.Text) Or grid_order.Rows.Count < 1 Then Exit Sub
+        'CHECK CELL VALUES
+        If GridCheck() = False Then
+            MsgBox("Some cells are empty. Please check it first!", vbExclamation, "Emty Cells Found")
+            Return
+        End If
 
+        'COMBOBOX CHECKER
+        If String.IsNullOrEmpty(cbb_supplier.Text) Or
+            String.IsNullOrEmpty(cbb_deliver.Text) Or
+            grid_order.Rows.Count < 1 Then Exit Sub
+
+        'TERMS VALIDATOR
         If Not IsNumeric(txt_terms.Text) Then
             MsgBox("Terms MUST be a number!", vbCritical, "Forbidden")
             Exit Sub
@@ -587,8 +631,18 @@ Public Class frm_purchaseorder_edit
     'btn_submit_for_approval
     Private Sub btn_approval_Click(sender As Object, e As EventArgs) Handles btn_approval.Click
 
-        If String.IsNullOrEmpty(cbb_supplier.Text) Or String.IsNullOrEmpty(cbb_deliver.Text) Or grid_order.Rows.Count < 1 Then Exit Sub
+        'CHECK CELL VALUES
+        If GridCheck() = False Then
+            MsgBox("Some cells are empty. Please check it first!", vbExclamation, "Emty Cells Found")
+            Return
+        End If
 
+        'COMBOBOX CHECKER
+        If String.IsNullOrEmpty(cbb_supplier.Text) Or
+            String.IsNullOrEmpty(cbb_deliver.Text) Or
+            grid_order.Rows.Count < 1 Then Exit Sub
+
+        'TERMS VALIDATOR
         If Not IsNumeric(txt_terms.Text) Then
             MsgBox("Terms MUST be a number!", vbCritical, "Forbidden")
             Exit Sub
@@ -614,6 +668,11 @@ Public Class frm_purchaseorder_edit
             Case "Rejected (Sent)" : status = "Revised (Sent)"
             Case "Rejected (Partial)" : status = "Revised (Partial)"
         End Select
+
+        'Admin Access | Save As Is!
+        If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial") Then
+            status = txt_status.Text
+        End If
 
         For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
             'RETURN IF HAS ROW WITH NO VALUE
@@ -740,7 +799,6 @@ Public Class frm_purchaseorder_edit
         ElseIf result = DialogResult.No Then
             response = "Reject"
         Else
-            MsgBox("Unknown response!", vbCritical, "Something went wrong")
             Return
         End If
 
@@ -834,7 +892,7 @@ Public Class frm_purchaseorder_edit
 
             'IF MODEL
             If e.ColumnIndex.Equals(3) Then
-                If Not IsDBNull(grid_order.CurrentCell.Value) Or String.IsNullOrEmpty(grid_order.CurrentCell.Value) Then
+                If Not IsDBNull(grid_order.CurrentCell.Value) Then
 
                     'CHECK IF ALREADY EXIST
                     For i = 0 To grid_order.Rows.Count - 1
@@ -851,35 +909,50 @@ Public Class frm_purchaseorder_edit
                         cmd.Parameters.AddWithValue("@winmodel", grid_order.CurrentCell.Value)
                         Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                        While rdr.Read
+                        If rdr.HasRows Then
+                            Using rdr
+                                While rdr.Read
 
-                            'SET VALUE TO grid_stocks
-                            If grid_stocks.Rows.Count <= e.RowIndex Then
-                                grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
-                            Else
-                                grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
-                            End If
+                                    'SET VALUE TO grid_stocks
+                                    If grid_stocks.Rows.Count <= e.RowIndex Then
+                                        grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
+                                    Else
+                                        grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
+                                    End If
 
-                            'Validation of Unit Status
-                            If Not rdr("status").Equals("Active") Then
-                                MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                                grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                                Exit Sub
-                            End If
+                                    'Validation of Unit Status
+                                    If Not rdr("status").Equals("Active") Then
+                                        MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                                        grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                                        Exit Sub
+                                    End If
 
-                            grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
-                            grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
-                            grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
-                            grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
-                            grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
-                            Dim cost As Decimal = rdr("cost")
-                            grid_order.Rows(e.RowIndex).Cells(6).Value = cost
-                            If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
-                                Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
-                                grid_order.Rows(e.RowIndex).Cells(7).Value = total
-                            End If
+                                    grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
+                                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
+                                    grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
+                                    Dim cost As Decimal = rdr("cost")
+                                    grid_order.Rows(e.RowIndex).Cells(6).Value = cost
+                                    If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
+                                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
+                                        grid_order.Rows(e.RowIndex).Cells(7).Value = total
+                                    End If
 
-                        End While
+                                End While
+                            End Using
+                        Else
+                            MsgBox("Selected item couldn't found!", vbCritical, "Not Found")
+                            grid_order.Rows(e.RowIndex).Cells(0).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(1).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(2).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(7).Value = DBNull.Value
+                            Return
+                        End If
 
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
@@ -895,7 +968,7 @@ Public Class frm_purchaseorder_edit
 
             'IF DESCRIPTION
             If e.ColumnIndex.Equals(5) Then
-                If Not IsDBNull(grid_order.CurrentCell.Value) Or String.IsNullOrEmpty(grid_order.CurrentCell.Value) Then
+                If Not IsDBNull(grid_order.CurrentCell.Value) Then
 
                     For i = 0 To grid_order.Rows.Count - 1
                         If i = grid_order.CurrentRow.Index Then Continue For
@@ -910,27 +983,42 @@ Public Class frm_purchaseorder_edit
                         cmd.Parameters.AddWithValue("@description", grid_order.CurrentCell.Value)
                         Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                        While rdr.Read
+                        If rdr.HasRows Then
+                            Using rdr
+                                While rdr.Read
 
-                            'Validation of Unit Status
-                            If Not rdr("status").Equals("Active") Then
-                                MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                                grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                                Exit Sub
-                            End If
+                                    'Validation of Unit Status
+                                    If Not rdr("status").Equals("Active") Then
+                                        MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                                        grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                                        Exit Sub
+                                    End If
 
-                            grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
-                            grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
-                            grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
-                            grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
-                            grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
-                            Dim cost As Decimal = rdr("cost")
-                            grid_order.Rows(e.RowIndex).Cells(6).Value = cost
-                            If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
-                                Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
-                                grid_order.Rows(e.RowIndex).Cells(7).Value = total
-                            End If
-                        End While
+                                    grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
+                                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
+                                    grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
+                                    grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
+                                    Dim cost As Decimal = rdr("cost")
+                                    grid_order.Rows(e.RowIndex).Cells(6).Value = cost
+                                    If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
+                                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
+                                        grid_order.Rows(e.RowIndex).Cells(7).Value = total
+                                    End If
+                                End While
+                            End Using
+                        Else
+                            MsgBox("Selected item couldn't found!", vbCritical, "Not Found")
+                            grid_order.Rows(e.RowIndex).Cells(0).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(1).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(2).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
+                            grid_order.Rows(e.RowIndex).Cells(7).Value = DBNull.Value
+                            Return
+                        End If
 
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")

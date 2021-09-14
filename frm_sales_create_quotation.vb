@@ -525,14 +525,27 @@ Public Class frm_sales_create_quotation
     'Load Customer Address with Cbb_customer
     Private Sub cbb_customer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbb_customer.SelectedIndexChanged
 
+        If cbb_customer.SelectedIndex = -1 Then Return
+
         Try
             Using conn
                 conn.Open()
-                Dim cmd = New MySqlCommand("SELECT * FROM ims_customers WHERE first_name=@customer", conn)
+                Dim cmd = New MySqlCommand("SELECT * FROM ims_customers WHERE first_name=@customer AND is_deleted='0'", conn)
                 cmd.Parameters.AddWithValue("@customer", cbb_customer.Text)
 
                 Using rdr As MySqlDataReader = cmd.ExecuteReader
                     While rdr.Read
+
+                        'RESTRICT OTHER USER FROM CREATING WITH SISTER COMPANY
+                        If rdr("account_type").Equals("Sister Company") Then
+                            Dim current_user As String = frm_main.user_role_id.Text
+                            If Not (current_user = "1" Or current_user = "2" Or current_user = "3" Or current_user = "4" Or current_user = "6") Then
+                                MsgBox("Insufficient priviledge!" & Environment.NewLine & "Kindly contact your administrator.", MsgBoxStyle.Critical, "Forbidden")
+                                ClearFields()
+                                Return
+                            End If
+                        End If
+
                         txt_contact_person.Text = IIf(IsDBNull(rdr("contact_person")), "", rdr("contact_person"))
                         txt_no.Text = IIf(rdr("contact") = 0, "", rdr("contact"))
                         txt_address.Text = IIf(IsDBNull(rdr("address")), "", rdr("address"))
@@ -609,7 +622,7 @@ Public Class frm_sales_create_quotation
                 cmd.Parameters.AddWithValue("@order_item", orders)
                 cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
                 cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
-                cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
+                cmd.Parameters.AddWithValue("@discount_type", IIf(String.IsNullOrEmpty(cbb_discount.Text), Nothing, cbb_discount.Text))
                 cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
                 cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
                 cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))

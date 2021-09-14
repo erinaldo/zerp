@@ -93,7 +93,7 @@ Public Class frm_sales_create_order
     Private Sub LoadCustomers()
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("SELECT LPAD(customer_id, 3, '0') as customer_id, first_name FROM ims_customers", conn)
+            Dim cmd = New MySqlCommand("SELECT LPAD(customer_id, 3, '0') as customer_id, first_name FROM ims_customers WHERE is_deleted='0'", conn)
             Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
             Dim Coll As ComboBoxItemCollection = cbb_customer.Properties.Items
@@ -563,10 +563,10 @@ Public Class frm_sales_create_order
                 conn.Open()
                 Dim query = "INSERT INTO ims_orders (customer, agent, bill_to, ship_to, quotation_ref, po_reference, order_item,
                     discount_val, discount_type, is_vatable, is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage, delivery_fee,
-                    pub_note, priv_note, transaction_type, status, date_ordered, payment_status, payment_type, shipping_method, amount_due, trucking, terms, sales_agent) 
+                    pub_note, priv_note, status, date_ordered, payment_status, payment_type, shipping_method, amount_due, trucking, terms, sales_agent) 
                     VALUES ((SELECT customer_id FROM ims_customers WHERE first_name=@customer), @agent, @bill_to, @ship_to, @quotation_ref, @po_reference, @order_item,
                     @discount_val, @discount_type, @is_vatable, @is_withholding_tax_applied, @withholding_tax_amount, @withholding_tax_percentage, @delivery_fee,
-                    @pub_note, @priv_note, @transaction_type, @status, @date_ordered, @payment_status, @payment_type, @shipping_method, @amount_due, @trucking, @terms, COALESCE((SELECT usr_id FROM ims_users WHERE first_name=@sales_agent),0));
+                    @pub_note, @priv_note, @status, @date_ordered, @payment_status, @payment_type, @shipping_method, @amount_due, @trucking, @terms, COALESCE((SELECT usr_id FROM ims_users WHERE first_name=@sales_agent),0));
                     UPDATE ims_quotations SET is_converted='1', status='Converted' WHERE quotation_id=@qid"
 
                 Dim cmd = New MySqlCommand(query, conn)
@@ -582,7 +582,7 @@ Public Class frm_sales_create_order
                 cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
                 cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
                 cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
-                cmd.Parameters.AddWithValue("@delivery_fee", IIf(String.IsNullOrEmpty(txt_delivery_fee.Text), Nothing, txt_delivery_fee.Text))
+                cmd.Parameters.AddWithValue("@delivery_fee", IIf(String.IsNullOrEmpty(txt_delivery_fee.Text), 0.00, txt_delivery_fee.Text))
                 cmd.Parameters.AddWithValue("@pub_note", txt_pub_notes.Text)
                 cmd.Parameters.AddWithValue("@priv_note", txt_priv_notes.Text)
                 cmd.Parameters.AddWithValue("@terms", txt_terms.Value)
@@ -678,21 +678,25 @@ Public Class frm_sales_create_order
     'Load Customer Address with Cbb_customer
     Private Sub cbb_customer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbb_customer.SelectedIndexChanged
 
+        If cbb_customer.SelectedIndex = -1 Then Return
+
         Try
             conn.Open()
             Dim cmd = New MySqlCommand("SELECT account_type, customer_id, account_type, address, contact_person, contact, terms,
                     trucking_note, credit_limit, used_credit, preferred_shipping, agent.first_name AS sales_agent 
                     FROM ims_customers
                     LEFT JOIN ims_users AS agent ON agent.usr_id=ims_customers.assigned_agent 
-                    WHERE ims_customers.first_name=@customer", conn)
+                    WHERE ims_customers.first_name=@customer AND is_deleted='0'", conn)
             cmd.Parameters.AddWithValue("@customer", cbb_customer.Text)
             Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
             While rdr.Read
 
+                'RESTRICT OTHER USER FROM CREATING WITH SISTER COMPANY
                 If rdr("account_type").Equals("Sister Company") Then
-                    If Not frm_main.user_role_id.Text.Equals("1") Or Not frm_main.user_role_id.Text.Equals("6") Then
-                        MsgBox("Insufficient priviledge! Kindly contact your administrator.", MsgBoxStyle.Critical, "Forbidden")
+                    Dim current_user As String = frm_main.user_role_id.Text
+                    If Not (current_user = "1" Or current_user = "2" Or current_user = "3" Or current_user = "4" Or current_user = "6") Then
+                        MsgBox("Insufficient priviledge!" & Environment.NewLine & "Kindly contact your administrator.", MsgBoxStyle.Critical, "Forbidden")
                         ClearFields()
                         Return
                     End If

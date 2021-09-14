@@ -32,7 +32,7 @@ Public Class frm_sales_view_quotation
     Public Sub load_data(id As Integer)
         Try
             LoadCustomers()
-            Dim existing_company = "", discount_type = ""
+            Dim existing_company = String.Empty, discount_type = ""
 
             Using conn
                 conn.Open()
@@ -102,7 +102,7 @@ Public Class frm_sales_view_quotation
 
             End Using
 
-            cbb_customer.Text = existing_company
+            If Not String.IsNullOrEmpty(existing_company) Then cbb_customer.Text = existing_company
             cbb_discount.Text = discount_type
 
         Catch ex As Exception

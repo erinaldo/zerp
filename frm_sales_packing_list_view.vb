@@ -22,7 +22,7 @@ Public Class frm_sales_packing_list_view
         txt_orderid.Text = orderid
 
         Try
-            Dim query = "SELECT ims_customers.first_name as customer, ims_users.first_name as agent, priv_note FROM `ims_orders` 
+            Dim query = "SELECT ims_customers.first_name as customer, ims_users.first_name as agent, priv_note, pub_note FROM `ims_orders` 
                          INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer
                          INNER JOIN ims_users ON ims_users.usr_id=ims_orders.agent WHERE order_id=@order_id"
 
@@ -34,12 +34,13 @@ Public Class frm_sales_packing_list_view
             While rdr.Read
                 txt_customer.Text = rdr("customer")
                 txt_agent.Text = rdr("agent")
-                txt_comment.Text = rdr("priv_note")
+                txt_priv_comment.Text = rdr("priv_note")
+                txt_pub_comment.Text = rdr("pub_note")
             End While
 
             'UPDATE GUI
             Select Case status
-                Case "For Packing"
+                Case "On-Going"
                     cbb_packer.Visible = True
                     lbl_packed_by.Visible = True
                     btn_packed.Text = "Mark as PACKED"
@@ -57,7 +58,7 @@ Public Class frm_sales_packing_list_view
             conn.Close()
         End Try
 
-        txt_comment.Select()
+        txt_priv_comment.Select()
         Me.ShowDialog()
     End Sub
 
@@ -249,7 +250,7 @@ Public Class frm_sales_packing_list_view
     Private Sub btn_packed_Click(sender As Object, e As EventArgs) Handles btn_packed.Click
 
         Select Case view_status
-            Case "For Packing"
+            Case "On-Going"
 
                 'Validate
                 If cbb_packer.SelectedIndex = -1 Then
@@ -260,9 +261,14 @@ Public Class frm_sales_packing_list_view
                 'Insert to DB
                 Try
                     conn.Open()
-                    Dim cmd = New MySqlCommand("UPDATE ims_orders SET priv_note=@note, packed_by=(SELECT usr_id FROM ims_users WHERE first_name=@packer), date_packed=CURRENT_TIMESTAMP, status='Packed' WHERE order_id=" & txt_orderid.Text, conn)
+                    Dim cmd = New MySqlCommand("UPDATE ims_orders SET priv_note=@priv_note, pub_note=@pub_note, packed_by=(SELECT usr_id FROM ims_users WHERE first_name=@packer), date_packed=CURRENT_TIMESTAMP, status='Packed',
+                                        no_of_box=@box, no_of_plastic=@plastic, no_of_rolls=@rolls WHERE order_id=" & txt_orderid.Text, conn)
                     cmd.Parameters.AddWithValue("@packer", cbb_packer.Text)
-                    cmd.Parameters.AddWithValue("@note", txt_comment.Text)
+                    cmd.Parameters.AddWithValue("@priv_note", txt_priv_comment.Text.Trim())
+                    cmd.Parameters.AddWithValue("@pub_note", txt_pub_comment.Text.Trim())
+                    cmd.Parameters.AddWithValue("@box", IIf(String.IsNullOrEmpty(txt_box_no.Text.Trim()), Nothing, txt_box_no.Text))
+                    cmd.Parameters.AddWithValue("@plastic", IIf(String.IsNullOrEmpty(txt_plastic_no.Text.Trim()), Nothing, txt_plastic_no.Text))
+                    cmd.Parameters.AddWithValue("@rolls", IIf(String.IsNullOrEmpty(txt_rolls_no.Text.Trim()), Nothing, txt_rolls_no.Text))
                     cmd.ExecuteNonQuery()
                     conn.Close()
 
@@ -284,7 +290,7 @@ Public Class frm_sales_packing_list_view
                     Try
                         conn.Open()
                         Dim cmd = New MySqlCommand("UPDATE ims_orders SET priv_note=@note, deleted='1' WHERE order_id=" & txt_orderid.Text, conn)
-                        cmd.Parameters.AddWithValue("@note", txt_comment.Text)
+                        cmd.Parameters.AddWithValue("@note", txt_priv_comment.Text)
                         cmd.ExecuteNonQuery()
                         conn.Close()
 
@@ -302,5 +308,17 @@ Public Class frm_sales_packing_list_view
         End Select
 
 
+    End Sub
+
+    Private Sub txt_box_no_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_box_no.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Char.IsControl(e.KeyChar))
+    End Sub
+
+    Private Sub txt_plastic_no_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_plastic_no.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Char.IsControl(e.KeyChar))
+    End Sub
+
+    Private Sub txt_rolls_no_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_rolls_no.KeyPress
+        e.Handled = Not (Char.IsDigit(e.KeyChar) Or Char.IsControl(e.KeyChar))
     End Sub
 End Class

@@ -31,6 +31,7 @@ Public Class frm_admin_approval
                 Dim da_units = New MySqlDataAdapter(units_cmd)
                 da_units.Fill(dt_units)
                 grid_approval_units.DataSource = dt_units
+                grid_approval_units_view.ActiveFilterString = "[status] <> 'Discontinued'"
             End Using
 
             'Show Purchase Orders
@@ -112,7 +113,7 @@ Public Class frm_admin_approval
         End If
     End Sub
 
-    Private Sub grid_quotation_view_RowCellClick(sender As Object, e As RowCellClickEventArgs)
+    Private Sub grid_quotation_view_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles grid_quotation_view.RowCellClick
         If grid_quotation_view.FocusedColumn.Name.Equals(col_quotation_id.Name) Then
             Dim frm = New frm_sales_view_quotation()
             frm.load_data(grid_quotation_view.GetFocusedRowCellValue(col_quotation_id).ToString().Replace("Q", ""))

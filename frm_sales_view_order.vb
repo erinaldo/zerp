@@ -193,7 +193,11 @@ Public Class frm_sales_view_order
                     btn_save.Enabled = False
                     btn_delete.Enabled = False
                     btn_pack.Enabled = False
-                    grid_order.ReadOnly = True
+                    If frm_main.user_role_id.Text.Equals("1") Then
+                        grid_order.ReadOnly = False
+                    Else
+                        grid_order.ReadOnly = True
+                    End If
 
                 Case "Cancelled"
                     btn_save.Enabled = False
@@ -202,10 +206,14 @@ Public Class frm_sales_view_order
                     grid_order.Enabled = False
 
                 Case "Completed"
-                    btn_save.Enabled = False
+                    'btn_save.Enabled = False
                     btn_delete.Enabled = False
                     btn_pack.Enabled = False
-                    grid_order.Enabled = False
+                    If frm_main.user_role_id.Text.Equals("1") Then
+                        grid_order.Enabled = True
+                    Else
+                        grid_order.Enabled = False
+                    End If
 
             End Select
 

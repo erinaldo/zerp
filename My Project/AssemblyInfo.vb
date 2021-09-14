@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("ZERP Business Solution")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("Zen Enterprise Resource Planning (ZERP) system developed by Winlandene Softwares IT department")>
 <Assembly: AssemblyCompany("Winland Electronics and Electrical Center")>
 <Assembly: AssemblyProduct("ZERP Business Solution")>
 <Assembly: AssemblyCopyright("Copyright ©  2020")>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.3.1.0")>
-<Assembly: AssemblyFileVersion("1.3.1.0")>
+<Assembly: AssemblyVersion("2.0.0.0")>
+<Assembly: AssemblyFileVersion("2.0.0.0")>

@@ -74,7 +74,8 @@ Public Class frm_purchaseorder_list
                     FROM ims_purchase 
                     INNER JOIN ims_users as user ON user.usr_id=created_by
                     LEFT JOIN ims_suppliers ON ims_purchase.supplier=ims_suppliers.id
-                    WHERE ims_purchase.deleted='0' AND NOT (status='Completed' OR status='Obsolete')", conn)
+                    WHERE ims_purchase.deleted='0' AND NOT (status='Completed' OR status='Obsolete')
+                    ORDER BY purchase_id DESC", conn)
             ElseIf status.Equals("Completed") Then
                 cmd = New MySqlCommand("SELECT concat('PO',LPAD(purchase_id,5,0))  as 'ID', (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, ims_suppliers.supplier, total, status, date_generated, date_sent, user.first_name AS created_by FROM ims_purchase 
                             LEFT JOIN ims_suppliers ON ims_purchase.supplier=ims_suppliers.id

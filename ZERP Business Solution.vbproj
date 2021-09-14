@@ -77,6 +77,8 @@
     <Reference Include="DevExpress.Xpo.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.1.UI, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.1.Wizard, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v21.1.Core, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -277,6 +279,18 @@
       <DependentUpon>frm_admin_approval.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_admin_approval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_admin_banks.Designer.vb">
+      <DependentUpon>frm_admin_banks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_admin_banks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_admin_banks_new.Designer.vb">
+      <DependentUpon>frm_admin_banks_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_admin_banks_new.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_admin_transfer_reports.Designer.vb">
@@ -693,6 +707,12 @@
     <Compile Include="frm_warehouse_stock_transfer_report.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_admin_reports.Designer.vb">
+      <DependentUpon>frm_admin_reports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_admin_reports.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="functions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -782,6 +802,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_admin_approval.resx">
       <DependentUpon>frm_admin_approval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_admin_banks.resx">
+      <DependentUpon>frm_admin_banks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_admin_banks_new.resx">
+      <DependentUpon>frm_admin_banks_new.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_admin_transfer_reports.resx">
       <DependentUpon>frm_admin_transfer_reports.vb</DependentUpon>
@@ -988,6 +1014,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_warehouse_stock_transfer_report.resx">
       <DependentUpon>frm_warehouse_stock_transfer_report.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_admin_reports.resx">
+      <DependentUpon>frm_admin_reports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -1342,6 +1371,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\exporttoxls_32x32.png" />
+    <None Include="Resources\exporttoxls_16x161.png" />
     <None Include="Resources\snapmodifytablecellstyle_16x16.png" />
     <None Include="Resources\addnewdatasource_32x32.png" />
     <None Include="Resources\documentmap_16x16.png" />

@@ -26,7 +26,7 @@ Public Class frm_sales_orders
                             CONCAT( UPPER( SUBSTRING( shipping_method, 1, 1 ) ) , LOWER( SUBSTRING( shipping_method FROM 2 ) ) ) as shipping_method, status FROM ims_orders  
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
                             INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
-                            WHERE transaction_type='Order' AND NOT (status='Completed' OR status='Cancelled') AND ims_orders.deleted='0' ORDER BY date_ordered DESC"
+                            WHERE NOT (status='Cancelled') AND NOT payment_status='PAID' AND ims_orders.deleted='0'"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
 

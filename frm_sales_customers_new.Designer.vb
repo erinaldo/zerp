@@ -1,4 +1,12 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports DevExpress.Data.Mask
+Imports DevExpress.Utils
+Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraSpreadsheet
+Imports Guna.UI.WinForms
+Imports System.ComponentModel
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_sales_customers_new
     Inherits System.Windows.Forms.Form
 
@@ -45,10 +53,13 @@ Partial Class frm_sales_customers_new
         Me.lbl_credit_limit = New DevExpress.XtraEditors.LabelControl()
         Me.txt_credit_limit = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.cbb_agents = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.panel_admin = New System.Windows.Forms.Panel()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_contact_person = New DevExpress.XtraEditors.TextEdit()
         Me.sheet_customer = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
+        Me.btn_delete_customer = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.txt_fname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_contact.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_address.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,6 +70,7 @@ Partial Class frm_sales_customers_new
         CType(Me.txt_credit_limit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
+        CType(Me.cbb_agents.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_admin.SuspendLayout()
         CType(Me.txt_contact_person.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -79,11 +91,11 @@ Partial Class frm_sales_customers_new
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.LabelControl1.Appearance.Options.UseFont = True
         Me.LabelControl1.LineVisible = True
-        Me.LabelControl1.Location = New System.Drawing.Point(19, 46)
+        Me.LabelControl1.Location = New System.Drawing.Point(17, 46)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(58, 16)
+        Me.LabelControl1.Size = New System.Drawing.Size(95, 16)
         Me.LabelControl1.TabIndex = 11
-        Me.LabelControl1.Text = "Company:"
+        Me.LabelControl1.Text = "Company Name:"
         '
         'txt_fname
         '
@@ -92,7 +104,7 @@ Partial Class frm_sales_customers_new
         Me.txt_fname.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.txt_fname.Properties.Appearance.Options.UseFont = True
         Me.txt_fname.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.txt_fname.Size = New System.Drawing.Size(200, 24)
+        Me.txt_fname.Size = New System.Drawing.Size(306, 24)
         Me.txt_fname.TabIndex = 0
         '
         'LabelControl3
@@ -134,17 +146,19 @@ Partial Class frm_sales_customers_new
         Me.txt_address.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.txt_address.Properties.Appearance.Options.UseFont = True
         Me.txt_address.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.txt_address.Size = New System.Drawing.Size(287, 43)
+        Me.txt_address.Size = New System.Drawing.Size(306, 43)
         Me.txt_address.TabIndex = 3
         '
         'btn_apply
         '
         Me.btn_apply.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_apply.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.btn_apply.Appearance.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.btn_apply.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_apply.Appearance.Options.UseBackColor = True
         Me.btn_apply.Appearance.Options.UseFont = True
         Me.btn_apply.Location = New System.Drawing.Point(754, 467)
+        Me.btn_apply.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_apply.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_apply.Name = "btn_apply"
         Me.btn_apply.Size = New System.Drawing.Size(90, 33)
         Me.btn_apply.TabIndex = 10
@@ -153,9 +167,11 @@ Partial Class frm_sales_customers_new
         'btn_cancel
         '
         Me.btn_cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_cancel.Appearance.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.btn_cancel.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_cancel.Appearance.Options.UseFont = True
         Me.btn_cancel.Location = New System.Drawing.Point(658, 467)
+        Me.btn_cancel.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_cancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_cancel.Name = "btn_cancel"
         Me.btn_cancel.Size = New System.Drawing.Size(90, 33)
         Me.btn_cancel.TabIndex = 11
@@ -173,12 +189,12 @@ Partial Class frm_sales_customers_new
         '
         'LabelControl2
         '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.LabelControl2.Appearance.Options.UseFont = True
         Me.LabelControl2.LineVisible = True
         Me.LabelControl2.Location = New System.Drawing.Point(252, 8)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(79, 18)
+        Me.LabelControl2.Size = New System.Drawing.Size(83, 16)
         Me.LabelControl2.TabIndex = 24
         Me.LabelControl2.Text = "Terms (days):"
         '
@@ -243,7 +259,7 @@ Partial Class frm_sales_customers_new
         Me.txt_trucking.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.txt_trucking.Properties.Appearance.Options.UseFont = True
         Me.txt_trucking.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.txt_trucking.Size = New System.Drawing.Size(315, 49)
+        Me.txt_trucking.Size = New System.Drawing.Size(306, 45)
         Me.txt_trucking.TabIndex = 6
         '
         'cbb_shipping
@@ -272,12 +288,12 @@ Partial Class frm_sales_customers_new
         '
         'lbl_customer_id
         '
-        Me.lbl_customer_id.Appearance.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.lbl_customer_id.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.lbl_customer_id.Appearance.Options.UseFont = True
         Me.lbl_customer_id.LineVisible = True
-        Me.lbl_customer_id.Location = New System.Drawing.Point(329, 48)
+        Me.lbl_customer_id.Location = New System.Drawing.Point(16, 24)
         Me.lbl_customer_id.Name = "lbl_customer_id"
-        Me.lbl_customer_id.Size = New System.Drawing.Size(0, 18)
+        Me.lbl_customer_id.Size = New System.Drawing.Size(0, 16)
         Me.lbl_customer_id.TabIndex = 32
         Me.lbl_customer_id.Visible = False
         '
@@ -313,6 +329,8 @@ Partial Class frm_sales_customers_new
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.cbb_agents)
+        Me.GroupControl1.Controls.Add(Me.LabelControl9)
         Me.GroupControl1.Controls.Add(Me.panel_admin)
         Me.GroupControl1.Controls.Add(Me.LabelControl8)
         Me.GroupControl1.Controls.Add(Me.txt_contact_person)
@@ -333,9 +351,34 @@ Partial Class frm_sales_customers_new
         Me.GroupControl1.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(452, 384)
+        Me.GroupControl1.Size = New System.Drawing.Size(452, 418)
         Me.GroupControl1.TabIndex = 35
         Me.GroupControl1.Text = "Customer Details"
+        '
+        'cbb_agents
+        '
+        Me.cbb_agents.EditValue = "Unassigned"
+        Me.cbb_agents.Location = New System.Drawing.Point(126, 366)
+        Me.cbb_agents.Name = "cbb_agents"
+        Me.cbb_agents.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
+        Me.cbb_agents.Properties.Appearance.Options.UseFont = True
+        Me.cbb_agents.Properties.AutoHeight = False
+        Me.cbb_agents.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbb_agents.Properties.Items.AddRange(New Object() {"Unassigned"})
+        Me.cbb_agents.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cbb_agents.Size = New System.Drawing.Size(170, 23)
+        Me.cbb_agents.TabIndex = 38
+        '
+        'LabelControl9
+        '
+        Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
+        Me.LabelControl9.Appearance.Options.UseFont = True
+        Me.LabelControl9.LineVisible = True
+        Me.LabelControl9.Location = New System.Drawing.Point(19, 368)
+        Me.LabelControl9.Name = "LabelControl9"
+        Me.LabelControl9.Size = New System.Drawing.Size(93, 16)
+        Me.LabelControl9.TabIndex = 39
+        Me.LabelControl9.Text = "Assigned Agent:"
         '
         'panel_admin
         '
@@ -391,12 +434,29 @@ Partial Class frm_sales_customers_new
         Me.sheet_customer.TabIndex = 9
         Me.sheet_customer.Text = "SpreadsheetControl1"
         '
+        'btn_delete_customer
+        '
+        Me.btn_delete_customer.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_delete_customer.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger
+        Me.btn_delete_customer.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.btn_delete_customer.Appearance.Options.UseBackColor = True
+        Me.btn_delete_customer.Appearance.Options.UseFont = True
+        Me.btn_delete_customer.Location = New System.Drawing.Point(476, 467)
+        Me.btn_delete_customer.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_delete_customer.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_delete_customer.Name = "btn_delete_customer"
+        Me.btn_delete_customer.Size = New System.Drawing.Size(134, 33)
+        Me.btn_delete_customer.TabIndex = 36
+        Me.btn_delete_customer.Text = "Delete Customer"
+        Me.btn_delete_customer.Visible = False
+        '
         'frm_sales_customers_new
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(856, 512)
+        Me.Controls.Add(Me.btn_delete_customer)
         Me.Controls.Add(Me.sheet_customer)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.Panel1)
@@ -419,6 +479,7 @@ Partial Class frm_sales_customers_new
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
+        CType(Me.cbb_agents.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_admin.ResumeLayout(False)
         Me.panel_admin.PerformLayout()
         CType(Me.txt_contact_person.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -452,4 +513,7 @@ Partial Class frm_sales_customers_new
     Friend WithEvents txt_contact_person As DevExpress.XtraEditors.TextEdit
     Friend WithEvents sheet_customer As DevExpress.XtraSpreadsheet.SpreadsheetControl
     Friend WithEvents panel_admin As Panel
+    Friend WithEvents cbb_agents As ComboBoxEdit
+    Friend WithEvents LabelControl9 As LabelControl
+    Friend WithEvents btn_delete_customer As SimpleButton
 End Class

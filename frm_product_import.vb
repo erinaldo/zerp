@@ -112,22 +112,22 @@ Public Class frm_product_import
             insert_cmd.Parameters.AddWithValue("@status", "Inactive")
             insert_cmd.Parameters.AddWithValue("@base_price", "")
             insert_cmd.Parameters.AddWithValue("@cost", "")
-            insert_cmd.Parameters.AddWithValue("@discount", "")
+            insert_cmd.Parameters.AddWithValue("@discount", DBNull.Value)
             insert_cmd.Parameters.AddWithValue("@regular_price", "")
             insert_cmd.Parameters.AddWithValue("@dealer_price", "")
             insert_cmd.Parameters.AddWithValue("@vip_price", "")
-            insert_cmd.Parameters.AddWithValue("@length", Nothing)
-            insert_cmd.Parameters.AddWithValue("@width", Nothing)
-            insert_cmd.Parameters.AddWithValue("@height", Nothing)
-            insert_cmd.Parameters.AddWithValue("@weight", Nothing)
+            insert_cmd.Parameters.AddWithValue("@length", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@width", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@height", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@weight", DBNull.Value)
             insert_cmd.Parameters.AddWithValue("@hazards", "")
-            insert_cmd.Parameters.AddWithValue("@serialized", Nothing)
+            insert_cmd.Parameters.AddWithValue("@serialized", DBNull.Value)
             insert_cmd.Parameters.AddWithValue("@qty_per_box", Nothing)
-            insert_cmd.Parameters.AddWithValue("@ideal_stock", Nothing)
-            insert_cmd.Parameters.AddWithValue("@warning_stock", Nothing)
-            insert_cmd.Parameters.AddWithValue("@stock_duration", Nothing)
-            insert_cmd.Parameters.AddWithValue("@warranty_period", Nothing)
-            insert_cmd.Parameters.AddWithValue("@warranty_coverage", "")
+            insert_cmd.Parameters.AddWithValue("@ideal_stock", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@warning_stock", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@stock_duration", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@warranty_period", DBNull.Value)
+            insert_cmd.Parameters.AddWithValue("@warranty_coverage", DBNull.Value)
             insert_cmd.Parameters.AddWithValue("@date_entry", "")
 
             insert_cmd.Prepare()
@@ -168,10 +168,10 @@ Public Class frm_product_import
                     Or String.IsNullOrWhiteSpace(values(5).ToString) _  'description
                     Or String.IsNullOrWhiteSpace(values(7).ToString) _  'main_category
                     Or String.IsNullOrWhiteSpace(values(8).ToString) _  'sub_category
-                    Or String.IsNullOrWhiteSpace(values(11).ToString) _ 'Brand
+                    Or String.IsNullOrWhiteSpace(values(9).ToString) _ 'Brand
                     Or String.IsNullOrWhiteSpace(values(12).ToString) _ 'Status
                     Or String.IsNullOrWhiteSpace(values(13).ToString) _ 'Base Price
-                    Or String.IsNullOrWhiteSpace(values(15).ToString) _ 'Cost
+                    Or String.IsNullOrWhiteSpace(values(14).ToString) _ 'Cost
                     Or String.IsNullOrWhiteSpace(values(16).ToString) _ 'regular_price
                     Or String.IsNullOrWhiteSpace(values(17).ToString) _ 'dealer_price 
                     Or String.IsNullOrWhiteSpace(values(18).ToString) Then 'vip_price 
@@ -184,26 +184,26 @@ Public Class frm_product_import
                     insert_cmd.Parameters(1).Value = values(1) 'Barcode
                     insert_cmd.Parameters(2).Value = values(2) 'WinModel
                     insert_cmd.Parameters(3).Value = values(3) 'SupModel
-                    insert_cmd.Parameters(4).Value = values(4) 'Supplier
+                    insert_cmd.Parameters(4).Value = values(4) 'Supplier ID
                     insert_cmd.Parameters(5).Value = values(5) 'Description
                     insert_cmd.Parameters(6).Value = values(6) 'Technical Description
-                    insert_cmd.Parameters(6).Value = values(7) 'Main Category
-                    insert_cmd.Parameters(7).Value = values(8) 'Sub Category
-                    insert_cmd.Parameters(8).Value = values(9) 'Brand
-                    insert_cmd.Parameters(9).Value = values(10) 'Type
-                    insert_cmd.Parameters(10).Value = values(11) 'Tags
-                    insert_cmd.Parameters(11).Value = values(12) 'Status
-                    insert_cmd.Parameters(12).Value = values(13) 'Base Price    
-                    insert_cmd.Parameters(13).Value = values(14) 'Cost
-                    If Not String.IsNullOrWhiteSpace(values(15)) Then insert_cmd.Parameters(14).Value = values(14) 'Discount
-                    insert_cmd.Parameters(15).Value = values(16) 'Regular Price
-                    insert_cmd.Parameters(16).Value = values(17) 'Dealer Price
-                    insert_cmd.Parameters(17).Value = values(18) 'VIP Price
+                    insert_cmd.Parameters(7).Value = values(7) 'Main Category
+                    insert_cmd.Parameters(8).Value = values(8) 'Sub Category
+                    insert_cmd.Parameters(9).Value = values(9) 'Brand
+                    insert_cmd.Parameters(10).Value = values(10) 'Type
+                    insert_cmd.Parameters(11).Value = values(11) 'Tags
+                    insert_cmd.Parameters(12).Value = values(12) 'Status
+                    insert_cmd.Parameters(13).Value = values(13) 'Base Price    
+                    insert_cmd.Parameters(14).Value = values(14) 'Cost
+                    If Not String.IsNullOrWhiteSpace(values(15)) Then insert_cmd.Parameters(15).Value = values(15) 'Discount
+                    insert_cmd.Parameters(16).Value = values(16) 'Regular Price
+                    insert_cmd.Parameters(17).Value = values(17) 'Dealer Price
+                    insert_cmd.Parameters(18).Value = values(18) 'VIP Price
                     If Not String.IsNullOrWhiteSpace(values(19)) Then insert_cmd.Parameters(19).Value = values(19) 'Length
                     If Not String.IsNullOrWhiteSpace(values(20)) Then insert_cmd.Parameters(20).Value = values(20) 'Width
                     If Not String.IsNullOrWhiteSpace(values(21)) Then insert_cmd.Parameters(21).Value = values(21) 'Height
                     If Not String.IsNullOrWhiteSpace(values(22)) Then insert_cmd.Parameters(22).Value = values(22) 'Weight
-                    insert_cmd.Parameters(22).Value = values(23) 'Hazards
+                    insert_cmd.Parameters(23).Value = values(23) 'Hazards
                     If Not String.IsNullOrWhiteSpace(values(24)) Then insert_cmd.Parameters(24).Value = values(24) 'Serialized
                     insert_cmd.Parameters(25).Value = values(25) 'Qty per Box
                     If Not String.IsNullOrWhiteSpace(values(26)) Then insert_cmd.Parameters(26).Value = values(26) 'Ideal Stock

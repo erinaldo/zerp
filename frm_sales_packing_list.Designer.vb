@@ -59,6 +59,7 @@ Partial Class frm_sales_packing_list
         Me.tab_pending = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.tab_ongoing = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.tab_completed = New DevExpress.XtraBars.Navigation.TabNavigationPage()
+        Me.tab_cancelled = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -106,7 +107,6 @@ Partial Class frm_sales_packing_list
         '
         'PictureEdit1
         '
-        Me.PictureEdit1.EditValue = Global.Inventory_Management.My.Resources.Resources.time_16x16
         Me.PictureEdit1.Location = New System.Drawing.Point(13, 4)
         Me.PictureEdit1.Name = "PictureEdit1"
         Me.PictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
@@ -214,10 +214,11 @@ Partial Class frm_sales_packing_list
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grid_orders.Location = New System.Drawing.Point(20, 140)
+        Me.grid_orders.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_orders.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_orders.MainView = Me.grid_orders_view
         Me.grid_orders.Name = "grid_orders"
-        Me.grid_orders.Size = New System.Drawing.Size(1103, 497)
+        Me.grid_orders.Size = New System.Drawing.Size(1103, 491)
         Me.grid_orders.TabIndex = 8
         Me.grid_orders.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_orders_view})
         '
@@ -240,7 +241,7 @@ Partial Class frm_sales_packing_list
         Me.grid_orders_view.OptionsBehavior.ReadOnly = True
         Me.grid_orders_view.OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = True
         Me.grid_orders_view.OptionsView.ShowGroupPanel = False
-        Me.grid_orders_view.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grid_orders_view.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.[True]
         '
         'GridColumn1
         '
@@ -359,10 +360,13 @@ Partial Class frm_sales_packing_list
         Me.tabpane.Controls.Add(Me.tab_pending)
         Me.tabpane.Controls.Add(Me.tab_ongoing)
         Me.tabpane.Controls.Add(Me.tab_completed)
+        Me.tabpane.Controls.Add(Me.tab_cancelled)
         Me.tabpane.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabpane.Location = New System.Drawing.Point(20, 98)
+        Me.tabpane.Location = New System.Drawing.Point(19, 106)
+        Me.tabpane.LookAndFeel.SkinName = "Office 2013"
+        Me.tabpane.LookAndFeel.UseDefaultLookAndFeel = False
         Me.tabpane.Name = "tabpane"
-        Me.tabpane.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.tab_pending, Me.tab_ongoing, Me.tab_completed})
+        Me.tabpane.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.tab_pending, Me.tab_ongoing, Me.tab_completed, Me.tab_cancelled})
         Me.tabpane.RegularSize = New System.Drawing.Size(1103, 36)
         Me.tabpane.SelectedPage = Me.tab_pending
         Me.tabpane.Size = New System.Drawing.Size(1103, 36)
@@ -373,7 +377,7 @@ Partial Class frm_sales_packing_list
         '
         Me.tab_pending.Caption = "Pending Arrangements"
         Me.tab_pending.Name = "tab_pending"
-        Me.tab_pending.Size = New System.Drawing.Size(1103, 4)
+        Me.tab_pending.Size = New System.Drawing.Size(1103, 1)
         '
         'tab_ongoing
         '
@@ -386,6 +390,12 @@ Partial Class frm_sales_packing_list
         Me.tab_completed.Caption = "Completed"
         Me.tab_completed.Name = "tab_completed"
         Me.tab_completed.Size = New System.Drawing.Size(1103, 4)
+        '
+        'tab_cancelled
+        '
+        Me.tab_cancelled.Caption = "For Unpacking"
+        Me.tab_cancelled.Name = "tab_cancelled"
+        Me.tab_cancelled.Size = New System.Drawing.Size(1103, 4)
         '
         'frm_sales_packing_list
         '
@@ -437,5 +447,5 @@ Partial Class frm_sales_packing_list
     Friend WithEvents tab_pending As TabNavigationPage
     Friend WithEvents tab_ongoing As TabNavigationPage
     Friend WithEvents tab_completed As TabNavigationPage
-
+    Friend WithEvents tab_cancelled As TabNavigationPage
 End Class

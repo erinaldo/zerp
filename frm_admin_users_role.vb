@@ -82,6 +82,7 @@ Public Class frm_admin_users_role
                     Case "stores" : cb_stores.Checked = True
                     Case "suppliers" : cb_suppliers.Checked = True
                     Case "settings" : cb_settings.Checked = True
+                    Case "reports" : cb_reports.Checked = True
 
                 End Select
 
@@ -145,6 +146,7 @@ Public Class frm_admin_users_role
         If cb_user_accounts.Checked Then access += "user_accounts;"
         If cb_approvals.Checked Then access += "approvals;"
         If cb_price_book.Checked Then access += "price_book;"
+        If cb_reports.Checked Then access += "reports;"
         If cb_stores.Checked Then access += "stores;"
         If cb_suppliers.Checked Then access += "suppliers;"
         If cb_settings.Checked Then access += "settings;"

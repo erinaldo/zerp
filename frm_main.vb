@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net
+Imports System.Reflection
 Imports System.Text
 Imports DevExpress.XtraSplashScreen
 Imports MySql.Data.MySqlClient
@@ -12,6 +13,9 @@ Public Class frm_main
     'On Load
     Private Sub frm_main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize_zerp()
+        Dim version As Version = Assembly.GetExecutingAssembly().GetName().Version
+        Dim lbl_version = " " & version.Major.ToString & "." & version.Minor.ToString & "." & version.Build.ToString
+        Me.Text = "ZERP Business Solution" & lbl_version
     End Sub
 
 
@@ -363,6 +367,16 @@ Public Class frm_main
         LoadFrm(New frm_admin_approval)
     End Sub
 
+    'Reports
+    Private Sub submenu_reports_Click(sender As Object, e As EventArgs) Handles submenu_reports.Click
+        LoadFrm(New frm_admin_reports)
+    End Sub
+
+    'Banks
+    Private Sub submenu_banks_Click(sender As Object, e As EventArgs) Handles submenu_banks.Click
+        LoadFrm(New frm_admin_banks)
+    End Sub
+
     'New Warehouse
     Private Sub submenu2_new_warehouse_Click(sender As Object, e As EventArgs) Handles submenu2_new_warehouse.Click
         frm_admin_store_add.ShowDialog()
@@ -393,6 +407,7 @@ Public Class frm_main
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_settings.Click
         LoadFrm(New frm_admin_settings)
     End Sub
+
 
 
 
@@ -479,6 +494,5 @@ Public Class frm_main
     Private Sub PaymentChequesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_payment_cheques.Click
         LoadFrm(New frm_accounting_payment_cheques)
     End Sub
-
 
 End Class
