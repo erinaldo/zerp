@@ -92,6 +92,7 @@ Partial Class frm_collection_payments
         Me.btn_payment_history = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_refresh = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_terms_collection = New DevExpress.XtraEditors.SimpleButton()
+        Me.btn_chequebook = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -368,7 +369,7 @@ Partial Class frm_collection_payments
         Me.col_amount_due.AppearanceHeader.Options.UseForeColor = True
         Me.col_amount_due.AppearanceHeader.Options.UseTextOptions = True
         Me.col_amount_due.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_amount_due.Caption = "Amount Due"
+        Me.col_amount_due.Caption = "Amount"
         Me.col_amount_due.DisplayFormat.FormatString = "c2"
         Me.col_amount_due.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col_amount_due.FieldName = "amount_due"
@@ -561,7 +562,7 @@ Partial Class frm_collection_payments
         Me.GridColumn10.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn10.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn10.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn10.Caption = "Amount Due"
+        Me.GridColumn10.Caption = "Amount"
         Me.GridColumn10.DisplayFormat.FormatString = "c2"
         Me.GridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn10.FieldName = "amount_due"
@@ -788,7 +789,7 @@ Partial Class frm_collection_payments
         Me.GridColumn13.AppearanceHeader.Options.UseForeColor = True
         Me.GridColumn13.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn13.Caption = "Amount Due"
+        Me.GridColumn13.Caption = "Amount"
         Me.GridColumn13.DisplayFormat.FormatString = "c2"
         Me.GridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn13.FieldName = "amount_due"
@@ -883,7 +884,7 @@ Partial Class frm_collection_payments
         Me.btn_payment_history.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btn_payment_history.Size = New System.Drawing.Size(160, 46)
         Me.btn_payment_history.TabIndex = 17
-        Me.btn_payment_history.Text = "Payment History"
+        Me.btn_payment_history.Text = "Payment Ledger"
         '
         'btn_refresh
         '
@@ -920,12 +921,29 @@ Partial Class frm_collection_payments
         Me.btn_terms_collection.TabIndex = 19
         Me.btn_terms_collection.Text = "Terms Collection"
         '
+        'btn_chequebook
+        '
+        Me.btn_chequebook.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.btn_chequebook.Appearance.Options.UseFont = True
+        Me.btn_chequebook.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.financial_32x32
+        Me.btn_chequebook.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_chequebook.ImageOptions.ImageToTextIndent = 7
+        Me.btn_chequebook.Location = New System.Drawing.Point(351, 93)
+        Me.btn_chequebook.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_chequebook.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_chequebook.Name = "btn_chequebook"
+        Me.btn_chequebook.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btn_chequebook.Size = New System.Drawing.Size(160, 46)
+        Me.btn_chequebook.TabIndex = 21
+        Me.btn_chequebook.Text = "Cheque Book"
+        '
         'frm_collection_payments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1222, 697)
+        Me.Controls.Add(Me.btn_chequebook)
         Me.Controls.Add(Me.btn_terms_collection)
         Me.Controls.Add(Me.btn_refresh)
         Me.Controls.Add(Me.btn_payment_history)
@@ -1026,4 +1044,5 @@ Partial Class frm_collection_payments
 	Friend WithEvents col_payment_type As GridColumn
 	Friend WithEvents col_payment_details As GridColumn
 	Friend WithEvents btn_terms_collection As SimpleButton
+    Friend WithEvents btn_chequebook As SimpleButton
 End Class

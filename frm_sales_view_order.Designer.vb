@@ -134,6 +134,7 @@ Partial Class frm_sales_view_order
         Me.lbl_cid = New DevExpress.XtraEditors.TextEdit()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.btn_modify = New DevExpress.XtraEditors.SimpleButton()
+        Me.btn_refund = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_po_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1041,6 +1042,7 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel1.BackColor = System.Drawing.Color.Lavender
         Me.Guna2Panel1.BorderColor = System.Drawing.Color.Silver
         Me.Guna2Panel1.BorderThickness = 1
+        Me.Guna2Panel1.Controls.Add(Me.btn_refund)
         Me.Guna2Panel1.Controls.Add(Me.btn_epayment)
         Me.Guna2Panel1.Controls.Add(Me.LabelControl6)
         Me.Guna2Panel1.Controls.Add(Me.LabelControl16)
@@ -1056,15 +1058,13 @@ Partial Class frm_sales_view_order
         '
         'btn_epayment
         '
+        Me.btn_epayment.Enabled = False
         Me.btn_epayment.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_epayment.Location = New System.Drawing.Point(10, 117)
-        Me.btn_epayment.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_epayment.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_epayment.Location = New System.Drawing.Point(126, 114)
         Me.btn_epayment.Name = "btn_epayment"
-        Me.btn_epayment.Size = New System.Drawing.Size(140, 27)
+        Me.btn_epayment.Size = New System.Drawing.Size(110, 27)
         Me.btn_epayment.TabIndex = 107
         Me.btn_epayment.Text = "E-Payment Proofs"
-        Me.btn_epayment.Visible = False
         '
         'Guna2Panel2
         '
@@ -1327,6 +1327,16 @@ Partial Class frm_sales_view_order
         Me.btn_modify.TabIndex = 125
         Me.btn_modify.Text = "Modify"
         '
+        'btn_refund
+        '
+        Me.btn_refund.Enabled = False
+        Me.btn_refund.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_refund.Location = New System.Drawing.Point(10, 114)
+        Me.btn_refund.Name = "btn_refund"
+        Me.btn_refund.Size = New System.Drawing.Size(110, 27)
+        Me.btn_refund.TabIndex = 108
+        Me.btn_refund.Text = "Refund"
+        '
         'frm_sales_view_order
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1476,5 +1486,5 @@ Partial Class frm_sales_view_order
     Friend WithEvents lbl_terms As LabelControl
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents btn_modify As SimpleButton
-
+    Friend WithEvents btn_refund As SimpleButton
 End Class

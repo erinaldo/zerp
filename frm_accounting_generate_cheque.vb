@@ -204,7 +204,7 @@ Public Class frm_accounting_generate_cheque
 
 
 
-    '--- FUNCTIONS ----
+    '--- CONTROLS ----
 
     'cbb_suppliers SELECTION CHANGED
     Private Sub cbb_suppliers_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbb_suppliers.Properties.SelectedValueChanged
@@ -212,28 +212,47 @@ Public Class frm_accounting_generate_cheque
         If Not String.IsNullOrWhiteSpace(cbb_suppliers.Text) Then
             Try
                 conn.Open()
-                Dim cmd = New MySqlCommand("SELECT payable_id, receipt_type, receipt_ref, amount, received_date, CONCAT('PO',LPAD(ims_delivery_receipts.purchase_id, 5, 0)) as purchase_id,
+
+                'GET Payables
+                Using cmd = New MySqlCommand("SELECT payable_id, receipt_type, receipt_ref, amount, received_date, CONCAT('PO',LPAD(ims_delivery_receipts.purchase_id, 5, 0)) as purchase_id,
                                 ims_purchase.terms, DATE_ADD(received_date, INTERVAL ims_purchase.terms DAY) as due_date FROM `ims_delivery_receipts` 
                                 INNER JOIN ims_purchase ON ims_purchase.purchase_id=ims_delivery_receipts.purchase_id
                                 WHERE supplier_id=(SELECT id FROM ims_suppliers WHERE supplier=@supplier AND ims_delivery_receipts.status='UNPAID')", conn)
-                cmd.Parameters.AddWithValue("@supplier", cbb_suppliers.Text)
-                cmd.ExecuteNonQuery()
+                    cmd.Parameters.AddWithValue("@supplier", cbb_suppliers.Text)
+                    cmd.ExecuteNonQuery()
 
-                Dim dt = New DataTable
-                Dim da = New MySqlDataAdapter(cmd)
-                da.Fill(dt)
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd)
+                    da.Fill(dt)
 
-                grid_receipts.DataSource = dt
+                    grid_receipts.DataSource = dt
+                End Using
 
-                Dim cmd_get = New MySqlCommand("SELECT acc_name, acc_no FROM ims_suppliers WHERE supplier=@supname", conn)
-                cmd_get.Parameters.AddWithValue("@supname", cbb_suppliers.Text)
-                Dim rdr As MySqlDataReader = cmd_get.ExecuteReader
+                'GET BANK DETAILS
+                Using cmd_get = New MySqlCommand("SELECT acc_name, acc_no FROM ims_suppliers WHERE supplier=@supname", conn)
+                    cmd_get.Parameters.AddWithValue("@supname", cbb_suppliers.Text)
+                    Using rdr As MySqlDataReader = cmd_get.ExecuteReader
+                        While rdr.Read
+                            txt_payee.Text = cbb_suppliers.Text
+                            txt_acc_name.Text = If(Not IsDBNull(rdr("acc_name")), rdr("acc_name"), "")
+                            txt_acc_no.Text = If(Not IsDBNull(rdr("acc_no")), rdr("acc_no"), "")
+                        End While
+                    End Using
+                End Using
 
-                While rdr.Read
-                    txt_payee.Text = cbb_suppliers.Text
-                    txt_acc_name.Text = If(Not IsDBNull(rdr("acc_name")), rdr("acc_name"), "")
-                    txt_acc_no.Text = If(Not IsDBNull(rdr("acc_no")), rdr("acc_no"), "")
-                End While
+                'GET PURCHASE RETURNS
+                Using cmd_returns = New MySqlCommand("SELECT po_return_id, supplier, batch_no,
+                                total_cost, created_at, status FROM ims_purchase_returns 
+                                LEFT JOIN ims_suppliers ON ims_suppliers.id=ims_purchase_returns.supplier_id 
+                                WHERE is_deleted=0 AND supplier=@supplier AND is_applied='0'
+                                ORDER BY po_return_id DESC", conn)
+                    cmd_returns.Parameters.AddWithValue("@supplier", cbb_suppliers.Text)
+                    cmd_returns.ExecuteNonQuery()
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd_returns)
+                    da.Fill(dt)
+                    grid_returns.DataSource = dt
+                End Using
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
@@ -282,10 +301,7 @@ Public Class frm_accounting_generate_cheque
 
             End With
 
-
-
         End If
-
     End Sub
 
     'btn_generate
@@ -321,6 +337,8 @@ Public Class frm_accounting_generate_cheque
 
             Try
                 conn.Open()
+
+                'GENERATE CHEQUE
                 Dim cmd = New MySqlCommand("INSERT INTO ims_generated_cheques (cheque_no, cheque_date, bank, payee, acc_no, acc_name, amount, receipts, supplier, status, is_crossed_check)
                                 VALUES (@cheque_no, @cheque_date, @bank, @payee, @acc_no, @acc_name, @amount, @receipts, (SELECT id FROM ims_suppliers WHERE supplier=@supplier), @status, @x_check)", conn)
                 cmd.Parameters.AddWithValue("cheque_no", txt_cheque_no.Text.Trim)
@@ -336,25 +354,42 @@ Public Class frm_accounting_generate_cheque
                 cmd.Parameters.AddWithValue("x_check", cb_crossed_check.Checked)
                 cmd.ExecuteNonQuery()
 
+                'GET CHEQUE COUNT
                 Dim cheque_id = get_cheque_count(conn)
 
-                Dim update_cmd = New MySqlCommand("UPDATE ims_delivery_receipts SET status='ISSUED', cheque_id=@cheque_id, payment_cheque=@payment_cheque, payment_dates=@payment_date WHERE payable_id=@id", conn)
-                update_cmd.Parameters.AddWithValue("@id", 0)
-                update_cmd.Parameters.AddWithValue("@cheque_id", cheque_id)
-                update_cmd.Parameters.AddWithValue("@payment_cheque", txt_cheque_no.Text.Trim)
-                update_cmd.Parameters.AddWithValue("@payment_date", Date.ParseExact(txt_cheque_date.Text.Trim, "MM/dd/yyyy", CultureInfo.InvariantCulture))
-                update_cmd.Prepare()
+                'UPDATE RECEIPTS
+                Using update_cmd = New MySqlCommand("UPDATE ims_delivery_receipts SET status='ISSUED', cheque_id=@cheque_id, payment_cheque=@payment_cheque, payment_dates=@payment_date WHERE payable_id=@id", conn)
+                    update_cmd.Parameters.AddWithValue("@id", 0)
+                    update_cmd.Parameters.AddWithValue("@cheque_id", cheque_id)
+                    update_cmd.Parameters.AddWithValue("@payment_cheque", txt_cheque_no.Text.Trim)
+                    update_cmd.Parameters.AddWithValue("@payment_date", Date.ParseExact(txt_cheque_date.Text.Trim, "MM/dd/yyyy", CultureInfo.InvariantCulture))
+                    update_cmd.Prepare()
 
-                For i = 0 To SelectedRows.Length - 1
-                    update_cmd.Parameters(0).Value = grid_receipts_view.GetRowCellValue(SelectedRows(i), col_id)
-                    update_cmd.ExecuteNonQuery()
-                Next
+                    For i = 0 To SelectedRows.Length - 1
+                        update_cmd.Parameters(0).Value = grid_receipts_view.GetRowCellValue(SelectedRows(i), col_id)
+                        update_cmd.ExecuteNonQuery()
+                    Next
+                End Using
 
+                'UPDATE PURCHASE ORDER RETURNS
+                Using update_returns = New MySqlCommand("UPDATE ims_purchase_returns SET is_applied='1', status='Applied', cheque_no=@cheque WHERE po_return_id=@id", conn)
+                    update_returns.Parameters.AddWithValue("@id", 0)
+                    update_returns.Parameters.AddWithValue("@cheque", txt_cheque_no.Text)
+                    update_returns.Prepare()
+
+                    For i = 0 To grid_returns_view.GetSelectedRows.Length - 1
+                        update_returns.Parameters(0).Value = grid_returns_view.GetRowCellValue(grid_returns_view.GetSelectedRows(i), col_rid)
+                        update_returns.ExecuteNonQuery()
+                    Next
+                End Using
+
+                'PRINT CHEQUE
                 Dim ans2 = MsgBox("Successfully Generated!" & vbCrLf & vbCrLf & "Print on Cheque?", vbInformation + vbYesNo, "Print")
                 If ans2 = vbYes Then
                     PrintCheque(cheque_id, conn)
                 End If
 
+                'CLEAR FIELDS
                 txt_cheque_no.Text = ""
                 txt_cheque_date.Text = ""
                 cbb_banks.Text = ""
@@ -364,6 +399,7 @@ Public Class frm_accounting_generate_cheque
                 cbb_suppliers.Text = ""
                 txt_total_view.Text = ""
                 grid_receipts.DataSource = Nothing
+                grid_returns.DataSource = Nothing
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
@@ -378,6 +414,28 @@ Public Class frm_accounting_generate_cheque
     'DateEdit
     Private Sub DateEdit1_Closed(sender As Object, e As DevExpress.XtraEditors.Controls.ClosedEventArgs) Handles DateEdit1.Closed
         txt_cheque_date.Text = Date.ParseExact(DateEdit1.EditValue, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("MM/dd/yyyy")
+    End Sub
+
+    'Purchase Returns Selection
+    Private Sub grid_returns_view_SelectionChanged(sender As Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles grid_returns_view.SelectionChanged
+
+        Dim total_payables As Decimal = 0.00
+        Dim total_returns As Decimal = 0.00
+
+        'GET TOTAL PAYABLES
+        Dim payables_rows = grid_receipts_view.GetSelectedRows
+        For i = 0 To payables_rows.Length - 1
+            total_payables += grid_receipts_view.GetRowCellValue(payables_rows(i), col_amount)
+        Next
+        'GET TOTAL RETURNS
+        Dim returns_row = grid_returns_view.GetSelectedRows
+        For i = 0 To returns_row.Length - 1
+            total_returns += grid_returns_view.GetRowCellValue(returns_row(i), col_total_cost)
+        Next
+
+        'DISPLAY
+        txt_total_view.Text = FormatCurrency(total_payables - total_returns, 2)
+
     End Sub
 
 End Class

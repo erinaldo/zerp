@@ -34,6 +34,7 @@ Partial Class frm_admin_reports
         Dim Series4 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
         Dim XyDiagram5 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
         Dim Series5 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SideBySideBarSeriesLabel1 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
         Dim XyDiagram6 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
         Dim Series6 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
         Dim ChartControlCommandGalleryItemGroup2DColumn1 As DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DColumn = New DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DColumn()
@@ -149,6 +150,14 @@ Partial Class frm_admin_reports
         Dim CreateBoxPlotChartItem1 As DevExpress.XtraCharts.UI.CreateBoxPlotChartItem = New DevExpress.XtraCharts.UI.CreateBoxPlotChartItem()
         Me.TabControl = New DevExpress.XtraTab.XtraTabControl()
         Me.tab_sales = New DevExpress.XtraTab.XtraTabPage()
+        Me.lbl_epay = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_cheques = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_cash = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_ave_sales_margin = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_avg_sales_amount = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_no_transactions = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_gross_sales = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_totalcost = New DevExpress.XtraEditors.LabelControl()
         Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -168,9 +177,22 @@ Partial Class frm_admin_reports
         Me.col_total_transc = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_avg_transc_amount = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_avg_sales_margin = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.tab_transactions = New DevExpress.XtraTab.XtraTabPage()
+        Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
+        Me.grid_transaction = New DevExpress.XtraGrid.GridControl()
+        Me.grid_transaction_view = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn28 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn26 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn31 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn27 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tab_users = New DevExpress.XtraTab.XtraTabPage()
         Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
+        Me.btn_print_sales_coordinator = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_print_sales_agent = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.chart_coordinator = New DevExpress.XtraCharts.ChartControl()
@@ -192,6 +214,7 @@ Partial Class frm_admin_reports
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tab_performance = New DevExpress.XtraTab.XtraTabPage()
         Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
+        Me.btn_print_perf_coor = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.rb_perf_coor_sales = New System.Windows.Forms.RadioButton()
@@ -199,6 +222,7 @@ Partial Class frm_admin_reports
         Me.lbl_coordinator = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.cbb_coordinator = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.btn_print_perf_agnet = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.rb_perf_agent_sales = New System.Windows.Forms.RadioButton()
@@ -226,6 +250,7 @@ Partial Class frm_admin_reports
         Me.GridColumn16 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tab_product = New DevExpress.XtraTab.XtraTabPage()
+        Me.btn_print_product = New DevExpress.XtraEditors.SimpleButton()
         Me.lbl_prod_name = New DevExpress.XtraEditors.LabelControl()
         Me.chart_prod = New DevExpress.XtraCharts.ChartControl()
         Me.grid_product_perf = New DevExpress.XtraGrid.GridControl()
@@ -259,11 +284,6 @@ Partial Class frm_admin_reports
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
-        Me.btn_print_sales_coordinator = New DevExpress.XtraEditors.SimpleButton()
-        Me.btn_print_sales_agent = New DevExpress.XtraEditors.SimpleButton()
-        Me.btn_print_perf_coor = New DevExpress.XtraEditors.SimpleButton()
-        Me.btn_print_perf_agnet = New DevExpress.XtraEditors.SimpleButton()
-        Me.btn_print_product = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.TabControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
         Me.tab_sales.SuspendLayout()
@@ -274,6 +294,9 @@ Partial Class frm_admin_reports
         CType(AreaSeriesView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_sales_report, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_sales_report_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_transactions.SuspendLayout()
+        CType(Me.grid_transaction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_transaction_view, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tab_users.SuspendLayout()
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer3.Panel1.SuspendLayout()
@@ -316,6 +339,7 @@ Partial Class frm_admin_reports
         CType(Me.chart_perf_agent, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(XyDiagram5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer6.Panel1.SuspendLayout()
         Me.SplitContainer6.Panel2.SuspendLayout()
@@ -363,12 +387,20 @@ Partial Class frm_admin_reports
         Me.TabControl.SelectedTabPage = Me.tab_sales
         Me.TabControl.Size = New System.Drawing.Size(1374, 592)
         Me.TabControl.TabIndex = 0
-        Me.TabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tab_sales, Me.tab_users, Me.tab_performance, Me.tab_product})
+        Me.TabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tab_sales, Me.tab_transactions, Me.tab_users, Me.tab_performance, Me.tab_product})
         '
         'tab_sales
         '
         Me.tab_sales.Appearance.Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tab_sales.Appearance.Header.Options.UseFont = True
+        Me.tab_sales.Controls.Add(Me.lbl_epay)
+        Me.tab_sales.Controls.Add(Me.lbl_cheques)
+        Me.tab_sales.Controls.Add(Me.lbl_cash)
+        Me.tab_sales.Controls.Add(Me.lbl_ave_sales_margin)
+        Me.tab_sales.Controls.Add(Me.lbl_avg_sales_amount)
+        Me.tab_sales.Controls.Add(Me.lbl_no_transactions)
+        Me.tab_sales.Controls.Add(Me.lbl_gross_sales)
+        Me.tab_sales.Controls.Add(Me.lbl_totalcost)
         Me.tab_sales.Controls.Add(Me.btn_print)
         Me.tab_sales.Controls.Add(Me.LabelControl11)
         Me.tab_sales.Controls.Add(Me.Panel2)
@@ -377,6 +409,118 @@ Partial Class frm_admin_reports
         Me.tab_sales.Name = "tab_sales"
         Me.tab_sales.Size = New System.Drawing.Size(1368, 557)
         Me.tab_sales.Text = "Sales Over Time"
+        '
+        'lbl_epay
+        '
+        Me.lbl_epay.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_epay.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_epay.Appearance.Options.UseFont = True
+        Me.lbl_epay.Appearance.Options.UseTextOptions = True
+        Me.lbl_epay.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_epay.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_epay.Location = New System.Drawing.Point(649, 529)
+        Me.lbl_epay.Name = "lbl_epay"
+        Me.lbl_epay.Size = New System.Drawing.Size(129, 18)
+        Me.lbl_epay.TabIndex = 22
+        Me.lbl_epay.Text = "E-Pay"
+        '
+        'lbl_cheques
+        '
+        Me.lbl_cheques.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_cheques.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_cheques.Appearance.Options.UseFont = True
+        Me.lbl_cheques.Appearance.Options.UseTextOptions = True
+        Me.lbl_cheques.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_cheques.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_cheques.Location = New System.Drawing.Point(502, 529)
+        Me.lbl_cheques.Name = "lbl_cheques"
+        Me.lbl_cheques.Size = New System.Drawing.Size(125, 18)
+        Me.lbl_cheques.TabIndex = 21
+        Me.lbl_cheques.Text = "Cheque / Terms"
+        '
+        'lbl_cash
+        '
+        Me.lbl_cash.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_cash.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_cash.Appearance.Options.UseFont = True
+        Me.lbl_cash.Appearance.Options.UseTextOptions = True
+        Me.lbl_cash.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_cash.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_cash.Location = New System.Drawing.Point(356, 529)
+        Me.lbl_cash.Name = "lbl_cash"
+        Me.lbl_cash.Size = New System.Drawing.Size(122, 18)
+        Me.lbl_cash.TabIndex = 20
+        Me.lbl_cash.Text = "Cash"
+        '
+        'lbl_ave_sales_margin
+        '
+        Me.lbl_ave_sales_margin.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_ave_sales_margin.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_ave_sales_margin.Appearance.Options.UseFont = True
+        Me.lbl_ave_sales_margin.Appearance.Options.UseTextOptions = True
+        Me.lbl_ave_sales_margin.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.lbl_ave_sales_margin.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_ave_sales_margin.Location = New System.Drawing.Point(1198, 529)
+        Me.lbl_ave_sales_margin.Name = "lbl_ave_sales_margin"
+        Me.lbl_ave_sales_margin.Size = New System.Drawing.Size(148, 18)
+        Me.lbl_ave_sales_margin.TabIndex = 19
+        Me.lbl_ave_sales_margin.Text = "Avg. Margin"
+        '
+        'lbl_avg_sales_amount
+        '
+        Me.lbl_avg_sales_amount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_avg_sales_amount.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_avg_sales_amount.Appearance.Options.UseFont = True
+        Me.lbl_avg_sales_amount.Appearance.Options.UseTextOptions = True
+        Me.lbl_avg_sales_amount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_avg_sales_amount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_avg_sales_amount.Location = New System.Drawing.Point(1054, 529)
+        Me.lbl_avg_sales_amount.Name = "lbl_avg_sales_amount"
+        Me.lbl_avg_sales_amount.Size = New System.Drawing.Size(126, 18)
+        Me.lbl_avg_sales_amount.TabIndex = 18
+        Me.lbl_avg_sales_amount.Text = "Avg. Amount"
+        '
+        'lbl_no_transactions
+        '
+        Me.lbl_no_transactions.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_no_transactions.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_no_transactions.Appearance.Options.UseFont = True
+        Me.lbl_no_transactions.Appearance.Options.UseTextOptions = True
+        Me.lbl_no_transactions.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.lbl_no_transactions.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_no_transactions.Location = New System.Drawing.Point(946, 529)
+        Me.lbl_no_transactions.Name = "lbl_no_transactions"
+        Me.lbl_no_transactions.Size = New System.Drawing.Size(91, 18)
+        Me.lbl_no_transactions.TabIndex = 17
+        Me.lbl_no_transactions.Text = "Transactions"
+        '
+        'lbl_gross_sales
+        '
+        Me.lbl_gross_sales.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_gross_sales.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_gross_sales.Appearance.Options.UseFont = True
+        Me.lbl_gross_sales.Appearance.Options.UseTextOptions = True
+        Me.lbl_gross_sales.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_gross_sales.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_gross_sales.Location = New System.Drawing.Point(798, 529)
+        Me.lbl_gross_sales.Name = "lbl_gross_sales"
+        Me.lbl_gross_sales.Size = New System.Drawing.Size(129, 18)
+        Me.lbl_gross_sales.TabIndex = 16
+        Me.lbl_gross_sales.Text = "Gross Sales"
+        '
+        'lbl_totalcost
+        '
+        Me.lbl_totalcost.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_totalcost.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_totalcost.Appearance.Options.UseFont = True
+        Me.lbl_totalcost.Appearance.Options.UseTextOptions = True
+        Me.lbl_totalcost.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_totalcost.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_totalcost.Location = New System.Drawing.Point(184, 529)
+        Me.lbl_totalcost.Name = "lbl_totalcost"
+        Me.lbl_totalcost.Size = New System.Drawing.Size(136, 18)
+        Me.lbl_totalcost.TabIndex = 15
+        Me.lbl_totalcost.Text = "Total Cost"
         '
         'btn_print
         '
@@ -494,12 +638,12 @@ Partial Class frm_admin_reports
         Me.grid_sales_report.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_sales_report.Location = New System.Drawing.Point(12, 359)
+        Me.grid_sales_report.Location = New System.Drawing.Point(12, 339)
         Me.grid_sales_report.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_sales_report.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_sales_report.MainView = Me.grid_sales_report_view
         Me.grid_sales_report.Name = "grid_sales_report"
-        Me.grid_sales_report.Size = New System.Drawing.Size(1343, 184)
+        Me.grid_sales_report.Size = New System.Drawing.Size(1334, 184)
         Me.grid_sales_report.TabIndex = 0
         Me.grid_sales_report.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_sales_report_view})
         '
@@ -519,9 +663,13 @@ Partial Class frm_admin_reports
         '
         'col_datee
         '
+        Me.col_datee.AppearanceCell.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.col_datee.AppearanceCell.Options.UseForeColor = True
         Me.col_datee.AppearanceCell.Options.UseTextOptions = True
         Me.col_datee.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_datee.Caption = "Date"
+        Me.col_datee.Caption = "Date Released"
+        Me.col_datee.DisplayFormat.FormatString = "d"
+        Me.col_datee.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.col_datee.FieldName = "datee"
         Me.col_datee.MinWidth = 100
         Me.col_datee.Name = "col_datee"
@@ -637,6 +785,136 @@ Partial Class frm_admin_reports
         Me.col_avg_sales_margin.VisibleIndex = 8
         Me.col_avg_sales_margin.Width = 150
         '
+        'tab_transactions
+        '
+        Me.tab_transactions.Controls.Add(Me.LabelControl12)
+        Me.tab_transactions.Controls.Add(Me.grid_transaction)
+        Me.tab_transactions.Name = "tab_transactions"
+        Me.tab_transactions.Size = New System.Drawing.Size(1368, 557)
+        Me.tab_transactions.Text = "Sales Per Transaction"
+        '
+        'LabelControl12
+        '
+        Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl12.Appearance.Options.UseFont = True
+        Me.LabelControl12.Location = New System.Drawing.Point(16, 34)
+        Me.LabelControl12.Name = "LabelControl12"
+        Me.LabelControl12.Size = New System.Drawing.Size(287, 33)
+        Me.LabelControl12.TabIndex = 17
+        Me.LabelControl12.Text = "Sales Per Transaction"
+        '
+        'grid_transaction
+        '
+        Me.grid_transaction.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_transaction.Location = New System.Drawing.Point(16, 98)
+        Me.grid_transaction.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_transaction.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_transaction.MainView = Me.grid_transaction_view
+        Me.grid_transaction.Name = "grid_transaction"
+        Me.grid_transaction.Size = New System.Drawing.Size(1334, 445)
+        Me.grid_transaction.TabIndex = 16
+        Me.grid_transaction.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transaction_view})
+        '
+        'grid_transaction_view
+        '
+        Me.grid_transaction_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.grid_transaction_view.Appearance.HeaderPanel.Options.UseFont = True
+        Me.grid_transaction_view.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.grid_transaction_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.grid_transaction_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.grid_transaction_view.Appearance.Row.Options.UseFont = True
+        Me.grid_transaction_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn30, Me.GridColumn7, Me.GridColumn17, Me.GridColumn28, Me.GridColumn26, Me.GridColumn31, Me.GridColumn27})
+        Me.grid_transaction_view.GridControl = Me.grid_transaction
+        Me.grid_transaction_view.Name = "grid_transaction_view"
+        Me.grid_transaction_view.OptionsBehavior.Editable = False
+        Me.grid_transaction_view.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumn30
+        '
+        Me.GridColumn30.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn30.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn30.Caption = "Order ID"
+        Me.GridColumn30.FieldName = "order_id"
+        Me.GridColumn30.MaxWidth = 150
+        Me.GridColumn30.Name = "GridColumn30"
+        Me.GridColumn30.Visible = True
+        Me.GridColumn30.VisibleIndex = 0
+        Me.GridColumn30.Width = 150
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn7.Caption = "Date Released"
+        Me.GridColumn7.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.GridColumn7.FieldName = "released_date"
+        Me.GridColumn7.MinWidth = 100
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.Visible = True
+        Me.GridColumn7.VisibleIndex = 1
+        Me.GridColumn7.Width = 100
+        '
+        'GridColumn17
+        '
+        Me.GridColumn17.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn17.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.GridColumn17.Caption = "Total Cost of Sale"
+        Me.GridColumn17.DisplayFormat.FormatString = "n2"
+        Me.GridColumn17.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn17.FieldName = "total_cost"
+        Me.GridColumn17.MaxWidth = 150
+        Me.GridColumn17.Name = "GridColumn17"
+        Me.GridColumn17.Visible = True
+        Me.GridColumn17.VisibleIndex = 2
+        Me.GridColumn17.Width = 138
+        '
+        'GridColumn28
+        '
+        Me.GridColumn28.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn28.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.GridColumn28.Caption = "Gross Sales"
+        Me.GridColumn28.DisplayFormat.FormatString = "n2"
+        Me.GridColumn28.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn28.FieldName = "gross_sales"
+        Me.GridColumn28.MaxWidth = 150
+        Me.GridColumn28.Name = "GridColumn28"
+        Me.GridColumn28.Visible = True
+        Me.GridColumn28.VisibleIndex = 3
+        Me.GridColumn28.Width = 129
+        '
+        'GridColumn26
+        '
+        Me.GridColumn26.Caption = "Net Sales"
+        Me.GridColumn26.FieldName = "net_sales"
+        Me.GridColumn26.Name = "GridColumn26"
+        Me.GridColumn26.Visible = True
+        Me.GridColumn26.VisibleIndex = 4
+        '
+        'GridColumn31
+        '
+        Me.GridColumn31.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn31.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn31.Caption = "Sales Margin"
+        Me.GridColumn31.DisplayFormat.FormatString = "p0"
+        Me.GridColumn31.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn31.FieldName = "sales_margin"
+        Me.GridColumn31.MaxWidth = 150
+        Me.GridColumn31.Name = "GridColumn31"
+        Me.GridColumn31.Visible = True
+        Me.GridColumn31.VisibleIndex = 5
+        Me.GridColumn31.Width = 150
+        '
+        'GridColumn27
+        '
+        Me.GridColumn27.Caption = "Coordinator"
+        Me.GridColumn27.FieldName = "coordinator"
+        Me.GridColumn27.Name = "GridColumn27"
+        Me.GridColumn27.Visible = True
+        Me.GridColumn27.VisibleIndex = 6
+        '
         'tab_users
         '
         Me.tab_users.Controls.Add(Me.SplitContainer3)
@@ -666,6 +944,22 @@ Partial Class frm_admin_reports
         Me.SplitContainer3.SplitterDistance = 672
         Me.SplitContainer3.TabIndex = 12
         '
+        'btn_print_sales_coordinator
+        '
+        Me.btn_print_sales_coordinator.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print_sales_coordinator.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print_sales_coordinator.Appearance.Options.UseFont = True
+        Me.btn_print_sales_coordinator.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
+        Me.btn_print_sales_coordinator.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print_sales_coordinator.ImageOptions.ImageToTextIndent = 10
+        Me.btn_print_sales_coordinator.Location = New System.Drawing.Point(565, 9)
+        Me.btn_print_sales_coordinator.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_print_sales_coordinator.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print_sales_coordinator.Name = "btn_print_sales_coordinator"
+        Me.btn_print_sales_coordinator.Size = New System.Drawing.Size(98, 29)
+        Me.btn_print_sales_coordinator.TabIndex = 13
+        Me.btn_print_sales_coordinator.Text = "Print"
+        '
         'LabelControl4
         '
         Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -675,6 +969,22 @@ Partial Class frm_admin_reports
         Me.LabelControl4.Size = New System.Drawing.Size(248, 33)
         Me.LabelControl4.TabIndex = 12
         Me.LabelControl4.Text = "Sales Coordinators"
+        '
+        'btn_print_sales_agent
+        '
+        Me.btn_print_sales_agent.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print_sales_agent.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print_sales_agent.Appearance.Options.UseFont = True
+        Me.btn_print_sales_agent.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
+        Me.btn_print_sales_agent.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print_sales_agent.ImageOptions.ImageToTextIndent = 10
+        Me.btn_print_sales_agent.Location = New System.Drawing.Point(558, 9)
+        Me.btn_print_sales_agent.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_print_sales_agent.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print_sales_agent.Name = "btn_print_sales_agent"
+        Me.btn_print_sales_agent.Size = New System.Drawing.Size(98, 29)
+        Me.btn_print_sales_agent.TabIndex = 14
+        Me.btn_print_sales_agent.Text = "Print"
         '
         'LabelControl5
         '
@@ -976,6 +1286,22 @@ Partial Class frm_admin_reports
         Me.SplitContainer4.SplitterDistance = 672
         Me.SplitContainer4.TabIndex = 15
         '
+        'btn_print_perf_coor
+        '
+        Me.btn_print_perf_coor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print_perf_coor.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print_perf_coor.Appearance.Options.UseFont = True
+        Me.btn_print_perf_coor.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
+        Me.btn_print_perf_coor.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print_perf_coor.ImageOptions.ImageToTextIndent = 10
+        Me.btn_print_perf_coor.Location = New System.Drawing.Point(561, 9)
+        Me.btn_print_perf_coor.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_print_perf_coor.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print_perf_coor.Name = "btn_print_perf_coor"
+        Me.btn_print_perf_coor.Size = New System.Drawing.Size(98, 29)
+        Me.btn_print_perf_coor.TabIndex = 17
+        Me.btn_print_perf_coor.Text = "Print"
+        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.LabelControl8)
@@ -1053,6 +1379,22 @@ Partial Class frm_admin_reports
         Me.cbb_coordinator.Size = New System.Drawing.Size(162, 26)
         Me.cbb_coordinator.TabIndex = 13
         '
+        'btn_print_perf_agnet
+        '
+        Me.btn_print_perf_agnet.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print_perf_agnet.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print_perf_agnet.Appearance.Options.UseFont = True
+        Me.btn_print_perf_agnet.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
+        Me.btn_print_perf_agnet.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print_perf_agnet.ImageOptions.ImageToTextIndent = 10
+        Me.btn_print_perf_agnet.Location = New System.Drawing.Point(554, 9)
+        Me.btn_print_perf_agnet.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_print_perf_agnet.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print_perf_agnet.Name = "btn_print_perf_agnet"
+        Me.btn_print_perf_agnet.Size = New System.Drawing.Size(98, 29)
+        Me.btn_print_perf_agnet.TabIndex = 18
+        Me.btn_print_perf_agnet.Text = "Print"
+        '
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.LabelControl10)
@@ -1102,7 +1444,7 @@ Partial Class frm_admin_reports
         '
         Me.lbl_agent.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_agent.Appearance.Options.UseFont = True
-        Me.lbl_agent.Location = New System.Drawing.Point(304, 9)
+        Me.lbl_agent.Location = New System.Drawing.Point(285, 9)
         Me.lbl_agent.Name = "lbl_agent"
         Me.lbl_agent.Size = New System.Drawing.Size(65, 20)
         Me.lbl_agent.TabIndex = 17
@@ -1113,15 +1455,15 @@ Partial Class frm_admin_reports
         '
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl6.Appearance.Options.UseFont = True
-        Me.LabelControl6.Location = New System.Drawing.Point(3, 9)
+        Me.LabelControl6.Location = New System.Drawing.Point(6, 9)
         Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(127, 20)
+        Me.LabelControl6.Size = New System.Drawing.Size(87, 20)
         Me.LabelControl6.TabIndex = 16
-        Me.LabelControl6.Text = "Sales Coordinator"
+        Me.LabelControl6.Text = "Sales Agent"
         '
         'cbb_agent
         '
-        Me.cbb_agent.Location = New System.Drawing.Point(136, 6)
+        Me.cbb_agent.Location = New System.Drawing.Point(108, 6)
         Me.cbb_agent.Name = "cbb_agent"
         Me.cbb_agent.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cbb_agent.Properties.Appearance.Options.UseFont = True
@@ -1173,6 +1515,7 @@ Partial Class frm_admin_reports
         'chart_perf_agent
         '
         Me.chart_perf_agent.AppearanceNameSerializable = "Light"
+        Me.chart_perf_agent.AutoLayout = False
         Me.chart_perf_agent.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.[False]
         XyDiagram5.AxisX.VisibleInPanesSerializable = "-1"
         XyDiagram5.AxisY.VisibleInPanesSerializable = "-1"
@@ -1187,7 +1530,10 @@ Partial Class frm_admin_reports
         Me.chart_perf_agent.Name = "chart_perf_agent"
         Me.chart_perf_agent.PaletteBaseColorNumber = 5
         Me.chart_perf_agent.PaletteName = "Module"
+        SideBySideBarSeriesLabel1.TextPattern = "{A:MM/dd/yyyy}"
+        Series5.Label = SideBySideBarSeriesLabel1
         Series5.Name = "agents"
+        Series5.ToolTipSeriesPattern = ""
         Me.chart_perf_agent.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series5}
         Me.chart_perf_agent.Size = New System.Drawing.Size(668, 258)
         Me.chart_perf_agent.TabIndex = 9
@@ -1241,7 +1587,9 @@ Partial Class frm_admin_reports
         '
         Me.col_dt.AppearanceCell.Options.UseTextOptions = True
         Me.col_dt.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_dt.Caption = "Date"
+        Me.col_dt.Caption = "Date Released"
+        Me.col_dt.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.col_dt.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.col_dt.FieldName = "datee"
         Me.col_dt.Name = "col_dt"
         Me.col_dt.Visible = True
@@ -1330,7 +1678,9 @@ Partial Class frm_admin_reports
         '
         Me.GridColumn12.AppearanceCell.Options.UseTextOptions = True
         Me.GridColumn12.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn12.Caption = "Date"
+        Me.GridColumn12.Caption = "Date Released"
+        Me.GridColumn12.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn12.FieldName = "datee"
         Me.GridColumn12.Name = "GridColumn12"
         Me.GridColumn12.Visible = True
@@ -1409,6 +1759,22 @@ Partial Class frm_admin_reports
         Me.tab_product.Name = "tab_product"
         Me.tab_product.Size = New System.Drawing.Size(1368, 557)
         Me.tab_product.Text = "Product Performance"
+        '
+        'btn_print_product
+        '
+        Me.btn_print_product.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print_product.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print_product.Appearance.Options.UseFont = True
+        Me.btn_print_product.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_32x322
+        Me.btn_print_product.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print_product.ImageOptions.ImageToTextIndent = 10
+        Me.btn_print_product.Location = New System.Drawing.Point(1173, 11)
+        Me.btn_print_product.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_print_product.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print_product.Name = "btn_print_product"
+        Me.btn_print_product.Size = New System.Drawing.Size(173, 44)
+        Me.btn_print_product.TabIndex = 14
+        Me.btn_print_product.Text = "Print / Export"
         '
         'lbl_prod_name
         '
@@ -1627,6 +1993,8 @@ Partial Class frm_admin_reports
         Me.dt_start.Properties.Appearance.Options.UseFont = True
         Me.dt_start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dt_start.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dt_start.Properties.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.dt_start.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dt_start.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.dt_start.Size = New System.Drawing.Size(109, 26)
         Me.dt_start.TabIndex = 1
@@ -1640,6 +2008,8 @@ Partial Class frm_admin_reports
         Me.dt_end.Properties.Appearance.Options.UseFont = True
         Me.dt_end.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dt_end.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dt_end.Properties.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.dt_end.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dt_end.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.dt_end.Size = New System.Drawing.Size(114, 26)
         Me.dt_end.TabIndex = 2
@@ -2252,86 +2622,6 @@ Partial Class frm_admin_reports
         Me.GunaLabel1.TabIndex = 1
         Me.GunaLabel1.Text = "Reports"
         '
-        'btn_print_sales_coordinator
-        '
-        Me.btn_print_sales_coordinator.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_print_sales_coordinator.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_print_sales_coordinator.Appearance.Options.UseFont = True
-        Me.btn_print_sales_coordinator.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
-        Me.btn_print_sales_coordinator.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_print_sales_coordinator.ImageOptions.ImageToTextIndent = 10
-        Me.btn_print_sales_coordinator.Location = New System.Drawing.Point(565, 9)
-        Me.btn_print_sales_coordinator.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_print_sales_coordinator.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_print_sales_coordinator.Name = "btn_print_sales_coordinator"
-        Me.btn_print_sales_coordinator.Size = New System.Drawing.Size(98, 29)
-        Me.btn_print_sales_coordinator.TabIndex = 13
-        Me.btn_print_sales_coordinator.Text = "Print"
-        '
-        'btn_print_sales_agent
-        '
-        Me.btn_print_sales_agent.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_print_sales_agent.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_print_sales_agent.Appearance.Options.UseFont = True
-        Me.btn_print_sales_agent.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
-        Me.btn_print_sales_agent.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_print_sales_agent.ImageOptions.ImageToTextIndent = 10
-        Me.btn_print_sales_agent.Location = New System.Drawing.Point(558, 9)
-        Me.btn_print_sales_agent.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_print_sales_agent.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_print_sales_agent.Name = "btn_print_sales_agent"
-        Me.btn_print_sales_agent.Size = New System.Drawing.Size(98, 29)
-        Me.btn_print_sales_agent.TabIndex = 14
-        Me.btn_print_sales_agent.Text = "Print"
-        '
-        'btn_print_perf_coor
-        '
-        Me.btn_print_perf_coor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_print_perf_coor.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_print_perf_coor.Appearance.Options.UseFont = True
-        Me.btn_print_perf_coor.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
-        Me.btn_print_perf_coor.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_print_perf_coor.ImageOptions.ImageToTextIndent = 10
-        Me.btn_print_perf_coor.Location = New System.Drawing.Point(561, 9)
-        Me.btn_print_perf_coor.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_print_perf_coor.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_print_perf_coor.Name = "btn_print_perf_coor"
-        Me.btn_print_perf_coor.Size = New System.Drawing.Size(98, 29)
-        Me.btn_print_perf_coor.TabIndex = 17
-        Me.btn_print_perf_coor.Text = "Print"
-        '
-        'btn_print_perf_agnet
-        '
-        Me.btn_print_perf_agnet.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_print_perf_agnet.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_print_perf_agnet.Appearance.Options.UseFont = True
-        Me.btn_print_perf_agnet.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
-        Me.btn_print_perf_agnet.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_print_perf_agnet.ImageOptions.ImageToTextIndent = 10
-        Me.btn_print_perf_agnet.Location = New System.Drawing.Point(554, 9)
-        Me.btn_print_perf_agnet.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_print_perf_agnet.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_print_perf_agnet.Name = "btn_print_perf_agnet"
-        Me.btn_print_perf_agnet.Size = New System.Drawing.Size(98, 29)
-        Me.btn_print_perf_agnet.TabIndex = 18
-        Me.btn_print_perf_agnet.Text = "Print"
-        '
-        'btn_print_product
-        '
-        Me.btn_print_product.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_print_product.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_print_product.Appearance.Options.UseFont = True
-        Me.btn_print_product.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_32x322
-        Me.btn_print_product.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_print_product.ImageOptions.ImageToTextIndent = 10
-        Me.btn_print_product.Location = New System.Drawing.Point(1173, 11)
-        Me.btn_print_product.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_print_product.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_print_product.Name = "btn_print_product"
-        Me.btn_print_product.Size = New System.Drawing.Size(173, 44)
-        Me.btn_print_product.TabIndex = 14
-        Me.btn_print_product.Text = "Print / Export"
-        '
         'frm_admin_reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2342,7 +2632,7 @@ Partial Class frm_admin_reports
         Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "frm_admin_reports"
-        Me.Text = "frm_admin_reports"
+        Me.Text = " "
         CType(Me.TabControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl.ResumeLayout(False)
         Me.tab_sales.ResumeLayout(False)
@@ -2355,6 +2645,10 @@ Partial Class frm_admin_reports
         CType(Me.chart_sales, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_sales_report, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_sales_report_view, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_transactions.ResumeLayout(False)
+        Me.tab_transactions.PerformLayout()
+        CType(Me.grid_transaction, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_transaction_view, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_users.ResumeLayout(False)
         Me.SplitContainer3.Panel1.ResumeLayout(False)
         Me.SplitContainer3.Panel1.PerformLayout()
@@ -2401,6 +2695,7 @@ Partial Class frm_admin_reports
         CType(Series4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chart_perf_coordinator, System.ComponentModel.ISupportInitialize).EndInit()
         CType(XyDiagram5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Series5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chart_perf_agent, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer6.Panel1.ResumeLayout(False)
@@ -2557,4 +2852,23 @@ Partial Class frm_admin_reports
     Friend WithEvents btn_print_perf_coor As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_print_perf_agnet As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_print_product As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents tab_transactions As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents grid_transaction As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grid_transaction_view As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn30 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn17 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn28 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn26 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn31 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn27 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_ave_sales_margin As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_avg_sales_amount As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_no_transactions As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_gross_sales As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_totalcost As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_epay As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_cheques As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_cash As DevExpress.XtraEditors.LabelControl
 End Class

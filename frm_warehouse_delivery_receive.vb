@@ -165,7 +165,7 @@ Public Class frm_warehouse_delivery_receive
                 deliveries_cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
                 deliveries_cmd.Parameters.AddWithValue("@userid", frm_main.user_id.Text)
                 deliveries_cmd.Parameters.AddWithValue("@date_received", date_receieved)
-                deliveries_cmd.Parameters.AddWithValue("@store", frm_main.user_store.Text)
+                deliveries_cmd.Parameters.AddWithValue("@store", cbb_deliver.Text)
                 deliveries_cmd.Parameters.AddWithValue("@receipt_id", receipt_id)
                 deliveries_cmd.Parameters.AddWithValue("@cost", 0.00)
                 deliveries_cmd.Prepare()

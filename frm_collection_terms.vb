@@ -26,7 +26,8 @@ Public Class frm_collection_terms
                 Dim query = "SELECT status, order_id, date_ordered, shipping_method, ims_customers.first_name as customer, ims_users.first_name as agent, ims_customers.terms, amount_due, IFNULL(payment_status, 'UNPAID') as payment_status FROM ims_orders
                         INNER JOIN ims_customers ON ims_orders.customer=ims_customers.customer_id
                         INNER JOIN ims_users ON ims_orders.agent=ims_users.usr_id
-                        WHERE payment_type='terms' AND (payment_status IS NULL OR NOT payment_status = 'PAID') AND NOT status='Cancelled' AND ims_orders.deleted='0'"
+                        WHERE payment_type='terms' AND (payment_status IS NULL OR NOT payment_status = 'PAID') AND NOT status='Cancelled' AND ims_orders.deleted='0'
+                        ORDER BY order_id DESC"
                 Dim cmd = New MySqlCommand(query, conn)
                 Dim rdr As MySqlDataReader = cmd.ExecuteReader()
 

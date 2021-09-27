@@ -60,6 +60,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.btn_view = New Guna.UI.WinForms.GunaButton()
         Me.dt_start = New Guna.UI.WinForms.GunaDateTimePicker()
+        Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -406,12 +407,27 @@ Partial Class frm_warehouse_delivery_logs
         Me.dt_start.Text = "October 20, 2020"
         Me.dt_start.Value = New Date(2020, 10, 20, 11, 17, 55, 279)
         '
+        'btn_print
+        '
+        Me.btn_print.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print.Appearance.Options.UseFont = True
+        Me.btn_print.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_32x322
+        Me.btn_print.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print.ImageOptions.ImageToTextIndent = 5
+        Me.btn_print.Location = New System.Drawing.Point(1164, 97)
+        Me.btn_print.Name = "btn_print"
+        Me.btn_print.Size = New System.Drawing.Size(123, 46)
+        Me.btn_print.TabIndex = 24
+        Me.btn_print.Text = "Print"
+        '
         'frm_warehouse_delivery_logs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1299, 636)
+        Me.Controls.Add(Me.btn_print)
         Me.Controls.Add(Me.dt_end)
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.LabelControl1)
@@ -459,4 +475,5 @@ Partial Class frm_warehouse_delivery_logs
     Friend WithEvents col_supplier As GridColumn
     Friend WithEvents col_description As GridColumn
     Friend WithEvents col_cost As GridColumn
+    Friend WithEvents btn_print As SimpleButton
 End Class

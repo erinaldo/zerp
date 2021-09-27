@@ -1173,4 +1173,10 @@ Public Class frm_purchaseorder_edit
         grid_order.DataSource = dt
     End Sub
 
+    'Sort
+    Private Sub grid_order_Sorted(sender As Object, e As EventArgs) Handles grid_order.Sorted
+        Dim dt = DirectCast(grid_order.DataSource, DataTable)
+        dt.DefaultView.Sort = "winmodel ASC"
+        grid_order.DataSource = dt.DefaultView.ToTable
+    End Sub
 End Class

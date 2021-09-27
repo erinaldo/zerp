@@ -44,6 +44,7 @@ Public Class frm_admin_users_role
 
                     'Sales
                     Case "orders" : cb_orders.Checked = True
+                    Case "quotations" : cb_quotations.Checked = True
                     Case "create_order" : cb_create_order.Checked = True
                     Case "customers" : cb_customers.Checked = True
                     Case "packing_list" : cb_packing_list.Checked = True
@@ -111,6 +112,7 @@ Public Class frm_admin_users_role
 
         'Sales
         If cb_orders.Checked Then access += "orders;"
+        If cb_quotations.Checked Then access += "quotations;"
         If cb_create_order.Checked Then access += "create_order;"
         If cb_customers.Checked Then access += "customers;"
         If cb_packing_list.Checked Then access += "packing_list;"

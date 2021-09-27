@@ -64,14 +64,15 @@ Public Class frm_collection_epayment
                                                  If(amount_due > IFNULL(paid_amount, 0) + @paid_amount, 'PARTIAL',''))), 
                                 paid_amount=IFNULL(paid_amount,0)+@paid_amount,
                                 status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) 
-                                WHERE order_id=@order_id; 
-                                INSERT INTO ims_orders_payment (order_id, amount_tendered, payment_option, reference, created_at) 
-                                VALUES (@order_id, @paid_amount, @option, @details, CURRENT_TIMESTAMP)", conn)
+                                WHERE order_id=@order_id", conn)
                 cmd.Parameters.AddWithValue("@order_id", lbl_orderid.Text)
                 cmd.Parameters.AddWithValue("@option", payment_option)
                 cmd.Parameters.AddWithValue("@paid_amount", CDec(txt_amount_tendered.Text))
                 cmd.Parameters.AddWithValue("@details", reference)
-                cmd.ExecuteNonQuery()
+                'cmd.ExecuteNonQuery()
+
+                'INSERT TO PAYMENT LOGS
+                Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, lbl_amount_due.Text, txt_amount_tendered.Text, lbl_balance.Text, payment_option, reference)
 
                 MsgBox("Successful Transaction!", vbInformation, "Information")
 

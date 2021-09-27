@@ -48,8 +48,9 @@ Partial Class frm_main
         Me.submenu_import_catalogue = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_export_catalogue = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_sales = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_orders = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_create_order = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_orders = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_quotations = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_customers = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegisteredCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -101,6 +102,7 @@ Partial Class frm_main
         Me.user_photo = New Guna.UI.WinForms.GunaCirclePictureBox()
         Me.bgw_main = New System.ComponentModel.BackgroundWorker()
         Me.Guna2Elipse = New Guna.UI2.WinForms.Guna2Elipse(Me.components)
+        Me.submenu_po_returns = New System.Windows.Forms.ToolStripMenuItem()
         Me.panel_main.SuspendLayout()
         Me.panel_top.SuspendLayout()
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -248,17 +250,10 @@ Partial Class frm_main
         '
         'menu_sales
         '
-        Me.menu_sales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_orders, Me.submenu_create_order, Me.submenu_customers, Me.submenu_packing_list, Me.submenu_invoices, Me.submenu_logistics})
+        Me.menu_sales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_create_order, Me.submenu_orders, Me.submenu_quotations, Me.submenu_customers, Me.submenu_packing_list, Me.submenu_invoices, Me.submenu_logistics})
         Me.menu_sales.Name = "menu_sales"
         Me.menu_sales.Size = New System.Drawing.Size(55, 24)
         Me.menu_sales.Text = "Sales"
-        '
-        'submenu_orders
-        '
-        Me.submenu_orders.Name = "submenu_orders"
-        Me.submenu_orders.Size = New System.Drawing.Size(204, 24)
-        Me.submenu_orders.Text = "Orders"
-        Me.submenu_orders.Visible = False
         '
         'submenu_create_order
         '
@@ -266,6 +261,20 @@ Partial Class frm_main
         Me.submenu_create_order.Size = New System.Drawing.Size(204, 24)
         Me.submenu_create_order.Text = "New Order"
         Me.submenu_create_order.Visible = False
+        '
+        'submenu_orders
+        '
+        Me.submenu_orders.Name = "submenu_orders"
+        Me.submenu_orders.Size = New System.Drawing.Size(204, 24)
+        Me.submenu_orders.Text = "Sales Orders"
+        Me.submenu_orders.Visible = False
+        '
+        'submenu_quotations
+        '
+        Me.submenu_quotations.Name = "submenu_quotations"
+        Me.submenu_quotations.Size = New System.Drawing.Size(204, 24)
+        Me.submenu_quotations.Text = "Quotations"
+        Me.submenu_quotations.Visible = False
         '
         'submenu_customers
         '
@@ -442,7 +451,7 @@ Partial Class frm_main
         '
         'menu_purchasing
         '
-        Me.menu_purchasing.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_purchasing_new, Me.submenu_purchasing_orders})
+        Me.menu_purchasing.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_purchasing_new, Me.submenu_purchasing_orders, Me.submenu_po_returns})
         Me.menu_purchasing.Name = "menu_purchasing"
         Me.menu_purchasing.Size = New System.Drawing.Size(92, 24)
         Me.menu_purchasing.Text = "Purchasing"
@@ -450,14 +459,14 @@ Partial Class frm_main
         'submenu_purchasing_new
         '
         Me.submenu_purchasing_new.Name = "submenu_purchasing_new"
-        Me.submenu_purchasing_new.Size = New System.Drawing.Size(184, 24)
+        Me.submenu_purchasing_new.Size = New System.Drawing.Size(189, 24)
         Me.submenu_purchasing_new.Text = "New Purchase"
         Me.submenu_purchasing_new.Visible = False
         '
         'submenu_purchasing_orders
         '
         Me.submenu_purchasing_orders.Name = "submenu_purchasing_orders"
-        Me.submenu_purchasing_orders.Size = New System.Drawing.Size(184, 24)
+        Me.submenu_purchasing_orders.Size = New System.Drawing.Size(189, 24)
         Me.submenu_purchasing_orders.Text = "Purchase Orders"
         Me.submenu_purchasing_orders.Visible = False
         '
@@ -471,42 +480,42 @@ Partial Class frm_main
         'submenu_user_accounts
         '
         Me.submenu_user_accounts.Name = "submenu_user_accounts"
-        Me.submenu_user_accounts.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_user_accounts.Size = New System.Drawing.Size(171, 24)
         Me.submenu_user_accounts.Text = "User Accounts"
         Me.submenu_user_accounts.Visible = False
         '
         'submenu_approvals
         '
         Me.submenu_approvals.Name = "submenu_approvals"
-        Me.submenu_approvals.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_approvals.Size = New System.Drawing.Size(171, 24)
         Me.submenu_approvals.Text = "Approvals"
         Me.submenu_approvals.Visible = False
         '
         'submenu_price_books
         '
         Me.submenu_price_books.Name = "submenu_price_books"
-        Me.submenu_price_books.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_price_books.Size = New System.Drawing.Size(171, 24)
         Me.submenu_price_books.Text = "Price Book"
         Me.submenu_price_books.Visible = False
         '
         'submenu_reports
         '
         Me.submenu_reports.Name = "submenu_reports"
-        Me.submenu_reports.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_reports.Size = New System.Drawing.Size(171, 24)
         Me.submenu_reports.Text = "Reports"
         Me.submenu_reports.Visible = False
         '
         'submenu_banks
         '
         Me.submenu_banks.Name = "submenu_banks"
-        Me.submenu_banks.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_banks.Size = New System.Drawing.Size(171, 24)
         Me.submenu_banks.Text = "Banks"
         '
         'submenu_warehouse
         '
         Me.submenu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu2_new_warehouse, Me.submenu2_registered_warehouse})
         Me.submenu_warehouse.Name = "submenu_warehouse"
-        Me.submenu_warehouse.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_warehouse.Size = New System.Drawing.Size(171, 24)
         Me.submenu_warehouse.Text = "Warehouse"
         Me.submenu_warehouse.Visible = False
         '
@@ -526,7 +535,7 @@ Partial Class frm_main
         '
         Me.submenu_suppliers.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewSupplierToolStripMenuItem, Me.RegisteredSupplierToolStripMenuItem})
         Me.submenu_suppliers.Name = "submenu_suppliers"
-        Me.submenu_suppliers.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_suppliers.Size = New System.Drawing.Size(171, 24)
         Me.submenu_suppliers.Text = "Suppliers"
         Me.submenu_suppliers.Visible = False
         '
@@ -545,7 +554,7 @@ Partial Class frm_main
         'submenu_settings
         '
         Me.submenu_settings.Name = "submenu_settings"
-        Me.submenu_settings.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_settings.Size = New System.Drawing.Size(171, 24)
         Me.submenu_settings.Text = "Settings"
         Me.submenu_settings.Visible = False
         '
@@ -645,6 +654,12 @@ Partial Class frm_main
         Me.Guna2Elipse.BorderRadius = 10
         Me.Guna2Elipse.TargetControl = Me.user_store
         '
+        'submenu_po_returns
+        '
+        Me.submenu_po_returns.Name = "submenu_po_returns"
+        Me.submenu_po_returns.Size = New System.Drawing.Size(189, 24)
+        Me.submenu_po_returns.Text = "Purchase Returns"
+        '
         'frm_main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -740,4 +755,6 @@ Partial Class frm_main
     Private WithEvents PictureEdit1 As PictureEdit
     Friend WithEvents submenu_banks As ToolStripMenuItem
     Friend WithEvents submenu_reports As ToolStripMenuItem
+    Friend WithEvents submenu_quotations As ToolStripMenuItem
+    Friend WithEvents submenu_po_returns As ToolStripMenuItem
 End Class

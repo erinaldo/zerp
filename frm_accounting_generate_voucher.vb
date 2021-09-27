@@ -53,7 +53,6 @@ Public Class frm_accounting_generate_voucher
     Private Sub print_voucher(id As Integer)
         Dim report = New doc_payment_voucher()
         Dim printTool = New ReportPrintTool(report)
-        Dim rdr As MySqlDataReader
         Dim table = New PrintData
 
         Dim conn As New MySqlConnection(str)
@@ -62,61 +61,79 @@ Public Class frm_accounting_generate_voucher
         Try
 
             conn.Open()
+
+            'GET VOUCHER DETAILS
             Dim query = "SELECT ims_suppliers.supplier, receipts, collection_ref, creation_date, receipts, ims_users.first_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info  FROM ims_payment_vouchers
                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier
                         INNER JOIN ims_users ON ims_users.usr_id=ims_payment_vouchers.generated_by
                         WHERE payment_id=@payment_id"
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@payment_id", id)
-            rdr = cmd.ExecuteReader
+            Using cmd = New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@payment_id", id)
+                Using rdr_details = cmd.ExecuteReader
+                    While rdr_details.Read
+                        voucher_date = rdr_details("creation_date")
+                        collection_ref = rdr_details("collection_ref")
+                        supplier = rdr_details("supplier")
+                        collection_ref = rdr_details("collection_ref")
+                        generated_by = rdr_details("first_name")
+                        store_info = rdr_details("store_info")
 
-            While rdr.Read
-                voucher_date = rdr("creation_date")
-                collection_ref = rdr("collection_ref")
-                supplier = rdr("supplier")
-                collection_ref = rdr("collection_ref")
-                generated_by = rdr("first_name")
-                store_info = rdr("store_info")
+                        receipts = rdr_details("receipts").ToString.Split(",")
 
-                receipts = rdr("receipts").ToString.Split(",")
+                    End While
+                End Using
+            End Using
 
-            End While
-            rdr.Close()
 
-            'Get Receipt Data
-            Dim get_receipt = New MySqlCommand("SELECT CONCAT('PO', LPAD(ims_delivery_receipts.purchase_id, 5, 0)) as purchase_id, receipt_type, receipt_ref, received_date, ims_purchase.terms,
+            'GET RECEIPTS DATA
+            Using get_receipt = New MySqlCommand("SELECT CONCAT('PO', LPAD(ims_delivery_receipts.purchase_id, 5, 0)) as purchase_id, receipt_type, receipt_ref, received_date, ims_purchase.terms,
                                         payment_cheque, payment_dates, ims_delivery_receipts.amount, ims_generated_cheques.bank,
                                         DATE_ADD(received_date, INTERVAL ims_purchase.terms DAY) as due_date FROM ims_delivery_receipts 
                                         INNER JOIN ims_purchase ON ims_purchase.purchase_id=ims_delivery_receipts.purchase_id
                                         INNER JOIN ims_generated_cheques ON ims_generated_cheques.id=ims_delivery_receipts.cheque_id 
                                         WHERE payment_ref=@ref ORDER BY receipt_ref ASC", conn)
-            get_receipt.Parameters.AddWithValue("@ref", id)
-            Dim reader = get_receipt.ExecuteReader
+                get_receipt.Parameters.AddWithValue("@ref", id)
+                Using reader = get_receipt.ExecuteReader
+                    While reader.Read
+                        table.payment_voucher.Rows.Add(reader("purchase_id"),
+                                                       reader("received_date"),
+                                                       reader("terms"),
+                                                       reader("payment_cheque"),
+                                                       reader("payment_dates"),
+                                                       reader("amount"),
+                                                       reader("bank"),
+                                                       reader("due_date"),
+                                                       reader("receipt_type"),
+                                                       reader("receipt_ref"))
+                    End While
+                End Using
+            End Using
 
-            While reader.Read
-                table.payment_voucher.Rows.Add(reader("purchase_id"),
-                                               reader("received_date"),
-                                               reader("terms"),
-                                               reader("payment_cheque"),
-                                               reader("payment_dates"),
-                                               reader("amount"),
-                                               reader("bank"),
-                                               reader("due_date"),
-                                               reader("receipt_type"),
-                                               reader("receipt_ref"))
-            End While
-            reader.Close()
+            Dim cheque_no As String = String.Empty
 
             'Get Cheque Total No. and Details
-            Dim get_cheque = New MySqlCommand("SELECT bank, cheque_no, cheque_date, ims_generated_cheques.amount FROM ims_generated_cheques 
+            Using get_cheque = New MySqlCommand("SELECT bank, cheque_no, cheque_date, ims_generated_cheques.amount FROM ims_generated_cheques 
                                 INNER JOIN ims_delivery_receipts ON ims_delivery_receipts.payment_cheque=cheque_no
                                 WHERE payment_ref=@ref GROUP BY cheque_no, bank, ims_generated_cheques.amount, cheque_date", conn)
-            get_cheque.Parameters.AddWithValue("@ref", id)
-            Dim rdr_cheque = get_cheque.ExecuteReader
+                get_cheque.Parameters.AddWithValue("@ref", id)
+                Using rdr_cheque = get_cheque.ExecuteReader
+                    While rdr_cheque.Read
+                        table.payment_voucher_cheque.Rows.Add(rdr_cheque("bank"), rdr_cheque("cheque_no"), rdr_cheque("cheque_date"), rdr_cheque("amount"))
+                        cheque_no = rdr_cheque("cheque_no")
+                    End While
+                End Using
+            End Using
 
-            While rdr_cheque.Read
-                table.payment_voucher_cheque.Rows.Add(rdr_cheque("bank"), rdr_cheque("cheque_no"), rdr_cheque("cheque_date"), rdr_cheque("amount"))
-            End While
+            'GET PURCHASE RETURNS
+            Using get_returns = New MySqlCommand("SELECT po_return_id, ims_suppliers.supplier, total_cost FROM ims_purchase_returns 
+                                LEFT JOIN ims_suppliers ON ims_suppliers.id=ims_purchase_returns.supplier_id
+                                WHERE cheque_no=" & cheque_no, conn)
+                Using reader = get_returns.ExecuteReader
+                    While reader.Read
+                        table.purchase_returns.Rows.Add(reader("po_return_id"), reader("supplier"), reader("total_cost"))
+                    End While
+                End Using
+            End Using
 
             report.Parameters("store_info").Value = store_info
             report.Parameters("voucher_id").Value = "PV" & id.ToString.PadLeft(5, "0"c)
@@ -220,14 +237,15 @@ Public Class frm_accounting_generate_voucher
     'btn_generate
     Private Sub btn_generate_Click(sender As Object, e As EventArgs) Handles btn_generate.Click
 
-        Dim ans = MsgBox("Generate Payment Voucher?" & vbCrLf & vbCrLf & "Press 'Yes' to continue", vbQuestion + vbYesNo, "Confirmation")
-        If ans = vbYes Then
+        If MsgBox("Generate Payment Voucher?" & vbCrLf & vbCrLf & "Press 'Yes' to continue", vbQuestion + vbYesNo, "Confirmation") = vbYes Then
 
             Try
                 conn.Open()
 
                 Dim SelectedRows = grid_receipts_view.GetSelectedRows
                 Dim selected_receipts = ""
+
+                'GET RECEIPTS ID
                 For i = 0 To SelectedRows.Length - 1
                     'If last
                     If i = SelectedRows.Length - 1 Then
@@ -237,27 +255,30 @@ Public Class frm_accounting_generate_voucher
                     selected_receipts += grid_receipts_view.GetRowCellValue(SelectedRows(i), col_id) & ", "
                 Next
 
-
-                Dim cmd = New MySqlCommand("INSERT INTO ims_payment_vouchers (receipts, creation_date, collection_ref, supplier, generated_by)
+                'GENERATE NEW VOUCHER
+                Using cmd = New MySqlCommand("INSERT INTO ims_payment_vouchers (receipts, creation_date, collection_ref, supplier, generated_by)
                                 VALUES (@receipts, CURRENT_TIMESTAMP, @collection_ref, (SELECT id FROM ims_suppliers WHERE supplier=@supplier), @generated_by)", conn)
-                cmd.Parameters.AddWithValue("receipts", selected_receipts)
-                cmd.Parameters.AddWithValue("collection_ref", txt_collection_ref.Text.Trim)
-                cmd.Parameters.AddWithValue("supplier", cbb_suppliers.Text.Trim)
-                cmd.Parameters.AddWithValue("generated_by", frm_main.user_id.Text)
-                cmd.ExecuteNonQuery()
+                    cmd.Parameters.AddWithValue("receipts", selected_receipts)
+                    cmd.Parameters.AddWithValue("collection_ref", txt_collection_ref.Text.Trim)
+                    cmd.Parameters.AddWithValue("supplier", cbb_suppliers.Text.Trim)
+                    cmd.Parameters.AddWithValue("generated_by", frm_main.user_id.Text)
+                    cmd.ExecuteNonQuery()
+                End Using
 
+                'GET LAST VOUCHER ID
                 Dim voucher_id = get_count(conn)
 
-                Dim update_cmd = New MySqlCommand("UPDATE ims_delivery_receipts SET payment_ref=@ref, status='PAID' WHERE payable_id=@id", conn)
-                update_cmd.Parameters.AddWithValue("@id", 0)
-                update_cmd.Parameters.AddWithValue("@ref", voucher_id)
-                update_cmd.Prepare()
+                'UPDATE RECEIPTS
+                Using update_cmd = New MySqlCommand("UPDATE ims_delivery_receipts SET payment_ref=@ref, status='PAID' WHERE payable_id=@id", conn)
+                    update_cmd.Parameters.AddWithValue("@id", 0)
+                    update_cmd.Parameters.AddWithValue("@ref", voucher_id)
+                    update_cmd.Prepare()
 
-
-                For i = 0 To SelectedRows.Length - 1
-                    update_cmd.Parameters(0).Value = grid_receipts_view.GetRowCellValue(SelectedRows(i), col_id)
-                    update_cmd.ExecuteNonQuery()
-                Next
+                    For i = 0 To SelectedRows.Length - 1
+                        update_cmd.Parameters(0).Value = grid_receipts_view.GetRowCellValue(SelectedRows(i), col_id)
+                        update_cmd.ExecuteNonQuery()
+                    Next
+                End Using
 
                 'Print Voucher
                 print_voucher(voucher_id)

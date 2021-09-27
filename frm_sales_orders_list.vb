@@ -1,4 +1,6 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports DevExpress.LookAndFeel
+Imports DevExpress.XtraEditors
+Imports MySql.Data.MySqlClient
 
 Public Class frm_sales_orders
 
@@ -6,8 +8,7 @@ Public Class frm_sales_orders
 
     'ON LOAD
     Private Sub frm_sales_orders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        load_orders()
-        load_quotes()
+        load_orders("ON-PROCESS")
         start_timer()
     End Sub
 
@@ -17,7 +18,16 @@ Public Class frm_sales_orders
     '---- FUNCTIONS ----
 
     'Load Orders
-    Private Sub load_orders()
+    Private Sub load_orders(filter As String)
+
+        Dim query_filter As String = String.Empty
+
+        Select Case filter
+            Case "ALL" : query_filter = "ims_orders.deleted='0'"
+            Case "ON-PROCESS" : query_filter = "(status='Pending' OR status='Pending For Arrangement' OR status='On-Going' OR status='Packed') AND ims_orders.deleted='0'"
+            Case "CANCELLED" : query_filter = "(status='Cancelled' OR status='Cancelled Order') AND ims_orders.deleted='0'"
+            Case "COMPLETED" : query_filter = "(status='Released' OR status='Completed') AND ims_orders.deleted='0'"
+        End Select
 
         Try
             conn.Open()
@@ -26,7 +36,7 @@ Public Class frm_sales_orders
                             CONCAT( UPPER( SUBSTRING( shipping_method, 1, 1 ) ) , LOWER( SUBSTRING( shipping_method FROM 2 ) ) ) as shipping_method, status FROM ims_orders  
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
                             INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
-                            WHERE NOT (status='Cancelled') AND NOT payment_status='PAID' AND ims_orders.deleted='0'"
+                            WHERE " & query_filter & " ORDER BY date_ordered DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
 
@@ -45,30 +55,6 @@ Public Class frm_sales_orders
 
     End Sub
 
-    'Load Quotations
-    Private Sub load_quotes()
-
-        Try
-            conn.Open()
-            Dim query = "SELECT concat('Q',LPAD(quotation_id,5,0)) as quotation_id, company, status FROM ims_quotations 
-                        WHERE is_converted='0' AND is_deleted='0' AND NOW() BETWEEN created_at AND created_at + INTERVAL 30 DAY ORDER BY quotation_id DESC"
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.ExecuteNonQuery()
-
-            Dim dt = New DataTable
-            Dim da = New MySqlDataAdapter(cmd)
-            da.Fill(dt)
-
-            grid_quotes.DataSource = dt
-            grid_quotes_view.FocusedRowHandle = -1
-
-        Catch ex As Exception
-            MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
-        End Try
-
-    End Sub
 
     'Start Timer
     Private Sub start_timer()
@@ -85,25 +71,31 @@ Public Class frm_sales_orders
 
     End Sub
 
-    'Timer
-    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
-        load_orders()
-        load_quotes()
+    'Highlight Active Sort Button
+    Private Sub HighlightButton(btn As SimpleButton)
+        btn_sort_all.Appearance.BackColor = Nothing
+        btn_sort_onprocess.Appearance.BackColor = Nothing
+        btn_sort_cancelled.Appearance.BackColor = Nothing
+        btn_sort_completed.Appearance.BackColor = Nothing
+
+        btn.Appearance.BackColor = DXSkinColors.FillColors.Primary
     End Sub
 
 
-    'View Quotation
-    Private Sub grid_quotes_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_quotes_view.RowCellClick
 
-        If grid_quotes_view.FocusedColumn.Name = col_quotation_id.Name Then
-            Dim quote_id = grid_quotes_view.GetFocusedRowCellValue(col_quotation_id)
+    '--- CONTROLS ----
 
-            Dim view_quote = New frm_sales_view_quotation
-            view_quote.load_data(quote_id.Replace("Q", ""))
-            view_quote.cbb_customer.Enabled = False
-            view_quote.Show()
+    'Timer
+    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
+        If btn_sort_all.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("ALL")
+        ElseIf btn_sort_onprocess.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("ON-PROCESS")
+        ElseIf btn_sort_cancelled.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("CANCELLED")
+        ElseIf btn_sort_completed.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("COMPLETED")
         End If
-
     End Sub
 
     'Timer Selection
@@ -126,7 +118,7 @@ Public Class frm_sales_orders
     End Sub
 
     'btn_quote | Show New Quote
-    Private Sub btn_quote_Click(sender As Object, e As EventArgs) Handles btn_quote.Click
+    Private Sub btn_quote_Click(sender As Object, e As EventArgs)
         Dim frm = New frm_sales_create_quotation
         frm.Show()
     End Sub
@@ -138,12 +130,19 @@ Public Class frm_sales_orders
 
     'btn_refresh
     Private Sub btn_refresh_Click(sender As Object, e As EventArgs) Handles btn_refresh.Click
-        load_orders()
-        load_quotes()
+        If btn_sort_all.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("ALL")
+        ElseIf btn_sort_onprocess.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("ON-PROCESS")
+        ElseIf btn_sort_cancelled.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("CANCELLED")
+        ElseIf btn_sort_completed.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
+            load_orders("COMPLETED")
+        End If
     End Sub
 
     'btn_order_history
-    Private Sub btn_order_history_Click(sender As Object, e As EventArgs) Handles btn_order_history.Click
+    Private Sub btn_order_history_Click(sender As Object, e As EventArgs)
         frm_sales_order_history.Show()
     End Sub
 
@@ -156,4 +155,27 @@ Public Class frm_sales_orders
         view_order.Show()
     End Sub
 
+    'btn_sort_all
+    Private Sub btn_sort_all_Click(sender As Object, e As EventArgs) Handles btn_sort_all.Click
+        load_orders("ALL")
+        HighlightButton(TryCast(sender, SimpleButton))
+    End Sub
+
+    'btn_sort_onprocess
+    Private Sub btn_sort_onprocess_Click(sender As Object, e As EventArgs) Handles btn_sort_onprocess.Click
+        load_orders("ON-PROCESS")
+        HighlightButton(TryCast(sender, SimpleButton))
+    End Sub
+
+    'btn_sort_cancelled
+    Private Sub btn_sort_cancelled_Click(sender As Object, e As EventArgs) Handles btn_sort_cancelled.Click
+        load_orders("CANCELLED")
+        HighlightButton(TryCast(sender, SimpleButton))
+    End Sub
+
+    'btn_sort_completed
+    Private Sub btn_sort_completed_Click(sender As Object, e As EventArgs) Handles btn_sort_completed.Click
+        load_orders("COMPLETED")
+        HighlightButton(TryCast(sender, SimpleButton))
+    End Sub
 End Class

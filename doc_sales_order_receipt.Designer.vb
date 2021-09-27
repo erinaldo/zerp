@@ -1421,6 +1421,8 @@ Partial Public Class doc_sales_order_receipt
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.customer, Me.shipping_addr, Me.shipping_method, Me.trucking, Me.amount_due, Me.orderid, Me.pub_notes, Me.date_released, Me.store_info, Me.payment, Me.due_date, Me.prepared_by, Me.arranged_by, Me.released_by, Me.delivery_charge, Me.discount_type, Me.discount_val, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.customer_addr, Me.terms, Me.sales_agent})
         Me.RequestParameters = False
         Me.Version = "21.1"
+        Me.Watermark.Font = New System.Drawing.Font("Segoe UI", 270.0!, System.Drawing.FontStyle.Bold)
+        Me.Watermark.ForeColor = System.Drawing.Color.Gainsboro
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).EndInit()

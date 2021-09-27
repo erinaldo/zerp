@@ -44,7 +44,7 @@ Public Class frm_sales_packing_list_view
                     cbb_packer.Visible = True
                     lbl_packed_by.Visible = True
                     btn_packed.Text = "Mark as PACKED"
-                Case "Cancelled"
+                Case "Cancelled Order"
                     cbb_packer.Visible = False
                     lbl_packed_by.Visible = False
                     btn_packed.Text = "Mark as UNPACKED"
@@ -283,13 +283,13 @@ Public Class frm_sales_packing_list_view
                     If conn.State = ConnectionState.Open Then conn.Close()
                 End Try
 
-            Case "Cancelled"
+            Case "Cancelled Order"
 
                 Dim ans = MsgBox("Tag this Package Order as UNPACKED?", vbQuestion + vbYesNo, "Confirmation")
                 If ans = vbYes Then
                     Try
                         conn.Open()
-                        Dim cmd = New MySqlCommand("UPDATE ims_orders SET priv_note=@note, deleted='1' WHERE order_id=" & txt_orderid.Text, conn)
+                        Dim cmd = New MySqlCommand("UPDATE ims_orders SET priv_note=@note, status='Cancelled' WHERE order_id=" & txt_orderid.Text, conn)
                         cmd.Parameters.AddWithValue("@note", txt_priv_comment.Text)
                         cmd.ExecuteNonQuery()
                         conn.Close()

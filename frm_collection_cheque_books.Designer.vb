@@ -22,6 +22,7 @@ Partial Class frm_collection_cheque_books
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_collection_cheque_books))
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel3 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
@@ -321,8 +322,10 @@ Partial Class frm_collection_cheque_books
         Me.Controls.Add(Me.btn_open)
         Me.Controls.Add(Me.grid_cheque_book)
         Me.Controls.Add(Me.GunaPanel2)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_collection_cheque_books"
-        Me.Text = "frm_accounting_cheque_books"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Cheque Book"
         Me.GunaPanel2.ResumeLayout(False)
         Me.GunaPanel2.PerformLayout()
         Me.GunaPanel3.ResumeLayout(False)

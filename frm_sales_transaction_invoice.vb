@@ -52,7 +52,7 @@ Public Class frm_sales_transaction_invoice
 
             conn.Open()
 
-            Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, address, ship_to, order_item, pub_note, payment_type, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
+            Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
                         ims_customers.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val,
                         agent.first_name AS prepared_by, packer.first_name AS arranged_by, releaser.first_name AS released_by, sales_agent.first_name AS sales_agent FROM `ims_orders`
@@ -90,6 +90,12 @@ Public Class frm_sales_transaction_invoice
                 report.Parameters("arranged_by").Value = rdr("arranged_by")
                 report.Parameters("released_by").Value = rdr("released_by")
                 report.Parameters("sales_agent").Value = rdr("sales_agent")
+
+                'ADD PAID WATERMARK WHEN PAID
+                If rdr("payment_status").Equals("PAID") Then
+                    report.Watermark.Text = "PAID"
+                End If
+
             End While
 
             report.RequestParameters = False

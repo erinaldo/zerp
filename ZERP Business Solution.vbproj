@@ -118,6 +118,9 @@
     <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.22\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -347,10 +350,10 @@
     <Compile Include="frm_accounting_payables.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_order_history.Designer.vb">
-      <DependentUpon>frm_collection_order_history.vb</DependentUpon>
+    <Compile Include="frm_collection_payment_ledger.Designer.vb">
+      <DependentUpon>frm_collection_payment_ledger.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_order_history.vb">
+    <Compile Include="frm_collection_payment_ledger.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_collection_payments.Designer.vb">
@@ -407,10 +410,28 @@
     <Compile Include="frm_purchaseorder_approval_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_purchaseorder_return.Designer.vb">
+      <DependentUpon>frm_purchaseorder_return.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_purchaseorder_return.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_purchaseorder_return_new.Designer.vb">
+      <DependentUpon>frm_purchaseorder_return_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_purchaseorder_return_new.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_purchaseorder_view_ordered_items.Designer.vb">
       <DependentUpon>frm_purchaseorder_view_ordered_items.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_purchaseorder_view_ordered_items.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_sales_quotation_order_list.Designer.vb">
+      <DependentUpon>frm_sales_quotation_order_list.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_sales_quotation_order_list.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_sales_create_quotation.Designer.vb">
@@ -833,8 +854,8 @@
     <EmbeddedResource Include="frm_collection_hold.resx">
       <DependentUpon>frm_collection_hold.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_order_history.resx">
-      <DependentUpon>frm_collection_order_history.vb</DependentUpon>
+    <EmbeddedResource Include="frm_collection_payment_ledger.resx">
+      <DependentUpon>frm_collection_payment_ledger.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_collection_payments.resx">
       <DependentUpon>frm_collection_payments.vb</DependentUpon>
@@ -863,8 +884,17 @@
     <EmbeddedResource Include="frm_purchaseorder_approval_dialog.resx">
       <DependentUpon>frm_purchaseorder_approval_dialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_purchaseorder_return.resx">
+      <DependentUpon>frm_purchaseorder_return.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_purchaseorder_return_new.resx">
+      <DependentUpon>frm_purchaseorder_return_new.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_purchaseorder_view_ordered_items.resx">
       <DependentUpon>frm_purchaseorder_view_ordered_items.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_sales_quotation_order_list.resx">
+      <DependentUpon>frm_sales_quotation_order_list.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales_create_quotation.resx">
       <DependentUpon>frm_sales_create_quotation.vb</DependentUpon>
@@ -1371,6 +1401,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\boproductgroup_32x321.png" />
+    <None Include="Resources\financial_32x32.png" />
     <None Include="Resources\exporttoxls_32x32.png" />
     <None Include="Resources\exporttoxls_16x161.png" />
     <None Include="Resources\snapmodifytablecellstyle_16x16.png" />

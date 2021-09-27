@@ -89,18 +89,18 @@ Public Class frm_sales_view_order
                     Case "Cash" : rb_cash.Checked = True
                     Case "E-Payment"
                         rb_epay.Checked = True
-                        btn_epayment.Visible = True
+                        btn_epayment.Enabled = True
                     Case "Terms" : rb_terms.Checked = True
                     Case "Cheque" : rb_cheque.Checked = True
                 End Select
 
                 'Set Payment Status
-                Select Case rdr("payment_type")
+                Select Case rdr("payment_status")
                     Case "UNPAID" : lbl_payment_status.Text = "UNPAID"
                     Case "HOLD"
                         lbl_payment_status.Text = rdr("payment_status")
                         lbl_payment_status.Appearance.BackColor = Color.Blue
-                    Case "PAID", "PARTIAL", "OVERPAID"
+                    Case "PAID", "PARTIAL", "OVERPAID", "REFUND"
                         If Not IsDBNull(rdr("paid_amount")) Then
 
                             Dim res = CDec(rdr("amount_due")) - CDec(rdr("paid_amount"))
@@ -117,42 +117,24 @@ Public Class frm_sales_view_order
                                 lbl_payment_status.Appearance.ForeColor = Color.Black
                             End If
 
+                            'Display Amount of Paid and Balances
                             lbl_paid_amount.Text = FormatCurrency(rdr("paid_amount"))
                             lbl_balance.Text = FormatCurrency(res)
 
+                            'Set btn_refund IF CASH
+                            If rdr("payment_type").Equals("Cash") Or rdr("payment_type").Equals("E-Payment") Then
+                                btn_refund.Enabled = True
+                            End If
+
+                            'Set if Requesting Refund
+                            If rdr("payment_status").Equals("REFUND") Then
+                                lbl_payment_status.Text = "FOR REFUND"
+                                lbl_payment_status.Appearance.BackColor = Color.Purple
+                                btn_refund.Enabled = False
+                            End If
+
                         End If
                 End Select
-
-                'If rdr("payment_status").Equals("UNPAID") Then lbl_payment_status.Text = "UNPAID"
-                'If rdr("payment_status").Equals("HOLD") Then
-                '    lbl_payment_status.Text = rdr("payment_status")
-                '    lbl_payment_status.Appearance.BackColor = Color.Blue
-                'ElseIf rdr("payment_status").Equals("PAID") _
-                '    Or rdr("payment_status").Equals("PARTIAL") _
-                '    Or rdr("payment_status").Equals("OVERPAID") Then
-                '    'lbl_payment_status.Text = rdr("payment_status")
-                '    If Not IsDBNull(rdr("paid_amount")) Then
-
-                '        Dim res = CDec(rdr("amount_due")) - CDec(rdr("paid_amount"))
-
-                '        If res = 0 Then
-                '            lbl_payment_status.Text = "PAID"
-                '            lbl_payment_status.Appearance.BackColor = Color.YellowGreen
-                '        ElseIf res < 0 Then
-                '            lbl_payment_status.Text = "OVERPAID"
-                '            lbl_payment_status.Appearance.BackColor = Color.OrangeRed
-                '        ElseIf res > 0 Then
-                '            lbl_payment_status.Text = "PARTIAL"
-                '            lbl_payment_status.Appearance.BackColor = Color.Yellow
-                '            lbl_payment_status.Appearance.ForeColor = Color.Black
-                '        End If
-
-                '        lbl_paid_amount.Text = FormatCurrency(rdr("paid_amount"))
-                '        lbl_balance.Text = FormatCurrency(res)
-
-                '    End If
-
-                'End If
 
                 If Not IsDBNull(rdr("discount_val")) Then txt_discount.Text = rdr("discount_val")
                 If Not IsDBNull(rdr("discount_type")) Then cbb_discount.Text = rdr("discount_type")
@@ -1215,5 +1197,21 @@ Public Class frm_sales_view_order
             btn_modify.ImageOptions.Image = My.Resources.modifytablestyle_32x32
         End If
     End Sub
+
+    'btn_refund
+    Private Sub btn_refund_Click(sender As Object, e As EventArgs) Handles btn_refund.Click
+        If MsgBox("Refund payment for this Sales Order?", vbInformation + vbYesNo, "Refund Confirmation") = vbYes Then
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim id = lbl_title.Text.Split("#")
+                Using cmd = New MySqlCommand("UPDATE ims_orders SET payment_status='REFUND' WHERE order_id=" & id(1), connection)
+                    If cmd.ExecuteNonQuery = 1 Then
+                        MsgBox("Successfully tagged for Refund!" & Environment.NewLine & "Reopening this view will update the Payment Status.", vbInformation, "Refunded")
+                    End If
+                End Using
+            End Using
+        End If
+    End Sub
+
 End Class
 

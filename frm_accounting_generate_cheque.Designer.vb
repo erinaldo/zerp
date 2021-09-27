@@ -28,6 +28,11 @@ Partial Class frm_accounting_generate_cheque
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
@@ -68,6 +73,15 @@ Partial Class frm_accounting_generate_cheque
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_total_view = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.grid_returns = New DevExpress.XtraGrid.GridControl()
+        Me.grid_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col_rid = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_total_cost = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_createdat = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_batchno = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_view_order = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -88,6 +102,9 @@ Partial Class frm_accounting_generate_cheque
         CType(Me.txt_total_view.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
+        CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_view_order, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -98,7 +115,7 @@ Partial Class frm_accounting_generate_cheque
         Me.GunaPanel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.GunaPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel4.Name = "GunaPanel4"
-        Me.GunaPanel4.Size = New System.Drawing.Size(1188, 78)
+        Me.GunaPanel4.Size = New System.Drawing.Size(1116, 78)
         Me.GunaPanel4.TabIndex = 12
         '
         'GunaPanel5
@@ -109,7 +126,7 @@ Partial Class frm_accounting_generate_cheque
         Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
         Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(1153, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(1081, 27)
         Me.GunaPanel5.TabIndex = 5
         '
         'GunaPanel1
@@ -199,17 +216,17 @@ Partial Class frm_accounting_generate_cheque
         Me.grid_receipts.MainView = Me.grid_receipts_view
         Me.grid_receipts.Name = "grid_receipts"
         Me.grid_receipts.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemMemoEdit1})
-        Me.grid_receipts.Size = New System.Drawing.Size(855, 379)
+        Me.grid_receipts.Size = New System.Drawing.Size(783, 267)
         Me.grid_receipts.TabIndex = 13
         Me.grid_receipts.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_receipts_view})
         '
         'grid_receipts_view
         '
-        Me.grid_receipts_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_receipts_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_receipts_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_receipts_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_receipts_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_receipts_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_receipts_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_receipts_view.Appearance.Row.Options.UseFont = True
         Me.grid_receipts_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_po_id, Me.col_receipt_ref, Me.col_amount, Me.col_date_received, Me.col_purchase_id, Me.col_terms, Me.col_due_date})
         Me.grid_receipts_view.GridControl = Me.grid_receipts
@@ -548,7 +565,7 @@ Partial Class frm_accounting_generate_cheque
         Me.LabelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl9.Appearance.Options.UseFont = True
         Me.LabelControl9.Appearance.Options.UseForeColor = True
-        Me.LabelControl9.Location = New System.Drawing.Point(844, 538)
+        Me.LabelControl9.Location = New System.Drawing.Point(772, 684)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(131, 22)
         Me.LabelControl9.TabIndex = 15
@@ -558,7 +575,7 @@ Partial Class frm_accounting_generate_cheque
         '
         Me.txt_total_view.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_total_view.EditValue = ""
-        Me.txt_total_view.Location = New System.Drawing.Point(991, 535)
+        Me.txt_total_view.Location = New System.Drawing.Point(919, 681)
         Me.txt_total_view.Name = "txt_total_view"
         Me.txt_total_view.Properties.Appearance.Font = New System.Drawing.Font("Consolas", 14.25!, System.Drawing.FontStyle.Bold)
         Me.txt_total_view.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
@@ -582,15 +599,151 @@ Partial Class frm_accounting_generate_cheque
         Me.PanelControl2.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.PanelControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(855, 34)
+        Me.PanelControl2.Size = New System.Drawing.Size(783, 34)
         Me.PanelControl2.TabIndex = 18
+        '
+        'grid_returns
+        '
+        Me.grid_returns.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_returns.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_returns.Location = New System.Drawing.Point(317, 444)
+        Me.grid_returns.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_returns.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_returns.MainView = Me.grid_returns_view
+        Me.grid_returns.Name = "grid_returns"
+        Me.grid_returns.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_view_order})
+        Me.grid_returns.Size = New System.Drawing.Size(783, 231)
+        Me.grid_returns.TabIndex = 19
+        Me.grid_returns.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_returns_view})
+        '
+        'grid_returns_view
+        '
+        Me.grid_returns_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.White
+        Me.grid_returns_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.grid_returns_view.Appearance.HeaderPanel.Options.UseBackColor = True
+        Me.grid_returns_view.Appearance.HeaderPanel.Options.UseFont = True
+        Me.grid_returns_view.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.grid_returns_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.grid_returns_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_returns_view.Appearance.Row.Options.UseFont = True
+        Me.grid_returns_view.Appearance.SelectedRow.BackColor = System.Drawing.Color.White
+        Me.grid_returns_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.grid_returns_view.Appearance.SelectedRow.Options.UseBackColor = True
+        Me.grid_returns_view.Appearance.SelectedRow.Options.UseForeColor = True
+        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_rid, Me.col_supplier, Me.col_total_cost, Me.col_createdat, Me.col_batchno})
+        Me.grid_returns_view.GridControl = Me.grid_returns
+        Me.grid_returns_view.Name = "grid_returns_view"
+        Me.grid_returns_view.OptionsBehavior.ReadOnly = True
+        Me.grid_returns_view.OptionsSelection.MultiSelect = True
+        Me.grid_returns_view.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect
+        Me.grid_returns_view.OptionsView.ShowFooter = True
+        '
+        'col_rid
+        '
+        Me.col_rid.AppearanceCell.Options.UseTextOptions = True
+        Me.col_rid.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_rid.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_rid.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_rid.Caption = "Return ID"
+        Me.col_rid.FieldName = "po_return_id"
+        Me.col_rid.MaxWidth = 100
+        Me.col_rid.MinWidth = 100
+        Me.col_rid.Name = "col_rid"
+        Me.col_rid.Visible = True
+        Me.col_rid.VisibleIndex = 1
+        Me.col_rid.Width = 100
+        '
+        'col_supplier
+        '
+        Me.col_supplier.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_supplier.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_supplier.Caption = "Supplier"
+        Me.col_supplier.FieldName = "supplier"
+        Me.col_supplier.MaxWidth = 250
+        Me.col_supplier.MinWidth = 250
+        Me.col_supplier.Name = "col_supplier"
+        Me.col_supplier.Visible = True
+        Me.col_supplier.VisibleIndex = 2
+        Me.col_supplier.Width = 250
+        '
+        'col_total_cost
+        '
+        Me.col_total_cost.AppearanceCell.Options.UseTextOptions = True
+        Me.col_total_cost.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.col_total_cost.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_total_cost.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_total_cost.Caption = "Total Cost"
+        Me.col_total_cost.DisplayFormat.FormatString = "c2"
+        Me.col_total_cost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_total_cost.FieldName = "total_cost"
+        Me.col_total_cost.MaxWidth = 150
+        Me.col_total_cost.MinWidth = 100
+        Me.col_total_cost.Name = "col_total_cost"
+        Me.col_total_cost.Visible = True
+        Me.col_total_cost.VisibleIndex = 4
+        Me.col_total_cost.Width = 100
+        '
+        'col_createdat
+        '
+        Me.col_createdat.AppearanceCell.Options.UseTextOptions = True
+        Me.col_createdat.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_createdat.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_createdat.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_createdat.Caption = "Created At"
+        Me.col_createdat.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.col_createdat.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.col_createdat.FieldName = "created_at"
+        Me.col_createdat.MaxWidth = 120
+        Me.col_createdat.MinWidth = 120
+        Me.col_createdat.Name = "col_createdat"
+        Me.col_createdat.Visible = True
+        Me.col_createdat.VisibleIndex = 5
+        Me.col_createdat.Width = 120
+        '
+        'col_batchno
+        '
+        Me.col_batchno.AppearanceCell.Options.UseTextOptions = True
+        Me.col_batchno.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_batchno.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_batchno.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_batchno.Caption = "Batch No."
+        Me.col_batchno.FieldName = "batch_no"
+        Me.col_batchno.MaxWidth = 100
+        Me.col_batchno.MinWidth = 100
+        Me.col_batchno.Name = "col_batchno"
+        Me.col_batchno.Visible = True
+        Me.col_batchno.VisibleIndex = 3
+        Me.col_batchno.Width = 100
+        '
+        'btn_view_order
+        '
+        Me.btn_view_order.AutoHeight = False
+        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
+        Me.btn_view_order.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_view_order.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_view_order.Name = "btn_view_order"
+        Me.btn_view_order.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'LabelControl8
+        '
+        Me.LabelControl8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl8.Appearance.Options.UseFont = True
+        Me.LabelControl8.Location = New System.Drawing.Point(315, 417)
+        Me.LabelControl8.Name = "LabelControl8"
+        Me.LabelControl8.Size = New System.Drawing.Size(121, 21)
+        Me.LabelControl8.TabIndex = 20
+        Me.LabelControl8.Text = "Purchase Returns"
         '
         'frm_accounting_generate_cheque
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1188, 578)
+        Me.ClientSize = New System.Drawing.Size(1116, 724)
+        Me.Controls.Add(Me.LabelControl8)
+        Me.Controls.Add(Me.grid_returns)
         Me.Controls.Add(Me.PanelControl2)
         Me.Controls.Add(Me.txt_total_view)
         Me.Controls.Add(Me.LabelControl9)
@@ -624,6 +777,9 @@ Partial Class frm_accounting_generate_cheque
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
+        CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_view_order, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -669,4 +825,13 @@ Partial Class frm_accounting_generate_cheque
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents DateEdit1 As DevExpress.XtraEditors.DateEdit
     Friend WithEvents cb_crossed_check As CheckBox
+    Friend WithEvents grid_returns As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grid_returns_view As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents btn_view_order As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents col_rid As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_supplier As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_total_cost As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_createdat As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_batchno As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
 End Class

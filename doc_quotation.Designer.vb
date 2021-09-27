@@ -32,6 +32,10 @@ Partial Public Class doc_quotation
         Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell10 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
+        Me.XrLabel41 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel43 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel25 = New DevExpress.XtraReports.UI.XRLabel()
@@ -104,6 +108,13 @@ Partial Public Class doc_quotation
         Me.withholding_tax_amount = New DevExpress.XtraReports.Parameters.Parameter()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.is_term_applied = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.terms = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.created_at = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.due_date = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.XrLabel44 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.delivery_charge = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.approved_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -229,9 +240,52 @@ Partial Public Class doc_quotation
         '
         'ReportHeader
         '
-        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel31, Me.XrLabel32, Me.XrLabel25, Me.XrLabel26, Me.XrLabel19, Me.XrLabel14, Me.XrLabel12, Me.XrLabel10, Me.XrLabel8, Me.XrLabel6, Me.XrLabel5, Me.XrLabel4, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1, Me.XrPictureBox1})
+        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel41, Me.XrLabel43, Me.XrLabel38, Me.XrLabel39, Me.XrLabel31, Me.XrLabel32, Me.XrLabel25, Me.XrLabel26, Me.XrLabel19, Me.XrLabel14, Me.XrLabel12, Me.XrLabel10, Me.XrLabel8, Me.XrLabel6, Me.XrLabel5, Me.XrLabel4, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1, Me.XrPictureBox1})
         Me.ReportHeader.HeightF = 205.7915!
         Me.ReportHeader.Name = "ReportHeader"
+        '
+        'XrLabel41
+        '
+        Me.XrLabel41.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel41.LocationFloat = New DevExpress.Utils.PointFloat(452.0833!, 166.2083!)
+        Me.XrLabel41.Multiline = True
+        Me.XrLabel41.Name = "XrLabel41"
+        Me.XrLabel41.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel41.SizeF = New System.Drawing.SizeF(108.75!, 17.79164!)
+        Me.XrLabel41.StylePriority.UseFont = False
+        Me.XrLabel41.Text = "Terms Due"
+        '
+        'XrLabel43
+        '
+        Me.XrLabel43.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?due_date")})
+        Me.XrLabel43.LocationFloat = New DevExpress.Utils.PointFloat(560.8334!, 166.2083!)
+        Me.XrLabel43.Multiline = True
+        Me.XrLabel43.Name = "XrLabel43"
+        Me.XrLabel43.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel43.SizeF = New System.Drawing.SizeF(145.8333!, 17.79164!)
+        Me.XrLabel43.Text = "XrLabel10"
+        Me.XrLabel43.TextFormatString = "{0:MM/dd/yyyy}"
+        '
+        'XrLabel38
+        '
+        Me.XrLabel38.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(452.0833!, 148.4166!)
+        Me.XrLabel38.Multiline = True
+        Me.XrLabel38.Name = "XrLabel38"
+        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel38.SizeF = New System.Drawing.SizeF(108.75!, 17.79164!)
+        Me.XrLabel38.StylePriority.UseFont = False
+        Me.XrLabel38.Text = "Terms"
+        '
+        'XrLabel39
+        '
+        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?terms")})
+        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(560.8334!, 148.4166!)
+        Me.XrLabel39.Multiline = True
+        Me.XrLabel39.Name = "XrLabel39"
+        Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel39.SizeF = New System.Drawing.SizeF(145.8333!, 17.79164!)
+        Me.XrLabel39.Text = "XrLabel10"
         '
         'XrLabel31
         '
@@ -277,7 +331,7 @@ Partial Public Class doc_quotation
         '
         'XrLabel19
         '
-        Me.XrLabel19.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "LocalDateTimeToday()")})
+        Me.XrLabel19.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?created_at")})
         Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(604.1667!, 82.20834!)
         Me.XrLabel19.Multiline = True
         Me.XrLabel19.Name = "XrLabel19"
@@ -514,7 +568,7 @@ Partial Public Class doc_quotation
         '
         'ReportFooter
         '
-        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel29, Me.XrLabel40, Me.XrLabel34, Me.XrLabel30, Me.XrLabel27, Me.XrLabel21, Me.XrLabel22, Me.XrLabel23, Me.XrLabel24, Me.XrLabel33, Me.XrLabel35, Me.lbl_discount, Me.XrLabel36, Me.XrLabel42, Me.XrLabel37, Me.XrLine2, Me.lbl_total_sales, Me.XrLabel20, Me.XrLabel17, Me.XrLabel13, Me.XrLabel9, Me.XrLabel11, Me.XrLabel7, Me.XrLine1, Me.XrLabel16, Me.XrLabel15, Me.XrLabel18})
+        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel44, Me.XrLabel29, Me.XrLabel40, Me.XrLabel34, Me.XrLabel30, Me.XrLabel27, Me.XrLabel21, Me.XrLabel22, Me.XrLabel23, Me.XrLabel24, Me.XrLabel33, Me.XrLabel35, Me.lbl_discount, Me.XrLabel36, Me.XrLabel42, Me.XrLabel37, Me.XrLine2, Me.lbl_total_sales, Me.XrLabel20, Me.XrLabel17, Me.XrLabel13, Me.XrLabel9, Me.XrLabel11, Me.XrLabel7, Me.XrLine1, Me.XrLabel16, Me.XrLabel15, Me.XrLabel18})
         Me.ReportFooter.HeightF = 282.1249!
         Me.ReportFooter.KeepTogether = True
         Me.ReportFooter.Name = "ReportFooter"
@@ -813,6 +867,7 @@ Partial Public Class doc_quotation
         'XrLabel11
         '
         Me.XrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
+        Me.XrLabel11.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?approved_name")})
         Me.XrLabel11.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(174.8511!, 166.7502!)
         Me.XrLabel11.Multiline = True
@@ -1023,6 +1078,66 @@ Partial Public Class doc_quotation
         Me.XrLabel28.StylePriority.UseFont = False
         Me.XrLabel28.Text = "Check our website at www.winlandstore.com"
         '
+        'is_term_applied
+        '
+        Me.is_term_applied.Description = "is_term_applied"
+        Me.is_term_applied.Name = "is_term_applied"
+        Me.is_term_applied.Type = GetType(Boolean)
+        Me.is_term_applied.ValueInfo = "False"
+        Me.is_term_applied.Visible = False
+        '
+        'terms
+        '
+        Me.terms.Description = "terms"
+        Me.terms.Name = "terms"
+        Me.terms.Type = GetType(Integer)
+        Me.terms.ValueInfo = "0"
+        Me.terms.Visible = False
+        '
+        'created_at
+        '
+        Me.created_at.Description = "created_at"
+        Me.created_at.Name = "created_at"
+        Me.created_at.Type = GetType(Date)
+        Me.created_at.ValueInfo = "2021-09-15"
+        Me.created_at.Visible = False
+        '
+        'due_date
+        '
+        Me.due_date.Description = "due_date"
+        Me.due_date.Name = "due_date"
+        Me.due_date.Type = GetType(Date)
+        Me.due_date.ValueInfo = "2021-09-15"
+        Me.due_date.Visible = False
+        '
+        'XrLabel44
+        '
+        Me.XrLabel44.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?delivery_charge")})
+        Me.XrLabel44.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.XrLabel44.LocationFloat = New DevExpress.Utils.PointFloat(633.3325!, 144.4239!)
+        Me.XrLabel44.Multiline = True
+        Me.XrLabel44.Name = "XrLabel44"
+        Me.XrLabel44.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel44.SizeF = New System.Drawing.SizeF(116.6667!, 17.79163!)
+        Me.XrLabel44.StylePriority.UseFont = False
+        Me.XrLabel44.StylePriority.UseTextAlignment = False
+        Me.XrLabel44.Text = "Delivery Charge"
+        Me.XrLabel44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
+        '
+        'delivery_charge
+        '
+        Me.delivery_charge.Description = "delivery_charge"
+        Me.delivery_charge.Name = "delivery_charge"
+        Me.delivery_charge.Type = GetType(Decimal)
+        Me.delivery_charge.ValueInfo = "0"
+        Me.delivery_charge.Visible = False
+        '
+        'approved_name
+        '
+        Me.approved_name.Description = "approved_name"
+        Me.approved_name.Name = "approved_name"
+        Me.approved_name.Visible = False
+        '
         'doc_quotation
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter, Me.PageFooter})
@@ -1032,9 +1147,9 @@ Partial Public Class doc_quotation
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.quotation_id, Me.company, Me.contact_person, Me.total, Me.pub_notes, Me.store_info, Me.prepared_by, Me.delivery_address, Me.contact_no, Me.discount_type, Me.discount_val, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.quotation_id, Me.company, Me.contact_person, Me.total, Me.pub_notes, Me.store_info, Me.prepared_by, Me.delivery_address, Me.contact_no, Me.discount_type, Me.discount_val, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.is_term_applied, Me.terms, Me.created_at, Me.due_date, Me.delivery_charge, Me.approved_name})
         Me.RequestParameters = False
-        Me.Version = "20.2"
+        Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1126,4 +1241,15 @@ Partial Public Class doc_quotation
     Friend WithEvents withholding_tax_amount As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents PageFooter As DevExpress.XtraReports.UI.PageFooterBand
     Friend WithEvents XrLabel28 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel39 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents is_term_applied As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents terms As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents created_at As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents XrLabel41 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel43 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents due_date As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents XrLabel44 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents delivery_charge As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents approved_name As DevExpress.XtraReports.Parameters.Parameter
 End Class

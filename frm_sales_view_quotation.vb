@@ -328,7 +328,7 @@ Public Class frm_sales_view_quotation
         Try
             conn.Open()
             Dim query = "SELECT *, (SELECT value FROM ims_settings WHERE name='store_info') as store_info, DATE_ADD(created_at, INTERVAL terms DAY) AS due_date, prepared.first_name AS prepared_name, approved.first_name AS approved_name FROM ims_quotations 
-                        INNER JOIN ims_users ON ims_users.usr_id=prepared_by
+                        INNER JOIN ims_users AS prepared ON prepared.usr_id=prepared_by
                         INNER JOIN ims_users AS approved ON approved.usr_id=approved_by
                         WHERE quotation_id=" & id
             Dim cmd = New MySqlCommand(query, conn)
@@ -342,7 +342,8 @@ Public Class frm_sales_view_quotation
                 report.Parameters("delivery_address").Value = rdr("delivery_address")
                 report.Parameters("total").Value = rdr("total")
                 report.Parameters("pub_notes").Value = rdr("pub_note")
-                report.Parameters("prepared_by").Value = rdr("first_name")
+                report.Parameters("prepared_by").Value = rdr("prepared_name")
+                report.Parameters("approved_name").Value = rdr("approved_name")
                 report.Parameters("store_info").Value = rdr("store_info")
                 report.Parameters("is_term_applied").Value = rdr("is_term_applied")
                 report.Parameters("terms").Value = rdr("terms")

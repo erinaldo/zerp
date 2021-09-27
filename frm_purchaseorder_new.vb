@@ -368,6 +368,8 @@ Public Class frm_purchaseorder_new
     End Function
 
 
+
+
     '--- CONTROL & EVENTS ---
 
     'grid_order | Editing Control Swing
@@ -377,7 +379,7 @@ Public Class frm_purchaseorder_new
             AddHandler DirectCast(e.Control, TextBox).KeyPress, AddressOf DigitsOnly_KeyPress
         End If
 
-        If Not grid_order.CurrentCell.ColumnIndex = 3 Or grid_order.CurrentCell.ColumnIndex = 5 Then
+        If Not (grid_order.CurrentCell.ColumnIndex = 3 Or grid_order.CurrentCell.ColumnIndex = 5) Then
             Dim control As TextBox = TryCast(e.Control, TextBox)
             If control IsNot Nothing Then
                 control.AutoCompleteMode = AutoCompleteMode.None
@@ -815,6 +817,13 @@ Public Class frm_purchaseorder_new
         Dim dataViews = New DataView(dataSource)
         dataSource.DefaultView.RowFilter = String.Concat(New String() {"winmodel LIKE '%", txt_search.Text.Trim(), "%' OR supmodel LIKE '%", txt_search.Text.Trim(), "%' OR description LIKE '%", txt_search.Text.Trim(), "%'"})
         grid_order.DataSource = dataSource
+    End Sub
+
+    'Sort
+    Private Sub grid_order_Sorted(sender As Object, e As EventArgs) Handles grid_order.Sorted
+        Dim dt = DirectCast(grid_order.DataSource, DataTable)
+        dt.DefaultView.Sort = "winmodel ASC"
+        grid_order.DataSource = dt.DefaultView.ToTable
     End Sub
 
 End Class

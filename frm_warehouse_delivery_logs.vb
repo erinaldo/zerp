@@ -52,4 +52,8 @@ Public Class frm_warehouse_delivery_logs
     Private Sub btn_view_Click(sender As Object, e As EventArgs) Handles btn_view.Click
         LoadDelivered(dt_start.Value, dt_end.Value)
     End Sub
+
+    Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
+        grid_delivered.ShowRibbonPrintPreview()
+    End Sub
 End Class

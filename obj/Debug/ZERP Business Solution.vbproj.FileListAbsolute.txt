@@ -905,7 +905,6 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_c
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque_view.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_epayment.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_hold.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_order_history.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_payments.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cash.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_refund.resources
@@ -979,3 +978,9 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks_
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_reports.resources
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.xml
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_quotation_order_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_payment_ledger.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_new.resources
+D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.dll
+D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.xml
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_list.resources

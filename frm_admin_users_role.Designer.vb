@@ -51,6 +51,7 @@ Partial Class frm_admin_users_role
         Me.btn_close = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl7 = New DevExpress.XtraEditors.GroupControl()
+        Me.cb_reports = New System.Windows.Forms.CheckBox()
         Me.cb_stores = New System.Windows.Forms.CheckBox()
         Me.cb_suppliers = New System.Windows.Forms.CheckBox()
         Me.cb_settings = New System.Windows.Forms.CheckBox()
@@ -90,7 +91,7 @@ Partial Class frm_admin_users_role
         Me.cb_new_item = New System.Windows.Forms.CheckBox()
         Me.cb_import_catalogue = New System.Windows.Forms.CheckBox()
         Me.cb_export_catalogue = New System.Windows.Forms.CheckBox()
-        Me.cb_reports = New System.Windows.Forms.CheckBox()
+        Me.cb_quotations = New System.Windows.Forms.CheckBox()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -126,7 +127,7 @@ Partial Class frm_admin_users_role
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(1060, 78)
+        Me.GunaPanel2.Size = New System.Drawing.Size(1084, 78)
         Me.GunaPanel2.TabIndex = 14
         '
         'GunaPanel3
@@ -137,7 +138,7 @@ Partial Class frm_admin_users_role
         Me.GunaPanel3.Controls.Add(Me.GunaPanel4)
         Me.GunaPanel3.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel3.Name = "GunaPanel3"
-        Me.GunaPanel3.Size = New System.Drawing.Size(1024, 27)
+        Me.GunaPanel3.Size = New System.Drawing.Size(1048, 27)
         Me.GunaPanel3.TabIndex = 5
         '
         'GunaPanel4
@@ -224,7 +225,7 @@ Partial Class frm_admin_users_role
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 78)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1060, 532)
+        Me.Panel1.Size = New System.Drawing.Size(1084, 557)
         Me.Panel1.TabIndex = 0
         '
         'Panel2
@@ -235,9 +236,9 @@ Partial Class frm_admin_users_role
         Me.Panel2.Controls.Add(Me.btn_save)
         Me.Panel2.Controls.Add(Me.btn_close)
         Me.Panel2.Controls.Add(Me.GroupControl1)
-        Me.Panel2.Location = New System.Drawing.Point(12, 16)
+        Me.Panel2.Location = New System.Drawing.Point(24, 16)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1036, 504)
+        Me.Panel2.Size = New System.Drawing.Size(1048, 529)
         Me.Panel2.TabIndex = 32
         '
         'GroupControl2
@@ -384,7 +385,7 @@ Partial Class frm_admin_users_role
         Me.GroupControl1.LookAndFeel.SkinName = "DevExpress Style"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(754, 472)
+        Me.GroupControl1.Size = New System.Drawing.Size(754, 497)
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "Account Roles"
         '
@@ -397,11 +398,21 @@ Partial Class frm_admin_users_role
         Me.GroupControl7.Controls.Add(Me.cb_user_accounts)
         Me.GroupControl7.Controls.Add(Me.cb_approvals)
         Me.GroupControl7.Controls.Add(Me.cb_price_book)
-        Me.GroupControl7.Location = New System.Drawing.Point(556, 247)
+        Me.GroupControl7.Location = New System.Drawing.Point(556, 269)
         Me.GroupControl7.Name = "GroupControl7"
-        Me.GroupControl7.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl7.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl7.TabIndex = 25
         Me.GroupControl7.Text = "Administration"
+        '
+        'cb_reports
+        '
+        Me.cb_reports.AutoSize = True
+        Me.cb_reports.Location = New System.Drawing.Point(22, 97)
+        Me.cb_reports.Name = "cb_reports"
+        Me.cb_reports.Size = New System.Drawing.Size(64, 17)
+        Me.cb_reports.TabIndex = 19
+        Me.cb_reports.Text = "Reports"
+        Me.cb_reports.UseVisualStyleBackColor = True
         '
         'cb_stores
         '
@@ -471,14 +482,14 @@ Partial Class frm_admin_users_role
         Me.GroupControl6.Controls.Add(Me.cb_cheque_book)
         Me.GroupControl6.Location = New System.Drawing.Point(556, 49)
         Me.GroupControl6.Name = "GroupControl6"
-        Me.GroupControl6.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl6.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl6.TabIndex = 21
         Me.GroupControl6.Text = "Collections"
         '
         'cb_soa
         '
         Me.cb_soa.AutoSize = True
-        Me.cb_soa.Location = New System.Drawing.Point(23, 109)
+        Me.cb_soa.Location = New System.Drawing.Point(23, 96)
         Me.cb_soa.Name = "cb_soa"
         Me.cb_soa.Size = New System.Drawing.Size(131, 17)
         Me.cb_soa.TabIndex = 16
@@ -488,7 +499,7 @@ Partial Class frm_admin_users_role
         'cb_order_payments
         '
         Me.cb_order_payments.AutoSize = True
-        Me.cb_order_payments.Location = New System.Drawing.Point(23, 40)
+        Me.cb_order_payments.Location = New System.Drawing.Point(23, 27)
         Me.cb_order_payments.Name = "cb_order_payments"
         Me.cb_order_payments.Size = New System.Drawing.Size(104, 17)
         Me.cb_order_payments.TabIndex = 13
@@ -498,7 +509,7 @@ Partial Class frm_admin_users_role
         'cb_new_cheque_payment
         '
         Me.cb_new_cheque_payment.AutoSize = True
-        Me.cb_new_cheque_payment.Location = New System.Drawing.Point(23, 63)
+        Me.cb_new_cheque_payment.Location = New System.Drawing.Point(23, 50)
         Me.cb_new_cheque_payment.Name = "cb_new_cheque_payment"
         Me.cb_new_cheque_payment.Size = New System.Drawing.Size(132, 17)
         Me.cb_new_cheque_payment.TabIndex = 14
@@ -508,7 +519,7 @@ Partial Class frm_admin_users_role
         'cb_cheque_book
         '
         Me.cb_cheque_book.AutoSize = True
-        Me.cb_cheque_book.Location = New System.Drawing.Point(23, 86)
+        Me.cb_cheque_book.Location = New System.Drawing.Point(23, 73)
         Me.cb_cheque_book.Name = "cb_cheque_book"
         Me.cb_cheque_book.Size = New System.Drawing.Size(89, 17)
         Me.cb_cheque_book.TabIndex = 15
@@ -521,9 +532,9 @@ Partial Class frm_admin_users_role
         Me.GroupControl8.Controls.Add(Me.cb_generate)
         Me.GroupControl8.Controls.Add(Me.cb_payment_vouchers)
         Me.GroupControl8.Controls.Add(Me.cb_payment_cheques)
-        Me.GroupControl8.Location = New System.Drawing.Point(381, 247)
+        Me.GroupControl8.Location = New System.Drawing.Point(381, 269)
         Me.GroupControl8.Name = "GroupControl8"
-        Me.GroupControl8.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl8.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl8.TabIndex = 24
         Me.GroupControl8.Text = "Accounting"
         '
@@ -575,14 +586,14 @@ Partial Class frm_admin_users_role
         Me.GroupControl5.Controls.Add(Me.cb_stock_inventory)
         Me.GroupControl5.Location = New System.Drawing.Point(381, 49)
         Me.GroupControl5.Name = "GroupControl5"
-        Me.GroupControl5.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl5.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl5.TabIndex = 20
         Me.GroupControl5.Text = "Warehouse"
         '
         'cb_daily_delivery
         '
         Me.cb_daily_delivery.AutoSize = True
-        Me.cb_daily_delivery.Location = New System.Drawing.Point(23, 40)
+        Me.cb_daily_delivery.Location = New System.Drawing.Point(23, 27)
         Me.cb_daily_delivery.Name = "cb_daily_delivery"
         Me.cb_daily_delivery.Size = New System.Drawing.Size(91, 17)
         Me.cb_daily_delivery.TabIndex = 13
@@ -592,7 +603,7 @@ Partial Class frm_admin_users_role
         'cb_delivery_logs
         '
         Me.cb_delivery_logs.AutoSize = True
-        Me.cb_delivery_logs.Location = New System.Drawing.Point(23, 63)
+        Me.cb_delivery_logs.Location = New System.Drawing.Point(23, 50)
         Me.cb_delivery_logs.Name = "cb_delivery_logs"
         Me.cb_delivery_logs.Size = New System.Drawing.Size(90, 17)
         Me.cb_delivery_logs.TabIndex = 14
@@ -602,7 +613,7 @@ Partial Class frm_admin_users_role
         'cb_stock_management
         '
         Me.cb_stock_management.AutoSize = True
-        Me.cb_stock_management.Location = New System.Drawing.Point(23, 86)
+        Me.cb_stock_management.Location = New System.Drawing.Point(23, 73)
         Me.cb_stock_management.Name = "cb_stock_management"
         Me.cb_stock_management.Size = New System.Drawing.Size(117, 17)
         Me.cb_stock_management.TabIndex = 15
@@ -612,7 +623,7 @@ Partial Class frm_admin_users_role
         'cb_stock_inventory
         '
         Me.cb_stock_inventory.AutoSize = True
-        Me.cb_stock_inventory.Location = New System.Drawing.Point(23, 109)
+        Me.cb_stock_inventory.Location = New System.Drawing.Point(23, 96)
         Me.cb_stock_inventory.Name = "cb_stock_inventory"
         Me.cb_stock_inventory.Size = New System.Drawing.Size(103, 17)
         Me.cb_stock_inventory.TabIndex = 16
@@ -623,9 +634,9 @@ Partial Class frm_admin_users_role
         '
         Me.GroupControl9.Controls.Add(Me.cb_new_purchase)
         Me.GroupControl9.Controls.Add(Me.cb_purchase_orders)
-        Me.GroupControl9.Location = New System.Drawing.Point(206, 247)
+        Me.GroupControl9.Location = New System.Drawing.Point(206, 269)
         Me.GroupControl9.Name = "GroupControl9"
-        Me.GroupControl9.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl9.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl9.TabIndex = 23
         Me.GroupControl9.Text = "Purchasing"
         '
@@ -651,6 +662,7 @@ Partial Class frm_admin_users_role
         '
         'GroupControl4
         '
+        Me.GroupControl4.Controls.Add(Me.cb_quotations)
         Me.GroupControl4.Controls.Add(Me.cb_logistics)
         Me.GroupControl4.Controls.Add(Me.cb_orders)
         Me.GroupControl4.Controls.Add(Me.cb_transaction_invoice)
@@ -659,14 +671,14 @@ Partial Class frm_admin_users_role
         Me.GroupControl4.Controls.Add(Me.cb_packing_list)
         Me.GroupControl4.Location = New System.Drawing.Point(206, 49)
         Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl4.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl4.TabIndex = 19
         Me.GroupControl4.Text = "Sales"
         '
         'cb_logistics
         '
         Me.cb_logistics.AutoSize = True
-        Me.cb_logistics.Location = New System.Drawing.Point(23, 155)
+        Me.cb_logistics.Location = New System.Drawing.Point(23, 165)
         Me.cb_logistics.Name = "cb_logistics"
         Me.cb_logistics.Size = New System.Drawing.Size(66, 17)
         Me.cb_logistics.TabIndex = 11
@@ -676,17 +688,17 @@ Partial Class frm_admin_users_role
         'cb_orders
         '
         Me.cb_orders.AutoSize = True
-        Me.cb_orders.Location = New System.Drawing.Point(23, 40)
+        Me.cb_orders.Location = New System.Drawing.Point(23, 50)
         Me.cb_orders.Name = "cb_orders"
-        Me.cb_orders.Size = New System.Drawing.Size(59, 17)
+        Me.cb_orders.Size = New System.Drawing.Size(87, 17)
         Me.cb_orders.TabIndex = 7
-        Me.cb_orders.Text = "Orders"
+        Me.cb_orders.Text = "Sales Orders"
         Me.cb_orders.UseVisualStyleBackColor = True
         '
         'cb_transaction_invoice
         '
         Me.cb_transaction_invoice.AutoSize = True
-        Me.cb_transaction_invoice.Location = New System.Drawing.Point(23, 132)
+        Me.cb_transaction_invoice.Location = New System.Drawing.Point(23, 142)
         Me.cb_transaction_invoice.Name = "cb_transaction_invoice"
         Me.cb_transaction_invoice.Size = New System.Drawing.Size(120, 17)
         Me.cb_transaction_invoice.TabIndex = 1
@@ -696,17 +708,17 @@ Partial Class frm_admin_users_role
         'cb_create_order
         '
         Me.cb_create_order.AutoSize = True
-        Me.cb_create_order.Location = New System.Drawing.Point(23, 63)
+        Me.cb_create_order.Location = New System.Drawing.Point(23, 27)
         Me.cb_create_order.Name = "cb_create_order"
-        Me.cb_create_order.Size = New System.Drawing.Size(90, 17)
+        Me.cb_create_order.Size = New System.Drawing.Size(78, 17)
         Me.cb_create_order.TabIndex = 8
-        Me.cb_create_order.Text = "Create Order"
+        Me.cb_create_order.Text = "New Order"
         Me.cb_create_order.UseVisualStyleBackColor = True
         '
         'cb_customers
         '
         Me.cb_customers.AutoSize = True
-        Me.cb_customers.Location = New System.Drawing.Point(23, 86)
+        Me.cb_customers.Location = New System.Drawing.Point(23, 96)
         Me.cb_customers.Name = "cb_customers"
         Me.cb_customers.Size = New System.Drawing.Size(77, 17)
         Me.cb_customers.TabIndex = 9
@@ -716,7 +728,7 @@ Partial Class frm_admin_users_role
         'cb_packing_list
         '
         Me.cb_packing_list.AutoSize = True
-        Me.cb_packing_list.Location = New System.Drawing.Point(23, 109)
+        Me.cb_packing_list.Location = New System.Drawing.Point(23, 119)
         Me.cb_packing_list.Name = "cb_packing_list"
         Me.cb_packing_list.Size = New System.Drawing.Size(81, 17)
         Me.cb_packing_list.TabIndex = 10
@@ -726,9 +738,9 @@ Partial Class frm_admin_users_role
         'GroupControl10
         '
         Me.GroupControl10.Controls.Add(Me.cb_pickup_deliveries)
-        Me.GroupControl10.Location = New System.Drawing.Point(31, 247)
+        Me.GroupControl10.Location = New System.Drawing.Point(31, 269)
         Me.GroupControl10.Name = "GroupControl10"
-        Me.GroupControl10.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl10.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl10.TabIndex = 22
         Me.GroupControl10.Text = "Logistics"
         '
@@ -751,14 +763,14 @@ Partial Class frm_admin_users_role
         Me.GroupControl3.Controls.Add(Me.cb_export_catalogue)
         Me.GroupControl3.Location = New System.Drawing.Point(31, 49)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(169, 192)
+        Me.GroupControl3.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl3.TabIndex = 18
         Me.GroupControl3.Text = "Products"
         '
         'cb_catalogue
         '
         Me.cb_catalogue.AutoSize = True
-        Me.cb_catalogue.Location = New System.Drawing.Point(23, 40)
+        Me.cb_catalogue.Location = New System.Drawing.Point(23, 27)
         Me.cb_catalogue.Name = "cb_catalogue"
         Me.cb_catalogue.Size = New System.Drawing.Size(75, 17)
         Me.cb_catalogue.TabIndex = 0
@@ -768,7 +780,7 @@ Partial Class frm_admin_users_role
         'cb_inventory
         '
         Me.cb_inventory.AutoSize = True
-        Me.cb_inventory.Location = New System.Drawing.Point(23, 63)
+        Me.cb_inventory.Location = New System.Drawing.Point(23, 50)
         Me.cb_inventory.Name = "cb_inventory"
         Me.cb_inventory.Size = New System.Drawing.Size(74, 17)
         Me.cb_inventory.TabIndex = 1
@@ -778,7 +790,7 @@ Partial Class frm_admin_users_role
         'cb_new_item
         '
         Me.cb_new_item.AutoSize = True
-        Me.cb_new_item.Location = New System.Drawing.Point(23, 86)
+        Me.cb_new_item.Location = New System.Drawing.Point(23, 73)
         Me.cb_new_item.Name = "cb_new_item"
         Me.cb_new_item.Size = New System.Drawing.Size(72, 17)
         Me.cb_new_item.TabIndex = 2
@@ -788,7 +800,7 @@ Partial Class frm_admin_users_role
         'cb_import_catalogue
         '
         Me.cb_import_catalogue.AutoSize = True
-        Me.cb_import_catalogue.Location = New System.Drawing.Point(23, 109)
+        Me.cb_import_catalogue.Location = New System.Drawing.Point(23, 96)
         Me.cb_import_catalogue.Name = "cb_import_catalogue"
         Me.cb_import_catalogue.Size = New System.Drawing.Size(110, 17)
         Me.cb_import_catalogue.TabIndex = 3
@@ -798,29 +810,29 @@ Partial Class frm_admin_users_role
         'cb_export_catalogue
         '
         Me.cb_export_catalogue.AutoSize = True
-        Me.cb_export_catalogue.Location = New System.Drawing.Point(23, 132)
+        Me.cb_export_catalogue.Location = New System.Drawing.Point(23, 119)
         Me.cb_export_catalogue.Name = "cb_export_catalogue"
         Me.cb_export_catalogue.Size = New System.Drawing.Size(110, 17)
         Me.cb_export_catalogue.TabIndex = 4
         Me.cb_export_catalogue.Text = "Export Catalogue"
         Me.cb_export_catalogue.UseVisualStyleBackColor = True
         '
-        'cb_reports
+        'cb_quotations
         '
-        Me.cb_reports.AutoSize = True
-        Me.cb_reports.Location = New System.Drawing.Point(22, 97)
-        Me.cb_reports.Name = "cb_reports"
-        Me.cb_reports.Size = New System.Drawing.Size(64, 17)
-        Me.cb_reports.TabIndex = 19
-        Me.cb_reports.Text = "Reports"
-        Me.cb_reports.UseVisualStyleBackColor = True
+        Me.cb_quotations.AutoSize = True
+        Me.cb_quotations.Location = New System.Drawing.Point(23, 73)
+        Me.cb_quotations.Name = "cb_quotations"
+        Me.cb_quotations.Size = New System.Drawing.Size(79, 17)
+        Me.cb_quotations.TabIndex = 12
+        Me.cb_quotations.Text = "Quotations"
+        Me.cb_quotations.UseVisualStyleBackColor = True
         '
         'frm_admin_users_role
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1060, 610)
+        Me.ClientSize = New System.Drawing.Size(1084, 635)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GunaPanel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -932,4 +944,5 @@ Partial Class frm_admin_users_role
 	Friend WithEvents Panel2 As Panel
 	Friend WithEvents cb_soa As CheckBox
     Friend WithEvents cb_reports As CheckBox
+    Friend WithEvents cb_quotations As CheckBox
 End Class

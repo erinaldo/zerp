@@ -38,11 +38,11 @@ Public Class frm_sales_packing_list
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
                             INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
                             WHERE status='Packed' AND NOT ims_orders.deleted='1' ORDER BY date_ordered ASC"
-                Case "Cancelled", "3"
+                Case "Cancelled Order", "3"
                     query = "SELECT order_id, date_ordered,  ims_users.first_name as agent, ims_customers.first_name, transaction_type, status FROM ims_orders 
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
                             INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
-                            WHERE status='Cancelled' AND NOT ims_orders.deleted='1' ORDER BY date_ordered ASC"
+                            WHERE status='Cancelled Order' AND NOT ims_orders.deleted='1' ORDER BY date_ordered ASC"
             End Select
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
@@ -104,7 +104,7 @@ Public Class frm_sales_packing_list
                 End Using
 
                 'Label for UnPacked
-                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Cancelled' AND deleted='0'", conn)
+                Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_orders WHERE status='Cancelled Order' AND deleted='0'", conn)
                     Dim count As Integer = cmd.ExecuteScalar()
                     tab_cancelled.Caption = "For Unpacking (" & count & ")"
                 End Using
@@ -149,7 +149,7 @@ Public Class frm_sales_packing_list
                 Dim order_status As String = grid_orders_view.GetRowCellValue(e.RowHandle, "status")
                 Dim frm As frm_sales_packing_list_view = New frm_sales_packing_list_view()
                 frm.LoadData(order_id, order_status)
-                load_orders("Cancelled")
+                load_orders("Cancelled Order")
             End If
         End If
 
@@ -174,7 +174,7 @@ Public Class frm_sales_packing_list
         ElseIf tabpane.SelectedPage.Equals(tab_completed) Then
             load_orders("Packed")
         ElseIf tabpane.SelectedPage.Equals(tab_cancelled) Then
-            load_orders("Cancelled")
+            load_orders("Cancelled Order")
         End If
     End Sub
 

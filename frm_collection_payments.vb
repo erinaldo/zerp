@@ -24,10 +24,20 @@ Public Class frm_collection_payments
 
         Try
             conn.Open()
-            Dim query = "SELECT status, order_id, date_ordered, ims_customers.first_name as customer, ims_users.first_name as agent, shipping_method, (amount_due - IFNULL(paid_amount,0)) as amount_due, IFNULL(payment_status, 'UNPAID') as payment_status FROM ims_orders
+            Dim query = "SELECT 
+                            status, 
+                            order_id, 
+                            date_ordered, 
+                            ims_customers.first_name as customer, 
+                            ims_users.first_name as agent, 
+                            shipping_method, 
+                            IF(STRCMP(payment_status, 'REFUND') = 0, IFNULL(paid_amount,0), (amount_due - IFNULL(paid_amount,0))) AS amount_due, 
+                            IFNULL(payment_status, 'UNPAID') as payment_status 
+                        FROM ims_orders
                         INNER JOIN ims_customers ON ims_orders.customer=ims_customers.customer_id
                         INNER JOIN ims_users ON ims_orders.agent=ims_users.usr_id
-                        WHERE payment_type='cash' AND (payment_status IS NULL OR NOT payment_status = 'PAID') AND NOT status='Cancelled' AND ims_orders.deleted='0'"
+                        WHERE payment_type='cash' AND ims_orders.deleted='0' AND NOT ((STATUS='Cancelled' AND payment_status='UNPAID') OR (STATUS='Completed' AND payment_status='PAID') OR (payment_status='PAID'))
+                        ORDER BY order_id DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
 
@@ -53,7 +63,8 @@ Public Class frm_collection_payments
             Dim query = "SELECT status, order_id, date_ordered, ims_customers.first_name as customer, ims_users.first_name as agent, shipping_method, amount_due, IFNULL(payment_status, 'UNPAID') as payment_status FROM ims_orders
                         INNER JOIN ims_customers ON ims_orders.customer=ims_customers.customer_id
                         INNER JOIN ims_users ON ims_orders.agent=ims_users.usr_id
-                        WHERE payment_type='cheque' AND (payment_status IS NULL OR NOT payment_status = 'PAID') AND NOT status='Cancelled' AND ims_orders.deleted='0'"
+                        WHERE payment_type='cheque' AND (payment_status IS NULL OR NOT payment_status = 'PAID') AND NOT status='Cancelled' AND ims_orders.deleted='0'
+                        ORDER BY order_id DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
 
@@ -76,12 +87,15 @@ Public Class frm_collection_payments
 
         Try
             conn.Open()
-            Dim query = "SELECT status, order_id, date_ordered, ims_customers.first_name as customer, ims_users.first_name as agent,
-                        shipping_method, (amount_due - IFNULL(paid_amount,0)) as amount_due, IFNULL(payment_status, 'UNPAID') as payment_status,
-                        payment_type, payment_option, payment_details FROM ims_orders
+            Dim query = "SELECT 
+                            status, order_id, date_ordered, ims_customers.first_name as customer, ims_users.first_name as agent, shipping_method, 
+                            IF(STRCMP(payment_status, 'REFUND') = 0, IFNULL(paid_amount,0), (amount_due - IFNULL(paid_amount,0))) AS amount_due, 
+                            IFNULL(payment_status, 'UNPAID') as payment_status,
+                            payment_type, payment_option, payment_details FROM ims_orders
                         INNER JOIN ims_customers ON ims_orders.customer=ims_customers.customer_id
                         INNER JOIN ims_users ON ims_orders.agent=ims_users.usr_id
-                        WHERE payment_type='E-Payment' AND NOT payment_status = 'PAID' AND NOT status='Cancelled' AND ims_orders.deleted='0'"
+                        WHERE payment_type='E-Payment' AND NOT payment_status = 'PAID' AND NOT status='Cancelled' AND ims_orders.deleted='0'
+                        ORDER BY order_id DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
 
@@ -139,9 +153,9 @@ Public Class frm_collection_payments
         Dim cus = grid_cash_view.GetFocusedRowCellValue(col_customer)
         Dim ad = Math.Abs(CDec(grid_cash_view.GetFocusedRowCellValue(col_amount_due)))
 
-        If status.Equals("OVERPAID") Then
+        If status.Equals("OVERPAID") Or status.Equals("REFUND") Then
             Dim frm = New frm_collection_refund
-            frm.LoadData(id, cus, ad)
+            frm.LoadData(id, cus, ad, status)
             frm.ShowDialog()
         Else
             Dim frm = New frm_collection_cash
@@ -154,16 +168,17 @@ Public Class frm_collection_payments
     'EPAY Double Click
     Private Sub grid_epay_view_DoubleClick(sender As Object, e As EventArgs) Handles grid_epay_view.DoubleClick
 
+        Dim status = grid_epay_view.GetFocusedRowCellValue(col_payment_status)
         Dim id = grid_epay_view.GetFocusedRowCellValue(col_order_id)
         Dim cus = grid_epay_view.GetFocusedRowCellValue(col_customer)
         Dim ad = grid_epay_view.GetFocusedRowCellValue(col_amount_due)
 
-        If Not grid_epay_view.GetFocusedRowCellValue(col_payment_status).Equals("OVERPAID") Then
-            Dim frm = New frm_collection_epayment()
-            frm.LoadData(id, cus, ad)
+        If status.Equals("OVERPAID") Or status.Equals("REFUND") Then
+            Dim frm = New frm_collection_refund
+            frm.LoadData(id, cus, ad, status)
             frm.ShowDialog()
         Else
-            Dim frm = New frm_collection_refund
+            Dim frm = New frm_collection_epayment()
             frm.LoadData(id, cus, ad)
             frm.ShowDialog()
         End If
@@ -172,7 +187,7 @@ Public Class frm_collection_payments
 
     'btn_payment_history
     Private Sub btn_payment_history_Click(sender As Object, e As EventArgs) Handles btn_payment_history.Click
-        frm_collection_order_history.Show()
+        frm_collection_payment_ledger.Show()
     End Sub
 
     'btn_refresh
@@ -187,4 +202,7 @@ Public Class frm_collection_payments
         frm_collection_terms.Show()
     End Sub
 
+    Private Sub btn_chequebook_Click(sender As Object, e As EventArgs) Handles btn_chequebook.Click
+        frm_collection_cheque_books.Show()
+    End Sub
 End Class

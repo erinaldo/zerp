@@ -17,7 +17,7 @@ Module functions
             Return False
 
         Catch ex As Exception
-            MsgBox("Couldn't connect to server! Please contact your Administrator." & vbCrLf & vbCrLf & "Error: " & ex.Message, vbCritical, "Connection Problem")
+            MsgBox("Couldn't connect to server!" & Environment.NewLine & "Please contact your Administrator." & vbCrLf & vbCrLf & "Error: " & ex.Message, vbCritical, "Connection Problem")
             Return True
         Finally
             conn.Close()
@@ -78,6 +78,9 @@ Module functions
                         Case "orders"
                             .menu_sales.Visible = True
                             .submenu_orders.Visible = True
+                        Case "quotations"
+                            .menu_sales.Visible = True
+                            .submenu_quotations.Visible = True
                         Case "create_order"
                             .menu_sales.Visible = True
                             .submenu_create_order.Visible = True
@@ -229,4 +232,27 @@ Module functions
         Return cipherText
     End Function
 
+    'Payment Logs
+    Public Sub Insert_PaymentLog(connection As MySqlConnection, payment_date As Date, order_id As Integer, customer As String,
+                                  current_balance As Decimal, payment As Decimal, balance As Decimal, payment_gateway As String, payment_ref As String)
+        'Try
+        Using connection
+            Using cmd = New MySqlCommand("INSERT INTO ims_payment_logs (payment_date, order_id, customer_id, current_balance, payment, balance, payment_gateway, payment_ref)
+                                            VALUES (@payment_date, @order_id, (SELECT customer_id FROM ims_customers WHERE first_name=@customer), @current_balance, @payment, @balance, @payment_gateway, @payment_ref)", connection)
+                cmd.Parameters.AddWithValue("@payment_date", payment_date)
+                cmd.Parameters.AddWithValue("@order_id", order_id)
+                cmd.Parameters.AddWithValue("@customer", customer)
+                cmd.Parameters.AddWithValue("@current_balance", current_balance)
+                cmd.Parameters.AddWithValue("@payment", payment)
+                cmd.Parameters.AddWithValue("@balance", balance)
+                cmd.Parameters.AddWithValue("@payment_gateway", payment_gateway)
+                cmd.Parameters.AddWithValue("@payment_ref", payment_ref)
+                cmd.ExecuteNonQuery()
+            End Using
+        End Using
+        Try
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 End Module

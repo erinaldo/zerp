@@ -107,6 +107,7 @@ Partial Class frm_sales_packing_list
         '
         'PictureEdit1
         '
+        Me.PictureEdit1.EditValue = Global.Inventory_Management.My.Resources.Resources.time_16x16
         Me.PictureEdit1.Location = New System.Drawing.Point(13, 4)
         Me.PictureEdit1.Name = "PictureEdit1"
         Me.PictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent

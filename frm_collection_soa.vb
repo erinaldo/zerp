@@ -60,12 +60,14 @@ Public Class frm_collection_soa
 
             report.DataSource = table
 
-            Dim get_soa_details = New MySqlCommand("SELECT concat('SA',LPAD(soa_id,5,0)) as soa, ims_customers.first_name as customer, ims_customers.address, 
+        Dim get_soa_details = New MySqlCommand("SELECT concat('SA',LPAD(soa_id,5,0)) as soa, ims_customers.first_name as customer, ims_customers.address, 
                             ims_customers.contact_person, print_date, total, ims_users.first_name as prepared_by,
                             (SELECT value FROM ims_settings WHERE name='store_info') as store_info FROM ims_soa
                             INNER JOIN ims_customers ON ims_customers.customer_id=ims_soa.customer_id
-                            INNER JOIN ims_users ON ims_users.usr_id=prepared_by ORDER BY soa_id ASC", conn)
-            Dim reader = get_soa_details.ExecuteReader
+                            INNER JOIN ims_users ON ims_users.usr_id=prepared_by
+                            WHERE soa_id=@soa_id", conn)
+        get_soa_details.Parameters.AddWithValue("@soa_id", soa_id)
+        Dim reader = get_soa_details.ExecuteReader
 
             While reader.Read
                 report.Parameters("store_info").Value = reader("store_info")

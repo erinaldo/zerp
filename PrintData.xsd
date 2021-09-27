@@ -116,6 +116,15 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="purchase_returns" msprop:Generator_TableClassName="purchase_returnsDataTable" msprop:Generator_TableVarName="tablepurchase_returns" msprop:Generator_RowChangedName="purchase_returnsRowChanged" msprop:Generator_TablePropName="purchase_returns" msprop:Generator_RowDeletingName="purchase_returnsRowDeleting" msprop:Generator_RowChangingName="purchase_returnsRowChanging" msprop:Generator_RowEvHandlerName="purchase_returnsRowChangeEventHandler" msprop:Generator_RowDeletedName="purchase_returnsRowDeleted" msprop:Generator_RowClassName="purchase_returnsRow" msprop:Generator_UserTableName="purchase_returns" msprop:Generator_RowEvArgName="purchase_returnsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pr_id" msprop:Generator_ColumnVarNameInTable="columnpr_id" msprop:Generator_ColumnPropNameInRow="pr_id" msprop:Generator_ColumnPropNameInTable="pr_idColumn" msprop:Generator_UserColumnName="pr_id" type="xs:string" minOccurs="0" />
+              <xs:element name="supplier" msprop:Generator_ColumnVarNameInTable="columnsupplier" msprop:Generator_ColumnPropNameInRow="supplier" msprop:Generator_ColumnPropNameInTable="supplierColumn" msprop:Generator_UserColumnName="supplier" type="xs:string" minOccurs="0" />
+              <xs:element name="total_cost" msprop:Generator_ColumnVarNameInTable="columntotal_cost" msprop:Generator_ColumnPropNameInRow="total_cost" msprop:Generator_ColumnPropNameInTable="total_costColumn" msprop:Generator_UserColumnName="total_cost" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

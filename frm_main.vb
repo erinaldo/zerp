@@ -275,9 +275,14 @@ Public Class frm_main
         frm_sales_create_order.Show()
     End Sub
 
-    'Orders
+    'Sales Orders
     Private Sub OrdersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_orders.Click
         LoadFrm(New frm_sales_orders)
+    End Sub
+
+    'Quotations
+    Private Sub submenu_quotations_Click(sender As Object, e As EventArgs) Handles submenu_quotations.Click
+        LoadFrm(New frm_sales_quotation_order_list)
     End Sub
 
     'New Customer
@@ -350,7 +355,10 @@ Public Class frm_main
         LoadFrm(New frm_purchaseorder_list)
     End Sub
 
-
+    'Purchase Returns
+    Private Sub submenu_po_returns_Click(sender As Object, e As EventArgs) Handles submenu_po_returns.Click
+        LoadFrm(New frm_purchaseorder_return_list)
+    End Sub
 
 
 
@@ -494,5 +502,6 @@ Public Class frm_main
     Private Sub PaymentChequesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_payment_cheques.Click
         LoadFrm(New frm_accounting_payment_cheques)
     End Sub
+
 
 End Class

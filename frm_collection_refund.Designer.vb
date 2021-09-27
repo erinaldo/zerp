@@ -31,6 +31,7 @@ Partial Class frm_collection_refund
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.refund_type = New DevExpress.XtraEditors.LabelControl()
         Me.SuspendLayout()
         '
         'lbl_amount_due
@@ -138,12 +139,25 @@ Partial Class frm_collection_refund
         Me.LabelControl4.TabIndex = 28
         Me.LabelControl4.Text = "Amount to Refund"
         '
+        'refund_type
+        '
+        Me.refund_type.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.refund_type.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.refund_type.Appearance.Options.UseFont = True
+        Me.refund_type.Appearance.Options.UseForeColor = True
+        Me.refund_type.Location = New System.Drawing.Point(169, 21)
+        Me.refund_type.Name = "refund_type"
+        Me.refund_type.Size = New System.Drawing.Size(71, 14)
+        Me.refund_type.TabIndex = 29
+        Me.refund_type.Text = "Refund Type"
+        '
         'frm_collection_refund
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(258, 216)
+        Me.Controls.Add(Me.refund_type)
         Me.Controls.Add(Me.LabelControl4)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.lbl_customer)
@@ -172,4 +186,5 @@ Partial Class frm_collection_refund
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents refund_type As DevExpress.XtraEditors.LabelControl
 End Class

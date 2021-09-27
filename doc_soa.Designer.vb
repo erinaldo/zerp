@@ -648,7 +648,7 @@ Partial Public Class doc_soa
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.customer, Me.attn, Me.addr, Me.soa_id, Me.amount_due, Me.print_date, Me.prepared_by, Me.store_info, Me.total})
         Me.RequestParameters = False
-        Me.Version = "20.2"
+        Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).EndInit()

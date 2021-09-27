@@ -1,4 +1,5 @@
-﻿Imports DevExpress.XtraEditors
+﻿Imports DevExpress.XtraCharts
+Imports DevExpress.XtraEditors
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraPrintingLinks
 Imports MySql.Data.MySqlClient
@@ -30,6 +31,7 @@ Public Class frm_admin_reports
     Private Sub Load_Selected_Tab()
         Select Case TabControl.SelectedTabPage.Name
             Case tab_sales.Name : Load_Sales_Over_Time()
+            Case tab_transactions.Name : Load_Sales_per_Transactions(dt_start.EditValue, dt_end.EditValue)
             Case tab_users.Name : Load_SalesCoordinatorAgent()
             Case tab_performance.Name
                 Load_CoordinatorAgent_list()
@@ -38,6 +40,37 @@ Public Class frm_admin_reports
         End Select
     End Sub
 
+    'Load Totals
+    Private Sub LoadTotals()
+        Dim dt = CType(grid_sales_report.DataSource, DataTable)
+
+        Dim total_cost As Decimal = 0.00
+        Dim total_cash As Decimal = 0.00
+        Dim total_cheque As Decimal = 0.00
+        Dim total_epay As Decimal = 0.00
+        Dim total_sales As Decimal = 0.00
+        Dim total_transactions As Integer = 0
+        Dim total_avg_transc_amout As Decimal = 0.00
+        Dim total_avg_sales_margin As String = String.Empty
+
+        For i = 0 To dt.Rows.Count - 1
+            total_cost += dt.Rows(i).Item(1)
+            total_cash += dt.Rows(i).Item(2)
+            total_cheque += dt.Rows(i).Item(3)
+            total_epay += dt.Rows(i).Item(4)
+            total_sales += dt.Rows(i).Item(5)
+            total_transactions += dt.Rows(i).Item(6)
+        Next
+
+        lbl_totalcost.Text = FormatCurrency(total_cost, 2)
+        lbl_cash.Text = FormatCurrency(total_cash, 2)
+        lbl_cheques.Text = FormatCurrency(total_cheque, 2)
+        lbl_epay.Text = FormatCurrency(total_epay, 2)
+        lbl_gross_sales.Text = FormatCurrency(total_sales, 2)
+        lbl_no_transactions.Text = total_transactions
+        lbl_avg_sales_amount.Text = FormatCurrency(total_sales / total_transactions, 2)
+        lbl_ave_sales_margin.Text = Math.Round(((total_sales - total_cost) / total_sales) * 100, 1) & "%"
+    End Sub
 
 
     '-->> SALES REPORTS
@@ -70,7 +103,7 @@ Public Class frm_admin_reports
 			                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE payment_type = 'E-Payment' AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee) +
 			                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE payment_type = 'Cash' AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee), 2)
 		                        ) AS gross_sale,
-		                        (SELECT COUNT(order_id) FROM ims_orders WHERE DATE(date_released) = datee) AS total_transactions
+		                        (SELECT COUNT(order_id) FROM ims_orders WHERE DATE(date_released) = datee AND payment_status='PAID') AS total_transactions
 	                        FROM ims_orders ims
 	                        WHERE date_released IS NOT NULL AND NOT paid_amount = 0 AND DATE(date_released) BETWEEN @start_date AND @end_date
 	                        GROUP BY datee
@@ -94,7 +127,42 @@ Public Class frm_admin_reports
 
                     grid_sales_report.DataSource = dt
                     chart_SalesOverTime()
+                    LoadTotals()
 
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    'Load Sales Report
+    Private Sub Load_Sales_per_Transactions(StartDate As Date, EndDate As Date)
+        Try
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+
+                'DISPLAY DATA WITH STORED PROCEDURE
+                Dim query = "SELECT 
+	                            order_id, 
+	                            DATE(date_released) AS released_date, 
+	                            (SELECT SUM(cost * qty) FROM ims_sales WHERE order_id=ims.order_id) AS total_cost, 
+	                            (SELECT SUM(price) FROM ims_sales WHERE order_id=ims.order_id) AS gross_sales, 
+	                            (SELECT (SUM(price) - SUM(cost * qty)) FROM ims_sales WHERE order_id=ims.order_id) AS net_sales,
+	                            (SELECT (SUM(price) - SUM(cost * qty)) / SUM(price) FROM ims_sales WHERE order_id=ims.order_id) AS sales_margin,
+	                            ims_users.first_name AS coordinator 
+                            FROM ims_orders ims
+                            INNER JOIN ims_users ON ims_users.usr_id=ims.agent
+                            WHERE ims.deleted='0' AND payment_status='PAID' AND DATE(date_released) BETWEEN @StartDate AND @EndDate"
+                Using cmd = New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@StartDate", StartDate)
+                    cmd.Parameters.AddWithValue("@EndDate", EndDate)
+                    cmd.ExecuteNonQuery()
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd)
+                    da.Fill(dt)
+                    grid_transaction.DataSource = dt
                 End Using
             End Using
 
@@ -209,6 +277,16 @@ Public Class frm_admin_reports
                                     GROUP BY datee
                                     ORDER BY datee DESC"
                 Using cmd = New MySqlCommand(query_agent, conn)
+                    'cmd.Parameters.AddWithValue("@StartDate", dt_start.EditValue)
+                    'cmd.Parameters.AddWithValue("@EndDate", dt_end.EditValue)
+                    'cmd.Parameters.AddWithValue("@agent", lbl_agent.Text)
+                    'cmd.ExecuteNonQuery()
+                    'Dim dt = New DataTable
+                    'Dim da = New MySqlDataAdapter(cmd)
+                    'da.Fill(dt)
+
+                    'grid_perf_sa.DataSource = dt
+
                     cmd.Parameters.AddWithValue("@StartDate", dt_start.EditValue)
                     cmd.Parameters.AddWithValue("@EndDate", dt_end.EditValue)
                     cmd.Parameters.AddWithValue("@agent", lbl_agent.Text)
@@ -224,7 +302,7 @@ Public Class frm_admin_reports
 
                         While rdr.Read
                             dt.Rows.Add(
-                                rdr("datee"), rdr("transactions"), rdr("unique_customer"), rdr("total_cost"), rdr("gross_sale"), Math.Round(((rdr("gross_sale") - rdr("total_cost")) / rdr("gross_sale")) * 100, 0) & "%")
+                                CDate(CDate(rdr("datee")).ToString("dd/MM/yyyy")), rdr("transactions"), rdr("unique_customer"), rdr("total_cost"), rdr("gross_sale"), Math.Round(((rdr("gross_sale") - rdr("total_cost")) / rdr("gross_sale")) * 100, 0) & "%")
                         End While
 
                         grid_perf_sa.DataSource = dt
@@ -246,6 +324,11 @@ Public Class frm_admin_reports
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
+
+                cbb_coordinator.Properties.Items.Clear()
+                cbb_agent.Properties.Items.Clear()
+                cbb_agent.Properties.Items.Add("Unassigned")
+
                 Using cmd = New MySqlCommand("SELECT first_name, role_id FROM ims_users WHERE role_id=7 OR role_id=10", conn)
                     Using rdr = cmd.ExecuteReader
                         While rdr.Read
@@ -267,6 +350,13 @@ Public Class frm_admin_reports
 
     'Load User ID Upon Selection
     Private Sub GetUserID(cbb_ As ComboBoxEdit, lbl_ As LabelControl)
+
+        'IF UNASSIGNED
+        If cbb_.Text.Equals("Unassigned") Then
+            lbl_.Text = "0"
+            Return
+        End If
+
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
@@ -332,22 +422,25 @@ Public Class frm_admin_reports
     'Sales Over Time 
     Private Sub chart_SalesOverTime()
         Try
-            Dim dt = DirectCast(grid_sales_report.DataSource, DataTable)
+            Dim data = DirectCast(grid_sales_report.DataSource, DataTable)
             Dim SalesSeries = chart_sales.Series("sales")
 
             SalesSeries.Points.Clear()
 
+            data.DefaultView.Sort = "datee ASC"
+            Dim dt = data.DefaultView.ToTable
+
             If rb_gross_sales.Checked Then 'Show Gross Sales in Chart
                 For i = 0 To dt.Rows.Count - 1
-                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, CDec(dt.Rows(i).Item(5))))
+                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CDec(dt.Rows(i).Item(5))))
                 Next
             ElseIf rb_margin.Checked Then 'Show Average Sales Margin in Chart
                 For i = 0 To dt.Rows.Count - 1
-                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, CInt(dt.Rows(i).Item(8).ToString.Replace("%", ""))))
+                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CInt(dt.Rows(i).Item(8).ToString.Replace("%", ""))))
                 Next
             ElseIf rb_transactions.Checked Then 'Show Total Transactions in Chart
                 For i = 0 To dt.Rows.Count - 1
-                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, CInt(dt.Rows(i).Item(6))))
+                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CInt(dt.Rows(i).Item(6))))
                 Next
             End If
 
@@ -404,8 +497,10 @@ Public Class frm_admin_reports
                     selection = 4
                 End If
 
-                For i = 0 To dt.Rows.Count - 1
-                    series_coordinators.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, dt.Rows(i).Item(selection)))
+                dt.DefaultView.Sort = "datee ASC"
+                Dim data = dt.DefaultView.ToTable
+                For i = 0 To data.Rows.Count - 1
+                    series_coordinators.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(data.Rows(i).Item(0)).ToString("MM/dd/yyyy"), data.Rows(i).Item(selection)))
                 Next
             End Using
 
@@ -422,8 +517,10 @@ Public Class frm_admin_reports
                     selection = 4
                 End If
 
-                For i = 0 To dt.Rows.Count - 1
-                    series_agents.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, dt.Rows(i).Item(selection)))
+                dt.DefaultView.Sort = "datee ASC"
+                Dim data = dt.DefaultView.ToTable
+                For i = 0 To data.Rows.Count - 1
+                    series_agents.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(data.Rows(i).Item(0)).ToString("MM/dd/yyyy"), data.Rows(i).Item(selection)))
                 Next
             End Using
 
@@ -451,7 +548,7 @@ Public Class frm_admin_reports
                     cmd.Parameters.AddWithValue("@EndDate", dt_end.EditValue)
                     Using rdr = cmd.ExecuteReader
                         While rdr.Read
-                            series.Points.Add(New DevExpress.XtraCharts.SeriesPoint(rdr("dt").ToString, CInt(rdr("qty"))))
+                            series.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(rdr("dt")).ToString("MM/dd/yyyy"), CInt(rdr("qty"))))
                         End While
                     End Using
                 End Using
@@ -567,5 +664,13 @@ Public Class frm_admin_reports
 
     Private Sub btn_print_product_Click(sender As Object, e As EventArgs) Handles btn_print_product.Click
         grid_product_perf.ShowRibbonPrintPreview()
+    End Sub
+
+    Private Sub grid_sales_report_view_DoubleClick(sender As Object, e As EventArgs) Handles grid_sales_report_view.DoubleClick
+        If grid_sales_report_view.FocusedColumn.Name = col_datee.Name Then
+            Dim _date As Date = grid_sales_report_view.GetFocusedRowCellValue(col_datee)
+            TabControl.SelectedTabPage = tab_transactions
+            Load_Sales_per_Transactions(_date, _date)
+        End If
     End Sub
 End Class
