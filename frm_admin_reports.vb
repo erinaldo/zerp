@@ -22,10 +22,7 @@ Public Class frm_admin_reports
 
 
 
-
-
     '--- FUNCTIONS ----
-
 
     'Loading Selected Tab
     Private Sub Load_Selected_Tab()
@@ -33,10 +30,11 @@ Public Class frm_admin_reports
             Case tab_sales.Name : Load_Sales_Over_Time()
             Case tab_transactions.Name : Load_Sales_per_Transactions(dt_start.EditValue, dt_end.EditValue)
             Case tab_users.Name : Load_SalesCoordinatorAgent()
-            Case tab_performance.Name
+            Case tab_user_performance.Name
                 Load_CoordinatorAgent_list()
                 Load_SalesCoordinatorAgent_performance()
             Case tab_product.Name : Load_ProductPerformace()
+            Case tab_customer_performance.Name : Load_CustomerPerformance()
         End Select
     End Sub
 
@@ -71,6 +69,7 @@ Public Class frm_admin_reports
         lbl_avg_sales_amount.Text = FormatCurrency(total_sales / total_transactions, 2)
         lbl_ave_sales_margin.Text = Math.Round(((total_sales - total_cost) / total_sales) * 100, 1) & "%"
     End Sub
+
 
 
     '-->> SALES REPORTS
@@ -145,7 +144,7 @@ Public Class frm_admin_reports
 
                 'DISPLAY DATA WITH STORED PROCEDURE
                 Dim query = "SELECT 
-	                            order_id, 
+	                            order_id, ims_customers.first_name AS customer,
 	                            DATE(date_released) AS released_date, 
 	                            (SELECT SUM(cost * qty) FROM ims_sales WHERE order_id=ims.order_id) AS total_cost, 
 	                            (SELECT SUM(price) FROM ims_sales WHERE order_id=ims.order_id) AS gross_sales, 
@@ -153,6 +152,7 @@ Public Class frm_admin_reports
 	                            (SELECT (SUM(price) - SUM(cost * qty)) / SUM(price) FROM ims_sales WHERE order_id=ims.order_id) AS sales_margin,
 	                            ims_users.first_name AS coordinator 
                             FROM ims_orders ims
+                            INNER JOIN ims_customers ON ims_customers.customer_id=ims.customer
                             INNER JOIN ims_users ON ims_users.usr_id=ims.agent
                             WHERE ims.deleted='0' AND payment_status='PAID' AND DATE(date_released) BETWEEN @StartDate AND @EndDate"
                 Using cmd = New MySqlCommand(query, conn)
@@ -396,7 +396,6 @@ Public Class frm_admin_reports
                 Using cmd = New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@StartDate", dt_start.EditValue)
                     cmd.Parameters.AddWithValue("@EndDate", dt_end.EditValue)
-                    cmd.ExecuteNonQuery()
                     Dim dt = New DataTable
                     Dim da = New MySqlDataAdapter(cmd)
                     da.Fill(dt)
@@ -412,6 +411,41 @@ Public Class frm_admin_reports
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+    'Load Customer Performance
+    Private Sub Load_CustomerPerformance()
+        Try
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Using cmd = New MySqlCommand("SELECT
+	                                            customer, COUNT(customer) no_of_transc, SUM(total_cost) total_cost, SUM(gross_sales) total_gross, SUM((gross_sales - total_cost) / gross_sales) margin
+                                            FROM (
+	                                            SELECT 
+		                                            ims_customers.first_name AS customer,
+		                                            (SELECT SUM(cost * qty) FROM ims_sales WHERE order_id=ims.order_id) AS total_cost,
+		                                            (SELECT SUM(price) FROM ims_sales WHERE order_id=ims.order_id) AS gross_sales
+	                                            FROM ims_orders ims
+	                                            INNER JOIN ims_customers ON ims_customers.customer_id=ims.customer
+	                                            WHERE date_released IS NOT NULL AND NOT paid_amount = 0 AND deleted=0 AND DATE(date_released) BETWEEN @StartDate AND @EndDate
+                                            ) s2
+                                            GROUP BY customer", conn)
+                    cmd.Parameters.AddWithValue("@StartDate", dt_start.EditValue)
+                    cmd.Parameters.AddWithValue("@EndDate", dt_end.EditValue)
+
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd)
+                    da.Fill(dt)
+                    grid_customer_performance.DataSource = dt
+
+                    'Show in Chart
+                    chart_CustomerPerformance()
+
+                End Using
+            End Using
+        Catch ex As Exception
+
         End Try
     End Sub
 
@@ -560,6 +594,33 @@ Public Class frm_admin_reports
         End Try
     End Sub
 
+    'Customer Performance
+    Private Sub chart_CustomerPerformance()
+        Try
+            Using dt = DirectCast(grid_customer_performance.DataSource, DataTable)
+                Dim series_coordinators = chart_customer_performance.Series("customers")
+
+                series_coordinators.Points.Clear()
+
+                If rb_cp_gross.Checked Then 'Show Gross Sales in Chart
+                    For i = 0 To dt.Rows.Count - 1
+                        series_coordinators.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, FormatNumber(dt.Rows(i).Item(3), 2)))
+                    Next
+                ElseIf rb_cp_margin.Checked Then 'Show Average Sales Margin in Chart
+                    For i = 0 To dt.Rows.Count - 1
+                        series_coordinators.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, Math.Round(dt.Rows(i).Item(4) * 100, 0)))
+                    Next
+                ElseIf rb_cp_transc.Checked Then 'Show Total Transactions in Chart
+                    For i = 0 To dt.Rows.Count - 1
+                        series_coordinators.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0).ToString, dt.Rows(i).Item(1)))
+                    Next
+                End If
+
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
 
 
 
@@ -605,7 +666,7 @@ Public Class frm_admin_reports
 
 
 
-    '--> RADIO BUTTONS FOR PERFORMANCE
+    '--> RADIO BUTTONS FOR SALES PERFORMANCE
 
     Private Sub rb_perf_coor_transaction_Click(sender As Object, e As EventArgs) Handles rb_perf_coor_transaction.Click
         chart_performance()
@@ -622,6 +683,22 @@ Public Class frm_admin_reports
     Private Sub rb_perf_agent_sales_Click(sender As Object, e As EventArgs) Handles rb_perf_agent_sales.Click
         chart_performance()
     End Sub
+
+
+    '---> RADIO BUTTONS FOR CUSTOMER PERFORMANCE
+
+    Private Sub rb_cp_gross_Click(sender As Object, e As EventArgs) Handles rb_cp_gross.Click
+        chart_CustomerPerformance()
+    End Sub
+
+    Private Sub rb_cp_margin_Click(sender As Object, e As EventArgs) Handles rb_cp_margin.Click
+        chart_CustomerPerformance()
+    End Sub
+
+    Private Sub rb_cp_transc_Click(sender As Object, e As EventArgs) Handles rb_cp_transc.Click
+        chart_CustomerPerformance()
+    End Sub
+
 
     Private Sub grid_product_perf_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_product_perf_view.RowCellClick
         If grid_product_perf_view.FocusedColumn.Name = col_item.Name Then
@@ -673,4 +750,5 @@ Public Class frm_admin_reports
             Load_Sales_per_Transactions(_date, _date)
         End If
     End Sub
+
 End Class

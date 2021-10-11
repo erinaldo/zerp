@@ -279,9 +279,9 @@ Public Class frm_accounting_generate_cheque
 
                     If Not Month(.GetRowCellValue(SelectedRows(0), col_due_date)) = Month(.GetRowCellValue(SelectedRows(i), col_due_date)) Then
                         MsgBox("Warning! Month of due should Equal.", vbExclamation, "Not Equal")
-                        txt_cheque_date.Text = ""
-                        txt_total_view.Text = ""
-                        Exit Sub
+                        'txt_cheque_date.Text = ""
+                        'txt_total_view.Text = ""
+                        'Exit Sub
                     End If
 
                     Dim due_date As Date = .GetRowCellValue(SelectedRows(i), col_due_date)

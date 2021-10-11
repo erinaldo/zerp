@@ -202,7 +202,14 @@ Public Class frm_collection_payments
         frm_collection_terms.Show()
     End Sub
 
+    'Show Chequebook
     Private Sub btn_chequebook_Click(sender As Object, e As EventArgs) Handles btn_chequebook.Click
         frm_collection_cheque_books.Show()
     End Sub
+
+    'Show Collection Receipts
+    Private Sub btn_collection_receipts_Click(sender As Object, e As EventArgs) Handles btn_collection_receipts.Click
+        frm_collection_receipts.ShowDialog()
+    End Sub
+
 End Class

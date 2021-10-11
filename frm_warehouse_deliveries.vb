@@ -47,7 +47,7 @@ Public Class frm_warehouse_deliveries
                 da.Fill(dt)
 
                 'Remove Obsolete Orders
-                dt.DefaultView.RowFilter = "lead_time_status in ('On-going', 'Due Date', 'Overdue')"
+                'dt.DefaultView.RowFilter = "lead_time_status in ('On-going', 'Due Date', 'Overdue')"
 
                 grid_delivery.DataSource = dt
             End Using

@@ -1,6 +1,7 @@
 ﻿Imports System.Globalization
-Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
+Imports Newtonsoft.Json
 
 Public Class frm_collection_cheque
 
@@ -8,6 +9,7 @@ Public Class frm_collection_cheque
     Public Property customer_id = 0
     Public Property customer_name = ""
     Dim dt_cheque As New DataTable
+    Dim ListOfItem As List(Of cheques) = New List(Of cheques)
 
     '--- ONLOAD ---
     Private Sub frm_accounting_cheque_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,26 +23,8 @@ Public Class frm_collection_cheque
         dt_cheque.Columns.Add("bank")
         grid_cheque.DataSource = dt_cheque
         LoadBank()
+
     End Sub
-
-
-    Private Sub btn_select_Click(sender As Object, e As EventArgs) Handles btn_select.Click
-        customer_id = 0
-        txt_total.Text = ""
-        frm_collection_cheque_customer.ShowDialog()
-
-        If Not IsNothing(grid_cheque.DataSource) Then
-            Dim dt = TryCast(grid_cheque.DataSource, DataTable)
-            dt.Rows.Clear()
-            grid_cheque.DataSource = dt
-        End If
-
-
-        lbl_customer_id.Text = customer_id
-        txt_customer_name.Text = customer_name
-        LoadTransactions(customer_id)
-    End Sub
-
 
 
 
@@ -99,6 +83,89 @@ Public Class frm_collection_cheque
 
     End Sub
 
+    'Print Collection Receipt
+    Private Sub Print_Collection_Receipt(collection_id As Integer)
+        Try
+            Dim report = New doc_collection_receipt()
+            Dim printTool = New ReportPrintTool(report)
+            Dim table = New PrintData
+
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+
+                Dim so_nos = String.Empty
+                Using cmd = New MySqlCommand("SELECT collection_id, so_nos, cheques, date_generated, ims_users.first_name AS collected_by, ims_customers.first_name AS c_name, ims_customers.address,
+                                (SELECT value FROM ims_settings WHERE name='store_info') as store_info
+                                FROM ims_collection_receipts 
+                                INNER JOIN ims_customers ON ims_customers.customer_id=ims_collection_receipts.customer_id
+                                INNER JOIN ims_users ON ims_users.usr_id=ims_collection_receipts.collected_by
+                                WHERE collection_id=" & collection_id, connection)
+                    Using rdr = cmd.ExecuteReader
+                        While rdr.Read
+                            report.Parameters("store_info").Value = rdr("store_info")
+                            report.Parameters("collection_id").Value = "CR" & rdr("collection_id").ToString.PadLeft(5, "0"c)
+                            report.Parameters("collection_date").Value = rdr("date_generated")
+                            report.Parameters("customer").Value = rdr("c_name")
+                            report.Parameters("address").Value = rdr("address")
+                            report.Parameters("collected_by").Value = rdr("collected_by")
+                            report.Parameters("encoded_by").Value = rdr("collected_by")
+                            so_nos = rdr("so_nos")
+
+                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of cheques))(rdr("cheques"))
+                            For Each item In itemsObject
+                                table.payment_voucher_cheque.Rows.Add(item.bank, item.cheque_date, item.cheque_no, item.amount)
+                            Next
+
+                        End While
+                    End Using
+                End Using
+
+                Dim so_nos_array = so_nos.Split(",")
+                    For i = 0 To so_nos_array.Length - 1
+                    Using cmd = New MySqlCommand("SELECT order_id, date_released, DATE_ADD(date_released, INTERVAL terms DAY) AS due_date, amount_due FROM ims_orders WHERE order_id=" & so_nos_array(i), connection)
+                        Using rdr = cmd.ExecuteReader
+                            While rdr.Read
+                                table.collection_receipt.Rows.Add("SO" & rdr("order_id").ToString.PadLeft(5, "0"c), rdr("date_released"), rdr("due_date"), rdr("amount_due"))
+                            End While
+                        End Using
+                    End Using
+                Next
+
+                report.RequestParameters = False
+                report.DataSource = table
+                report.ShowRibbonPreviewDialog()
+
+
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
+
+
+
+    '--- CONTROLS ---
+
+    'btn_select
+    Private Sub btn_select_Click(sender As Object, e As EventArgs) Handles btn_select.Click
+        customer_id = 0
+        txt_total.Text = ""
+        frm_collection_cheque_customer.ShowDialog()
+
+        If Not IsNothing(grid_cheque.DataSource) Then
+            Dim dt = TryCast(grid_cheque.DataSource, DataTable)
+            dt.Rows.Clear()
+            grid_cheque.DataSource = dt
+        End If
+
+
+        lbl_customer_id.Text = customer_id
+        txt_customer_name.Text = customer_name
+        LoadTransactions(customer_id)
+    End Sub
+
+
     'btn_close
     Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
         Me.Close()
@@ -144,71 +211,100 @@ Public Class frm_collection_cheque
                 Dim selectedRowHandles = grid_transaction_view.GetSelectedRows
 
                 For i = 0 To selectedRowHandles.Length - 1
-                    orders += grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id) & ","
-                Next
-
-
-                conn.Open()
-
-                'INSERT CHEQUE
-                Dim cheque_cmd = New MySqlCommand("INSERT INTO ims_cheque_collections (cheque_date, cheque_no, amount, acc_name, acc_no, payee_name, customer_id, orders, bank, status, entry_date) 
-                                            VALUES (@cheque_date, @cheque_no, @amount, @acc_name, @acc_no, @payee_name, @customer_id, @orders, @bank, @status, @entry_date)", conn)
-                cheque_cmd.Parameters.AddWithValue("@cheque_no", "")
-                cheque_cmd.Parameters.AddWithValue("@cheque_date", "")
-                cheque_cmd.Parameters.AddWithValue("@amount", "")
-                cheque_cmd.Parameters.AddWithValue("@bank", "")
-                cheque_cmd.Parameters.AddWithValue("@acc_no", "")
-                cheque_cmd.Parameters.AddWithValue("@acc_name", "")
-                cheque_cmd.Parameters.AddWithValue("@payee_name", "")
-                cheque_cmd.Parameters.AddWithValue("@orders", orders)
-                cheque_cmd.Parameters.AddWithValue("@customer_id", lbl_customer_id.Text)
-                cheque_cmd.Parameters.AddWithValue("@entry_date", Date.Today)
-                cheque_cmd.Parameters.AddWithValue("@status", "RECEIVED")
-                cheque_cmd.Prepare()
-
-                For i = 0 To grid_cheque_view.RowCount - 1
-                    Dim intRow = grid_cheque_view.GetVisibleRowHandle(i)
-                    cheque_cmd.Parameters(0).Value = grid_cheque_view.GetRowCellValue(intRow, col_cheque_no)
-                    cheque_cmd.Parameters(1).Value = Date.ParseExact(grid_cheque_view.GetRowCellValue(0, col_cheque_date), "MM/dd/yyyy", CultureInfo.InvariantCulture).ToString("yyyy/MM/dd")
-                    cheque_cmd.Parameters(2).Value = CDec(grid_cheque_view.GetRowCellValue(intRow, col_cheque_amount))
-                    cheque_cmd.Parameters(3).Value = grid_cheque_view.GetRowCellValue(intRow, col_bank)
-                    cheque_cmd.Parameters(4).Value = grid_cheque_view.GetRowCellValue(intRow, col_acc_no)
-                    cheque_cmd.Parameters(5).Value = grid_cheque_view.GetRowCellValue(intRow, col_acc_name)
-                    cheque_cmd.Parameters(6).Value = grid_cheque_view.GetRowCellValue(intRow, col_payee)
-                    cheque_cmd.Parameters(7).Value = orders
-                    cheque_cmd.Parameters(8).Value = lbl_customer_id.Text
-                    cheque_cmd.ExecuteScalar()
-
-                    If i = grid_cheque_view.RowCount - 1 Then
-                        cheque_number += grid_cheque_view.GetRowCellValue(intRow, col_cheque_no)
+                    If i = selectedRowHandles.Length - 1 Then
+                        orders = String.Concat(orders, grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id))
                     Else
-                        cheque_number += grid_cheque_view.GetRowCellValue(intRow, col_cheque_no) & ", "
+                        orders = String.Concat(orders, grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id), ",")
                     End If
-
                 Next
 
 
-                'UPDATE ORDERS
-                For i = 0 To selectedRowHandles.Length - 1
-                    Dim id = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id)
-                    Dim amount As Decimal = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_amount)
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
 
-                    Dim order_cmd = New MySqlCommand("UPDATE ims_orders SET paid_amount=@amount, payment_option=@option, payment_details=@details, status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) , payment_status='PAID' WHERE order_id=" & id, conn)
-                    order_cmd.Parameters.AddWithValue("@option", "Cheque")
-                    order_cmd.Parameters.AddWithValue("@amount", amount)
-                    order_cmd.Parameters.AddWithValue("@details", Date.Today & " - " & cheque_number)
-                    order_cmd.ExecuteNonQuery()
-                Next
+                    'INSERT CHEQUE
+                    Dim cheque_cmd = New MySqlCommand("INSERT INTO ims_cheque_collections (cheque_date, cheque_no, amount, acc_name, acc_no, payee_name, customer_id, orders, bank, status, entry_date) 
+                                            VALUES (@cheque_date, @cheque_no, @amount, @acc_name, @acc_no, @payee_name, @customer_id, @orders, @bank, @status, @entry_date)", connection)
+                    cheque_cmd.Parameters.AddWithValue("@cheque_no", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@cheque_date", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@amount", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@bank", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@acc_no", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@acc_name", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@payee_name", String.Empty)
+                    cheque_cmd.Parameters.AddWithValue("@orders", orders)
+                    cheque_cmd.Parameters.AddWithValue("@customer_id", lbl_customer_id.Text)
+                    cheque_cmd.Parameters.AddWithValue("@entry_date", Date.Today)
+                    cheque_cmd.Parameters.AddWithValue("@status", "RECEIVED")
+                    cheque_cmd.Prepare()
+
+                    For i = 0 To grid_cheque_view.RowCount - 1
+                        Dim intRow = grid_cheque_view.GetVisibleRowHandle(i)
+                        cheque_cmd.Parameters(0).Value = grid_cheque_view.GetRowCellValue(intRow, col_cheque_no)
+                        cheque_cmd.Parameters(1).Value = Date.ParseExact(grid_cheque_view.GetRowCellValue(0, col_cheque_date), "MM/dd/yyyy", CultureInfo.InvariantCulture).ToString("yyyy/MM/dd")
+                        cheque_cmd.Parameters(2).Value = CDec(grid_cheque_view.GetRowCellValue(intRow, col_cheque_amount))
+                        cheque_cmd.Parameters(3).Value = grid_cheque_view.GetRowCellValue(intRow, col_bank)
+                        cheque_cmd.Parameters(4).Value = grid_cheque_view.GetRowCellValue(intRow, col_acc_no)
+                        cheque_cmd.Parameters(5).Value = grid_cheque_view.GetRowCellValue(intRow, col_acc_name)
+                        cheque_cmd.Parameters(6).Value = grid_cheque_view.GetRowCellValue(intRow, col_payee)
+                        cheque_cmd.Parameters(7).Value = orders
+                        cheque_cmd.Parameters(8).Value = lbl_customer_id.Text
+                        cheque_cmd.ExecuteScalar()
+
+                        If i = grid_cheque_view.RowCount - 1 Then
+                            cheque_number += grid_cheque_view.GetRowCellValue(intRow, col_cheque_no)
+                        Else
+                            cheque_number += grid_cheque_view.GetRowCellValue(intRow, col_cheque_no) & ", "
+                        End If
+
+                    Next
 
 
-                MsgBox("Order(s) has been marked as PAID.", vbInformation, "Success")
-                frm_main.LoadFrm(New frm_collection_payments)
-                Me.Close()
+                    'UPDATE ORDERS
+                    For i = 0 To selectedRowHandles.Length - 1
+                        Dim id = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id)
+                        Dim amount As Decimal = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_amount)
+
+                        Dim order_cmd = New MySqlCommand("UPDATE ims_orders SET paid_amount=@amount, payment_option=@option, payment_details=@details, 
+                                            status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) , payment_status='PAID' WHERE order_id=" & id, connection)
+                        order_cmd.Parameters.AddWithValue("@option", "Cheque")
+                        order_cmd.Parameters.AddWithValue("@amount", amount)
+                        order_cmd.Parameters.AddWithValue("@details", Date.Today & " - " & cheque_number)
+                        order_cmd.ExecuteNonQuery()
+                    Next
+
+                    'INSERT TO IMS_COLLECTION_RECEIPT
+                    Using cmd_collection = New MySqlCommand("INSERT INTO ims_collection_receipts (customer_id, so_nos, cheques, date_generated, collected_by) 
+                                            VALUES (@customer_id, @so_nos, @cheques, NOW(), @collected_by); SELECT LAST_INSERT_ID()", connection)
+
+                        For i = 0 To grid_cheque_view.RowCount - 1
+                            ListOfItem.Add(New cheques With {
+                                .cheque_no = grid_cheque_view.GetRowCellValue(i, col_cheque_no),
+                                .cheque_date = Date.ParseExact(grid_cheque_view.GetRowCellValue(i, col_cheque_date), "MM/dd/yyyy", CultureInfo.InvariantCulture),
+                                .bank = grid_cheque_view.GetRowCellValue(i, col_bank),
+                                .amount = grid_cheque_view.GetRowCellValue(i, col_cheque_amount)
+                            })
+                        Next
+
+                        cmd_collection.Parameters.AddWithValue("@customer_id", lbl_customer_id.Text)
+                        cmd_collection.Parameters.AddWithValue("@so_nos", orders)
+                        cmd_collection.Parameters.AddWithValue("@cheques", JsonConvert.SerializeObject(ListOfItem))
+                        cmd_collection.Parameters.AddWithValue("@collected_by", frm_main.user_id.Text)
+
+                        'PRINT COLLECTION RECEIPT
+                        Print_Collection_Receipt(cmd_collection.ExecuteScalar())
+
+                    End Using
+
+
+                    MsgBox("Order(s) has been marked as PAID.", vbInformation, "Success")
+                    frm_main.LoadFrm(New frm_collection_payments)
+                    Me.Close()
+
+                End Using
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
 
         End If
@@ -260,3 +356,4 @@ Public Class frm_collection_cheque
     End Sub
 
 End Class
+

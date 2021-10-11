@@ -261,7 +261,7 @@ Partial Class frm_product_catalogue
         Me.col_price.MaxWidth = 100
         Me.col_price.Name = "col_price"
         Me.col_price.Visible = True
-        Me.col_price.VisibleIndex = 6
+        Me.col_price.VisibleIndex = 7
         Me.col_price.Width = 67
         '
         'GridColumn6
@@ -275,7 +275,7 @@ Partial Class frm_product_catalogue
         Me.GridColumn6.MaxWidth = 100
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 9
+        Me.GridColumn6.VisibleIndex = 6
         Me.GridColumn6.Width = 77
         '
         'col_dealer_price
@@ -287,8 +287,6 @@ Partial Class frm_product_catalogue
         Me.col_dealer_price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col_dealer_price.FieldName = "dealer_price"
         Me.col_dealer_price.Name = "col_dealer_price"
-        Me.col_dealer_price.Visible = True
-        Me.col_dealer_price.VisibleIndex = 7
         Me.col_dealer_price.Width = 63
         '
         'col_vip_price
@@ -300,8 +298,6 @@ Partial Class frm_product_catalogue
         Me.col_vip_price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col_vip_price.FieldName = "vip_price"
         Me.col_vip_price.Name = "col_vip_price"
-        Me.col_vip_price.Visible = True
-        Me.col_vip_price.VisibleIndex = 8
         Me.col_vip_price.Width = 63
         '
         'col_main_category
@@ -339,7 +335,7 @@ Partial Class frm_product_catalogue
         Me.col_my_qty.MinWidth = 70
         Me.col_my_qty.Name = "col_my_qty"
         Me.col_my_qty.Visible = True
-        Me.col_my_qty.VisibleIndex = 10
+        Me.col_my_qty.VisibleIndex = 8
         Me.col_my_qty.Width = 70
         '
         'col_onhold_qty
@@ -350,7 +346,7 @@ Partial Class frm_product_catalogue
         Me.col_onhold_qty.MinWidth = 70
         Me.col_onhold_qty.Name = "col_onhold_qty"
         Me.col_onhold_qty.Visible = True
-        Me.col_onhold_qty.VisibleIndex = 11
+        Me.col_onhold_qty.VisibleIndex = 9
         Me.col_onhold_qty.Width = 70
         '
         'col_other_qty
@@ -361,7 +357,7 @@ Partial Class frm_product_catalogue
         Me.col_other_qty.MinWidth = 70
         Me.col_other_qty.Name = "col_other_qty"
         Me.col_other_qty.Visible = True
-        Me.col_other_qty.VisibleIndex = 12
+        Me.col_other_qty.VisibleIndex = 10
         Me.col_other_qty.Width = 70
         '
         'btn_print

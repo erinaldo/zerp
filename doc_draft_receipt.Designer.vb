@@ -124,6 +124,9 @@ Partial Public Class doc_draft_receipt
         Me.withholding_tax_amount = New DevExpress.XtraReports.Parameters.Parameter()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.contact_person = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -250,7 +253,7 @@ Partial Public Class doc_draft_receipt
         '
         'ReportHeader
         '
-        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel24, Me.XrLabel23, Me.XrLabel19, Me.XrLabel14, Me.XrLabel13, Me.XrLabel12, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.XrLabel8, Me.XrLabel7, Me.XrLabel6, Me.XrLabel5, Me.XrLabel4, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1, Me.XrPictureBox1})
+        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel33, Me.XrLabel35, Me.XrLabel24, Me.XrLabel23, Me.XrLabel19, Me.XrLabel14, Me.XrLabel13, Me.XrLabel12, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.XrLabel8, Me.XrLabel7, Me.XrLabel6, Me.XrLabel5, Me.XrLabel4, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1, Me.XrPictureBox1})
         Me.ReportHeader.HeightF = 202.6666!
         Me.ReportHeader.Name = "ReportHeader"
         '
@@ -264,7 +267,7 @@ Partial Public Class doc_draft_receipt
         Me.XrLabel24.SizeF = New System.Drawing.SizeF(145.8334!, 17.79169!)
         Me.XrLabel24.StylePriority.UseTextAlignment = False
         Me.XrLabel24.Text = "XrLabel13"
-        Me.XrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'XrLabel23
         '
@@ -287,20 +290,22 @@ Partial Public Class doc_draft_receipt
         Me.XrLabel19.SizeF = New System.Drawing.SizeF(145.8334!, 17.79165!)
         Me.XrLabel19.StylePriority.UseTextAlignment = False
         Me.XrLabel19.Text = "XrLabel14"
-        Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         Me.XrLabel19.TextFormatString = "{0:MM/dd/yyyy}"
         '
         'XrLabel14
         '
         Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?orderid")})
-        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(604.1666!, 64.41669!)
+        Me.XrLabel14.Font = New System.Drawing.Font("Arial", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(604.1667!, 54.25002!)
         Me.XrLabel14.Multiline = True
         Me.XrLabel14.Name = "XrLabel14"
         Me.XrLabel14.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel14.SizeF = New System.Drawing.SizeF(145.8334!, 17.79165!)
+        Me.XrLabel14.SizeF = New System.Drawing.SizeF(145.8334!, 27.95832!)
+        Me.XrLabel14.StylePriority.UseFont = False
         Me.XrLabel14.StylePriority.UseTextAlignment = False
         Me.XrLabel14.Text = "XrLabel14"
-        Me.XrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomLeft
         '
         'XrLabel13
         '
@@ -315,7 +320,7 @@ Partial Public Class doc_draft_receipt
         'XrLabel12
         '
         Me.XrLabel12.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?customer")})
-        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(145.8333!, 112.8333!)
+        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(145.8333!, 100.0!)
         Me.XrLabel12.Multiline = True
         Me.XrLabel12.Name = "XrLabel12"
         Me.XrLabel12.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -378,7 +383,7 @@ Partial Public Class doc_draft_receipt
         'XrLabel6
         '
         Me.XrLabel6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 112.8333!)
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(10.0001!, 100.0!)
         Me.XrLabel6.Multiline = True
         Me.XrLabel6.Name = "XrLabel6"
         Me.XrLabel6.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -1167,7 +1172,6 @@ Partial Public Class doc_draft_receipt
         Me.is_vatable.Description = "is_vatable"
         Me.is_vatable.Name = "is_vatable"
         Me.is_vatable.Type = GetType(Boolean)
-        Me.is_vatable.ValueInfo = "0"
         Me.is_vatable.Visible = False
         '
         'withholding_tax_percentage
@@ -1203,6 +1207,33 @@ Partial Public Class doc_draft_receipt
         Me.XrLabel36.StylePriority.UseFont = False
         Me.XrLabel36.Text = "Check our website at www.winlandstore.com"
         '
+        'XrLabel33
+        '
+        Me.XrLabel33.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(10.0001!, 117.7917!)
+        Me.XrLabel33.Multiline = True
+        Me.XrLabel33.Name = "XrLabel33"
+        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(123.3333!, 17.79166!)
+        Me.XrLabel33.StylePriority.UseFont = False
+        Me.XrLabel33.Text = "Contact Person:"
+        '
+        'XrLabel35
+        '
+        Me.XrLabel35.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?contact_person")})
+        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(145.8333!, 117.7917!)
+        Me.XrLabel35.Multiline = True
+        Me.XrLabel35.Name = "XrLabel35"
+        Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel35.SizeF = New System.Drawing.SizeF(287.5!, 17.79166!)
+        Me.XrLabel35.Text = "XrLabel12"
+        '
+        'contact_person
+        '
+        Me.contact_person.Description = "contact_person"
+        Me.contact_person.Name = "contact_person"
+        Me.contact_person.Visible = False
+        '
         'doc_draft_receipt
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter, Me.PageFooter})
@@ -1212,9 +1243,9 @@ Partial Public Class doc_draft_receipt
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.customer, Me.shipping_addr, Me.shipping_method, Me.trucking, Me.amount_due, Me.orderid, Me.pub_notes, Me.store_info, Me.payment, Me.prepared_by, Me.arranged_by, Me.released_by, Me.delivery_charge, Me.discount_type, Me.discount_val, Me.is_withholding_tax_applied, Me.is_vatable, Me.withholding_tax_percentage, Me.withholding_tax_amount})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.customer, Me.shipping_addr, Me.shipping_method, Me.trucking, Me.amount_due, Me.orderid, Me.pub_notes, Me.store_info, Me.payment, Me.prepared_by, Me.arranged_by, Me.released_by, Me.delivery_charge, Me.discount_type, Me.discount_val, Me.is_withholding_tax_applied, Me.is_vatable, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.contact_person})
         Me.RequestParameters = False
-        Me.Version = "20.2"
+        Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1327,4 +1358,7 @@ Partial Public Class doc_draft_receipt
     Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents PageFooter As DevExpress.XtraReports.UI.PageFooterBand
     Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents contact_person As DevExpress.XtraReports.Parameters.Parameter
 End Class

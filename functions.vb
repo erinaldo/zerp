@@ -256,3 +256,11 @@ Module functions
         End Try
     End Sub
 End Module
+
+'Objects for Items
+Public Class cheques
+    Public Property bank As String
+    Public Property cheque_date As Date
+    Public Property cheque_no As String
+    Public Property amount As Decimal
+End Class

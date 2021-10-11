@@ -308,44 +308,35 @@ Public Class frm_sales_view_order
         Dim printTool = New ReportPrintTool(report)
         Dim rdr As MySqlDataReader
         Dim table = New PrintData
-        Dim order_id = "", customer = "", addr = "", order_date As Date, orders = "", priv_notes = "", agent = "", trucking = "", shipping_method = ""
+        Dim orders = String.Empty
 
         Try
             conn.Open()
-            Dim query = "SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
+            Dim query = "SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
                             LEFT JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
                             LEFT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'
                             UNION
-                         SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
+                         SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
                             RIGHT JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
                             RIGHT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'"
             Dim cmd = New MySqlCommand(query, conn)
             rdr = cmd.ExecuteReader
 
             While rdr.Read
-                order_id = rdr("order_id")
-                customer = rdr("customer")
-                addr = rdr("ship_to")
-                agent = rdr("agent")
+                rdr.Read()
+                report.Parameters("order_id").Value = String.Concat("SO", rdr("order_id").ToString.PadLeft(5, "0"c))
+                report.Parameters("customer").Value = rdr("customer")
+                report.Parameters("contact_person").Value = rdr("contact_person")
+                report.Parameters("address").Value = rdr("ship_to")
+                report.Parameters("agent").Value = rdr("agent")
+                report.Parameters("ordered_date").Value = rdr("date_ordered")
+                report.Parameters("priv_notes").Value = rdr("priv_note")
+                report.Parameters("trucking").Value = rdr("trucking")
+                report.Parameters("shipping_method").Value = rdr("shipping_method")
                 orders = rdr("order_item")
-                order_date = rdr("date_ordered")
-                priv_notes = rdr("priv_note")
-                trucking = rdr("trucking")
-                shipping_method = rdr("shipping_method")
             End While
 
             data_to_grid(orders, table.packing_list, 3)
-
-            report.Parameters("order_id").Value = "SO" & order_id.PadLeft(5, "0"c)
-            report.Parameters("customer").Value = customer
-            report.Parameters("address").Value = addr
-            report.Parameters("agent").Value = agent
-            report.Parameters("ordered_date").Value = order_date
-            report.Parameters("priv_notes").Value = priv_notes
-            report.Parameters("shipping_method").Value = shipping_method
-            report.Parameters("trucking").Value = trucking
-            report.RequestParameters = False
-            report.DataSource = table
 
             printTool.AutoShowParametersPanel = False
             printTool.ShowRibbonPreviewDialog()
@@ -370,7 +361,7 @@ Public Class frm_sales_view_order
             Using conn
                 conn.Open()
 
-                Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ship_to, order_item, pub_note, payment_type, discount_type, discount_val,
+                Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, ship_to, order_item, pub_note, payment_type, discount_type, discount_val,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, delivery_fee,
                         amount_due, shipping_method, trucking, date_released, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info FROM `ims_orders`
                         INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer WHERE order_id=@id", conn)
@@ -381,13 +372,13 @@ Public Class frm_sales_view_order
                     report.Parameters("store_info").Value = rdr("store_info")
                     report.Parameters("orderid").Value = "SO" & rdr("order_id").ToString.PadLeft(5, "0"c)
                     report.Parameters("customer").Value = rdr("first_name")
+                    report.Parameters("contact_person").Value = rdr("contact_person")
                     report.Parameters("shipping_addr").Value = rdr("ship_to")
                     report.Parameters("shipping_method").Value = rdr("shipping_method")
                     report.Parameters("trucking").Value = rdr("trucking")
                     report.Parameters("amount_due").Value = rdr("amount_due")
                     report.Parameters("pub_notes").Value = rdr("pub_note")
                     report.Parameters("payment").Value = rdr("payment_type").ToString.ToUpper
-
                     report.Parameters("delivery_charge").Value = rdr("delivery_fee")
                     report.Parameters("discount_type").Value = rdr("discount_type")
                     report.Parameters("discount_val").Value = rdr("discount_val")

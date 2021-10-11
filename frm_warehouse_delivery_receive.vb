@@ -22,10 +22,11 @@ Public Class frm_warehouse_delivery_receive
         'Validate Receive Counts
         Dim received = 0
         Dim TotalAmount As Decimal = 0.00
-        For i = 0 To grid_order.Rows.Count - 1
-            received += grid_order.Rows(i).Cells(4).Value + grid_order.Rows(i).Cells(5).Value
-            If CInt(grid_order.Rows(i).Cells(5).Value) > 0 Then
-                TotalAmount += CInt(grid_order.Rows(i).Cells(5).Value) * CDec(grid_order.Rows(i).Cells(7).Value)
+
+        For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
+            received += row.Item(4) + row.Item(5)
+            If CInt(row.Item(5)) > 0 Then
+                TotalAmount += CInt(row.Item(5)) * CDec(row.Item(7))
             End If
         Next
 
@@ -35,7 +36,6 @@ Public Class frm_warehouse_delivery_receive
             MsgBox("Can't saved! No values detected.", vbCritical, "Error")
             Exit Sub
         End If
-
 
         Try
             'Deduct Discount to TotalAmount
@@ -87,7 +87,7 @@ Public Class frm_warehouse_delivery_receive
             Dim date_receieved = Date.Now
 
             Dim qtyRemaining = 0, qtyRecieved = 0
-            Dim product_ID(500), qty_received(500) As String
+            Dim product_ID(500) As Integer, qty_received(500) As Integer
             Dim discount As String
 
             Select Case cbb_discount.SelectedIndex
@@ -96,24 +96,35 @@ Public Class frm_warehouse_delivery_receive
                 Case Else : discount = ""
             End Select
 
-            'Get Values From Grid
-            Dim datatable = TryCast(grid_order.DataSource, DataTable)
+            'Get Values From Grid 
+            Dim datatable = DirectCast(grid_order.DataSource, DataTable)
+
             For i = 0 To datatable.Rows.Count - 1
-                product_ID(i) = CInt(grid_order.Rows(i).Cells(0).Value) 'SKU FOR INSERT TO STORE'S INVENTORY
-                qty_received(i) = CInt(grid_order.Rows(i).Cells(5).Value) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
+                product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
+                qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
 
-                qtyRemaining += grid_order.Rows(i).Cells(6).Value 'REMAINING COUNTS
-                qtyRecieved += grid_order.Rows(i).Cells(5).Value 'RECEIVED COUNTS
+                qtyRemaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
+                qtyRecieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
 
-                str_qtyReceived += CInt(grid_order.Rows(i).Cells(4).Value) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+                str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
             Next
+
+            'For i = 0 To datatable.Rows.Count - 1
+            '    product_ID(i) = CInt(grid_order.Rows(i).Cells(0).Value) 'SKU FOR INSERT TO STORE'S INVENTORY
+            '    qty_received(i) = CInt(grid_order.Rows(i).Cells(5).Value) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
+
+            '    qtyRemaining += grid_order.Rows(i).Cells(6).Value 'REMAINING COUNTS
+            '    qtyRecieved += grid_order.Rows(i).Cells(5).Value 'RECEIVED COUNTS
+
+            '    str_qtyReceived += CInt(grid_order.Rows(i).Cells(4).Value) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+            'Next
 
 
             Try
                 conn.Open()
 
                 'Insert to Store's Inventory    
-                For i = 0 To grid_order.Rows.Count - 1
+                For i = 0 To datatable.Rows.Count - 1
 
                     Dim count_cmd = New MySqlCommand("SELECT COUNT(*) FROM " & store & " WHERE pid='" & product_ID(i) & "'", conn)
                     Dim rdr As MySqlDataReader = count_cmd.ExecuteReader
@@ -170,11 +181,11 @@ Public Class frm_warehouse_delivery_receive
                 deliveries_cmd.Parameters.AddWithValue("@cost", 0.00)
                 deliveries_cmd.Prepare()
 
-                For i = 0 To grid_order.Rows.Count - 1
-                    If Not grid_order.Rows(i).Cells(5).Value = 0 Then
-                        deliveries_cmd.Parameters(0).Value = CInt(product_ID(i))
-                        deliveries_cmd.Parameters(1).Value = CInt(qty_received(i))
-                        deliveries_cmd.Parameters(7).Value = CDec(grid_order.Rows(i).Cells(7).Value)
+                For i = 0 To datatable.Rows.Count - 1
+                    If Not datatable.Rows(i).Item(5) = 0 Then
+                        deliveries_cmd.Parameters(0).Value = product_ID(i)
+                        deliveries_cmd.Parameters(1).Value = qty_received(i)
+                        deliveries_cmd.Parameters(7).Value = CDec(datatable.Rows(i).Item(7))
                         deliveries_cmd.ExecuteNonQuery()
                     Else
                         Continue For
@@ -231,10 +242,12 @@ Public Class frm_warehouse_delivery_receive
         'Validate Receive Counts
         Dim received = 0
         Dim TotalAmount As Decimal = 0.00
-        For i = 0 To grid_order.Rows.Count - 1
-            received += grid_order.Rows(i).Cells(4).Value + grid_order.Rows(i).Cells(5).Value
-            If CInt(grid_order.Rows(i).Cells(5).Value) > 0 Then
-                TotalAmount += CInt(grid_order.Rows(i).Cells(5).Value) * CDec(grid_order.Rows(i).Cells(7).Value)
+
+        'GET TOTAL
+        For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
+            received += row.Item(4) + row.Item(5)
+            If CInt(row.Item(5)) > 0 Then
+                TotalAmount += CInt(row.Item(5)) * CDec(row.Item(7))
             End If
         Next
 
@@ -244,7 +257,6 @@ Public Class frm_warehouse_delivery_receive
             MsgBox("Can't saved! No values detected.", vbCritical, "Error")
             Exit Sub
         End If
-
 
 
         Try
@@ -299,33 +311,44 @@ Public Class frm_warehouse_delivery_receive
             Dim date_receieved = Date.Now
 
             Dim qtyRemaining = 0, qtyRecieved = 0
-            Dim product_ID(500), qty_received(500) As String
+            Dim product_ID(500) As Integer, qty_received(500) As Integer
             Dim discount As String
 
             Select Case cbb_discount.SelectedIndex
                 Case 0 : discount = txt_discount.Text & "Pesos OFF"
                 Case 1 : discount = txt_discount.Text & "% OFF"
-                Case Else : discount = ""
+                Case Else : discount = String.Empty
             End Select
 
             'Get Values From Grid
-            Dim datatable = TryCast(grid_order.DataSource, DataTable)
+            Dim datatable = DirectCast(grid_order.DataSource, DataTable)
+
             For i = 0 To datatable.Rows.Count - 1
-                product_ID(i) = CInt(grid_order.Rows(i).Cells(0).Value) 'SKU FOR INSERT TO STORE'S INVENTORY
-                qty_received(i) = CInt(grid_order.Rows(i).Cells(5).Value) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
+                product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
+                qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
 
-                qtyRemaining += grid_order.Rows(i).Cells(6).Value 'REMAINING COUNTS
-                qtyRecieved += grid_order.Rows(i).Cells(5).Value 'RECEIVED COUNTS
+                qtyRemaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
+                qtyRecieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
 
-                str_qtyReceived += CInt(grid_order.Rows(i).Cells(4).Value) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+                str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
             Next
+
+            'For i = 0 To datatable.Rows.Count - 1
+            '    product_ID(i) = CInt(grid_order.Rows(i).Cells(0).Value) 'SKU FOR INSERT TO STORE'S INVENTORY
+            '    qty_received(i) = CInt(grid_order.Rows(i).Cells(5).Value) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
+
+            '    qtyRemaining += grid_order.Rows(i).Cells(6).Value 'REMAINING COUNTS
+            '    qtyRecieved += grid_order.Rows(i).Cells(5).Value 'RECEIVED COUNTS
+
+            '    str_qtyReceived += CInt(grid_order.Rows(i).Cells(4).Value) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+            'Next
 
 
             Try
                 conn.Open()
 
                 'Insert to Store's Inventory    
-                For i = 0 To grid_order.Rows.Count - 1
+                For i = 0 To datatable.Rows.Count - 1
 
                     Dim count_cmd = New MySqlCommand("SELECT COUNT(*) FROM " & store & " WHERE pid='" & product_ID(i) & "'", conn)
                     Dim rdr As MySqlDataReader = count_cmd.ExecuteReader
@@ -367,11 +390,11 @@ Public Class frm_warehouse_delivery_receive
                 deliveries_cmd.Parameters.AddWithValue("@cost", 0.00)
                 deliveries_cmd.Prepare()
 
-                For i = 0 To grid_order.Rows.Count - 1
-                    If Not grid_order.Rows(i).Cells(5).Value = 0 Then
-                        deliveries_cmd.Parameters(0).Value = CInt(product_ID(i))
-                        deliveries_cmd.Parameters(1).Value = CInt(qty_received(i))
-                        deliveries_cmd.Parameters(7).Value = CDec(grid_order.Rows(i).Cells(7).Value)
+                For i = 0 To datatable.Rows.Count - 1
+                    If Not datatable.Rows(i).Item(5) = 0 Then
+                        deliveries_cmd.Parameters(0).Value = product_ID(i)
+                        deliveries_cmd.Parameters(1).Value = qty_received(i)
+                        deliveries_cmd.Parameters(7).Value = CDec(datatable.Rows(i).Item(7))
                         deliveries_cmd.ExecuteNonQuery()
                     Else
                         Continue For
@@ -717,7 +740,7 @@ Public Class frm_warehouse_delivery_receive
     End Sub
 
     'Search
-    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs)
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
         Dim dataSource = DirectCast(grid_order.DataSource, DataTable)
         Dim dataViews As DataView = New DataView(dataSource)
         dataSource.DefaultView.RowFilter = String.Concat(New String() {"col_model LIKE '%", txt_search.Text.Trim(), "%' OR col_description LIKE '%", txt_search.Text.Trim(), "%'"})

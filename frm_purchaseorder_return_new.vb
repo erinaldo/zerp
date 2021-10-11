@@ -2,6 +2,7 @@
 Imports MySql.Data.MySqlClient
 Imports Newtonsoft.Json.Linq
 Imports System.Web
+Imports DevExpress.XtraReports.UI
 
 Public Class frm_purchaseorder_return_new
 
@@ -78,8 +79,8 @@ Public Class frm_purchaseorder_return_new
             Dim sub_total As Decimal = 0.00
 
             For i = 0 To grid_return.Rows.Count - 1
-                If IsDBNull(grid_return.Rows(i).Cells(5).Value) Then Continue For
-                sub_total += grid_return.Rows(i).Cells(5).Value
+                If IsDBNull(grid_return.Rows(i).Cells(6).Value) Then Continue For
+                sub_total += grid_return.Rows(i).Cells(6).Value
             Next
 
             lbl_total.Text = FormatCurrency(sub_total, 2)
@@ -92,7 +93,6 @@ Public Class frm_purchaseorder_return_new
 
     'Clear Fields
     Private Sub ClearFields()
-        txt_batch_no.Text = String.Empty
         grid_return.Rows.Clear()
         lbl_total.Text = FormatCurrency(0.00)
         txt_supplier_id.Text = String.Empty
@@ -109,14 +109,12 @@ Public Class frm_purchaseorder_return_new
                             INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase_returns.supplier_id
                             WHERE po_return_id=" & id, conn).ExecuteReader
                     While rdr.Read
-                        txt_batch_no.Text = rdr("batch_no")
-                        txt_batch_no.Text = rdr("batch_no")
-                        txt_rid.Text = rdr("po_return_id")
+                        txt_prid.Text = rdr("po_return_id")
                         cbb_supplier.Text = rdr("supplier")
 
                         Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of Items))(rdr("items"))
                         For Each item In itemsObject
-                            grid_return.Rows.Add(item.rid, item.qty, item.model, item.description, item.cost, item.total_cost)
+                            grid_return.Rows.Add(item.batch_no, item.rid, item.qty, item.model, item.description, item.cost, item.total_cost)
                         Next
                         ComputeTotal()
                     End While
@@ -128,12 +126,13 @@ Public Class frm_purchaseorder_return_new
                     btn_clear.Visible = False
                     btn_update.Visible = True
                     btn_delete.Visible = True
+                    btn_print.Visible = True
                     lbl_rid.Visible = True
-                    txt_rid.Visible = True
+                    txt_prid.Visible = True
+                    btn_print.Location = btn_update.Location
                     btn_update.Location = btn_create.Location
                     btn_delete.Location = btn_clear.Location
-                    txt_rid.ReadOnly = True
-                    txt_batch_no.ReadOnly = True
+                    txt_prid.ReadOnly = True
                     cbb_supplier.ReadOnly = True
                 End Using
             End Using
@@ -150,11 +149,11 @@ Public Class frm_purchaseorder_return_new
     'grid_order | Editing Control Swing
     Private Sub grid_return_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles grid_return.EditingControlShowing
 
-        If grid_return.CurrentCell.ColumnIndex = 1 Then
+        If grid_return.CurrentCell.ColumnIndex = 2 Then
             AddHandler DirectCast(e.Control, TextBox).KeyPress, AddressOf DigitsOnly_KeyPress
         End If
 
-        If Not (grid_return.CurrentCell.ColumnIndex = 2 Or grid_return.CurrentCell.ColumnIndex = 3) Then
+        If Not (grid_return.CurrentCell.ColumnIndex = 3 Or grid_return.CurrentCell.ColumnIndex = 4) Then
             Dim control As TextBox = TryCast(e.Control, TextBox)
             If control IsNot Nothing Then
                 control.AutoCompleteMode = AutoCompleteMode.None
@@ -163,7 +162,7 @@ Public Class frm_purchaseorder_return_new
             Dim txt As TextBox = TryCast(e.Control, TextBox)
             RemoveHandler txt.KeyPress, AddressOf DigitsOnly_KeyPress
 
-            If grid_return.CurrentCell.ColumnIndex = 2 Then
+            If grid_return.CurrentCell.ColumnIndex = 3 Then
 
                 If txt IsNot Nothing Then
                     txt.AutoCompleteMode = AutoCompleteMode.SuggestAppend
@@ -172,7 +171,7 @@ Public Class frm_purchaseorder_return_new
                     txt.CharacterCasing = CharacterCasing.Upper
                 End If
 
-            ElseIf grid_return.CurrentCell.ColumnIndex = 3 Then
+            ElseIf grid_return.CurrentCell.ColumnIndex = 4 Then
                 If txt IsNot Nothing Then
                     txt.AutoCompleteMode = AutoCompleteMode.SuggestAppend
                     txt.AutoCompleteSource = AutoCompleteSource.CustomSource
@@ -189,7 +188,7 @@ Public Class frm_purchaseorder_return_new
         If Not String.IsNullOrEmpty(cbb_supplier.Text) Then
 
             'IF MODEL
-            If e.ColumnIndex.Equals(2) Then
+            If e.ColumnIndex.Equals(3) Then
                 If Not IsDBNull(grid_return.CurrentCell.Value) Then
 
                     'CHECK IF ALREADY EXIST
@@ -214,14 +213,14 @@ Public Class frm_purchaseorder_return_new
                                     While rdr.Read
 
                                         'SET VALUE to grid_order
-                                        grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("winmodel")
-                                        grid_return.Rows(e.RowIndex).Cells(3).Value = rdr("description")
+                                        grid_return.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                        grid_return.Rows(e.RowIndex).Cells(4).Value = rdr("description")
                                         Dim cost As Decimal = rdr("cost")
-                                        grid_return.Rows(e.RowIndex).Cells(4).Value = cost
+                                        grid_return.Rows(e.RowIndex).Cells(5).Value = cost
 
-                                        If Not IsDBNull(grid_return.Rows(e.RowIndex).Cells(1).Value) Then
-                                            Dim total As Decimal = grid_return.Rows(e.RowIndex).Cells(1).Value * cost
-                                            grid_return.Rows(e.RowIndex).Cells(5).Value = total
+                                        If Not IsDBNull(grid_return.Rows(e.RowIndex).Cells(2).Value) Then
+                                            Dim total As Decimal = grid_return.Rows(e.RowIndex).Cells(2).Value * cost
+                                            grid_return.Rows(e.RowIndex).Cells(6).Value = total
                                         End If
 
                                     End While
@@ -234,6 +233,7 @@ Public Class frm_purchaseorder_return_new
                                 grid_return.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
                                 grid_return.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
                                 grid_return.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
+                                grid_return.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
                                 Return
                             End If
                         End Using
@@ -246,7 +246,7 @@ Public Class frm_purchaseorder_return_new
 
 
             'IF DESCRIPTION
-            If e.ColumnIndex.Equals(3) Then
+            If e.ColumnIndex.Equals(4) Then
                 If Not IsDBNull(grid_return.CurrentCell.Value) Then
 
                     'GET AND SET
@@ -263,14 +263,14 @@ Public Class frm_purchaseorder_return_new
                                     While rdr.Read
 
                                         'SET VALUE to grid_order
-                                        grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("winmodel")
-                                        grid_return.Rows(e.RowIndex).Cells(3).Value = rdr("description")
+                                        grid_return.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                        grid_return.Rows(e.RowIndex).Cells(4).Value = rdr("description")
                                         Dim cost As Decimal = rdr("cost")
-                                        grid_return.Rows(e.RowIndex).Cells(4).Value = cost
+                                        grid_return.Rows(e.RowIndex).Cells(5).Value = cost
 
-                                        If Not IsDBNull(grid_return.Rows(e.RowIndex).Cells(1).Value) Then
-                                            Dim total As Decimal = grid_return.Rows(e.RowIndex).Cells(1).Value * cost
-                                            grid_return.Rows(e.RowIndex).Cells(5).Value = total
+                                        If Not IsDBNull(grid_return.Rows(e.RowIndex).Cells(2).Value) Then
+                                            Dim total As Decimal = grid_return.Rows(e.RowIndex).Cells(2).Value * cost
+                                            grid_return.Rows(e.RowIndex).Cells(6).Value = total
                                         End If
 
                                     End While
@@ -283,6 +283,7 @@ Public Class frm_purchaseorder_return_new
                                 grid_return.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
                                 grid_return.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
                                 grid_return.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
+                                grid_return.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
                                 Return
                             End If
                         End Using
@@ -295,15 +296,15 @@ Public Class frm_purchaseorder_return_new
 
 
             'IF QTY OR PRICE
-            If e.ColumnIndex.Equals(1) Or e.ColumnIndex.Equals(4) Then
+            If e.ColumnIndex.Equals(2) Or e.ColumnIndex.Equals(5) Then
 
                 Try
                     If IsDBNull(grid_return.CurrentCell.Value) Or String.IsNullOrEmpty(grid_return.Rows(e.RowIndex).Cells(3).Value) Then Return
-                    Dim qty As Decimal = grid_return.Rows(e.RowIndex).Cells(1).Value
-                    Dim cost As Decimal = grid_return.Rows(e.RowIndex).Cells(4).Value
+                    Dim qty As Decimal = grid_return.Rows(e.RowIndex).Cells(2).Value
+                    Dim cost As Decimal = grid_return.Rows(e.RowIndex).Cells(5).Value
                     Dim total As Decimal = Decimal.Multiply(qty, cost)
-                    grid_return.Rows(e.RowIndex).Cells(4).Value = cost
-                    grid_return.Rows(e.RowIndex).Cells(5).Value = total
+                    grid_return.Rows(e.RowIndex).Cells(5).Value = cost
+                    grid_return.Rows(e.RowIndex).Cells(6).Value = total
 
                 Catch ex As Exception
                     MsgBox(ex.Message, vbCritical, "Error")
@@ -344,7 +345,7 @@ Public Class frm_purchaseorder_return_new
     Private Sub btn_create_Click(sender As Object, e As EventArgs) Handles btn_create.Click
 
         'Validation
-        If String.IsNullOrWhiteSpace(txt_batch_no.Text) Or cbb_supplier.SelectedIndex = -1 Or grid_return.Rows.Count - 1 = 0 Then
+        If cbb_supplier.SelectedIndex = -1 Or grid_return.Rows.Count - 1 = 0 Then
             MsgBox("Creation failed! Complete all fields.", vbCritical, "Failed to Create")
             Return
         End If
@@ -352,12 +353,13 @@ Public Class frm_purchaseorder_return_new
         For i = 0 To grid_return.Rows.Count - 2
 
             ListOfItem.Add(New Items With {
-                .rid = grid_return.Rows(i).Cells(0).Value,
-                .qty = grid_return.Rows(i).Cells(1).Value,
-                .model = grid_return.Rows(i).Cells(2).Value,
-                .description = grid_return.Rows(i).Cells(3).Value,
-                .cost = grid_return.Rows(i).Cells(4).Value,
-                .total_cost = grid_return.Rows(i).Cells(5).Value
+                .batch_no = grid_return.Rows(i).Cells(0).Value,
+                .rid = grid_return.Rows(i).Cells(1).Value,
+                .qty = grid_return.Rows(i).Cells(2).Value,
+                .model = grid_return.Rows(i).Cells(3).Value,
+                .description = grid_return.Rows(i).Cells(4).Value,
+                .cost = grid_return.Rows(i).Cells(5).Value,
+                .total_cost = grid_return.Rows(i).Cells(6).Value
             })
 
         Next
@@ -365,8 +367,7 @@ Public Class frm_purchaseorder_return_new
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Using cmd = New MySqlCommand("INSERT INTO ims_purchase_returns (batch_no, supplier_id, items, total_cost, status, created_by, created_at) VALUES (@batch_no, @supplier_id, @items, @total_cost, 'Pending', @created_by, NOW())", conn)
-                    cmd.Parameters.AddWithValue("@batch_no", txt_batch_no.Text)
+                Using cmd = New MySqlCommand("INSERT INTO ims_purchase_returns (supplier_id, items, total_cost, status, created_by, created_at) VALUES (@supplier_id, @items, @total_cost, 'Pending', @created_by, NOW())", conn)
                     cmd.Parameters.AddWithValue("@supplier_id", txt_supplier_id.Text)
                     cmd.Parameters.AddWithValue("@items", JsonConvert.SerializeObject(ListOfItem))
                     cmd.Parameters.AddWithValue("@total_cost", CDec(lbl_total.Text))
@@ -386,7 +387,7 @@ Public Class frm_purchaseorder_return_new
     'Update Button
     Private Sub btn_update_Click(sender As Object, e As EventArgs) Handles btn_update.Click
         'Validation
-        If String.IsNullOrWhiteSpace(txt_batch_no.Text) Or cbb_supplier.SelectedIndex = -1 Or grid_return.Rows.Count - 1 = 0 Then
+        If cbb_supplier.SelectedIndex = -1 Or grid_return.Rows.Count - 1 = 0 Then
             MsgBox("Creation failed! Complete all fields.", vbCritical, "Failed to Create")
             Return
         End If
@@ -394,12 +395,13 @@ Public Class frm_purchaseorder_return_new
         For i = 0 To grid_return.Rows.Count - 2
 
             ListOfItem.Add(New Items With {
-                .rid = grid_return.Rows(i).Cells(0).Value,
-                .qty = grid_return.Rows(i).Cells(1).Value,
-                .model = grid_return.Rows(i).Cells(2).Value,
-                .description = grid_return.Rows(i).Cells(3).Value,
-                .cost = grid_return.Rows(i).Cells(4).Value,
-                .total_cost = grid_return.Rows(i).Cells(5).Value
+                .batch_no = grid_return.Rows(i).Cells(0).Value,
+                .rid = grid_return.Rows(i).Cells(1).Value,
+                .qty = grid_return.Rows(i).Cells(2).Value,
+                .model = grid_return.Rows(i).Cells(3).Value,
+                .description = grid_return.Rows(i).Cells(4).Value,
+                .cost = grid_return.Rows(i).Cells(5).Value,
+                .total_cost = grid_return.Rows(i).Cells(6).Value
             })
 
         Next
@@ -407,7 +409,7 @@ Public Class frm_purchaseorder_return_new
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Using cmd = New MySqlCommand("UPDATE ims_purchase_returns SET items=@items, total_cost=@total_cost, status='Pending'", conn)
+                Using cmd = New MySqlCommand("UPDATE ims_purchase_returns SET items=@items, total_cost=@total_cost, status='Pending' WHERE po_return_id=" & txt_prid.Text, conn)
                     cmd.Parameters.AddWithValue("@items", JsonConvert.SerializeObject(ListOfItem))
                     cmd.Parameters.AddWithValue("@total_cost", CDec(lbl_total.Text))
                     If cmd.ExecuteNonQuery > 0 Then
@@ -439,7 +441,7 @@ Public Class frm_purchaseorder_return_new
                 Using conn = New MySqlConnection(str)
                     conn.Open()
                     Using cmd = New MySqlCommand("UPDATE ims_purchase_returns SET is_deleted='1' WHERE po_return_id=@id", conn)
-                        cmd.Parameters.AddWithValue("@id", txt_rid.Text)
+                        cmd.Parameters.AddWithValue("@id", txt_prid.Text)
                         If cmd.ExecuteNonQuery > 0 Then
                             MsgBox("Deleted!", vbInformation, "Information")
                             frm_main.LoadFrm(New frm_purchaseorder_return_list)
@@ -452,10 +454,52 @@ Public Class frm_purchaseorder_return_new
         End Try
     End Sub
 
+    'Print Button
+    Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
+        Try
+            Dim report = New doc_purchase_return()
+            Dim printTool = New ReportPrintTool(report)
+            Dim table = New PrintData
+
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Using cmd = New MySqlCommand("SELECT po_return_id, batch_no, ims_suppliers.supplier, ims_users.first_name AS created_by, items, total_cost,
+                                    (SELECT value FROM ims_settings WHERE name='store_info') AS store_info FROM ims_purchase_returns
+                                    INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase_returns.supplier_id
+                                    INNER JOIN ims_users ON ims_users.usr_id=ims_purchase_returns.created_by
+                                    WHERE po_return_id=" & txt_prid.Text, connection)
+                    Using rdr = cmd.ExecuteReader
+                        While rdr.Read
+                            report.Parameters("store_info").Value = rdr("store_info")
+                            report.Parameters("supplier").Value = rdr("supplier")
+                            report.Parameters("prid").Value = String.Concat("PR", rdr("po_return_id").ToString.PadLeft(5, "0"c))
+                            report.Parameters("created_by").Value = rdr("created_by")
+                            report.Parameters("total_cost").Value = rdr("total_cost")
+
+                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of Items))(rdr("items"))
+                            For Each item In itemsObject
+                                table.purchase_returns_items.Rows.Add(item.rid, item.qty, item.model, item.description, item.cost, item.total_cost, item.batch_no)
+                            Next
+
+                        End While
+
+                        report.RequestParameters = False
+                        report.DataSource = table
+                        report.ShowRibbonPreviewDialog()
+
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
 End Class
 
 'Objects for Items
 Public Class Items
+    Public Property batch_no As Integer
     Public Property rid As Integer
     Public Property qty As Integer
     Public Property model As String

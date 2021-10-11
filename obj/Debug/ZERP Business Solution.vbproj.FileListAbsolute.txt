@@ -984,3 +984,6 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorde
 D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.dll
 D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.xml
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_collection_receipt.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_receipts.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_return.resources

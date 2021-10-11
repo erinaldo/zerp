@@ -37,6 +37,8 @@ Partial Class frm_admin_reports
         Dim SideBySideBarSeriesLabel1 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
         Dim XyDiagram6 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
         Dim Series6 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim XyDiagram7 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series7 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
         Dim ChartControlCommandGalleryItemGroup2DColumn1 As DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DColumn = New DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DColumn()
         Dim CreateBarChartItem1 As DevExpress.XtraCharts.UI.CreateBarChartItem = New DevExpress.XtraCharts.UI.CreateBarChartItem()
         Dim CreateFullStackedBarChartItem1 As DevExpress.XtraCharts.UI.CreateFullStackedBarChartItem = New DevExpress.XtraCharts.UI.CreateFullStackedBarChartItem()
@@ -182,6 +184,7 @@ Partial Class frm_admin_reports
         Me.grid_transaction = New DevExpress.XtraGrid.GridControl()
         Me.grid_transaction_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn23 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn28 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -212,7 +215,7 @@ Partial Class frm_admin_reports
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.tab_performance = New DevExpress.XtraTab.XtraTabPage()
+        Me.tab_user_performance = New DevExpress.XtraTab.XtraTabPage()
         Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
         Me.btn_print_perf_coor = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -263,6 +266,21 @@ Partial Class frm_admin_reports
         Me.GridColumn22 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn24 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn25 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.tab_customer_performance = New DevExpress.XtraTab.XtraTabPage()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
+        Me.rb_cp_transc = New System.Windows.Forms.RadioButton()
+        Me.rb_cp_margin = New System.Windows.Forms.RadioButton()
+        Me.rb_cp_gross = New System.Windows.Forms.RadioButton()
+        Me.chart_customer_performance = New DevExpress.XtraCharts.ChartControl()
+        Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
+        Me.grid_customer_performance = New DevExpress.XtraGrid.GridControl()
+        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col_customer = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn32 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn33 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn34 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn35 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_view = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
@@ -320,7 +338,7 @@ Partial Class frm_admin_reports
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_agents, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tab_performance.SuspendLayout()
+        Me.tab_user_performance.SuspendLayout()
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer4.Panel1.SuspendLayout()
         Me.SplitContainer4.Panel2.SuspendLayout()
@@ -354,6 +372,13 @@ Partial Class frm_admin_reports
         CType(Series6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_product_perf, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_product_perf_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_customer_performance.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        CType(Me.chart_customer_performance, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_customer_performance, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dt_start.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dt_start.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -387,7 +412,7 @@ Partial Class frm_admin_reports
         Me.TabControl.SelectedTabPage = Me.tab_sales
         Me.TabControl.Size = New System.Drawing.Size(1374, 592)
         Me.TabControl.TabIndex = 0
-        Me.TabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tab_sales, Me.tab_transactions, Me.tab_users, Me.tab_performance, Me.tab_product})
+        Me.TabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tab_sales, Me.tab_transactions, Me.tab_users, Me.tab_user_performance, Me.tab_product, Me.tab_customer_performance})
         '
         'tab_sales
         '
@@ -825,7 +850,7 @@ Partial Class frm_admin_reports
         Me.grid_transaction_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_transaction_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_transaction_view.Appearance.Row.Options.UseFont = True
-        Me.grid_transaction_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn30, Me.GridColumn7, Me.GridColumn17, Me.GridColumn28, Me.GridColumn26, Me.GridColumn31, Me.GridColumn27})
+        Me.grid_transaction_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn30, Me.GridColumn23, Me.GridColumn7, Me.GridColumn17, Me.GridColumn28, Me.GridColumn26, Me.GridColumn31, Me.GridColumn27})
         Me.grid_transaction_view.GridControl = Me.grid_transaction
         Me.grid_transaction_view.Name = "grid_transaction_view"
         Me.grid_transaction_view.OptionsBehavior.Editable = False
@@ -843,6 +868,16 @@ Partial Class frm_admin_reports
         Me.GridColumn30.VisibleIndex = 0
         Me.GridColumn30.Width = 150
         '
+        'GridColumn23
+        '
+        Me.GridColumn23.Caption = "Customer"
+        Me.GridColumn23.FieldName = "customer"
+        Me.GridColumn23.MinWidth = 250
+        Me.GridColumn23.Name = "GridColumn23"
+        Me.GridColumn23.Visible = True
+        Me.GridColumn23.VisibleIndex = 1
+        Me.GridColumn23.Width = 276
+        '
         'GridColumn7
         '
         Me.GridColumn7.AppearanceCell.Options.UseTextOptions = True
@@ -854,8 +889,8 @@ Partial Class frm_admin_reports
         Me.GridColumn7.MinWidth = 100
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 1
-        Me.GridColumn7.Width = 100
+        Me.GridColumn7.VisibleIndex = 2
+        Me.GridColumn7.Width = 110
         '
         'GridColumn17
         '
@@ -868,8 +903,8 @@ Partial Class frm_admin_reports
         Me.GridColumn17.MaxWidth = 150
         Me.GridColumn17.Name = "GridColumn17"
         Me.GridColumn17.Visible = True
-        Me.GridColumn17.VisibleIndex = 2
-        Me.GridColumn17.Width = 138
+        Me.GridColumn17.VisibleIndex = 3
+        Me.GridColumn17.Width = 150
         '
         'GridColumn28
         '
@@ -882,8 +917,8 @@ Partial Class frm_admin_reports
         Me.GridColumn28.MaxWidth = 150
         Me.GridColumn28.Name = "GridColumn28"
         Me.GridColumn28.Visible = True
-        Me.GridColumn28.VisibleIndex = 3
-        Me.GridColumn28.Width = 129
+        Me.GridColumn28.VisibleIndex = 4
+        Me.GridColumn28.Width = 142
         '
         'GridColumn26
         '
@@ -891,7 +926,8 @@ Partial Class frm_admin_reports
         Me.GridColumn26.FieldName = "net_sales"
         Me.GridColumn26.Name = "GridColumn26"
         Me.GridColumn26.Visible = True
-        Me.GridColumn26.VisibleIndex = 4
+        Me.GridColumn26.VisibleIndex = 5
+        Me.GridColumn26.Width = 138
         '
         'GridColumn31
         '
@@ -904,16 +940,19 @@ Partial Class frm_admin_reports
         Me.GridColumn31.MaxWidth = 150
         Me.GridColumn31.Name = "GridColumn31"
         Me.GridColumn31.Visible = True
-        Me.GridColumn31.VisibleIndex = 5
+        Me.GridColumn31.VisibleIndex = 6
         Me.GridColumn31.Width = 150
         '
         'GridColumn27
         '
         Me.GridColumn27.Caption = "Coordinator"
         Me.GridColumn27.FieldName = "coordinator"
+        Me.GridColumn27.MaxWidth = 200
+        Me.GridColumn27.MinWidth = 150
         Me.GridColumn27.Name = "GridColumn27"
         Me.GridColumn27.Visible = True
-        Me.GridColumn27.VisibleIndex = 6
+        Me.GridColumn27.VisibleIndex = 7
+        Me.GridColumn27.Width = 150
         '
         'tab_users
         '
@@ -1251,14 +1290,14 @@ Partial Class frm_admin_reports
         Me.GridColumn6.VisibleIndex = 4
         Me.GridColumn6.Width = 95
         '
-        'tab_performance
+        'tab_user_performance
         '
-        Me.tab_performance.Controls.Add(Me.SplitContainer4)
-        Me.tab_performance.Controls.Add(Me.SplitContainer5)
-        Me.tab_performance.Controls.Add(Me.SplitContainer6)
-        Me.tab_performance.Name = "tab_performance"
-        Me.tab_performance.Size = New System.Drawing.Size(1368, 557)
-        Me.tab_performance.Text = "Performance"
+        Me.tab_user_performance.Controls.Add(Me.SplitContainer4)
+        Me.tab_user_performance.Controls.Add(Me.SplitContainer5)
+        Me.tab_user_performance.Controls.Add(Me.SplitContainer6)
+        Me.tab_user_performance.Name = "tab_user_performance"
+        Me.tab_user_performance.Size = New System.Drawing.Size(1368, 557)
+        Me.tab_user_performance.Text = "Sales Performance"
         '
         'SplitContainer4
         '
@@ -1937,6 +1976,200 @@ Partial Class frm_admin_reports
         Me.GridColumn25.Visible = True
         Me.GridColumn25.VisibleIndex = 7
         Me.GridColumn25.Width = 120
+        '
+        'tab_customer_performance
+        '
+        Me.tab_customer_performance.Controls.Add(Me.Panel5)
+        Me.tab_customer_performance.Controls.Add(Me.chart_customer_performance)
+        Me.tab_customer_performance.Controls.Add(Me.LabelControl13)
+        Me.tab_customer_performance.Controls.Add(Me.grid_customer_performance)
+        Me.tab_customer_performance.Name = "tab_customer_performance"
+        Me.tab_customer_performance.Size = New System.Drawing.Size(1368, 557)
+        Me.tab_customer_performance.Text = "Customer Performance"
+        '
+        'Panel5
+        '
+        Me.Panel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel5.Controls.Add(Me.LabelControl14)
+        Me.Panel5.Controls.Add(Me.rb_cp_transc)
+        Me.Panel5.Controls.Add(Me.rb_cp_margin)
+        Me.Panel5.Controls.Add(Me.rb_cp_gross)
+        Me.Panel5.Location = New System.Drawing.Point(766, 18)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(587, 37)
+        Me.Panel5.TabIndex = 17
+        '
+        'LabelControl14
+        '
+        Me.LabelControl14.Appearance.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl14.Appearance.Options.UseFont = True
+        Me.LabelControl14.Location = New System.Drawing.Point(14, 8)
+        Me.LabelControl14.Name = "LabelControl14"
+        Me.LabelControl14.Size = New System.Drawing.Size(69, 22)
+        Me.LabelControl14.TabIndex = 5
+        Me.LabelControl14.Text = "View By:"
+        '
+        'rb_cp_transc
+        '
+        Me.rb_cp_transc.AutoSize = True
+        Me.rb_cp_transc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rb_cp_transc.ForeColor = System.Drawing.Color.DimGray
+        Me.rb_cp_transc.Location = New System.Drawing.Point(423, 6)
+        Me.rb_cp_transc.Name = "rb_cp_transc"
+        Me.rb_cp_transc.Size = New System.Drawing.Size(157, 24)
+        Me.rb_cp_transc.TabIndex = 2
+        Me.rb_cp_transc.Text = "Total Transactions"
+        Me.rb_cp_transc.UseVisualStyleBackColor = True
+        '
+        'rb_cp_margin
+        '
+        Me.rb_cp_margin.AutoSize = True
+        Me.rb_cp_margin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rb_cp_margin.ForeColor = System.Drawing.Color.DimGray
+        Me.rb_cp_margin.Location = New System.Drawing.Point(231, 6)
+        Me.rb_cp_margin.Name = "rb_cp_margin"
+        Me.rb_cp_margin.Size = New System.Drawing.Size(182, 24)
+        Me.rb_cp_margin.TabIndex = 1
+        Me.rb_cp_margin.Text = "Average Sales Margin"
+        Me.rb_cp_margin.UseVisualStyleBackColor = True
+        '
+        'rb_cp_gross
+        '
+        Me.rb_cp_gross.AutoSize = True
+        Me.rb_cp_gross.Checked = True
+        Me.rb_cp_gross.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rb_cp_gross.ForeColor = System.Drawing.Color.DimGray
+        Me.rb_cp_gross.Location = New System.Drawing.Point(107, 6)
+        Me.rb_cp_gross.Name = "rb_cp_gross"
+        Me.rb_cp_gross.Size = New System.Drawing.Size(114, 24)
+        Me.rb_cp_gross.TabIndex = 0
+        Me.rb_cp_gross.TabStop = True
+        Me.rb_cp_gross.Text = "Gross Sales"
+        Me.rb_cp_gross.UseVisualStyleBackColor = True
+        '
+        'chart_customer_performance
+        '
+        Me.chart_customer_performance.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chart_customer_performance.AppearanceNameSerializable = "Light"
+        Me.chart_customer_performance.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.[False]
+        XyDiagram7.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram7.AxisY.VisibleInPanesSerializable = "-1"
+        Me.chart_customer_performance.Diagram = XyDiagram7
+        Me.chart_customer_performance.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center
+        Me.chart_customer_performance.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.TopOutside
+        Me.chart_customer_performance.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight
+        Me.chart_customer_performance.Legend.MarkerSize = New System.Drawing.Size(20, 11)
+        Me.chart_customer_performance.Legend.Visibility = DevExpress.Utils.DefaultBoolean.[False]
+        Me.chart_customer_performance.Location = New System.Drawing.Point(8, 57)
+        Me.chart_customer_performance.Name = "chart_customer_performance"
+        Me.chart_customer_performance.PaletteBaseColorNumber = 5
+        Me.chart_customer_performance.PaletteName = "Blue Warm"
+        Series7.Name = "customers"
+        Me.chart_customer_performance.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series7}
+        Me.chart_customer_performance.Size = New System.Drawing.Size(1345, 260)
+        Me.chart_customer_performance.TabIndex = 16
+        '
+        'LabelControl13
+        '
+        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl13.Appearance.Options.UseFont = True
+        Me.LabelControl13.Location = New System.Drawing.Point(12, 18)
+        Me.LabelControl13.Name = "LabelControl13"
+        Me.LabelControl13.Size = New System.Drawing.Size(302, 33)
+        Me.LabelControl13.TabIndex = 15
+        Me.LabelControl13.Text = "Customer Performance"
+        '
+        'grid_customer_performance
+        '
+        Me.grid_customer_performance.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_customer_performance.Location = New System.Drawing.Point(12, 323)
+        Me.grid_customer_performance.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_customer_performance.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_customer_performance.MainView = Me.GridView5
+        Me.grid_customer_performance.Name = "grid_customer_performance"
+        Me.grid_customer_performance.Size = New System.Drawing.Size(1341, 217)
+        Me.grid_customer_performance.TabIndex = 2
+        Me.grid_customer_performance.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
+        '
+        'GridView5
+        '
+        Me.GridView5.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.GridView5.Appearance.HeaderPanel.Options.UseFont = True
+        Me.GridView5.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.GridView5.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridView5.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.GridView5.Appearance.Row.Options.UseFont = True
+        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_customer, Me.GridColumn32, Me.GridColumn33, Me.GridColumn34, Me.GridColumn35})
+        Me.GridView5.GridControl = Me.grid_customer_performance
+        Me.GridView5.Name = "GridView5"
+        Me.GridView5.OptionsBehavior.Editable = False
+        Me.GridView5.OptionsView.ShowGroupPanel = False
+        '
+        'col_customer
+        '
+        Me.col_customer.Caption = "Customer / Company"
+        Me.col_customer.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.col_customer.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.col_customer.FieldName = "customer"
+        Me.col_customer.Name = "col_customer"
+        Me.col_customer.Visible = True
+        Me.col_customer.VisibleIndex = 0
+        Me.col_customer.Width = 779
+        '
+        'GridColumn32
+        '
+        Me.GridColumn32.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn32.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn32.Caption = "No. of Transactions"
+        Me.GridColumn32.FieldName = "no_of_transc"
+        Me.GridColumn32.MaxWidth = 130
+        Me.GridColumn32.Name = "GridColumn32"
+        Me.GridColumn32.Visible = True
+        Me.GridColumn32.VisibleIndex = 1
+        Me.GridColumn32.Width = 120
+        '
+        'GridColumn33
+        '
+        Me.GridColumn33.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn33.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.GridColumn33.Caption = "Total Cost"
+        Me.GridColumn33.FieldName = "total_cost"
+        Me.GridColumn33.MaxWidth = 120
+        Me.GridColumn33.Name = "GridColumn33"
+        Me.GridColumn33.Visible = True
+        Me.GridColumn33.VisibleIndex = 2
+        Me.GridColumn33.Width = 120
+        '
+        'GridColumn34
+        '
+        Me.GridColumn34.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn34.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.GridColumn34.Caption = "Gross Sales"
+        Me.GridColumn34.DisplayFormat.FormatString = "n2"
+        Me.GridColumn34.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn34.FieldName = "total_gross"
+        Me.GridColumn34.MaxWidth = 120
+        Me.GridColumn34.Name = "GridColumn34"
+        Me.GridColumn34.Visible = True
+        Me.GridColumn34.VisibleIndex = 3
+        Me.GridColumn34.Width = 120
+        '
+        'GridColumn35
+        '
+        Me.GridColumn35.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn35.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.GridColumn35.Caption = "Margin"
+        Me.GridColumn35.DisplayFormat.FormatString = "p0"
+        Me.GridColumn35.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn35.FieldName = "margin"
+        Me.GridColumn35.MaxWidth = 120
+        Me.GridColumn35.Name = "GridColumn35"
+        Me.GridColumn35.Visible = True
+        Me.GridColumn35.VisibleIndex = 4
+        Me.GridColumn35.Width = 120
         '
         'Panel1
         '
@@ -2674,7 +2907,7 @@ Partial Class frm_admin_reports
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_agents, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.tab_performance.ResumeLayout(False)
+        Me.tab_user_performance.ResumeLayout(False)
         Me.SplitContainer4.Panel1.ResumeLayout(False)
         Me.SplitContainer4.Panel1.PerformLayout()
         Me.SplitContainer4.Panel2.ResumeLayout(False)
@@ -2713,6 +2946,15 @@ Partial Class frm_admin_reports
         CType(Me.chart_prod, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_product_perf, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_product_perf_view, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_customer_performance.ResumeLayout(False)
+        Me.tab_customer_performance.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
+        CType(XyDiagram7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chart_customer_performance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_customer_performance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dt_start.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2797,7 +3039,7 @@ Partial Class frm_admin_reports
     Friend WithEvents Panel2 As Panel
     Friend WithEvents SplitContainer3 As SplitContainer
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents tab_performance As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tab_user_performance As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents SplitContainer4 As SplitContainer
     Friend WithEvents SplitContainer5 As SplitContainer
     Friend WithEvents chart_perf_coordinator As DevExpress.XtraCharts.ChartControl
@@ -2871,4 +3113,20 @@ Partial Class frm_admin_reports
     Friend WithEvents lbl_epay As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_cheques As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_cash As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GridColumn23 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents tab_customer_performance As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents grid_customer_performance As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents col_customer As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn32 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn33 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn34 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn35 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents chart_customer_performance As DevExpress.XtraCharts.ChartControl
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents rb_cp_transc As RadioButton
+    Friend WithEvents rb_cp_margin As RadioButton
+    Friend WithEvents rb_cp_gross As RadioButton
 End Class

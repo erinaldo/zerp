@@ -118,7 +118,7 @@ Public Class frm_accounting_generate_voucher
                 get_cheque.Parameters.AddWithValue("@ref", id)
                 Using rdr_cheque = get_cheque.ExecuteReader
                     While rdr_cheque.Read
-                        table.payment_voucher_cheque.Rows.Add(rdr_cheque("bank"), rdr_cheque("cheque_no"), rdr_cheque("cheque_date"), rdr_cheque("amount"))
+                        table.payment_voucher_cheque.Rows.Add(rdr_cheque("bank"), rdr_cheque("cheque_date"), rdr_cheque("cheque_no"), rdr_cheque("amount"))
                         cheque_no = rdr_cheque("cheque_no")
                     End While
                 End Using

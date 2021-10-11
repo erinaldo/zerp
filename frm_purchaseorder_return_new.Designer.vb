@@ -23,12 +23,13 @@ Partial Class frm_purchaseorder_return_new
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_purchaseorder_return_new))
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
@@ -40,9 +41,14 @@ Partial Class frm_purchaseorder_return_new
         Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.lbl_title = New Guna.UI.WinForms.GunaLabel()
         Me.grid_return = New System.Windows.Forms.DataGridView()
+        Me.col_batch = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_model = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_description = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_totalcost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btn_create = New DevExpress.XtraEditors.SimpleButton()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_batch_no = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_total = New DevExpress.XtraEditors.LabelControl()
         Me.cbb_supplier = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -52,21 +58,15 @@ Partial Class frm_purchaseorder_return_new
         Me.btn_update = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_delete = New DevExpress.XtraEditors.SimpleButton()
         Me.lbl_rid = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_rid = New DevExpress.XtraEditors.TextEdit()
-        Me.col_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_model = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_description = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_totalcost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.txt_prid = New DevExpress.XtraEditors.TextEdit()
+        Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
         CType(Me.grid_return, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_batch_no.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_supplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_supplier_id.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_rid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_prid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -217,20 +217,93 @@ Partial Class frm_purchaseorder_return_new
         Me.grid_return.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grid_return.ColumnHeadersHeight = 28
         Me.grid_return.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.grid_return.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_total, Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_totalcost})
+        Me.grid_return.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_batch, Me.col_total, Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_totalcost})
         Me.grid_return.EnableHeadersVisualStyles = False
         Me.grid_return.Location = New System.Drawing.Point(20, 182)
         Me.grid_return.Name = "grid_return"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_return.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grid_return.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.grid_return.Size = New System.Drawing.Size(1029, 410)
         Me.grid_return.TabIndex = 59
+        '
+        'col_batch
+        '
+        Me.col_batch.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.col_batch.DefaultCellStyle = DataGridViewCellStyle2
+        Me.col_batch.FillWeight = 125.0!
+        Me.col_batch.HeaderText = "Batch No."
+        Me.col_batch.Name = "col_batch"
+        Me.col_batch.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.col_batch.Width = 80
+        '
+        'col_total
+        '
+        Me.col_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.col_total.DefaultCellStyle = DataGridViewCellStyle3
+        Me.col_total.FillWeight = 125.5929!
+        Me.col_total.HeaderText = "RID"
+        Me.col_total.Name = "col_total"
+        Me.col_total.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'col_qty
+        '
+        Me.col_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.col_qty.DefaultCellStyle = DataGridViewCellStyle4
+        Me.col_qty.FillWeight = 80.0!
+        Me.col_qty.HeaderText = "Qty"
+        Me.col_qty.Name = "col_qty"
+        Me.col_qty.Width = 80
+        '
+        'col_model
+        '
+        Me.col_model.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.col_model.DefaultCellStyle = DataGridViewCellStyle5
+        Me.col_model.FillWeight = 73.71088!
+        Me.col_model.HeaderText = "Model"
+        Me.col_model.Name = "col_model"
+        Me.col_model.Width = 150
+        '
+        'col_description
+        '
+        Me.col_description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.col_description.FillWeight = 137.4594!
+        Me.col_description.HeaderText = "Description"
+        Me.col_description.Name = "col_description"
+        '
+        'col_cost
+        '
+        Me.col_cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.col_cost.DefaultCellStyle = DataGridViewCellStyle6
+        Me.col_cost.FillWeight = 102.6804!
+        Me.col_cost.HeaderText = "Cost"
+        Me.col_cost.Name = "col_cost"
+        Me.col_cost.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'col_totalcost
+        '
+        Me.col_totalcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.Format = "n2"
+        Me.col_totalcost.DefaultCellStyle = DataGridViewCellStyle7
+        Me.col_totalcost.HeaderText = "Total Cost"
+        Me.col_totalcost.Name = "col_totalcost"
+        Me.col_totalcost.ReadOnly = True
+        Me.col_totalcost.Width = 120
         '
         'btn_create
         '
@@ -244,29 +317,6 @@ Partial Class frm_purchaseorder_return_new
         Me.btn_create.Size = New System.Drawing.Size(118, 46)
         Me.btn_create.TabIndex = 60
         Me.btn_create.Text = "Create"
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl2.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Appearance.Options.UseForeColor = True
-        Me.LabelControl2.Location = New System.Drawing.Point(20, 126)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(61, 16)
-        Me.LabelControl2.TabIndex = 62
-        Me.LabelControl2.Text = "Batch No.:"
-        '
-        'txt_batch_no
-        '
-        Me.txt_batch_no.Location = New System.Drawing.Point(89, 123)
-        Me.txt_batch_no.Name = "txt_batch_no"
-        Me.txt_batch_no.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_batch_no.Properties.Appearance.Options.UseFont = True
-        Me.txt_batch_no.Properties.Appearance.Options.UseTextOptions = True
-        Me.txt_batch_no.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txt_batch_no.Size = New System.Drawing.Size(129, 22)
-        Me.txt_batch_no.TabIndex = 61
         '
         'LabelControl1
         '
@@ -322,9 +372,9 @@ Partial Class frm_purchaseorder_return_new
         Me.LabelControl3.Appearance.Options.UseForeColor = True
         Me.LabelControl3.Location = New System.Drawing.Point(20, 154)
         Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(53, 16)
+        Me.LabelControl3.Size = New System.Drawing.Size(50, 16)
         Me.LabelControl3.TabIndex = 115
-        Me.LabelControl3.Text = "Supplier:"
+        Me.LabelControl3.Text = "Supplier"
         '
         'txt_supplier_id
         '
@@ -386,94 +436,49 @@ Partial Class frm_purchaseorder_return_new
         Me.lbl_rid.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lbl_rid.Appearance.Options.UseFont = True
         Me.lbl_rid.Appearance.Options.UseForeColor = True
-        Me.lbl_rid.Location = New System.Drawing.Point(20, 98)
+        Me.lbl_rid.Location = New System.Drawing.Point(20, 126)
         Me.lbl_rid.Name = "lbl_rid"
-        Me.lbl_rid.Size = New System.Drawing.Size(58, 16)
+        Me.lbl_rid.Size = New System.Drawing.Size(32, 16)
         Me.lbl_rid.TabIndex = 121
-        Me.lbl_rid.Text = "Return ID:"
+        Me.lbl_rid.Text = "PRID"
         Me.lbl_rid.Visible = False
         '
-        'txt_rid
+        'txt_prid
         '
-        Me.txt_rid.Location = New System.Drawing.Point(89, 95)
-        Me.txt_rid.Name = "txt_rid"
-        Me.txt_rid.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_rid.Properties.Appearance.Options.UseFont = True
-        Me.txt_rid.Properties.Appearance.Options.UseTextOptions = True
-        Me.txt_rid.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txt_rid.Size = New System.Drawing.Size(129, 22)
-        Me.txt_rid.TabIndex = 120
-        Me.txt_rid.Visible = False
+        Me.txt_prid.Location = New System.Drawing.Point(89, 123)
+        Me.txt_prid.Name = "txt_prid"
+        Me.txt_prid.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_prid.Properties.Appearance.Options.UseFont = True
+        Me.txt_prid.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_prid.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txt_prid.Size = New System.Drawing.Size(129, 22)
+        Me.txt_prid.TabIndex = 120
+        Me.txt_prid.Visible = False
         '
-        'col_total
+        'btn_print
         '
-        Me.col_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        Me.col_total.DefaultCellStyle = DataGridViewCellStyle2
-        Me.col_total.FillWeight = 125.5929!
-        Me.col_total.HeaderText = "RID"
-        Me.col_total.Name = "col_total"
-        Me.col_total.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'col_qty
-        '
-        Me.col_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.col_qty.DefaultCellStyle = DataGridViewCellStyle3
-        Me.col_qty.FillWeight = 80.0!
-        Me.col_qty.HeaderText = "Qty"
-        Me.col_qty.Name = "col_qty"
-        Me.col_qty.Width = 80
-        '
-        'col_model
-        '
-        Me.col_model.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.col_model.DefaultCellStyle = DataGridViewCellStyle4
-        Me.col_model.FillWeight = 73.71088!
-        Me.col_model.HeaderText = "Model"
-        Me.col_model.Name = "col_model"
-        Me.col_model.Width = 150
-        '
-        'col_description
-        '
-        Me.col_description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.col_description.FillWeight = 137.4594!
-        Me.col_description.HeaderText = "Description"
-        Me.col_description.Name = "col_description"
-        '
-        'col_cost
-        '
-        Me.col_cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.col_cost.DefaultCellStyle = DataGridViewCellStyle5
-        Me.col_cost.FillWeight = 102.6804!
-        Me.col_cost.HeaderText = "Cost"
-        Me.col_cost.Name = "col_cost"
-        Me.col_cost.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'col_totalcost
-        '
-        Me.col_totalcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Format = "n2"
-        Me.col_totalcost.DefaultCellStyle = DataGridViewCellStyle6
-        Me.col_totalcost.HeaderText = "Total Cost"
-        Me.col_totalcost.Name = "col_totalcost"
-        Me.col_totalcost.ReadOnly = True
-        Me.col_totalcost.Width = 120
+        Me.btn_print.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_print.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.btn_print.Appearance.Options.UseFont = True
+        Me.btn_print.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.print_32x322
+        Me.btn_print.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_print.ImageOptions.ImageToTextIndent = 5
+        Me.btn_print.Location = New System.Drawing.Point(435, 118)
+        Me.btn_print.Name = "btn_print"
+        Me.btn_print.Size = New System.Drawing.Size(118, 46)
+        Me.btn_print.TabIndex = 122
+        Me.btn_print.Text = "Print"
+        Me.btn_print.Visible = False
         '
         'frm_purchaseorder_return_new
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1065, 659)
+        Me.Controls.Add(Me.btn_print)
         Me.Controls.Add(Me.lbl_rid)
-        Me.Controls.Add(Me.txt_rid)
+        Me.Controls.Add(Me.txt_prid)
         Me.Controls.Add(Me.btn_delete)
         Me.Controls.Add(Me.btn_update)
         Me.Controls.Add(Me.btn_clear)
@@ -482,8 +487,6 @@ Partial Class frm_purchaseorder_return_new
         Me.Controls.Add(Me.LabelControl3)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.lbl_total)
-        Me.Controls.Add(Me.LabelControl2)
-        Me.Controls.Add(Me.txt_batch_no)
         Me.Controls.Add(Me.btn_create)
         Me.Controls.Add(Me.grid_return)
         Me.Controls.Add(Me.GunaPanel4)
@@ -497,10 +500,9 @@ Partial Class frm_purchaseorder_return_new
         Me.GunaPanel1.ResumeLayout(False)
         Me.GunaPanel1.PerformLayout()
         CType(Me.grid_return, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_batch_no.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_supplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_supplier_id.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_rid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_prid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -517,8 +519,6 @@ Partial Class frm_purchaseorder_return_new
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents grid_return As DataGridView
     Friend WithEvents btn_create As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txt_batch_no As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_total As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cbb_supplier As DevExpress.XtraEditors.ComboBoxEdit
@@ -528,7 +528,9 @@ Partial Class frm_purchaseorder_return_new
     Friend WithEvents btn_update As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_delete As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lbl_rid As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txt_rid As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txt_prid As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents btn_print As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents col_batch As DataGridViewTextBoxColumn
     Friend WithEvents col_total As DataGridViewTextBoxColumn
     Friend WithEvents col_qty As DataGridViewTextBoxColumn
     Friend WithEvents col_model As DataGridViewTextBoxColumn

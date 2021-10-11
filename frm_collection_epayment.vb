@@ -69,7 +69,7 @@ Public Class frm_collection_epayment
                 cmd.Parameters.AddWithValue("@option", payment_option)
                 cmd.Parameters.AddWithValue("@paid_amount", CDec(txt_amount_tendered.Text))
                 cmd.Parameters.AddWithValue("@details", reference)
-                'cmd.ExecuteNonQuery()
+                cmd.ExecuteNonQuery()
 
                 'INSERT TO PAYMENT LOGS
                 Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, lbl_amount_due.Text, txt_amount_tendered.Text, lbl_balance.Text, payment_option, reference)
