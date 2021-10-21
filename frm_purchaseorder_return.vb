@@ -19,7 +19,7 @@ Public Class frm_purchaseorder_return_list
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Using cmd = New MySqlCommand("SELECT po_return_id, supplier, batch_no,
+                Using cmd = New MySqlCommand("SELECT po_return_id, supplier,
                                 total_cost, created_at, status FROM ims_purchase_returns 
                                 LEFT JOIN ims_suppliers ON ims_suppliers.id=ims_purchase_returns.supplier_id 
                                 WHERE is_deleted=0 ORDER BY po_return_id DESC", conn)

@@ -22,11 +22,11 @@ Partial Class frm_purchaseorder_return_list
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.panel_top = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
@@ -42,7 +42,6 @@ Partial Class frm_purchaseorder_return_list
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_total_cost = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_createdat = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_batchno = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_new_return = New DevExpress.XtraEditors.SimpleButton()
         Me.panel_top.SuspendLayout()
@@ -182,7 +181,7 @@ Partial Class frm_purchaseorder_return_list
         Me.grid_returns_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_returns_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_returns_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_rid, Me.col_supplier, Me.col_total_cost, Me.col_createdat, Me.col_batchno, Me.col_status})
+        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_rid, Me.col_supplier, Me.col_total_cost, Me.col_createdat, Me.col_status})
         Me.grid_returns_view.GridControl = Me.grid_returns
         Me.grid_returns_view.Name = "grid_returns_view"
         Me.grid_returns_view.OptionsBehavior.ReadOnly = True
@@ -203,8 +202,8 @@ Partial Class frm_purchaseorder_return_list
         'btn_view_order
         '
         Me.btn_view_order.AutoHeight = False
-        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
-        Me.btn_view_order.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
+        Me.btn_view_order.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.btn_view_order.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_view_order.Name = "btn_view_order"
         Me.btn_view_order.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -251,7 +250,7 @@ Partial Class frm_purchaseorder_return_list
         Me.col_total_cost.MinWidth = 100
         Me.col_total_cost.Name = "col_total_cost"
         Me.col_total_cost.Visible = True
-        Me.col_total_cost.VisibleIndex = 4
+        Me.col_total_cost.VisibleIndex = 3
         Me.col_total_cost.Width = 100
         '
         'col_createdat
@@ -268,23 +267,8 @@ Partial Class frm_purchaseorder_return_list
         Me.col_createdat.MinWidth = 120
         Me.col_createdat.Name = "col_createdat"
         Me.col_createdat.Visible = True
-        Me.col_createdat.VisibleIndex = 5
+        Me.col_createdat.VisibleIndex = 4
         Me.col_createdat.Width = 120
-        '
-        'col_batchno
-        '
-        Me.col_batchno.AppearanceCell.Options.UseTextOptions = True
-        Me.col_batchno.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_batchno.AppearanceHeader.Options.UseTextOptions = True
-        Me.col_batchno.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_batchno.Caption = "Batch No."
-        Me.col_batchno.FieldName = "batch_no"
-        Me.col_batchno.MaxWidth = 100
-        Me.col_batchno.MinWidth = 100
-        Me.col_batchno.Name = "col_batchno"
-        Me.col_batchno.Visible = True
-        Me.col_batchno.VisibleIndex = 3
-        Me.col_batchno.Width = 100
         '
         'col_status
         '
@@ -295,7 +279,7 @@ Partial Class frm_purchaseorder_return_list
         Me.col_status.MaxWidth = 150
         Me.col_status.Name = "col_status"
         Me.col_status.Visible = True
-        Me.col_status.VisibleIndex = 6
+        Me.col_status.VisibleIndex = 5
         '
         'btn_new_return
         '
@@ -353,7 +337,6 @@ Partial Class frm_purchaseorder_return_list
     Friend WithEvents col_rid As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_total_cost As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_createdat As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents col_batchno As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_new_return As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents col_status As DevExpress.XtraGrid.Columns.GridColumn
 End Class

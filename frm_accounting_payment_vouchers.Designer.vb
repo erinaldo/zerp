@@ -22,11 +22,11 @@ Partial Class frm_accounting_payment_vouchers
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
@@ -37,6 +37,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.grid_payments = New DevExpress.XtraGrid.GridControl()
         Me.grid_payments_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_payment_type = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_date_created = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_print = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -164,13 +165,13 @@ Partial Class frm_accounting_payment_vouchers
         '
         'grid_payments_view
         '
-        Me.grid_payments_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_payments_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_payments_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_payments_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_payments_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_payments_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_payments_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_payments_view.Appearance.Row.Options.UseFont = True
-        Me.grid_payments_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_supplier, Me.col_date_created, Me.col_print})
+        Me.grid_payments_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_payment_type, Me.col_supplier, Me.col_date_created, Me.col_print})
         Me.grid_payments_view.GridControl = Me.grid_payments
         Me.grid_payments_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_payments_view.Name = "grid_payments_view"
@@ -191,13 +192,22 @@ Partial Class frm_accounting_payment_vouchers
         Me.col_id.VisibleIndex = 0
         Me.col_id.Width = 113
         '
+        'col_payment_type
+        '
+        Me.col_payment_type.Caption = "Payment Type"
+        Me.col_payment_type.FieldName = "payment_type"
+        Me.col_payment_type.Name = "col_payment_type"
+        Me.col_payment_type.Visible = True
+        Me.col_payment_type.VisibleIndex = 1
+        Me.col_payment_type.Width = 101
+        '
         'col_supplier
         '
         Me.col_supplier.Caption = "Supplier"
         Me.col_supplier.FieldName = "supplier"
         Me.col_supplier.Name = "col_supplier"
         Me.col_supplier.Visible = True
-        Me.col_supplier.VisibleIndex = 1
+        Me.col_supplier.VisibleIndex = 2
         Me.col_supplier.Width = 323
         '
         'col_date_created
@@ -210,7 +220,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.col_date_created.FieldName = "creation_date"
         Me.col_date_created.Name = "col_date_created"
         Me.col_date_created.Visible = True
-        Me.col_date_created.VisibleIndex = 2
+        Me.col_date_created.VisibleIndex = 3
         Me.col_date_created.Width = 128
         '
         'col_print
@@ -220,13 +230,13 @@ Partial Class frm_accounting_payment_vouchers
         Me.col_print.Name = "col_print"
         Me.col_print.OptionsColumn.FixedWidth = True
         Me.col_print.Visible = True
-        Me.col_print.VisibleIndex = 3
+        Me.col_print.VisibleIndex = 4
         '
         'RepositoryItemButtonEdit1
         '
         Me.RepositoryItemButtonEdit1.AutoHeight = False
-        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.createmodeldifferences_16x16
-        Me.RepositoryItemButtonEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.createmodeldifferences_16x16
+        Me.RepositoryItemButtonEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonEdit1.Name = "RepositoryItemButtonEdit1"
         Me.RepositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -266,4 +276,5 @@ Partial Class frm_accounting_payment_vouchers
     Friend WithEvents col_date_created As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_print As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemButtonEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents col_payment_type As DevExpress.XtraGrid.Columns.GridColumn
 End Class

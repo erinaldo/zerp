@@ -21,7 +21,7 @@ Public Class frm_accounting_payment_vouchers
 
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("SELECT CONCAT('PV', LPAD(payment_id, 5, 0)) as payment_id, ims_suppliers.supplier, creation_date FROM ims_payment_vouchers
+            Dim cmd = New MySqlCommand("SELECT CONCAT('PV', LPAD(payment_id, 5, 0)) as payment_id, UPPER(payment_type) AS payment_type, ims_suppliers.supplier, creation_date FROM ims_payment_vouchers
                                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier ORDER BY payment_id DESC", conn)
             cmd.ExecuteNonQuery()
 
@@ -46,14 +46,15 @@ Public Class frm_accounting_payment_vouchers
         Dim table = New PrintData
 
         Dim conn As New MySqlConnection(str)
-        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = ""
+        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = "", payment_type = String.Empty
 
         Try
 
             conn.Open()
 
             'GET VOUCHER DETAILS
-            Dim query = "SELECT ims_suppliers.supplier, receipts, collection_ref, creation_date, receipts, ims_users.first_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info  FROM ims_payment_vouchers
+            Dim query = "SELECT payment_type, ims_suppliers.supplier, receipts, collection_ref, creation_date, receipts, 
+                        ims_users.first_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info  FROM ims_payment_vouchers
                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier
                         INNER JOIN ims_users ON ims_users.usr_id=ims_payment_vouchers.generated_by
                         WHERE payment_id=@payment_id"
@@ -61,6 +62,7 @@ Public Class frm_accounting_payment_vouchers
                 cmd.Parameters.AddWithValue("@payment_id", id)
                 Using rdr_details = cmd.ExecuteReader
                     While rdr_details.Read
+                        payment_type = rdr_details("payment_type")
                         voucher_date = rdr_details("creation_date")
                         collection_ref = rdr_details("collection_ref")
                         supplier = rdr_details("supplier")
@@ -77,11 +79,11 @@ Public Class frm_accounting_payment_vouchers
 
             'GET RECEIPTS DATA
             Using get_receipt = New MySqlCommand("SELECT CONCAT('PO', LPAD(ims_delivery_receipts.purchase_id, 5, 0)) as purchase_id, receipt_type, receipt_ref, received_date, ims_purchase.terms,
-                                        payment_cheque, payment_dates, ims_delivery_receipts.amount, ims_generated_cheques.bank,
-                                        DATE_ADD(received_date, INTERVAL ims_purchase.terms DAY) as due_date FROM ims_delivery_receipts 
-                                        INNER JOIN ims_purchase ON ims_purchase.purchase_id=ims_delivery_receipts.purchase_id
-                                        INNER JOIN ims_generated_cheques ON ims_generated_cheques.id=ims_delivery_receipts.cheque_id 
-                                        WHERE payment_ref=@ref ORDER BY receipt_ref ASC", conn)
+                                    payment_cheque, payment_dates, ims_delivery_receipts.amount, ims_generated_cheques.bank,
+                                    DATE_ADD(received_date, INTERVAL ims_purchase.terms DAY) as due_date FROM ims_delivery_receipts 
+                                    INNER JOIN ims_purchase ON ims_purchase.purchase_id=ims_delivery_receipts.purchase_id
+                                    LEFT JOIN ims_generated_cheques ON ims_generated_cheques.id=ims_delivery_receipts.cheque_id 
+                                    WHERE payment_ref=@ref ORDER BY receipt_ref ASC", conn)
                 get_receipt.Parameters.AddWithValue("@ref", id)
                 Using reader = get_receipt.ExecuteReader
                     While reader.Read
@@ -99,21 +101,49 @@ Public Class frm_accounting_payment_vouchers
                 End Using
             End Using
 
-            Dim cheque_no As String = String.Empty
+            Dim cheque_no As String = "0"
 
 
-            'Get Cheque Total No. and Details
-            Using get_cheque = New MySqlCommand("SELECT bank, cheque_no, cheque_date, ims_generated_cheques.amount FROM ims_generated_cheques 
-                                INNER JOIN ims_delivery_receipts ON ims_delivery_receipts.payment_cheque=cheque_no
-                                WHERE payment_ref=@ref GROUP BY cheque_no, bank, ims_generated_cheques.amount, cheque_date", conn)
-                get_cheque.Parameters.AddWithValue("@ref", id)
-                Using rdr_cheque = get_cheque.ExecuteReader
-                    While rdr_cheque.Read
-                    table.payment_voucher_cheque.Rows.Add(rdr_cheque("bank"), rdr_cheque("cheque_date"), rdr_cheque("cheque_no"), rdr_cheque("amount"))
-                    cheque_no = rdr_cheque("cheque_no")
-                    End While
-                End Using
-            End Using
+            Select Case payment_type
+                Case "cheque"
+                    'Get Cheque Total No. and Details
+                    Using get_cheque = New MySqlCommand("SELECT bank, cheque_no, cheque_date, ims_generated_cheques.amount FROM ims_generated_cheques 
+                            INNER JOIN ims_delivery_receipts ON ims_delivery_receipts.payment_cheque=cheque_no
+                            WHERE payment_ref=@ref GROUP BY cheque_no, bank, ims_generated_cheques.amount, cheque_date", conn)
+                        get_cheque.Parameters.AddWithValue("@ref", id)
+                        Using rdr_cheque = get_cheque.ExecuteReader
+                            While rdr_cheque.Read
+                                table.payment_voucher_cheque.Rows.Add(rdr_cheque("bank"), rdr_cheque("cheque_date"), rdr_cheque("cheque_no"), rdr_cheque("amount"))
+                                cheque_no = rdr_cheque("cheque_no")
+                            End While
+                        End Using
+                    End Using
+
+                Case "cash"
+                    'Get Cash Details
+                    Using get_cheque = New MySqlCommand("SELECT ims_generated_cash.id, ims_generated_cash.payment_date, ims_generated_cash.amount 
+                                            FROM ims_delivery_receipts  
+                                            INNER JOIN ims_generated_cash ON ims_generated_cash.id=cash_id
+                                            WHERE payable_id=@pid GROUP BY id", conn)
+                        get_cheque.Parameters.AddWithValue("@pid", receipts(0))
+                        Using rdr_cheque = get_cheque.ExecuteReader
+                            While rdr_cheque.Read
+                                table.payment_voucher_cheque.Rows.Add(rdr_cheque("id"), rdr_cheque("payment_date"), Nothing, rdr_cheque("amount"))
+                            End While
+                        End Using
+                        'get_cheque.Prepare()
+
+                        'For i = 0 To receipts.Length - 1
+                        '    get_cheque.Parameters(0).Value = receipts(i)
+                        '    Using rdr_cheque = get_cheque.ExecuteReader
+                        '        While rdr_cheque.Read
+                        '            table.payment_voucher_cheque.Rows.Add(rdr_cheque("id"), rdr_cheque("payment_date"), Nothing, rdr_cheque("amount"))
+                        '        End While
+                        '    End Using
+                        'Next
+                    End Using
+
+            End Select
 
 
             'GET PURCHASE RETURNS
@@ -133,6 +163,7 @@ Public Class frm_accounting_payment_vouchers
             report.Parameters("supplier").Value = supplier
             report.Parameters("collection_ref").Value = collection_ref
             report.Parameters("generated_by").Value = generated_by
+            report.Parameters("payment_type").Value = payment_type
             report.RequestParameters = False
 
             report.DataSource = table

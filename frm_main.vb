@@ -479,8 +479,8 @@ Public Class frm_main
     '----------> Accounting
 
     'Generate Cheque
-    Private Sub ChequeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChequeToolStripMenuItem.Click
-        LoadFrm(New frm_accounting_generate_cheque)
+    Private Sub ChequeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaymentToolStripMenuItem.Click
+        LoadFrm(New frm_accounting_generate_payment)
     End Sub
 
     'Generate Voucher
@@ -503,5 +503,14 @@ Public Class frm_main
         LoadFrm(New frm_accounting_payment_cheques)
     End Sub
 
+    'Payment Cash
+    Private Sub submenu_payment_cash_Click(sender As Object, e As EventArgs) Handles submenu_payment_cash.Click
+        LoadFrm(New frm_accounting_payment_cash)
+    End Sub
+
+    'Forecast and Payables
+    Private Sub submenu_ForecastAndPayablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_ForecastAndPayablesToolStripMenuItem.Click
+        LoadFrm(New frm_accounting_forecast_payables)
+    End Sub
 
 End Class

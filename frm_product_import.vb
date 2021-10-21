@@ -168,10 +168,10 @@ Public Class frm_product_import
                     Or String.IsNullOrWhiteSpace(values(5).ToString) _  'description
                     Or String.IsNullOrWhiteSpace(values(7).ToString) _  'main_category
                     Or String.IsNullOrWhiteSpace(values(8).ToString) _  'sub_category
-                    Or String.IsNullOrWhiteSpace(values(9).ToString) _ 'Brand
-                    Or String.IsNullOrWhiteSpace(values(12).ToString) _ 'Status
-                    Or String.IsNullOrWhiteSpace(values(13).ToString) _ 'Base Price
-                    Or String.IsNullOrWhiteSpace(values(14).ToString) _ 'Cost
+                    Or String.IsNullOrWhiteSpace(values(9).ToString) _  'brand
+                    Or String.IsNullOrWhiteSpace(values(12).ToString) _ 'status
+                    Or String.IsNullOrWhiteSpace(values(13).ToString) _ 'base Price
+                    Or String.IsNullOrWhiteSpace(values(14).ToString) _ 'cost
                     Or String.IsNullOrWhiteSpace(values(16).ToString) _ 'regular_price
                     Or String.IsNullOrWhiteSpace(values(17).ToString) _ 'dealer_price 
                     Or String.IsNullOrWhiteSpace(values(18).ToString) Then 'vip_price 

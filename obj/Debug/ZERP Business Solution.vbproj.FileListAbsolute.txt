@@ -877,7 +877,6 @@ D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraCharts.v21.1.Wizard
 D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
-D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.ResolveComReference.cache
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.control_inventory_side.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_cheque.resources
@@ -892,7 +891,6 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_transfer_req
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_voucher.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_new_payable.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payables.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_cheque.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cheques.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_vouchers.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_view_transaction.resources
@@ -987,3 +985,9 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorde
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_collection_receipt.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_receipts.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_return.resources
+D:\_workstation\source code\zerp\bin\Debug\Guna.UI.dll
+D:\_workstation\source code\zerp\bin\Debug\Guna.UI2.dll
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cash.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_payment.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_forecast_payables.resources

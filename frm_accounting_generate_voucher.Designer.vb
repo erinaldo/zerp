@@ -30,13 +30,17 @@ Partial Class frm_accounting_generate_voucher
         Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel2 = New Guna.UI.WinForms.GunaLabel()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
+        Me.rb_cash = New System.Windows.Forms.RadioButton()
+        Me.rb_cheque = New System.Windows.Forms.RadioButton()
         Me.panel_generate = New DevExpress.XtraEditors.PanelControl()
         Me.btn_generate = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_collection_ref = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.cbb_suppliers = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.grid_receipts = New DevExpress.XtraGrid.GridControl()
+        Me.grid_receipts_cheque = New DevExpress.XtraGrid.GridControl()
         Me.grid_receipts_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_po_id = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -46,6 +50,7 @@ Partial Class frm_accounting_generate_voucher
         Me.col_bank = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_cheque_no = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_cheque_date = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_cashid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txt_total_view = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel4.SuspendLayout()
@@ -53,11 +58,12 @@ Partial Class frm_accounting_generate_voucher
         Me.GunaPanel1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         CType(Me.panel_generate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_generate.SuspendLayout()
         CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_suppliers.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grid_receipts, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_receipts_cheque, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_receipts_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_total_view.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -164,6 +170,7 @@ Partial Class frm_accounting_generate_voucher
         '
         Me.PanelControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelControl2.Controls.Add(Me.Panel1)
         Me.PanelControl2.Controls.Add(Me.panel_generate)
         Me.PanelControl2.Controls.Add(Me.LabelControl3)
         Me.PanelControl2.Controls.Add(Me.cbb_suppliers)
@@ -173,6 +180,50 @@ Partial Class frm_accounting_generate_voucher
         Me.PanelControl2.Name = "PanelControl2"
         Me.PanelControl2.Size = New System.Drawing.Size(1040, 52)
         Me.PanelControl2.TabIndex = 20
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.LabelControl12)
+        Me.Panel1.Controls.Add(Me.rb_cash)
+        Me.Panel1.Controls.Add(Me.rb_cheque)
+        Me.Panel1.Location = New System.Drawing.Point(318, 11)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(290, 34)
+        Me.Panel1.TabIndex = 26
+        '
+        'LabelControl12
+        '
+        Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Tahoma", 11.0!)
+        Me.LabelControl12.Appearance.Options.UseFont = True
+        Me.LabelControl12.Location = New System.Drawing.Point(3, 7)
+        Me.LabelControl12.Name = "LabelControl12"
+        Me.LabelControl12.Size = New System.Drawing.Size(102, 18)
+        Me.LabelControl12.TabIndex = 2
+        Me.LabelControl12.Text = "Payment Type:"
+        '
+        'rb_cash
+        '
+        Me.rb_cash.AutoSize = True
+        Me.rb_cash.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.rb_cash.Location = New System.Drawing.Point(200, 7)
+        Me.rb_cash.Name = "rb_cash"
+        Me.rb_cash.Size = New System.Drawing.Size(56, 21)
+        Me.rb_cash.TabIndex = 1
+        Me.rb_cash.Text = "Cash"
+        Me.rb_cash.UseVisualStyleBackColor = True
+        '
+        'rb_cheque
+        '
+        Me.rb_cheque.AutoSize = True
+        Me.rb_cheque.Checked = True
+        Me.rb_cheque.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.rb_cheque.Location = New System.Drawing.Point(122, 7)
+        Me.rb_cheque.Name = "rb_cheque"
+        Me.rb_cheque.Size = New System.Drawing.Size(73, 21)
+        Me.rb_cheque.TabIndex = 0
+        Me.rb_cheque.TabStop = True
+        Me.rb_cheque.Text = "Cheque"
+        Me.rb_cheque.UseVisualStyleBackColor = True
         '
         'panel_generate
         '
@@ -244,20 +295,20 @@ Partial Class frm_accounting_generate_voucher
         Me.cbb_suppliers.Size = New System.Drawing.Size(242, 20)
         Me.cbb_suppliers.TabIndex = 0
         '
-        'grid_receipts
+        'grid_receipts_cheque
         '
-        Me.grid_receipts.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.grid_receipts_cheque.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_receipts.Font = New System.Drawing.Font("Roboto", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grid_receipts.Location = New System.Drawing.Point(12, 159)
-        Me.grid_receipts.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.grid_receipts.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.grid_receipts.MainView = Me.grid_receipts_view
-        Me.grid_receipts.Name = "grid_receipts"
-        Me.grid_receipts.Size = New System.Drawing.Size(1040, 367)
-        Me.grid_receipts.TabIndex = 19
-        Me.grid_receipts.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_receipts_view})
+        Me.grid_receipts_cheque.Font = New System.Drawing.Font("Roboto", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_receipts_cheque.Location = New System.Drawing.Point(12, 159)
+        Me.grid_receipts_cheque.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_receipts_cheque.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_receipts_cheque.MainView = Me.grid_receipts_view
+        Me.grid_receipts_cheque.Name = "grid_receipts_cheque"
+        Me.grid_receipts_cheque.Size = New System.Drawing.Size(1040, 367)
+        Me.grid_receipts_cheque.TabIndex = 19
+        Me.grid_receipts_cheque.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_receipts_view})
         '
         'grid_receipts_view
         '
@@ -267,8 +318,8 @@ Partial Class frm_accounting_generate_voucher
         Me.grid_receipts_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_receipts_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_receipts_view.Appearance.Row.Options.UseFont = True
-        Me.grid_receipts_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_po_id, Me.col_receipt_ref, Me.col_amount, Me.col_purchase_id, Me.col_bank, Me.col_cheque_no, Me.col_cheque_date})
-        Me.grid_receipts_view.GridControl = Me.grid_receipts
+        Me.grid_receipts_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_po_id, Me.col_receipt_ref, Me.col_amount, Me.col_purchase_id, Me.col_bank, Me.col_cheque_no, Me.col_cheque_date, Me.col_cashid})
+        Me.grid_receipts_view.GridControl = Me.grid_receipts_cheque
         Me.grid_receipts_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_receipts_view.Name = "grid_receipts_view"
         Me.grid_receipts_view.OptionsBehavior.ReadOnly = True
@@ -283,12 +334,12 @@ Partial Class frm_accounting_generate_voucher
         '
         Me.col_id.AppearanceCell.Options.UseTextOptions = True
         Me.col_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_id.Caption = "ID"
+        Me.col_id.Caption = "Payable ID"
         Me.col_id.FieldName = "payable_id"
         Me.col_id.Name = "col_id"
         Me.col_id.Visible = True
         Me.col_id.VisibleIndex = 1
-        Me.col_id.Width = 46
+        Me.col_id.Width = 77
         '
         'col_po_id
         '
@@ -298,7 +349,7 @@ Partial Class frm_accounting_generate_voucher
         Me.col_po_id.FieldName = "purchase_id"
         Me.col_po_id.Name = "col_po_id"
         Me.col_po_id.Visible = True
-        Me.col_po_id.VisibleIndex = 4
+        Me.col_po_id.VisibleIndex = 2
         Me.col_po_id.Width = 96
         '
         'col_receipt_ref
@@ -309,7 +360,7 @@ Partial Class frm_accounting_generate_voucher
         Me.col_receipt_ref.FieldName = "receipt_ref"
         Me.col_receipt_ref.Name = "col_receipt_ref"
         Me.col_receipt_ref.Visible = True
-        Me.col_receipt_ref.VisibleIndex = 7
+        Me.col_receipt_ref.VisibleIndex = 5
         Me.col_receipt_ref.Width = 104
         '
         'col_amount
@@ -322,7 +373,7 @@ Partial Class frm_accounting_generate_voucher
         Me.col_amount.FieldName = "amount"
         Me.col_amount.Name = "col_amount"
         Me.col_amount.Visible = True
-        Me.col_amount.VisibleIndex = 5
+        Me.col_amount.VisibleIndex = 3
         Me.col_amount.Width = 118
         '
         'col_purchase_id
@@ -333,7 +384,7 @@ Partial Class frm_accounting_generate_voucher
         Me.col_purchase_id.FieldName = "receipt_type"
         Me.col_purchase_id.Name = "col_purchase_id"
         Me.col_purchase_id.Visible = True
-        Me.col_purchase_id.VisibleIndex = 6
+        Me.col_purchase_id.VisibleIndex = 4
         Me.col_purchase_id.Width = 90
         '
         'col_bank
@@ -342,7 +393,7 @@ Partial Class frm_accounting_generate_voucher
         Me.col_bank.FieldName = "bank"
         Me.col_bank.Name = "col_bank"
         Me.col_bank.Visible = True
-        Me.col_bank.VisibleIndex = 8
+        Me.col_bank.VisibleIndex = 6
         Me.col_bank.Width = 159
         '
         'col_cheque_no
@@ -353,21 +404,31 @@ Partial Class frm_accounting_generate_voucher
         Me.col_cheque_no.FieldName = "payment_cheque"
         Me.col_cheque_no.Name = "col_cheque_no"
         Me.col_cheque_no.Visible = True
-        Me.col_cheque_no.VisibleIndex = 2
+        Me.col_cheque_no.VisibleIndex = 7
         Me.col_cheque_no.Width = 96
         '
         'col_cheque_date
         '
         Me.col_cheque_date.AppearanceCell.Options.UseTextOptions = True
-        Me.col_cheque_date.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.col_cheque_date.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_cheque_date.Caption = "Cheque Date"
-        Me.col_cheque_date.DisplayFormat.FormatString = "MMM dd, yyyy"
+        Me.col_cheque_date.DisplayFormat.FormatString = "MM/dd/yyyy"
         Me.col_cheque_date.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.col_cheque_date.FieldName = "payment_dates"
         Me.col_cheque_date.Name = "col_cheque_date"
         Me.col_cheque_date.Visible = True
-        Me.col_cheque_date.VisibleIndex = 3
+        Me.col_cheque_date.VisibleIndex = 8
         Me.col_cheque_date.Width = 149
+        '
+        'col_cashid
+        '
+        Me.col_cashid.AppearanceCell.Options.UseTextOptions = True
+        Me.col_cashid.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_cashid.Caption = "Cash ID"
+        Me.col_cashid.FieldName = "cash_id"
+        Me.col_cashid.Name = "col_cashid"
+        Me.col_cashid.Visible = True
+        Me.col_cashid.VisibleIndex = 9
         '
         'txt_total_view
         '
@@ -409,7 +470,7 @@ Partial Class frm_accounting_generate_voucher
         Me.Controls.Add(Me.txt_total_view)
         Me.Controls.Add(Me.LabelControl9)
         Me.Controls.Add(Me.PanelControl2)
-        Me.Controls.Add(Me.grid_receipts)
+        Me.Controls.Add(Me.grid_receipts_cheque)
         Me.Controls.Add(Me.GunaPanel4)
         Me.Name = "frm_accounting_generate_voucher"
         Me.Text = "frm_accounting_generate_voucher"
@@ -421,12 +482,14 @@ Partial Class frm_accounting_generate_voucher
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         CType(Me.panel_generate, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_generate.ResumeLayout(False)
         Me.panel_generate.PerformLayout()
         CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_suppliers.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grid_receipts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_receipts_cheque, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_receipts_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_total_view.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -444,7 +507,7 @@ Partial Class frm_accounting_generate_voucher
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cbb_suppliers As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents grid_receipts As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grid_receipts_cheque As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_receipts_view As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents col_id As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_po_id As DevExpress.XtraGrid.Columns.GridColumn
@@ -460,4 +523,9 @@ Partial Class frm_accounting_generate_voucher
     Friend WithEvents col_bank As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents txt_total_view As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents rb_cash As RadioButton
+    Friend WithEvents rb_cheque As RadioButton
+    Friend WithEvents col_cashid As DevExpress.XtraGrid.Columns.GridColumn
 End Class

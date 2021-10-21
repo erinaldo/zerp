@@ -91,6 +91,7 @@ Public Class frm_logistics_deliveries
                 Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
                         ims_customers.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val,
+                        no_of_box, no_of_plastic, no_of_rolls,
                         agent.first_name AS prepared_by, packer.first_name AS arranged_by, releaser.first_name AS released_by, sales_agent.first_name AS sales_agent FROM `ims_orders`
                         INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer
                         INNER JOIN ims_users AS agent ON agent.usr_id=agent
@@ -122,6 +123,9 @@ Public Class frm_logistics_deliveries
                     report.Parameters("is_withholding_tax_applied").Value = rdr("is_withholding_tax_applied")
                     report.Parameters("withholding_tax_percentage").Value = rdr("withholding_tax_percentage")
                     report.Parameters("withholding_tax_amount").Value = rdr("withholding_tax_amount")
+                    report.Parameters("no_of_box").Value = rdr("no_of_box")
+                    report.Parameters("no_of_plastic").Value = rdr("no_of_plastic")
+                    report.Parameters("no_of_rolls").Value = rdr("no_of_rolls")
                     data_to_grid(rdr("order_item"), table.invoice_data)
                     report.Parameters("prepared_by").Value = rdr("prepared_by")
                     report.Parameters("arranged_by").Value = rdr("arranged_by")

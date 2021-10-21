@@ -94,6 +94,10 @@ Public Class frm_sales_view_order
                     Case "Cheque" : rb_cheque.Checked = True
                 End Select
 
+                'Display Payment Status Computation
+                lbl_amounttopay.Text = FormatCurrency(rdr("amount_due"))
+                lbl_paid_amount.Text = FormatCurrency(rdr("paid_amount"))
+
                 'Set Payment Status
                 Select Case rdr("payment_status")
                     Case "UNPAID" : lbl_payment_status.Text = "UNPAID"
@@ -117,8 +121,7 @@ Public Class frm_sales_view_order
                                 lbl_payment_status.Appearance.ForeColor = Color.Black
                             End If
 
-                            'Display Amount of Paid and Balances
-                            lbl_paid_amount.Text = FormatCurrency(rdr("paid_amount"))
+                            'Display and Balances
                             lbl_balance.Text = FormatCurrency(res)
 
                             'Set btn_refund IF CASH
@@ -162,7 +165,7 @@ Public Class frm_sales_view_order
                     btn_pack.ImageOptions.Image = My.Resources.packing_now
 
                 Case "Packed"
-                    btn_save.Enabled = False
+                    'btn_save.Enabled = False
                     btn_delete.Enabled = False
                     btn_modify.Enabled = True
                     grid_order.ReadOnly = True
@@ -172,7 +175,7 @@ Public Class frm_sales_view_order
                     btn_pack.ImageOptions.Image = My.Resources.unpacking
 
                 Case "Released"
-                    btn_save.Enabled = False
+                    'btn_save.Enabled = False
                     btn_delete.Enabled = False
                     btn_pack.Enabled = False
                     If frm_main.user_role_id.Text.Equals("1") Then
@@ -182,7 +185,7 @@ Public Class frm_sales_view_order
                     End If
 
                 Case "Cancelled"
-                    btn_save.Enabled = False
+                    'btn_save.Enabled = False
                     btn_delete.Enabled = False
                     btn_pack.Enabled = False
                     grid_order.Enabled = False
@@ -323,7 +326,6 @@ Public Class frm_sales_view_order
             rdr = cmd.ExecuteReader
 
             While rdr.Read
-                rdr.Read()
                 report.Parameters("order_id").Value = String.Concat("SO", rdr("order_id").ToString.PadLeft(5, "0"c))
                 report.Parameters("customer").Value = rdr("customer")
                 report.Parameters("contact_person").Value = rdr("contact_person")
@@ -333,12 +335,13 @@ Public Class frm_sales_view_order
                 report.Parameters("priv_notes").Value = rdr("priv_note")
                 report.Parameters("trucking").Value = rdr("trucking")
                 report.Parameters("shipping_method").Value = rdr("shipping_method")
-                orders = rdr("order_item")
+
+                data_to_grid(rdr("order_item"), table.packing_list, 3)
+
             End While
 
-            data_to_grid(orders, table.packing_list, 3)
-
-            printTool.AutoShowParametersPanel = False
+            report.RequestParameters = False
+            report.DataSource = table
             printTool.ShowRibbonPreviewDialog()
 
         Catch ex As Exception
@@ -1061,6 +1064,7 @@ Public Class frm_sales_view_order
             _total -= CDec(txt_delivery_fee.Text)
 
             txt_delivery_fee.Text = String.Empty
+            lbl_amounttopay.Text = FormatCurrency(_total)
             lbl_total.Text = FormatCurrency(_total)
 
             lbl_delivery_fee.LinkColor = Color.Blue
@@ -1072,24 +1076,25 @@ Public Class frm_sales_view_order
 
         Dim _del_fee = InputBox("Enter delivery fee below", "Delivery Fee")
 
-        If String.IsNullOrWhiteSpace(_del_fee) Then Exit Sub
+        If Not String.IsNullOrWhiteSpace(_del_fee) Then
+            Try
+                _total += CDec(_del_fee)
 
-        Try
-            _total += CDec(_del_fee)
+                txt_delivery_fee.Text = FormatCurrency(_del_fee)
+                lbl_amounttopay.Text = FormatCurrency(_total)
+                lbl_total.Text = FormatCurrency(_total)
 
-            txt_delivery_fee.Text = FormatCurrency(_del_fee)
-            lbl_total.Text = FormatCurrency(_total)
+            Catch ex As Exception
+                MsgBox("Invalid Number Format!", vbCritical, "Number Exception")
+            End Try
 
-        Catch ex As Exception
-            MsgBox("Invalid Number Format!", vbCritical, "Number Exception")
-        End Try
+            If Not String.IsNullOrWhiteSpace(txt_delivery_fee.Text) Then
+                lbl_delivery_fee.LinkColor = Color.Red
+                lbl_delivery_fee.Text = "Remove Delivery Fee"
+            End If
 
-        If Not String.IsNullOrWhiteSpace(txt_delivery_fee.Text) Then
-            lbl_delivery_fee.LinkColor = Color.Red
-            lbl_delivery_fee.Text = "Remove Delivery Fee"
+            ComputeTotal()
         End If
-
-        ComputeTotal()
 
     End Sub
 

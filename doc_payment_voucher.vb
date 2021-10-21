@@ -5,6 +5,13 @@
         If purchase_return_report.RowCount = 0 Then
             purchase_return_report.Visible = False
         End If
+
+        If payment_type.Value.Equals("cash") Then
+            payment_voucher_cheque.Visible = False
+        ElseIf payment_type.Value.Equals("cheque") Then
+            payment_voucher_cash.Visible = False
+        End If
+
     End Sub
 
 End Class

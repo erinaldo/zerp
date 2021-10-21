@@ -100,10 +100,10 @@
       <HintPath>packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
-      <HintPath>D:\GunaUI\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+      <HintPath>..\..\resources\GunaUI\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>D:\Programming\GunaUI\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+      <HintPath>..\..\resources\GunaUI\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>packages\K4os.Compression.LZ4.1.1.11\lib\net45\K4os.Compression.LZ4.dll</HintPath>
@@ -254,10 +254,16 @@
     <Compile Include="doc_transfer_request.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frm_accounting_generate_cheque.Designer.vb">
-      <DependentUpon>frm_accounting_generate_cheque.vb</DependentUpon>
+    <Compile Include="frm_accounting_forecast_payables.Designer.vb">
+      <DependentUpon>frm_accounting_forecast_payables.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_generate_cheque.vb">
+    <Compile Include="frm_accounting_forecast_payables.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_accounting_generate_payment.Designer.vb">
+      <DependentUpon>frm_accounting_generate_payment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_accounting_generate_payment.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_accounting_generate_voucher.Designer.vb">
@@ -270,6 +276,12 @@
       <DependentUpon>frm_accounting_new_payable.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_accounting_new_payable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_accounting_payment_cash.Designer.vb">
+      <DependentUpon>frm_accounting_payment_cash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_accounting_payment_cash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_accounting_payment_cheques.Designer.vb">
@@ -824,6 +836,9 @@
       <DependentUpon>doc_transfer_request.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_accounting_forecast_payables.resx">
+      <DependentUpon>frm_accounting_forecast_payables.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_accounting_generate_voucher.resx">
       <DependentUpon>frm_accounting_generate_voucher.vb</DependentUpon>
     </EmbeddedResource>
@@ -833,8 +848,11 @@
     <EmbeddedResource Include="frm_accounting_payables.resx">
       <DependentUpon>frm_accounting_payables.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_generate_cheque.resx">
-      <DependentUpon>frm_accounting_generate_cheque.vb</DependentUpon>
+    <EmbeddedResource Include="frm_accounting_generate_payment.resx">
+      <DependentUpon>frm_accounting_generate_payment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_accounting_payment_cash.resx">
+      <DependentUpon>frm_accounting_payment_cash.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_accounting_payment_cheques.resx">
       <DependentUpon>frm_accounting_payment_cheques.vb</DependentUpon>

@@ -40,7 +40,6 @@ Module functions
 
             'Hide All Menu
             With frm_main
-                .menu_dashboard.Visible = False
                 .menu_product.Visible = False
                 .menu_sales.Visible = False
                 .menu_warehouse.Visible = False

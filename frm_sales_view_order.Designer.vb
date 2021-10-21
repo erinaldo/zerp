@@ -51,7 +51,7 @@ Partial Class frm_sales_view_order
         Me.lbl_status = New Guna.UI.WinForms.GunaLabel()
         Me.lbl_title = New Guna.UI.WinForms.GunaLabel()
         Me.LabelControl16 = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl_balance = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_amounttopay = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_paid_amount = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_delivery_fee = New System.Windows.Forms.LinkLabel()
@@ -114,6 +114,7 @@ Partial Class frm_sales_view_order
         Me.cb_tax_applied = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.btn_refund = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_epayment = New DevExpress.XtraEditors.SimpleButton()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
@@ -134,7 +135,8 @@ Partial Class frm_sales_view_order
         Me.lbl_cid = New DevExpress.XtraEditors.TextEdit()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.btn_modify = New DevExpress.XtraEditors.SimpleButton()
-        Me.btn_refund = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_balance = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_po_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -206,26 +208,26 @@ Partial Class frm_sales_view_order
         Me.LabelControl16.Appearance.ForeColor = System.Drawing.Color.Black
         Me.LabelControl16.Appearance.Options.UseFont = True
         Me.LabelControl16.Appearance.Options.UseForeColor = True
-        Me.LabelControl16.Location = New System.Drawing.Point(10, 93)
+        Me.LabelControl16.Location = New System.Drawing.Point(32, 67)
         Me.LabelControl16.Name = "LabelControl16"
         Me.LabelControl16.Size = New System.Drawing.Size(87, 16)
         Me.LabelControl16.TabIndex = 106
         Me.LabelControl16.Text = "Amount to Pay"
         '
-        'lbl_balance
+        'lbl_amounttopay
         '
-        Me.lbl_balance.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.lbl_balance.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.lbl_balance.Appearance.Options.UseFont = True
-        Me.lbl_balance.Appearance.Options.UseForeColor = True
-        Me.lbl_balance.Appearance.Options.UseTextOptions = True
-        Me.lbl_balance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.lbl_balance.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_balance.Location = New System.Drawing.Point(108, 93)
-        Me.lbl_balance.Name = "lbl_balance"
-        Me.lbl_balance.Size = New System.Drawing.Size(110, 18)
-        Me.lbl_balance.TabIndex = 105
-        Me.lbl_balance.Text = "0.00"
+        Me.lbl_amounttopay.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.lbl_amounttopay.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.lbl_amounttopay.Appearance.Options.UseFont = True
+        Me.lbl_amounttopay.Appearance.Options.UseForeColor = True
+        Me.lbl_amounttopay.Appearance.Options.UseTextOptions = True
+        Me.lbl_amounttopay.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_amounttopay.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_amounttopay.Location = New System.Drawing.Point(125, 65)
+        Me.lbl_amounttopay.Name = "lbl_amounttopay"
+        Me.lbl_amounttopay.Size = New System.Drawing.Size(110, 18)
+        Me.lbl_amounttopay.TabIndex = 105
+        Me.lbl_amounttopay.Text = "0.00"
         '
         'LabelControl15
         '
@@ -233,7 +235,7 @@ Partial Class frm_sales_view_order
         Me.LabelControl15.Appearance.ForeColor = System.Drawing.Color.Black
         Me.LabelControl15.Appearance.Options.UseFont = True
         Me.LabelControl15.Appearance.Options.UseForeColor = True
-        Me.LabelControl15.Location = New System.Drawing.Point(10, 72)
+        Me.LabelControl15.Location = New System.Drawing.Point(32, 85)
         Me.LabelControl15.Name = "LabelControl15"
         Me.LabelControl15.Size = New System.Drawing.Size(75, 16)
         Me.LabelControl15.TabIndex = 104
@@ -248,7 +250,7 @@ Partial Class frm_sales_view_order
         Me.lbl_paid_amount.Appearance.Options.UseTextOptions = True
         Me.lbl_paid_amount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_paid_amount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_paid_amount.Location = New System.Drawing.Point(108, 72)
+        Me.lbl_paid_amount.Location = New System.Drawing.Point(125, 85)
         Me.lbl_paid_amount.Name = "lbl_paid_amount"
         Me.lbl_paid_amount.Size = New System.Drawing.Size(110, 18)
         Me.lbl_paid_amount.TabIndex = 103
@@ -259,7 +261,7 @@ Partial Class frm_sales_view_order
         Me.lbl_delivery_fee.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbl_delivery_fee.BackColor = System.Drawing.Color.Transparent
         Me.lbl_delivery_fee.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.lbl_delivery_fee.Location = New System.Drawing.Point(248, 27)
+        Me.lbl_delivery_fee.Location = New System.Drawing.Point(248, 50)
         Me.lbl_delivery_fee.Name = "lbl_delivery_fee"
         Me.lbl_delivery_fee.Size = New System.Drawing.Size(130, 18)
         Me.lbl_delivery_fee.TabIndex = 102
@@ -272,7 +274,7 @@ Partial Class frm_sales_view_order
         Me.txt_delivery_fee.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_delivery_fee.EditValue = ""
         Me.txt_delivery_fee.Enabled = False
-        Me.txt_delivery_fee.Location = New System.Drawing.Point(382, 26)
+        Me.txt_delivery_fee.Location = New System.Drawing.Point(382, 49)
         Me.txt_delivery_fee.Name = "txt_delivery_fee"
         Me.txt_delivery_fee.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.txt_delivery_fee.Properties.Appearance.Options.UseFont = True
@@ -706,7 +708,7 @@ Partial Class frm_sales_view_order
         DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.grid_order.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.grid_order.RowHeadersWidth = 47
-        Me.grid_order.Size = New System.Drawing.Size(793, 476)
+        Me.grid_order.Size = New System.Drawing.Size(793, 453)
         Me.grid_order.TabIndex = 58
         '
         'col_qty
@@ -817,7 +819,7 @@ Partial Class frm_sales_view_order
         Me.grid_remaining.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_remaining.RowTemplate.Height = 23
         Me.grid_remaining.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.grid_remaining.Size = New System.Drawing.Size(150, 476)
+        Me.grid_remaining.Size = New System.Drawing.Size(150, 453)
         Me.grid_remaining.TabIndex = 87
         '
         'col_other
@@ -877,7 +879,7 @@ Partial Class frm_sales_view_order
         'cbb_discount
         '
         Me.cbb_discount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbb_discount.Location = New System.Drawing.Point(626, 24)
+        Me.cbb_discount.Location = New System.Drawing.Point(626, 47)
         Me.cbb_discount.Name = "cbb_discount"
         Me.cbb_discount.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.cbb_discount.Properties.Appearance.Options.UseFont = True
@@ -895,7 +897,7 @@ Partial Class frm_sales_view_order
         Me.cb_vatable.AutoSize = True
         Me.cb_vatable.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.cb_vatable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.cb_vatable.Location = New System.Drawing.Point(350, 56)
+        Me.cb_vatable.Location = New System.Drawing.Point(350, 79)
         Me.cb_vatable.Name = "cb_vatable"
         Me.cb_vatable.Size = New System.Drawing.Size(107, 20)
         Me.cb_vatable.TabIndex = 116
@@ -909,7 +911,7 @@ Partial Class frm_sales_view_order
         Me.LabelControl17.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl17.Appearance.Options.UseFont = True
         Me.LabelControl17.Appearance.Options.UseForeColor = True
-        Me.LabelControl17.Location = New System.Drawing.Point(387, 113)
+        Me.LabelControl17.Location = New System.Drawing.Point(387, 136)
         Me.LabelControl17.Name = "LabelControl17"
         Me.LabelControl17.Size = New System.Drawing.Size(120, 22)
         Me.LabelControl17.TabIndex = 109
@@ -925,7 +927,7 @@ Partial Class frm_sales_view_order
         Me.lbl_withholding_tax_amount.Appearance.Options.UseTextOptions = True
         Me.lbl_withholding_tax_amount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_withholding_tax_amount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_withholding_tax_amount.Location = New System.Drawing.Point(578, 77)
+        Me.lbl_withholding_tax_amount.Location = New System.Drawing.Point(578, 100)
         Me.lbl_withholding_tax_amount.Name = "lbl_withholding_tax_amount"
         Me.lbl_withholding_tax_amount.Size = New System.Drawing.Size(111, 14)
         Me.lbl_withholding_tax_amount.TabIndex = 115
@@ -938,7 +940,7 @@ Partial Class frm_sales_view_order
         Me.LabelControl18.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl18.Appearance.Options.UseFont = True
         Me.LabelControl18.Appearance.Options.UseForeColor = True
-        Me.LabelControl18.Location = New System.Drawing.Point(487, 29)
+        Me.LabelControl18.Location = New System.Drawing.Point(487, 52)
         Me.LabelControl18.Name = "LabelControl18"
         Me.LabelControl18.Size = New System.Drawing.Size(55, 16)
         Me.LabelControl18.TabIndex = 110
@@ -951,7 +953,7 @@ Partial Class frm_sales_view_order
         Me.LabelControl19.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl19.Appearance.Options.UseFont = True
         Me.LabelControl19.Appearance.Options.UseForeColor = True
-        Me.LabelControl19.Location = New System.Drawing.Point(488, 79)
+        Me.LabelControl19.Location = New System.Drawing.Point(488, 102)
         Me.LabelControl19.Name = "LabelControl19"
         Me.LabelControl19.Size = New System.Drawing.Size(86, 16)
         Me.LabelControl19.TabIndex = 114
@@ -961,7 +963,7 @@ Partial Class frm_sales_view_order
         '
         Me.txt_discount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_discount.Enabled = False
-        Me.txt_discount.Location = New System.Drawing.Point(562, 24)
+        Me.txt_discount.Location = New System.Drawing.Point(562, 47)
         Me.txt_discount.Name = "txt_discount"
         Me.txt_discount.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.txt_discount.Properties.Appearance.Options.UseFont = True
@@ -983,7 +985,7 @@ Partial Class frm_sales_view_order
         Me.lbl_withholding_tax_percentage.Appearance.Options.UseTextOptions = True
         Me.lbl_withholding_tax_percentage.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_withholding_tax_percentage.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_withholding_tax_percentage.Location = New System.Drawing.Point(616, 59)
+        Me.lbl_withholding_tax_percentage.Location = New System.Drawing.Point(616, 82)
         Me.lbl_withholding_tax_percentage.Name = "lbl_withholding_tax_percentage"
         Me.lbl_withholding_tax_percentage.Size = New System.Drawing.Size(73, 14)
         Me.lbl_withholding_tax_percentage.TabIndex = 113
@@ -1005,7 +1007,7 @@ Partial Class frm_sales_view_order
         Me.lbl_total.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.lbl_total.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
         Me.lbl_total.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash
-        Me.lbl_total.Location = New System.Drawing.Point(517, 109)
+        Me.lbl_total.Location = New System.Drawing.Point(517, 132)
         Me.lbl_total.Name = "lbl_total"
         Me.lbl_total.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_total.Size = New System.Drawing.Size(171, 29)
@@ -1018,7 +1020,7 @@ Partial Class frm_sales_view_order
         Me.cb_tax_applied.AutoSize = True
         Me.cb_tax_applied.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.cb_tax_applied.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.cb_tax_applied.Location = New System.Drawing.Point(470, 56)
+        Me.cb_tax_applied.Location = New System.Drawing.Point(470, 79)
         Me.cb_tax_applied.Name = "cb_tax_applied"
         Me.cb_tax_applied.Size = New System.Drawing.Size(149, 20)
         Me.cb_tax_applied.TabIndex = 112
@@ -1042,25 +1044,37 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel1.BackColor = System.Drawing.Color.Lavender
         Me.Guna2Panel1.BorderColor = System.Drawing.Color.Silver
         Me.Guna2Panel1.BorderThickness = 1
+        Me.Guna2Panel1.Controls.Add(Me.lbl_balance)
+        Me.Guna2Panel1.Controls.Add(Me.LabelControl21)
         Me.Guna2Panel1.Controls.Add(Me.btn_refund)
         Me.Guna2Panel1.Controls.Add(Me.btn_epayment)
         Me.Guna2Panel1.Controls.Add(Me.LabelControl6)
         Me.Guna2Panel1.Controls.Add(Me.LabelControl16)
         Me.Guna2Panel1.Controls.Add(Me.lbl_payment_status)
-        Me.Guna2Panel1.Controls.Add(Me.lbl_balance)
+        Me.Guna2Panel1.Controls.Add(Me.lbl_amounttopay)
         Me.Guna2Panel1.Controls.Add(Me.lbl_paid_amount)
         Me.Guna2Panel1.Controls.Add(Me.LabelControl15)
-        Me.Guna2Panel1.Location = New System.Drawing.Point(436, 624)
+        Me.Guna2Panel1.Location = New System.Drawing.Point(436, 601)
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.ShadowDecoration.Parent = Me.Guna2Panel1
-        Me.Guna2Panel1.Size = New System.Drawing.Size(255, 149)
+        Me.Guna2Panel1.Size = New System.Drawing.Size(255, 172)
         Me.Guna2Panel1.TabIndex = 122
+        '
+        'btn_refund
+        '
+        Me.btn_refund.Enabled = False
+        Me.btn_refund.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_refund.Location = New System.Drawing.Point(9, 134)
+        Me.btn_refund.Name = "btn_refund"
+        Me.btn_refund.Size = New System.Drawing.Size(110, 27)
+        Me.btn_refund.TabIndex = 108
+        Me.btn_refund.Text = "Refund"
         '
         'btn_epayment
         '
         Me.btn_epayment.Enabled = False
         Me.btn_epayment.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_epayment.Location = New System.Drawing.Point(126, 114)
+        Me.btn_epayment.Location = New System.Drawing.Point(125, 134)
         Me.btn_epayment.Name = "btn_epayment"
         Me.btn_epayment.Size = New System.Drawing.Size(110, 27)
         Me.btn_epayment.TabIndex = 107
@@ -1085,10 +1099,10 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel2.Controls.Add(Me.lbl_delivery_fee)
         Me.Guna2Panel2.Controls.Add(Me.txt_delivery_fee)
         Me.Guna2Panel2.Controls.Add(Me.LabelControl19)
-        Me.Guna2Panel2.Location = New System.Drawing.Point(697, 624)
+        Me.Guna2Panel2.Location = New System.Drawing.Point(697, 601)
         Me.Guna2Panel2.Name = "Guna2Panel2"
         Me.Guna2Panel2.ShadowDecoration.Parent = Me.Guna2Panel2
-        Me.Guna2Panel2.Size = New System.Drawing.Size(712, 149)
+        Me.Guna2Panel2.Size = New System.Drawing.Size(712, 172)
         Me.Guna2Panel2.TabIndex = 123
         '
         'Guna2Panel3
@@ -1327,15 +1341,32 @@ Partial Class frm_sales_view_order
         Me.btn_modify.TabIndex = 125
         Me.btn_modify.Text = "Modify"
         '
-        'btn_refund
+        'LabelControl21
         '
-        Me.btn_refund.Enabled = False
-        Me.btn_refund.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_refund.Location = New System.Drawing.Point(10, 114)
-        Me.btn_refund.Name = "btn_refund"
-        Me.btn_refund.Size = New System.Drawing.Size(110, 27)
-        Me.btn_refund.TabIndex = 108
-        Me.btn_refund.Text = "Refund"
+        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.LabelControl21.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.LabelControl21.Appearance.Options.UseFont = True
+        Me.LabelControl21.Appearance.Options.UseForeColor = True
+        Me.LabelControl21.Location = New System.Drawing.Point(32, 110)
+        Me.LabelControl21.Name = "LabelControl21"
+        Me.LabelControl21.Size = New System.Drawing.Size(47, 16)
+        Me.LabelControl21.TabIndex = 109
+        Me.LabelControl21.Text = "Balance"
+        '
+        'lbl_balance
+        '
+        Me.lbl_balance.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.lbl_balance.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.lbl_balance.Appearance.Options.UseFont = True
+        Me.lbl_balance.Appearance.Options.UseForeColor = True
+        Me.lbl_balance.Appearance.Options.UseTextOptions = True
+        Me.lbl_balance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_balance.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_balance.Location = New System.Drawing.Point(125, 109)
+        Me.lbl_balance.Name = "lbl_balance"
+        Me.lbl_balance.Size = New System.Drawing.Size(110, 18)
+        Me.lbl_balance.TabIndex = 110
+        Me.lbl_balance.Text = "0.00"
         '
         'frm_sales_view_order
         '
@@ -1438,7 +1469,7 @@ Partial Class frm_sales_view_order
     Friend WithEvents lbl_delivery_fee As LinkLabel
     Friend WithEvents lbl_paid_amount As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl16 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lbl_balance As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_amounttopay As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents print_contextmenu As ContextMenuStrip
     Friend WithEvents DraftInvoiceToolStripMenuItem As ToolStripMenuItem
@@ -1487,4 +1518,6 @@ Partial Class frm_sales_view_order
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents btn_modify As SimpleButton
     Friend WithEvents btn_refund As SimpleButton
+    Friend WithEvents lbl_balance As LabelControl
+    Friend WithEvents LabelControl21 As LabelControl
 End Class
