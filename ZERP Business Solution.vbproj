@@ -404,6 +404,12 @@
     <Compile Include="frm_collection_refund.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_sales_returns_dialog.Designer.vb">
+      <DependentUpon>frm_sales_returns_dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_sales_returns_dialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_collection_soa.Designer.vb">
       <DependentUpon>frm_collection_soa.vb</DependentUpon>
     </Compile>
@@ -510,6 +516,18 @@
       <DependentUpon>frm_sales_password_required.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_sales_password_required.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_sales_return.Designer.vb">
+      <DependentUpon>frm_sales_return.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_sales_return.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_sales_return_new.Designer.vb">
+      <DependentUpon>frm_sales_return_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_sales_return_new.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_sales_start_packing.Designer.vb">
@@ -648,6 +666,18 @@
       <DependentUpon>frm_admin_settings.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_admin_settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse_returns.Designer.vb">
+      <DependentUpon>frm_warehouse_returns.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse_returns.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse_returns_dialog.Designer.vb">
+      <DependentUpon>frm_warehouse_returns_dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse_returns_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_warehouse_stock_reconcile.Designer.vb">
@@ -911,6 +941,9 @@
     <EmbeddedResource Include="frm_collection_refund.resx">
       <DependentUpon>frm_collection_refund.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_sales_returns_dialog.resx">
+      <DependentUpon>frm_sales_returns_dialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_collection_soa.resx">
       <DependentUpon>frm_collection_soa.vb</DependentUpon>
     </EmbeddedResource>
@@ -964,6 +997,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales_password_required.resx">
       <DependentUpon>frm_sales_password_required.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_sales_return.resx">
+      <DependentUpon>frm_sales_return.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_sales_return_new.resx">
+      <DependentUpon>frm_sales_return_new.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales_start_packing.resx">
       <DependentUpon>frm_sales_start_packing.vb</DependentUpon>
@@ -1038,6 +1077,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_admin_settings.resx">
       <DependentUpon>frm_admin_settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse_returns.resx">
+      <DependentUpon>frm_warehouse_returns.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse_returns_dialog.resx">
+      <DependentUpon>frm_warehouse_returns_dialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_warehouse_stock_reconcile.resx">
       <DependentUpon>frm_warehouse_stock_reconcile.vb</DependentUpon>

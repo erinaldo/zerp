@@ -67,6 +67,17 @@ Public Class frm_admin_approval
                 grid_stock_reconcilation.DataSource = dt
             End Using
 
+            'Show Returns
+            Using sr_cmd = New MySqlCommand("SELECT concat('SR',LPAD(sales_return_id,5,0)) as srid, ims_customers.first_name AS customer, amount FROM ims_sales_returns
+                            INNER JOIN ims_customers ON ims_customers.customer_id=ims_sales_returns.customer_id
+                            WHERE ims_sales_returns.is_deleted='0' AND ims_sales_returns.status='Pending' ORDER BY sales_return_id DESC", conn)
+                sr_cmd.ExecuteNonQuery()
+                Dim dt = New DataTable
+                Dim da = New MySqlDataAdapter(sr_cmd)
+                da.Fill(dt)
+                grid_sales_returns.DataSource = dt
+            End Using
+
             'Show Quotation
             Using quotation_cmd = New MySqlCommand("SELECT concat('Q',LPAD(quotation_id,5,0)) as quotation_id, company, status FROM ims_quotations 
                             WHERE is_converted='0' AND is_deleted='0' AND NOW() BETWEEN created_at AND created_at + INTERVAL 30 DAY AND status='Pending' ORDER BY quotation_id DESC", conn)
@@ -187,4 +198,21 @@ Public Class frm_admin_approval
         End If
     End Sub
 
+    Private Sub grid_sales_returns_view_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles grid_sales_returns_view.RowCellClick
+        If grid_sales_returns_view.FocusedColumn.Name.Equals(col_srid.Name) Then
+            Dim frm = New frm_sales_return_new
+            frm.Show()
+            frm.LoadEdit(grid_sales_returns_view.GetFocusedRowCellValue(col_srid).ToString.Replace("SR", ""))
+            frm.Text = "Sales Return"
+            frm.lbl_title.Text = "Sales Return"
+            frm.lbl_action.Text = "Approval"
+            frm.btn_create.Visible = False
+            frm.btn_clear.Visible = False
+            frm.btn_update.Visible = False
+            frm.btn_delete.Visible = False
+            frm.btn_approved.Visible = True
+            frm.btn_approved.Location = frm.btn_create.Location
+            frm.cbb_customer.ReadOnly = True
+        End If
+    End Sub
 End Class

@@ -40,10 +40,12 @@ Public Class frm_purchaseorder_return_list
         frm_main.LoadFrm(New frm_purchaseorder_return_new)
     End Sub
 
+    'View Purchase Return
     Private Sub btn_view_order_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view_order.ButtonClick
         Dim id = grid_returns_view.GetFocusedRowCellValue(col_rid)
         Dim frm = New frm_purchaseorder_return_new
         frm.Show()
         frm.LoadEdit(id)
     End Sub
+
 End Class

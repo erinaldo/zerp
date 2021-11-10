@@ -59,20 +59,24 @@ Public Class frm_collection_epayment
             Using conn
                 conn.Open()
                 Dim cmd = New MySqlCommand("UPDATE ims_orders SET payment_option=@option, payment_details=@details,
-                                payment_status = If(amount_due = IFNULL(paid_amount, 0) + @paid_amount, 'PAID',
-                                                 If(amount_due < IFNULL(paid_amount, 0) + @paid_amount, 'OVERPAID',
-                                                 If(amount_due > IFNULL(paid_amount, 0) + @paid_amount, 'PARTIAL',''))), 
+                                payment_status = If(amount_due = IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PAID',
+                                                 If(amount_due < IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'OVERPAID',
+                                                 If(amount_due > IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PARTIAL',''))), 
                                 paid_amount=IFNULL(paid_amount,0)+@paid_amount,
+                                applied_sales_return=@srid,
                                 status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) 
                                 WHERE order_id=@order_id", conn)
                 cmd.Parameters.AddWithValue("@order_id", lbl_orderid.Text)
                 cmd.Parameters.AddWithValue("@option", payment_option)
                 cmd.Parameters.AddWithValue("@paid_amount", CDec(txt_amount_tendered.Text))
                 cmd.Parameters.AddWithValue("@details", reference)
+                cmd.Parameters.AddWithValue("@srid", sales_return_id)
+                cmd.Parameters.AddWithValue("@sr_amount", sales_return_amount)
                 cmd.ExecuteNonQuery()
 
                 'INSERT TO PAYMENT LOGS
                 Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, lbl_amount_due.Text, txt_amount_tendered.Text, lbl_balance.Text, payment_option, reference)
+                Update_SalesReturns(sales_return_id)
 
                 MsgBox("Successful Transaction!", vbInformation, "Information")
 
@@ -130,4 +134,35 @@ Public Class frm_collection_epayment
         frm.Show()
     End Sub
 
+    'btn_deduct
+    Private Sub btn_deduct_Click(sender As Object, e As EventArgs) Handles btn_deduct.Click
+        If btn_deduct.Text.Equals("Deduct Returns") Then
+            Dim frm = New frm_sales_return_picker
+            frm.SalesReturnsLoad(lbl_customer.Text)
+            frm.ShowDialog()
+
+            If Not sales_return_amount = 0 Then
+                btn_deduct.Text = "Remove Deduction"
+                btn_deduct.Appearance.BackColor = Color.IndianRed
+                lbl_deduction.Visible = True
+                lbl_amount_due.Text = FormatCurrency(CDec(lbl_amount_due.Text) - sales_return_amount)
+                lbl_deduction.Text = "Deducted Amount: " & FormatCurrency(sales_return_amount)
+
+                Dim amount_tendered As Decimal = IIf(String.IsNullOrEmpty(txt_amount_tendered.Text.Trim), 0, txt_amount_tendered.Text.Trim)
+                Dim amount_to_pay As Decimal = lbl_amount_due.Text.Trim
+                lbl_balance.Text = FormatCurrency(amount_to_pay - amount_tendered)
+            End If
+        Else
+                btn_deduct.Text = "Deduct Returns"
+            lbl_amount_due.Text = FormatCurrency(CDec(lbl_amount_due.Text) + CDec(lbl_deduction.Text.Replace("Deducted Amount: ", "")))
+            btn_deduct.Appearance.BackColor = Nothing
+            lbl_deduction.Visible = False
+            sales_return_amount = Nothing
+            sales_return_id = Nothing
+
+            Dim amount_tendered As Decimal = IIf(String.IsNullOrEmpty(txt_amount_tendered.Text.Trim), 0, txt_amount_tendered.Text.Trim)
+            Dim amount_to_pay As Decimal = lbl_amount_due.Text.Trim
+            lbl_balance.Text = FormatCurrency(amount_to_pay - amount_tendered)
+        End If
+    End Sub
 End Class

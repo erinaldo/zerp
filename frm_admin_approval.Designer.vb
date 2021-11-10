@@ -78,6 +78,12 @@ Partial Class frm_admin_approval
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_po_status = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.TablePanel1 = New DevExpress.Utils.Layout.TablePanel()
+        Me.grid_sales_returns = New DevExpress.XtraGrid.GridControl()
+        Me.grid_sales_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col_srid = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_customer = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_amount = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.grid_approval_units = New DevExpress.XtraGrid.GridControl()
         Me.grid_approval_units_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_pid = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -101,6 +107,8 @@ Partial Class frm_admin_approval
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TablePanel1.SuspendLayout()
+        CType(Me.grid_sales_returns, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_sales_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_approval_units, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_approval_units_view, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -115,7 +123,7 @@ Partial Class frm_admin_approval
         Me.panel_top.LineStyle = System.Windows.Forms.BorderStyle.None
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1158, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1228, 78)
         Me.panel_top.TabIndex = 7
         '
         'GunaPanel5
@@ -126,7 +134,7 @@ Partial Class frm_admin_approval
         Me.GunaPanel5.Controls.Add(Me.GunaPanel2)
         Me.GunaPanel5.Location = New System.Drawing.Point(12, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(985, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(1055, 27)
         Me.GunaPanel5.TabIndex = 6
         '
         'GunaPanel2
@@ -220,7 +228,7 @@ Partial Class frm_admin_approval
         Me.TablePanel2.Location = New System.Drawing.Point(12, 93)
         Me.TablePanel2.Name = "TablePanel2"
         Me.TablePanel2.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 25.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 171.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 51.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 255.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 116.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 26.0!)})
-        Me.TablePanel2.Size = New System.Drawing.Size(649, 657)
+        Me.TablePanel2.Size = New System.Drawing.Size(613, 657)
         Me.TablePanel2.TabIndex = 0
         '
         'grid_quotation
@@ -232,7 +240,7 @@ Partial Class frm_admin_approval
         Me.grid_quotation.MainView = Me.grid_quotation_view
         Me.grid_quotation.Name = "grid_quotation"
         Me.TablePanel2.SetRow(Me.grid_quotation, 1)
-        Me.grid_quotation.Size = New System.Drawing.Size(643, 215)
+        Me.grid_quotation.Size = New System.Drawing.Size(607, 215)
         Me.grid_quotation.TabIndex = 16
         Me.grid_quotation.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_quotation_view})
         '
@@ -288,7 +296,7 @@ Partial Class frm_admin_approval
         Me.LabelControl5.Location = New System.Drawing.Point(3, 3)
         Me.LabelControl5.Name = "LabelControl5"
         Me.TablePanel2.SetRow(Me.LabelControl5, 0)
-        Me.LabelControl5.Size = New System.Drawing.Size(643, 20)
+        Me.LabelControl5.Size = New System.Drawing.Size(607, 20)
         Me.LabelControl5.TabIndex = 15
         Me.LabelControl5.Text = "Quotation Approvals"
         '
@@ -305,7 +313,7 @@ Partial Class frm_admin_approval
         Me.LabelControl3.Location = New System.Drawing.Point(3, 250)
         Me.LabelControl3.Name = "LabelControl3"
         Me.TablePanel2.SetRow(Me.LabelControl3, 2)
-        Me.LabelControl3.Size = New System.Drawing.Size(643, 20)
+        Me.LabelControl3.Size = New System.Drawing.Size(607, 20)
         Me.LabelControl3.TabIndex = 4
         Me.LabelControl3.Text = "Stock Transfers"
         '
@@ -320,7 +328,7 @@ Partial Class frm_admin_approval
         Me.grid_stock_reconcilation.Name = "grid_stock_reconcilation"
         Me.grid_stock_reconcilation.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_edit, Me.btn_delete})
         Me.TablePanel2.SetRow(Me.grid_stock_reconcilation, 5)
-        Me.grid_stock_reconcilation.Size = New System.Drawing.Size(643, 158)
+        Me.grid_stock_reconcilation.Size = New System.Drawing.Size(607, 158)
         Me.grid_stock_reconcilation.TabIndex = 14
         Me.grid_stock_reconcilation.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_stock_reconcilation_view})
         '
@@ -448,7 +456,7 @@ Partial Class frm_admin_approval
         Me.LabelControl4.Location = New System.Drawing.Point(3, 470)
         Me.LabelControl4.Name = "LabelControl4"
         Me.TablePanel2.SetRow(Me.LabelControl4, 4)
-        Me.LabelControl4.Size = New System.Drawing.Size(643, 20)
+        Me.LabelControl4.Size = New System.Drawing.Size(607, 20)
         Me.LabelControl4.TabIndex = 6
         Me.LabelControl4.Text = "Reconcilations"
         '
@@ -461,7 +469,7 @@ Partial Class frm_admin_approval
         Me.grid_transfer.MainView = Me.grid_transfer_view
         Me.grid_transfer.Name = "grid_transfer"
         Me.TablePanel2.SetRow(Me.grid_transfer, 3)
-        Me.grid_transfer.Size = New System.Drawing.Size(643, 188)
+        Me.grid_transfer.Size = New System.Drawing.Size(607, 188)
         Me.grid_transfer.TabIndex = 5
         Me.grid_transfer.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transfer_view})
         '
@@ -533,10 +541,10 @@ Partial Class frm_admin_approval
         Me.LabelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.TablePanel1.SetColumn(Me.LabelControl1, 0)
         Me.LabelControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl1.Location = New System.Drawing.Point(3, 224)
+        Me.LabelControl1.Location = New System.Drawing.Point(3, 471)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.TablePanel1.SetRow(Me.LabelControl1, 2)
-        Me.LabelControl1.Size = New System.Drawing.Size(473, 20)
+        Me.TablePanel1.SetRow(Me.LabelControl1, 4)
+        Me.LabelControl1.Size = New System.Drawing.Size(579, 20)
         Me.LabelControl1.TabIndex = 1
         Me.LabelControl1.Text = "Inactive Units"
         '
@@ -548,13 +556,12 @@ Partial Class frm_admin_approval
         Me.LabelControl2.Appearance.Options.UseForeColor = True
         Me.LabelControl2.Appearance.Options.UseTextOptions = True
         Me.LabelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.LabelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.TablePanel1.SetColumn(Me.LabelControl2, 0)
         Me.LabelControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LabelControl2.Location = New System.Drawing.Point(3, 3)
         Me.LabelControl2.Name = "LabelControl2"
         Me.TablePanel1.SetRow(Me.LabelControl2, 0)
-        Me.LabelControl2.Size = New System.Drawing.Size(473, 25)
+        Me.LabelControl2.Size = New System.Drawing.Size(579, 21)
         Me.LabelControl2.TabIndex = 3
         Me.LabelControl2.Text = "Purchase Orders"
         '
@@ -562,13 +569,13 @@ Partial Class frm_admin_approval
         '
         Me.TablePanel1.SetColumn(Me.grid_po, 0)
         Me.grid_po.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_po.Location = New System.Drawing.Point(3, 34)
+        Me.grid_po.Location = New System.Drawing.Point(3, 30)
         Me.grid_po.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_po.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_po.MainView = Me.grid_po_view
         Me.grid_po.Name = "grid_po"
         Me.TablePanel1.SetRow(Me.grid_po, 1)
-        Me.grid_po.Size = New System.Drawing.Size(473, 184)
+        Me.grid_po.Size = New System.Drawing.Size(579, 215)
         Me.grid_po.TabIndex = 2
         Me.grid_po.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_po_view})
         '
@@ -638,30 +645,112 @@ Partial Class frm_admin_approval
         Me.TablePanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TablePanel1.Appearance.BackColor = System.Drawing.Color.GhostWhite
+        Me.TablePanel1.Appearance.BackColor = System.Drawing.Color.White
         Me.TablePanel1.Appearance.Options.UseBackColor = True
         Me.TablePanel1.Columns.AddRange(New DevExpress.Utils.Layout.TablePanelColumn() {New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 30.04!)})
+        Me.TablePanel1.Controls.Add(Me.grid_sales_returns)
+        Me.TablePanel1.Controls.Add(Me.LabelControl6)
         Me.TablePanel1.Controls.Add(Me.grid_approval_units)
         Me.TablePanel1.Controls.Add(Me.LabelControl1)
         Me.TablePanel1.Controls.Add(Me.grid_po)
         Me.TablePanel1.Controls.Add(Me.LabelControl2)
-        Me.TablePanel1.Location = New System.Drawing.Point(667, 93)
+        Me.TablePanel1.Location = New System.Drawing.Point(631, 93)
         Me.TablePanel1.Name = "TablePanel1"
-        Me.TablePanel1.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 31.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 190.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!)})
-        Me.TablePanel1.Size = New System.Drawing.Size(479, 657)
+        Me.TablePanel1.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 27.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 221.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 194.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!)})
+        Me.TablePanel1.Size = New System.Drawing.Size(585, 657)
         Me.TablePanel1.TabIndex = 8
+        '
+        'grid_sales_returns
+        '
+        Me.TablePanel1.SetColumn(Me.grid_sales_returns, 0)
+        Me.grid_sales_returns.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grid_sales_returns.Location = New System.Drawing.Point(3, 277)
+        Me.grid_sales_returns.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_sales_returns.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_sales_returns.MainView = Me.grid_sales_returns_view
+        Me.grid_sales_returns.Name = "grid_sales_returns"
+        Me.TablePanel1.SetRow(Me.grid_sales_returns, 3)
+        Me.grid_sales_returns.Size = New System.Drawing.Size(579, 188)
+        Me.grid_sales_returns.TabIndex = 5
+        Me.grid_sales_returns.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_sales_returns_view})
+        '
+        'grid_sales_returns_view
+        '
+        Me.grid_sales_returns_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Bold)
+        Me.grid_sales_returns_view.Appearance.HeaderPanel.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.grid_sales_returns_view.Appearance.HeaderPanel.Options.UseFont = True
+        Me.grid_sales_returns_view.Appearance.HeaderPanel.Options.UseForeColor = True
+        Me.grid_sales_returns_view.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.grid_sales_returns_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.grid_sales_returns_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_sales_returns_view.Appearance.Row.Options.UseFont = True
+        Me.grid_sales_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_srid, Me.col_customer, Me.col_amount})
+        Me.grid_sales_returns_view.GridControl = Me.grid_sales_returns
+        Me.grid_sales_returns_view.Name = "grid_sales_returns_view"
+        Me.grid_sales_returns_view.OptionsBehavior.Editable = False
+        '
+        'col_srid
+        '
+        Me.col_srid.AppearanceCell.ForeColor = System.Drawing.Color.SlateBlue
+        Me.col_srid.AppearanceCell.Options.UseForeColor = True
+        Me.col_srid.AppearanceCell.Options.UseTextOptions = True
+        Me.col_srid.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_srid.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_srid.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_srid.Caption = "SRID"
+        Me.col_srid.FieldName = "srid"
+        Me.col_srid.Name = "col_srid"
+        Me.col_srid.Visible = True
+        Me.col_srid.VisibleIndex = 0
+        Me.col_srid.Width = 83
+        '
+        'col_customer
+        '
+        Me.col_customer.Caption = "Customer"
+        Me.col_customer.FieldName = "customer"
+        Me.col_customer.Name = "col_customer"
+        Me.col_customer.Visible = True
+        Me.col_customer.VisibleIndex = 1
+        Me.col_customer.Width = 244
+        '
+        'col_amount
+        '
+        Me.col_amount.Caption = "Amount"
+        Me.col_amount.FieldName = "amount"
+        Me.col_amount.Name = "col_amount"
+        Me.col_amount.Visible = True
+        Me.col_amount.VisibleIndex = 2
+        Me.col_amount.Width = 104
+        '
+        'LabelControl6
+        '
+        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.LabelControl6.Appearance.Options.UseFont = True
+        Me.LabelControl6.Appearance.Options.UseForeColor = True
+        Me.LabelControl6.Appearance.Options.UseTextOptions = True
+        Me.LabelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.LabelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.TablePanel1.SetColumn(Me.LabelControl6, 0)
+        Me.LabelControl6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LabelControl6.Location = New System.Drawing.Point(3, 251)
+        Me.LabelControl6.Name = "LabelControl6"
+        Me.TablePanel1.SetRow(Me.LabelControl6, 2)
+        Me.LabelControl6.Size = New System.Drawing.Size(579, 20)
+        Me.LabelControl6.TabIndex = 4
+        Me.LabelControl6.Text = "Sales Returns"
         '
         'grid_approval_units
         '
         Me.TablePanel1.SetColumn(Me.grid_approval_units, 0)
         Me.grid_approval_units.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_approval_units.Location = New System.Drawing.Point(3, 250)
+        Me.grid_approval_units.Location = New System.Drawing.Point(3, 497)
         Me.grid_approval_units.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_approval_units.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_approval_units.MainView = Me.grid_approval_units_view
         Me.grid_approval_units.Name = "grid_approval_units"
-        Me.TablePanel1.SetRow(Me.grid_approval_units, 3)
-        Me.grid_approval_units.Size = New System.Drawing.Size(473, 404)
+        Me.TablePanel1.SetRow(Me.grid_approval_units, 5)
+        Me.grid_approval_units.Size = New System.Drawing.Size(579, 157)
         Me.grid_approval_units.TabIndex = 0
         Me.grid_approval_units.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_approval_units_view})
         '
@@ -727,7 +816,7 @@ Partial Class frm_admin_approval
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1158, 762)
+        Me.ClientSize = New System.Drawing.Size(1228, 762)
         Me.Controls.Add(Me.TablePanel2)
         Me.Controls.Add(Me.TablePanel1)
         Me.Controls.Add(Me.panel_top)
@@ -754,6 +843,8 @@ Partial Class frm_admin_approval
         CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TablePanel1.ResumeLayout(False)
         Me.TablePanel1.PerformLayout()
+        CType(Me.grid_sales_returns, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_sales_returns_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_approval_units, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_approval_units_view, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -808,6 +899,11 @@ Partial Class frm_admin_approval
     Friend WithEvents col_reconcile_type As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_reconcile_notes As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_reconcile_request_by As DevExpress.XtraGrid.Columns.GridColumn
-
+    Friend WithEvents grid_sales_returns As GridControl
+    Friend WithEvents grid_sales_returns_view As GridView
+    Friend WithEvents col_srid As GridColumn
+    Friend WithEvents col_customer As GridColumn
+    Friend WithEvents col_amount As GridColumn
+    Friend WithEvents LabelControl6 As LabelControl
 
 End Class

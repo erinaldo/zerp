@@ -36,7 +36,7 @@ Public Class frm_collection_payments
                         FROM ims_orders
                         INNER JOIN ims_customers ON ims_orders.customer=ims_customers.customer_id
                         INNER JOIN ims_users ON ims_orders.agent=ims_users.usr_id
-                        WHERE payment_type='cash' AND ims_orders.deleted='0' AND NOT ((STATUS='Cancelled' AND payment_status='UNPAID') OR (STATUS='Completed' AND payment_status='PAID') OR (payment_status='PAID'))
+                        WHERE payment_type='cash' AND ims_orders.deleted='0' AND NOT (((STATUS='Cancelled' OR STATUS='Cancelled Order') AND payment_status='UNPAID') OR (STATUS='Completed' AND payment_status='PAID') OR (payment_status='PAID'))
                         ORDER BY order_id DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()

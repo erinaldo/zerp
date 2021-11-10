@@ -1,7 +1,9 @@
-﻿Imports DevExpress.XtraCharts
+﻿Imports System.Text.RegularExpressions
+Imports DevExpress.XtraCharts
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraPrintingLinks
+Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
 
 Public Class frm_admin_reports
@@ -420,17 +422,17 @@ Public Class frm_admin_reports
             Using conn = New MySqlConnection(str)
                 conn.Open()
                 Using cmd = New MySqlCommand("SELECT
-	                                            customer, COUNT(customer) no_of_transc, SUM(total_cost) total_cost, SUM(gross_sales) total_gross, SUM((gross_sales - total_cost) / gross_sales) margin
+	                                            customer, no_of_transc, total_cost, gross_sales AS total_gross, ((gross_sales - total_cost) / gross_sales) margin
                                             FROM (
 	                                            SELECT 
-		                                            ims_customers.first_name AS customer,
-		                                            (SELECT SUM(cost * qty) FROM ims_sales WHERE order_id=ims.order_id) AS total_cost,
-		                                            (SELECT SUM(price) FROM ims_sales WHERE order_id=ims.order_id) AS gross_sales
+		                                            ims_customers.first_name AS customer, COUNT(customer) no_of_transc,
+		                                            SUM((SELECT SUM(cost * qty) FROM ims_sales WHERE order_id=ims.order_id)) AS total_cost,
+		                                            SUM((SELECT SUM(price) FROM ims_sales WHERE order_id=ims.order_id)) AS gross_sales
 	                                            FROM ims_orders ims
 	                                            INNER JOIN ims_customers ON ims_customers.customer_id=ims.customer
 	                                            WHERE date_released IS NOT NULL AND NOT paid_amount = 0 AND deleted=0 AND DATE(date_released) BETWEEN @StartDate AND @EndDate
-                                            ) s2
-                                            GROUP BY customer", conn)
+                                                GROUP BY customer
+                                            ) s2", conn)
                     cmd.Parameters.AddWithValue("@StartDate", dt_start.EditValue)
                     cmd.Parameters.AddWithValue("@EndDate", dt_end.EditValue)
 
@@ -624,6 +626,8 @@ Public Class frm_admin_reports
 
 
 
+
+
     '---- CONTROLS ----
 
     '-->> General Controls
@@ -751,4 +755,9 @@ Public Class frm_admin_reports
         End If
     End Sub
 
+    Private Sub grid_transaction_view_DoubleClick(sender As Object, e As EventArgs) Handles grid_transaction_view.DoubleClick
+        If grid_transaction_view.FocusedColumn.Name = col_sales_order_id.Name Then
+            frm_sales_transaction_invoice.PrintInvoice(grid_transaction_view.GetFocusedRowCellValue(col_sales_order_id))
+        End If
+    End Sub
 End Class

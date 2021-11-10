@@ -269,7 +269,7 @@ Partial Class frm_logistics_deliveries
         Me.col_id.OptionsColumn.ReadOnly = True
         Me.col_id.Visible = True
         Me.col_id.VisibleIndex = 0
-        Me.col_id.Width = 62
+        Me.col_id.Width = 66
         '
         'GridColumn4
         '
@@ -286,7 +286,7 @@ Partial Class frm_logistics_deliveries
         Me.GridColumn4.OptionsColumn.ReadOnly = True
         Me.GridColumn4.Visible = True
         Me.GridColumn4.VisibleIndex = 7
-        Me.GridColumn4.Width = 67
+        Me.GridColumn4.Width = 66
         '
         'col_shipping_method
         '
@@ -297,7 +297,7 @@ Partial Class frm_logistics_deliveries
         Me.col_shipping_method.Name = "col_shipping_method"
         Me.col_shipping_method.Visible = True
         Me.col_shipping_method.VisibleIndex = 2
-        Me.col_shipping_method.Width = 59
+        Me.col_shipping_method.Width = 63
         '
         'col_status
         '
@@ -308,7 +308,7 @@ Partial Class frm_logistics_deliveries
         Me.col_status.Name = "col_status"
         Me.col_status.Visible = True
         Me.col_status.VisibleIndex = 10
-        Me.col_status.Width = 73
+        Me.col_status.Width = 81
         '
         'col_payment_type
         '
@@ -319,7 +319,7 @@ Partial Class frm_logistics_deliveries
         Me.col_payment_type.Name = "col_payment_type"
         Me.col_payment_type.Visible = True
         Me.col_payment_type.VisibleIndex = 3
-        Me.col_payment_type.Width = 81
+        Me.col_payment_type.Width = 87
         '
         'col_payment_status
         '
@@ -334,7 +334,7 @@ Partial Class frm_logistics_deliveries
         Me.col_payment_status.OptionsColumn.ReadOnly = True
         Me.col_payment_status.Visible = True
         Me.col_payment_status.VisibleIndex = 4
-        Me.col_payment_status.Width = 88
+        Me.col_payment_status.Width = 94
         '
         'col_amount
         '
@@ -347,7 +347,7 @@ Partial Class frm_logistics_deliveries
         Me.col_amount.Name = "col_amount"
         Me.col_amount.Visible = True
         Me.col_amount.VisibleIndex = 5
-        Me.col_amount.Width = 80
+        Me.col_amount.Width = 86
         '
         'col_customer
         '
@@ -361,20 +361,20 @@ Partial Class frm_logistics_deliveries
         Me.col_customer.OptionsColumn.ReadOnly = True
         Me.col_customer.Visible = True
         Me.col_customer.VisibleIndex = 1
-        Me.col_customer.Width = 151
+        Me.col_customer.Width = 162
         '
         'GridColumn3
         '
         Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn3.Caption = "Agent"
+        Me.GridColumn3.Caption = "Sales Coordinator"
         Me.GridColumn3.FieldName = "agent"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.OptionsColumn.ReadOnly = True
         Me.GridColumn3.Visible = True
         Me.GridColumn3.VisibleIndex = 6
-        Me.GridColumn3.Width = 79
+        Me.GridColumn3.Width = 120
         '
         'GridColumn7
         '
@@ -387,7 +387,7 @@ Partial Class frm_logistics_deliveries
         Me.GridColumn7.OptionsColumn.ReadOnly = True
         Me.GridColumn7.Visible = True
         Me.GridColumn7.VisibleIndex = 8
-        Me.GridColumn7.Width = 83
+        Me.GridColumn7.Width = 82
         '
         'GridColumn9
         '
@@ -400,7 +400,7 @@ Partial Class frm_logistics_deliveries
         Me.GridColumn9.OptionsColumn.ReadOnly = True
         Me.GridColumn9.Visible = True
         Me.GridColumn9.VisibleIndex = 9
-        Me.GridColumn9.Width = 173
+        Me.GridColumn9.Width = 172
         '
         'col_release
         '
@@ -415,7 +415,7 @@ Partial Class frm_logistics_deliveries
         Me.col_release.OptionsColumn.ReadOnly = True
         Me.col_release.Visible = True
         Me.col_release.VisibleIndex = 11
-        Me.col_release.Width = 70
+        Me.col_release.Width = 69
         '
         'btn_print
         '

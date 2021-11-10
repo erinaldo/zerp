@@ -31,11 +31,15 @@ Public Class frm_sales_orders
 
         Try
             conn.Open()
-            Dim query = "SELECT concat('SO',LPAD(order_id,5,0)) as order_id, date_ordered, ims_users.first_name as agent, ims_customers.first_name, transaction_type, payment_status, date_packed, date_released,
-                            CONCAT( UPPER( SUBSTRING( payment_type, 1, 1 ) ) , LOWER( SUBSTRING( payment_type FROM 2 ) ) ) as payment_type,
+            Dim query = "SELECT concat('SO',LPAD(order_id,5,0)) as order_id, date_ordered, 
+                            AGENT.first_name AS agent, PACKED_BY.first_name AS packed_by, RELEASED_BY.first_name AS released_by, ims_customers.first_name, 
+                            transaction_type, payment_status, date_packed, date_released,
+                            CONCAT( UPPER( SUBSTRING( payment_type, 1, 1 ) ), LOWER( SUBSTRING( payment_type FROM 2 ) ) ) as payment_type,
                             CONCAT( UPPER( SUBSTRING( shipping_method, 1, 1 ) ) , LOWER( SUBSTRING( shipping_method FROM 2 ) ) ) as shipping_method, status FROM ims_orders  
                             INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id 
-                            INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id 
+                            LEFT JOIN ims_users AGENT on AGENT.usr_id=ims_orders.agent
+                            LEFT JOIN ims_users PACKED_BY on PACKED_BY.usr_id=ims_orders.packed_by
+                            LEFT JOIN ims_users RELEASED_BY on RELEASED_BY.usr_id=ims_orders.released_by
                             WHERE " & query_filter & " ORDER BY date_ordered DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
@@ -151,8 +155,10 @@ Public Class frm_sales_orders
         Dim orderid As String = grid_orders_view.GetFocusedRowCellValue(col_order_id)
 
         Dim view_order = New frm_sales_view_order
-        view_order.LoadData(orderid.Replace("SO", ""))
-        view_order.Show()
+        If view_order.LoadData(orderid.Replace("SO", "")) = True Then
+            view_order.Show()
+        End If
+
     End Sub
 
     'btn_sort_all

@@ -24,7 +24,7 @@ Public Class frm_warehouse_stock_transfer
                 (SELECT store_name FROM ims_stores WHERE store_id=receiver_store) as receiver_store 
                 FROM ims_transferred_stocks
                 WHERE is_deleted='0' 
-                AND NOT (status='Completed' OR status='Resolved')
+                AND NOT (status='Completed' OR status='Resolved' OR status='Cancelled')
                 AND ( src_store=(SELECT store_id FROM ims_stores WHERE store_name=@my_store) OR receiver_store=(SELECT store_id FROM ims_stores WHERE store_name=@my_store) )
                 ORDER BY date DESC", conn)
             cmd.Parameters.AddWithValue("@my_store", frm_main.user_store.Text)
@@ -111,6 +111,7 @@ Public Class frm_warehouse_stock_transfer
         End Try
 
     End Sub
+
 
 
 
@@ -278,18 +279,60 @@ Public Class frm_warehouse_stock_transfer
 
     'btn_delete
     Private Sub btn_delete_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_delete.ButtonClick
-        Dim result = MsgBox("Delete this Transfer Request?", vbYesNo + vbQuestion, "Confirmation")
-        If Not result = vbYes Then Exit Sub
+        If grid_stock_transferred_view.GetFocusedRowCellValue(col_status) = "Dispatched" Then
+            If MsgBox("Stock Transfer is already dispatched!" & Environment.NewLine & Environment.NewLine & "Do you want to cancel it instead?", vbYesNo + vbQuestion, "Confirmation") = vbYes Then
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim store_name = "ims_" & grid_stock_transferred_view.GetFocusedRowCellValue(col_from).ToString.ToLower.Replace(" ", "_")
 
-        Using conn
-            conn.Open()
-            Dim query = "UPDATE ims_transferred_stocks SET is_deleted='1' WHERE id=@id"
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@id", CInt(grid_stock_transferred_view.GetFocusedRowCellValue(col_id).ToString.Replace("ST", "")))
-            cmd.ExecuteNonQuery()
-        End Using
+                    'GET DATA AND RESTORE STOCKS TO SOURCE
+                    Using get_cmd = New MySqlCommand("SELECT units FROM ims_transferred_stocks WHERE id=@id", connection)
+                        Dim units = String.Empty
+                        get_cmd.Parameters.AddWithValue("@id", CInt(grid_stock_transferred_view.GetFocusedRowCellValue(col_id).ToString.Replace("ST", "")))
+                        Using rdr = get_cmd.ExecuteReader
+                            While rdr.Read()
+                                units = rdr("units")
+                            End While
+                        End Using
 
-        load_transferred()
+                        Dim per_unit = units.ToString.Split(";")
+                        For i = 0 To per_unit.Length - 1
+
+                            Dim arr = per_unit(i).Split("=")
+
+                            Using cmd_revert = New MySqlCommand("UPDATE " & store_name & " SET qty=qty+@qty, on_hold=on_hold-@qty WHERE pid=@pid", connection)
+                                cmd_revert.Parameters.AddWithValue("@pid", arr(0))
+                                cmd_revert.Parameters.AddWithValue("@qty", arr(1))
+                                cmd_revert.ExecuteNonQuery()
+                            End Using
+                        Next
+                    End Using
+
+                    'UPDATE ims_transferred_stocks
+                    Using cmd = New MySqlCommand("UPDATE ims_transferred_stocks SET status='Cancelled' WHERE id=@id", connection)
+                        cmd.Parameters.AddWithValue("@id", CInt(grid_stock_transferred_view.GetFocusedRowCellValue(col_id).ToString.Replace("ST", "")))
+                        If cmd.ExecuteNonQuery() > 0 Then
+                            MsgBox("Stock Transfer was cancelled!", vbInformation, "Information")
+                            frm_main.LoadFrm(New frm_warehouse_stock_transfer)
+                        End If
+                    End Using
+
+                End Using
+            End If
+        Else
+            If MsgBox("Delete this Transfer Request?", vbYesNo + vbQuestion, "Confirmation") = vbYes Then
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim query = "UPDATE ims_transferred_stocks SET is_deleted='1' WHERE id=@id"
+                    Dim cmd = New MySqlCommand(query, connection)
+                    cmd.Parameters.AddWithValue("@id", CInt(grid_stock_transferred_view.GetFocusedRowCellValue(col_id).ToString.Replace("ST", "")))
+                    cmd.ExecuteNonQuery()
+                End Using
+
+                load_transferred()
+            End If
+        End If
+
     End Sub
 
     'btn_dispatch
@@ -414,6 +457,7 @@ Public Class frm_warehouse_stock_transfer
         Finally
             conn.Close()
         End Try
+        col_delete.Visible = False
     End Sub
 
     'lbl_completed
@@ -443,6 +487,44 @@ Public Class frm_warehouse_stock_transfer
         Finally
             conn.Close()
         End Try
+        col_delete.Visible = False
     End Sub
+
+    'lbl_cancelled
+    Private Sub lbl_cancelled_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbl_cancelled.LinkClicked
+        Try
+            Using conn
+                conn.Open()
+                Dim cmd = New MySqlCommand("SELECT concat('ST',LPAD(id,5,0)) as id, date, status, 
+                (SELECT store_name FROM ims_stores WHERE store_id=src_store) as src_store, 
+                (SELECT store_name FROM ims_stores WHERE store_id=receiver_store) as receiver_store 
+                FROM ims_transferred_stocks
+                WHERE is_deleted='0' 
+                AND status='Cancelled'
+                AND ( src_store=(SELECT store_id FROM ims_stores WHERE store_name=@my_store) OR receiver_store=(SELECT store_id FROM ims_stores WHERE store_name=@my_store) )
+                ORDER BY date DESC", conn)
+                cmd.Parameters.AddWithValue("@my_store", frm_main.user_store.Text)
+
+                Dim dt = New DataTable
+                Dim da = New MySqlDataAdapter(cmd)
+                da.Fill(dt)
+
+                grid_stock_transferred.DataSource = dt
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        Finally
+            conn.Close()
+        End Try
+        col_delete.Visible = False
+    End Sub
+
+    'lbl_inprogress
+    Private Sub lbl_inprogress_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbl_inprogress.LinkClicked
+        load_transferred()
+        col_delete.Visible = True
+    End Sub
+
 
 End Class

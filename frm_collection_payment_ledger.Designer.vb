@@ -42,6 +42,7 @@ Partial Class frm_collection_payment_ledger
         Me.GridColumn24 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grid_cash = New DevExpress.XtraGrid.GridControl()
+        Me.col_received_by = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -169,7 +170,7 @@ Partial Class frm_collection_payment_ledger
         Me.grid_cash_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_cash_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_cash_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_cash_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_order_id, Me.GridColumn3, Me.col_customer, Me.GridColumn4, Me.GridColumn23, Me.col_amount_due, Me.col_payment_type, Me.GridColumn24, Me.GridColumn18})
+        Me.grid_cash_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_order_id, Me.GridColumn3, Me.col_customer, Me.GridColumn4, Me.GridColumn23, Me.col_amount_due, Me.col_payment_type, Me.GridColumn24, Me.GridColumn18, Me.col_received_by})
         Me.grid_cash_view.GridControl = Me.grid_cash
         Me.grid_cash_view.Name = "grid_cash_view"
         Me.grid_cash_view.OptionsBehavior.Editable = False
@@ -202,7 +203,7 @@ Partial Class frm_collection_payment_ledger
         'col_customer
         '
         Me.col_customer.Caption = "Customer"
-        Me.col_customer.FieldName = "first_name"
+        Me.col_customer.FieldName = "customer"
         Me.col_customer.MinWidth = 50
         Me.col_customer.Name = "col_customer"
         Me.col_customer.Visible = True
@@ -290,6 +291,17 @@ Partial Class frm_collection_payment_ledger
         Me.grid_cash.TabIndex = 15
         Me.grid_cash.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_cash_view})
         '
+        'col_received_by
+        '
+        Me.col_received_by.Caption = "Received By"
+        Me.col_received_by.FieldName = "received_by"
+        Me.col_received_by.MaxWidth = 130
+        Me.col_received_by.MinWidth = 130
+        Me.col_received_by.Name = "col_received_by"
+        Me.col_received_by.Visible = True
+        Me.col_received_by.VisibleIndex = 9
+        Me.col_received_by.Width = 130
+        '
         'frm_collection_payment_ledger
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -332,4 +344,5 @@ Partial Class frm_collection_payment_ledger
     Friend WithEvents GridColumn18 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_payment_type As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grid_cash As DevExpress.XtraGrid.GridControl
+    Friend WithEvents col_received_by As DevExpress.XtraGrid.Columns.GridColumn
 End Class

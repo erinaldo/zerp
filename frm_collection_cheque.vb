@@ -1,4 +1,5 @@
 ﻿Imports System.Globalization
+Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
 Imports Newtonsoft.Json
@@ -9,7 +10,7 @@ Public Class frm_collection_cheque
     Public Property customer_id = 0
     Public Property customer_name = ""
     Dim dt_cheque As New DataTable
-    Dim ListOfItem As List(Of cheques) = New List(Of cheques)
+    Dim ListOfItem As List(Of ChequesClass) = New List(Of ChequesClass)
 
     '--- ONLOAD ---
     Private Sub frm_accounting_cheque_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -68,19 +69,26 @@ Public Class frm_collection_cheque
 
     End Sub
 
-    'Grid Transaction Selection
-    Private Sub grid_transaction_view_SelectionChanged(sender As Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles grid_transaction_view.SelectionChanged
+    'Load Returns
+    Private Sub LoadReturns(cid As Integer)
+        Try
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Using cmd = New MySqlCommand("SELECT CONCAT('SR', LPAD(sales_return_id, 5, '0')) AS srid, ims_customers.first_name AS customer, amount, created_at
+                                        FROM ims_sales_returns
+                                        LEFT JOIN ims_customers ON ims_customers.customer_id=ims_sales_returns.customer_id
+                                        WHERE ims_sales_returns.is_deleted=0 AND ims_sales_returns.is_applied=0 AND ims_sales_returns.customer_id=" & cid, connection)
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd)
+                    da.Fill(dt)
 
-        Dim selectedRowHandles = grid_transaction_view.GetSelectedRows
-        Dim amount = 0.00
+                    grid_returns.DataSource = dt
 
-        For i = 0 To selectedRowHandles.Length - 1
-            amount += grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_amount)
-            txt_total.Text = FormatCurrency(amount, 2)
-        Next
-
-        If selectedRowHandles.Length = 0 Then txt_total.Text = ""
-
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
     End Sub
 
     'Print Collection Receipt
@@ -111,7 +119,7 @@ Public Class frm_collection_cheque
                             report.Parameters("encoded_by").Value = rdr("collected_by")
                             so_nos = rdr("so_nos")
 
-                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of cheques))(rdr("cheques"))
+                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of ChequesClass))(rdr("cheques"))
                             For Each item In itemsObject
                                 table.payment_voucher_cheque.Rows.Add(item.bank, item.cheque_date, item.cheque_no, item.amount)
                             Next
@@ -121,7 +129,7 @@ Public Class frm_collection_cheque
                 End Using
 
                 Dim so_nos_array = so_nos.Split(",")
-                    For i = 0 To so_nos_array.Length - 1
+                For i = 0 To so_nos_array.Length - 1
                     Using cmd = New MySqlCommand("SELECT order_id, date_released, DATE_ADD(date_released, INTERVAL terms DAY) AS due_date, amount_due FROM ims_orders WHERE order_id=" & so_nos_array(i), connection)
                         Using rdr = cmd.ExecuteReader
                             While rdr.Read
@@ -145,7 +153,68 @@ Public Class frm_collection_cheque
 
 
 
+
+
     '--- CONTROLS ---
+
+    'Grid Transaction Selection
+    Private Sub grid_transaction_view_SelectionChanged(sender As Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles grid_transaction_view.SelectionChanged
+
+        Dim trancs_selectedRowHandles = grid_transaction_view.GetSelectedRows
+        Dim returns_selectedRowHandles = grid_returns_view.GetSelectedRows
+        Dim amount = 0.00
+
+        For i = 0 To trancs_selectedRowHandles.Length - 1
+            amount += grid_transaction_view.GetRowCellValue(trancs_selectedRowHandles(i), col_amount)
+            txt_total.Text = FormatCurrency(amount, 2)
+        Next
+
+        If trancs_selectedRowHandles.Length = 0 Then
+            txt_total.Text = FormatCurrency(0)
+        End If
+
+        If Not returns_selectedRowHandles.Length = 0 Then
+            txt_total.Text = FormatCurrency(CDec(txt_total.Text) - grid_returns_view.GetRowCellValue(returns_selectedRowHandles(0), col_return_amount))
+        End If
+
+    End Sub
+
+    'Grid Return Selection
+    Private lockSelection As Boolean = False
+    Private Sub grid_returns_view_SelectionChanged(sender As Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles grid_returns_view.SelectionChanged
+
+        Dim trancs_selectedRowHandles = grid_transaction_view.GetSelectedRows
+        Dim returns_selectedRowHandles = grid_returns_view.GetSelectedRows
+        Dim amount As Decimal = 0.00
+
+        For i = 0 To trancs_selectedRowHandles.Length - 1
+            amount += grid_transaction_view.GetRowCellValue(trancs_selectedRowHandles(i), col_amount)
+            txt_total.Text = FormatCurrency(amount, 2)
+        Next
+
+        If trancs_selectedRowHandles.Length = 0 Then
+            txt_total.Text = FormatCurrency(0)
+        End If
+
+        If lockSelection Then
+            Return
+        End If
+
+        Dim view As GridView = TryCast(sender, GridView)
+        Dim selectedRows() As Integer = grid_returns_view.GetSelectedRows()
+        lockSelection = True
+        For Each selectedRow As Integer In selectedRows
+            If selectedRow <> e.ControllerRow Then
+                view.UnselectRow(selectedRow)
+            End If
+        Next selectedRow
+        lockSelection = False
+
+        If Not returns_selectedRowHandles.Length = 0 Then
+            txt_total.Text = FormatCurrency(CDec(txt_total.Text) - grid_returns_view.GetRowCellValue(returns_selectedRowHandles(0), col_return_amount))
+        End If
+
+    End Sub
 
     'btn_select
     Private Sub btn_select_Click(sender As Object, e As EventArgs) Handles btn_select.Click
@@ -163,6 +232,8 @@ Public Class frm_collection_cheque
         lbl_customer_id.Text = customer_id
         txt_customer_name.Text = customer_name
         LoadTransactions(customer_id)
+        LoadReturns(customer_id)
+
     End Sub
 
 
@@ -256,29 +327,43 @@ Public Class frm_collection_cheque
                         Else
                             cheque_number += grid_cheque_view.GetRowCellValue(intRow, col_cheque_no) & ", "
                         End If
-
                     Next
 
+                    'UPDATE SALES RETURN
+                    Dim sr_handles = grid_returns_view.GetSelectedRows
+                    If sr_handles.Length > 0 Then
+                        Update_SalesReturns(grid_returns_view.GetRowCellValue(sr_handles(0), col_srid).ToString.Replace("SR", ""))
+                    End If
 
                     'UPDATE ORDERS
                     For i = 0 To selectedRowHandles.Length - 1
                         Dim id = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_id)
                         Dim amount As Decimal = grid_transaction_view.GetRowCellValue(selectedRowHandles(i), col_amount)
 
-                        Dim order_cmd = New MySqlCommand("UPDATE ims_orders SET paid_amount=@amount, payment_option=@option, payment_details=@details, 
+                        Dim order_cmd = New MySqlCommand("UPDATE ims_orders SET paid_amount=@amount, 
+                                            payment_option=@option, payment_details=@details, 
+                                            applied_sales_return=@srid,
                                             status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) , payment_status='PAID' WHERE order_id=" & id, connection)
                         order_cmd.Parameters.AddWithValue("@option", "Cheque")
                         order_cmd.Parameters.AddWithValue("@amount", amount)
+                        order_cmd.Parameters.AddWithValue("@srid", CInt(grid_returns_view.GetRowCellValue(sr_handles(0), col_srid).ToString.Replace("SR", "")))
                         order_cmd.Parameters.AddWithValue("@details", Date.Today & " - " & cheque_number)
                         order_cmd.ExecuteNonQuery()
                     Next
+
+                    'CREDIT BACK TO CUSTOMER
+                    Using credit_cmd = New MySqlCommand("UPDATE ims_customers SET used_credit=used_credit-@total WHERE customer_id=@id", connection)
+                        credit_cmd.Parameters.AddWithValue("@id", lbl_customer_id.Text)
+                        credit_cmd.Parameters.AddWithValue("@total", total)
+                        credit_cmd.ExecuteNonQuery()
+                    End Using
 
                     'INSERT TO IMS_COLLECTION_RECEIPT
                     Using cmd_collection = New MySqlCommand("INSERT INTO ims_collection_receipts (customer_id, so_nos, cheques, date_generated, collected_by) 
                                             VALUES (@customer_id, @so_nos, @cheques, NOW(), @collected_by); SELECT LAST_INSERT_ID()", connection)
 
                         For i = 0 To grid_cheque_view.RowCount - 1
-                            ListOfItem.Add(New cheques With {
+                            ListOfItem.Add(New ChequesClass With {
                                 .cheque_no = grid_cheque_view.GetRowCellValue(i, col_cheque_no),
                                 .cheque_date = Date.ParseExact(grid_cheque_view.GetRowCellValue(i, col_cheque_date), "MM/dd/yyyy", CultureInfo.InvariantCulture),
                                 .bank = grid_cheque_view.GetRowCellValue(i, col_bank),

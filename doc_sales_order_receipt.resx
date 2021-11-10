@@ -123,10 +123,10 @@
   <data name="XrLabel29.ExpressionBindings" xml:space="preserve">
     <value>Iif(?is_vatable == True, 
 	Iif(IsNUllorEmpty(?discount_type),
- 	(Sum([total]) / 1.12) * .12,
+ 	((?subtotal - ?deduction_total) / 1.12) * .12,
 	Iif(?discount_type == 'peso',
-			((Sum([total]) - ?discount_val) / 1.12) * .12, 
-			((Sum([total]) - (Sum([total]) * (ToDecimal(?discount_val) / 100))) / 1.12) * .12
+			(((?subtotal - ?deduction_total) - ?discount_val) / 1.12) * .12, 
+			(((?subtotal - ?deduction_total) - ((?subtotal - ?deduction_total) * (ToDecimal(?discount_val) / 100))) / 1.12) * .12
 		)
 	),
 	0.00
@@ -136,10 +136,10 @@
   <data name="XrLabel30.ExpressionBindings" xml:space="preserve">
     <value>Iif(?is_vatable == True, 
 	Iif(IsNUllorEmpty(?discount_type),
- 	Sum([total]) / 1.12,
+ 	(?subtotal - ?deduction_total) / 1.12,
 	Iif(?discount_type == 'peso',
-			(Sum([total]) - ToDecimal(?discount_val)) / 1.12, 
-			(Sum([total]) - (Sum([total]) * (ToDecimal(?discount_val) / 100))) / 1.12
+			((?subtotal - ?deduction_total) - ToDecimal(?discount_val)) / 1.12, 
+			((?subtotal - ?deduction_total) - ((?subtotal - ?deduction_total) * (ToDecimal(?discount_val) / 100))) / 1.12
 		)
 	),
 	0.00
@@ -149,14 +149,25 @@
   <data name="XrLabel32.ExpressionBindings" xml:space="preserve">
     <value>Iif(?is_withholding_tax_applied == True, 
 	Iif(IsNUllorEmpty(?discount_type),
- 		(Sum([total]) / 1.12) * (?withholding_tax_percentage / 100),
+ 		((?subtotal - ?deduction_total) / 1.12) * (?withholding_tax_percentage / 100),
 	Iif(?discount_type == 'peso',
-		((Sum([total]) - ?discount_val) / 1.12) * (?withholding_tax_percentage / 100), 
-		((Sum([total]) - (Sum([total]) * (ToDecimal(?discount_val) / 100))) / 1.12) * (ToDecimal(?withholding_tax_percentage) / 100)
+		(((?subtotal - ?deduction_total) - ?discount_val) / 1.12) * (?withholding_tax_percentage / 100), 
+		(((?subtotal - ?deduction_total) - ((?subtotal - ?deduction_total) * (ToDecimal(?discount_val) / 100))) / 1.12) * (ToDecimal(?withholding_tax_percentage) / 100)
 	)
 	),
 	0.00
 )
+</value>
+  </data>
+  <data name="lbl_total_sales.ExpressionBindings" xml:space="preserve">
+    <value>Iif(IsNUllorEmpty(?discount_type),
+ 	(?subtotal - ?deduction_total),
+	Iif(?discount_type == 'peso',
+		(?subtotal - ?deduction_total) - ?discount_val, 
+		(?subtotal - ?deduction_total) - (?subtotal * (ToDecimal(?discount_val) / 100))
+	)
+)  
+
 </value>
   </data>
   <metadata name="PrintData1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

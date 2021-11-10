@@ -7,7 +7,7 @@ Imports MySql.Data.MySqlClient
 Public Class frm_sales_view_order
 
 
-    ReadOnly conn As New MySqlConnection(str)
+    'ReadOnly conn As New MySqlConnection(str)
     Dim model_AutoCompleteString As New AutoCompleteStringCollection
     Dim description_AutoCompleteString As New AutoCompleteStringCollection
 
@@ -26,134 +26,142 @@ Public Class frm_sales_view_order
     '##### FUNCTIONS #####
 
     'Load Data to Field
-    Public Sub LoadData(orderid As String)
+    Public Function LoadData(orderid As String)
 
         lbl_title.Text = "Order #" & orderid
 
         Try
             LoadCustomers()
-            conn.Open()
-            Dim query = "SELECT *, ims_users.first_name AS sales_agent_name FROM `ims_orders` 
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Dim query = "SELECT *, ims_users.first_name AS sales_agent_name FROM `ims_orders` 
                 LEFT JOIN ims_customers ON ims_orders.customer=ims_customers.customer_id 
                 LEFT JOIN ims_users ON ims_users.usr_id=ims_orders.sales_agent 
                 WHERE order_id=" & orderid
 
-            Dim cmd = New MySqlCommand(query, conn)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                Dim cmd = New MySqlCommand(query, conn)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            While rdr.Read
+                While rdr.Read
 
-                'Order Details
-                Me.Text = "View Order #" & orderid & " - " & rdr("first_name")
-                lbl_status.Text = rdr("status").ToString.Replace("&", "&&")
-                txt_quote_id.Text = IIf(IsDBNull(rdr("quotation_ref")), String.Empty, rdr("quotation_ref"))
-                txt_po_ref.Text = rdr("po_reference")
+                    If rdr("account_type").Equals("Sister Company") And Not (frm_main.user_role_id.Text = 1 Or frm_main.user_role_id.Text = 6) Then
+                        MsgBox("You are not allowed to view this order.", vbExclamation, "Forbidden")
+                        Return False
+                    End If
 
-                'Customer Account Details
-                lbl_cid.Text = rdr("customer_id")
-                cbb_customer.Text = rdr("first_name")
-                lbl_account_type.Text = rdr("account_type")
-                lbl_credits_available.Text = FormatCurrency(CDec(rdr("credit_limit")) - CDec(rdr("used_credit")), 2)
-                txt_contact_person.Text = rdr("contact_person")
-                txt_no.Text = rdr("contact")
-                txt_terms.Value = CDec(rdr("terms"))
-                txt_sales_agent.Text = IIf(IsDBNull(rdr("sales_agent_name")), String.Empty, rdr("sales_agent_name"))
+                    'Order Details
+                    Me.Text = "View Order #" & orderid & " - " & rdr("first_name")
+                    lbl_status.Text = rdr("status").ToString.Replace("&", "&&")
+                    txt_quote_id.Text = IIf(IsDBNull(rdr("quotation_ref")), String.Empty, rdr("quotation_ref"))
+                    txt_po_ref.Text = rdr("po_reference")
 
-                'Bill & Shipping Address
-                txt_billing.Text = rdr("bill_to")
-                txt_shipping.Text = rdr("ship_to")
-                If Equals(txt_billing.Text, txt_shipping.Text) Then cb_same_billing.Checked = True
+                    'Customer Account Details
+                    lbl_cid.Text = rdr("customer_id")
+                    cbb_customer.Text = rdr("first_name")
+                    lbl_account_type.Text = rdr("account_type")
+                    lbl_credits_available.Text = FormatCurrency(CDec(rdr("credit_limit")) - CDec(rdr("used_credit")), 2)
+                    txt_contact_person.Text = rdr("contact_person")
+                    txt_no.Text = rdr("contact")
+                    txt_terms.Value = CDec(rdr("terms"))
+                    txt_sales_agent.Text = IIf(IsDBNull(rdr("sales_agent_name")), String.Empty, rdr("sales_agent_name"))
 
-                'Public, Private & Trucking Note
-                txt_pub_notes.Text = rdr("pub_note")
-                txt_priv_notes.Text = rdr("priv_note")
-                txt_trucking.Text = rdr("trucking")
+                    'Bill & Shipping Address
+                    txt_billing.Text = rdr("bill_to")
+                    txt_shipping.Text = rdr("ship_to")
+                    If Equals(txt_billing.Text, txt_shipping.Text) Then cb_same_billing.Checked = True
 
-                'Set Delivery Fee
-                If rdr("delivery_fee") > 0 Then
-                    txt_delivery_fee.Text = FormatCurrency(rdr("delivery_fee"))
-                    lbl_delivery_fee.LinkColor = Color.Red
-                    lbl_delivery_fee.Text = "Remove Delivery Fee"
-                Else
-                    txt_delivery_fee.Text = ""
-                End If
+                    'Public, Private & Trucking Note
+                    txt_pub_notes.Text = rdr("pub_note")
+                    txt_priv_notes.Text = rdr("priv_note")
+                    txt_trucking.Text = rdr("trucking")
 
-                'Set Shipping Method
-                Select Case rdr("shipping_method")
-                    Case "Pickup" : rb_pickup.Checked = True
-                    Case "Deliver" : rb_deliver.Checked = True
-                End Select
+                    'Set Delivery Fee
+                    If rdr("delivery_fee") > 0 Then
+                        txt_delivery_fee.Text = FormatCurrency(rdr("delivery_fee"))
+                        lbl_delivery_fee.LinkColor = Color.Red
+                        lbl_delivery_fee.Text = "Remove Delivery Fee"
+                    Else
+                        txt_delivery_fee.Text = ""
+                    End If
 
-                'Set Payment Type
-                Select Case rdr("payment_type")
-                    Case "Cash" : rb_cash.Checked = True
-                    Case "E-Payment"
-                        rb_epay.Checked = True
-                        btn_epayment.Enabled = True
-                    Case "Terms" : rb_terms.Checked = True
-                    Case "Cheque" : rb_cheque.Checked = True
-                End Select
+                    'Set Shipping Method
+                    Select Case rdr("shipping_method")
+                        Case "Pickup" : rb_pickup.Checked = True
+                        Case "Deliver" : rb_deliver.Checked = True
+                    End Select
 
-                'Display Payment Status Computation
-                lbl_amounttopay.Text = FormatCurrency(rdr("amount_due"))
-                lbl_paid_amount.Text = FormatCurrency(rdr("paid_amount"))
+                    'Set Payment Type
+                    Select Case rdr("payment_type")
+                        Case "Cash" : rb_cash.Checked = True
+                        Case "E-Payment"
+                            rb_epay.Checked = True
+                            btn_epayment.Enabled = True
+                        Case "Terms" : rb_terms.Checked = True
+                        Case "Cheque" : rb_cheque.Checked = True
+                    End Select
 
-                'Set Payment Status
-                Select Case rdr("payment_status")
-                    Case "UNPAID" : lbl_payment_status.Text = "UNPAID"
-                    Case "HOLD"
-                        lbl_payment_status.Text = rdr("payment_status")
-                        lbl_payment_status.Appearance.BackColor = Color.Blue
-                    Case "PAID", "PARTIAL", "OVERPAID", "REFUND"
-                        If Not IsDBNull(rdr("paid_amount")) Then
+                    'Display Payment Status Computation
+                    lbl_amounttopay.Text = FormatCurrency(rdr("amount_due"))
+                    lbl_paid_amount.Text = FormatCurrency(rdr("paid_amount"))
 
-                            Dim res = CDec(rdr("amount_due")) - CDec(rdr("paid_amount"))
+                    'Set Payment Status
+                    Select Case rdr("payment_status")
+                        Case "UNPAID" : lbl_payment_status.Text = "UNPAID"
+                        Case "HOLD"
+                            lbl_payment_status.Text = rdr("payment_status")
+                            lbl_payment_status.Appearance.BackColor = Color.Blue
+                        Case "PAID", "PARTIAL", "OVERPAID", "REFUND"
+                            If Not IsDBNull(rdr("paid_amount")) Then
 
-                            If res = 0 Then
-                                lbl_payment_status.Text = "PAID"
-                                lbl_payment_status.Appearance.BackColor = Color.YellowGreen
-                            ElseIf res < 0 Then
-                                lbl_payment_status.Text = "OVERPAID"
-                                lbl_payment_status.Appearance.BackColor = Color.OrangeRed
-                            ElseIf res > 0 Then
-                                lbl_payment_status.Text = "PARTIAL"
-                                lbl_payment_status.Appearance.BackColor = Color.Yellow
-                                lbl_payment_status.Appearance.ForeColor = Color.Black
+                                Dim res = CDec(rdr("amount_due")) - CDec(rdr("paid_amount"))
+
+                                If res = 0 Then
+                                    lbl_payment_status.Text = "PAID"
+                                    lbl_payment_status.Appearance.BackColor = Color.YellowGreen
+                                ElseIf res < 0 Then
+                                    lbl_payment_status.Text = "OVERPAID"
+                                    lbl_payment_status.Appearance.BackColor = Color.OrangeRed
+                                ElseIf res > 0 Then
+                                    lbl_payment_status.Text = "PARTIAL"
+                                    lbl_payment_status.Appearance.BackColor = Color.Yellow
+                                    lbl_payment_status.Appearance.ForeColor = Color.Black
+                                End If
+
+                                'Display and Balances
+                                lbl_balance.Text = FormatCurrency(res)
+
+                                'Set btn_refund IF CASH
+                                If rdr("payment_type").Equals("Cash") Or rdr("payment_type").Equals("E-Payment") Then
+                                    btn_refund.Enabled = True
+                                End If
+
+                                'Set if Requesting Refund
+                                If rdr("payment_status").Equals("REFUND") Then
+                                    lbl_payment_status.Text = "FOR REFUND"
+                                    lbl_payment_status.Appearance.BackColor = Color.Purple
+                                    btn_refund.Enabled = False
+                                End If
+
                             End If
+                    End Select
 
-                            'Display and Balances
-                            lbl_balance.Text = FormatCurrency(res)
+                    If Not IsDBNull(rdr("discount_val")) Then txt_discount.Text = rdr("discount_val")
+                    If Not IsDBNull(rdr("discount_type")) Then cbb_discount.Text = rdr("discount_type")
 
-                            'Set btn_refund IF CASH
-                            If rdr("payment_type").Equals("Cash") Or rdr("payment_type").Equals("E-Payment") Then
-                                btn_refund.Enabled = True
-                            End If
+                    cb_tax_applied.Checked = rdr("is_withholding_tax_applied")
+                    cb_vatable.Checked = rdr("is_vatable")
 
-                            'Set if Requesting Refund
-                            If rdr("payment_status").Equals("REFUND") Then
-                                lbl_payment_status.Text = "FOR REFUND"
-                                lbl_payment_status.Appearance.BackColor = Color.Purple
-                                btn_refund.Enabled = False
-                            End If
+                    If Not IsDBNull(rdr("withholding_tax_percentage")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_percentage") / 100)
+                    If Not IsDBNull(rdr("withholding_tax_amount")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_amount"))
 
-                        End If
-                End Select
+                    data_to_grid(rdr("order_item"), grid_order, 5)
 
-                If Not IsDBNull(rdr("discount_val")) Then txt_discount.Text = rdr("discount_val")
-                If Not IsDBNull(rdr("discount_type")) Then cbb_discount.Text = rdr("discount_type")
+                End While
 
-                cb_tax_applied.Checked = rdr("is_withholding_tax_applied")
-                cb_vatable.Checked = rdr("is_vatable")
+                rdr.Close()
+                load_remaining_grid()
 
-                If Not IsDBNull(rdr("withholding_tax_percentage")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_percentage") / 100)
-                If Not IsDBNull(rdr("withholding_tax_amount")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_amount"))
-
-                data_to_grid(rdr("order_item"), grid_order, 5)
-
-            End While
-
-            rdr.Close()
-            load_remaining_grid()
+            End Using
 
             '--- UPDATING GUI
 
@@ -206,38 +214,36 @@ Public Class frm_sales_view_order
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
-    End Sub
+        Return True
+
+    End Function
 
     'Load Customers
     Private Sub LoadCustomers()
         Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT first_name FROM ims_customers", conn)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Dim cmd = New MySqlCommand("SELECT first_name FROM ims_customers", conn)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            Dim Coll As ComboBoxItemCollection = cbb_customer.Properties.Items
+                Dim Coll As ComboBoxItemCollection = cbb_customer.Properties.Items
 
 
-            Coll.BeginUpdate()
+                Coll.BeginUpdate()
 
-            While rdr.Read
-                Coll.Add(rdr("first_name"))
-            End While
+                While rdr.Read
+                    Coll.Add(rdr("first_name"))
+                End While
 
-            Coll.EndUpdate()
+                Coll.EndUpdate()
 
-            cbb_customer.SelectedIndex = -1
-
+                cbb_customer.SelectedIndex = -1
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
-
     End Sub
 
     'Compute Total Units Cost
@@ -285,23 +291,22 @@ Public Class frm_sales_view_order
         Dim STORE_TABLE = "ims_" & frm_main.user_store.Text.ToLower.Replace(" ", "_")
 
         Try
-            conn.Open()
-            Dim query = "SELECT ims_inventory.winmodel, ims_inventory.description FROM " & STORE_TABLE & " RIGHT JOIN ims_inventory ON " & STORE_TABLE & ".pid=ims_inventory.pid"
-            Dim cmd = New MySqlCommand(query, conn)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Dim query = "SELECT ims_inventory.winmodel, ims_inventory.description FROM " & STORE_TABLE & " RIGHT JOIN ims_inventory ON " & STORE_TABLE & ".pid=ims_inventory.pid"
+                Dim cmd = New MySqlCommand(query, conn)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            model_AutoCompleteString.Clear()
-            description_AutoCompleteString.Clear()
+                model_AutoCompleteString.Clear()
+                description_AutoCompleteString.Clear()
 
-            While rdr.Read
-                model_AutoCompleteString.Add(rdr("winmodel"))
-                description_AutoCompleteString.Add(rdr("description"))
-            End While
-
+                While rdr.Read
+                    model_AutoCompleteString.Add(rdr("winmodel"))
+                    description_AutoCompleteString.Add(rdr("description"))
+                End While
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
     End Sub
 
@@ -314,40 +319,39 @@ Public Class frm_sales_view_order
         Dim orders = String.Empty
 
         Try
-            conn.Open()
-            Dim query = "SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Dim query = "SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
                             LEFT JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
                             LEFT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'
                             UNION
                          SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
                             RIGHT JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
                             RIGHT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'"
-            Dim cmd = New MySqlCommand(query, conn)
-            rdr = cmd.ExecuteReader
+                Dim cmd = New MySqlCommand(query, conn)
+                rdr = cmd.ExecuteReader
 
-            While rdr.Read
-                report.Parameters("order_id").Value = String.Concat("SO", rdr("order_id").ToString.PadLeft(5, "0"c))
-                report.Parameters("customer").Value = rdr("customer")
-                report.Parameters("contact_person").Value = rdr("contact_person")
-                report.Parameters("address").Value = rdr("ship_to")
-                report.Parameters("agent").Value = rdr("agent")
-                report.Parameters("ordered_date").Value = rdr("date_ordered")
-                report.Parameters("priv_notes").Value = rdr("priv_note")
-                report.Parameters("trucking").Value = rdr("trucking")
-                report.Parameters("shipping_method").Value = rdr("shipping_method")
+                While rdr.Read
+                    report.Parameters("order_id").Value = String.Concat("SO", rdr("order_id").ToString.PadLeft(5, "0"c))
+                    report.Parameters("customer").Value = rdr("customer")
+                    report.Parameters("contact_person").Value = rdr("contact_person")
+                    report.Parameters("address").Value = rdr("ship_to")
+                    report.Parameters("agent").Value = rdr("agent")
+                    report.Parameters("ordered_date").Value = rdr("date_ordered")
+                    report.Parameters("priv_notes").Value = rdr("priv_note")
+                    report.Parameters("trucking").Value = rdr("trucking")
+                    report.Parameters("shipping_method").Value = rdr("shipping_method")
 
-                data_to_grid(rdr("order_item"), table.packing_list, 3)
+                    data_to_grid(rdr("order_item"), table.packing_list, 3)
 
-            End While
+                End While
 
-            report.RequestParameters = False
-            report.DataSource = table
-            printTool.ShowRibbonPreviewDialog()
-
+                report.RequestParameters = False
+                report.DataSource = table
+                printTool.ShowRibbonPreviewDialog()
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -361,7 +365,7 @@ Public Class frm_sales_view_order
 
         Try
 
-            Using conn
+            Using conn = New MySqlConnection(str)
                 conn.Open()
 
                 Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, ship_to, order_item, pub_note, payment_type, discount_type, discount_val,
@@ -445,25 +449,26 @@ Public Class frm_sales_view_order
 
         grid_remaining.Rows.Clear()
 
-        For i = 0 To grid_order.Rows.Count - 2
-            Dim model = grid_order.Rows(i).Cells(1).Value
+        Using conn = New MySqlConnection(str)
+            conn.Open()
+            For i = 0 To grid_order.Rows.Count - 2
+                Dim model = grid_order.Rows(i).Cells(1).Value
+                Dim cmd = New MySqlCommand(get_query(conn) & " WHERE winmodel=@winmodel", conn)
+                cmd.Parameters.AddWithValue("@winmodel", model)
+                Using rdr As MySqlDataReader = cmd.ExecuteReader
+                    While rdr.Read
+                        grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
+                        grid_remaining.CurrentCell = Nothing
+                    End While
+                End Using
+            Next
 
-            Dim cmd = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", conn)
-            cmd.Parameters.AddWithValue("@winmodel", model)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
-
-            While rdr.Read
-                grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
-                grid_remaining.CurrentCell = Nothing
-            End While
-
-            rdr.Close()
-        Next
+        End Using
 
     End Sub
 
     'Get All Store Tables
-    Private Function get_all_store_tables(MyStore As String)
+    Private Function get_all_store_tables(MyStore As String, conn As MySqlConnection)
         Dim tbl_cmd = New MySqlCommand("SELECT store_name FROM ims_stores", conn)
         Dim rdr_tbl As MySqlDataReader = tbl_cmd.ExecuteReader
 
@@ -480,13 +485,13 @@ Public Class frm_sales_view_order
     End Function
 
     'Concat Queries
-    Private Function get_query()
+    Private Function get_query(conn As MySqlConnection)
 
         'Get Active Table
         Dim STORE_TABLE = "ims_" & frm_main.user_store.Text.ToLower.Replace(" ", "_")
 
         'Get All Store's Tables Inventory Except Own
-        Dim tables = get_all_store_tables(STORE_TABLE).ToString.Split(",")
+        Dim tables = get_all_store_tables(STORE_TABLE, conn).ToString.Split(",")
 
         Dim other_qty = ""
         Dim inner_join = ""
@@ -588,52 +593,51 @@ Public Class frm_sales_view_order
 
             Try
 
-                conn.Open()
+                Using conn = New MySqlConnection(str)
+                    conn.Open()
 
-                Dim cmd = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", conn)
-                cmd.Parameters.AddWithValue("@winmodel", grid_order.CurrentCell.Value)
-                Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                    Dim cmd = New MySqlCommand(get_query(conn) & " WHERE winmodel=@winmodel", conn)
+                    cmd.Parameters.AddWithValue("@winmodel", grid_order.CurrentCell.Value)
+                    Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                While rdr.Read
+                    While rdr.Read
 
-                    'Validation of Unit Status
-                    If rdr("status").Equals("For Approval") Or rdr("status").Equals("On-Hold") Then
-                        MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                        grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                        Exit Sub
-                    End If
+                        'Validation of Unit Status
+                        If rdr("status").Equals("For Approval") Or rdr("status").Equals("On-Hold") Then
+                            MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                            grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                            Exit Sub
+                        End If
 
-                    If rdr("status").Equals("Discontinued") Then
-                        MsgBox("Selected Item is Discontinued." & vbCrLf & "Available only until supply last...", vbInformation, "Discontinued")
-                    End If
-
-
+                        If rdr("status").Equals("Discontinued") Then
+                            MsgBox("Selected Item is Discontinued." & vbCrLf & "Available only until supply last...", vbInformation, "Discontinued")
+                        End If
 
 
-                    If grid_remaining.Rows.Count > e.RowIndex Then
-                        grid_remaining.Rows(e.RowIndex).Cells(0).Value = rdr("other_qty")
-                        grid_remaining.Rows(e.RowIndex).Cells(1).Value = rdr("qty")
-                        grid_remaining.Rows(e.RowIndex).Cells(2).Value = rdr("onhold")
-                    Else
-                        grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
-                    End If
 
-                    grid_remaining.CurrentCell = Nothing
 
-                    'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
-                    grid_order.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
-                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                    Dim cost As Decimal = rdr(GetAccountTypeTable())
-                    grid_order.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                    grid_order.Rows(e.RowIndex).Cells(4).Value = "0%"
-                    Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(0).Value * cost
-                    grid_order.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
-                End While
+                        If grid_remaining.Rows.Count > e.RowIndex Then
+                            grid_remaining.Rows(e.RowIndex).Cells(0).Value = rdr("other_qty")
+                            grid_remaining.Rows(e.RowIndex).Cells(1).Value = rdr("qty")
+                            grid_remaining.Rows(e.RowIndex).Cells(2).Value = rdr("onhold")
+                        Else
+                            grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
+                        End If
 
+                        grid_remaining.CurrentCell = Nothing
+
+                        'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
+                        grid_order.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
+                        grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("description")
+                        Dim cost As Decimal = rdr(GetAccountTypeTable())
+                        grid_order.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
+                        grid_order.Rows(e.RowIndex).Cells(4).Value = "0%"
+                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(0).Value * cost
+                        grid_order.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
+                    End While
+                End Using
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
         End If
 
@@ -651,52 +655,50 @@ Public Class frm_sales_view_order
             Next
 
             Try
+                Using conn = New MySqlConnection(str)
+                    conn.Open()
+                    Dim cmd = New MySqlCommand(get_query(conn) & " WHERE description=@description", conn)
+                    cmd.Parameters.AddWithValue("@description", grid_order.CurrentCell.Value)
+                    Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                conn.Open()
-                Dim cmd = New MySqlCommand(get_query() & " WHERE description=@description", conn)
-                cmd.Parameters.AddWithValue("@description", grid_order.CurrentCell.Value)
-                Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                    While rdr.Read
 
-                While rdr.Read
+                        'Validation of Unit Status
+                        If rdr("status").Equals("For Approval") Or rdr("status").Equals("On-Hold") Then
+                            MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                            grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                            Exit Sub
+                        End If
 
-                    'Validation of Unit Status
-                    If rdr("status").Equals("For Approval") Or rdr("status").Equals("On-Hold") Then
-                        MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                        grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                        Exit Sub
-                    End If
-
-                    If rdr("status").Equals("Discontinued") Then
-                        MsgBox("Selected Item is Discontinued." & vbCrLf & "Available only until supply last...", vbInformation, "Discontinued")
-                    End If
-
-
+                        If rdr("status").Equals("Discontinued") Then
+                            MsgBox("Selected Item is Discontinued." & vbCrLf & "Available only until supply last...", vbInformation, "Discontinued")
+                        End If
 
 
-                    If grid_remaining.Rows.Count > e.RowIndex Then
-                        grid_remaining.Rows(e.RowIndex).Cells(0).Value = rdr("other_qty")
-                        grid_remaining.Rows(e.RowIndex).Cells(1).Value = rdr("qty")
-                        grid_remaining.Rows(e.RowIndex).Cells(2).Value = rdr("onhold")
-                    Else
-                        grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
-                    End If
 
-                    grid_remaining.CurrentCell = Nothing
 
-                    'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
-                    grid_order.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
-                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                    Dim cost As Decimal = rdr(GetAccountTypeTable)
-                    grid_order.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                    grid_order.Rows(e.RowIndex).Cells(4).Value = "0%"
-                    Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(0).Value * cost
-                    grid_order.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
-                End While
+                        If grid_remaining.Rows.Count > e.RowIndex Then
+                            grid_remaining.Rows(e.RowIndex).Cells(0).Value = rdr("other_qty")
+                            grid_remaining.Rows(e.RowIndex).Cells(1).Value = rdr("qty")
+                            grid_remaining.Rows(e.RowIndex).Cells(2).Value = rdr("onhold")
+                        Else
+                            grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
+                        End If
 
+                        grid_remaining.CurrentCell = Nothing
+
+                        'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
+                        grid_order.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
+                        grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("description")
+                        Dim cost As Decimal = rdr(GetAccountTypeTable)
+                        grid_order.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
+                        grid_order.Rows(e.RowIndex).Cells(4).Value = "0%"
+                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(0).Value * cost
+                        grid_order.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
+                    End While
+                End Using
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
         End If
 
@@ -731,7 +733,7 @@ Public Class frm_sales_view_order
 
                             Dim count = 0
 
-                            Using conn
+                            Using conn = New MySqlConnection(str)
                                 conn.Open()
                                 Dim cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_users WHERE role_id='1' AND pass=@pass", conn)
                                 cmd.Parameters.AddWithValue("@pass", Encrypt(pass))
@@ -751,7 +753,7 @@ Public Class frm_sales_view_order
                     End If
 
                     'Get Cost
-                    Using conn
+                    Using conn = New MySqlConnection(str)
                         conn.Open()
                         Dim cmd = New MySqlCommand("SELECT cost FROM ims_inventory WHERE winmodel=@winmodel", conn)
                         cmd.Parameters.AddWithValue("@winmodel", grid_order.Rows(e.RowIndex).Cells(1).Value)
@@ -891,69 +893,68 @@ Public Class frm_sales_view_order
         If CDec(lbl_paid_amount.Text) = 0 Then payment_status = "UNPAID"
 
         Try
-            conn.Open()
-            Dim order_id = lbl_title.Text.Split("#")
-            Dim status = lbl_status.Text
-            Dim query = "UPDATE ims_orders SET bill_to=@bill_to, ship_to=@ship_to, trucking=@trucking, payment_status=@payment_status,
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Dim order_id = lbl_title.Text.Split("#")
+                Dim status = lbl_status.Text
+                Dim query = "UPDATE ims_orders SET bill_to=@bill_to, ship_to=@ship_to, trucking=@trucking, payment_status=@payment_status,
                             order_item=@order_item, pub_note=@pub_note, priv_note=@priv_note, terms=@terms,
                             is_vatable=@is_vatable, discount_val=@discount_val, discount_type=@discount_type,
                             is_withholding_tax_applied=@is_withholding_tax_applied, withholding_tax_amount=@withholding_tax_amount, withholding_tax_percentage=@withholding_tax_percentage,
                             delivery_fee=@delivery_fee, amount_due=@amount_due, po_reference=@po_reference,
                             payment_type=@payment_type, payment_details=@payment_details, shipping_method=@shipping_method, status=@status WHERE order_id=" & order_id(1)
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@payment_status", payment_status)
-            cmd.Parameters.AddWithValue("@bill_to", txt_billing.Text.Trim)
-            cmd.Parameters.AddWithValue("@ship_to", txt_shipping.Text.Trim)
-            cmd.Parameters.AddWithValue("@trucking", txt_trucking.Text.Trim)
-            cmd.Parameters.AddWithValue("@order_item", orders)
-            cmd.Parameters.AddWithValue("@pub_note", txt_pub_notes.Text)
-            cmd.Parameters.AddWithValue("@priv_note", txt_priv_notes.Text)
-            cmd.Parameters.AddWithValue("@payment_type", payment_type)
-            cmd.Parameters.AddWithValue("@payment_details", payment_details)
-            cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
-            cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
-            cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
-            cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
-            cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
-            cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
-            cmd.Parameters.AddWithValue("@amount_due", CDec(lbl_total.Text))
-            cmd.Parameters.AddWithValue("@delivery_fee", _delivery_fee)
-            cmd.Parameters.AddWithValue("@shipping_method", shipping_method)
-            cmd.Parameters.AddWithValue("@po_reference", txt_po_ref.Text.Trim)
-            cmd.Parameters.AddWithValue("@terms", txt_terms.Value)
+                Dim cmd = New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@payment_status", payment_status)
+                cmd.Parameters.AddWithValue("@bill_to", txt_billing.Text.Trim)
+                cmd.Parameters.AddWithValue("@ship_to", txt_shipping.Text.Trim)
+                cmd.Parameters.AddWithValue("@trucking", txt_trucking.Text.Trim)
+                cmd.Parameters.AddWithValue("@order_item", orders)
+                cmd.Parameters.AddWithValue("@pub_note", txt_pub_notes.Text)
+                cmd.Parameters.AddWithValue("@priv_note", txt_priv_notes.Text)
+                cmd.Parameters.AddWithValue("@payment_type", payment_type)
+                cmd.Parameters.AddWithValue("@payment_details", payment_details)
+                cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
+                cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
+                cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
+                cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
+                cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
+                cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
+                cmd.Parameters.AddWithValue("@amount_due", CDec(lbl_total.Text))
+                cmd.Parameters.AddWithValue("@delivery_fee", _delivery_fee)
+                cmd.Parameters.AddWithValue("@shipping_method", shipping_method)
+                cmd.Parameters.AddWithValue("@po_reference", txt_po_ref.Text.Trim)
+                cmd.Parameters.AddWithValue("@terms", txt_terms.Value)
 
-            If status.Equals("No Payment && Shipping") Or status.Equals("No Payment Details") Or status.Equals("No Shipping Method") Then
+                If status.Equals("No Payment && Shipping") Or status.Equals("No Payment Details") Or status.Equals("No Shipping Method") Then
 
-                Dim shipping = False, payment = False
+                    Dim shipping = False, payment = False
 
-                If rb_deliver.Checked = True Or rb_pickup.Checked = True Then
-                    shipping = True
+                    If rb_deliver.Checked = True Or rb_pickup.Checked = True Then
+                        shipping = True
+                    End If
+
+                    If rb_cash.Checked = True Or rb_cheque.Checked = True Or rb_terms.Checked = True Then
+                        payment = True
+                    End If
+
+                    If shipping = True And payment = True Then
+                        status = "Pending"
+                    ElseIf shipping = True And payment = False Then
+                        status = "No Payment Details"
+                    ElseIf shipping = False And payment = True Then
+                        status = "No Shipping Method"
+                    End If
+
                 End If
 
-                If rb_cash.Checked = True Or rb_cheque.Checked = True Or rb_terms.Checked = True Then
-                    payment = True
-                End If
+                cmd.Parameters.AddWithValue("@status", status.Replace("&&", "&"))
 
-                If shipping = True And payment = True Then
-                    status = "Pending"
-                ElseIf shipping = True And payment = False Then
-                    status = "No Payment Details"
-                ElseIf shipping = False And payment = True Then
-                    status = "No Shipping Method"
-                End If
+                cmd.ExecuteNonQuery()
 
-            End If
-
-            cmd.Parameters.AddWithValue("@status", status.Replace("&&", "&"))
-
-            cmd.ExecuteNonQuery()
-
-            MsgBox("Save Successfully!", vbInformation, "Information")
-
+                MsgBox("Save Successfully!", vbInformation, "Information")
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
     End Sub
@@ -970,18 +971,19 @@ Public Class frm_sales_view_order
 
                     Try
                         Dim order_id = lbl_title.Text.Split("#")
+                        Using conn = New MySqlConnection(str)
+                            conn.Open()
+                            Dim cmd = New MySqlCommand("UPDATE ims_orders SET status='Pending for Arrangement' WHERE order_id=" & order_id(1), conn)
+                            cmd.ExecuteNonQuery()
 
-                        conn.Open()
-                        Dim cmd = New MySqlCommand("UPDATE ims_orders SET status='Pending for Arrangement' WHERE order_id=" & order_id(1), conn)
-                        cmd.ExecuteNonQuery()
+                            MsgBox("Saved Successfully!", vbInformation, "Information")
+                            Me.Close()
+                            frm_main.submenu_orders.PerformClick()
+                        End Using
 
-                        MsgBox("Saved Successfully!", vbInformation, "Information")
-                        Me.Close()
-                        frm_main.submenu_orders.PerformClick()
+
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
-                    Finally
-                        If conn.State = ConnectionState.Open Then conn.Close()
                     End Try
                 End If
 
@@ -991,18 +993,18 @@ Public Class frm_sales_view_order
 
                     Try
                         Dim order_id = lbl_title.Text.Split("#")
+                        Using conn = New MySqlConnection(str)
+                            conn.Open()
+                            Dim cmd = New MySqlCommand("UPDATE ims_orders SET status='Cancelled Order' WHERE order_id=" & order_id(1), conn)
+                            cmd.ExecuteNonQuery()
 
-                        conn.Open()
-                        Dim cmd = New MySqlCommand("UPDATE ims_orders SET status='Cancelled Order' WHERE order_id=" & order_id(1), conn)
-                        cmd.ExecuteNonQuery()
+                            MsgBox("Update Successful!" & vbCrLf & "Package will be unpacked soon...", vbInformation, "Notice")
+                            Me.Close()
+                            frm_main.submenu_orders.PerformClick()
+                        End Using
 
-                        MsgBox("Update Successful!" & vbCrLf & "Package will be unpacked soon...", vbInformation, "Notice")
-                        Me.Close()
-                        frm_main.submenu_orders.PerformClick()
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
-                    Finally
-                        If conn.State = ConnectionState.Open Then conn.Close()
                     End Try
                 End If
 
@@ -1020,18 +1022,17 @@ Public Class frm_sales_view_order
         Dim order_id = lbl_title.Text.Split("#")
 
         Try
-            conn.Open()
-            Dim query = "UPDATE ims_orders SET deleted='1' WHERE order_id=" & order_id(1)
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.ExecuteNonQuery()
-            Me.Close()
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Dim query = "UPDATE ims_orders SET deleted='1' WHERE order_id=" & order_id(1)
+                Dim cmd = New MySqlCommand(query, conn)
+                cmd.ExecuteNonQuery()
+                Me.Close()
 
-            frm_main.submenu_orders.PerformClick()
-
+                frm_main.submenu_orders.PerformClick()
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
     End Sub
 
@@ -1165,12 +1166,11 @@ Public Class frm_sales_view_order
             End If
 
             If Not String.IsNullOrEmpty(passw) Then
-                Using conn
+                Using conn = New MySqlConnection(str)
                     conn.Open()
                     Dim cmd As MySqlCommand = New MySqlCommand("SELECT COUNT(*) FROM ims_users WHERE role_id='1' AND pass=@pass", conn)
                     cmd.Parameters.AddWithValue("@pass", Encrypt(passw))
                     value_count = CInt(cmd.ExecuteScalar())
-                    conn.Close()
                 End Using
 
                 If value_count = 0 Then

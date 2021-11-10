@@ -88,6 +88,8 @@ Partial Class frm_sales_orders
         Me.col_date_ordered = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_date_packed = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_date_released = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_released_by = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_packed_by = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
@@ -109,7 +111,7 @@ Partial Class frm_sales_orders
         Me.panel_top.Dock = System.Windows.Forms.DockStyle.Top
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1224, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1466, 78)
         Me.panel_top.TabIndex = 11
         '
         'GunaPanel5
@@ -121,7 +123,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
         Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(1202, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(1444, 27)
         Me.GunaPanel5.TabIndex = 5
         '
         'Panel1
@@ -129,7 +131,7 @@ Partial Class frm_sales_orders
         Me.Panel1.Controls.Add(Me.PictureEdit1)
         Me.Panel1.Controls.Add(Me.cbb_timer)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(1090, 0)
+        Me.Panel1.Location = New System.Drawing.Point(1332, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(112, 27)
         Me.Panel1.TabIndex = 7
@@ -252,7 +254,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 78)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(1224, 638)
+        Me.GunaPanel2.Size = New System.Drawing.Size(1466, 638)
         Me.GunaPanel2.TabIndex = 12
         '
         'btn_sort_cancelled
@@ -265,7 +267,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_cancelled.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_cancelled.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_cancelled.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_cancelled.Location = New System.Drawing.Point(889, 20)
+        Me.btn_sort_cancelled.Location = New System.Drawing.Point(1131, 20)
         Me.btn_sort_cancelled.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_cancelled.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_cancelled.Name = "btn_sort_cancelled"
@@ -283,7 +285,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_completed.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_completed.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_completed.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_completed.Location = New System.Drawing.Point(997, 20)
+        Me.btn_sort_completed.Location = New System.Drawing.Point(1239, 20)
         Me.btn_sort_completed.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_completed.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_completed.Name = "btn_sort_completed"
@@ -301,7 +303,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_all.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_all.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_all.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_all.Location = New System.Drawing.Point(1105, 20)
+        Me.btn_sort_all.Location = New System.Drawing.Point(1347, 20)
         Me.btn_sort_all.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_all.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_all.Name = "btn_sort_all"
@@ -321,7 +323,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_onprocess.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_onprocess.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_onprocess.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_onprocess.Location = New System.Drawing.Point(781, 20)
+        Me.btn_sort_onprocess.Location = New System.Drawing.Point(1023, 20)
         Me.btn_sort_onprocess.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_onprocess.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_onprocess.Name = "btn_sort_onprocess"
@@ -395,7 +397,7 @@ Partial Class frm_sales_orders
         Me.grid_orders.MainView = Me.grid_orders_view
         Me.grid_orders.Name = "grid_orders"
         Me.grid_orders.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_view_order})
-        Me.grid_orders.Size = New System.Drawing.Size(1187, 554)
+        Me.grid_orders.Size = New System.Drawing.Size(1429, 554)
         Me.grid_orders.TabIndex = 8
         Me.grid_orders.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_orders_view})
         '
@@ -405,13 +407,15 @@ Partial Class frm_sales_orders
         Me.grid_orders_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_orders_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_orders_view.Appearance.HeaderPanel.Options.UseFont = True
+        Me.grid_orders_view.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.grid_orders_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_orders_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_orders_view.Appearance.Row.Options.UseFont = True
         Me.grid_orders_view.Appearance.SelectedRow.BackColor = System.Drawing.Color.White
         Me.grid_orders_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_orders_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_orders_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_orders_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_order_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.GridColumn10, Me.GridColumn5, Me.col_date_ordered, Me.col_date_packed, Me.col_date_released})
+        Me.grid_orders_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_order_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.GridColumn10, Me.GridColumn5, Me.col_date_ordered, Me.col_date_packed, Me.col_date_released, Me.col_released_by, Me.col_packed_by})
         Me.grid_orders_view.GridControl = Me.grid_orders
         Me.grid_orders_view.Name = "grid_orders_view"
         Me.grid_orders_view.OptionsBehavior.ReadOnly = True
@@ -469,7 +473,7 @@ Partial Class frm_sales_orders
         '
         Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn3.Caption = "Representative"
+        Me.GridColumn3.Caption = "Sales Coordinator"
         Me.GridColumn3.FieldName = "agent"
         Me.GridColumn3.MaxWidth = 130
         Me.GridColumn3.MinWidth = 130
@@ -592,6 +596,28 @@ Partial Class frm_sales_orders
         Me.col_date_released.VisibleIndex = 10
         Me.col_date_released.Width = 100
         '
+        'col_released_by
+        '
+        Me.col_released_by.Caption = "Released By"
+        Me.col_released_by.FieldName = "released_by"
+        Me.col_released_by.MaxWidth = 130
+        Me.col_released_by.MinWidth = 130
+        Me.col_released_by.Name = "col_released_by"
+        Me.col_released_by.Visible = True
+        Me.col_released_by.VisibleIndex = 12
+        Me.col_released_by.Width = 130
+        '
+        'col_packed_by
+        '
+        Me.col_packed_by.Caption = "Packed By"
+        Me.col_packed_by.FieldName = "packed_by"
+        Me.col_packed_by.MaxWidth = 130
+        Me.col_packed_by.MinWidth = 130
+        Me.col_packed_by.Name = "col_packed_by"
+        Me.col_packed_by.Visible = True
+        Me.col_packed_by.VisibleIndex = 11
+        Me.col_packed_by.Width = 130
+        '
         'timer
         '
         '
@@ -600,7 +626,7 @@ Partial Class frm_sales_orders
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1224, 716)
+        Me.ClientSize = New System.Drawing.Size(1466, 716)
         Me.Controls.Add(Me.GunaPanel2)
         Me.Controls.Add(Me.panel_top)
         Me.KeyPreview = True
@@ -657,4 +683,6 @@ Partial Class frm_sales_orders
     Friend WithEvents btn_sort_onprocess As SimpleButton
     Friend WithEvents btn_sort_all As SimpleButton
     Friend WithEvents btn_sort_cancelled As SimpleButton
+    Friend WithEvents col_released_by As GridColumn
+    Friend WithEvents col_packed_by As GridColumn
 End Class

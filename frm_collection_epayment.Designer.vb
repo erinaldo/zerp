@@ -43,6 +43,8 @@ Partial Class frm_collection_epayment
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_deduct = New DevExpress.XtraEditors.SimpleButton()
+        Me.lbl_deduction = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.txt_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -177,6 +179,8 @@ Partial Class frm_collection_epayment
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.lbl_deduction)
+        Me.Panel1.Controls.Add(Me.btn_deduct)
         Me.Panel1.Controls.Add(Me.btn_paid)
         Me.Panel1.Controls.Add(Me.lbl_amount_due)
         Me.Panel1.Controls.Add(Me.btn_attachments)
@@ -187,7 +191,7 @@ Partial Class frm_collection_epayment
         Me.Panel1.Controls.Add(Me.LabelControl9)
         Me.Panel1.Location = New System.Drawing.Point(12, 184)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(324, 308)
+        Me.Panel1.Size = New System.Drawing.Size(324, 372)
         Me.Panel1.TabIndex = 38
         '
         'btn_paid
@@ -304,11 +308,34 @@ Partial Class frm_collection_epayment
         Me.LabelControl9.TabIndex = 29
         Me.LabelControl9.Text = "Amount Tendered"
         '
+        'btn_deduct
+        '
+        Me.btn_deduct.Location = New System.Drawing.Point(12, 302)
+        Me.btn_deduct.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_deduct.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_deduct.Name = "btn_deduct"
+        Me.btn_deduct.Size = New System.Drawing.Size(303, 40)
+        Me.btn_deduct.TabIndex = 32
+        Me.btn_deduct.Text = "Deduct Returns"
+        '
+        'lbl_deduction
+        '
+        Me.lbl_deduction.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_deduction.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lbl_deduction.Appearance.Options.UseFont = True
+        Me.lbl_deduction.Appearance.Options.UseForeColor = True
+        Me.lbl_deduction.Location = New System.Drawing.Point(12, 348)
+        Me.lbl_deduction.Name = "lbl_deduction"
+        Me.lbl_deduction.Size = New System.Drawing.Size(56, 14)
+        Me.lbl_deduction.TabIndex = 33
+        Me.lbl_deduction.Text = "Deduction"
+        Me.lbl_deduction.Visible = False
+        '
         'frm_collection_epayment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(348, 505)
+        Me.ClientSize = New System.Drawing.Size(348, 566)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GunaPanel2)
@@ -352,4 +379,6 @@ Partial Class frm_collection_epayment
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents btn_deduct As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lbl_deduction As DevExpress.XtraEditors.LabelControl
 End Class

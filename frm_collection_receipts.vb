@@ -61,7 +61,7 @@ Public Class frm_collection_receipts
                             report.Parameters("encoded_by").Value = rdr("collected_by")
                             so_nos = rdr("so_nos")
 
-                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of cheques))(rdr("cheques"))
+                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of ChequesClass))(rdr("cheques"))
                             For Each item In itemsObject
                                 table.payment_voucher_cheque.Rows.Add(item.bank, item.cheque_date, item.cheque_no, item.amount)
                             Next

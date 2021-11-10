@@ -8,10 +8,11 @@ Public Class frm_purchaseorder_return_new
 
     Private model_AutoCompleteString As New AutoCompleteStringCollection
     Private description_AutoCompleteString As New AutoCompleteStringCollection
-    Dim ListOfItem As List(Of Items) = New List(Of Items)
+    Dim ListOfItem As List(Of PurchaseReturnClass) = New List(Of PurchaseReturnClass)
+
+
 
     '--- ONLOAD ---
-
     Private Sub frm_purchaseorder_return_new_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Load_Supplier()
     End Sub
@@ -112,7 +113,7 @@ Public Class frm_purchaseorder_return_new
                         txt_prid.Text = rdr("po_return_id")
                         cbb_supplier.Text = rdr("supplier")
 
-                        Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of Items))(rdr("items"))
+                        Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of PurchaseReturnClass))(rdr("items"))
                         For Each item In itemsObject
                             grid_return.Rows.Add(item.batch_no, item.rid, item.qty, item.model, item.description, item.cost, item.total_cost)
                         Next
@@ -352,7 +353,7 @@ Public Class frm_purchaseorder_return_new
 
         For i = 0 To grid_return.Rows.Count - 2
 
-            ListOfItem.Add(New Items With {
+            ListOfItem.Add(New PurchaseReturnClass With {
                 .batch_no = grid_return.Rows(i).Cells(0).Value,
                 .rid = grid_return.Rows(i).Cells(1).Value,
                 .qty = grid_return.Rows(i).Cells(2).Value,
@@ -394,7 +395,7 @@ Public Class frm_purchaseorder_return_new
 
         For i = 0 To grid_return.Rows.Count - 2
 
-            ListOfItem.Add(New Items With {
+            ListOfItem.Add(New PurchaseReturnClass With {
                 .batch_no = grid_return.Rows(i).Cells(0).Value,
                 .rid = grid_return.Rows(i).Cells(1).Value,
                 .qty = grid_return.Rows(i).Cells(2).Value,
@@ -476,7 +477,7 @@ Public Class frm_purchaseorder_return_new
                             report.Parameters("created_by").Value = rdr("created_by")
                             report.Parameters("total_cost").Value = rdr("total_cost")
 
-                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of Items))(rdr("items"))
+                            Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of PurchaseReturnClass))(rdr("items"))
                             For Each item In itemsObject
                                 table.purchase_returns_items.Rows.Add(item.rid, item.qty, item.model, item.description, item.cost, item.total_cost, item.batch_no)
                             Next
@@ -495,15 +496,4 @@ Public Class frm_purchaseorder_return_new
         End Try
     End Sub
 
-End Class
-
-'Objects for Items
-Public Class Items
-    Public Property batch_no As Integer
-    Public Property rid As Integer
-    Public Property qty As Integer
-    Public Property model As String
-    Public Property description As String
-    Public Property cost As Decimal
-    Public Property total_cost As Decimal
 End Class

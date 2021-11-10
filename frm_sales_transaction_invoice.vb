@@ -42,7 +42,7 @@ Public Class frm_sales_transaction_invoice
     End Sub
 
     'Print Invoice Receipt
-    Private Sub PrintInvoice(orderid As String)
+    Public Sub PrintInvoice(orderid As String)
         Dim report = New doc_sales_order_receipt()
         Dim printTool = New ReportPrintTool(report)
         Dim rdr As MySqlDataReader
@@ -54,14 +54,16 @@ Public Class frm_sales_transaction_invoice
 
                 Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
                         ims_customers.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info,
-                        is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val,
+                        is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val, applied_sales_return, CONCAT('SR', LPAD(sales_return_id, 5, '0')) AS srid, IFNULL(ims_sales_returns.amount, 0) as amount,
                         no_of_box, no_of_plastic, no_of_rolls,
                         agent.first_name AS prepared_by, packer.first_name AS arranged_by, releaser.first_name AS released_by, sales_agent.first_name AS sales_agent FROM `ims_orders`
                         INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer
                         INNER JOIN ims_users AS agent ON agent.usr_id=agent
                         LEFT JOIN ims_users AS sales_agent ON sales_agent.usr_id=sales_agent
+                        LEFT JOIN ims_sales_returns ON ims_sales_returns.sales_return_id=ims_orders.applied_sales_return
                         INNER JOIN ims_users AS packer ON packer.usr_id=packed_by
-                        INNER JOIN ims_users AS releaser ON releaser.usr_id=released_by WHERE order_id=@id", connection)
+                        INNER JOIN ims_users AS releaser ON releaser.usr_id=released_by 
+                        WHERE order_id=@id", connection)
                 cmd.Parameters.AddWithValue("@id", orderid)
                 rdr = cmd.ExecuteReader
 
@@ -84,13 +86,17 @@ Public Class frm_sales_transaction_invoice
                     report.Parameters("discount_type").Value = rdr("discount_type")
                     report.Parameters("discount_val").Value = rdr("discount_val")
                     report.Parameters("is_vatable").Value = rdr("is_vatable")
+                    report.Parameters("deduction_IsApplied").Value = IIf(rdr("applied_sales_return") = 0, False, True)
+                    report.Parameters("deduction_srid").Value = rdr("srid")
+                    report.Parameters("deduction_customer").Value = rdr("first_name")
+                    report.Parameters("deduction_total").Value = rdr("amount")
                     report.Parameters("is_withholding_tax_applied").Value = rdr("is_withholding_tax_applied")
                     report.Parameters("withholding_tax_percentage").Value = rdr("withholding_tax_percentage")
                     report.Parameters("withholding_tax_amount").Value = rdr("withholding_tax_amount")
                     report.Parameters("no_of_box").Value = rdr("no_of_box")
                     report.Parameters("no_of_plastic").Value = rdr("no_of_plastic")
                     report.Parameters("no_of_rolls").Value = rdr("no_of_rolls")
-                    data_to_grid(rdr("order_item"), table.invoice_data)
+                    report.Parameters("subtotal").Value = data_to_grid(rdr("order_item"), table.invoice_data)
                     report.Parameters("prepared_by").Value = rdr("prepared_by")
                     report.Parameters("arranged_by").Value = rdr("arranged_by")
                     report.Parameters("released_by").Value = rdr("released_by")
@@ -114,13 +120,14 @@ Public Class frm_sales_transaction_invoice
     End Sub
 
     'Set data to Table
-    Public Sub data_to_grid(orders As String, table As DataTable)
+    Public Function data_to_grid(orders As String, table As DataTable)
 
         Dim comma(), equal() As String
         Dim piece As String
         Dim i As Integer
         Dim colonseparator As New Regex("\b;\b")
         Dim equalseparator As New Regex("\b=\b")
+        Dim subtotal As Decimal
 
         If table.Rows.Count > 0 Then table.Rows.Clear()
 
@@ -131,16 +138,17 @@ Public Class frm_sales_transaction_invoice
             For i = 0 To comma.Length - 1
                 piece = comma(i).Trim
                 equal = piece.Split("=")
-
+                subtotal += equal(5).Replace(";", "")
                 table.Rows.Add(equal(0), equal(1), equal(2), equal(3), equal(4), equal(5).Replace(";", ""))
-
             Next
 
             table.DefaultView.Sort = "model ASC"
 
         End If
 
-    End Sub
+        Return subtotal
+
+    End Function
 
 
 

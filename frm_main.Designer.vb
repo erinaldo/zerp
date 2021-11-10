@@ -50,6 +50,7 @@ Partial Class frm_main
         Me.submenu_create_order = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_orders = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_quotations = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_returns = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_customers = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegisteredCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,6 +62,7 @@ Partial Class frm_main
         Me.submenu_delivery_logs = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_stock_management = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_stocks_inventory = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_returned_units = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_logistics = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_pick_deliveries = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_collections = New System.Windows.Forms.ToolStripMenuItem()
@@ -245,7 +247,7 @@ Partial Class frm_main
         '
         'menu_sales
         '
-        Me.menu_sales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_create_order, Me.submenu_orders, Me.submenu_quotations, Me.submenu_customers, Me.submenu_packing_list, Me.submenu_invoices, Me.submenu_logistics})
+        Me.menu_sales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_create_order, Me.submenu_orders, Me.submenu_quotations, Me.submenu_returns, Me.submenu_customers, Me.submenu_packing_list, Me.submenu_invoices, Me.submenu_logistics})
         Me.menu_sales.Name = "menu_sales"
         Me.menu_sales.Size = New System.Drawing.Size(55, 24)
         Me.menu_sales.Text = "Sales"
@@ -270,6 +272,12 @@ Partial Class frm_main
         Me.submenu_quotations.Size = New System.Drawing.Size(204, 24)
         Me.submenu_quotations.Text = "Quotations"
         Me.submenu_quotations.Visible = False
+        '
+        'submenu_returns
+        '
+        Me.submenu_returns.Name = "submenu_returns"
+        Me.submenu_returns.Size = New System.Drawing.Size(204, 24)
+        Me.submenu_returns.Text = "Sales Returns"
         '
         'submenu_customers
         '
@@ -314,7 +322,7 @@ Partial Class frm_main
         '
         'menu_warehouse
         '
-        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_stocks_inventory})
+        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_stocks_inventory, Me.submenu_returned_units})
         Me.menu_warehouse.Name = "menu_warehouse"
         Me.menu_warehouse.Size = New System.Drawing.Size(94, 24)
         Me.menu_warehouse.Text = "Warehouse"
@@ -346,6 +354,13 @@ Partial Class frm_main
         Me.submenu_stocks_inventory.Size = New System.Drawing.Size(206, 24)
         Me.submenu_stocks_inventory.Text = "Stocks Inventory"
         Me.submenu_stocks_inventory.Visible = False
+        '
+        'submenu_returned_units
+        '
+        Me.submenu_returned_units.Name = "submenu_returned_units"
+        Me.submenu_returned_units.Size = New System.Drawing.Size(206, 24)
+        Me.submenu_returned_units.Text = "Returned Units"
+        Me.submenu_returned_units.Visible = False
         '
         'menu_logistics
         '
@@ -493,42 +508,42 @@ Partial Class frm_main
         'submenu_user_accounts
         '
         Me.submenu_user_accounts.Name = "submenu_user_accounts"
-        Me.submenu_user_accounts.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_user_accounts.Size = New System.Drawing.Size(171, 24)
         Me.submenu_user_accounts.Text = "User Accounts"
         Me.submenu_user_accounts.Visible = False
         '
         'submenu_approvals
         '
         Me.submenu_approvals.Name = "submenu_approvals"
-        Me.submenu_approvals.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_approvals.Size = New System.Drawing.Size(171, 24)
         Me.submenu_approvals.Text = "Approvals"
         Me.submenu_approvals.Visible = False
         '
         'submenu_price_books
         '
         Me.submenu_price_books.Name = "submenu_price_books"
-        Me.submenu_price_books.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_price_books.Size = New System.Drawing.Size(171, 24)
         Me.submenu_price_books.Text = "Price Book"
         Me.submenu_price_books.Visible = False
         '
         'submenu_reports
         '
         Me.submenu_reports.Name = "submenu_reports"
-        Me.submenu_reports.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_reports.Size = New System.Drawing.Size(171, 24)
         Me.submenu_reports.Text = "Reports"
         Me.submenu_reports.Visible = False
         '
         'submenu_banks
         '
         Me.submenu_banks.Name = "submenu_banks"
-        Me.submenu_banks.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_banks.Size = New System.Drawing.Size(171, 24)
         Me.submenu_banks.Text = "Banks"
         '
         'submenu_warehouse
         '
         Me.submenu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu2_new_warehouse, Me.submenu2_registered_warehouse})
         Me.submenu_warehouse.Name = "submenu_warehouse"
-        Me.submenu_warehouse.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_warehouse.Size = New System.Drawing.Size(171, 24)
         Me.submenu_warehouse.Text = "Warehouse"
         Me.submenu_warehouse.Visible = False
         '
@@ -548,7 +563,7 @@ Partial Class frm_main
         '
         Me.submenu_suppliers.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewSupplierToolStripMenuItem, Me.RegisteredSupplierToolStripMenuItem})
         Me.submenu_suppliers.Name = "submenu_suppliers"
-        Me.submenu_suppliers.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_suppliers.Size = New System.Drawing.Size(171, 24)
         Me.submenu_suppliers.Text = "Suppliers"
         Me.submenu_suppliers.Visible = False
         '
@@ -567,7 +582,7 @@ Partial Class frm_main
         'submenu_settings
         '
         Me.submenu_settings.Name = "submenu_settings"
-        Me.submenu_settings.Size = New System.Drawing.Size(180, 24)
+        Me.submenu_settings.Size = New System.Drawing.Size(171, 24)
         Me.submenu_settings.Text = "Settings"
         Me.submenu_settings.Visible = False
         '
@@ -765,4 +780,6 @@ Partial Class frm_main
     Friend WithEvents submenu_po_returns As ToolStripMenuItem
     Friend WithEvents submenu_payment_cash As ToolStripMenuItem
     Friend WithEvents submenu_ForecastAndPayablesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents submenu_returns As ToolStripMenuItem
+    Friend WithEvents submenu_returned_units As ToolStripMenuItem
 End Class

@@ -104,13 +104,19 @@ Public Class frm_accounting_forecast_payables
 
             'Plot Data to Chart
             Using dt = DirectCast(grid_actual_payables.DataSource, DataTable)
+                Dim total_actual As Decimal = 0.00
                 Dim series = chart_actual_payables.Series("Actual Payables")
 
                 series.Points.Clear()
 
                 For i = 0 To dt.Rows.Count - 1
-                    series.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)), CDec(dt.Rows(i).Item(1))))
+                    series.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0), CDec(dt.Rows(i).Item(1))))
+                    total_actual += CDec(dt.Rows(i).Item(1))
                 Next
+
+                'Display Total
+                lbl_actual_total.Text = String.Concat("Total: ", FormatCurrency(total_actual))
+
             End Using
 
         Catch ex As Exception
@@ -124,13 +130,19 @@ Public Class frm_accounting_forecast_payables
 
             'Plot Data to Chart
             Using dt = DirectCast(grid_forecasted_payables.DataSource, DataTable)
+                Dim total_forecast As Decimal = 0.00
                 Dim series = chart_forecasted_payables.Series("Forecasted Payables")
 
                 series.Points.Clear()
 
                 For i = 0 To dt.Rows.Count - 1
-                    series.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)), CDec(dt.Rows(i).Item(1))))
+                    series.Points.Add(New DevExpress.XtraCharts.SeriesPoint(dt.Rows(i).Item(0), CDec(dt.Rows(i).Item(1))))
+                    total_forecast += CDec(dt.Rows(i).Item(1))
                 Next
+
+                'Display Total
+                lbl_future_total.Text = String.Concat("Total: ", FormatCurrency(total_forecast))
+
             End Using
 
         Catch ex As Exception

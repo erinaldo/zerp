@@ -38,16 +38,16 @@ Partial Class frm_warehouse_stock_transfer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.panel_top = New Guna.UI.WinForms.GunaLinePanel()
         Me.btn_stock_transfer = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_reconcile = New DevExpress.XtraEditors.SimpleButton()
@@ -61,7 +61,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.grid_stock_transferred_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_from = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_edit = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -70,6 +70,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.btn_delete = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.btn_request_transfer = New DevExpress.XtraEditors.SimpleButton()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lbl_inprogress = New System.Windows.Forms.LinkLabel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lbl_resolved = New System.Windows.Forms.LinkLabel()
         Me.lbl_completed = New System.Windows.Forms.LinkLabel()
@@ -78,6 +79,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.btn_refresh = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_receive = New DevExpress.XtraEditors.SimpleButton()
+        Me.lbl_cancelled = New System.Windows.Forms.LinkLabel()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
@@ -140,7 +142,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.GunaPanel2.Controls.Add(Me.GunaPanel3)
         Me.GunaPanel2.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(584, 27)
+        Me.GunaPanel2.Size = New System.Drawing.Size(813, 27)
         Me.GunaPanel2.TabIndex = 6
         '
         'GunaPanel3
@@ -151,7 +153,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.GunaPanel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.GunaPanel3.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel3.Name = "GunaPanel3"
-        Me.GunaPanel3.Size = New System.Drawing.Size(435, 27)
+        Me.GunaPanel3.Size = New System.Drawing.Size(183, 27)
         Me.GunaPanel3.TabIndex = 1
         '
         'HyperlinkLabelControl1
@@ -243,7 +245,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.grid_stock_transferred_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_stock_transferred_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_stock_transferred_view.Appearance.Row.Options.UseFont = True
-        Me.grid_stock_transferred_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_status, Me.GridColumn2, Me.GridColumn3, Me.GridColumn6, Me.col_edit, Me.col_delete})
+        Me.grid_stock_transferred_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_status, Me.col_from, Me.GridColumn3, Me.GridColumn6, Me.col_edit, Me.col_delete})
         Me.grid_stock_transferred_view.GridControl = Me.grid_stock_transferred
         Me.grid_stock_transferred_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_stock_transferred_view.Name = "grid_stock_transferred_view"
@@ -273,14 +275,14 @@ Partial Class frm_warehouse_stock_transfer
         Me.col_status.VisibleIndex = 1
         Me.col_status.Width = 93
         '
-        'GridColumn2
+        'col_from
         '
-        Me.GridColumn2.Caption = "From"
-        Me.GridColumn2.FieldName = "src_store"
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 2
-        Me.GridColumn2.Width = 207
+        Me.col_from.Caption = "From"
+        Me.col_from.FieldName = "src_store"
+        Me.col_from.Name = "col_from"
+        Me.col_from.Visible = True
+        Me.col_from.VisibleIndex = 2
+        Me.col_from.Width = 207
         '
         'GridColumn3
         '
@@ -317,8 +319,8 @@ Partial Class frm_warehouse_stock_transfer
         'btn_edit
         '
         Me.btn_edit.AutoHeight = False
-        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.pencolor_16x16
-        Me.btn_edit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.Image = Global.Inventory_Management.My.Resources.Resources.pencolor_16x16
+        Me.btn_edit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.btn_edit.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_edit.Name = "btn_edit"
         Me.btn_edit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -334,8 +336,8 @@ Partial Class frm_warehouse_stock_transfer
         'btn_delete
         '
         Me.btn_delete.AutoHeight = False
-        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.trash_16x16
-        Me.btn_delete.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions4.Image = Global.Inventory_Management.My.Resources.Resources.trash_16x16
+        Me.btn_delete.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.btn_delete.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_delete.Name = "btn_delete"
         Me.btn_delete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -360,6 +362,8 @@ Partial Class frm_warehouse_stock_transfer
         '
         'Guna2Panel1
         '
+        Me.Guna2Panel1.Controls.Add(Me.lbl_cancelled)
+        Me.Guna2Panel1.Controls.Add(Me.lbl_inprogress)
         Me.Guna2Panel1.Controls.Add(Me.Label1)
         Me.Guna2Panel1.Controls.Add(Me.lbl_resolved)
         Me.Guna2Panel1.Controls.Add(Me.lbl_completed)
@@ -376,6 +380,19 @@ Partial Class frm_warehouse_stock_transfer
         Me.Guna2Panel1.ShadowDecoration.Parent = Me.Guna2Panel1
         Me.Guna2Panel1.Size = New System.Drawing.Size(1120, 588)
         Me.Guna2Panel1.TabIndex = 15
+        '
+        'lbl_inprogress
+        '
+        Me.lbl_inprogress.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lbl_inprogress.AutoSize = True
+        Me.lbl_inprogress.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.lbl_inprogress.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
+        Me.lbl_inprogress.Location = New System.Drawing.Point(60, 560)
+        Me.lbl_inprogress.Name = "lbl_inprogress"
+        Me.lbl_inprogress.Size = New System.Drawing.Size(72, 15)
+        Me.lbl_inprogress.TabIndex = 24
+        Me.lbl_inprogress.TabStop = True
+        Me.lbl_inprogress.Text = "In-Progress"
         '
         'Label1
         '
@@ -394,7 +411,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.lbl_resolved.AutoSize = True
         Me.lbl_resolved.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.lbl_resolved.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
-        Me.lbl_resolved.Location = New System.Drawing.Point(134, 560)
+        Me.lbl_resolved.Location = New System.Drawing.Point(208, 560)
         Me.lbl_resolved.Name = "lbl_resolved"
         Me.lbl_resolved.Size = New System.Drawing.Size(59, 15)
         Me.lbl_resolved.TabIndex = 22
@@ -407,7 +424,7 @@ Partial Class frm_warehouse_stock_transfer
         Me.lbl_completed.AutoSize = True
         Me.lbl_completed.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.lbl_completed.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
-        Me.lbl_completed.Location = New System.Drawing.Point(60, 560)
+        Me.lbl_completed.Location = New System.Drawing.Point(134, 560)
         Me.lbl_completed.Name = "lbl_completed"
         Me.lbl_completed.Size = New System.Drawing.Size(68, 15)
         Me.lbl_completed.TabIndex = 21
@@ -498,6 +515,19 @@ Partial Class frm_warehouse_stock_transfer
         Me.btn_receive.TabIndex = 15
         Me.btn_receive.Text = "Receive Transfer"
         '
+        'lbl_cancelled
+        '
+        Me.lbl_cancelled.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lbl_cancelled.AutoSize = True
+        Me.lbl_cancelled.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.lbl_cancelled.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
+        Me.lbl_cancelled.Location = New System.Drawing.Point(273, 560)
+        Me.lbl_cancelled.Name = "lbl_cancelled"
+        Me.lbl_cancelled.Size = New System.Drawing.Size(63, 15)
+        Me.lbl_cancelled.TabIndex = 25
+        Me.lbl_cancelled.TabStop = True
+        Me.lbl_cancelled.Text = "Cancelled"
+        '
         'frm_warehouse_stock_transfer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -534,7 +564,7 @@ Partial Class frm_warehouse_stock_transfer
     Friend WithEvents grid_stock_transferred_view As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents col_id As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_status As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_from As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_request_transfer As DevExpress.XtraEditors.SimpleButton
@@ -553,4 +583,6 @@ Partial Class frm_warehouse_stock_transfer
     Friend WithEvents Label1 As Label
     Friend WithEvents lbl_resolved As LinkLabel
     Friend WithEvents lbl_completed As LinkLabel
+    Friend WithEvents lbl_inprogress As LinkLabel
+    Friend WithEvents lbl_cancelled As LinkLabel
 End Class

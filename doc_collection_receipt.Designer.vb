@@ -41,6 +41,12 @@ Partial Public Class doc_collection_receipt
         Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
+        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel22 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel20 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
@@ -94,12 +100,6 @@ Partial Public Class doc_collection_receipt
         Me.XrLine2 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel24 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel22 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
         Me.collected_by = New DevExpress.XtraReports.Parameters.Parameter()
         Me.encoded_by = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -314,6 +314,78 @@ Partial Public Class doc_collection_receipt
         Me.ReportFooter.HeightF = 224.7949!
         Me.ReportFooter.Name = "ReportFooter"
         Me.ReportFooter.PrintAtBottom = True
+        '
+        'XrLabel37
+        '
+        Me.XrLabel37.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
+        Me.XrLabel37.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(341.6667!, 71.04988!)
+        Me.XrLabel37.Multiline = True
+        Me.XrLabel37.Name = "XrLabel37"
+        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel37.SizeF = New System.Drawing.SizeF(152.15!, 7.560097!)
+        Me.XrLabel37.StylePriority.UseBorders = False
+        Me.XrLabel37.StylePriority.UseFont = False
+        Me.XrLabel37.StylePriority.UsePadding = False
+        Me.XrLabel37.StylePriority.UseTextAlignment = False
+        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'XrLabel38
+        '
+        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(637.8497!, 101.5266!)
+        Me.XrLabel38.Name = "XrLabel38"
+        Me.XrLabel38.SizeF = New System.Drawing.SizeF(152.15!, 22.91666!)
+        Me.XrLabel38.Text = "Customer:"
+        '
+        'XrLabel39
+        '
+        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?encoded_by")})
+        Me.XrLabel39.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(341.6667!, 48.04986!)
+        Me.XrLabel39.Multiline = True
+        Me.XrLabel39.Name = "XrLabel39"
+        Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel39.SizeF = New System.Drawing.SizeF(152.15!, 23.0!)
+        Me.XrLabel39.StylePriority.UseFont = False
+        Me.XrLabel39.StylePriority.UseTextAlignment = False
+        Me.XrLabel39.Text = "XrLabel21"
+        Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        '
+        'XrLabel11
+        '
+        Me.XrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
+        Me.XrLabel11.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(637.8498!, 178.6099!)
+        Me.XrLabel11.Multiline = True
+        Me.XrLabel11.Name = "XrLabel11"
+        Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel11.SizeF = New System.Drawing.SizeF(152.15!, 7.560097!)
+        Me.XrLabel11.StylePriority.UseBorders = False
+        Me.XrLabel11.StylePriority.UseFont = False
+        Me.XrLabel11.StylePriority.UsePadding = False
+        Me.XrLabel11.StylePriority.UseTextAlignment = False
+        Me.XrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'XrLabel22
+        '
+        Me.XrLabel22.LocationFloat = New DevExpress.Utils.PointFloat(253.0585!, 55.69331!)
+        Me.XrLabel22.Name = "XrLabel22"
+        Me.XrLabel22.SizeF = New System.Drawing.SizeF(88.6082!, 22.91666!)
+        Me.XrLabel22.Text = "Encoded By:"
+        '
+        'XrLabel36
+        '
+        Me.XrLabel36.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?generated_by")})
+        Me.XrLabel36.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(637.8498!, 155.6099!)
+        Me.XrLabel36.Multiline = True
+        Me.XrLabel36.Name = "XrLabel36"
+        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel36.SizeF = New System.Drawing.SizeF(152.15!, 23.0!)
+        Me.XrLabel36.StylePriority.UseFont = False
+        Me.XrLabel36.StylePriority.UseTextAlignment = False
+        Me.XrLabel36.Text = "XrLabel21"
+        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'XrLabel21
         '
@@ -680,7 +752,7 @@ Partial Public Class doc_collection_receipt
         'XrLabel27
         '
         Me.XrLabel27.Borders = DevExpress.XtraPrinting.BorderSide.Right
-        Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?collection_date")})
+        Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[cheque_date]")})
         Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(360.5526!, 0!)
         Me.XrLabel27.Multiline = True
         Me.XrLabel27.Name = "XrLabel27"
@@ -909,78 +981,6 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel23.StylePriority.UseTextAlignment = False
         Me.XrLabel23.Text = "No. of cheque"
         Me.XrLabel23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        '
-        'XrLabel11
-        '
-        Me.XrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
-        Me.XrLabel11.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(637.8498!, 178.6099!)
-        Me.XrLabel11.Multiline = True
-        Me.XrLabel11.Name = "XrLabel11"
-        Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel11.SizeF = New System.Drawing.SizeF(152.15!, 7.560097!)
-        Me.XrLabel11.StylePriority.UseBorders = False
-        Me.XrLabel11.StylePriority.UseFont = False
-        Me.XrLabel11.StylePriority.UsePadding = False
-        Me.XrLabel11.StylePriority.UseTextAlignment = False
-        Me.XrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-        '
-        'XrLabel22
-        '
-        Me.XrLabel22.LocationFloat = New DevExpress.Utils.PointFloat(253.0585!, 55.69331!)
-        Me.XrLabel22.Name = "XrLabel22"
-        Me.XrLabel22.SizeF = New System.Drawing.SizeF(88.6082!, 22.91666!)
-        Me.XrLabel22.Text = "Encoded By:"
-        '
-        'XrLabel36
-        '
-        Me.XrLabel36.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?generated_by")})
-        Me.XrLabel36.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(637.8498!, 155.6099!)
-        Me.XrLabel36.Multiline = True
-        Me.XrLabel36.Name = "XrLabel36"
-        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel36.SizeF = New System.Drawing.SizeF(152.15!, 23.0!)
-        Me.XrLabel36.StylePriority.UseFont = False
-        Me.XrLabel36.StylePriority.UseTextAlignment = False
-        Me.XrLabel36.Text = "XrLabel21"
-        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        '
-        'XrLabel37
-        '
-        Me.XrLabel37.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
-        Me.XrLabel37.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(341.6667!, 71.04988!)
-        Me.XrLabel37.Multiline = True
-        Me.XrLabel37.Name = "XrLabel37"
-        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel37.SizeF = New System.Drawing.SizeF(152.15!, 7.560097!)
-        Me.XrLabel37.StylePriority.UseBorders = False
-        Me.XrLabel37.StylePriority.UseFont = False
-        Me.XrLabel37.StylePriority.UsePadding = False
-        Me.XrLabel37.StylePriority.UseTextAlignment = False
-        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-        '
-        'XrLabel38
-        '
-        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(637.8497!, 101.5266!)
-        Me.XrLabel38.Name = "XrLabel38"
-        Me.XrLabel38.SizeF = New System.Drawing.SizeF(152.15!, 22.91666!)
-        Me.XrLabel38.Text = "Customer:"
-        '
-        'XrLabel39
-        '
-        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?encoded_by")})
-        Me.XrLabel39.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(341.6667!, 48.04986!)
-        Me.XrLabel39.Multiline = True
-        Me.XrLabel39.Name = "XrLabel39"
-        Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel39.SizeF = New System.Drawing.SizeF(152.15!, 23.0!)
-        Me.XrLabel39.StylePriority.UseFont = False
-        Me.XrLabel39.StylePriority.UseTextAlignment = False
-        Me.XrLabel39.Text = "XrLabel21"
-        Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'collected_by
         '

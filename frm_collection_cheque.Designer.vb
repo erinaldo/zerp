@@ -72,6 +72,14 @@ Partial Class frm_collection_cheque
         Me.cbb_bank = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.btn_delete = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GunaLinePanel2 = New Guna.UI.WinForms.GunaLinePanel()
+        Me.grid_returns = New DevExpress.XtraGrid.GridControl()
+        Me.grid_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col_srid = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_return_amount = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridView4 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_title = New Guna.UI.WinForms.GunaLabel()
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
@@ -99,6 +107,10 @@ Partial Class frm_collection_cheque
         CType(Me.txt_amount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_bank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GunaLinePanel2.SuspendLayout()
+        CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.txt_customer_name.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -203,7 +215,7 @@ Partial Class frm_collection_cheque
         '
         Me.txt_total.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_total.EditValue = ""
-        Me.txt_total.Location = New System.Drawing.Point(735, 286)
+        Me.txt_total.Location = New System.Drawing.Point(748, 387)
         Me.txt_total.Name = "txt_total"
         Me.txt_total.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_total.Properties.Appearance.Options.UseFont = True
@@ -239,7 +251,7 @@ Partial Class frm_collection_cheque
         Me.grid_cheque.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_cheque.MainView = Me.grid_cheque_view
         Me.grid_cheque.Name = "grid_cheque"
-        Me.grid_cheque.Size = New System.Drawing.Size(451, 131)
+        Me.grid_cheque.Size = New System.Drawing.Size(451, 228)
         Me.grid_cheque.TabIndex = 52
         Me.grid_cheque.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_cheque_view, Me.GridView1})
         '
@@ -390,7 +402,7 @@ Partial Class frm_collection_cheque
         Me.GunaLinePanel1.LineStyle = System.Windows.Forms.BorderStyle.None
         Me.GunaLinePanel1.Location = New System.Drawing.Point(493, 19)
         Me.GunaLinePanel1.Name = "GunaLinePanel1"
-        Me.GunaLinePanel1.Size = New System.Drawing.Size(400, 260)
+        Me.GunaLinePanel1.Size = New System.Drawing.Size(413, 191)
         Me.GunaLinePanel1.TabIndex = 46
         '
         'grid_transaction
@@ -401,7 +413,7 @@ Partial Class frm_collection_cheque
         Me.grid_transaction.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_transaction.MainView = Me.grid_transaction_view
         Me.grid_transaction.Name = "grid_transaction"
-        Me.grid_transaction.Size = New System.Drawing.Size(400, 235)
+        Me.grid_transaction.Size = New System.Drawing.Size(413, 166)
         Me.grid_transaction.TabIndex = 1
         Me.grid_transaction.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transaction_view, Me.GridView2})
         '
@@ -504,7 +516,7 @@ Partial Class frm_collection_cheque
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Label1.Size = New System.Drawing.Size(400, 25)
+        Me.Label1.Size = New System.Drawing.Size(413, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "UNPAID ORDERS"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -533,11 +545,11 @@ Partial Class frm_collection_cheque
         Me.LabelControl1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(649, 290)
+        Me.LabelControl1.Location = New System.Drawing.Point(662, 391)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(80, 14)
+        Me.LabelControl1.Size = New System.Drawing.Size(74, 14)
         Me.LabelControl1.TabIndex = 53
-        Me.LabelControl1.Text = "Total Amount:"
+        Me.LabelControl1.Text = "Amount Due:"
         '
         'cbb_bank
         '
@@ -561,6 +573,7 @@ Partial Class frm_collection_cheque
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.GunaLinePanel2)
         Me.GroupBox1.Controls.Add(Me.btn_delete)
         Me.GroupBox1.Controls.Add(Me.cbb_bank)
         Me.GroupBox1.Controls.Add(Me.LabelControl1)
@@ -583,10 +596,127 @@ Partial Class frm_collection_cheque
         Me.GroupBox1.Controls.Add(Me.txt_no)
         Me.GroupBox1.Location = New System.Drawing.Point(22, 111)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(908, 320)
+        Me.GroupBox1.Size = New System.Drawing.Size(926, 420)
         Me.GroupBox1.TabIndex = 37
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cheque Details"
+        '
+        'GunaLinePanel2
+        '
+        Me.GunaLinePanel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GunaLinePanel2.Controls.Add(Me.grid_returns)
+        Me.GunaLinePanel2.Controls.Add(Me.Label2)
+        Me.GunaLinePanel2.LineColor = System.Drawing.Color.Black
+        Me.GunaLinePanel2.LineStyle = System.Windows.Forms.BorderStyle.None
+        Me.GunaLinePanel2.Location = New System.Drawing.Point(493, 216)
+        Me.GunaLinePanel2.Name = "GunaLinePanel2"
+        Me.GunaLinePanel2.Size = New System.Drawing.Size(413, 161)
+        Me.GunaLinePanel2.TabIndex = 47
+        '
+        'grid_returns
+        '
+        Me.grid_returns.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grid_returns.Location = New System.Drawing.Point(0, 25)
+        Me.grid_returns.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_returns.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_returns.MainView = Me.grid_returns_view
+        Me.grid_returns.Name = "grid_returns"
+        Me.grid_returns.Size = New System.Drawing.Size(413, 136)
+        Me.grid_returns.TabIndex = 1
+        Me.grid_returns.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_returns_view, Me.GridView4})
+        '
+        'grid_returns_view
+        '
+        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_srid, Me.GridColumn3, Me.col_return_amount})
+        Me.grid_returns_view.GridControl = Me.grid_returns
+        Me.grid_returns_view.Name = "grid_returns_view"
+        Me.grid_returns_view.OptionsBehavior.ReadOnly = True
+        Me.grid_returns_view.OptionsSelection.MultiSelect = True
+        Me.grid_returns_view.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect
+        Me.grid_returns_view.OptionsSelection.ResetSelectionClickOutsideCheckboxSelector = True
+        Me.grid_returns_view.OptionsSelection.UseIndicatorForSelection = False
+        Me.grid_returns_view.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grid_returns_view.OptionsView.ShowGroupPanel = False
+        Me.grid_returns_view.OptionsView.ShowIndicator = False
+        '
+        'col_srid
+        '
+        Me.col_srid.AppearanceCell.Options.UseTextOptions = True
+        Me.col_srid.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_srid.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.col_srid.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.col_srid.AppearanceHeader.Options.UseFont = True
+        Me.col_srid.AppearanceHeader.Options.UseForeColor = True
+        Me.col_srid.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_srid.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_srid.Caption = "SRID"
+        Me.col_srid.FieldName = "srid"
+        Me.col_srid.MaxWidth = 80
+        Me.col_srid.MinWidth = 60
+        Me.col_srid.Name = "col_srid"
+        Me.col_srid.Visible = True
+        Me.col_srid.VisibleIndex = 1
+        Me.col_srid.Width = 60
+        '
+        'GridColumn3
+        '
+        Me.GridColumn3.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GridColumn3.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.GridColumn3.AppearanceHeader.Options.UseFont = True
+        Me.GridColumn3.AppearanceHeader.Options.UseForeColor = True
+        Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
+        Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn3.Caption = "Date Created"
+        Me.GridColumn3.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.GridColumn3.FieldName = "created_at"
+        Me.GridColumn3.MaxWidth = 100
+        Me.GridColumn3.MinWidth = 80
+        Me.GridColumn3.Name = "GridColumn3"
+        Me.GridColumn3.Visible = True
+        Me.GridColumn3.VisibleIndex = 2
+        Me.GridColumn3.Width = 80
+        '
+        'col_return_amount
+        '
+        Me.col_return_amount.AppearanceCell.Options.UseTextOptions = True
+        Me.col_return_amount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.col_return_amount.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.col_return_amount.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.col_return_amount.AppearanceHeader.Options.UseFont = True
+        Me.col_return_amount.AppearanceHeader.Options.UseForeColor = True
+        Me.col_return_amount.AppearanceHeader.Options.UseTextOptions = True
+        Me.col_return_amount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_return_amount.Caption = "Amount"
+        Me.col_return_amount.DisplayFormat.FormatString = "c2"
+        Me.col_return_amount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_return_amount.FieldName = "amount"
+        Me.col_return_amount.Name = "col_return_amount"
+        Me.col_return_amount.Visible = True
+        Me.col_return_amount.VisibleIndex = 3
+        Me.col_return_amount.Width = 88
+        '
+        'GridView4
+        '
+        Me.GridView4.GridControl = Me.grid_returns
+        Me.GridView4.Name = "GridView4"
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.Color.SteelBlue
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(0, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Label2.Size = New System.Drawing.Size(413, 25)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "RETURNS"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lbl_title
         '
@@ -606,7 +736,7 @@ Partial Class frm_collection_cheque
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(952, 56)
+        Me.GunaPanel2.Size = New System.Drawing.Size(970, 56)
         Me.GunaPanel2.TabIndex = 28
         '
         'LabelControl2
@@ -632,7 +762,7 @@ Partial Class frm_collection_cheque
         Me.btn_apply.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_apply.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question
         Me.btn_apply.Appearance.Options.UseBackColor = True
-        Me.btn_apply.Location = New System.Drawing.Point(801, 437)
+        Me.btn_apply.Location = New System.Drawing.Point(819, 537)
         Me.btn_apply.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_apply.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_apply.Name = "btn_apply"
@@ -663,7 +793,7 @@ Partial Class frm_collection_cheque
         'btn_cancel
         '
         Me.btn_cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_cancel.Location = New System.Drawing.Point(666, 437)
+        Me.btn_cancel.Location = New System.Drawing.Point(684, 537)
         Me.btn_cancel.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_cancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_cancel.Name = "btn_cancel"
@@ -678,7 +808,7 @@ Partial Class frm_collection_cheque
         Me.LabelControl11.Appearance.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.LabelControl11.Appearance.Options.UseFont = True
         Me.LabelControl11.Appearance.Options.UseForeColor = True
-        Me.LabelControl11.Location = New System.Drawing.Point(22, 447)
+        Me.LabelControl11.Location = New System.Drawing.Point(40, 547)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(108, 19)
         Me.LabelControl11.TabIndex = 55
@@ -697,7 +827,7 @@ Partial Class frm_collection_cheque
         Me.lbl_total_amount_cheques.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_total_amount_cheques.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.lbl_total_amount_cheques.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        Me.lbl_total_amount_cheques.Location = New System.Drawing.Point(142, 443)
+        Me.lbl_total_amount_cheques.Location = New System.Drawing.Point(160, 543)
         Me.lbl_total_amount_cheques.Name = "lbl_total_amount_cheques"
         Me.lbl_total_amount_cheques.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_total_amount_cheques.Size = New System.Drawing.Size(157, 28)
@@ -709,7 +839,7 @@ Partial Class frm_collection_cheque
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(952, 484)
+        Me.ClientSize = New System.Drawing.Size(970, 584)
         Me.Controls.Add(Me.lbl_total_amount_cheques)
         Me.Controls.Add(Me.LabelControl11)
         Me.Controls.Add(Me.btn_cancel)
@@ -742,6 +872,10 @@ Partial Class frm_collection_cheque
         CType(Me.cbb_bank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GunaLinePanel2.ResumeLayout(False)
+        CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaPanel2.ResumeLayout(False)
         Me.GunaPanel2.PerformLayout()
         CType(Me.txt_customer_name.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -798,4 +932,12 @@ Partial Class frm_collection_cheque
 	Friend WithEvents btn_cancel As DevExpress.XtraEditors.SimpleButton
 	Friend WithEvents LabelControl11 As LabelControl
 	Friend WithEvents lbl_total_amount_cheques As LabelControl
+    Friend WithEvents GunaLinePanel2 As GunaLinePanel
+    Friend WithEvents grid_returns As GridControl
+    Friend WithEvents grid_returns_view As GridView
+    Friend WithEvents col_srid As GridColumn
+    Friend WithEvents GridColumn3 As GridColumn
+    Friend WithEvents col_return_amount As GridColumn
+    Friend WithEvents GridView4 As GridView
+    Friend WithEvents Label2 As Label
 End Class

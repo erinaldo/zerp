@@ -46,12 +46,12 @@ Public Class frm_admin_transfer_view
 
                 Dim arr = per_unit(i).Split("=")
 
-                Dim cmd_desc = New MySqlCommand("SELECT winmodel, description FROM ims_inventory WHERE pid=@pid", conn)
+                Dim cmd_desc = New MySqlCommand("SELECT winmodel, description, qty_per_box FROM ims_inventory WHERE pid=@pid", conn)
                 cmd_desc.Parameters.AddWithValue("@pid", arr(0))
                 Dim rd As MySqlDataReader = cmd_desc.ExecuteReader
 
                 While rd.Read
-                    table.transferred_units.Rows.Add(arr(1), rd("winmodel"), rd("description"))
+                    table.transferred_units.Rows.Add(arr(1), arr(1) / rd("qty_per_box"), rd("winmodel"), rd("description"), arr(2))
                 End While
                 rd.Close()
             Next

@@ -991,3 +991,8 @@ D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.Assembl
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cash.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_payment.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_forecast_payables.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_picker.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_dialog.resources

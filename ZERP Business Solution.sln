@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ZERP Business Solution", "ZERP Business Solution.vbproj", "{5AF63ACD-E7B0-4F13-B59B-01B3213E1E03}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Zerp Setup", "..\Zerp Setup\Zerp Setup.vdproj", "{DE73A783-5382-4624-9DB7-B4302E55D041}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Zerp Setup", "..\Zerp Setup\Zerp Setup.vdproj", "{418F8061-DE7E-4AAC-B92C-23DE5D8D3159}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,10 @@ Global
 		{5AF63ACD-E7B0-4F13-B59B-01B3213E1E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AF63ACD-E7B0-4F13-B59B-01B3213E1E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AF63ACD-E7B0-4F13-B59B-01B3213E1E03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE73A783-5382-4624-9DB7-B4302E55D041}.Debug|Any CPU.ActiveCfg = Debug
-		{DE73A783-5382-4624-9DB7-B4302E55D041}.Release|Any CPU.ActiveCfg = Release
+		{418F8061-DE7E-4AAC-B92C-23DE5D8D3159}.Debug|Any CPU.ActiveCfg = Debug
+		{418F8061-DE7E-4AAC-B92C-23DE5D8D3159}.Debug|Any CPU.Build.0 = Debug
+		{418F8061-DE7E-4AAC-B92C-23DE5D8D3159}.Release|Any CPU.ActiveCfg = Release
+		{418F8061-DE7E-4AAC-B92C-23DE5D8D3159}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

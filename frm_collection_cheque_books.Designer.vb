@@ -162,7 +162,7 @@ Partial Class frm_collection_cheque_books
         Me.btn_open.Name = "btn_open"
         Me.btn_open.Size = New System.Drawing.Size(201, 46)
         Me.btn_open.TabIndex = 6
-        Me.btn_open.Text = "View Cheque Details"
+        Me.btn_open.Text = "Update Cheque Details"
         '
         'grid_cheque_book
         '
@@ -218,6 +218,8 @@ Partial Class frm_collection_cheque_books
         Me.GridColumn13.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn13.Caption = "Cheque Date"
+        Me.GridColumn13.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn13.FieldName = "cheque_date"
         Me.GridColumn13.MinWidth = 50
         Me.GridColumn13.Name = "GridColumn13"

@@ -173,7 +173,7 @@ Partial Class frm_product_inventory
         '
         'btn_export
         '
-        Me.btn_export.Appearance.Font = New System.Drawing.Font("Nunito", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_export.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_export.Appearance.Options.UseFont = True
         Me.btn_export.Appearance.Options.UseTextOptions = True
         Me.btn_export.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -190,7 +190,7 @@ Partial Class frm_product_inventory
         '
         'btn_print
         '
-        Me.btn_print.Appearance.Font = New System.Drawing.Font("Nunito", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_print.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_print.Appearance.Options.UseFont = True
         Me.btn_print.Appearance.Options.UseTextOptions = True
         Me.btn_print.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -211,7 +211,7 @@ Partial Class frm_product_inventory
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabPane.Appearance.BackColor = System.Drawing.Color.White
-        Me.TabPane.Appearance.Font = New System.Drawing.Font("Nunito", 9.0!)
+        Me.TabPane.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.TabPane.Appearance.Options.UseBackColor = True
         Me.TabPane.Appearance.Options.UseFont = True
         Me.TabPane.AppearanceButton.Hovered.Font = New System.Drawing.Font("Arial", 10.0!)
@@ -244,7 +244,7 @@ Partial Class frm_product_inventory
         Me.tab_mystore.Caption = "My Store"
         Me.tab_mystore.Controls.Add(Me.grid_mystore)
         Me.tab_mystore.Name = "tab_mystore"
-        Me.tab_mystore.Size = New System.Drawing.Size(982, 542)
+        Me.tab_mystore.Size = New System.Drawing.Size(982, 538)
         '
         'grid_mystore
         '
@@ -254,19 +254,19 @@ Partial Class frm_product_inventory
         Me.grid_mystore.Location = New System.Drawing.Point(0, 0)
         Me.grid_mystore.MainView = Me.grid_mystore_view
         Me.grid_mystore.Name = "grid_mystore"
-        Me.grid_mystore.Size = New System.Drawing.Size(982, 542)
+        Me.grid_mystore.Size = New System.Drawing.Size(982, 538)
         Me.grid_mystore.TabIndex = 1
         Me.grid_mystore.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_mystore_view})
         '
         'grid_mystore_view
         '
         Me.grid_mystore_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.Yellow
-        Me.grid_mystore_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_mystore_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_mystore_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_mystore_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_mystore_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_mystore_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_mystore_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_mystore_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_mystore_view.Appearance.Row.Options.UseFont = True
         Me.grid_mystore_view.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.grid_mystore_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_pid, Me.col_winmodel, Me.col_description, Me.col_qty, Me.col_on_hold})
@@ -332,7 +332,7 @@ Partial Class frm_product_inventory
         Me.tab_allstore.Controls.Add(Me.grid_all)
         Me.tab_allstore.Name = "tab_allstore"
         Me.tab_allstore.Padding = New System.Windows.Forms.Padding(0, 0, 0, 5)
-        Me.tab_allstore.Size = New System.Drawing.Size(982, 542)
+        Me.tab_allstore.Size = New System.Drawing.Size(982, 538)
         '
         'grid_all
         '
@@ -342,19 +342,19 @@ Partial Class frm_product_inventory
         Me.grid_all.Location = New System.Drawing.Point(0, 0)
         Me.grid_all.MainView = Me.grid_all_view
         Me.grid_all.Name = "grid_all"
-        Me.grid_all.Size = New System.Drawing.Size(982, 537)
+        Me.grid_all.Size = New System.Drawing.Size(982, 533)
         Me.grid_all.TabIndex = 0
         Me.grid_all.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_all_view})
         '
         'grid_all_view
         '
         Me.grid_all_view.Appearance.HeaderPanel.BackColor = System.Drawing.Color.Yellow
-        Me.grid_all_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_all_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_all_view.Appearance.HeaderPanel.Options.UseBackColor = True
         Me.grid_all_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_all_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_all_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_all_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_all_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_all_view.Appearance.Row.Options.UseFont = True
         Me.grid_all_view.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.grid_all_view.GridControl = Me.grid_all

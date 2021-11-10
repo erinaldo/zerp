@@ -22,12 +22,12 @@ Partial Class frm_accounting_forecast_payables
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim XyDiagram3 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series3 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SideBySideBarSeriesView3 As DevExpress.XtraCharts.SideBySideBarSeriesView = New DevExpress.XtraCharts.SideBySideBarSeriesView()
-        Dim XyDiagram4 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
-        Dim Series4 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim SideBySideBarSeriesView4 As DevExpress.XtraCharts.SideBySideBarSeriesView = New DevExpress.XtraCharts.SideBySideBarSeriesView()
+        Dim XyDiagram2 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SideBySideBarSeriesView2 As DevExpress.XtraCharts.SideBySideBarSeriesView = New DevExpress.XtraCharts.SideBySideBarSeriesView()
+        Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim SideBySideBarSeriesView1 As DevExpress.XtraCharts.SideBySideBarSeriesView = New DevExpress.XtraCharts.SideBySideBarSeriesView()
         Me.panel_top = New Guna.UI.WinForms.GunaLinePanel()
         Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
         Me.chart_forecasted_payables = New DevExpress.XtraCharts.ChartControl()
@@ -49,15 +49,19 @@ Partial Class frm_accounting_forecast_payables
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.dt_start = New DevExpress.XtraEditors.DateEdit()
         Me.dt_end = New DevExpress.XtraEditors.DateEdit()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbl_actual_total = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.lbl_future_total = New System.Windows.Forms.Label()
         Me.panel_top.SuspendLayout()
         CType(Me.chart_forecasted_payables, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(SideBySideBarSeriesView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chart_actual_payables, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(SideBySideBarSeriesView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_actual_payables, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,6 +73,8 @@ Partial Class frm_accounting_forecast_payables
         CType(Me.dt_start.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dt_end.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dt_end.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'panel_top
@@ -80,7 +86,7 @@ Partial Class frm_accounting_forecast_payables
         Me.panel_top.LineStyle = System.Windows.Forms.BorderStyle.None
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1108, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1109, 78)
         Me.panel_top.TabIndex = 9
         '
         'GunaLabel1
@@ -96,51 +102,51 @@ Partial Class frm_accounting_forecast_payables
         '
         'chart_forecasted_payables
         '
+        Me.chart_forecasted_payables.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.chart_forecasted_payables.AppearanceNameSerializable = "Light"
         Me.chart_forecasted_payables.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.[False]
         Me.TablePanel1.SetColumn(Me.chart_forecasted_payables, 0)
-        XyDiagram3.AxisX.Interlaced = True
-        XyDiagram3.AxisX.Title.Text = "Forecast Payables"
-        XyDiagram3.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.[True]
-        XyDiagram3.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram3.AxisY.VisibleInPanesSerializable = "-1"
-        Me.chart_forecasted_payables.Diagram = XyDiagram3
-        Me.chart_forecasted_payables.Dock = System.Windows.Forms.DockStyle.Fill
+        XyDiagram2.AxisX.Interlaced = True
+        XyDiagram2.AxisX.Title.Text = "Forecast Payables"
+        XyDiagram2.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.[True]
+        XyDiagram2.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram2.AxisY.VisibleInPanesSerializable = "-1"
+        Me.chart_forecasted_payables.Diagram = XyDiagram2
         Me.chart_forecasted_payables.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center
         Me.chart_forecasted_payables.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.TopOutside
         Me.chart_forecasted_payables.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight
         Me.chart_forecasted_payables.Legend.MarkerSize = New System.Drawing.Size(20, 11)
         Me.chart_forecasted_payables.Legend.Visibility = DevExpress.Utils.DefaultBoolean.[False]
-        Me.chart_forecasted_payables.Location = New System.Drawing.Point(3, 306)
+        Me.chart_forecasted_payables.Location = New System.Drawing.Point(3, 314)
         Me.chart_forecasted_payables.Name = "chart_forecasted_payables"
         Me.chart_forecasted_payables.PaletteBaseColorNumber = 5
         Me.chart_forecasted_payables.PaletteName = "Blue Warm"
         Me.TablePanel1.SetRow(Me.chart_forecasted_payables, 1)
-        Series3.Name = "Forecasted Payables"
-        SideBySideBarSeriesView3.BarWidth = 0.8R
-        Series3.View = SideBySideBarSeriesView3
-        Me.chart_forecasted_payables.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series3}
-        Me.chart_forecasted_payables.Size = New System.Drawing.Size(832, 293)
+        Series2.Name = "Forecasted Payables"
+        SideBySideBarSeriesView2.BarWidth = 0.8R
+        Series2.View = SideBySideBarSeriesView2
+        Me.chart_forecasted_payables.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
+        Me.chart_forecasted_payables.Size = New System.Drawing.Size(843, 293)
         Me.chart_forecasted_payables.TabIndex = 8
         '
         'chart_actual_payables
         '
+        Me.chart_actual_payables.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.chart_actual_payables.AppearanceNameSerializable = "Light"
         Me.chart_actual_payables.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.[False]
         Me.TablePanel1.SetColumn(Me.chart_actual_payables, 0)
-        XyDiagram4.AxisX.Interlaced = True
-        XyDiagram4.AxisX.MinorCount = 10
-        XyDiagram4.AxisX.Tickmarks.MinorVisible = False
-        XyDiagram4.AxisX.Title.Text = "Actual Payables"
-        XyDiagram4.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.[True]
-        XyDiagram4.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.[True]
-        XyDiagram4.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram4.AxisY.MinorCount = 3
-        XyDiagram4.AxisY.Title.Text = "TOTAL"
-        XyDiagram4.AxisY.VisibleInPanesSerializable = "-1"
-        XyDiagram4.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.[True]
-        Me.chart_actual_payables.Diagram = XyDiagram4
-        Me.chart_actual_payables.Dock = System.Windows.Forms.DockStyle.Fill
+        XyDiagram1.AxisX.Interlaced = True
+        XyDiagram1.AxisX.MinorCount = 10
+        XyDiagram1.AxisX.Tickmarks.MinorVisible = False
+        XyDiagram1.AxisX.Title.Text = "Actual Payables"
+        XyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.[True]
+        XyDiagram1.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.[True]
+        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram1.AxisY.MinorCount = 3
+        XyDiagram1.AxisY.Title.Text = "TOTAL"
+        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
+        XyDiagram1.DefaultPane.EnableAxisXScrolling = DevExpress.Utils.DefaultBoolean.[True]
+        Me.chart_actual_payables.Diagram = XyDiagram1
         Me.chart_actual_payables.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center
         Me.chart_actual_payables.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.TopOutside
         Me.chart_actual_payables.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight
@@ -151,25 +157,23 @@ Partial Class frm_accounting_forecast_payables
         Me.chart_actual_payables.PaletteBaseColorNumber = 5
         Me.chart_actual_payables.PaletteName = "Module"
         Me.TablePanel1.SetRow(Me.chart_actual_payables, 0)
-        Series4.Name = "Actual Payables"
-        Series4.SeriesPointsSorting = DevExpress.XtraCharts.SortingMode.Ascending
-        SideBySideBarSeriesView4.BarWidth = 0.8R
-        Series4.View = SideBySideBarSeriesView4
-        Me.chart_actual_payables.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series4}
-        Me.chart_actual_payables.Size = New System.Drawing.Size(832, 297)
+        Series1.Name = "Actual Payables"
+        Series1.SeriesPointsSorting = DevExpress.XtraCharts.SortingMode.Ascending
+        SideBySideBarSeriesView1.BarWidth = 0.8R
+        Series1.View = SideBySideBarSeriesView1
+        Me.chart_actual_payables.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
+        Me.chart_actual_payables.Size = New System.Drawing.Size(843, 297)
         Me.chart_actual_payables.TabIndex = 9
         '
         'grid_actual_payables
         '
-        Me.TablePanel1.SetColumn(Me.grid_actual_payables, 1)
         Me.grid_actual_payables.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_actual_payables.Location = New System.Drawing.Point(841, 3)
+        Me.grid_actual_payables.Location = New System.Drawing.Point(0, 0)
         Me.grid_actual_payables.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_actual_payables.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_actual_payables.MainView = Me.GridView1
         Me.grid_actual_payables.Name = "grid_actual_payables"
-        Me.TablePanel1.SetRow(Me.grid_actual_payables, 0)
-        Me.grid_actual_payables.Size = New System.Drawing.Size(205, 297)
+        Me.grid_actual_payables.Size = New System.Drawing.Size(196, 263)
         Me.grid_actual_payables.TabIndex = 13
         Me.grid_actual_payables.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -226,28 +230,26 @@ Partial Class frm_accounting_forecast_payables
         Me.TablePanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TablePanel1.Columns.AddRange(New DevExpress.Utils.Layout.TablePanelColumn() {New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 83.85!), New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 21.15!)})
-        Me.TablePanel1.Controls.Add(Me.grid_forecasted_payables)
+        Me.TablePanel1.Columns.AddRange(New DevExpress.Utils.Layout.TablePanelColumn() {New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 84.85!), New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20.15!)})
+        Me.TablePanel1.Controls.Add(Me.Panel3)
+        Me.TablePanel1.Controls.Add(Me.Panel2)
         Me.TablePanel1.Controls.Add(Me.chart_forecasted_payables)
         Me.TablePanel1.Controls.Add(Me.chart_actual_payables)
-        Me.TablePanel1.Controls.Add(Me.grid_actual_payables)
         Me.TablePanel1.Location = New System.Drawing.Point(30, 147)
         Me.TablePanel1.Name = "TablePanel1"
         Me.TablePanel1.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 303.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!)})
-        Me.TablePanel1.Size = New System.Drawing.Size(1049, 602)
+        Me.TablePanel1.Size = New System.Drawing.Size(1050, 618)
         Me.TablePanel1.TabIndex = 14
         '
         'grid_forecasted_payables
         '
-        Me.TablePanel1.SetColumn(Me.grid_forecasted_payables, 1)
         Me.grid_forecasted_payables.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_forecasted_payables.Location = New System.Drawing.Point(841, 306)
+        Me.grid_forecasted_payables.Location = New System.Drawing.Point(0, 0)
         Me.grid_forecasted_payables.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_forecasted_payables.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_forecasted_payables.MainView = Me.GridView2
         Me.grid_forecasted_payables.Name = "grid_forecasted_payables"
-        Me.TablePanel1.SetRow(Me.grid_forecasted_payables, 1)
-        Me.grid_forecasted_payables.Size = New System.Drawing.Size(205, 293)
+        Me.grid_forecasted_payables.Size = New System.Drawing.Size(196, 275)
         Me.grid_forecasted_payables.TabIndex = 14
         Me.grid_forecasted_payables.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -375,12 +377,60 @@ Partial Class frm_accounting_forecast_payables
         Me.dt_end.Size = New System.Drawing.Size(114, 26)
         Me.dt_end.TabIndex = 2
         '
+        'Panel2
+        '
+        Me.TablePanel1.SetColumn(Me.Panel2, 1)
+        Me.Panel2.Controls.Add(Me.grid_actual_payables)
+        Me.Panel2.Controls.Add(Me.lbl_actual_total)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(852, 3)
+        Me.Panel2.Name = "Panel2"
+        Me.TablePanel1.SetRow(Me.Panel2, 0)
+        Me.Panel2.Size = New System.Drawing.Size(196, 297)
+        Me.Panel2.TabIndex = 15
+        '
+        'lbl_actual_total
+        '
+        Me.lbl_actual_total.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lbl_actual_total.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
+        Me.lbl_actual_total.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.lbl_actual_total.Location = New System.Drawing.Point(0, 263)
+        Me.lbl_actual_total.Name = "lbl_actual_total"
+        Me.lbl_actual_total.Size = New System.Drawing.Size(196, 34)
+        Me.lbl_actual_total.TabIndex = 14
+        Me.lbl_actual_total.Text = "Total: 6,255.231.15"
+        Me.lbl_actual_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Panel3
+        '
+        Me.TablePanel1.SetColumn(Me.Panel3, 1)
+        Me.Panel3.Controls.Add(Me.grid_forecasted_payables)
+        Me.Panel3.Controls.Add(Me.lbl_future_total)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(852, 306)
+        Me.Panel3.Name = "Panel3"
+        Me.TablePanel1.SetRow(Me.Panel3, 1)
+        Me.Panel3.Size = New System.Drawing.Size(196, 309)
+        Me.Panel3.TabIndex = 16
+        '
+        'lbl_future_total
+        '
+        Me.lbl_future_total.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lbl_future_total.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
+        Me.lbl_future_total.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.lbl_future_total.Location = New System.Drawing.Point(0, 275)
+        Me.lbl_future_total.Name = "lbl_future_total"
+        Me.lbl_future_total.Size = New System.Drawing.Size(196, 34)
+        Me.lbl_future_total.TabIndex = 15
+        Me.lbl_future_total.Text = "Total: 6,255.231.15"
+        Me.lbl_future_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'frm_accounting_forecast_payables
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1108, 779)
+        Me.ClientSize = New System.Drawing.Size(1109, 795)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TablePanel1)
         Me.Controls.Add(Me.panel_top)
@@ -388,13 +438,13 @@ Partial Class frm_accounting_forecast_payables
         Me.Text = "frm_accounting_forecast_payables"
         Me.panel_top.ResumeLayout(False)
         Me.panel_top.PerformLayout()
-        CType(XyDiagram3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(SideBySideBarSeriesView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(XyDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chart_forecasted_payables, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(XyDiagram4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(SideBySideBarSeriesView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chart_actual_payables, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_actual_payables, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -408,6 +458,8 @@ Partial Class frm_accounting_forecast_payables
         CType(Me.dt_start.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dt_end.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dt_end.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -433,4 +485,8 @@ Partial Class frm_accounting_forecast_payables
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents lbl_future_total As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents lbl_actual_total As Label
 End Class

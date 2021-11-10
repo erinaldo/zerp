@@ -285,6 +285,11 @@ Public Class frm_main
         LoadFrm(New frm_sales_quotation_order_list)
     End Sub
 
+    'Sales Returns
+    Private Sub submenu_returns_Click(sender As Object, e As EventArgs) Handles submenu_returns.Click
+        LoadFrm(New frm_sales_return)
+    End Sub
+
     'New Customer
     Private Sub NewCustomerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewCustomerToolStripMenuItem.Click
         frm_sales_customers_new.ShowDialog()
@@ -437,7 +442,10 @@ Public Class frm_main
         LoadFrm(New frm_warehouse_delivery_logs)
     End Sub
 
-
+    'Returned Units
+    Private Sub submenu_returned_units_Click(sender As Object, e As EventArgs) Handles submenu_returned_units.Click
+        LoadFrm(New frm_warehouse_returns)
+    End Sub
 
 
 

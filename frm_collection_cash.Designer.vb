@@ -32,7 +32,8 @@ Partial Class frm_collection_cash
         Me.lbl_amount_due = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_orderid = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_customer = New DevExpress.XtraEditors.LabelControl()
-        Me.btn_hold = New DevExpress.XtraEditors.SimpleButton()
+        Me.btn_deduct = New DevExpress.XtraEditors.SimpleButton()
+        Me.lbl_deduction = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -91,9 +92,11 @@ Partial Class frm_collection_cash
         '
         Me.btn_paid.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
         Me.btn_paid.Appearance.Options.UseBackColor = True
-        Me.btn_paid.Location = New System.Drawing.Point(158, 220)
+        Me.btn_paid.Location = New System.Drawing.Point(163, 214)
+        Me.btn_paid.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_paid.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_paid.Name = "btn_paid"
-        Me.btn_paid.Size = New System.Drawing.Size(139, 31)
+        Me.btn_paid.Size = New System.Drawing.Size(134, 31)
         Me.btn_paid.TabIndex = 19
         Me.btn_paid.Text = "PAID"
         '
@@ -136,13 +139,28 @@ Partial Class frm_collection_cash
         Me.lbl_customer.TabIndex = 22
         Me.lbl_customer.Text = "Customer Name"
         '
-        'btn_hold
+        'btn_deduct
         '
-        Me.btn_hold.Location = New System.Drawing.Point(20, 220)
-        Me.btn_hold.Name = "btn_hold"
-        Me.btn_hold.Size = New System.Drawing.Size(87, 31)
-        Me.btn_hold.TabIndex = 24
-        Me.btn_hold.Text = "HOLD"
+        Me.btn_deduct.Location = New System.Drawing.Point(20, 214)
+        Me.btn_deduct.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_deduct.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_deduct.Name = "btn_deduct"
+        Me.btn_deduct.Size = New System.Drawing.Size(134, 31)
+        Me.btn_deduct.TabIndex = 24
+        Me.btn_deduct.Text = "Deduct Returns"
+        '
+        'lbl_deduction
+        '
+        Me.lbl_deduction.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_deduction.Appearance.ForeColor = System.Drawing.Color.Red
+        Me.lbl_deduction.Appearance.Options.UseFont = True
+        Me.lbl_deduction.Appearance.Options.UseForeColor = True
+        Me.lbl_deduction.Location = New System.Drawing.Point(20, 254)
+        Me.lbl_deduction.Name = "lbl_deduction"
+        Me.lbl_deduction.Size = New System.Drawing.Size(56, 14)
+        Me.lbl_deduction.TabIndex = 25
+        Me.lbl_deduction.Text = "Deduction"
+        Me.lbl_deduction.Visible = False
         '
         'frm_collection_cash
         '
@@ -150,7 +168,8 @@ Partial Class frm_collection_cash
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(317, 280)
-        Me.Controls.Add(Me.btn_hold)
+        Me.Controls.Add(Me.lbl_deduction)
+        Me.Controls.Add(Me.btn_deduct)
         Me.Controls.Add(Me.lbl_customer)
         Me.Controls.Add(Me.lbl_orderid)
         Me.Controls.Add(Me.lbl_amount_due)
@@ -182,5 +201,6 @@ Partial Class frm_collection_cash
     Friend WithEvents lbl_amount_due As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_orderid As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_customer As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents btn_hold As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btn_deduct As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lbl_deduction As DevExpress.XtraEditors.LabelControl
 End Class

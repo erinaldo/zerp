@@ -43,48 +43,51 @@ Public Class frm_product_inventory
     'Load ALL Store's Inventory
     Private Sub LoadAllStore()
         Try
-            Dim selection = ""
-            Dim left_join = ""
+            Dim stores_qty = String.Empty
+            Dim stores_onhold = "0"
+            Dim left_join = String.Empty
 
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT store_name FROM ims_stores", conn)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using connection = New MySqlConnection(str)
+                connection.Open()
 
-            While rdr.Read
-                Dim STORE = rdr("store_name")
-                selection += ", ims_" & STORE.ToLower.Replace(" ", "_") & ".qty as '" & STORE.Replace("Winland ", "") & "'"
-                left_join += " LEFT JOIN ims_" & STORE.ToLower.Replace(" ", "_") & " ON ims_inventory.pid=" & "ims_" & STORE.ToLower.Replace(" ", "_") & ".pid"
-            End While
-            rdr.Close()
+                'GET ALL STORES tables
+                Using cmd = New MySqlCommand("SELECT store_name FROM ims_stores", connection)
+                    Using rdr = cmd.ExecuteReader
+                        While rdr.Read
+                            Dim STORE = rdr("store_name")
+                            stores_qty += ", ims_" & STORE.ToLower.Replace(" ", "_") & ".qty as '" & STORE.Replace("Winland ", "") & "'"
+                            stores_onhold = String.Concat(stores_onhold, " + ", "IFNULL(ims_" & STORE.ToLower.Replace(" ", "_") & ".on_hold, 0)")
+                            left_join += " LEFT JOIN ims_" & STORE.ToLower.Replace(" ", "_") & " ON ims_inventory.pid=" & "ims_" & STORE.ToLower.Replace(" ", "_") & ".pid"
+                        End While
+                    End Using
+                End Using
 
-            Dim query = "SELECT ims_inventory.pid as 'Product ID', winmodel as 'Model', description as Description" & selection & " FROM ims_inventory" & left_join
+                'GET DATA FROM ALL STORES
+                Dim query = "SELECT ims_inventory.pid AS 'PID', winmodel AS Model, description as Description, (" & stores_onhold & ") AS 'On-Hold'" & stores_qty & " FROM ims_inventory" & left_join
+                Using cmd_grid = New MySqlCommand(query, connection)
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd_grid)
+                    da.Fill(dt)
+                    grid_all.DataSource = dt
+                End Using
 
-            Dim cmd_grid = New MySqlCommand(query, conn)
-            cmd_grid.ExecuteNonQuery()
+                'FORMAT DISPLAY
+                grid_all_view.Columns(0).OptionsColumn.FixedWidth = True
+                grid_all_view.Columns(0).Width = 100
+                grid_all_view.Columns(0).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+                grid_all_view.Columns(1).OptionsColumn.FixedWidth = True
+                grid_all_view.Columns(1).Width = 200
 
-            Dim dt = New DataTable
-            Dim da = New MySqlDataAdapter(cmd_grid)
-            da.Fill(dt)
+                For i = 3 To grid_all_view.Columns.Count - 1
+                    grid_all_view.Columns(i).OptionsColumn.FixedWidth = True
+                    grid_all_view.Columns(i).Width = 120
+                    grid_all_view.Columns(i).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+                Next
 
-            grid_all.DataSource = dt
-
-            grid_all_view.Columns(0).OptionsColumn.FixedWidth = True
-            grid_all_view.Columns(0).Width = 100
-            grid_all_view.Columns(0).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            grid_all_view.Columns(1).OptionsColumn.FixedWidth = True
-            grid_all_view.Columns(1).Width = 200
-
-
-            For i = 3 To grid_all_view.Columns.Count - 1
-                grid_all_view.Columns(i).OptionsColumn.FixedWidth = True
-                grid_all_view.Columns(i).Width = 120
-                grid_all_view.Columns(i).AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-            Next
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
     End Sub
 

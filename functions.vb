@@ -2,12 +2,14 @@
 Imports System.IO
 Imports MySql.Data.MySqlClient
 Imports System.Security.Cryptography
+Imports DevExpress.XtraGrid
 
 Module functions
 
     ReadOnly conn As New MySqlConnection(str)
     Public Property rowHandle As Integer
-
+    Public Property sales_return_id As Integer
+    Public Property sales_return_amount As Decimal
 
     'TEST CONNECTION
     Public Function TestConnection()
@@ -236,8 +238,8 @@ Module functions
                                   current_balance As Decimal, payment As Decimal, balance As Decimal, payment_gateway As String, payment_ref As String)
         'Try
         Using connection
-            Using cmd = New MySqlCommand("INSERT INTO ims_payment_logs (payment_date, order_id, customer_id, current_balance, payment, balance, payment_gateway, payment_ref)
-                                            VALUES (@payment_date, @order_id, (SELECT customer_id FROM ims_customers WHERE first_name=@customer), @current_balance, @payment, @balance, @payment_gateway, @payment_ref)", connection)
+            Using cmd = New MySqlCommand("INSERT INTO ims_payment_logs (payment_date, order_id, customer_id, current_balance, payment, balance, payment_gateway, payment_ref, received_by)
+                                            VALUES (@payment_date, @order_id, (SELECT customer_id FROM ims_customers WHERE first_name=@customer), @current_balance, @payment, @balance, @payment_gateway, @payment_ref, @received_by)", connection)
                 cmd.Parameters.AddWithValue("@payment_date", payment_date)
                 cmd.Parameters.AddWithValue("@order_id", order_id)
                 cmd.Parameters.AddWithValue("@customer", customer)
@@ -246,6 +248,7 @@ Module functions
                 cmd.Parameters.AddWithValue("@balance", balance)
                 cmd.Parameters.AddWithValue("@payment_gateway", payment_gateway)
                 cmd.Parameters.AddWithValue("@payment_ref", payment_ref)
+                cmd.Parameters.AddWithValue("@received_by", frm_main.user_id.Text)
                 cmd.ExecuteNonQuery()
             End Using
         End Using
@@ -254,12 +257,50 @@ Module functions
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    'Update Sales Returns
+    Public Sub Update_SalesReturns(id As Integer)
+        Try
+            Using conn = New MySqlConnection(str)
+                conn.Open()
+                Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET is_applied=1 WHERE sales_return_id=" & id, conn)
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+    End Sub
+
 End Module
 
-'Objects for Items
-Public Class cheques
+
+
+
+'OBJECTS
+
+Public Class ChequesClass
     Public Property bank As String
     Public Property cheque_date As Date
     Public Property cheque_no As String
     Public Property amount As Decimal
+End Class
+
+Public Class SalesReturnClass
+    Public Property qty As Integer
+    Public Property model As String
+    Public Property description As String
+    Public Property unit_price As Decimal
+    Public Property total_amount As Decimal
+    Public Property pid As String
+End Class
+
+Public Class PurchaseReturnClass
+    Public Property batch_no As Integer
+    Public Property rid As Integer
+    Public Property qty As Integer
+    Public Property model As String
+    Public Property description As String
+    Public Property cost As Decimal
+    Public Property total_cost As Decimal
 End Class
