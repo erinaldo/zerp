@@ -127,7 +127,7 @@ Public Class frm_logistics_deliveries
     '----- CONTROLS ----
 
     'Print
-    Private Sub btn_print_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_print.ButtonClick
+    Private Sub btn_print_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_release.ButtonClick
 
         Dim orderid = grid_deliveries_view.GetFocusedRowCellValue(col_id)
         Dim shipping_method = grid_deliveries_view.GetFocusedRowCellValue(col_shipping_method)
@@ -202,9 +202,9 @@ Public Class frm_logistics_deliveries
                 Dim ans = MsgBox("Ready for Delivery?" & vbCrLf & vbCrLf & "This will tag as RELEASED. Continue?", vbQuestion + vbYesNo, "Confirmation")
                 If ans = vbYes Then
 
-                    Dim status = ""
+                    Dim status = "UNKNOWN STATUS"
                     Select Case payment_status
-                        Case "UNPAID" : status = "Released"
+                        Case "UNPAID", "PARTIAL", "OVERPAID" : status = "Released"
                         Case "PAID" : status = "Completed"
                     End Select
 
@@ -226,11 +226,10 @@ Public Class frm_logistics_deliveries
                         conn.Close()
 
                         frm_sales_transaction_invoice.PrintInvoice(orderid)
-                        'PrintInvoice(orderid)
 
                         Dim msg = ""
                         Select Case payment_status
-                            Case "UNPAID" : msg = "Successfully tag as '" & status.ToUpper & "'" & vbCrLf & vbCrLf & "Please return the payment after Delivery!"
+                            Case "UNPAID", "PARTIAL", "OVERPAID" : msg = "Successfully tag as '" & status.ToUpper & "'" & vbCrLf & vbCrLf & "Please return the payment after Delivery!"
                             Case "PAID" : msg = "Successfully tag as '" & status.ToUpper & "'"
                         End Select
 

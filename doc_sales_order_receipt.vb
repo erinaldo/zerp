@@ -14,8 +14,10 @@ Public Class doc_sales_order_receipt
         'SHOW "THIS DOCUMENT IS NOT VALID FOR CLAIM OF INPUT TAX" IF VATABLE
         If is_vatable.Value = False Then
             XrLabel7.Visible = True
+            panel_vatables.Visible = False
         Else
             XrLabel7.Visible = False
+            panel_vatables.Visible = True
         End If
 
         'SHOW DEDUCTION IF APPLIED

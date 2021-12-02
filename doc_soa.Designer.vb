@@ -74,6 +74,7 @@ Partial Public Class doc_soa
         Me.PrintData1 = New Inventory_Management.PrintData()
         Me.store_info = New DevExpress.XtraReports.Parameters.Parameter()
         Me.total = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.XrLabel24 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -426,7 +427,7 @@ Partial Public Class doc_soa
         '
         'ReportFooter
         '
-        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel23, Me.XrLabel17, Me.XrLabel22, Me.XrLabel20, Me.XrLabel13, Me.XrLine1, Me.XrLabel16, Me.XrLabel15, Me.XrLabel21, Me.XrLabel18})
+        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel24, Me.XrLabel23, Me.XrLabel17, Me.XrLabel22, Me.XrLabel20, Me.XrLabel13, Me.XrLine1, Me.XrLabel16, Me.XrLabel15, Me.XrLabel21, Me.XrLabel18})
         Me.ReportFooter.HeightF = 184.9169!
         Me.ReportFooter.Name = "ReportFooter"
         Me.ReportFooter.PrintAtBottom = True
@@ -637,6 +638,20 @@ Partial Public Class doc_soa
         Me.total.ValueInfo = "0"
         Me.total.Visible = False
         '
+        'XrLabel24
+        '
+        Me.XrLabel24.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Italic)
+        Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 167.1253!)
+        Me.XrLabel24.Multiline = True
+        Me.XrLabel24.Name = "XrLabel24"
+        Me.XrLabel24.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel24.SizeF = New System.Drawing.SizeF(548.3332!, 17.79166!)
+        Me.XrLabel24.StylePriority.UseFont = False
+        Me.XrLabel24.StylePriority.UseTextAlignment = False
+        Me.XrLabel24.Text = "Designation: white copy for Winland, yellow copy for Winland accounting, pink cop" &
+    "y for Supplier"
+        Me.XrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
         'doc_soa
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter})
@@ -710,4 +725,5 @@ Partial Public Class doc_soa
     Friend WithEvents XrLabel13 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents total As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents XrLabel23 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel24 As DevExpress.XtraReports.UI.XRLabel
 End Class

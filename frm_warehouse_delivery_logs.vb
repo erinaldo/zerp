@@ -21,7 +21,9 @@ Public Class frm_warehouse_delivery_logs
     Private Sub LoadDelivered(startDate As Date, endDate As Date)
 
         Dim query = "SELECT ims_inventory.winmodel, ims_inventory.description, qty, ims_deliveries.cost, date_received, CONCAT('PO', LPAD(ims_deliveries.purchase_id,5,0)) AS poid,
-                    (SELECT supplier FROM ims_suppliers WHERE id=ims_purchase.supplier) AS supplier, ims_users.first_name, ims_stores.store_name FROM `ims_deliveries`
+                    (SELECT supplier FROM ims_suppliers WHERE id=ims_purchase.supplier) AS supplier, ims_users.first_name, ims_stores.store_name, 
+                    CONCAT(ims_delivery_receipts.receipt_type, '#', ims_delivery_receipts.receipt_ref) reference FROM `ims_deliveries`
+                    LEFT JOIN ims_delivery_receipts ON ims_delivery_receipts.payable_id=ims_deliveries.receipt_id
                     INNER JOIN ims_inventory ON ims_inventory.pid=ims_deliveries.item
                     INNER JOIN ims_users ON ims_users.usr_id=ims_deliveries.receiver
                     INNER JOIN ims_stores ON ims_stores.store_id=ims_deliveries.store_id

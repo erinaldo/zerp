@@ -56,6 +56,7 @@ Partial Class frm_sales_create_order
         Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_sku = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btn_unserve = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.grid_remaining = New System.Windows.Forms.DataGridView()
         Me.col_other = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -129,6 +130,7 @@ Partial Class frm_sales_create_order
         Me.lbl_balance = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_paid_amount = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_unserved = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.txt_quote_id.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_order, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_remaining, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -222,7 +224,7 @@ Partial Class frm_sales_create_order
         Me.grid_order.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grid_order.ColumnHeadersHeight = 28
         Me.grid_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.grid_order.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_sku, Me.col_total})
+        Me.grid_order.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_sku, Me.col_total, Me.btn_unserve})
         Me.grid_order.EnableHeadersVisualStyles = False
         Me.grid_order.Location = New System.Drawing.Point(592, 142)
         Me.grid_order.Name = "grid_order"
@@ -300,6 +302,15 @@ Partial Class frm_sales_create_order
         Me.col_total.Name = "col_total"
         Me.col_total.ReadOnly = True
         Me.col_total.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'btn_unserve
+        '
+        Me.btn_unserve.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btn_unserve.HeaderText = "Unserved"
+        Me.btn_unserve.Name = "btn_unserve"
+        Me.btn_unserve.Text = "📦"
+        Me.btn_unserve.UseColumnTextForButtonValue = True
+        Me.btn_unserve.Width = 59
         '
         'grid_remaining
         '
@@ -1294,12 +1305,26 @@ Partial Class frm_sales_create_order
         Me.LabelControl12.TabIndex = 104
         Me.LabelControl12.Text = "Paid Amount"
         '
+        'btn_unserved
+        '
+        Me.btn_unserved.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_unserved.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.btn_unserved.Appearance.Options.UseFont = True
+        Me.btn_unserved.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.article_32x321
+        Me.btn_unserved.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_unserved.Location = New System.Drawing.Point(1019, 89)
+        Me.btn_unserved.Name = "btn_unserved"
+        Me.btn_unserved.Size = New System.Drawing.Size(118, 46)
+        Me.btn_unserved.TabIndex = 128
+        Me.btn_unserved.Text = "Unserved"
+        '
         'frm_sales_create_order
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1409, 785)
+        Me.Controls.Add(Me.btn_unserved)
         Me.Controls.Add(Me.Guna2Panel2)
         Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.Guna2Panel3)
@@ -1364,12 +1389,6 @@ Partial Class frm_sales_create_order
     Friend WithEvents HyperlinkLabelControl2 As DevExpress.XtraEditors.HyperlinkLabelControl
     Friend WithEvents GunaLabel1 As Guna.UI.WinForms.GunaLabel
     Friend WithEvents grid_remaining As DataGridView
-    Friend WithEvents col_qty As DataGridViewTextBoxColumn
-    Friend WithEvents col_model As DataGridViewTextBoxColumn
-    Friend WithEvents col_description As DataGridViewTextBoxColumn
-    Friend WithEvents col_cost As DataGridViewTextBoxColumn
-    Friend WithEvents col_sku As DataGridViewTextBoxColumn
-    Friend WithEvents col_total As DataGridViewTextBoxColumn
     Friend WithEvents txt_quote_id As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
@@ -1437,4 +1456,12 @@ Partial Class frm_sales_create_order
     Friend WithEvents lbl_sales_agent As LabelControl
     Friend WithEvents lbl_terms As LabelControl
     Friend WithEvents rb_epay As RadioButton
+    Friend WithEvents col_qty As DataGridViewTextBoxColumn
+    Friend WithEvents col_model As DataGridViewTextBoxColumn
+    Friend WithEvents col_description As DataGridViewTextBoxColumn
+    Friend WithEvents col_cost As DataGridViewTextBoxColumn
+    Friend WithEvents col_sku As DataGridViewTextBoxColumn
+    Friend WithEvents col_total As DataGridViewTextBoxColumn
+    Friend WithEvents btn_unserve As DataGridViewButtonColumn
+    Friend WithEvents btn_unserved As SimpleButton
 End Class

@@ -360,7 +360,6 @@ Partial Class frm_main
         Me.submenu_returned_units.Name = "submenu_returned_units"
         Me.submenu_returned_units.Size = New System.Drawing.Size(206, 24)
         Me.submenu_returned_units.Text = "Returned Units"
-        Me.submenu_returned_units.Visible = False
         '
         'menu_logistics
         '

@@ -62,6 +62,10 @@ Public Class frm_collection_cash
 
     Private Sub btn_deduct_Click(sender As Object, e As EventArgs) Handles btn_deduct.Click
         If btn_deduct.Text.Equals("Deduct Returns") Then
+
+            sales_return_amount = 0.00
+            sales_return_id = 0
+
             Dim frm = New frm_sales_return_picker
             frm.SalesReturnsLoad(lbl_customer.Text)
             frm.ShowDialog()
@@ -79,8 +83,8 @@ Public Class frm_collection_cash
             lbl_amount_due.Text = FormatCurrency(CDec(lbl_amount_due.Text) + CDec(lbl_deduction.Text.Replace("Deducted Amount: ", "")))
             btn_deduct.Appearance.BackColor = Nothing
             lbl_deduction.Visible = False
-            sales_return_amount = Nothing
-            sales_return_id = Nothing
+            sales_return_amount = 0.00
+            sales_return_id = 0
         End If
 
     End Sub

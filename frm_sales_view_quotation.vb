@@ -76,6 +76,8 @@ Public Class frm_sales_view_quotation
                         btn_print.Enabled = False
                     End If
 
+                    cbb_validity.Text = rdr("validity")
+
                     If rdr("is_term_applied") = True Then
                         cb_apply_terms.Checked = True
                         txt_terms.Text = rdr("terms")
@@ -347,6 +349,7 @@ Public Class frm_sales_view_quotation
                 report.Parameters("store_info").Value = rdr("store_info")
                 report.Parameters("is_term_applied").Value = rdr("is_term_applied")
                 report.Parameters("terms").Value = rdr("terms")
+                report.Parameters("validity").Value = rdr("validity") & " Days"
                 report.Parameters("created_at").Value = rdr("created_at")
                 report.Parameters("due_date").Value = rdr("due_date")
                 report.Parameters("discount_type").Value = rdr("discount_type")

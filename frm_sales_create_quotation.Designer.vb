@@ -104,6 +104,8 @@ Partial Class frm_sales_create_quotation
         Me.txt_pub_notes = New DevExpress.XtraEditors.MemoEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_customer = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
+        Me.cbb_validity = New DevExpress.XtraEditors.ComboBoxEdit()
         CType(Me.grid_quotation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
@@ -124,6 +126,7 @@ Partial Class frm_sales_create_quotation
         CType(Me.txt_priv_notes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_pub_notes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_customer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbb_validity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grid_quotation
@@ -375,6 +378,8 @@ Partial Class frm_sales_create_quotation
         Me.PanelControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelControl1.Controls.Add(Me.LabelControl13)
+        Me.PanelControl1.Controls.Add(Me.cbb_validity)
         Me.PanelControl1.Controls.Add(Me.cb_apply_terms)
         Me.PanelControl1.Controls.Add(Me.txt_terms)
         Me.PanelControl1.Controls.Add(Me.LabelControl12)
@@ -418,7 +423,7 @@ Partial Class frm_sales_create_quotation
         Me.cb_apply_terms.CheckedState.FillColor = System.Drawing.Color.Red
         Me.cb_apply_terms.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.cb_apply_terms.ForeColor = System.Drawing.Color.Black
-        Me.cb_apply_terms.Location = New System.Drawing.Point(970, 136)
+        Me.cb_apply_terms.Location = New System.Drawing.Point(970, 127)
         Me.cb_apply_terms.Name = "cb_apply_terms"
         Me.cb_apply_terms.Size = New System.Drawing.Size(99, 20)
         Me.cb_apply_terms.TabIndex = 122
@@ -431,7 +436,7 @@ Partial Class frm_sales_create_quotation
         '
         'txt_terms
         '
-        Me.txt_terms.Location = New System.Drawing.Point(1071, 136)
+        Me.txt_terms.Location = New System.Drawing.Point(1071, 127)
         Me.txt_terms.Name = "txt_terms"
         Me.txt_terms.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_terms.Properties.Appearance.Options.UseFont = True
@@ -908,6 +913,29 @@ Partial Class frm_sales_create_quotation
         Me.txt_customer.Size = New System.Drawing.Size(339, 22)
         Me.txt_customer.TabIndex = 3
         '
+        'LabelControl13
+        '
+        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl13.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.LabelControl13.Appearance.Options.UseFont = True
+        Me.LabelControl13.Appearance.Options.UseForeColor = True
+        Me.LabelControl13.Location = New System.Drawing.Point(1006, 156)
+        Me.LabelControl13.Name = "LabelControl13"
+        Me.LabelControl13.Size = New System.Drawing.Size(43, 16)
+        Me.LabelControl13.TabIndex = 128
+        Me.LabelControl13.Text = "Validity"
+        '
+        'cbb_validity
+        '
+        Me.cbb_validity.Location = New System.Drawing.Point(1071, 153)
+        Me.cbb_validity.Name = "cbb_validity"
+        Me.cbb_validity.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.cbb_validity.Properties.Appearance.Options.UseFont = True
+        Me.cbb_validity.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbb_validity.Properties.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cbb_validity.Size = New System.Drawing.Size(50, 22)
+        Me.cbb_validity.TabIndex = 127
+        '
         'frm_sales_create_quotation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -944,6 +972,7 @@ Partial Class frm_sales_create_quotation
         CType(Me.txt_priv_notes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_pub_notes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_customer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbb_validity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1004,4 +1033,6 @@ Partial Class frm_sales_create_quotation
     Friend WithEvents txt_delivery_fee As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cb_apply_terms As Guna2CheckBox
     Friend WithEvents txt_terms As TextEdit
+    Friend WithEvents LabelControl13 As LabelControl
+    Friend WithEvents cbb_validity As ComboBoxEdit
 End Class

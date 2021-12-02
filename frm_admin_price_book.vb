@@ -60,7 +60,7 @@ Public Class frm_admin_price_book
 
             If Not discount = 0 Then
                 cmd.Parameters.AddWithValue("@discount", discount)
-                cmd.Parameters.AddWithValue("@cost", base_price)
+                cmd.Parameters.AddWithValue("@cost", new_cost)
             Else
                 cmd.Parameters.AddWithValue("@discount", Nothing)
                 cmd.Parameters.AddWithValue("@cost", cost)

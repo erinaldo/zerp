@@ -646,21 +646,20 @@ Public Class frm_purchaseorder_new
     Private Sub cbb_deliver_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbb_deliver.SelectedValueChanged
 
         Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT * FROM `ims_stores` WHERE store_name=@store_name", conn)
-            cmd.Parameters.AddWithValue("@store_name", cbb_deliver.Text)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using connection = New MySqlConnection(str)
+                conn.Open()
+                Dim cmd = New MySqlCommand("SELECT * FROM `ims_stores` WHERE store_name=@store_name", conn)
+                cmd.Parameters.AddWithValue("@store_name", cbb_deliver.Text)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            While rdr.Read
-                txt_delivery_address.Text = rdr("store_addr")
-            End While
+                While rdr.Read
+                    txt_delivery_address.Text = rdr("store_addr")
+                End While
 
-            conn.Close()
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
     End Sub

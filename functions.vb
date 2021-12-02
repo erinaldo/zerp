@@ -304,3 +304,9 @@ Public Class PurchaseReturnClass
     Public Property cost As Decimal
     Public Property total_cost As Decimal
 End Class
+
+Public Class SalesCustomerBankAccounts
+    Public Property bank As String
+    Public Property bank_acc_no As String
+    Public Property bank_acc_name As String
+End Class

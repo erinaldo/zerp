@@ -21,7 +21,7 @@ Public Class frm_sales_transaction_invoice
 
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("SELECT order_id, date_ordered, ims_users.first_name as agent, ims_customers.first_name, payment_type, IFNULL(payment_status, 'UNPAID') as payment_status, ship_to, trucking, status, shipping_method FROM `ims_orders`  
+            Dim cmd = New MySqlCommand("SELECT order_id, date_ordered, date_released, ims_users.first_name as agent, ims_customers.first_name, payment_type, IFNULL(payment_status, 'UNPAID') as payment_status, ship_to, trucking, status, shipping_method FROM `ims_orders`  
                                 INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
                                 INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id
                                 WHERE (status='Completed' OR status='Released') AND ims_orders.deleted='0'", conn)
@@ -53,7 +53,7 @@ Public Class frm_sales_transaction_invoice
                 connection.Open()
 
                 Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
-                        ims_customers.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info,
+                        ims_orders.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val, applied_sales_return, CONCAT('SR', LPAD(sales_return_id, 5, '0')) AS srid, IFNULL(ims_sales_returns.amount, 0) as amount,
                         no_of_box, no_of_plastic, no_of_rolls,
                         agent.first_name AS prepared_by, packer.first_name AS arranged_by, releaser.first_name AS released_by, sales_agent.first_name AS sales_agent FROM `ims_orders`

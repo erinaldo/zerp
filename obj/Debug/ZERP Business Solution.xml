@@ -132,6 +132,11 @@ ZERP Business Solution
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:Inventory_Management.My.Resources.Resources.article_32x321">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Inventory_Management.My.Resources.Resources.assignto_32x32">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -413,6 +418,11 @@ ZERP Business Solution
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:Inventory_Management.My.Resources.Resources.movepivottable_16x16">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Inventory_Management.My.Resources.Resources.movepivottable_32x32">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -619,6 +629,11 @@ ZERP Business Solution
 </summary>
 </member>
 <member name="P:Inventory_Management.My.Resources.Resources.up_16x16">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Inventory_Management.My.Resources.Resources.up_16x161">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

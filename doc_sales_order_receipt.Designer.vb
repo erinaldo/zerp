@@ -155,6 +155,7 @@ Partial Public Class doc_sales_order_receipt
         Me.report_invoice = New DevExpress.XtraReports.UI.DetailReportBand()
         Me.Detail1 = New DevExpress.XtraReports.UI.DetailBand()
         Me.GroupHeader1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
+        Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
         Me.XrTable5 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow10 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTableCell32 = New DevExpress.XtraReports.UI.XRTableCell()
@@ -172,9 +173,9 @@ Partial Public Class doc_sales_order_receipt
         Me.report_deduction = New DevExpress.XtraReports.UI.DetailReportBand()
         Me.Detail2 = New DevExpress.XtraReports.UI.DetailBand()
         Me.GroupHeader2 = New DevExpress.XtraReports.UI.GroupHeaderBand()
-        Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
         Me.deduction_IsApplied = New DevExpress.XtraReports.Parameters.Parameter()
         Me.subtotal = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.panel_vatables = New DevExpress.XtraReports.UI.XRPanel()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -712,7 +713,7 @@ Partial Public Class doc_sales_order_receipt
         '
         'ReportFooter
         '
-        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel49, Me.XrLabel48, Me.XrLabel47, Me.XrLabel46, Me.XrLabel45, Me.XrLabel44, Me.XrLabel39, Me.XrLabel8, Me.XrLabel7, Me.XrLabel16, Me.XrLabel15, Me.XrLabel17, Me.XrLabel29, Me.XrLabel40, Me.XrLabel34, Me.XrLabel30, Me.XrLabel27, Me.XrLabel28, Me.XrLabel18, Me.XrLabel20, Me.XrLabel22, Me.XrLabel21, Me.XrLabel31, Me.XrLabel32, Me.lbl_discount, Me.XrLabel33, Me.XrLabel42, Me.XrLabel35, Me.XrLine2, Me.lbl_total_sales, Me.XrTable3})
+        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel49, Me.XrLabel48, Me.XrLabel47, Me.XrLabel46, Me.XrLabel45, Me.XrLabel44, Me.XrLabel39, Me.XrLabel8, Me.XrLabel7, Me.XrLabel16, Me.XrLabel15, Me.XrLabel17, Me.XrLabel27, Me.XrLabel28, Me.XrLabel18, Me.XrLabel20, Me.XrLabel22, Me.XrLabel21, Me.lbl_discount, Me.XrLabel33, Me.XrLabel42, Me.XrLabel35, Me.XrLine2, Me.lbl_total_sales, Me.XrTable3, Me.panel_vatables})
         Me.ReportFooter.HeightF = 320.7509!
         Me.ReportFooter.KeepTogether = True
         Me.ReportFooter.Name = "ReportFooter"
@@ -890,7 +891,7 @@ Partial Public Class doc_sales_order_receipt
         '
         Me.XrLabel29.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrLabel29.ExpressionBindings"))})
         Me.XrLabel29.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(604.1658!, 102.3057!)
+        Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(148.6664!, 24.32644!)
         Me.XrLabel29.Multiline = True
         Me.XrLabel29.Name = "XrLabel29"
         Me.XrLabel29.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -903,7 +904,7 @@ Partial Public Class doc_sales_order_receipt
         'XrLabel40
         '
         Me.XrLabel40.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel40.LocationFloat = New DevExpress.Utils.PointFloat(487.4995!, 84.51391!)
+        Me.XrLabel40.LocationFloat = New DevExpress.Utils.PointFloat(32.00021!, 6.53463!)
         Me.XrLabel40.Multiline = True
         Me.XrLabel40.Name = "XrLabel40"
         Me.XrLabel40.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -916,7 +917,7 @@ Partial Public Class doc_sales_order_receipt
         'XrLabel34
         '
         Me.XrLabel34.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(509.374!, 102.3057!)
+        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(53.87463!, 24.32644!)
         Me.XrLabel34.Multiline = True
         Me.XrLabel34.Name = "XrLabel34"
         Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -930,7 +931,7 @@ Partial Public Class doc_sales_order_receipt
         '
         Me.XrLabel30.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrLabel30.ExpressionBindings"))})
         Me.XrLabel30.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(604.1661!, 84.51404!)
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(148.6668!, 6.53476!)
         Me.XrLabel30.Multiline = True
         Me.XrLabel30.Name = "XrLabel30"
         Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -1024,7 +1025,7 @@ Partial Public Class doc_sales_order_receipt
         'XrLabel31
         '
         Me.XrLabel31.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(509.374!, 120.0974!)
+        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(53.87463!, 42.11813!)
         Me.XrLabel31.Multiline = True
         Me.XrLabel31.Name = "XrLabel31"
         Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -1038,7 +1039,7 @@ Partial Public Class doc_sales_order_receipt
         '
         Me.XrLabel32.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrLabel32.ExpressionBindings"))})
         Me.XrLabel32.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(604.1658!, 120.0973!)
+        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(148.6664!, 42.118!)
         Me.XrLabel32.Multiline = True
         Me.XrLabel32.Name = "XrLabel32"
         Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -1617,6 +1618,12 @@ Partial Public Class doc_sales_order_receipt
         Me.GroupHeader1.HeightF = 37.16679!
         Me.GroupHeader1.Name = "GroupHeader1"
         '
+        'GroupFooter1
+        '
+        Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine1})
+        Me.GroupFooter1.HeightF = 30.95827!
+        Me.GroupFooter1.Name = "GroupFooter1"
+        '
         'XrTable5
         '
         Me.XrTable5.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
@@ -1805,12 +1812,6 @@ Partial Public Class doc_sales_order_receipt
         Me.GroupHeader2.HeightF = 82.08332!
         Me.GroupHeader2.Name = "GroupHeader2"
         '
-        'GroupFooter1
-        '
-        Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine1})
-        Me.GroupFooter1.HeightF = 30.95827!
-        Me.GroupFooter1.Name = "GroupFooter1"
-        '
         'deduction_IsApplied
         '
         Me.deduction_IsApplied.Description = "deduction_IsApplied"
@@ -1826,6 +1827,15 @@ Partial Public Class doc_sales_order_receipt
         Me.subtotal.Type = GetType(Decimal)
         Me.subtotal.ValueInfo = "0"
         Me.subtotal.Visible = False
+        '
+        'panel_vatables
+        '
+        Me.panel_vatables.BorderWidth = 0!
+        Me.panel_vatables.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel31, Me.XrLabel32, Me.XrLabel40, Me.XrLabel30, Me.XrLabel29, Me.XrLabel34})
+        Me.panel_vatables.LocationFloat = New DevExpress.Utils.PointFloat(455.4998!, 76.69824!)
+        Me.panel_vatables.Name = "panel_vatables"
+        Me.panel_vatables.SizeF = New System.Drawing.SizeF(295.5002!, 67.72546!)
+        Me.panel_vatables.StylePriority.UseBorderWidth = False
         '
         'doc_sales_order_receipt
         '
@@ -2005,4 +2015,5 @@ Partial Public Class doc_sales_order_receipt
     Friend WithEvents GroupFooter1 As DevExpress.XtraReports.UI.GroupFooterBand
     Friend WithEvents deduction_IsApplied As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents subtotal As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents panel_vatables As DevExpress.XtraReports.UI.XRPanel
 End Class

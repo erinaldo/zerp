@@ -67,7 +67,7 @@ Partial Class frm_logistics_deliveries
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_release = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btn_print = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.btn_release = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
@@ -77,7 +77,7 @@ Partial Class frm_logistics_deliveries
         Me.GunaPanel1.SuspendLayout()
         CType(Me.grid_deliveries, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_deliveries_view, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btn_print, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_release, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panel_top
@@ -227,7 +227,7 @@ Partial Class frm_logistics_deliveries
         Me.grid_deliveries.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_deliveries.MainView = Me.grid_deliveries_view
         Me.grid_deliveries.Name = "grid_deliveries"
-        Me.grid_deliveries.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_print})
+        Me.grid_deliveries.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_release})
         Me.grid_deliveries.Size = New System.Drawing.Size(1166, 562)
         Me.grid_deliveries.TabIndex = 13
         Me.grid_deliveries.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_deliveries_view})
@@ -409,7 +409,7 @@ Partial Class frm_logistics_deliveries
         Me.col_release.AppearanceHeader.Options.UseTextOptions = True
         Me.col_release.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_release.Caption = "Release"
-        Me.col_release.ColumnEdit = Me.btn_print
+        Me.col_release.ColumnEdit = Me.btn_release
         Me.col_release.MaxWidth = 70
         Me.col_release.Name = "col_release"
         Me.col_release.OptionsColumn.ReadOnly = True
@@ -417,15 +417,14 @@ Partial Class frm_logistics_deliveries
         Me.col_release.VisibleIndex = 11
         Me.col_release.Width = 69
         '
-        'btn_print
+        'btn_release
         '
-        Me.btn_print.AutoHeight = False
-        Me.btn_print.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.btn_release.AutoHeight = False
         EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.deliver
-        Me.btn_print.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-        Me.btn_print.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
-        Me.btn_print.Name = "btn_print"
-        Me.btn_print.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        Me.btn_release.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_release.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_release.Name = "btn_release"
+        Me.btn_release.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
         'timer
         '
@@ -450,7 +449,7 @@ Partial Class frm_logistics_deliveries
         Me.GunaPanel1.PerformLayout()
         CType(Me.grid_deliveries, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_deliveries_view, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btn_print, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_release, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -472,7 +471,7 @@ Partial Class frm_logistics_deliveries
     Friend WithEvents col_payment_status As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_release As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents btn_print As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents btn_release As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents col_status As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_payment_type As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_shipping_method As DevExpress.XtraGrid.Columns.GridColumn

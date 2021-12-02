@@ -38,7 +38,7 @@ Public Class frm_collection_terms
                 dt.Columns.Add("payment_status")
                 dt.Columns.Add("customer")
                 dt.Columns.Add("agent")
-                dt.Columns.Add("date_ordered")
+                dt.Columns.Add("date_ordered", GetType(Date))
                 dt.Columns.Add("terms")
                 dt.Columns.Add("remaining")
                 dt.Columns.Add("classification")

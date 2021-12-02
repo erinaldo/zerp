@@ -996,3 +996,4 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_picker.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_unserved_dialog.resources

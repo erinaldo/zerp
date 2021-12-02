@@ -404,10 +404,10 @@
     <Compile Include="frm_collection_refund.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_returns_dialog.Designer.vb">
-      <DependentUpon>frm_sales_returns_dialog.vb</DependentUpon>
+    <Compile Include="frm_sales_return_picker.Designer.vb">
+      <DependentUpon>frm_sales_return_picker.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_returns_dialog.vb">
+    <Compile Include="frm_sales_return_picker.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_collection_soa.Designer.vb">
@@ -534,6 +534,12 @@
       <DependentUpon>frm_sales_start_packing.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_sales_start_packing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_sales_unserved_dialog.Designer.vb">
+      <DependentUpon>frm_sales_unserved_dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_sales_unserved_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_splash_screen.Designer.vb">
@@ -941,8 +947,8 @@
     <EmbeddedResource Include="frm_collection_refund.resx">
       <DependentUpon>frm_collection_refund.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_returns_dialog.resx">
-      <DependentUpon>frm_sales_returns_dialog.vb</DependentUpon>
+    <EmbeddedResource Include="frm_sales_return_picker.resx">
+      <DependentUpon>frm_sales_return_picker.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_collection_soa.resx">
       <DependentUpon>frm_collection_soa.vb</DependentUpon>
@@ -1006,6 +1012,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales_start_packing.resx">
       <DependentUpon>frm_sales_start_packing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_sales_unserved_dialog.resx">
+      <DependentUpon>frm_sales_unserved_dialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_splash_screen.resx">
       <DependentUpon>frm_splash_screen.vb</DependentUpon>
@@ -1491,6 +1500,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\article_32x321.png" />
+    <None Include="Resources\movepivottable_16x16.png" />
+    <None Include="Resources\up_16x161.png" />
     <None Include="Resources\text_32x32.png" />
     <None Include="Resources\boproductgroup_32x321.png" />
     <None Include="Resources\financial_32x32.png" />

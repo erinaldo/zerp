@@ -55,9 +55,9 @@ Public Class frm_admin_reports
 
         For i = 0 To dt.Rows.Count - 1
             total_cost += dt.Rows(i).Item(1)
-            total_cash += dt.Rows(i).Item(2)
-            total_cheque += dt.Rows(i).Item(3)
-            total_epay += dt.Rows(i).Item(4)
+            total_cheque += dt.Rows(i).Item(2)
+            total_epay += dt.Rows(i).Item(3)
+            total_cash += dt.Rows(i).Item(4)
             total_sales += dt.Rows(i).Item(5)
             total_transactions += dt.Rows(i).Item(6)
         Next
@@ -69,7 +69,7 @@ Public Class frm_admin_reports
         lbl_gross_sales.Text = FormatCurrency(total_sales, 2)
         lbl_no_transactions.Text = total_transactions
         lbl_avg_sales_amount.Text = FormatCurrency(total_sales / total_transactions, 2)
-        lbl_ave_sales_margin.Text = Math.Round(((total_sales - total_cost) / total_sales) * 100, 1) & "%"
+        lbl_ave_sales_margin.Text = Math.Round(((total_sales - total_cost) / total_sales) * 100, 0) & "%"
     End Sub
 
 
@@ -81,50 +81,33 @@ Public Class frm_admin_reports
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Dim dt = New DataTable
-                dt.Columns.Add("datee", GetType(Date))
-                dt.Columns.Add("total_cost", GetType(Decimal))
-                dt.Columns.Add("total_cash", GetType(Decimal))
-                dt.Columns.Add("total_terms", GetType(Decimal))
-                dt.Columns.Add("total_epay", GetType(Decimal))
-                dt.Columns.Add("total_sales", GetType(Decimal))
-                dt.Columns.Add("total_transactions", GetType(Integer))
-                dt.Columns.Add("avg_transc_amount", GetType(Decimal))
-                dt.Columns.Add("avg_sales_margin", GetType(String))
 
                 'DISPLAY DATA WITH STORED PROCEDURE
                 Dim query = "SELECT 
-		                        DATE(ims.date_released) AS datee,
-		                        (SELECT SUM(cost * qty) FROM ims_sales INNER JOIN ims_orders AS a ON a.order_id=ims_sales.order_id WHERE DATE(purchase_date) = datee AND a.payment_status='PAID') AS total_cost,
-		                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE (payment_type = 'Terms' OR payment_type = 'Cheque') AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee) AS total_terms, 
-		                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE payment_type = 'E-Payment' AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee) AS total_epay,
-		                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE payment_type = 'Cash' AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee) AS total_cash,
-		                        (ROUND(
-			                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE (payment_type = 'Terms' OR payment_type = 'Cheque') AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee) + 
-			                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE payment_type = 'E-Payment' AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee) +
-			                        (SELECT IFNULL(SUM(paid_amount), 0.00) FROM ims_orders WHERE payment_type = 'Cash' AND payment_status='PAID' AND deleted='0' AND DATE(date_released) = datee), 2)
-		                        ) AS gross_sale,
-		                        (SELECT COUNT(order_id) FROM ims_orders WHERE DATE(date_released) = datee AND payment_status='PAID') AS total_transactions
-	                        FROM ims_orders ims
-	                        WHERE date_released IS NOT NULL AND NOT paid_amount = 0 AND DATE(date_released) BETWEEN @start_date AND @end_date
-	                        GROUP BY datee
-	                        ORDER BY datee DESC"
+	                            datee, 
+	                            SUM(cost * qty) total_cost,
+	                            SUM(IF(payment_type='Cheque' OR payment_type='Terms', price, 0.00)) total_terms,
+	                            SUM(IF(payment_type='E-Payment', price, 0.00)) total_epay,
+	                            SUM(IF(payment_type='Cash', price, 0.00)) total_cash,
+	                            SUM(price) gross_sale,
+	                            COUNT(DISTINCT(order_id)) total_transactions,
+	                            ROUND(SUM(price) / COUNT(DISTINCT(order_id)),2) avg_transc_amount,
+	                            (SUM(price) - SUM(cost * qty)) / SUM(price) avg_sales_margin
+                            FROM (
+	                            SELECT
+		                            DATE(purchase_date) datee, cost, qty, price, ims_orders.payment_type, ims_orders.order_id, ims_orders.payment_status
+	                            FROM ims_sales
+	                            INNER JOIN ims_orders ON ims_orders.order_id=ims_sales.order_id
+                            ) tbl
+                            WHERE datee BETWEEN @start_date AND @end_date AND payment_status='PAID'
+                            GROUP BY datee
+                            ORDER BY datee DESC"
                 Using cmd = New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@start_date", dt_start.EditValue)
                     cmd.Parameters.AddWithValue("@end_date", dt_end.EditValue)
-                    Using rdr = cmd.ExecuteReader()
-                        While rdr.Read()
-                            dt.Rows.Add(rdr("datee"),
-                                        rdr("total_cost"),
-                                        rdr("total_cash"),
-                                        rdr("total_terms"),
-                                        rdr("total_epay"),
-                                        rdr("gross_sale"),
-                                        rdr("total_transactions"),
-                                        rdr("gross_sale") / rdr("total_transactions"),
-                                        Math.Round(((rdr("gross_sale") - rdr("total_cost")) / rdr("gross_sale")) * 100, 0) & "%")
-                        End While
-                    End Using
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd)
+                    da.Fill(dt)
 
                     grid_sales_report.DataSource = dt
                     chart_SalesOverTime()

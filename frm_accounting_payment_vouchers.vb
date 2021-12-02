@@ -46,14 +46,14 @@ Public Class frm_accounting_payment_vouchers
         Dim table = New PrintData
 
         Dim conn As New MySqlConnection(str)
-        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = "", payment_type = String.Empty
+        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = "", payment_type = String.Empty, contact_person = String.Empty
 
         Try
 
             conn.Open()
 
             'GET VOUCHER DETAILS
-            Dim query = "SELECT payment_type, ims_suppliers.supplier, receipts, collection_ref, creation_date, receipts, 
+            Dim query = "SELECT payment_type, ims_suppliers.supplier, ims_suppliers.contact_person, receipts, collection_ref, creation_date, receipts, 
                         ims_users.first_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info  FROM ims_payment_vouchers
                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier
                         INNER JOIN ims_users ON ims_users.usr_id=ims_payment_vouchers.generated_by
@@ -62,6 +62,7 @@ Public Class frm_accounting_payment_vouchers
                 cmd.Parameters.AddWithValue("@payment_id", id)
                 Using rdr_details = cmd.ExecuteReader
                     While rdr_details.Read
+                        contact_person = rdr_details("contact_person")
                         payment_type = rdr_details("payment_type")
                         voucher_date = rdr_details("creation_date")
                         collection_ref = rdr_details("collection_ref")
@@ -161,6 +162,7 @@ Public Class frm_accounting_payment_vouchers
             report.Parameters("voucher_id").Value = "PV" & id.ToString.PadLeft(5, "0"c)
             report.Parameters("voucher_date").Value = voucher_date
             report.Parameters("supplier").Value = supplier
+            report.Parameters("contact_person").Value = contact_person
             report.Parameters("collection_ref").Value = collection_ref
             report.Parameters("generated_by").Value = generated_by
             report.Parameters("payment_type").Value = payment_type
@@ -267,7 +269,7 @@ Public Class frm_accounting_payment_vouchers
     '---- CONTROLS ----
 
     'btn_view
-    Private Sub RepositoryItemButtonEdit1_Click(sender As Object, e As EventArgs) Handles RepositoryItemButtonEdit1.Click
+    Private Sub RepositoryItemButtonEdit1_Click(sender As Object, e As EventArgs) Handles btn_print.Click
         Dim id = grid_payments_view.GetFocusedRowCellValue(col_id)
         print_voucher(CInt(id.ToString.Replace("PV", "")))
     End Sub

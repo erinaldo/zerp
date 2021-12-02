@@ -1,4 +1,7 @@
-﻿Imports DevExpress.XtraEditors.Controls
+﻿Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraGrid.Views.Grid
 Imports MySql.Data.MySqlClient
 
 Public Class frm_sales_create_order
@@ -16,6 +19,7 @@ Public Class frm_sales_create_order
         LoadCustomers()
         cbb_customer.Select()
         If frm_main.user_role_id.Text = "1" Then grid_order.Columns(3).ReadOnly = False
+        btn_unserved.Enabled = False
     End Sub
 
 
@@ -30,24 +34,26 @@ Public Class frm_sales_create_order
         Dim STORE_TABLE = "ims_" & frm_main.user_store.Text.ToLower.Replace(" ", "_")
 
         Try
-            conn.Open()
-            Dim query = "SELECT ims_inventory.winmodel, ims_inventory.description FROM " & STORE_TABLE & " RIGHT JOIN ims_inventory ON " & STORE_TABLE & ".pid=ims_inventory.pid"
-            Dim cmd = New MySqlCommand(query, conn)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim query = "SELECT ims_inventory.winmodel, ims_inventory.description FROM " & STORE_TABLE & " RIGHT JOIN ims_inventory ON " & STORE_TABLE & ".pid=ims_inventory.pid"
+                Dim cmd = New MySqlCommand(query, connection)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            model_AutoCompleteString.Clear()
-            description_AutoCompleteString.Clear()
+                model_AutoCompleteString.Clear()
+                description_AutoCompleteString.Clear()
 
-            While rdr.Read
-                model_AutoCompleteString.Add(rdr("winmodel"))
-                description_AutoCompleteString.Add(rdr("description"))
-            End While
+                While rdr.Read
+                    model_AutoCompleteString.Add(rdr("winmodel"))
+                    description_AutoCompleteString.Add(rdr("description"))
+                End While
+
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
+
     End Sub
 
     'Compute Total 
@@ -154,23 +160,30 @@ Public Class frm_sales_create_order
         cb_vatable.Checked = False
         cb_tax_applied.Checked = False
 
+        btn_unserved.Enabled = False
+
     End Sub
 
     'Get All Store Tables
     Private Function get_all_store_tables(MyStore As String)
-        Dim tbl_cmd = New MySqlCommand("SELECT store_name FROM ims_stores", conn)
-        Dim rdr_tbl As MySqlDataReader = tbl_cmd.ExecuteReader
 
         Dim tables = ""
-        While rdr_tbl.Read
-            Dim store = "ims_" & rdr_tbl("store_name").ToString.ToLower.Replace(" ", "_")
-            If store.Equals(MyStore) Then Continue While
-            tables += store & ","
-        End While
 
-        rdr_tbl.Close()
+        Using connection = New MySqlConnection(str)
+            connection.Open()
+            Dim tbl_cmd = New MySqlCommand("SELECT store_name FROM ims_stores", connection)
+            Dim rdr_tbl As MySqlDataReader = tbl_cmd.ExecuteReader
+
+
+            While rdr_tbl.Read
+                Dim store = "ims_" & rdr_tbl("store_name").ToString.ToLower.Replace(" ", "_")
+                If store.Equals(MyStore) Then Continue While
+                tables += store & ","
+            End While
+        End Using
 
         Return tables
+
     End Function
 
     'Concat Queries
@@ -609,7 +622,7 @@ Public Class frm_sales_create_order
                 If conn.State = ConnectionState.Open Then conn.Close()
             End Try
         Else
-                MsgBox("Complete All Fields!", vbCritical, "Error")
+            MsgBox("Complete All Fields!", vbCritical, "Error")
             Exit Sub
         End If
 
@@ -716,6 +729,9 @@ Public Class frm_sales_create_order
                     Case "Pickup" : rb_pickup.Checked = True
                     Case "Delivery" : rb_deliver.Checked = True
                 End Select
+
+                btn_unserved.Enabled = True
+
             End While
             rdr.Close()
 
@@ -829,4 +845,53 @@ Public Class frm_sales_create_order
         End If
     End Sub
 
+    Private Sub grid_order_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles grid_order.CellClick
+
+        'UNSERVED ITEM
+        If e.ColumnIndex.Equals(6) Then
+
+            Try
+                Using conn = New MySqlConnection(str)
+                    conn.Open()
+
+                    'CHECK IF EXIST
+                    Using cmd = New MySqlCommand("SELECT COUNT(*) FROM ims_sales_unserved_items 
+                                                WHERE item=(SELECT pid FROM ims_inventory WHERE winmodel=@item) AND status='Unserved'", conn)
+                        cmd.Parameters.AddWithValue("@item", grid_order.Rows(e.RowIndex).Cells(1).Value)
+                        If cmd.ExecuteScalar > 0 Then
+                            MsgBox("Duplicate item found in Unserved List!", vbCritical, "Duplicate")
+                            Return
+                        End If
+                    End Using
+
+                    'INSERT
+                    If MsgBox("Add to Unserved List?", vbYesNo + vbQuestion, "Confirmation") = vbYes Then
+                        Using cmd = New MySqlCommand("INSERT INTO ims_sales_unserved_items (customer_id, qty, item, created_at, status) VALUES
+                                                (@customer_id, @qty, (SELECT pid FROM ims_inventory WHERE winmodel=@item), NOW(), 'Unserved')", conn)
+                            cmd.Parameters.AddWithValue("@customer_id", lbl_cid.Text)
+                            cmd.Parameters.AddWithValue("@qty", grid_order.Rows(e.RowIndex).Cells(0).Value)
+                            cmd.Parameters.AddWithValue("@item", grid_order.Rows(e.RowIndex).Cells(1).Value)
+
+                            If cmd.ExecuteNonQuery() = 1 Then
+                                MsgBox("Added!", vbInformation, "Information")
+                                grid_order.Rows.RemoveAt(e.RowIndex)
+                            End If
+
+                        End Using
+                    End If
+
+                End Using
+            Catch ex As Exception
+                MsgBox(ex.Message, vbCritical, "Error")
+            End Try
+
+        End If
+
+    End Sub
+
+    Private Sub btn_unserved_Click(sender As Object, e As EventArgs) Handles btn_unserved.Click
+        Dim frm = New frm_sales_unserved_dialog
+        frm.cid = lbl_cid.Text
+        frm.Show()
+    End Sub
 End Class

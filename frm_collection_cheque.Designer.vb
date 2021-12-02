@@ -117,7 +117,7 @@ Partial Class frm_collection_cheque
         '
         'txt_no
         '
-        Me.txt_no.Location = New System.Drawing.Point(18, 140)
+        Me.txt_no.Location = New System.Drawing.Point(18, 180)
         Me.txt_no.Name = "txt_no"
         Me.txt_no.Properties.Appearance.Options.UseTextOptions = True
         Me.txt_no.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -128,7 +128,7 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl5.Appearance.Options.UseFont = True
-        Me.LabelControl5.Location = New System.Drawing.Point(18, 120)
+        Me.LabelControl5.Location = New System.Drawing.Point(18, 160)
         Me.LabelControl5.Name = "LabelControl5"
         Me.LabelControl5.Size = New System.Drawing.Size(76, 14)
         Me.LabelControl5.TabIndex = 40
@@ -138,7 +138,7 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl6.Appearance.Options.UseFont = True
-        Me.LabelControl6.Location = New System.Drawing.Point(239, 120)
+        Me.LabelControl6.Location = New System.Drawing.Point(239, 160)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(55, 14)
         Me.LabelControl6.TabIndex = 41
@@ -148,7 +148,7 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl7.Appearance.Options.UseFont = True
-        Me.LabelControl7.Location = New System.Drawing.Point(18, 30)
+        Me.LabelControl7.Location = New System.Drawing.Point(18, 70)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(97, 14)
         Me.LabelControl7.TabIndex = 43
@@ -156,7 +156,7 @@ Partial Class frm_collection_cheque
         '
         'txt_acc_no
         '
-        Me.txt_acc_no.Location = New System.Drawing.Point(128, 28)
+        Me.txt_acc_no.Location = New System.Drawing.Point(128, 68)
         Me.txt_acc_no.Name = "txt_acc_no"
         Me.txt_acc_no.Size = New System.Drawing.Size(166, 20)
         Me.txt_acc_no.TabIndex = 2
@@ -165,7 +165,7 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl8.Appearance.Options.UseFont = True
-        Me.LabelControl8.Location = New System.Drawing.Point(130, 120)
+        Me.LabelControl8.Location = New System.Drawing.Point(130, 160)
         Me.LabelControl8.Name = "LabelControl8"
         Me.LabelControl8.Size = New System.Drawing.Size(83, 14)
         Me.LabelControl8.TabIndex = 45
@@ -174,7 +174,7 @@ Partial Class frm_collection_cheque
         'dt_date
         '
         Me.dt_date.EditValue = Nothing
-        Me.dt_date.Location = New System.Drawing.Point(130, 140)
+        Me.dt_date.Location = New System.Drawing.Point(130, 180)
         Me.dt_date.Name = "dt_date"
         Me.dt_date.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dt_date.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -188,7 +188,7 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl9.Appearance.Options.UseFont = True
-        Me.LabelControl9.Location = New System.Drawing.Point(18, 56)
+        Me.LabelControl9.Location = New System.Drawing.Point(18, 96)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(85, 14)
         Me.LabelControl9.TabIndex = 47
@@ -196,7 +196,7 @@ Partial Class frm_collection_cheque
         '
         'txt_acc_name
         '
-        Me.txt_acc_name.Location = New System.Drawing.Point(128, 54)
+        Me.txt_acc_name.Location = New System.Drawing.Point(128, 94)
         Me.txt_acc_name.Name = "txt_acc_name"
         Me.txt_acc_name.Size = New System.Drawing.Size(341, 20)
         Me.txt_acc_name.TabIndex = 3
@@ -205,7 +205,7 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl10.Appearance.Options.UseFont = True
-        Me.LabelControl10.Location = New System.Drawing.Point(18, 82)
+        Me.LabelControl10.Location = New System.Drawing.Point(18, 122)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(72, 14)
         Me.LabelControl10.TabIndex = 49
@@ -228,14 +228,14 @@ Partial Class frm_collection_cheque
         '
         'txt_payee
         '
-        Me.txt_payee.Location = New System.Drawing.Point(128, 80)
+        Me.txt_payee.Location = New System.Drawing.Point(128, 120)
         Me.txt_payee.Name = "txt_payee"
         Me.txt_payee.Size = New System.Drawing.Size(341, 20)
         Me.txt_payee.TabIndex = 4
         '
         'btn_add
         '
-        Me.btn_add.Location = New System.Drawing.Point(349, 138)
+        Me.btn_add.Location = New System.Drawing.Point(349, 178)
         Me.btn_add.Name = "btn_add"
         Me.btn_add.Size = New System.Drawing.Size(67, 22)
         Me.btn_add.TabIndex = 8
@@ -246,12 +246,12 @@ Partial Class frm_collection_cheque
         '
         Me.grid_cheque.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.grid_cheque.Location = New System.Drawing.Point(18, 177)
+        Me.grid_cheque.Location = New System.Drawing.Point(18, 216)
         Me.grid_cheque.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_cheque.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_cheque.MainView = Me.grid_cheque_view
         Me.grid_cheque.Name = "grid_cheque"
-        Me.grid_cheque.Size = New System.Drawing.Size(451, 228)
+        Me.grid_cheque.Size = New System.Drawing.Size(451, 189)
         Me.grid_cheque.TabIndex = 52
         Me.grid_cheque.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_cheque_view, Me.GridView1})
         '
@@ -523,7 +523,7 @@ Partial Class frm_collection_cheque
         '
         'txt_amount
         '
-        Me.txt_amount.Location = New System.Drawing.Point(238, 140)
+        Me.txt_amount.Location = New System.Drawing.Point(238, 180)
         Me.txt_amount.Name = "txt_amount"
         Me.txt_amount.Properties.Appearance.Options.UseTextOptions = True
         Me.txt_amount.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -534,11 +534,11 @@ Partial Class frm_collection_cheque
         '
         Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelControl3.Appearance.Options.UseFont = True
-        Me.LabelControl3.Location = New System.Drawing.Point(303, 30)
+        Me.LabelControl3.Location = New System.Drawing.Point(18, 30)
         Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(37, 14)
+        Me.LabelControl3.Size = New System.Drawing.Size(75, 14)
         Me.LabelControl3.TabIndex = 54
-        Me.LabelControl3.Text = "*Bank:"
+        Me.LabelControl3.Text = "*Select Bank:"
         '
         'LabelControl1
         '
@@ -553,17 +553,18 @@ Partial Class frm_collection_cheque
         '
         'cbb_bank
         '
-        Me.cbb_bank.Location = New System.Drawing.Point(346, 28)
+        Me.cbb_bank.Location = New System.Drawing.Point(128, 28)
         Me.cbb_bank.Name = "cbb_bank"
         Me.cbb_bank.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbb_bank.Size = New System.Drawing.Size(123, 20)
+        Me.cbb_bank.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cbb_bank.Size = New System.Drawing.Size(166, 20)
         Me.cbb_bank.TabIndex = 1
         '
         'btn_delete
         '
         Me.btn_delete.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.trash_16x16
         Me.btn_delete.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.btn_delete.Location = New System.Drawing.Point(445, 138)
+        Me.btn_delete.Location = New System.Drawing.Point(445, 178)
         Me.btn_delete.Name = "btn_delete"
         Me.btn_delete.Size = New System.Drawing.Size(24, 23)
         Me.btn_delete.TabIndex = 9

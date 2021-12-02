@@ -57,6 +57,7 @@ Partial Class frm_sales_transaction_invoice
         Me.col_invoice = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_print = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.col_sales_agent = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_date_released = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.grid_deliveries, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_deliveries_view, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +112,7 @@ Partial Class frm_sales_transaction_invoice
         Me.grid_deliveries_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_deliveries_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_deliveries_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_deliveries_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.GridColumn4, Me.col_shipping_method, Me.col_status, Me.col_payment_type, Me.col_payment_status, Me.col_customer, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.col_invoice, Me.col_sales_agent})
+        Me.grid_deliveries_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.GridColumn4, Me.col_shipping_method, Me.col_status, Me.col_payment_type, Me.col_payment_status, Me.col_customer, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.col_invoice, Me.col_sales_agent, Me.col_date_released})
         Me.grid_deliveries_view.GridControl = Me.grid_deliveries
         Me.grid_deliveries_view.Name = "grid_deliveries_view"
         Me.grid_deliveries_view.OptionsBehavior.ReadOnly = True
@@ -175,7 +176,7 @@ Partial Class frm_sales_transaction_invoice
         Me.col_status.FieldName = "status"
         Me.col_status.Name = "col_status"
         Me.col_status.Visible = True
-        Me.col_status.VisibleIndex = 10
+        Me.col_status.VisibleIndex = 11
         Me.col_status.Width = 73
         '
         'col_payment_type
@@ -241,7 +242,7 @@ Partial Class frm_sales_transaction_invoice
         Me.GridColumn7.OptionsColumn.AllowEdit = False
         Me.GridColumn7.OptionsColumn.ReadOnly = True
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 8
+        Me.GridColumn7.VisibleIndex = 9
         Me.GridColumn7.Width = 68
         '
         'GridColumn9
@@ -254,7 +255,7 @@ Partial Class frm_sales_transaction_invoice
         Me.GridColumn9.OptionsColumn.AllowEdit = False
         Me.GridColumn9.OptionsColumn.ReadOnly = True
         Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 9
+        Me.GridColumn9.VisibleIndex = 10
         Me.GridColumn9.Width = 146
         '
         'col_invoice
@@ -269,7 +270,7 @@ Partial Class frm_sales_transaction_invoice
         Me.col_invoice.Name = "col_invoice"
         Me.col_invoice.OptionsColumn.ReadOnly = True
         Me.col_invoice.Visible = True
-        Me.col_invoice.VisibleIndex = 11
+        Me.col_invoice.VisibleIndex = 12
         Me.col_invoice.Width = 70
         '
         'btn_print
@@ -290,6 +291,16 @@ Partial Class frm_sales_transaction_invoice
         Me.col_sales_agent.Visible = True
         Me.col_sales_agent.VisibleIndex = 6
         Me.col_sales_agent.Width = 85
+        '
+        'col_date_released
+        '
+        Me.col_date_released.Caption = "Released Date"
+        Me.col_date_released.DisplayFormat.FormatString = "MMM dd, yyyy"
+        Me.col_date_released.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.col_date_released.FieldName = "date_released"
+        Me.col_date_released.Name = "col_date_released"
+        Me.col_date_released.Visible = True
+        Me.col_date_released.VisibleIndex = 8
         '
         'frm_sales_transaction_invoice
         '
@@ -329,4 +340,5 @@ Partial Class frm_sales_transaction_invoice
     Friend WithEvents col_invoice As DevExpress.XtraGrid.Columns.GridColumn
 	Friend WithEvents btn_print As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
 	Friend WithEvents col_sales_agent As GridColumn
+    Friend WithEvents col_date_released As GridColumn
 End Class

@@ -45,6 +45,7 @@ Partial Class frm_sales_quotation_order_list
         Me.date_created = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_action = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_edit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_validity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -230,7 +231,7 @@ Partial Class frm_sales_quotation_order_list
         Me.grid_quotes_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_quotes_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_quotes_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_quotes_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_quotation_id, Me.col_company, Me.col_status, Me.date_created, Me.col_action})
+        Me.grid_quotes_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_quotation_id, Me.col_company, Me.col_status, Me.date_created, Me.col_action, Me.col_validity})
         Me.grid_quotes_view.GridControl = Me.grid_quotes
         Me.grid_quotes_view.Name = "grid_quotes_view"
         Me.grid_quotes_view.OptionsBehavior.ReadOnly = True
@@ -311,6 +312,14 @@ Partial Class frm_sales_quotation_order_list
         Me.btn_edit.Name = "btn_edit"
         Me.btn_edit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
+        'col_validity
+        '
+        Me.col_validity.Caption = "Validity"
+        Me.col_validity.FieldName = "validity"
+        Me.col_validity.Name = "col_validity"
+        Me.col_validity.Visible = True
+        Me.col_validity.VisibleIndex = 5
+        '
         'frm_sales_quotation_order_list
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -352,4 +361,5 @@ Partial Class frm_sales_quotation_order_list
     Friend WithEvents date_created As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_action As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_edit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents col_validity As DevExpress.XtraGrid.Columns.GridColumn
 End Class

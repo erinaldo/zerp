@@ -60,6 +60,11 @@ Partial Class frm_sales_customers_new
         Me.txt_contact_person = New DevExpress.XtraEditors.TextEdit()
         Me.sheet_customer = New DevExpress.XtraSpreadsheet.SpreadsheetControl()
         Me.btn_delete_customer = New DevExpress.XtraEditors.SimpleButton()
+        Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.grid_bank = New System.Windows.Forms.DataGridView()
+        Me.col_bank = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_bank_acc_no = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_bank_acc_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.txt_fname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_contact.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_address.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,6 +78,9 @@ Partial Class frm_sales_customers_new
         CType(Me.cbb_agents.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_admin.SuspendLayout()
         CType(Me.txt_contact_person.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl2.SuspendLayout()
+        CType(Me.grid_bank, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbl_title
@@ -156,7 +164,7 @@ Partial Class frm_sales_customers_new
         Me.btn_apply.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_apply.Appearance.Options.UseBackColor = True
         Me.btn_apply.Appearance.Options.UseFont = True
-        Me.btn_apply.Location = New System.Drawing.Point(754, 467)
+        Me.btn_apply.Location = New System.Drawing.Point(928, 613)
         Me.btn_apply.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_apply.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_apply.Name = "btn_apply"
@@ -169,7 +177,7 @@ Partial Class frm_sales_customers_new
         Me.btn_cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_cancel.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_cancel.Appearance.Options.UseFont = True
-        Me.btn_cancel.Location = New System.Drawing.Point(658, 467)
+        Me.btn_cancel.Location = New System.Drawing.Point(832, 613)
         Me.btn_cancel.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_cancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_cancel.Name = "btn_cancel"
@@ -184,7 +192,7 @@ Partial Class frm_sales_customers_new
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(856, 60)
+        Me.Panel1.Size = New System.Drawing.Size(1030, 60)
         Me.Panel1.TabIndex = 23
         '
         'LabelControl2
@@ -291,7 +299,7 @@ Partial Class frm_sales_customers_new
         Me.lbl_customer_id.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.lbl_customer_id.Appearance.Options.UseFont = True
         Me.lbl_customer_id.LineVisible = True
-        Me.lbl_customer_id.Location = New System.Drawing.Point(16, 24)
+        Me.lbl_customer_id.Location = New System.Drawing.Point(16, 31)
         Me.lbl_customer_id.Name = "lbl_customer_id"
         Me.lbl_customer_id.Size = New System.Drawing.Size(0, 16)
         Me.lbl_customer_id.TabIndex = 32
@@ -329,6 +337,8 @@ Partial Class frm_sales_customers_new
         '
         'GroupControl1
         '
+        Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl1.AppearanceCaption.Options.UseFont = True
         Me.GroupControl1.Controls.Add(Me.cbb_agents)
         Me.GroupControl1.Controls.Add(Me.LabelControl9)
         Me.GroupControl1.Controls.Add(Me.panel_admin)
@@ -374,7 +384,7 @@ Partial Class frm_sales_customers_new
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.LabelControl9.Appearance.Options.UseFont = True
         Me.LabelControl9.LineVisible = True
-        Me.LabelControl9.Location = New System.Drawing.Point(19, 368)
+        Me.LabelControl9.Location = New System.Drawing.Point(19, 369)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(93, 16)
         Me.LabelControl9.TabIndex = 39
@@ -430,18 +440,18 @@ Partial Class frm_sales_customers_new
         Me.sheet_customer.Options.Behavior.Worksheet.Insert = DevExpress.XtraSpreadsheet.DocumentCapability.Disabled
         Me.sheet_customer.Options.Behavior.Worksheet.Rename = DevExpress.XtraSpreadsheet.DocumentCapability.Disabled
         Me.sheet_customer.Options.Behavior.Worksheet.Unhide = DevExpress.XtraSpreadsheet.DocumentCapability.Disabled
-        Me.sheet_customer.Size = New System.Drawing.Size(369, 384)
+        Me.sheet_customer.Size = New System.Drawing.Size(543, 530)
         Me.sheet_customer.TabIndex = 9
         Me.sheet_customer.Text = "SpreadsheetControl1"
         '
         'btn_delete_customer
         '
-        Me.btn_delete_customer.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_delete_customer.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btn_delete_customer.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger
         Me.btn_delete_customer.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_delete_customer.Appearance.Options.UseBackColor = True
         Me.btn_delete_customer.Appearance.Options.UseFont = True
-        Me.btn_delete_customer.Location = New System.Drawing.Point(476, 467)
+        Me.btn_delete_customer.Location = New System.Drawing.Point(475, 613)
         Me.btn_delete_customer.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_delete_customer.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_delete_customer.Name = "btn_delete_customer"
@@ -450,12 +460,56 @@ Partial Class frm_sales_customers_new
         Me.btn_delete_customer.Text = "Delete Customer"
         Me.btn_delete_customer.Visible = False
         '
+        'GroupControl2
+        '
+        Me.GroupControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupControl2.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl2.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl2.Controls.Add(Me.grid_bank)
+        Me.GroupControl2.Location = New System.Drawing.Point(12, 495)
+        Me.GroupControl2.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.GroupControl2.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.GroupControl2.Name = "GroupControl2"
+        Me.GroupControl2.Size = New System.Drawing.Size(452, 151)
+        Me.GroupControl2.TabIndex = 37
+        Me.GroupControl2.Text = "Bank Details"
+        '
+        'grid_bank
+        '
+        Me.grid_bank.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_bank.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grid_bank.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid_bank.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_bank, Me.col_bank_acc_no, Me.col_bank_acc_name})
+        Me.grid_bank.Location = New System.Drawing.Point(11, 41)
+        Me.grid_bank.Name = "grid_bank"
+        Me.grid_bank.Size = New System.Drawing.Size(427, 95)
+        Me.grid_bank.TabIndex = 0
+        '
+        'col_bank
+        '
+        Me.col_bank.HeaderText = "Bank"
+        Me.col_bank.Name = "col_bank"
+        '
+        'col_bank_acc_no
+        '
+        Me.col_bank_acc_no.HeaderText = "Account No."
+        Me.col_bank_acc_no.Name = "col_bank_acc_no"
+        '
+        'col_bank_acc_name
+        '
+        Me.col_bank_acc_name.HeaderText = "Account Name"
+        Me.col_bank_acc_name.Name = "col_bank_acc_name"
+        '
         'frm_sales_customers_new
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(856, 512)
+        Me.ClientSize = New System.Drawing.Size(1030, 658)
+        Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.btn_delete_customer)
         Me.Controls.Add(Me.sheet_customer)
         Me.Controls.Add(Me.GroupControl1)
@@ -483,6 +537,9 @@ Partial Class frm_sales_customers_new
         Me.panel_admin.ResumeLayout(False)
         Me.panel_admin.PerformLayout()
         CType(Me.txt_contact_person.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl2.ResumeLayout(False)
+        CType(Me.grid_bank, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -516,4 +573,9 @@ Partial Class frm_sales_customers_new
     Friend WithEvents cbb_agents As ComboBoxEdit
     Friend WithEvents LabelControl9 As LabelControl
     Friend WithEvents btn_delete_customer As SimpleButton
+    Friend WithEvents GroupControl2 As GroupControl
+    Friend WithEvents grid_bank As DataGridView
+    Friend WithEvents col_bank As DataGridViewTextBoxColumn
+    Friend WithEvents col_bank_acc_no As DataGridViewTextBoxColumn
+    Friend WithEvents col_bank_acc_name As DataGridViewTextBoxColumn
 End Class

@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports DevExpress.XtraGrid.Views.Grid
+Imports MySql.Data.MySqlClient
 
 Public Class frm_warehouse_deliveries
 
@@ -45,17 +46,15 @@ Public Class frm_warehouse_deliveries
                 Dim dt = New DataTable
                 Dim da = New MySqlDataAdapter(cmd)
                 da.Fill(dt)
-
-                'Remove Obsolete Orders
-                'dt.DefaultView.RowFilter = "lead_time_status in ('On-going', 'Due Date', 'Overdue')"
-
                 grid_delivery.DataSource = dt
+
             End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
 
     'Load Form on Panel
     Public Sub LoadFrm(form As Form)
@@ -78,12 +77,8 @@ Public Class frm_warehouse_deliveries
     '--- CONTROLS ----
 
     'Grid Delivery
-    Private Sub grid_delivery_DoubleClick(sender As Object, e As EventArgs) Handles grid_delivery.DoubleClick
-        Dim poid As Integer = grid_delivery.CurrentRow.Cells(1).Value.ToString.Replace("PO", "")
-
-        'frm_purchaseorder_receive.Load_Orders(poid)
-        'frm_purchaseorder_receive.ShowDialog()
-
+    Private Sub btn_view_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view.ButtonClick
+        Dim poid As Integer = grid_delivery_view.GetFocusedRowCellValue(col_purchase_id).Replace("PO", "")
         Dim frm = New frm_warehouse_delivery_receive
         LoadFrm(frm)
         frm.Load_Orders(poid)
@@ -112,6 +107,18 @@ Public Class frm_warehouse_deliveries
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
 
+    End Sub
+
+    Private Sub grid_delivery_view_RowStyle(sender As Object, e As RowStyleEventArgs) Handles grid_delivery_view.RowStyle
+        Dim status As String = grid_delivery_view.GetRowCellValue(e.RowHandle, "lead_time_status")
+
+        Select Case status
+            Case "Obsolete"
+                e.Appearance.BackColor = Color.IndianRed
+                e.Appearance.ForeColor = Color.White
+            Case "Overdue" : e.Appearance.BackColor = Color.DarkOrange
+            Case "On-going", "Due Date" : e.Appearance.BackColor = Color.Lime
+        End Select
     End Sub
 
 End Class

@@ -2,6 +2,7 @@
 Imports System.Globalization
 Imports MySql.Data.MySqlClient
 Imports System.Text.RegularExpressions
+Imports Newtonsoft.Json
 
 Public Class frm_sales_customers_new
 
@@ -20,6 +21,9 @@ Public Class frm_sales_customers_new
             panel_admin.Visible = True
             cbb_account_type.Enabled = True
         End If
+
+        LoadBanksDetails()
+
     End Sub
 
 
@@ -68,11 +72,23 @@ Public Class frm_sales_customers_new
                     data += ";"
                 Next
 
+                'Get Banks
+                Dim BanksList = New List(Of SalesCustomerBankAccounts)
+                If grid_bank.Rows.Count > 1 Then
+                    For i = 0 To grid_bank.RowCount - 2
+                        BanksList.Add(New SalesCustomerBankAccounts With {
+                            .bank = grid_bank.Rows(i).Cells(0).Value,
+                            .bank_acc_no = grid_bank.Rows(i).Cells(1).Value,
+                            .bank_acc_name = grid_bank.Rows(i).Cells(2).Value
+                    })
+                    Next
+                End If
+
                 'Set Query
                 Dim query = ""
                 If lbl_title.Text.Equals("New Customer") Then
-                    query = "INSERT INTO ims_customers (first_name, contact_person, contact, address, terms, account_type, preferred_shipping, trucking_note, assigned_agent, other_notes, credit_limit) 
-                                            VALUES (@fname, @contact_person, @contact, @address, @terms, @type, @shipping, @trucking, (SELECT usr_id FROM ims_users WHERE first_name=@assigned_agent), @other_notes, @credit_limit)"
+                    query = "INSERT INTO ims_customers (first_name, contact_person, contact, address, terms, account_type, preferred_shipping, trucking_note, assigned_agent, other_notes, credit_limit, banks) 
+                                            VALUES (@fname, @contact_person, @contact, @address, @terms, @type, @shipping, @trucking, (SELECT usr_id FROM ims_users WHERE first_name=@assigned_agent), @other_notes, @credit_limit, @banks)"
                 End If
 
                 Dim cmd = New MySqlCommand(query, conn)
@@ -85,6 +101,7 @@ Public Class frm_sales_customers_new
                 cmd.Parameters.AddWithValue("@trucking", .ToTitleCase(txt_trucking.Text))
                 cmd.Parameters.AddWithValue("@other_notes", If(String.IsNullOrEmpty(data), "", data))
                 cmd.Parameters.AddWithValue("@assigned_agent", cbb_agents.Text.Trim())
+                cmd.Parameters.AddWithValue("@banks", JsonConvert.SerializeObject(BanksList))
                 'Admin Only
                 cmd.Parameters.AddWithValue("@terms", num_terms.Value)
                 cmd.Parameters.AddWithValue("@credit_limit", CDec(txt_credit_limit.Text))
@@ -135,8 +152,20 @@ Public Class frm_sales_customers_new
                     data += ";"
                 Next
 
+                'Get Banks
+                Dim BanksList = New List(Of SalesCustomerBankAccounts)
+                If grid_bank.Rows.Count > 1 Then
+                    For i = 0 To grid_bank.RowCount - 2
+                        BanksList.Add(New SalesCustomerBankAccounts With {
+                            .bank = grid_bank.Rows(i).Cells(0).Value,
+                            .bank_acc_no = grid_bank.Rows(i).Cells(1).Value,
+                            .bank_acc_name = grid_bank.Rows(i).Cells(2).Value
+                    })
+                    Next
+                End If
+
                 'Set Query
-                Dim query = "UPDATE ims_customers SET first_name=@fname, contact_person=@contact_person, contact=@contact, address=@address, terms=@terms, account_type=@type, 
+                Dim query = "UPDATE ims_customers SET first_name=@fname, contact_person=@contact_person, contact=@contact, address=@address, terms=@terms, account_type=@type, banks=@banks,
                                                         preferred_shipping=@shipping, trucking_note=@trucking, assigned_agent=(SELECT usr_id FROM ims_users WHERE first_name=@assigned_agent), credit_limit=@credit_limit, other_notes=@other_notes WHERE customer_id=" & lbl_customer_id.Text
                 Dim cmd = New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@fname", .ToTitleCase(txt_fname.Text.Trim))
@@ -148,6 +177,7 @@ Public Class frm_sales_customers_new
                 cmd.Parameters.AddWithValue("@trucking", .ToTitleCase(txt_trucking.Text))
                 cmd.Parameters.AddWithValue("@other_notes", If(String.IsNullOrEmpty(data), "", data))
                 cmd.Parameters.AddWithValue("@assigned_agent", cbb_agents.Text.Trim())
+                cmd.Parameters.AddWithValue("@banks", JsonConvert.SerializeObject(BanksList))
                 'Admin Only
                 cmd.Parameters.AddWithValue("@credit_limit", CDec(txt_credit_limit.Text))
                 cmd.Parameters.AddWithValue("@terms", num_terms.Value)
@@ -210,7 +240,32 @@ Public Class frm_sales_customers_new
         End Try
     End Sub
 
+    'Load Banks
+    Private Sub LoadBanksDetails()
+        If Not String.IsNullOrEmpty(lbl_customer_id.Text) Then
+            Try
+                Using conn = New MySqlConnection(str)
+                    conn.Open()
+                    Using cmd = New MySqlCommand("SELECT banks FROM ims_customers WHERE customer_id=@cid", conn)
+                        cmd.Parameters.AddWithValue("@cid", lbl_customer_id.Text)
+                        Using rdr = cmd.ExecuteReader
 
+                            While rdr.Read
+                                If Not IsDBNull(rdr("banks")) Then
+                                    Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of SalesCustomerBankAccounts))(rdr("banks"))
+                                    For Each item In itemsObject
+                                        grid_bank.Rows.Add(item.bank, item.bank_acc_no, item.bank_acc_name)
+                                    Next
+                                End If
+                            End While
+                        End Using
+                    End Using
+                End Using
+            Catch ex As Exception
+                MsgBox(ex.Message, vbCritical, "Error")
+            End Try
+        End If
+    End Sub
 
 
 

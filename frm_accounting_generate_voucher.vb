@@ -57,14 +57,14 @@ Public Class frm_accounting_generate_voucher
         Dim table = New PrintData
 
         Dim conn As New MySqlConnection(str)
-        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = "", payment_type = String.Empty
+        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = "", payment_type = String.Empty, contact_person = String.Empty
 
         Try
 
             conn.Open()
 
             'GET VOUCHER DETAILS
-            Dim query = "SELECT payment_type, receipts, collection_ref, creation_date, receipts, ims_users.first_name, ims_suppliers.supplier, 
+            Dim query = "SELECT payment_type, receipts, collection_ref, creation_date, receipts, ims_users.first_name, ims_suppliers.supplier, ims_suppliers.contact_person,
                         (SELECT value FROM ims_settings WHERE name='store_info') as store_info 
                         FROM ims_payment_vouchers
                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier
@@ -74,6 +74,7 @@ Public Class frm_accounting_generate_voucher
                 cmd.Parameters.AddWithValue("@payment_id", id)
                 Using rdr_details = cmd.ExecuteReader
                     While rdr_details.Read
+                        contact_person = rdr_details("contact_person")
                         payment_type = rdr_details("payment_type")
                         voucher_date = rdr_details("creation_date")
                         collection_ref = rdr_details("collection_ref")
@@ -175,7 +176,9 @@ Public Class frm_accounting_generate_voucher
             report.Parameters("collection_ref").Value = collection_ref
             report.Parameters("generated_by").Value = generated_by
             report.Parameters("payment_type").Value = payment_type
+            report.Parameters("contact_person").Value = contact_person
             report.RequestParameters = False
+
 
             report.DataSource = table
             report.ShowRibbonPreviewDialog()
@@ -244,6 +247,14 @@ Public Class frm_accounting_generate_voucher
         If rb_cheque.Checked = True Then
             Dim current_row_handle = grid_receipts_view.FocusedRowHandle
             Dim cheque_value = grid_receipts_view.GetFocusedRowCellValue(col_cheque_no)
+            Dim selected_rows = grid_receipts_view.GetSelectedRows
+
+            If Not selected_rows.Length = 0 Then
+                If Not cheque_value = grid_receipts_view.GetRowCellValue(selected_rows(0), col_cheque_no) Then
+                    MsgBox("Oops! One (1) cheque only." & vbCrLf & "Unselect other first!", vbInformation, "Information")
+                    Return
+                End If
+            End If
 
             For i = 0 To grid_receipts_view.RowCount - 1
                 If Equals(grid_receipts_view.GetRowCellValue(i, col_cheque_no), cheque_value) Then
@@ -262,6 +273,14 @@ Public Class frm_accounting_generate_voucher
         ElseIf rb_cash.Checked = True Then
             Dim current_row_handle = grid_receipts_view.FocusedRowHandle
             Dim cheque_value = grid_receipts_view.GetFocusedRowCellValue(col_cashid)
+            Dim selected_rows = grid_receipts_view.GetSelectedRows
+
+            If Not selected_rows.Length = 0 Then
+                If Not cheque_value = grid_receipts_view.GetRowCellValue(selected_rows(0), col_cashid) Then
+                    MsgBox("Oops! One (1) cash only." & vbCrLf & "Unselect other first!", vbInformation, "Information")
+                    Return
+                End If
+            End If
 
             For i = 0 To grid_receipts_view.RowCount - 1
                 If Equals(grid_receipts_view.GetRowCellValue(i, col_cashid), cheque_value) Then

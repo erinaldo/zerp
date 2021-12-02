@@ -116,13 +116,14 @@ Public Class frm_sales_return_new
             Using conn = New MySqlConnection(str)
                 conn.Open()
 
-                Using rdr = New MySqlCommand("SELECT ims_customers.first_name AS customer, units  
+                Using rdr = New MySqlCommand("SELECT ims_customers.first_name AS customer, units, store_id  
                             FROM ims_sales_returns 
                             LEFT JOIN ims_customers ON ims_customers.customer_id=ims_sales_returns.customer_id
                             WHERE sales_return_id=" & id, conn).ExecuteReader
                     While rdr.Read
-                        txt_rid.Text = id
+                        txt_srid.Text = id
                         cbb_customer.Text = rdr("customer")
+                        lbl_store_id.Text = rdr("store_id")
 
                         Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of SalesReturnClass))(rdr("units"))
                         For Each item In itemsObject
@@ -142,6 +143,8 @@ Public Class frm_sales_return_new
                     btn_update.Location = btn_create.Location
                     btn_delete.Location = btn_clear.Location
                     cbb_customer.ReadOnly = True
+                    grid_return.ReadOnly = True
+                    grid_return.AllowUserToAddRows = False
                 End Using
             End Using
         Catch ex As Exception
@@ -345,7 +348,7 @@ Public Class frm_sales_return_new
             Try
                 Using connection = New MySqlConnection(str)
                     connection.Open()
-                    Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET units=@units, amount=@amount WHERE sales_return_id=" & txt_rid.Text, connection)
+                    Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET units=@units, amount=@amount WHERE sales_return_id=" & txt_srid.Text, connection)
                         cmd.Parameters.AddWithValue("@units", JsonConvert.SerializeObject(ListOfUnits))
                         cmd.Parameters.AddWithValue("@amount", CDec(lbl_total.Text))
                         If cmd.ExecuteNonQuery() = 1 Then
@@ -371,7 +374,7 @@ Public Class frm_sales_return_new
             Try
                 Using connection = New MySqlConnection(str)
                     connection.Open()
-                    Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET is_deleted=1 WHERE sales_return_id=" & txt_rid.Text, connection)
+                    Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET is_deleted=1 WHERE sales_return_id=" & txt_srid.Text, connection)
                         If cmd.ExecuteNonQuery() = 1 Then
                             MsgBox("Deleted!", vbInformation, "Information")
                             frm_main.LoadFrm(New frm_sales_return)
@@ -435,8 +438,28 @@ Public Class frm_sales_return_new
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET status='Approved' WHERE sales_return_id=" & txt_rid.Text, conn)
+                Using cmd = New MySqlCommand("UPDATE ims_sales_returns SET status='Approved' WHERE sales_return_id=" & txt_srid.Text, conn)
                     If cmd.ExecuteNonQuery = 1 Then
+
+                        'INSERT TO ims_sales_approved_returns
+                        Using cmd_returns = New MySqlCommand("INSERT ims_sales_approved_returns (pid, qty, store_id, sr_id, status) 
+                                                VALUES (@pid, @qty, @store_id, @sr_id, 'Pending')", conn)
+                            cmd_returns.Parameters.AddWithValue("@pid", Nothing)
+                            cmd_returns.Parameters.AddWithValue("@qty", Nothing)
+                            cmd_returns.Parameters.AddWithValue("@store_id", Nothing)
+                            cmd_returns.Parameters.AddWithValue("@sr_id", Nothing)
+                            cmd_returns.Prepare()
+
+                            For i = 0 To grid_return.Rows.Count - 1
+                                cmd_returns.Parameters(0).Value = grid_return.Rows(i).Cells(5).Value
+                                cmd_returns.Parameters(1).Value = grid_return.Rows(i).Cells(0).Value
+                                cmd_returns.Parameters(2).Value = lbl_store_id.Text
+                                cmd_returns.Parameters(3).Value = txt_srid.Text
+                                cmd_returns.ExecuteNonQuery()
+                            Next
+
+                        End Using
+
                         MsgBox("Approved!", vbInformation, "Information")
                         Me.Close()
                         frm_main.LoadFrm(New frm_admin_approval)
@@ -444,7 +467,7 @@ Public Class frm_sales_return_new
                 End Using
             End Using
         Catch ex As Exception
-
+            MsgBox(ex.Message, vbCritical, "Error")
         End Try
     End Sub
 End Class

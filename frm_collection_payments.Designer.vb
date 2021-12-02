@@ -343,6 +343,8 @@ Partial Class frm_collection_payments
         Me.GridColumn4.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn4.Caption = "Order Date"
+        Me.GridColumn4.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn4.FieldName = "date_ordered"
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.Visible = True
@@ -536,6 +538,8 @@ Partial Class frm_collection_payments
         Me.GridColumn9.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn9.Caption = "Order Date"
+        Me.GridColumn9.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn9.FieldName = "date_ordered"
         Me.GridColumn9.Name = "GridColumn9"
         Me.GridColumn9.Visible = True
@@ -759,6 +763,8 @@ Partial Class frm_collection_payments
         Me.GridColumn11.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn11.Caption = "Order Date"
+        Me.GridColumn11.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn11.FieldName = "date_ordered"
         Me.GridColumn11.MaxWidth = 120
         Me.GridColumn11.MinWidth = 120

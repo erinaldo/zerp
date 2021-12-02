@@ -143,6 +143,7 @@ Public Class frm_sales_create_quotation
     Private Sub ClearFields()
         If conn.State = ConnectionState.Open Then conn.Close()
         cbb_customer.SelectedIndex = -1
+        cbb_validity.SelectedIndex = -1
         txt_customer.Text = ""
         txt_contact_person.Text = ""
         txt_no.Text = ""
@@ -570,7 +571,7 @@ Public Class frm_sales_create_quotation
 
         'Validation
         If radio_new.Checked = True Then
-            If String.IsNullOrEmpty(txt_customer.Text) Or String.IsNullOrEmpty(txt_contact_person.Text) Or grid_quotation.Rows.Count <= 1 Then
+            If String.IsNullOrEmpty(txt_customer.Text) Or String.IsNullOrEmpty(txt_contact_person.Text) Or grid_quotation.Rows.Count <= 1 Or cbb_validity.SelectedIndex = -1 Then
                 MsgBox("Complete All Fields!", vbCritical, "Error")
                 Exit Sub
             End If
@@ -607,10 +608,10 @@ Public Class frm_sales_create_quotation
                 conn.Open()
                 Dim query = "INSERT INTO ims_quotations (customer_type, company, contact_person, contact_no, contact_address, delivery_address, order_item,
                         discount_val, discount_type, is_vatable, is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage,
-                        total, delivery_fee, priv_note, pub_note, prepared_by, created_at, status, is_term_applied, terms)
+                        total, delivery_fee, priv_note, pub_note, prepared_by, created_at, status, is_term_applied, terms, validity)
                         VALUES (@customer_type, @company, @contact_person, @contact_no, @contact_address, @delivery_address, @order_item,
                         @discount_val, @discount_type, @is_vatable, @is_withholding_tax_applied, @withholding_tax_amount, @withholding_tax_percentage,
-                        @total, @delivery_fee, @priv_note, @pub_note, @prepared_by, CURRENT_TIMESTAMP, 'Pending', @is_term_applied, @terms)"
+                        @total, @delivery_fee, @priv_note, @pub_note, @prepared_by, CURRENT_TIMESTAMP, 'Pending', @is_term_applied, @terms, @validity)"
 
                 Dim cmd = New MySqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@customer_type", customer_type)
@@ -633,6 +634,7 @@ Public Class frm_sales_create_quotation
                 cmd.Parameters.AddWithValue("@prepared_by", frm_main.user_id.Text)
                 cmd.Parameters.AddWithValue("@is_term_applied", cb_apply_terms.Checked)
                 cmd.Parameters.AddWithValue("@terms", IIf(cb_apply_terms.Checked, txt_terms.Text, 0))
+                cmd.Parameters.AddWithValue("@validity", cbb_validity.Text)
                 Dim inserted = cmd.ExecuteNonQuery()
             End Using
 

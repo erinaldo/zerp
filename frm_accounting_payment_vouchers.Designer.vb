@@ -41,13 +41,13 @@ Partial Class frm_accounting_payment_vouchers
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_date_created = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_print = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemButtonEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.btn_print = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
         CType(Me.grid_payments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_payments_view, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_print, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -158,7 +158,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.grid_payments.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_payments.MainView = Me.grid_payments_view
         Me.grid_payments.Name = "grid_payments"
-        Me.grid_payments.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonEdit1})
+        Me.grid_payments.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_print})
         Me.grid_payments.Size = New System.Drawing.Size(1022, 401)
         Me.grid_payments.TabIndex = 13
         Me.grid_payments.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_payments_view})
@@ -226,19 +226,20 @@ Partial Class frm_accounting_payment_vouchers
         'col_print
         '
         Me.col_print.Caption = "Print"
-        Me.col_print.ColumnEdit = Me.RepositoryItemButtonEdit1
+        Me.col_print.ColumnEdit = Me.btn_print
         Me.col_print.Name = "col_print"
         Me.col_print.OptionsColumn.FixedWidth = True
         Me.col_print.Visible = True
         Me.col_print.VisibleIndex = 4
         '
-        'RepositoryItemButtonEdit1
+        'btn_print
         '
-        Me.RepositoryItemButtonEdit1.AutoHeight = False
-        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.createmodeldifferences_16x16
-        Me.RepositoryItemButtonEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-        Me.RepositoryItemButtonEdit1.Name = "RepositoryItemButtonEdit1"
-        Me.RepositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        Me.btn_print.AutoHeight = False
+        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
+        Me.btn_print.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_print.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print.Name = "btn_print"
+        Me.btn_print.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
         'frm_accounting_payment_vouchers
         '
@@ -257,7 +258,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.GunaPanel1.PerformLayout()
         CType(Me.grid_payments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_payments_view, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_print, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -275,6 +276,6 @@ Partial Class frm_accounting_payment_vouchers
     Friend WithEvents col_supplier As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_date_created As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_print As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemButtonEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents btn_print As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents col_payment_type As DevExpress.XtraGrid.Columns.GridColumn
 End Class

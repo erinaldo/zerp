@@ -114,6 +114,8 @@ Partial Class frm_sales_view_order
         Me.cb_tax_applied = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lbl_balance = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
         Me.btn_refund = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_epayment = New DevExpress.XtraEditors.SimpleButton()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
@@ -135,8 +137,7 @@ Partial Class frm_sales_view_order
         Me.lbl_cid = New DevExpress.XtraEditors.TextEdit()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.btn_modify = New DevExpress.XtraEditors.SimpleButton()
-        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl_balance = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_unserved = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_po_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -597,7 +598,7 @@ Partial Class frm_sales_view_order
         Me.btn_delete.Appearance.Options.UseFont = True
         Me.btn_delete.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.trash_32x32
         Me.btn_delete.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_delete.Location = New System.Drawing.Point(739, 90)
+        Me.btn_delete.Location = New System.Drawing.Point(436, 89)
         Me.btn_delete.Name = "btn_delete"
         Me.btn_delete.Size = New System.Drawing.Size(150, 46)
         Me.btn_delete.TabIndex = 80
@@ -1060,6 +1061,33 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel1.Size = New System.Drawing.Size(255, 172)
         Me.Guna2Panel1.TabIndex = 122
         '
+        'lbl_balance
+        '
+        Me.lbl_balance.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.lbl_balance.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
+        Me.lbl_balance.Appearance.Options.UseFont = True
+        Me.lbl_balance.Appearance.Options.UseForeColor = True
+        Me.lbl_balance.Appearance.Options.UseTextOptions = True
+        Me.lbl_balance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_balance.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_balance.Location = New System.Drawing.Point(125, 109)
+        Me.lbl_balance.Name = "lbl_balance"
+        Me.lbl_balance.Size = New System.Drawing.Size(110, 18)
+        Me.lbl_balance.TabIndex = 110
+        Me.lbl_balance.Text = "0.00"
+        '
+        'LabelControl21
+        '
+        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.LabelControl21.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.LabelControl21.Appearance.Options.UseFont = True
+        Me.LabelControl21.Appearance.Options.UseForeColor = True
+        Me.LabelControl21.Location = New System.Drawing.Point(32, 110)
+        Me.LabelControl21.Name = "LabelControl21"
+        Me.LabelControl21.Size = New System.Drawing.Size(47, 16)
+        Me.LabelControl21.TabIndex = 109
+        Me.LabelControl21.Text = "Balance"
+        '
         'btn_refund
         '
         Me.btn_refund.Enabled = False
@@ -1341,32 +1369,18 @@ Partial Class frm_sales_view_order
         Me.btn_modify.TabIndex = 125
         Me.btn_modify.Text = "Modify"
         '
-        'LabelControl21
+        'btn_unserved
         '
-        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.LabelControl21.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.LabelControl21.Appearance.Options.UseFont = True
-        Me.LabelControl21.Appearance.Options.UseForeColor = True
-        Me.LabelControl21.Location = New System.Drawing.Point(32, 110)
-        Me.LabelControl21.Name = "LabelControl21"
-        Me.LabelControl21.Size = New System.Drawing.Size(47, 16)
-        Me.LabelControl21.TabIndex = 109
-        Me.LabelControl21.Text = "Balance"
-        '
-        'lbl_balance
-        '
-        Me.lbl_balance.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.lbl_balance.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
-        Me.lbl_balance.Appearance.Options.UseFont = True
-        Me.lbl_balance.Appearance.Options.UseForeColor = True
-        Me.lbl_balance.Appearance.Options.UseTextOptions = True
-        Me.lbl_balance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.lbl_balance.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_balance.Location = New System.Drawing.Point(125, 109)
-        Me.lbl_balance.Name = "lbl_balance"
-        Me.lbl_balance.Size = New System.Drawing.Size(110, 18)
-        Me.lbl_balance.TabIndex = 110
-        Me.lbl_balance.Text = "0.00"
+        Me.btn_unserved.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_unserved.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.btn_unserved.Appearance.Options.UseFont = True
+        Me.btn_unserved.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.article_32x321
+        Me.btn_unserved.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.btn_unserved.Location = New System.Drawing.Point(771, 89)
+        Me.btn_unserved.Name = "btn_unserved"
+        Me.btn_unserved.Size = New System.Drawing.Size(118, 46)
+        Me.btn_unserved.TabIndex = 129
+        Me.btn_unserved.Text = "Unserved"
         '
         'frm_sales_view_order
         '
@@ -1374,6 +1388,7 @@ Partial Class frm_sales_view_order
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1409, 785)
+        Me.Controls.Add(Me.btn_unserved)
         Me.Controls.Add(Me.btn_modify)
         Me.Controls.Add(Me.Guna2Panel3)
         Me.Controls.Add(Me.Guna2Panel2)
@@ -1520,4 +1535,5 @@ Partial Class frm_sales_view_order
     Friend WithEvents btn_refund As SimpleButton
     Friend WithEvents lbl_balance As LabelControl
     Friend WithEvents LabelControl21 As LabelControl
+    Friend WithEvents btn_unserved As SimpleButton
 End Class

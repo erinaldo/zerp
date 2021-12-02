@@ -36,14 +36,15 @@ Partial Class frm_warehouse_returns
         Me.GunaLabel2 = New Guna.UI.WinForms.GunaLabel()
         Me.grid_returns = New DevExpress.XtraGrid.GridControl()
         Me.grid_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_action = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_winmodel = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_qty = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_store = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_pid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_srid = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_ac = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_update = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -174,7 +175,7 @@ Partial Class frm_warehouse_returns
         Me.grid_returns_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_returns_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_returns_view.Appearance.Row.Options.UseFont = True
-        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn2, Me.GridColumn3, Me.col_action, Me.col_pid, Me.col_description, Me.col_srid, Me.GridColumn1})
+        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_winmodel, Me.col_qty, Me.col_store, Me.col_pid, Me.col_description, Me.col_srid, Me.col_ac, Me.col_id})
         Me.grid_returns_view.GridControl = Me.grid_returns
         Me.grid_returns_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_returns_view.Name = "grid_returns_view"
@@ -182,36 +183,36 @@ Partial Class frm_warehouse_returns
         Me.grid_returns_view.OptionsSelection.EnableAppearanceFocusedCell = False
         Me.grid_returns_view.OptionsView.AutoCalcPreviewLineCount = True
         '
-        'GridColumn2
+        'col_winmodel
         '
-        Me.GridColumn2.Caption = "Model"
-        Me.GridColumn2.FieldName = "winmodel"
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 3
-        Me.GridColumn2.Width = 143
+        Me.col_winmodel.Caption = "Model"
+        Me.col_winmodel.FieldName = "winmodel"
+        Me.col_winmodel.Name = "col_winmodel"
+        Me.col_winmodel.Visible = True
+        Me.col_winmodel.VisibleIndex = 4
+        Me.col_winmodel.Width = 143
         '
-        'GridColumn3
+        'col_qty
         '
-        Me.GridColumn3.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn3.Caption = "Qty"
-        Me.GridColumn3.FieldName = "qty"
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 2
-        Me.GridColumn3.Width = 86
+        Me.col_qty.AppearanceCell.Options.UseTextOptions = True
+        Me.col_qty.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_qty.Caption = "Qty"
+        Me.col_qty.FieldName = "qty"
+        Me.col_qty.Name = "col_qty"
+        Me.col_qty.Visible = True
+        Me.col_qty.VisibleIndex = 3
+        Me.col_qty.Width = 86
         '
-        'col_action
+        'col_store
         '
-        Me.col_action.Caption = "Warehouse"
-        Me.col_action.FieldName = "store_name"
-        Me.col_action.MaxWidth = 250
-        Me.col_action.MinWidth = 150
-        Me.col_action.Name = "col_action"
-        Me.col_action.Visible = True
-        Me.col_action.VisibleIndex = 5
-        Me.col_action.Width = 243
+        Me.col_store.Caption = "Warehouse"
+        Me.col_store.FieldName = "store_name"
+        Me.col_store.MaxWidth = 250
+        Me.col_store.MinWidth = 150
+        Me.col_store.Name = "col_store"
+        Me.col_store.Visible = True
+        Me.col_store.VisibleIndex = 6
+        Me.col_store.Width = 243
         '
         'col_pid
         '
@@ -222,7 +223,7 @@ Partial Class frm_warehouse_returns
         Me.col_pid.MinWidth = 80
         Me.col_pid.Name = "col_pid"
         Me.col_pid.Visible = True
-        Me.col_pid.VisibleIndex = 1
+        Me.col_pid.VisibleIndex = 2
         Me.col_pid.Width = 95
         '
         'col_description
@@ -232,7 +233,7 @@ Partial Class frm_warehouse_returns
         Me.col_description.MinWidth = 250
         Me.col_description.Name = "col_description"
         Me.col_description.Visible = True
-        Me.col_description.VisibleIndex = 4
+        Me.col_description.VisibleIndex = 5
         Me.col_description.Width = 457
         '
         'col_srid
@@ -244,15 +245,16 @@ Partial Class frm_warehouse_returns
         Me.col_srid.MaxWidth = 120
         Me.col_srid.Name = "col_srid"
         Me.col_srid.Visible = True
-        Me.col_srid.VisibleIndex = 6
+        Me.col_srid.VisibleIndex = 7
         Me.col_srid.Width = 118
         '
-        'GridColumn1
+        'col_ac
         '
-        Me.GridColumn1.ColumnEdit = Me.btn_update
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
+        Me.col_ac.Caption = "Action"
+        Me.col_ac.ColumnEdit = Me.btn_update
+        Me.col_ac.Name = "col_ac"
+        Me.col_ac.Visible = True
+        Me.col_ac.VisibleIndex = 0
         '
         'btn_update
         '
@@ -262,6 +264,16 @@ Partial Class frm_warehouse_returns
         Me.btn_update.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_update.Name = "btn_update"
         Me.btn_update.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'col_id
+        '
+        Me.col_id.AppearanceCell.Options.UseTextOptions = True
+        Me.col_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_id.Caption = "ID"
+        Me.col_id.FieldName = "id"
+        Me.col_id.Name = "col_id"
+        Me.col_id.Visible = True
+        Me.col_id.VisibleIndex = 1
         '
         'frm_warehouse_returns
         '
@@ -294,12 +306,13 @@ Partial Class frm_warehouse_returns
     Friend WithEvents GunaLabel2 As Guna.UI.WinForms.GunaLabel
     Friend WithEvents grid_returns As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_returns_view As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents col_action As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_winmodel As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_qty As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_store As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_pid As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_description As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_srid As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_update As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents col_ac As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_id As DevExpress.XtraGrid.Columns.GridColumn
 End Class

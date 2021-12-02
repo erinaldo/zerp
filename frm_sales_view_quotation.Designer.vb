@@ -102,6 +102,8 @@ Partial Class frm_sales_view_quotation
         Me.txt_customer = New DevExpress.XtraEditors.TextEdit()
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.lbl_quote_id = New Guna.UI.WinForms.GunaLabel()
+        Me.cbb_validity = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.cbb_customer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_remaining, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_quotation, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -120,6 +122,7 @@ Partial Class frm_sales_view_quotation
         CType(Me.txt_no.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_customer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaPanel2.SuspendLayout()
+        CType(Me.cbb_validity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'radio_existing
@@ -438,6 +441,8 @@ Partial Class frm_sales_view_quotation
         Me.PanelControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelControl1.Controls.Add(Me.LabelControl6)
+        Me.PanelControl1.Controls.Add(Me.cbb_validity)
         Me.PanelControl1.Controls.Add(Me.cb_apply_terms)
         Me.PanelControl1.Controls.Add(Me.txt_terms)
         Me.PanelControl1.Controls.Add(Me.btn_approved)
@@ -487,7 +492,7 @@ Partial Class frm_sales_view_quotation
         Me.cb_apply_terms.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cb_apply_terms.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.cb_apply_terms.ForeColor = System.Drawing.Color.Black
-        Me.cb_apply_terms.Location = New System.Drawing.Point(970, 136)
+        Me.cb_apply_terms.Location = New System.Drawing.Point(970, 127)
         Me.cb_apply_terms.Name = "cb_apply_terms"
         Me.cb_apply_terms.Size = New System.Drawing.Size(99, 20)
         Me.cb_apply_terms.TabIndex = 124
@@ -500,7 +505,7 @@ Partial Class frm_sales_view_quotation
         '
         'txt_terms
         '
-        Me.txt_terms.Location = New System.Drawing.Point(1071, 136)
+        Me.txt_terms.Location = New System.Drawing.Point(1071, 127)
         Me.txt_terms.Name = "txt_terms"
         Me.txt_terms.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_terms.Properties.Appearance.Options.UseFont = True
@@ -514,7 +519,7 @@ Partial Class frm_sales_view_quotation
         Me.btn_approved.Appearance.Options.UseFont = True
         Me.btn_approved.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.apply_32x321
         Me.btn_approved.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
-        Me.btn_approved.Location = New System.Drawing.Point(1061, 80)
+        Me.btn_approved.Location = New System.Drawing.Point(1061, 61)
         Me.btn_approved.Name = "btn_approved"
         Me.btn_approved.Size = New System.Drawing.Size(60, 60)
         Me.btn_approved.TabIndex = 122
@@ -888,6 +893,29 @@ Partial Class frm_sales_view_quotation
         Me.lbl_quote_id.TabIndex = 1
         Me.lbl_quote_id.Text = "Quotation #"
         '
+        'cbb_validity
+        '
+        Me.cbb_validity.Location = New System.Drawing.Point(1071, 153)
+        Me.cbb_validity.Name = "cbb_validity"
+        Me.cbb_validity.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.cbb_validity.Properties.Appearance.Options.UseFont = True
+        Me.cbb_validity.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbb_validity.Properties.Items.AddRange(New Object() {"7", "15", "30"})
+        Me.cbb_validity.Size = New System.Drawing.Size(50, 22)
+        Me.cbb_validity.TabIndex = 125
+        '
+        'LabelControl6
+        '
+        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.LabelControl6.Appearance.Options.UseFont = True
+        Me.LabelControl6.Appearance.Options.UseForeColor = True
+        Me.LabelControl6.Location = New System.Drawing.Point(1006, 156)
+        Me.LabelControl6.Name = "LabelControl6"
+        Me.LabelControl6.Size = New System.Drawing.Size(43, 16)
+        Me.LabelControl6.TabIndex = 126
+        Me.LabelControl6.Text = "Validity"
+        '
         'frm_sales_view_quotation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -921,6 +949,7 @@ Partial Class frm_sales_view_quotation
         CType(Me.txt_customer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaPanel2.ResumeLayout(False)
         Me.GunaPanel2.PerformLayout()
+        CType(Me.cbb_validity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -981,5 +1010,6 @@ Partial Class frm_sales_view_quotation
     Friend WithEvents txt_delivery_fee As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cb_apply_terms As Guna2CheckBox
     Friend WithEvents txt_terms As TextEdit
-
+    Friend WithEvents LabelControl6 As LabelControl
+    Friend WithEvents cbb_validity As ComboBoxEdit
 End Class

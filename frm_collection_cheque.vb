@@ -10,6 +10,7 @@ Public Class frm_collection_cheque
     Public Property customer_id = 0
     Public Property customer_name = ""
     Dim dt_cheque As New DataTable
+    Dim itemsObject As String
     Dim ListOfItem As List(Of ChequesClass) = New List(Of ChequesClass)
 
     '--- ONLOAD ---
@@ -23,8 +24,9 @@ Public Class frm_collection_cheque
         dt_cheque.Columns.Add("payee")
         dt_cheque.Columns.Add("bank")
         grid_cheque.DataSource = dt_cheque
-        LoadBank()
+        'LoadBank()
 
+        cbb_bank.Enabled = False
     End Sub
 
 
@@ -39,6 +41,25 @@ Public Class frm_collection_cheque
                 Using rdr As MySqlDataReader = mySqlCommand.ExecuteReader()
                     While rdr.Read()
                         cbb_bank.Properties.Items.Add(rdr("bank"))
+                    End While
+                End Using
+            End Using
+        End Using
+    End Sub
+
+    'Load Banks
+    Private Sub LoadBankOpt(cid As Integer)
+        Using connection = New MySqlConnection(str)
+            connection.Open()
+            Using mySqlCommand = New MySqlCommand("SELECT banks FROM ims_customers WHERE customer_id=" & cid, connection)
+                Using rdr = mySqlCommand.ExecuteReader()
+                    While rdr.Read()
+                        If Not IsDBNull(rdr("banks")) Then
+                            itemsObject = rdr("banks")
+                            For Each item In JsonConvert.DeserializeObject(Of List(Of SalesCustomerBankAccounts))(itemsObject)
+                                cbb_bank.Properties.Items.Add(item.bank)
+                            Next
+                        End If
                     End While
                 End Using
             End Using
@@ -228,9 +249,10 @@ Public Class frm_collection_cheque
             grid_cheque.DataSource = dt
         End If
 
-
+        cbb_bank.Enabled = True
         lbl_customer_id.Text = customer_id
         txt_customer_name.Text = customer_name
+        LoadBankOpt(customer_id)
         LoadTransactions(customer_id)
         LoadReturns(customer_id)
 
@@ -440,5 +462,18 @@ Public Class frm_collection_cheque
 
     End Sub
 
+    Private Sub cbb_bank_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbb_bank.SelectedIndexChanged
+        For Each item In JsonConvert.DeserializeObject(Of List(Of SalesCustomerBankAccounts))(itemsObject)
+            If cbb_bank.EditValue.Equals(item.bank) Then
+                txt_acc_no.Text = item.bank_acc_no
+                txt_acc_name.Text = item.bank_acc_name
+                Return
+            Else
+                txt_acc_no.Text = String.Empty
+                txt_acc_name.Text = String.Empty
+            End If
+        Next
+
+    End Sub
 End Class
 

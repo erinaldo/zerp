@@ -5,7 +5,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class frm_purchaseorder_edit
 
-    ReadOnly conn As New MySqlConnection(str)
+    'ReadOnly conn As New MySqlConnection(str)
     Dim model_AutoCompleteString As New AutoCompleteStringCollection
     Dim description_AutoCompleteString As New AutoCompleteStringCollection
 
@@ -20,47 +20,55 @@ Public Class frm_purchaseorder_edit
         load_locations()
 
         Try
-            If conn.State = ConnectionState.Closed Then conn.Open()
+            'DECLARATIONS
+            Dim Orders = "", discount_type = "", deliver_to = String.Empty
 
-            Dim query = "SELECT ims_suppliers.supplier, ims_purchase.contact_person, address, ims_users.first_name AS created_by,                                       
+            Dim query = "SELECT ims_suppliers.supplier, ims_purchase.contact_person, address, ims_users.first_name AS created_by, DATE_ADD(CONVERT(date_sent, DATE), INTERVAL ims_purchase.lead_time DAY) AS default_date,                                     
                             (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, notes, status, discount_val, discount_type, orders, ims_purchase.terms, ims_purchase.lead_time, pub_notes,
                             is_vatable, is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage FROM ims_purchase
                             INNER JOIN ims_users ON ims_users.usr_id=created_by
                             LEFT JOIN ims_suppliers on ims_purchase.supplier=ims_suppliers.id 
                             WHERE purchase_id='" & CInt(Replace(txt_poid.Text, "PO", "")) & "'"
-            Dim cmd = New MySqlCommand(query, conn)
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
-            Dim Orders = "", discount_type = ""
+            Using connection = New MySqlConnection(str)
+                connection.Open()
 
-            While reader.Read
+                Dim cmd = New MySqlCommand(query, connection)
+                Using reader As MySqlDataReader = cmd.ExecuteReader()
+                    While reader.Read
 
-                Me.Text = String.Concat(Me.txt_poid.Text, " - Purchase Order")
-                Orders = reader("orders")
+                        Me.Text = String.Concat(Me.txt_poid.Text, " - Purchase Order")
+                        Orders = reader("orders")
+                        txt_status.Text = reader("status")
 
-                cbb_supplier.Text = reader("supplier")
-                txt_contact.Text = reader("contact_person")
-                txt_del_address.Text = reader("address")
-                cbb_deliver.Text = reader("deliver_to")
-                txt_priv_notes.Text = reader("notes")
-                txt_pub_notes.Text = If(IsDBNull(reader("pub_notes")), String.Empty, reader("pub_notes"))
-                txt_terms.Text = reader("terms")
-                txt_lead_time.Text = reader("lead_time")
-                txt_status.Text = reader("status")
-                lbl_created_by.Text = String.Concat("Created by ", reader("created_by"))
+                        If txt_status.Text.Equals("Sent") Or txt_status.Text.Equals("Partial") Or txt_status.Text.Equals("Completed") Then
+                            lbl_date.Text = Convert.ToDateTime(reader("default_date")).ToString("MMMM dd, yyyy (dddd)")
+                        End If
+
+                        cbb_supplier.Text = reader("supplier")
+                        txt_contact.Text = reader("contact_person")
+                        txt_del_address.Text = reader("address")
+                        deliver_to = reader("deliver_to")
+                        txt_priv_notes.Text = reader("notes")
+                        txt_pub_notes.Text = If(IsDBNull(reader("pub_notes")), String.Empty, reader("pub_notes"))
+                        txt_terms.Text = reader("terms")
+                        txt_lead_time.Text = reader("lead_time")
+                        lbl_created_by.Text = String.Concat("Created by ", reader("created_by"))
+
+                        lbl_withholding_tax_percentage.Text = FormatPercent(reader("withholding_tax_percentage") / 100)
+                        lbl_withholding_tax_amount.Text = FormatCurrency(reader("withholding_tax_amount"))
+                        cb_tax_applied.Checked = reader("is_withholding_tax_applied")
+                        cb_vatable.Checked = reader("is_vatable")
+
+                        If Not IsDBNull(reader("discount_val")) Then txt_discount.Text = reader("discount_val")
+                        If Not IsDBNull(reader("discount_type")) Then discount_type = reader("discount_type")
+
+                    End While
+                End Using
+            End Using
 
 
-
-                lbl_withholding_tax_percentage.Text = FormatPercent(reader("withholding_tax_percentage") / 100)
-                lbl_withholding_tax_amount.Text = FormatCurrency(reader("withholding_tax_amount"))
-                cb_tax_applied.Checked = reader("is_withholding_tax_applied")
-                cb_vatable.Checked = reader("is_vatable")
-
-                If Not IsDBNull(reader("discount_val")) Then txt_discount.Text = reader("discount_val")
-                If Not IsDBNull(reader("discount_type")) Then discount_type = reader("discount_type")
-
-            End While
-            reader.Close()
+            cbb_deliver.Text = deliver_to
 
             set_GridData(Orders)
             load_AllStocks()
@@ -91,8 +99,6 @@ Public Class frm_purchaseorder_edit
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -128,8 +134,8 @@ Public Class frm_purchaseorder_edit
     Private Sub SetFields()
 
         cbb_deliver.ReadOnly = True
-        txt_terms.ReadOnly = True
-        txt_lead_time.ReadOnly = True
+        'txt_terms.ReadOnly = True
+        'txt_lead_time.ReadOnly = True
         txt_contact.ReadOnly = True
         txt_del_address.ReadOnly = True
 
@@ -293,24 +299,21 @@ Public Class frm_purchaseorder_edit
     Private Sub load_locations()
 
         Try
-            Using conn
-                conn.Open()
-                Dim rdr As MySqlDataReader = New MySqlCommand("SELECT store_name FROM `ims_stores`", conn).ExecuteReader
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim rdr As MySqlDataReader = New MySqlCommand("SELECT store_name FROM `ims_stores`", connection).ExecuteReader
                 Dim Coll As ComboBoxItemCollection = cbb_deliver.Properties.Items
 
                 While rdr.Read
                     cbb_deliver.Properties.Items.Add(rdr("store_name"))
                 End While
 
-                conn.Close()
             End Using
 
             cbb_deliver.SelectedIndex = -1
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
     End Sub
@@ -348,6 +351,7 @@ Public Class frm_purchaseorder_edit
             Next
 
             grid_order.DataSource = dt
+            lbl_noofitems.Text = dt.Rows.Count
             ComputeTotal()
 
         End If
@@ -357,26 +361,28 @@ Public Class frm_purchaseorder_edit
     'Load AutoComplete String
     Private Sub Load_AutoCompleteString()
         Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT winmodel, description FROM `ims_inventory` 
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim cmd = New MySqlCommand("SELECT winmodel, description FROM `ims_inventory` 
                     INNER JOIN ims_suppliers ON ims_inventory.supplier=ims_suppliers.id 
-                    WHERE ims_suppliers.supplier=@supplier", conn)
-            cmd.Parameters.AddWithValue("@supplier", cbb_supplier.Text)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                    WHERE ims_suppliers.supplier=@supplier", connection)
+                cmd.Parameters.AddWithValue("@supplier", cbb_supplier.Text)
 
-            model_AutoCompleteString.Clear()
-            description_AutoCompleteString.Clear()
+                Using rdr = cmd.ExecuteReader
+                    model_AutoCompleteString.Clear()
+                    description_AutoCompleteString.Clear()
 
-            While rdr.Read
-                model_AutoCompleteString.Add(rdr("winmodel"))
-                description_AutoCompleteString.Add(rdr("description"))
-            End While
+                    While rdr.Read
+                        model_AutoCompleteString.Add(rdr("winmodel"))
+                        description_AutoCompleteString.Add(rdr("description"))
+                    End While
+                End Using
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
+
     End Sub
 
     'Print
@@ -387,8 +393,8 @@ Public Class frm_purchaseorder_edit
 
         Dim orders = String.Empty
         Try
-            Using conn
-                conn.Open()
+            Using connection = New MySqlConnection(str)
+                connection.Open()
 
                 Dim query = "SELECT purchase_id, ims_suppliers.supplier, ims_purchase.contact_person, address, orders, total, discount_type, discount_val,
                 is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, pub_notes,
@@ -397,7 +403,7 @@ Public Class frm_purchaseorder_edit
                 (SELECT first_name FROM ims_users WHERE usr_id=approved_by) as approved_by, approved_date, DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time DAY) as lead_time, ims_purchase.terms FROM ims_purchase
                 INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase.supplier
                 INNER JOIN ims_users ON ims_users.usr_id=ims_purchase.created_by WHERE purchase_id='" & id & "'"
-                Dim rdr As MySqlDataReader = New MySqlCommand(query, conn).ExecuteReader
+                Dim rdr As MySqlDataReader = New MySqlCommand(query, connection).ExecuteReader
 
                 While rdr.Read
                     report.Parameters("store_info").Value = rdr("store_info") & vbCrLf & "Email: purchasing@winlandene.com"
@@ -433,8 +439,6 @@ Public Class frm_purchaseorder_edit
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -474,7 +478,7 @@ Public Class frm_purchaseorder_edit
     End Sub
 
     'Get Tables
-    Private Function get_all_store_tables()
+    Private Function get_all_store_tables(conn As MySqlConnection)
         Dim tables As String = String.Empty
         Dim rdr As MySqlDataReader = New MySqlCommand("SELECT store_name FROM ims_stores", conn).ExecuteReader()
 
@@ -487,8 +491,8 @@ Public Class frm_purchaseorder_edit
     End Function
 
     'Get Query
-    Private Function get_query()
-        Dim store_tables As String() = get_all_store_tables().ToString().Split(New Char() {","c})
+    Private Function get_query(conn As MySqlConnection)
+        Dim store_tables As String() = get_all_store_tables(conn).ToString().Split(New Char() {","c})
         Dim QUERY_STR As String = String.Empty
         Dim LEFT_JOIN_STR As String = String.Empty
 
@@ -508,23 +512,24 @@ Public Class frm_purchaseorder_edit
     Private Sub load_AllStocks()
 
         grid_stocks.Rows.Clear()
-        If conn.State = ConnectionState.Open Then conn.Close()
 
-        For i = 0 To grid_order.Rows.Count - 2
-            Dim winmodel = grid_order.Rows(i).Cells(3).Value
+        Using connection = New MySqlConnection(str)
+            connection.Open()
 
-            Using conn
-                conn.Open()
-                Dim mySqlCommand = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", conn)
-                mySqlCommand.Parameters.AddWithValue("@winmodel", winmodel)
-                Using mySqlDataReader As MySqlDataReader = mySqlCommand.ExecuteReader()
-                    While mySqlDataReader.Read()
-                        grid_stocks.Rows.Add(mySqlDataReader("total_qty"))
-                        grid_order.Rows(i).Cells(2).Value = mySqlDataReader("qty_per_box")
+            For i = 0 To grid_order.Rows.Count - 2
+                Dim winmodel = grid_order.Rows(i).Cells(3).Value
+
+                Dim cmd = New MySqlCommand(get_query(connection) & " WHERE winmodel=@winmodel", connection)
+                cmd.Parameters.AddWithValue("@winmodel", winmodel)
+                Using rdr As MySqlDataReader = cmd.ExecuteReader()
+                    While rdr.Read()
+                        grid_stocks.Rows.Add(rdr("total_qty"))
+                        grid_order.Rows(i).Cells(2).Value = rdr("qty_per_box")
                     End While
                 End Using
-            End Using
-        Next
+            Next
+
+        End Using
 
     End Sub
 
@@ -593,37 +598,38 @@ Public Class frm_purchaseorder_edit
 
         Try
             If MsgBox("Press 'Yes' to confirm.", vbYesNo + vbQuestion, "Confirmation") = vbYes Then
-                conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET contact_person=@contact_person, address=@address,deliver_to=(SELECT store_id FROM ims_stores WHERE store_name=@deliver_to), status=@status,
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim cmd = New MySqlCommand("UPDATE ims_purchase SET contact_person=@contact_person, address=@address,deliver_to=(SELECT store_id FROM ims_stores WHERE store_name=@deliver_to), status=@status,
                                         orders=@orders, is_vatable=@is_vatable, discount_val=@discount_val, discount_type=@discount_type, pub_notes=@pub_notes, notes=@notes, 
                                         is_withholding_tax_applied=@is_withholding_tax_applied, withholding_tax_amount=@withholding_tax_amount, withholding_tax_percentage=@withholding_tax_percentage,
-                                        total=@total, terms=@terms, lead_time=@lead_time WHERE purchase_id=@id", conn)
-                cmd.Parameters.AddWithValue("@id", CInt(purchase_id.Replace("PO", "")))
-                cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim)
-                cmd.Parameters.AddWithValue("@address", txt_del_address.Text.Trim)
-                cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim)
-                cmd.Parameters.AddWithValue("@orders", orders)
-                cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
-                cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
-                cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
-                cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
-                cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
-                cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
-                cmd.Parameters.AddWithValue("@notes", txt_priv_notes.Text.Trim)
-                cmd.Parameters.AddWithValue("@pub_notes", txt_pub_notes.Text.Trim)
-                cmd.Parameters.AddWithValue("@total", CDec(Replace(lbl_total.Text, "₱", "")))
-                cmd.Parameters.AddWithValue("@terms", CInt(txt_terms.Text))
-                cmd.Parameters.AddWithValue("@lead_time", CInt(txt_lead_time.Text))
-                cmd.Parameters.AddWithValue("@status", "Unfinished")
+                                        total=@total, terms=@terms, lead_time=@lead_time WHERE purchase_id=@id", connection)
+                    cmd.Parameters.AddWithValue("@id", CInt(purchase_id.Replace("PO", "")))
+                    cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim)
+                    cmd.Parameters.AddWithValue("@address", txt_del_address.Text.Trim)
+                    cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim)
+                    cmd.Parameters.AddWithValue("@orders", orders)
+                    cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
+                    cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
+                    cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
+                    cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
+                    cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
+                    cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
+                    cmd.Parameters.AddWithValue("@notes", txt_priv_notes.Text.Trim)
+                    cmd.Parameters.AddWithValue("@pub_notes", txt_pub_notes.Text.Trim)
+                    cmd.Parameters.AddWithValue("@total", CDec(Replace(lbl_total.Text, "₱", "")))
+                    cmd.Parameters.AddWithValue("@terms", CInt(txt_terms.Text))
+                    cmd.Parameters.AddWithValue("@lead_time", CInt(txt_lead_time.Text))
+                    cmd.Parameters.AddWithValue("@status", "Unfinished")
 
-                If cmd.ExecuteNonQuery() >= 1 Then MsgBox("Saved Successfully!", vbInformation, "Information")
-                frm_main.LoadFrm(New frm_purchaseorder_list)
+                    If cmd.ExecuteNonQuery() >= 1 Then MsgBox("Saved Successfully!", vbInformation, "Information")
+                    frm_main.LoadFrm(New frm_purchaseorder_list)
+                End Using
+
             End If
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
     End Sub
@@ -686,37 +692,37 @@ Public Class frm_purchaseorder_edit
 
         Try
             If MsgBox("Press 'Yes' to confirm.", vbYesNo + vbQuestion, "Confirmation") = vbYes Then
-                conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET contact_person=@contact_person, address=@address,deliver_to=(SELECT store_id FROM ims_stores WHERE store_name=@deliver_to), status=@status,
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim cmd = New MySqlCommand("UPDATE ims_purchase SET contact_person=@contact_person, address=@address, deliver_to=(SELECT store_id FROM ims_stores WHERE store_name=@deliver_to), status=@status,
                                         orders=@orders, is_vatable=@is_vatable, discount_val=@discount_val, discount_type=@discount_type, pub_notes=@pub_notes, notes=@notes, 
                                         is_withholding_tax_applied=@is_withholding_tax_applied, withholding_tax_amount=@withholding_tax_amount, withholding_tax_percentage=@withholding_tax_percentage,
-                                        total=@total, terms=@terms, lead_time=@lead_time WHERE purchase_id=@id", conn)
-                cmd.Parameters.AddWithValue("@id", CInt(purchase_id.Replace("PO", "")))
-                cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim)
-                cmd.Parameters.AddWithValue("@address", txt_del_address.Text.Trim)
-                cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim)
-                cmd.Parameters.AddWithValue("@orders", orders)
-                cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
-                cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
-                cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
-                cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
-                cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
-                cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
-                cmd.Parameters.AddWithValue("@notes", txt_priv_notes.Text.Trim)
-                cmd.Parameters.AddWithValue("@pub_notes", txt_pub_notes.Text.Trim)
-                cmd.Parameters.AddWithValue("@total", CDec(Replace(lbl_total.Text, "₱", "")))
-                cmd.Parameters.AddWithValue("@terms", CInt(txt_terms.Text))
-                cmd.Parameters.AddWithValue("@lead_time", CInt(txt_lead_time.Text))
-                cmd.Parameters.AddWithValue("@status", status)
+                                        total=@total, terms=@terms, lead_time=@lead_time WHERE purchase_id=@id", connection)
+                    cmd.Parameters.AddWithValue("@id", CInt(purchase_id.Replace("PO", "")))
+                    cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim)
+                    cmd.Parameters.AddWithValue("@address", txt_del_address.Text.Trim)
+                    cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim)
+                    cmd.Parameters.AddWithValue("@orders", orders)
+                    cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
+                    cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
+                    cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
+                    cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
+                    cmd.Parameters.AddWithValue("@withholding_tax_amount", CDec(lbl_withholding_tax_amount.Text))
+                    cmd.Parameters.AddWithValue("@withholding_tax_percentage", CDec(lbl_withholding_tax_percentage.Text.Replace("%", "")))
+                    cmd.Parameters.AddWithValue("@notes", txt_priv_notes.Text.Trim)
+                    cmd.Parameters.AddWithValue("@pub_notes", txt_pub_notes.Text.Trim)
+                    cmd.Parameters.AddWithValue("@total", CDec(Replace(lbl_total.Text, "₱", "")))
+                    cmd.Parameters.AddWithValue("@terms", CInt(txt_terms.Text))
+                    cmd.Parameters.AddWithValue("@lead_time", CInt(txt_lead_time.Text))
+                    cmd.Parameters.AddWithValue("@status", status)
 
-                If cmd.ExecuteNonQuery() >= 1 Then MsgBox("Saved Successfully!", vbInformation, "Information")
-                frm_main.LoadFrm(New frm_purchaseorder_list)
+                    If cmd.ExecuteNonQuery() >= 1 Then MsgBox("Saved Successfully!", vbInformation, "Information")
+                    frm_main.LoadFrm(New frm_purchaseorder_list)
+                End Using
             End If
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
     End Sub
@@ -728,16 +734,15 @@ Public Class frm_purchaseorder_edit
             Dim id = CInt(txt_poid.Text.Replace("PO", ""))
 
             Try
-                conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET deleted='1' WHERE purchase_id='" & id & "' ", conn).ExecuteNonQuery()
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim cmd = New MySqlCommand("UPDATE ims_purchase SET deleted='1' WHERE purchase_id='" & id & "' ", connection).ExecuteNonQuery()
 
-                MsgBox("Successfully deleted!", vbInformation, "Information")
-                frm_main.LoadFrm(New frm_purchaseorder_list)
-
+                    MsgBox("Successfully deleted!", vbInformation, "Information")
+                    frm_main.LoadFrm(New frm_purchaseorder_list)
+                End Using
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
 
         End If
@@ -764,24 +769,24 @@ Public Class frm_purchaseorder_edit
 
             Dim id As Integer = txt_poid.Text.Replace("PO", "")
             Dim dt = Date.Today.ToString("yyyy-MM-dd")
+            Dim i = 0
 
             Try
-                conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET status='Sent', date_sent='" & dt & "' WHERE purchase_id='" & id & "' ", conn)
-                Dim i = cmd.ExecuteNonQuery
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim cmd = New MySqlCommand("UPDATE ims_purchase SET status='Sent', date_sent='" & dt & "' WHERE purchase_id='" & id & "' ", connection)
+                    i = cmd.ExecuteNonQuery
+                End Using
 
                 If i >= 1 Then
                     MsgBox("Your Purchase order has been tagged as SENT!", vbInformation, "Information")
                     Me.Close()
-                    conn.Close()
                     frm_main.LoadFrm(New frm_purchaseorder_list)
                     PrintSlip(txt_poid.Text.Replace("PO", ""))
                 End If
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
 
         End If
@@ -826,14 +831,16 @@ Public Class frm_purchaseorder_edit
             End Select
 
             Try
-                conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET status=@status, approved_by=@approved_by, approved_date=@approved_date, notes=@notes WHERE purchase_id=@id", conn)
-                cmd.Parameters.AddWithValue("@id", CInt(txt_poid.Text.Replace("PO", "")))
-                cmd.Parameters.AddWithValue("@approved_by", frm_main.user_id.Text)
-                cmd.Parameters.AddWithValue("@approved_date", Date.Today)
-                cmd.Parameters.AddWithValue("@status", status)
-                cmd.Parameters.AddWithValue("@notes", txt_priv_notes.Text.Trim)
-                cmd.ExecuteNonQuery()
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim cmd = New MySqlCommand("UPDATE ims_purchase SET status=@status, approved_by=@approved_by, approved_date=@approved_date, notes=@notes WHERE purchase_id=@id", connection)
+                    cmd.Parameters.AddWithValue("@id", CInt(txt_poid.Text.Replace("PO", "")))
+                    cmd.Parameters.AddWithValue("@approved_by", frm_main.user_id.Text)
+                    cmd.Parameters.AddWithValue("@approved_date", Date.Today)
+                    cmd.Parameters.AddWithValue("@status", status)
+                    cmd.Parameters.AddWithValue("@notes", txt_priv_notes.Text.Trim)
+                    cmd.ExecuteNonQuery()
+                End Using
 
                 MsgBox("Purchase Order is " & IIf(Equals("Approve", response), "Approved!", "Rejected!"), vbInformation, "Information")
                 Me.Close()
@@ -841,8 +848,6 @@ Public Class frm_purchaseorder_edit
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
 
         End If
@@ -904,60 +909,61 @@ Public Class frm_purchaseorder_edit
 
                     'GET AND SET
                     Try
-                        conn.Open()
-                        Dim cmd = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", conn)
-                        cmd.Parameters.AddWithValue("@winmodel", grid_order.CurrentCell.Value)
-                        Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                        Using connection = New MySqlConnection(str)
+                            connection.Open()
+                            Dim cmd = New MySqlCommand(get_query(connection) & " WHERE winmodel=@winmodel", connection)
+                            cmd.Parameters.AddWithValue("@winmodel", grid_order.CurrentCell.Value)
+                            Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                        If rdr.HasRows Then
-                            Using rdr
-                                While rdr.Read
+                            If rdr.HasRows Then
+                                Using rdr
+                                    While rdr.Read
 
-                                    'SET VALUE TO grid_stocks
-                                    If grid_stocks.Rows.Count <= e.RowIndex Then
-                                        grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
-                                    Else
-                                        grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
-                                    End If
+                                        'SET VALUE TO grid_stocks
+                                        If grid_stocks.Rows.Count <= e.RowIndex Then
+                                            grid_stocks.Rows.Add(New Object() {rdr("total_qty")})
+                                        Else
+                                            grid_stocks.Rows(e.RowIndex).Cells(0).Value = rdr("total_qty")
+                                        End If
 
-                                    'Validation of Unit Status
-                                    If Not rdr("status").Equals("Active") Then
-                                        MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                                        grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                                        Exit Sub
-                                    End If
+                                        'Validation of Unit Status
+                                        If Not rdr("status").Equals("Active") Then
+                                            MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                                            grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                                            Exit Sub
+                                        End If
 
-                                    grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
-                                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
-                                    grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
-                                    grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
-                                    grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
-                                    Dim cost As Decimal = rdr("cost")
-                                    grid_order.Rows(e.RowIndex).Cells(6).Value = cost
-                                    If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
-                                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
-                                        grid_order.Rows(e.RowIndex).Cells(7).Value = total
-                                    End If
+                                        grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
+                                        grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
+                                        grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                        grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
+                                        grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
+                                        Dim cost As Decimal = rdr("cost")
+                                        grid_order.Rows(e.RowIndex).Cells(6).Value = cost
+                                        If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
+                                            Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
+                                            grid_order.Rows(e.RowIndex).Cells(7).Value = total
+                                        End If
 
-                                End While
-                            End Using
-                        Else
-                            MsgBox("Selected item couldn't found!", vbCritical, "Not Found")
-                            grid_order.Rows(e.RowIndex).Cells(0).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(1).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(2).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(7).Value = DBNull.Value
-                            Return
-                        End If
+                                    End While
+                                End Using
+                            Else
+                                MsgBox("Selected item couldn't found!", vbCritical, "Not Found")
+                                grid_order.Rows(e.RowIndex).Cells(0).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(1).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(2).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(7).Value = DBNull.Value
+                                Return
+                            End If
+
+                        End Using
 
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
-                    Finally
-                        conn.Close()
                     End Try
 
                 Else
@@ -978,52 +984,53 @@ Public Class frm_purchaseorder_edit
                     Next
 
                     Try
-                        conn.Open()
-                        Dim cmd = New MySqlCommand(get_query() & " WHERE description=@description", conn)
-                        cmd.Parameters.AddWithValue("@description", grid_order.CurrentCell.Value)
-                        Dim rdr As MySqlDataReader = cmd.ExecuteReader
+                        Using connection = New MySqlConnection(str)
+                            connection.Open()
+                            Dim cmd = New MySqlCommand(get_query(connection) & " WHERE description=@description", connection)
+                            cmd.Parameters.AddWithValue("@description", grid_order.CurrentCell.Value)
+                            Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                        If rdr.HasRows Then
-                            Using rdr
-                                While rdr.Read
+                            If rdr.HasRows Then
+                                Using rdr
+                                    While rdr.Read
 
-                                    'Validation of Unit Status
-                                    If Not rdr("status").Equals("Active") Then
-                                        MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
-                                        grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
-                                        Exit Sub
-                                    End If
+                                        'Validation of Unit Status
+                                        If Not rdr("status").Equals("Active") Then
+                                            MsgBox("Oops! Selected Item is Inactive." & vbCrLf & vbCrLf & "Status: " & rdr("status") & "", vbCritical, "Not Active")
+                                            grid_order.Rows.RemoveAt(grid_order.CurrentRow.Index)
+                                            Return
+                                        End If
 
-                                    grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
-                                    grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
-                                    grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
-                                    grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
-                                    grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
-                                    Dim cost As Decimal = rdr("cost")
-                                    grid_order.Rows(e.RowIndex).Cells(6).Value = cost
-                                    If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
-                                        Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
-                                        grid_order.Rows(e.RowIndex).Cells(7).Value = total
-                                    End If
-                                End While
-                            End Using
-                        Else
-                            MsgBox("Selected item couldn't found!", vbCritical, "Not Found")
-                            grid_order.Rows(e.RowIndex).Cells(0).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(1).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(2).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
-                            grid_order.Rows(e.RowIndex).Cells(7).Value = DBNull.Value
-                            Return
-                        End If
+                                        grid_order.Rows(e.RowIndex).Cells(0).Value = rdr("pid").ToString.PadLeft(6, "0"c)
+                                        grid_order.Rows(e.RowIndex).Cells(2).Value = rdr("qty_per_box")
+                                        grid_order.Rows(e.RowIndex).Cells(3).Value = rdr("winmodel")
+                                        grid_order.Rows(e.RowIndex).Cells(4).Value = rdr("supmodel")
+                                        grid_order.Rows(e.RowIndex).Cells(5).Value = rdr("description")
+                                        Dim cost As Decimal = rdr("cost")
+                                        grid_order.Rows(e.RowIndex).Cells(6).Value = cost
+                                        If Not IsDBNull(grid_order.Rows(e.RowIndex).Cells(1).Value) Then
+                                            Dim total As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value * cost
+                                            grid_order.Rows(e.RowIndex).Cells(7).Value = total
+                                        End If
+                                    End While
+                                End Using
+                            Else
+                                MsgBox("Selected item couldn't found!", vbCritical, "Not Found")
+                                grid_order.Rows(e.RowIndex).Cells(0).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(1).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(2).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(3).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(4).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(5).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(6).Value = DBNull.Value
+                                grid_order.Rows(e.RowIndex).Cells(7).Value = DBNull.Value
+                                Return
+                            End If
+
+                        End Using
 
                     Catch ex As Exception
                         MsgBox(ex.Message, vbCritical, "Error")
-                    Finally
-                        conn.Close()
                     End Try
 
                 Else
@@ -1085,7 +1092,7 @@ Public Class frm_purchaseorder_edit
             btn_send.Enabled = False
             btn_print.Enabled = False
         End If
-
+        lbl_noofitems.Text = TryCast(grid_order.DataSource, DataTable).Rows.Count
     End Sub
 
     'grid_order.UserDeletedRow | Disable btn_send upon Deleting Row
@@ -1095,7 +1102,7 @@ Public Class frm_purchaseorder_edit
             btn_send.Enabled = False
             btn_print.Enabled = False
         End If
-
+        lbl_noofitems.Text = TryCast(grid_order.DataSource, DataTable).Rows.Count
     End Sub
 
     'cbb_discount | Enable/Disable txt_discount && Compute
@@ -1108,18 +1115,18 @@ Public Class frm_purchaseorder_edit
 
         If MsgBox("Press 'Yes' to continue.", vbYesNo + vbQuestion, "Dispose Obsolete Order") = vbYes Then
             Try
-                conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET status=@status WHERE purchase_id=" & CInt(txt_poid.Text.Replace("PO", "")), conn)
-                cmd.Parameters.AddWithValue("@status", "Obsolete")
-                cmd.ExecuteNonQuery()
+                Using connection = New MySqlConnection(str)
+                    connection.Open()
+                    Dim cmd = New MySqlCommand("UPDATE ims_purchase SET status=@status WHERE purchase_id=" & CInt(txt_poid.Text.Replace("PO", "")), connection)
+                    cmd.Parameters.AddWithValue("@status", "Obsolete")
+                    cmd.ExecuteNonQuery()
+                End Using
 
                 MsgBox("Order was successfully disposed!", vbInformation, "Success")
                 frm_main.LoadFrm(New frm_purchaseorder_list)
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
-            Finally
-                conn.Close()
             End Try
         End If
 
@@ -1179,4 +1186,27 @@ Public Class frm_purchaseorder_edit
         dt.DefaultView.Sort = "winmodel ASC"
         grid_order.DataSource = dt.DefaultView.ToTable
     End Sub
+
+    'cbb_deliver
+    Private Sub cbb_deliver_EditValueChanged(sender As Object, e As EventArgs) Handles cbb_deliver.EditValueChanged
+
+        Try
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim cmd = New MySqlCommand("SELECT * FROM `ims_stores` WHERE store_name=@store_name", connection)
+                cmd.Parameters.AddWithValue("@store_name", cbb_deliver.Text)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
+
+                While rdr.Read
+                    txt_del_address.Text = rdr("store_addr")
+                End While
+
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+
+    End Sub
+
 End Class

@@ -567,43 +567,50 @@ Public Class frm_warehouse_delivery_receive
 
     'Set Units to Grid
     Sub set_PurchaseOrder_DataTable(units As String, status As String, received As String)
+        Dim no = 0
+        Try
+            Dim comma(), equal() As String
+            Dim piece As String
+            Dim i As Integer
+            Dim colonseparator As New Regex("\b;\b")
+            Dim equalseparator As New Regex("\b=\b")
 
-        Dim comma(), equal() As String
-        Dim piece As String
-        Dim i As Integer
-        Dim colonseparator As New Regex("\b;\b")
-        Dim equalseparator As New Regex("\b=\b")
+            Dim dataTable = New DataTable()
+            dataTable.Columns.Add("col_pid")
+            dataTable.Columns.Add("col_qty")
+            dataTable.Columns.Add("col_model")
+            dataTable.Columns.Add("col_description")
+            dataTable.Columns.Add("col_total_received")
+            dataTable.Columns.Add("col_qty_received")
+            dataTable.Columns.Add("col_remaining")
+            dataTable.Columns.Add("col_unit_price")
 
-        Dim dataTable = New DataTable()
-        dataTable.Columns.Add("col_pid")
-        dataTable.Columns.Add("col_qty")
-        dataTable.Columns.Add("col_model")
-        dataTable.Columns.Add("col_description")
-        dataTable.Columns.Add("col_total_received")
-        dataTable.Columns.Add("col_qty_received")
-        dataTable.Columns.Add("col_remaining")
-        dataTable.Columns.Add("col_unit_price")
+            If Not String.IsNullOrEmpty(units) Then
 
-        If Not String.IsNullOrEmpty(units) Then
+                comma = colonseparator.Split(units)
+                Dim qty_received = received.Split(";")
 
-            comma = colonseparator.Split(units)
-            Dim qty_received = received.Split(";")
+                For i = 0 To comma.Length - 1
+                    piece = comma(i).Trim
+                    equal = piece.Split("=")
 
-            For i = 0 To comma.Length - 1
-                piece = comma(i).Trim
-                equal = piece.Split("=")
+                    If status.Equals("Sent") Then
+                        no += 1
+                        dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), 0, 0, equal(1), equal(5))
+                    ElseIf status.Equals("Partial") Then
+                        no += 1
+                        dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), qty_received(i), 0, equal(1) - qty_received(i), equal(5))
+                    End If
 
-                If status.Equals("Sent") Then
-                    dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), 0, 0, equal(1), equal(5))
-                ElseIf status.Equals("Partial") Then
-                    dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), qty_received(i), 0, equal(1) - qty_received(i), equal(5))
-                End If
+                Next
 
-            Next
+                grid_order.DataSource = dataTable
 
-            grid_order.DataSource = dataTable
+            End If
+        Catch ex As Exception
+            MsgBox("Error in line " & no, vbCritical, "Error")
+        End Try
 
-        End If
 
     End Sub
 

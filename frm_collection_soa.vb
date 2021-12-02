@@ -21,7 +21,9 @@ Public Class frm_collection_soa
             conn.Open()
             Dim cmd = New MySqlCommand("SELECT concat('SA',LPAD(soa_id,5,0)) as soa_id, ims_customers.first_name as customer, print_date, total, ims_users.first_name as prepared_by FROM ims_soa
                             INNER JOIN ims_customers ON ims_customers.customer_id=ims_soa.customer_id
-                            INNER JOIN ims_users ON ims_users.usr_id=prepared_by ORDER BY soa_id DESC", conn)
+                            INNER JOIN ims_users ON ims_users.usr_id=prepared_by 
+                            WHERE ims_soa.is_deleted=0
+                            ORDER BY soa_id DESC", conn)
             cmd.ExecuteNonQuery()
 
             Dim dt = New DataTable

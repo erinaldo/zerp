@@ -61,6 +61,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.btn_view = New Guna.UI.WinForms.GunaButton()
         Me.dt_start = New Guna.UI.WinForms.GunaDateTimePicker()
         Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
+        Me.col_reference = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -191,7 +192,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.DeliveryView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.DeliveryView.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeliveryView.Appearance.Row.Options.UseFont = True
-        Me.DeliveryView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn2, Me.GridColumn3, Me.col_action, Me.GridColumn4, Me.GridColumn6, Me.GridColumn5, Me.col_supplier, Me.col_description, Me.col_cost})
+        Me.DeliveryView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn2, Me.GridColumn3, Me.col_action, Me.GridColumn4, Me.GridColumn6, Me.GridColumn5, Me.col_supplier, Me.col_description, Me.col_cost, Me.col_reference})
         Me.DeliveryView.GridControl = Me.grid_delivered
         Me.DeliveryView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.DeliveryView.Name = "DeliveryView"
@@ -265,7 +266,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.GridColumn5.FieldName = "first_name"
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 8
+        Me.GridColumn5.VisibleIndex = 9
         Me.GridColumn5.Width = 99
         '
         'col_supplier
@@ -421,6 +422,14 @@ Partial Class frm_warehouse_delivery_logs
         Me.btn_print.TabIndex = 24
         Me.btn_print.Text = "Print"
         '
+        'col_reference
+        '
+        Me.col_reference.Caption = "Reference"
+        Me.col_reference.FieldName = "reference"
+        Me.col_reference.Name = "col_reference"
+        Me.col_reference.Visible = True
+        Me.col_reference.VisibleIndex = 8
+        '
         'frm_warehouse_delivery_logs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -476,4 +485,5 @@ Partial Class frm_warehouse_delivery_logs
     Friend WithEvents col_description As GridColumn
     Friend WithEvents col_cost As GridColumn
     Friend WithEvents btn_print As SimpleButton
+    Friend WithEvents col_reference As GridColumn
 End Class

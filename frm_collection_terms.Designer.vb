@@ -287,6 +287,8 @@ Partial Class frm_collection_terms
         Me.GridColumn14.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn14.Caption = "Order Date"
+        Me.GridColumn14.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn14.FieldName = "date_ordered"
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True

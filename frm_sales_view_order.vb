@@ -1209,5 +1209,10 @@ Public Class frm_sales_view_order
         End If
     End Sub
 
+    Private Sub btn_unserved_Click(sender As Object, e As EventArgs) Handles btn_unserved.Click
+        Dim frm = New frm_sales_unserved_dialog
+        frm.cid = lbl_cid.Text
+        frm.Show()
+    End Sub
 End Class
 
