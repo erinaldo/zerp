@@ -175,7 +175,9 @@ Partial Class frm_admin_reports
         Me.col_total_cash = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_total_terms = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_total_epay = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_gross_sales = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_nonvatable_sales = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_vatable_sales = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_total_sales = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_total_transc = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_avg_transc_amount = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_avg_sales_margin = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -302,6 +304,8 @@ Partial Class frm_admin_reports
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
+        Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl16 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.TabControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
         Me.tab_sales.SuspendLayout()
@@ -418,6 +422,8 @@ Partial Class frm_admin_reports
         '
         Me.tab_sales.Appearance.Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tab_sales.Appearance.Header.Options.UseFont = True
+        Me.tab_sales.Controls.Add(Me.LabelControl16)
+        Me.tab_sales.Controls.Add(Me.LabelControl15)
         Me.tab_sales.Controls.Add(Me.lbl_epay)
         Me.tab_sales.Controls.Add(Me.lbl_cheques)
         Me.tab_sales.Controls.Add(Me.lbl_cash)
@@ -438,49 +444,49 @@ Partial Class frm_admin_reports
         'lbl_epay
         '
         Me.lbl_epay.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_epay.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_epay.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_epay.Appearance.Options.UseFont = True
         Me.lbl_epay.Appearance.Options.UseTextOptions = True
         Me.lbl_epay.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_epay.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_epay.Location = New System.Drawing.Point(649, 529)
+        Me.lbl_epay.Location = New System.Drawing.Point(497, 529)
         Me.lbl_epay.Name = "lbl_epay"
-        Me.lbl_epay.Size = New System.Drawing.Size(129, 18)
+        Me.lbl_epay.Size = New System.Drawing.Size(123, 18)
         Me.lbl_epay.TabIndex = 22
-        Me.lbl_epay.Text = "E-Pay"
+        Me.lbl_epay.Text = "E-Pay: 0.00"
         '
         'lbl_cheques
         '
         Me.lbl_cheques.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_cheques.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_cheques.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_cheques.Appearance.Options.UseFont = True
         Me.lbl_cheques.Appearance.Options.UseTextOptions = True
         Me.lbl_cheques.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_cheques.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_cheques.Location = New System.Drawing.Point(502, 529)
+        Me.lbl_cheques.Location = New System.Drawing.Point(386, 529)
         Me.lbl_cheques.Name = "lbl_cheques"
-        Me.lbl_cheques.Size = New System.Drawing.Size(125, 18)
+        Me.lbl_cheques.Size = New System.Drawing.Size(105, 18)
         Me.lbl_cheques.TabIndex = 21
-        Me.lbl_cheques.Text = "Cheque / Terms"
+        Me.lbl_cheques.Text = "C/T: 0.00"
         '
         'lbl_cash
         '
         Me.lbl_cash.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_cash.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_cash.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_cash.Appearance.Options.UseFont = True
         Me.lbl_cash.Appearance.Options.UseTextOptions = True
         Me.lbl_cash.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_cash.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_cash.Location = New System.Drawing.Point(356, 529)
+        Me.lbl_cash.Location = New System.Drawing.Point(265, 529)
         Me.lbl_cash.Name = "lbl_cash"
-        Me.lbl_cash.Size = New System.Drawing.Size(122, 18)
+        Me.lbl_cash.Size = New System.Drawing.Size(115, 18)
         Me.lbl_cash.TabIndex = 20
-        Me.lbl_cash.Text = "Cash"
+        Me.lbl_cash.Text = "Cash: 0.00"
         '
         'lbl_ave_sales_margin
         '
         Me.lbl_ave_sales_margin.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_ave_sales_margin.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_ave_sales_margin.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_ave_sales_margin.Appearance.Options.UseFont = True
         Me.lbl_ave_sales_margin.Appearance.Options.UseTextOptions = True
         Me.lbl_ave_sales_margin.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
@@ -489,12 +495,12 @@ Partial Class frm_admin_reports
         Me.lbl_ave_sales_margin.Name = "lbl_ave_sales_margin"
         Me.lbl_ave_sales_margin.Size = New System.Drawing.Size(148, 18)
         Me.lbl_ave_sales_margin.TabIndex = 19
-        Me.lbl_ave_sales_margin.Text = "Avg. Margin"
+        Me.lbl_ave_sales_margin.Text = "Avg. Margin: 0.00"
         '
         'lbl_avg_sales_amount
         '
         Me.lbl_avg_sales_amount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_avg_sales_amount.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_avg_sales_amount.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_avg_sales_amount.Appearance.Options.UseFont = True
         Me.lbl_avg_sales_amount.Appearance.Options.UseTextOptions = True
         Me.lbl_avg_sales_amount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
@@ -503,49 +509,49 @@ Partial Class frm_admin_reports
         Me.lbl_avg_sales_amount.Name = "lbl_avg_sales_amount"
         Me.lbl_avg_sales_amount.Size = New System.Drawing.Size(126, 18)
         Me.lbl_avg_sales_amount.TabIndex = 18
-        Me.lbl_avg_sales_amount.Text = "Avg. Amount"
+        Me.lbl_avg_sales_amount.Text = "Avg. Amount: 0.00"
         '
         'lbl_no_transactions
         '
         Me.lbl_no_transactions.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_no_transactions.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_no_transactions.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_no_transactions.Appearance.Options.UseFont = True
         Me.lbl_no_transactions.Appearance.Options.UseTextOptions = True
         Me.lbl_no_transactions.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.lbl_no_transactions.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_no_transactions.Location = New System.Drawing.Point(946, 529)
+        Me.lbl_no_transactions.Location = New System.Drawing.Point(974, 529)
         Me.lbl_no_transactions.Name = "lbl_no_transactions"
-        Me.lbl_no_transactions.Size = New System.Drawing.Size(91, 18)
+        Me.lbl_no_transactions.Size = New System.Drawing.Size(82, 18)
         Me.lbl_no_transactions.TabIndex = 17
-        Me.lbl_no_transactions.Text = "Transactions"
+        Me.lbl_no_transactions.Text = "Transc: 0"
         '
         'lbl_gross_sales
         '
         Me.lbl_gross_sales.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_gross_sales.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_gross_sales.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_gross_sales.Appearance.Options.UseFont = True
         Me.lbl_gross_sales.Appearance.Options.UseTextOptions = True
         Me.lbl_gross_sales.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_gross_sales.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_gross_sales.Location = New System.Drawing.Point(798, 529)
+        Me.lbl_gross_sales.Location = New System.Drawing.Point(814, 529)
         Me.lbl_gross_sales.Name = "lbl_gross_sales"
-        Me.lbl_gross_sales.Size = New System.Drawing.Size(129, 18)
+        Me.lbl_gross_sales.Size = New System.Drawing.Size(147, 18)
         Me.lbl_gross_sales.TabIndex = 16
-        Me.lbl_gross_sales.Text = "Gross Sales"
+        Me.lbl_gross_sales.Text = "Total Sales: 0.00"
         '
         'lbl_totalcost
         '
         Me.lbl_totalcost.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_totalcost.Appearance.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_totalcost.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_totalcost.Appearance.Options.UseFont = True
         Me.lbl_totalcost.Appearance.Options.UseTextOptions = True
         Me.lbl_totalcost.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_totalcost.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_totalcost.Location = New System.Drawing.Point(184, 529)
+        Me.lbl_totalcost.Location = New System.Drawing.Point(128, 529)
         Me.lbl_totalcost.Name = "lbl_totalcost"
-        Me.lbl_totalcost.Size = New System.Drawing.Size(136, 18)
+        Me.lbl_totalcost.Size = New System.Drawing.Size(131, 18)
         Me.lbl_totalcost.TabIndex = 15
-        Me.lbl_totalcost.Text = "Total Cost"
+        Me.lbl_totalcost.Text = "T. Cost: 0.00"
         '
         'btn_print
         '
@@ -680,7 +686,7 @@ Partial Class frm_admin_reports
         Me.grid_sales_report_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_sales_report_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.grid_sales_report_view.Appearance.Row.Options.UseFont = True
-        Me.grid_sales_report_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_datee, Me.col_total_cost, Me.col_total_cash, Me.col_total_terms, Me.col_total_epay, Me.col_gross_sales, Me.col_total_transc, Me.col_avg_transc_amount, Me.col_avg_sales_margin})
+        Me.grid_sales_report_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_datee, Me.col_total_cost, Me.col_total_cash, Me.col_total_terms, Me.col_total_epay, Me.col_nonvatable_sales, Me.col_vatable_sales, Me.col_total_sales, Me.col_total_transc, Me.col_avg_transc_amount, Me.col_avg_sales_margin})
         Me.grid_sales_report_view.GridControl = Me.grid_sales_report
         Me.grid_sales_report_view.Name = "grid_sales_report_view"
         Me.grid_sales_report_view.OptionsBehavior.Editable = False
@@ -700,7 +706,7 @@ Partial Class frm_admin_reports
         Me.col_datee.Name = "col_datee"
         Me.col_datee.Visible = True
         Me.col_datee.VisibleIndex = 0
-        Me.col_datee.Width = 100
+        Me.col_datee.Width = 103
         '
         'col_total_cost
         '
@@ -714,7 +720,7 @@ Partial Class frm_admin_reports
         Me.col_total_cost.Name = "col_total_cost"
         Me.col_total_cost.Visible = True
         Me.col_total_cost.VisibleIndex = 1
-        Me.col_total_cost.Width = 138
+        Me.col_total_cost.Width = 142
         '
         'col_total_cash
         '
@@ -728,7 +734,7 @@ Partial Class frm_admin_reports
         Me.col_total_cash.Name = "col_total_cash"
         Me.col_total_cash.Visible = True
         Me.col_total_cash.VisibleIndex = 2
-        Me.col_total_cash.Width = 127
+        Me.col_total_cash.Width = 130
         '
         'col_total_terms
         '
@@ -742,7 +748,7 @@ Partial Class frm_admin_reports
         Me.col_total_terms.Name = "col_total_terms"
         Me.col_total_terms.Visible = True
         Me.col_total_terms.VisibleIndex = 3
-        Me.col_total_terms.Width = 113
+        Me.col_total_terms.Width = 116
         '
         'col_total_epay
         '
@@ -756,21 +762,45 @@ Partial Class frm_admin_reports
         Me.col_total_epay.Name = "col_total_epay"
         Me.col_total_epay.Visible = True
         Me.col_total_epay.VisibleIndex = 4
-        Me.col_total_epay.Width = 120
+        Me.col_total_epay.Width = 123
         '
-        'col_gross_sales
+        'col_nonvatable_sales
         '
-        Me.col_gross_sales.AppearanceCell.Options.UseTextOptions = True
-        Me.col_gross_sales.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.col_gross_sales.Caption = "Gross Sales"
-        Me.col_gross_sales.DisplayFormat.FormatString = "n2"
-        Me.col_gross_sales.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.col_gross_sales.FieldName = "gross_sale"
-        Me.col_gross_sales.MaxWidth = 150
-        Me.col_gross_sales.Name = "col_gross_sales"
-        Me.col_gross_sales.Visible = True
-        Me.col_gross_sales.VisibleIndex = 5
-        Me.col_gross_sales.Width = 129
+        Me.col_nonvatable_sales.Caption = "Non-Vatable Sales"
+        Me.col_nonvatable_sales.DisplayFormat.FormatString = "n2"
+        Me.col_nonvatable_sales.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_nonvatable_sales.FieldName = "nonvat_sales"
+        Me.col_nonvatable_sales.MaxWidth = 120
+        Me.col_nonvatable_sales.Name = "col_nonvatable_sales"
+        Me.col_nonvatable_sales.Visible = True
+        Me.col_nonvatable_sales.VisibleIndex = 5
+        Me.col_nonvatable_sales.Width = 120
+        '
+        'col_vatable_sales
+        '
+        Me.col_vatable_sales.Caption = "Vatable Sales"
+        Me.col_vatable_sales.DisplayFormat.FormatString = "n2"
+        Me.col_vatable_sales.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_vatable_sales.FieldName = "vat_sales"
+        Me.col_vatable_sales.MaxWidth = 120
+        Me.col_vatable_sales.Name = "col_vatable_sales"
+        Me.col_vatable_sales.Visible = True
+        Me.col_vatable_sales.VisibleIndex = 6
+        Me.col_vatable_sales.Width = 120
+        '
+        'col_total_sales
+        '
+        Me.col_total_sales.AppearanceCell.Options.UseTextOptions = True
+        Me.col_total_sales.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.col_total_sales.Caption = "Total Sales"
+        Me.col_total_sales.DisplayFormat.FormatString = "n2"
+        Me.col_total_sales.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_total_sales.FieldName = "total_sales"
+        Me.col_total_sales.MaxWidth = 120
+        Me.col_total_sales.Name = "col_total_sales"
+        Me.col_total_sales.Visible = True
+        Me.col_total_sales.VisibleIndex = 7
+        Me.col_total_sales.Width = 100
         '
         'col_total_transc
         '
@@ -781,7 +811,7 @@ Partial Class frm_admin_reports
         Me.col_total_transc.MaxWidth = 100
         Me.col_total_transc.Name = "col_total_transc"
         Me.col_total_transc.Visible = True
-        Me.col_total_transc.VisibleIndex = 6
+        Me.col_total_transc.VisibleIndex = 8
         Me.col_total_transc.Width = 100
         '
         'col_avg_transc_amount
@@ -795,7 +825,7 @@ Partial Class frm_admin_reports
         Me.col_avg_transc_amount.MaxWidth = 150
         Me.col_avg_transc_amount.Name = "col_avg_transc_amount"
         Me.col_avg_transc_amount.Visible = True
-        Me.col_avg_transc_amount.VisibleIndex = 7
+        Me.col_avg_transc_amount.VisibleIndex = 9
         Me.col_avg_transc_amount.Width = 150
         '
         'col_avg_sales_margin
@@ -809,7 +839,7 @@ Partial Class frm_admin_reports
         Me.col_avg_sales_margin.MaxWidth = 150
         Me.col_avg_sales_margin.Name = "col_avg_sales_margin"
         Me.col_avg_sales_margin.Visible = True
-        Me.col_avg_sales_margin.VisibleIndex = 8
+        Me.col_avg_sales_margin.VisibleIndex = 10
         Me.col_avg_sales_margin.Width = 150
         '
         'tab_transactions
@@ -2859,6 +2889,34 @@ Partial Class frm_admin_reports
         Me.GunaLabel1.TabIndex = 1
         Me.GunaLabel1.Text = "Reports"
         '
+        'LabelControl15
+        '
+        Me.LabelControl15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelControl15.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl15.Appearance.Options.UseFont = True
+        Me.LabelControl15.Appearance.Options.UseTextOptions = True
+        Me.LabelControl15.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.LabelControl15.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.LabelControl15.Location = New System.Drawing.Point(626, 529)
+        Me.LabelControl15.Name = "LabelControl15"
+        Me.LabelControl15.Size = New System.Drawing.Size(115, 18)
+        Me.LabelControl15.TabIndex = 23
+        Me.LabelControl15.Text = "NV Sales: 0.00"
+        '
+        'LabelControl16
+        '
+        Me.LabelControl16.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelControl16.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl16.Appearance.Options.UseFont = True
+        Me.LabelControl16.Appearance.Options.UseTextOptions = True
+        Me.LabelControl16.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.LabelControl16.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.LabelControl16.Location = New System.Drawing.Point(747, 529)
+        Me.LabelControl16.Name = "LabelControl16"
+        Me.LabelControl16.Size = New System.Drawing.Size(115, 18)
+        Me.LabelControl16.TabIndex = 24
+        Me.LabelControl16.Text = "V. Sales: 0.00"
+        '
         'frm_admin_reports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2994,7 +3052,7 @@ Partial Class frm_admin_reports
     Friend WithEvents col_total_epay As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_avg_transc_amount As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_avg_sales_margin As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents col_gross_sales As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_total_sales As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents dt_start As DevExpress.XtraEditors.DateEdit
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
@@ -3133,4 +3191,8 @@ Partial Class frm_admin_reports
     Friend WithEvents rb_cp_transc As RadioButton
     Friend WithEvents rb_cp_margin As RadioButton
     Friend WithEvents rb_cp_gross As RadioButton
+    Friend WithEvents col_nonvatable_sales As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_vatable_sales As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl16 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
 End Class

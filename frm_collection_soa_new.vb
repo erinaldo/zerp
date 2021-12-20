@@ -168,7 +168,7 @@ Public Class frm_collection_soa_new
                                     DATE_ADD(date_released, INTERVAL ims_orders.terms DAY) as due_date, 
                                     amount_due FROM ims_orders 
                                     INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer
-                                    WHERE first_name=@customer_name AND payment_status='UNPAID' AND date_released IS NOT NULL AND soa_id=0 AND deleted=0", conn)
+                                    WHERE first_name=@customer_name AND payment_status='UNPAID' AND date_released IS NOT NULL AND deleted=0", conn)
             cmd.Parameters.AddWithValue("@customer_name", cbb_customers.Text.Trim)
             cmd.ExecuteNonQuery()
 

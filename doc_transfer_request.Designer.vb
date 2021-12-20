@@ -59,6 +59,7 @@ Partial Public Class doc_transfer_request
         Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell22 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
+        Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTableCell3 = New DevExpress.XtraReports.UI.XRTableCell()
@@ -102,7 +103,7 @@ Partial Public Class doc_transfer_request
         Me.prepared_by = New DevExpress.XtraReports.Parameters.Parameter()
         Me.driver = New DevExpress.XtraReports.Parameters.Parameter()
         Me.released_by = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -313,6 +314,7 @@ Partial Public Class doc_transfer_request
         '
         'XrLabel1
         '
+        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?store_name")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(100.0!, 9.99999!)
         Me.XrLabel1.Multiline = True
@@ -446,6 +448,19 @@ Partial Public Class doc_transfer_request
         Me.ReportFooter.HeightF = 210.084!
         Me.ReportFooter.Name = "ReportFooter"
         Me.ReportFooter.PrintAtBottom = True
+        '
+        'XrLabel19
+        '
+        Me.XrLabel19.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Italic)
+        Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 192.2923!)
+        Me.XrLabel19.Multiline = True
+        Me.XrLabel19.Name = "XrLabel19"
+        Me.XrLabel19.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel19.SizeF = New System.Drawing.SizeF(701.5401!, 17.79166!)
+        Me.XrLabel19.StylePriority.UseFont = False
+        Me.XrLabel19.StylePriority.UseTextAlignment = False
+        Me.XrLabel19.Text = "Designation: white copy for Sender, duplicate copy for Receiver"
+        Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'XrTable2
         '
@@ -799,18 +814,11 @@ Partial Public Class doc_transfer_request
         Me.released_by.Name = "released_by"
         Me.released_by.Visible = False
         '
-        'XrLabel19
+        'store_name
         '
-        Me.XrLabel19.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Italic)
-        Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 192.2923!)
-        Me.XrLabel19.Multiline = True
-        Me.XrLabel19.Name = "XrLabel19"
-        Me.XrLabel19.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel19.SizeF = New System.Drawing.SizeF(701.5401!, 17.79166!)
-        Me.XrLabel19.StylePriority.UseFont = False
-        Me.XrLabel19.StylePriority.UseTextAlignment = False
-        Me.XrLabel19.Text = "Designation: white copy for Sender, duplicate copy for Receiver"
-        Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        Me.store_name.Description = "store_name"
+        Me.store_name.Name = "store_name"
+        Me.store_name.Visible = False
         '
         'doc_transfer_request
         '
@@ -821,7 +829,7 @@ Partial Public Class doc_transfer_request
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 41, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.transfer_id, Me.transfer_date, Me.transfer_from, Me.transfer_to, Me.transfer_by, Me.store_info, Me.approved_by, Me.counted_by, Me.received_by, Me.prepared_by, Me.driver, Me.released_by})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.transfer_id, Me.transfer_date, Me.transfer_from, Me.transfer_to, Me.transfer_by, Me.store_info, Me.approved_by, Me.counted_by, Me.received_by, Me.prepared_by, Me.driver, Me.released_by, Me.store_name})
         Me.RequestParameters = False
         Me.Version = "21.1"
         Me.Watermark.Font = New System.Drawing.Font("Times New Roman", 150.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -914,4 +922,5 @@ Partial Public Class doc_transfer_request
 	Friend WithEvents XrTableCell27 As XRTableCell
 	Friend WithEvents XrTableCell28 As XRTableCell
 	Friend WithEvents XrLabel19 As XRLabel
+    Friend WithEvents store_name As Parameter
 End Class

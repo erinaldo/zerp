@@ -17,16 +17,31 @@ Public Class frm_admin_settings
     Private Sub load_store_info()
 
         Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT value FROM ims_settings WHERE name='store_info'", conn)
-            Dim result = cmd.ExecuteScalar
+            Using connection = New MySqlConnection(str)
+                connection.Open()
 
-            txt_storeinfo.Text = result
+                'GET Company Name
+                Using cmd = New MySqlCommand("SELECT value FROM ims_settings WHERE name='store_name'", connection)
+                    Using result = cmd.ExecuteReader
+                        While result.Read
+                            txt_company_name.Text = result("value")
+                        End While
+                    End Using
+                End Using
+
+                'GET COMPANY's Information
+                Using cmd = New MySqlCommand("SELECT value FROM ims_settings WHERE name='store_info'", connection)
+                    Using result = cmd.ExecuteReader
+                        While result.Read
+                            txt_company_info.Text = result("value")
+                        End While
+                    End Using
+                End Using
+
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -38,8 +53,10 @@ Public Class frm_admin_settings
 
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("UPDATE ims_settings SET value=@info WHERE name='store_info'", conn)
-            cmd.Parameters.AddWithValue("@info", txt_storeinfo.Text.Trim)
+            Dim cmd = New MySqlCommand("UPDATE ims_settings SET value=@company_info WHERE name='store_info'; 
+                                        UPDATE ims_settings SET value=@company_name WHERE name='store_name'", conn)
+            cmd.Parameters.AddWithValue("@company_name", txt_company_name.Text.Trim)
+            cmd.Parameters.AddWithValue("@company_info", txt_company_info.Text.Trim)
             cmd.ExecuteNonQuery()
 
             MsgBox("Updated Successfullly!", vbInformation, "Success")

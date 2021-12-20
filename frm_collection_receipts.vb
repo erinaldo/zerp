@@ -45,13 +45,14 @@ Public Class frm_collection_receipts
 
                 Dim so_nos = String.Empty
                 Using cmd = New MySqlCommand("SELECT collection_id, so_nos, cheques, date_generated, ims_users.first_name AS collected_by, ims_customers.first_name AS c_name, ims_customers.address,
-                                (SELECT value FROM ims_settings WHERE name='store_info') as store_info
+                                (SELECT value FROM ims_settings WHERE name='store_info') as store_info, (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name
                                 FROM ims_collection_receipts 
                                 INNER JOIN ims_customers ON ims_customers.customer_id=ims_collection_receipts.customer_id
                                 INNER JOIN ims_users ON ims_users.usr_id=ims_collection_receipts.collected_by
                                 WHERE collection_id=" & collection_id, connection)
                     Using rdr = cmd.ExecuteReader
                         While rdr.Read
+                            report.Parameters("store_name").Value = rdr("store_name")
                             report.Parameters("store_info").Value = rdr("store_info")
                             report.Parameters("collection_id").Value = "CR" & rdr("collection_id").ToString.PadLeft(5, "0"c)
                             report.Parameters("collection_date").Value = rdr("date_generated")

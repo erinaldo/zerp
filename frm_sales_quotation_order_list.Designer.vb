@@ -46,6 +46,7 @@ Partial Class frm_sales_quotation_order_list
         Me.col_action = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_edit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.col_validity = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_representative = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -231,7 +232,7 @@ Partial Class frm_sales_quotation_order_list
         Me.grid_quotes_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_quotes_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_quotes_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_quotes_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_quotation_id, Me.col_company, Me.col_status, Me.date_created, Me.col_action, Me.col_validity})
+        Me.grid_quotes_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_quotation_id, Me.col_company, Me.col_status, Me.date_created, Me.col_action, Me.col_validity, Me.col_representative})
         Me.grid_quotes_view.GridControl = Me.grid_quotes
         Me.grid_quotes_view.Name = "grid_quotes_view"
         Me.grid_quotes_view.OptionsBehavior.ReadOnly = True
@@ -276,7 +277,7 @@ Partial Class frm_sales_quotation_order_list
         Me.col_status.FieldName = "status"
         Me.col_status.Name = "col_status"
         Me.col_status.Visible = True
-        Me.col_status.VisibleIndex = 3
+        Me.col_status.VisibleIndex = 4
         Me.col_status.Width = 120
         '
         'date_created
@@ -289,7 +290,7 @@ Partial Class frm_sales_quotation_order_list
         Me.date_created.FieldName = "created_at"
         Me.date_created.Name = "date_created"
         Me.date_created.Visible = True
-        Me.date_created.VisibleIndex = 4
+        Me.date_created.VisibleIndex = 5
         Me.date_created.Width = 120
         '
         'col_action
@@ -318,7 +319,16 @@ Partial Class frm_sales_quotation_order_list
         Me.col_validity.FieldName = "validity"
         Me.col_validity.Name = "col_validity"
         Me.col_validity.Visible = True
-        Me.col_validity.VisibleIndex = 5
+        Me.col_validity.VisibleIndex = 6
+        '
+        'col_representative
+        '
+        Me.col_representative.Caption = "Representative"
+        Me.col_representative.FieldName = "representative"
+        Me.col_representative.Name = "col_representative"
+        Me.col_representative.Visible = True
+        Me.col_representative.VisibleIndex = 3
+        Me.col_representative.Width = 160
         '
         'frm_sales_quotation_order_list
         '
@@ -362,4 +372,5 @@ Partial Class frm_sales_quotation_order_list
     Friend WithEvents col_action As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_edit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents col_validity As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_representative As DevExpress.XtraGrid.Columns.GridColumn
 End Class

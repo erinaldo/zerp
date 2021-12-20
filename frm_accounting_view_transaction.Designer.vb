@@ -401,7 +401,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl11.Appearance.Options.UseFont = True
         Me.LabelControl11.Appearance.Options.UseForeColor = True
-        Me.LabelControl11.Location = New System.Drawing.Point(790, 621)
+        Me.LabelControl11.Location = New System.Drawing.Point(715, 621)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(96, 15)
         Me.LabelControl11.TabIndex = 28
@@ -420,10 +420,10 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_discount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_discount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.lbl_discount.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.lbl_discount.Location = New System.Drawing.Point(897, 615)
+        Me.lbl_discount.Location = New System.Drawing.Point(818, 615)
         Me.lbl_discount.Name = "lbl_discount"
         Me.lbl_discount.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
-        Me.lbl_discount.Size = New System.Drawing.Size(135, 25)
+        Me.lbl_discount.Size = New System.Drawing.Size(214, 25)
         Me.lbl_discount.TabIndex = 29
         Me.lbl_discount.Text = "_discount"
         '

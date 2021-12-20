@@ -399,13 +399,15 @@ Public Class frm_purchaseorder_edit
                 Dim query = "SELECT purchase_id, ims_suppliers.supplier, ims_purchase.contact_person, address, orders, total, discount_type, discount_val,
                 is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, pub_notes,
                 (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to,
-                (SELECT value FROM ims_settings WHERE name='store_info') as store_info, date_sent, ims_users.first_name as prepared_by,
+                (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info,
+                date_sent, ims_users.first_name as prepared_by,
                 (SELECT first_name FROM ims_users WHERE usr_id=approved_by) as approved_by, approved_date, DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time DAY) as lead_time, ims_purchase.terms FROM ims_purchase
                 INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase.supplier
                 INNER JOIN ims_users ON ims_users.usr_id=ims_purchase.created_by WHERE purchase_id='" & id & "'"
                 Dim rdr As MySqlDataReader = New MySqlCommand(query, connection).ExecuteReader
 
                 While rdr.Read
+                    report.Parameters("store_name").Value = rdr("store_name")
                     report.Parameters("store_info").Value = rdr("store_info") & vbCrLf & "Email: purchasing@winlandene.com"
                     report.Parameters("pid").Value = String.Concat("PO", rdr("purchase_id").ToString().PadLeft(5, "0"c))
                     report.Parameters("supplier").Value = rdr("supplier")

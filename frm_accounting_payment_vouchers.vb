@@ -46,7 +46,7 @@ Public Class frm_accounting_payment_vouchers
         Dim table = New PrintData
 
         Dim conn As New MySqlConnection(str)
-        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_info = "", payment_type = String.Empty, contact_person = String.Empty
+        Dim supplier = "", collection_ref = "", generated_by = "", voucher_date = New Date, receipts() As String = {}, store_name = "", store_info = "", payment_type = String.Empty, contact_person = String.Empty
 
         Try
 
@@ -54,7 +54,8 @@ Public Class frm_accounting_payment_vouchers
 
             'GET VOUCHER DETAILS
             Dim query = "SELECT payment_type, ims_suppliers.supplier, ims_suppliers.contact_person, receipts, collection_ref, creation_date, receipts, 
-                        ims_users.first_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info  FROM ims_payment_vouchers
+                        ims_users.first_name, (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info
+                        FROM ims_payment_vouchers
                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier
                         INNER JOIN ims_users ON ims_users.usr_id=ims_payment_vouchers.generated_by
                         WHERE payment_id=@payment_id"
@@ -70,6 +71,7 @@ Public Class frm_accounting_payment_vouchers
                         collection_ref = rdr_details("collection_ref")
                         generated_by = rdr_details("first_name")
                         store_info = rdr_details("store_info")
+                        store_name = rdr_details("store_name")
 
                         receipts = rdr_details("receipts").ToString.Split(",")
 
@@ -158,6 +160,7 @@ Public Class frm_accounting_payment_vouchers
                 End Using
             End Using
 
+            report.Parameters("store_name").Value = store_name
             report.Parameters("store_info").Value = store_info
             report.Parameters("voucher_id").Value = "PV" & id.ToString.PadLeft(5, "0"c)
             report.Parameters("voucher_date").Value = voucher_date

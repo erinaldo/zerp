@@ -138,6 +138,8 @@ Partial Class frm_sales_view_order
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.btn_modify = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_unserved = New DevExpress.XtraEditors.SimpleButton()
+        Me.lbl_invoice = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_invoice = New DevExpress.XtraEditors.TextEdit()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_po_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -167,6 +169,7 @@ Partial Class frm_sales_view_order
         CType(Me.lbl_credits_available.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl_account_type.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl_cid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel2
@@ -1115,6 +1118,8 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel2.BackColor = System.Drawing.Color.Lavender
         Me.Guna2Panel2.BorderColor = System.Drawing.Color.Silver
         Me.Guna2Panel2.BorderThickness = 1
+        Me.Guna2Panel2.Controls.Add(Me.lbl_invoice)
+        Me.Guna2Panel2.Controls.Add(Me.txt_invoice)
         Me.Guna2Panel2.Controls.Add(Me.cbb_discount)
         Me.Guna2Panel2.Controls.Add(Me.cb_vatable)
         Me.Guna2Panel2.Controls.Add(Me.cb_tax_applied)
@@ -1382,6 +1387,34 @@ Partial Class frm_sales_view_order
         Me.btn_unserved.TabIndex = 129
         Me.btn_unserved.Text = "Unserved"
         '
+        'lbl_invoice
+        '
+        Me.lbl_invoice.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.lbl_invoice.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_invoice.Appearance.Options.UseFont = True
+        Me.lbl_invoice.Appearance.Options.UseForeColor = True
+        Me.lbl_invoice.Location = New System.Drawing.Point(291, 102)
+        Me.lbl_invoice.Name = "lbl_invoice"
+        Me.lbl_invoice.Size = New System.Drawing.Size(67, 16)
+        Me.lbl_invoice.TabIndex = 118
+        Me.lbl_invoice.Text = "Invoice No.:"
+        Me.lbl_invoice.Visible = False
+        '
+        'txt_invoice
+        '
+        Me.txt_invoice.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_invoice.EditValue = ""
+        Me.txt_invoice.Location = New System.Drawing.Point(364, 99)
+        Me.txt_invoice.Name = "txt_invoice"
+        Me.txt_invoice.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.txt_invoice.Properties.Appearance.Options.UseFont = True
+        Me.txt_invoice.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_invoice.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txt_invoice.Properties.BeepOnError = False
+        Me.txt_invoice.Size = New System.Drawing.Size(93, 22)
+        Me.txt_invoice.TabIndex = 119
+        Me.txt_invoice.Visible = False
+        '
         'frm_sales_view_order
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1440,6 +1473,7 @@ Partial Class frm_sales_view_order
         CType(Me.lbl_credits_available.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbl_account_type.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbl_cid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1536,4 +1570,6 @@ Partial Class frm_sales_view_order
     Friend WithEvents lbl_balance As LabelControl
     Friend WithEvents LabelControl21 As LabelControl
     Friend WithEvents btn_unserved As SimpleButton
+    Friend WithEvents lbl_invoice As LabelControl
+    Friend WithEvents txt_invoice As TextEdit
 End Class

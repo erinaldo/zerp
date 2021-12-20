@@ -102,6 +102,7 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
         Me.collected_by = New DevExpress.XtraReports.Parameters.Parameter()
         Me.encoded_by = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -285,6 +286,7 @@ Partial Public Class doc_collection_receipt
         '
         'XrLabel1
         '
+        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?store_name")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(100.0!, 9.99999!)
         Me.XrLabel1.Multiline = True
@@ -994,6 +996,12 @@ Partial Public Class doc_collection_receipt
         Me.encoded_by.Name = "encoded_by"
         Me.encoded_by.Visible = False
         '
+        'store_name
+        '
+        Me.store_name.Description = "store_name"
+        Me.store_name.Name = "store_name"
+        Me.store_name.Visible = False
+        '
         'doc_collection_receipt
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter, Me.DetailReport, Me.DetailReport1})
@@ -1002,7 +1010,7 @@ Partial Public Class doc_collection_receipt
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(30, 30, 30, 30)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.collection_id, Me.collection_date, Me.customer, Me.collection_ref, Me.total_amount, Me.generated_by, Me.store_info, Me.address, Me.collected_by, Me.encoded_by})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.collection_id, Me.collection_date, Me.customer, Me.collection_ref, Me.total_amount, Me.generated_by, Me.store_info, Me.address, Me.collected_by, Me.encoded_by, Me.store_name})
         Me.RequestParameters = False
         Me.Version = "21.1"
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1093,4 +1101,5 @@ Partial Public Class doc_collection_receipt
     Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents collected_by As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents encoded_by As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents store_name As DevExpress.XtraReports.Parameters.Parameter
 End Class

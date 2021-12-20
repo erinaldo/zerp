@@ -53,7 +53,8 @@ Public Class frm_sales_transaction_invoice
                 connection.Open()
 
                 Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
-                        ims_orders.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info,
+                        ims_orders.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, 
+                        (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info, (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val, applied_sales_return, CONCAT('SR', LPAD(sales_return_id, 5, '0')) AS srid, IFNULL(ims_sales_returns.amount, 0) as amount,
                         no_of_box, no_of_plastic, no_of_rolls,
                         agent.first_name AS prepared_by, packer.first_name AS arranged_by, releaser.first_name AS released_by, sales_agent.first_name AS sales_agent FROM `ims_orders`
@@ -68,6 +69,7 @@ Public Class frm_sales_transaction_invoice
                 rdr = cmd.ExecuteReader
 
                 While rdr.Read
+                    report.Parameters("store_name").Value = rdr("store_name")
                     report.Parameters("store_info").Value = rdr("store_info")
                     report.Parameters("orderid").Value = String.Concat("SO", rdr("order_id").ToString().PadLeft(5, "0"c))
                     report.Parameters("customer").Value = rdr("first_name")

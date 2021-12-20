@@ -329,7 +329,10 @@ Public Class frm_sales_view_quotation
         Dim orders = ""
         Try
             conn.Open()
-            Dim query = "SELECT *, (SELECT value FROM ims_settings WHERE name='store_info') as store_info, DATE_ADD(created_at, INTERVAL terms DAY) AS due_date, prepared.first_name AS prepared_name, approved.first_name AS approved_name FROM ims_quotations 
+            Dim query = "SELECT *, 
+                        (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info, 
+                        DATE_ADD(created_at, INTERVAL terms DAY) AS due_date, prepared.first_name AS prepared_name, 
+                        approved.first_name AS approved_name FROM ims_quotations 
                         INNER JOIN ims_users AS prepared ON prepared.usr_id=prepared_by
                         INNER JOIN ims_users AS approved ON approved.usr_id=approved_by
                         WHERE quotation_id=" & id
@@ -337,6 +340,7 @@ Public Class frm_sales_view_quotation
             rdr = cmd.ExecuteReader
 
             While rdr.Read
+                report.Parameters("store_name").Value = rdr("store_name")
                 report.Parameters("quotation_id").Value = "Q" & id.ToString.PadLeft(5, "0"c)
                 report.Parameters("company").Value = rdr("company")
                 report.Parameters("contact_person").Value = rdr("contact_person")

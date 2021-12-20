@@ -39,4 +39,14 @@ Public Class frm_sales_unserved_dialog
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
     End Sub
+
+    Private Sub btn_export_Click(sender As Object, e As EventArgs) Handles btn_export.Click
+        Dim saveFileDialog = New SaveFileDialog
+        saveFileDialog.Filter = "PDF File (*.csv*)|*.csv"
+
+        If saveFileDialog.ShowDialog = DialogResult.OK Then
+            grid_unserved_view.ExportToCsv(saveFileDialog.FileName)
+        End If
+
+    End Sub
 End Class

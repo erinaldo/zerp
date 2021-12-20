@@ -111,6 +111,8 @@ Partial Class frm_sales_create_order
         Me.LabelControl30 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_pub_notes = New DevExpress.XtraEditors.MemoEdit()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lbl_invoice = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_invoice = New DevExpress.XtraEditors.TextEdit()
         Me.cbb_discount = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cb_vatable = New System.Windows.Forms.CheckBox()
         Me.cb_tax_applied = New System.Windows.Forms.CheckBox()
@@ -157,6 +159,7 @@ Partial Class frm_sales_create_order
         Me.GroupControl2.SuspendLayout()
         CType(Me.txt_pub_notes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel2.SuspendLayout()
+        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_discount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_discount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1007,6 +1010,8 @@ Partial Class frm_sales_create_order
         Me.Guna2Panel2.BackColor = System.Drawing.Color.Lavender
         Me.Guna2Panel2.BorderColor = System.Drawing.Color.Silver
         Me.Guna2Panel2.BorderThickness = 1
+        Me.Guna2Panel2.Controls.Add(Me.lbl_invoice)
+        Me.Guna2Panel2.Controls.Add(Me.txt_invoice)
         Me.Guna2Panel2.Controls.Add(Me.cbb_discount)
         Me.Guna2Panel2.Controls.Add(Me.cb_vatable)
         Me.Guna2Panel2.Controls.Add(Me.cb_tax_applied)
@@ -1024,6 +1029,34 @@ Partial Class frm_sales_create_order
         Me.Guna2Panel2.ShadowDecoration.Parent = Me.Guna2Panel2
         Me.Guna2Panel2.Size = New System.Drawing.Size(712, 149)
         Me.Guna2Panel2.TabIndex = 127
+        '
+        'lbl_invoice
+        '
+        Me.lbl_invoice.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.lbl_invoice.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_invoice.Appearance.Options.UseFont = True
+        Me.lbl_invoice.Appearance.Options.UseForeColor = True
+        Me.lbl_invoice.Location = New System.Drawing.Point(289, 80)
+        Me.lbl_invoice.Name = "lbl_invoice"
+        Me.lbl_invoice.Size = New System.Drawing.Size(67, 16)
+        Me.lbl_invoice.TabIndex = 107
+        Me.lbl_invoice.Text = "Invoice No.:"
+        Me.lbl_invoice.Visible = False
+        '
+        'txt_invoice
+        '
+        Me.txt_invoice.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_invoice.EditValue = ""
+        Me.txt_invoice.Location = New System.Drawing.Point(362, 77)
+        Me.txt_invoice.Name = "txt_invoice"
+        Me.txt_invoice.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.txt_invoice.Properties.Appearance.Options.UseFont = True
+        Me.txt_invoice.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_invoice.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txt_invoice.Properties.BeepOnError = False
+        Me.txt_invoice.Size = New System.Drawing.Size(93, 22)
+        Me.txt_invoice.TabIndex = 117
+        Me.txt_invoice.Visible = False
         '
         'cbb_discount
         '
@@ -1370,6 +1403,7 @@ Partial Class frm_sales_create_order
         CType(Me.txt_pub_notes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
+        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_discount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_discount.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1464,4 +1498,6 @@ Partial Class frm_sales_create_order
     Friend WithEvents col_total As DataGridViewTextBoxColumn
     Friend WithEvents btn_unserve As DataGridViewButtonColumn
     Friend WithEvents btn_unserved As SimpleButton
+    Friend WithEvents lbl_invoice As LabelControl
+    Friend WithEvents txt_invoice As TextEdit
 End Class

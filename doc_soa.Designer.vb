@@ -53,6 +53,7 @@ Partial Public Class doc_soa
         Me.XrTableCell5 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell3 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
+        Me.XrLabel24 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel22 = New DevExpress.XtraReports.UI.XRLabel()
@@ -74,7 +75,7 @@ Partial Public Class doc_soa
         Me.PrintData1 = New Inventory_Management.PrintData()
         Me.store_info = New DevExpress.XtraReports.Parameters.Parameter()
         Me.total = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.XrLabel24 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -329,6 +330,7 @@ Partial Public Class doc_soa
         '
         'XrLabel1
         '
+        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?store_name")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(100.0!, 9.99999!)
         Me.XrLabel1.Multiline = True
@@ -431,6 +433,20 @@ Partial Public Class doc_soa
         Me.ReportFooter.HeightF = 184.9169!
         Me.ReportFooter.Name = "ReportFooter"
         Me.ReportFooter.PrintAtBottom = True
+        '
+        'XrLabel24
+        '
+        Me.XrLabel24.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Italic)
+        Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 167.1253!)
+        Me.XrLabel24.Multiline = True
+        Me.XrLabel24.Name = "XrLabel24"
+        Me.XrLabel24.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel24.SizeF = New System.Drawing.SizeF(548.3332!, 17.79166!)
+        Me.XrLabel24.StylePriority.UseFont = False
+        Me.XrLabel24.StylePriority.UseTextAlignment = False
+        Me.XrLabel24.Text = "Designation: white copy for Winland, yellow copy for Winland accounting, pink cop" &
+    "y for Supplier"
+        Me.XrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'XrLabel23
         '
@@ -638,19 +654,11 @@ Partial Public Class doc_soa
         Me.total.ValueInfo = "0"
         Me.total.Visible = False
         '
-        'XrLabel24
+        'store_name
         '
-        Me.XrLabel24.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Italic)
-        Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 167.1253!)
-        Me.XrLabel24.Multiline = True
-        Me.XrLabel24.Name = "XrLabel24"
-        Me.XrLabel24.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel24.SizeF = New System.Drawing.SizeF(548.3332!, 17.79166!)
-        Me.XrLabel24.StylePriority.UseFont = False
-        Me.XrLabel24.StylePriority.UseTextAlignment = False
-        Me.XrLabel24.Text = "Designation: white copy for Winland, yellow copy for Winland accounting, pink cop" &
-    "y for Supplier"
-        Me.XrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        Me.store_name.Description = "store_name"
+        Me.store_name.Name = "store_name"
+        Me.store_name.Visible = False
         '
         'doc_soa
         '
@@ -661,7 +669,7 @@ Partial Public Class doc_soa
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.customer, Me.attn, Me.addr, Me.soa_id, Me.amount_due, Me.print_date, Me.prepared_by, Me.store_info, Me.total})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.customer, Me.attn, Me.addr, Me.soa_id, Me.amount_due, Me.print_date, Me.prepared_by, Me.store_info, Me.total, Me.store_name})
         Me.RequestParameters = False
         Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -726,4 +734,5 @@ Partial Public Class doc_soa
     Friend WithEvents total As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents XrLabel23 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel24 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents store_name As DevExpress.XtraReports.Parameters.Parameter
 End Class

@@ -115,8 +115,9 @@ Public Class frm_sales_return_new
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
+                Dim status = String.Empty
 
-                Using rdr = New MySqlCommand("SELECT ims_customers.first_name AS customer, units, store_id  
+                Using rdr = New MySqlCommand("SELECT ims_customers.first_name AS customer, units, store_id, status  
                             FROM ims_sales_returns 
                             LEFT JOIN ims_customers ON ims_customers.customer_id=ims_sales_returns.customer_id
                             WHERE sales_return_id=" & id, conn).ExecuteReader
@@ -124,6 +125,7 @@ Public Class frm_sales_return_new
                         txt_srid.Text = id
                         cbb_customer.Text = rdr("customer")
                         lbl_store_id.Text = rdr("store_id")
+                        status = rdr("status")
 
                         Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of SalesReturnClass))(rdr("units"))
                         For Each item In itemsObject
@@ -143,8 +145,12 @@ Public Class frm_sales_return_new
                     btn_update.Location = btn_create.Location
                     btn_delete.Location = btn_clear.Location
                     cbb_customer.ReadOnly = True
-                    grid_return.ReadOnly = True
-                    grid_return.AllowUserToAddRows = False
+
+                    If status.Equals("Approved") Then
+                        grid_return.ReadOnly = True
+                        grid_return.AllowUserToAddRows = False
+                    End If
+
                 End Using
             End Using
         Catch ex As Exception

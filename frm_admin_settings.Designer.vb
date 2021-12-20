@@ -32,18 +32,19 @@ Partial Class frm_admin_settings
         Me.TileNavCategory1 = New DevExpress.XtraBars.Navigation.TileNavCategory()
         Me.nav_documents = New DevExpress.XtraBars.Navigation.NavigationPane()
         Me.NavigationPage1 = New DevExpress.XtraBars.Navigation.NavigationPage()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_company_name = New DevExpress.XtraEditors.TextEdit()
         Me.btn_save = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_storeinfo = New DevExpress.XtraEditors.MemoEdit()
-        Me.NavigationPage2 = New DevExpress.XtraBars.Navigation.NavigationPage()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_company_info = New DevExpress.XtraEditors.MemoEdit()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
         CType(Me.nav_documents, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.nav_documents.SuspendLayout()
         Me.NavigationPage1.SuspendLayout()
-        CType(Me.txt_storeinfo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_company_name.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_company_info.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -158,64 +159,77 @@ Partial Class frm_admin_settings
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.nav_documents.Controls.Add(Me.NavigationPage1)
-        Me.nav_documents.Controls.Add(Me.NavigationPage2)
         Me.nav_documents.Location = New System.Drawing.Point(0, 98)
         Me.nav_documents.LookAndFeel.SkinName = "Office 2013"
         Me.nav_documents.LookAndFeel.UseDefaultLookAndFeel = False
         Me.nav_documents.Name = "nav_documents"
-        Me.nav_documents.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavigationPage1, Me.NavigationPage2})
+        Me.nav_documents.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.NavigationPage1})
         Me.nav_documents.RegularSize = New System.Drawing.Size(940, 504)
         Me.nav_documents.SelectedPage = Me.NavigationPage1
         Me.nav_documents.Size = New System.Drawing.Size(940, 504)
         Me.nav_documents.TabIndex = 13
-        Me.nav_documents.Text = "Documents Informations"
+        Me.nav_documents.Text = "Company Information"
         '
         'NavigationPage1
         '
-        Me.NavigationPage1.Caption = "Documents Informations"
-        Me.NavigationPage1.Controls.Add(Me.LabelControl2)
+        Me.NavigationPage1.Caption = "Company Information"
+        Me.NavigationPage1.Controls.Add(Me.LabelControl3)
+        Me.NavigationPage1.Controls.Add(Me.txt_company_name)
         Me.NavigationPage1.Controls.Add(Me.btn_save)
         Me.NavigationPage1.Controls.Add(Me.LabelControl1)
-        Me.NavigationPage1.Controls.Add(Me.txt_storeinfo)
+        Me.NavigationPage1.Controls.Add(Me.txt_company_info)
         Me.NavigationPage1.Name = "NavigationPage1"
-        Me.NavigationPage1.Size = New System.Drawing.Size(784, 443)
+        Me.NavigationPage1.Size = New System.Drawing.Size(797, 443)
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.LabelControl3.Appearance.Options.UseFont = True
+        Me.LabelControl3.Location = New System.Drawing.Point(21, 29)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(98, 16)
+        Me.LabelControl3.TabIndex = 5
+        Me.LabelControl3.Text = "Company Name"
+        '
+        'txt_company_name
+        '
+        Me.txt_company_name.Location = New System.Drawing.Point(21, 51)
+        Me.txt_company_name.Name = "txt_company_name"
+        Me.txt_company_name.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.txt_company_name.Properties.Appearance.Options.UseFont = True
+        Me.txt_company_name.Size = New System.Drawing.Size(420, 22)
+        Me.txt_company_name.TabIndex = 4
         '
         'btn_save
         '
-        Me.btn_save.Location = New System.Drawing.Point(115, 100)
+        Me.btn_save.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.btn_save.Appearance.Options.UseFont = True
+        Me.btn_save.Location = New System.Drawing.Point(353, 193)
+        Me.btn_save.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_save.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_save.Name = "btn_save"
-        Me.btn_save.Size = New System.Drawing.Size(75, 23)
+        Me.btn_save.Size = New System.Drawing.Size(88, 30)
         Me.btn_save.TabIndex = 2
         Me.btn_save.Text = "Save"
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(20, 33)
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        Me.LabelControl1.Location = New System.Drawing.Point(21, 91)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(89, 13)
+        Me.LabelControl1.Size = New System.Drawing.Size(126, 16)
         Me.LabelControl1.TabIndex = 1
-        Me.LabelControl1.Text = "Store Information:"
+        Me.LabelControl1.Text = "Company Information"
         '
-        'txt_storeinfo
+        'txt_company_info
         '
-        Me.txt_storeinfo.Location = New System.Drawing.Point(115, 32)
-        Me.txt_storeinfo.Name = "txt_storeinfo"
-        Me.txt_storeinfo.Size = New System.Drawing.Size(420, 62)
-        Me.txt_storeinfo.TabIndex = 0
-        '
-        'NavigationPage2
-        '
-        Me.NavigationPage2.Caption = "Payments"
-        Me.NavigationPage2.Name = "NavigationPage2"
-        Me.NavigationPage2.Size = New System.Drawing.Size(784, 519)
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Location = New System.Drawing.Point(20, 149)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(118, 13)
-        Me.LabelControl2.TabIndex = 3
-        Me.LabelControl2.Text = "Quotation Notes Presets"
+        Me.txt_company_info.Location = New System.Drawing.Point(21, 113)
+        Me.txt_company_info.Name = "txt_company_info"
+        Me.txt_company_info.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.txt_company_info.Properties.Appearance.Options.UseFont = True
+        Me.txt_company_info.Size = New System.Drawing.Size(420, 62)
+        Me.txt_company_info.TabIndex = 0
         '
         'frm_admin_settings
         '
@@ -236,7 +250,8 @@ Partial Class frm_admin_settings
         Me.nav_documents.ResumeLayout(False)
         Me.NavigationPage1.ResumeLayout(False)
         Me.NavigationPage1.PerformLayout()
-        CType(Me.txt_storeinfo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_company_name.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_company_info.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -251,9 +266,9 @@ Partial Class frm_admin_settings
     Friend WithEvents TileNavCategory1 As DevExpress.XtraBars.Navigation.TileNavCategory
     Friend WithEvents nav_documents As DevExpress.XtraBars.Navigation.NavigationPane
     Friend WithEvents NavigationPage1 As DevExpress.XtraBars.Navigation.NavigationPage
-    Friend WithEvents NavigationPage2 As DevExpress.XtraBars.Navigation.NavigationPage
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txt_storeinfo As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents txt_company_info As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents btn_save As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txt_company_name As DevExpress.XtraEditors.TextEdit
 End Class

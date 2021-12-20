@@ -558,7 +558,7 @@ Public Class frm_sales_create_order
             If rb_pickup.Checked Then shipping_method = "Pickup"
             If rb_deliver.Checked Then shipping_method = "Deliver"
 
-            'Stocks Checking
+            '// Stocks Checking
             'Dim result = check_stocks()
             'If Not IsNothing(result) Then
             '    MsgBox("Couldn't proceed due to insuffiecient stock." & vbCrLf & result, vbExclamation, "Insufficient Stock")
@@ -575,10 +575,10 @@ Public Class frm_sales_create_order
             Try
                 conn.Open()
                 Dim query = "INSERT INTO ims_orders (customer, agent, bill_to, ship_to, quotation_ref, po_reference, order_item,
-                    discount_val, discount_type, is_vatable, is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage, delivery_fee,
+                    discount_val, discount_type, is_vatable, invoice_no, is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage, delivery_fee,
                     pub_note, priv_note, status, date_ordered, payment_status, payment_type, shipping_method, amount_due, trucking, terms, sales_agent) 
                     VALUES ((SELECT customer_id FROM ims_customers WHERE first_name=@customer), @agent, @bill_to, @ship_to, @quotation_ref, @po_reference, @order_item,
-                    @discount_val, @discount_type, @is_vatable, @is_withholding_tax_applied, @withholding_tax_amount, @withholding_tax_percentage, @delivery_fee,
+                    @discount_val, @discount_type, @is_vatable, @invoice_no, @is_withholding_tax_applied, @withholding_tax_amount, @withholding_tax_percentage, @delivery_fee,
                     @pub_note, @priv_note, @status, @date_ordered, @payment_status, @payment_type, @shipping_method, @amount_due, @trucking, @terms, COALESCE((SELECT usr_id FROM ims_users WHERE first_name=@sales_agent),0));
                     UPDATE ims_quotations SET is_converted='1', status='Converted' WHERE quotation_id=@qid"
 
@@ -590,6 +590,7 @@ Public Class frm_sales_create_order
                 cmd.Parameters.AddWithValue("@po_reference", txt_po_ref.Text.Trim)
                 cmd.Parameters.AddWithValue("@order_item", orders)
                 cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
+                cmd.Parameters.AddWithValue("@invoice_no", txt_invoice.Text)
                 cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
                 cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
                 cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
@@ -772,7 +773,18 @@ Public Class frm_sales_create_order
 
     'IF VATABLE
     Private Sub cb_vatable_CheckedChanged(sender As Object, e As EventArgs) Handles cb_vatable.CheckedChanged
-        If cb_tax_applied.Checked Then cb_vatable.Checked = True
+        If cb_tax_applied.Checked Then
+            cb_vatable.Checked = True
+        End If
+
+        If cb_vatable.Checked = True Then
+            lbl_invoice.Visible = True
+            txt_invoice.Visible = True
+        Else
+            lbl_invoice.Visible = False
+            txt_invoice.Visible = False
+        End If
+
     End Sub
 
     'cb_tax_applied.Click
@@ -894,4 +906,5 @@ Public Class frm_sales_create_order
         frm.cid = lbl_cid.Text
         frm.Show()
     End Sub
+
 End Class

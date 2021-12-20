@@ -58,18 +58,18 @@ Public Class frm_admin_reports
             total_cheque += dt.Rows(i).Item(2)
             total_epay += dt.Rows(i).Item(3)
             total_cash += dt.Rows(i).Item(4)
-            total_sales += dt.Rows(i).Item(5)
-            total_transactions += dt.Rows(i).Item(6)
+            total_sales += dt.Rows(i).Item(7)
+            total_transactions += dt.Rows(i).Item(8)
         Next
 
-        lbl_totalcost.Text = FormatCurrency(total_cost, 2)
-        lbl_cash.Text = FormatCurrency(total_cash, 2)
-        lbl_cheques.Text = FormatCurrency(total_cheque, 2)
-        lbl_epay.Text = FormatCurrency(total_epay, 2)
-        lbl_gross_sales.Text = FormatCurrency(total_sales, 2)
-        lbl_no_transactions.Text = total_transactions
-        lbl_avg_sales_amount.Text = FormatCurrency(total_sales / total_transactions, 2)
-        lbl_ave_sales_margin.Text = Math.Round(((total_sales - total_cost) / total_sales) * 100, 0) & "%"
+        lbl_totalcost.Text = "Total Cost: " & FormatCurrency(total_cost, 2)
+        lbl_cash.Text = "Cash: " & FormatCurrency(total_cash, 2)
+        lbl_cheques.Text = "Cheque/Terms: " & FormatCurrency(total_cheque, 2)
+        lbl_epay.Text = "E-Pay: " & FormatCurrency(total_epay, 2)
+        lbl_gross_sales.Text = "Total Sales: " & FormatCurrency(total_sales, 2)
+        lbl_no_transactions.Text = "Transactions: " & total_transactions
+        lbl_avg_sales_amount.Text = "Avg. Amount: " & FormatCurrency(total_sales / total_transactions, 2)
+        lbl_ave_sales_margin.Text = "Avg. Margin: " & Math.Round(((total_sales - total_cost) / total_sales) * 100, 0) & "%"
     End Sub
 
 
@@ -89,35 +89,39 @@ Public Class frm_admin_reports
 	                            SUM(IF(payment_type='Cheque' OR payment_type='Terms', price, 0.00)) total_terms,
 	                            SUM(IF(payment_type='E-Payment', price, 0.00)) total_epay,
 	                            SUM(IF(payment_type='Cash', price, 0.00)) total_cash,
-	                            SUM(price) gross_sale,
+                                SUM(IF(is_vatable=0, price, 0.00)) nonvat_sales,
+	                            SUM(IF(is_vatable=1, (price/1.12), 0.00)) vat_sales,
+	                            SUM(price) total_sales,
 	                            COUNT(DISTINCT(order_id)) total_transactions,
 	                            ROUND(SUM(price) / COUNT(DISTINCT(order_id)),2) avg_transc_amount,
 	                            (SUM(price) - SUM(cost * qty)) / SUM(price) avg_sales_margin
                             FROM (
 	                            SELECT
-		                            DATE(purchase_date) datee, cost, qty, price, ims_orders.payment_type, ims_orders.order_id, ims_orders.payment_status
+		                            DATE(purchase_date) datee, cost, qty, price, ims_orders.payment_type, ims_orders.order_id, ims_orders.payment_status, is_vatable
 	                            FROM ims_sales
 	                            INNER JOIN ims_orders ON ims_orders.order_id=ims_sales.order_id
                             ) tbl
                             WHERE datee BETWEEN @start_date AND @end_date AND payment_status='PAID'
                             GROUP BY datee
                             ORDER BY datee DESC"
-                Using cmd = New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@start_date", dt_start.EditValue)
-                    cmd.Parameters.AddWithValue("@end_date", dt_end.EditValue)
-                    Dim dt = New DataTable
-                    Dim da = New MySqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    Using cmd = New MySqlCommand(query, conn)
+                        cmd.Parameters.AddWithValue("@start_date", dt_start.EditValue)
+                        cmd.Parameters.AddWithValue("@end_date", dt_end.EditValue)
+                        Dim dt = New DataTable
+                        Dim da = New MySqlDataAdapter(cmd)
+                        da.Fill(dt)
 
-                    grid_sales_report.DataSource = dt
-                    chart_SalesOverTime()
-                    LoadTotals()
+                        grid_sales_report.DataSource = dt
+                        chart_SalesOverTime()
+                        LoadTotals()
 
+                    End Using
                 End Using
-            End Using
 
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical, "Error")
+            If Not ex.GetType.ToString = "System.DivideByZeroException" Then
+                MsgBox(ex.Message, vbCritical, "Error")
+            End If
         End Try
     End Sub
 

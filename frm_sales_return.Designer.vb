@@ -42,10 +42,10 @@ Partial Class frm_sales_return
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_createdat = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grid_returns = New DevExpress.XtraGrid.GridControl()
-        Me.col_total_cost = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_amount = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_created_by = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.grid_returns = New DevExpress.XtraGrid.GridControl()
+        Me.col_total_cost = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
         Me.panel_top.SuspendLayout()
@@ -268,6 +268,26 @@ Partial Class frm_sales_return
         Me.col_status.Visible = True
         Me.col_status.VisibleIndex = 4
         '
+        'col_amount
+        '
+        Me.col_amount.Caption = "Amount"
+        Me.col_amount.DisplayFormat.FormatString = "n2"
+        Me.col_amount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_amount.FieldName = "amount"
+        Me.col_amount.MaxWidth = 150
+        Me.col_amount.Name = "col_amount"
+        Me.col_amount.Visible = True
+        Me.col_amount.VisibleIndex = 3
+        '
+        'col_created_by
+        '
+        Me.col_created_by.Caption = "Created By"
+        Me.col_created_by.FieldName = "sales_coordinator"
+        Me.col_created_by.MaxWidth = 250
+        Me.col_created_by.Name = "col_created_by"
+        Me.col_created_by.Visible = True
+        Me.col_created_by.VisibleIndex = 5
+        '
         'grid_returns
         '
         Me.grid_returns.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -300,24 +320,6 @@ Partial Class frm_sales_return
         Me.col_total_cost.Visible = True
         Me.col_total_cost.VisibleIndex = 3
         Me.col_total_cost.Width = 100
-        '
-        'col_amount
-        '
-        Me.col_amount.Caption = "Amount"
-        Me.col_amount.FieldName = "amount"
-        Me.col_amount.MaxWidth = 150
-        Me.col_amount.Name = "col_amount"
-        Me.col_amount.Visible = True
-        Me.col_amount.VisibleIndex = 3
-        '
-        'col_created_by
-        '
-        Me.col_created_by.Caption = "Created By"
-        Me.col_created_by.FieldName = "sales_coordinator"
-        Me.col_created_by.MaxWidth = 250
-        Me.col_created_by.Name = "col_created_by"
-        Me.col_created_by.Visible = True
-        Me.col_created_by.VisibleIndex = 5
         '
         'frm_sales_return
         '

@@ -177,7 +177,6 @@ Public Class frm_logistics_deliveries
                         conn.Close()
 
                         frm_sales_transaction_invoice.PrintInvoice(orderid)
-                        'PrintInvoice(orderid)
 
                         MsgBox("Successfully Released!", vbInformation, "Released")
                         frm_main.LoadFrm(New frm_logistics_deliveries)

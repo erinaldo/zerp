@@ -32,6 +32,8 @@ Partial Public Class doc_quotation
         Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell10 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
+        Me.XrLabel46 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel45 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel41 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel43 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
@@ -115,9 +117,8 @@ Partial Public Class doc_quotation
         Me.due_date = New DevExpress.XtraReports.Parameters.Parameter()
         Me.delivery_charge = New DevExpress.XtraReports.Parameters.Parameter()
         Me.approved_name = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.XrLabel45 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel46 = New DevExpress.XtraReports.UI.XRLabel()
         Me.validity = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -246,6 +247,27 @@ Partial Public Class doc_quotation
         Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel46, Me.XrLabel45, Me.XrLabel41, Me.XrLabel43, Me.XrLabel38, Me.XrLabel39, Me.XrLabel31, Me.XrLabel32, Me.XrLabel25, Me.XrLabel26, Me.XrLabel19, Me.XrLabel14, Me.XrLabel12, Me.XrLabel10, Me.XrLabel8, Me.XrLabel6, Me.XrLabel5, Me.XrLabel4, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1, Me.XrPictureBox1})
         Me.ReportHeader.HeightF = 205.7915!
         Me.ReportHeader.Name = "ReportHeader"
+        '
+        'XrLabel46
+        '
+        Me.XrLabel46.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?validity")})
+        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(560.8334!, 130.625!)
+        Me.XrLabel46.Multiline = True
+        Me.XrLabel46.Name = "XrLabel46"
+        Me.XrLabel46.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel46.SizeF = New System.Drawing.SizeF(145.8333!, 17.79164!)
+        Me.XrLabel46.Text = "XrLabel10"
+        '
+        'XrLabel45
+        '
+        Me.XrLabel45.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel45.LocationFloat = New DevExpress.Utils.PointFloat(452.0833!, 130.625!)
+        Me.XrLabel45.Multiline = True
+        Me.XrLabel45.Name = "XrLabel45"
+        Me.XrLabel45.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel45.SizeF = New System.Drawing.SizeF(108.75!, 17.79164!)
+        Me.XrLabel45.StylePriority.UseFont = False
+        Me.XrLabel45.Text = "Validity"
         '
         'XrLabel41
         '
@@ -447,6 +469,7 @@ Partial Public Class doc_quotation
         '
         'XrLabel1
         '
+        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?store_name")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(100.0!, 9.99999!)
         Me.XrLabel1.Multiline = True
@@ -1141,32 +1164,17 @@ Partial Public Class doc_quotation
         Me.approved_name.Name = "approved_name"
         Me.approved_name.Visible = False
         '
-        'XrLabel45
-        '
-        Me.XrLabel45.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel45.LocationFloat = New DevExpress.Utils.PointFloat(452.0833!, 130.625!)
-        Me.XrLabel45.Multiline = True
-        Me.XrLabel45.Name = "XrLabel45"
-        Me.XrLabel45.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel45.SizeF = New System.Drawing.SizeF(108.75!, 17.79164!)
-        Me.XrLabel45.StylePriority.UseFont = False
-        Me.XrLabel45.Text = "Validity"
-        '
-        'XrLabel46
-        '
-        Me.XrLabel46.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?validity")})
-        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(560.8334!, 130.625!)
-        Me.XrLabel46.Multiline = True
-        Me.XrLabel46.Name = "XrLabel46"
-        Me.XrLabel46.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel46.SizeF = New System.Drawing.SizeF(145.8333!, 17.79164!)
-        Me.XrLabel46.Text = "XrLabel10"
-        '
         'validity
         '
         Me.validity.Description = "validity"
         Me.validity.Name = "validity"
         Me.validity.Visible = False
+        '
+        'store_name
+        '
+        Me.store_name.Description = "store_name"
+        Me.store_name.Name = "store_name"
+        Me.store_name.Visible = False
         '
         'doc_quotation
         '
@@ -1177,7 +1185,7 @@ Partial Public Class doc_quotation
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.quotation_id, Me.company, Me.contact_person, Me.total, Me.pub_notes, Me.store_info, Me.prepared_by, Me.delivery_address, Me.contact_no, Me.discount_type, Me.discount_val, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.is_term_applied, Me.terms, Me.created_at, Me.due_date, Me.delivery_charge, Me.approved_name, Me.validity})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.quotation_id, Me.company, Me.contact_person, Me.total, Me.pub_notes, Me.store_info, Me.prepared_by, Me.delivery_address, Me.contact_no, Me.discount_type, Me.discount_val, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.is_term_applied, Me.terms, Me.created_at, Me.due_date, Me.delivery_charge, Me.approved_name, Me.validity, Me.store_name})
         Me.RequestParameters = False
         Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1285,4 +1293,5 @@ Partial Public Class doc_quotation
     Friend WithEvents XrLabel45 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel46 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents validity As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents store_name As DevExpress.XtraReports.Parameters.Parameter
 End Class

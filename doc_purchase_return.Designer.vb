@@ -25,6 +25,7 @@ Partial Public Class doc_purchase_return
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell14 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell6 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell7 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
@@ -43,6 +44,7 @@ Partial Public Class doc_purchase_return
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
         Me.XrTable1 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell13 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell1 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell11 = New DevExpress.XtraReports.UI.XRTableCell()
@@ -65,8 +67,7 @@ Partial Public Class doc_purchase_return
         Me.store_info = New DevExpress.XtraReports.Parameters.Parameter()
         Me.created_by = New DevExpress.XtraReports.Parameters.Parameter()
         Me.PrintData1 = New Inventory_Management.PrintData()
-        Me.XrTableCell13 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell14 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,6 +107,19 @@ Partial Public Class doc_purchase_return
         Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell14, Me.XrTableCell6, Me.XrTableCell7, Me.XrTableCell12, Me.XrTableCell8, Me.XrTableCell9, Me.XrTableCell10})
         Me.XrTableRow2.Name = "XrTableRow2"
         Me.XrTableRow2.Weight = 1.0R
+        '
+        'XrTableCell14
+        '
+        Me.XrTableCell14.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrTableCell14.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.XrTableCell14.Multiline = True
+        Me.XrTableCell14.Name = "XrTableCell14"
+        Me.XrTableCell14.StylePriority.UseBorders = False
+        Me.XrTableCell14.StylePriority.UseFont = False
+        Me.XrTableCell14.StylePriority.UseTextAlignment = False
+        Me.XrTableCell14.Text = "[batch_no]"
+        Me.XrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrTableCell14.Weight = 0.55105545493132557R
         '
         'XrTableCell6
         '
@@ -265,6 +279,7 @@ Partial Public Class doc_purchase_return
         '
         'XrLabel1
         '
+        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?store_name")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(100.0!, 9.99999!)
         Me.XrLabel1.Multiline = True
@@ -306,6 +321,17 @@ Partial Public Class doc_purchase_return
         Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell13, Me.XrTableCell1, Me.XrTableCell2, Me.XrTableCell11, Me.XrTableCell4, Me.XrTableCell5, Me.XrTableCell3})
         Me.XrTableRow1.Name = "XrTableRow1"
         Me.XrTableRow1.Weight = 1.0R
+        '
+        'XrTableCell13
+        '
+        Me.XrTableCell13.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell13.Multiline = True
+        Me.XrTableCell13.Name = "XrTableCell13"
+        Me.XrTableCell13.StylePriority.UseFont = False
+        Me.XrTableCell13.StylePriority.UseTextAlignment = False
+        Me.XrTableCell13.Text = "Batch No."
+        Me.XrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrTableCell13.Weight = 0.55105552800623026R
         '
         'XrTableCell1
         '
@@ -539,29 +565,11 @@ Partial Public Class doc_purchase_return
         Me.PrintData1.DataSetName = "PrintData"
         Me.PrintData1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'XrTableCell13
+        'store_name
         '
-        Me.XrTableCell13.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell13.Multiline = True
-        Me.XrTableCell13.Name = "XrTableCell13"
-        Me.XrTableCell13.StylePriority.UseFont = False
-        Me.XrTableCell13.StylePriority.UseTextAlignment = False
-        Me.XrTableCell13.Text = "Batch No."
-        Me.XrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell13.Weight = 0.55105552800623026R
-        '
-        'XrTableCell14
-        '
-        Me.XrTableCell14.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrTableCell14.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.XrTableCell14.Multiline = True
-        Me.XrTableCell14.Name = "XrTableCell14"
-        Me.XrTableCell14.StylePriority.UseBorders = False
-        Me.XrTableCell14.StylePriority.UseFont = False
-        Me.XrTableCell14.StylePriority.UseTextAlignment = False
-        Me.XrTableCell14.Text = "[batch_no]"
-        Me.XrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell14.Weight = 0.55105545493132557R
+        Me.store_name.Description = "store_name"
+        Me.store_name.Name = "store_name"
+        Me.store_name.Visible = False
         '
         'doc_purchase_return
         '
@@ -572,7 +580,7 @@ Partial Public Class doc_purchase_return
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.supplier, Me.prid, Me.total_cost, Me.store_info, Me.created_by})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.supplier, Me.prid, Me.total_cost, Me.store_info, Me.created_by, Me.store_name})
         Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -628,4 +636,5 @@ Partial Public Class doc_purchase_return
     Friend WithEvents PrintData1 As PrintData
     Friend WithEvents XrTableCell14 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell13 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents store_name As DevExpress.XtraReports.Parameters.Parameter
 End Class

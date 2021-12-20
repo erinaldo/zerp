@@ -32,6 +32,7 @@ Partial Class frm_sales_unserved_dialog
         Me.col_model = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_remarks = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_export = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.grid_unserved, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_unserved_view, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -40,35 +41,34 @@ Partial Class frm_sales_unserved_dialog
         'GunaPanel2
         '
         Me.GunaPanel2.BackColor = System.Drawing.Color.GhostWhite
+        Me.GunaPanel2.Controls.Add(Me.btn_export)
         Me.GunaPanel2.Controls.Add(Me.GunaLabel1)
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(905, 64)
+        Me.GunaPanel2.Size = New System.Drawing.Size(1004, 89)
         Me.GunaPanel2.TabIndex = 13
         '
         'GunaLabel1
         '
         Me.GunaLabel1.AutoSize = True
-        Me.GunaLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
+        Me.GunaLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!)
         Me.GunaLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.GunaLabel1.Location = New System.Drawing.Point(12, 18)
+        Me.GunaLabel1.Location = New System.Drawing.Point(12, 24)
         Me.GunaLabel1.Name = "GunaLabel1"
-        Me.GunaLabel1.Size = New System.Drawing.Size(205, 31)
+        Me.GunaLabel1.Size = New System.Drawing.Size(238, 37)
         Me.GunaLabel1.TabIndex = 1
         Me.GunaLabel1.Text = "Unserved Items"
         '
         'grid_unserved
         '
-        Me.grid_unserved.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_unserved.Location = New System.Drawing.Point(12, 85)
+        Me.grid_unserved.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grid_unserved.Location = New System.Drawing.Point(0, 89)
         Me.grid_unserved.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_unserved.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_unserved.MainView = Me.grid_unserved_view
         Me.grid_unserved.Name = "grid_unserved"
-        Me.grid_unserved.Size = New System.Drawing.Size(881, 479)
+        Me.grid_unserved.Size = New System.Drawing.Size(1004, 487)
         Me.grid_unserved.TabIndex = 14
         Me.grid_unserved.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_unserved_view})
         '
@@ -137,12 +137,25 @@ Partial Class frm_sales_unserved_dialog
         Me.col_remarks.Visible = True
         Me.col_remarks.VisibleIndex = 4
         '
+        'btn_export
+        '
+        Me.btn_export.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_export.ImageOptions.Image = CType(resources.GetObject("btn_export.ImageOptions.Image"), System.Drawing.Image)
+        Me.btn_export.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btn_export.Location = New System.Drawing.Point(882, 12)
+        Me.btn_export.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_export.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_export.Name = "btn_export"
+        Me.btn_export.Size = New System.Drawing.Size(110, 63)
+        Me.btn_export.TabIndex = 3
+        Me.btn_export.Text = "Export to CSV"
+        '
         'frm_sales_unserved_dialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(905, 576)
+        Me.ClientSize = New System.Drawing.Size(1004, 576)
         Me.Controls.Add(Me.grid_unserved)
         Me.Controls.Add(Me.GunaPanel2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -166,4 +179,5 @@ Partial Class frm_sales_unserved_dialog
     Friend WithEvents col_model As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_description As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_remarks As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btn_export As DevExpress.XtraEditors.SimpleButton
 End Class

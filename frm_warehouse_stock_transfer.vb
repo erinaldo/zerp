@@ -148,6 +148,7 @@ Public Class frm_warehouse_stock_transfer
             Dim query = "SELECT id, src_store.store_name AS src_store, receiver_store.store_name AS receiver_store, 
                  units, date, transfer_by.first_name AS transfer_by, approved_by.first_name AS approved_by, prepared_by, counted_by, driver, released_by.first_name AS released_by,
                 (SELECT first_name FROM ims_users WHERE usr_id=received_by) as receiver, status,
+                (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name,
                 (SELECT value FROM ims_settings WHERE name='store_info') as store_info
                 FROM `ims_transferred_stocks`
                 LEFT JOIN ims_stores As src_store ON src_store.store_id=ims_transferred_stocks.src_store
@@ -165,6 +166,7 @@ Public Class frm_warehouse_stock_transfer
                     report.Parameters("transfer_from").Value = rdr("src_store")
                     report.Parameters("transfer_to").Value = rdr("receiver_store")
 
+                    report.Parameters("store_name").Value = rdr("store_name")
                     report.Parameters("store_info").Value = rdr("store_info")
 
                     report.Parameters("transfer_by").Value = rdr("transfer_by")

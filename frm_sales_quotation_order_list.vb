@@ -13,8 +13,11 @@ Public Class frm_sales_quotation_order_list
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Dim query = "SELECT concat('Q',LPAD(quotation_id,5,0)) as quotation_id, company, status, created_at, validity FROM ims_quotations 
-                        WHERE is_converted='0' AND is_deleted='0' AND NOW() BETWEEN created_at AND created_at + INTERVAL validity DAY ORDER BY quotation_id DESC"
+                Dim query = "SELECT CONCAT('Q',LPAD(quotation_id,5,0)) AS quotation_id, company, ims_users.first_name AS representative, status, created_at, validity 
+			            FROM ims_quotations 
+			            INNER JOIN ims_users ON ims_users.usr_id=prepared_by
+                        WHERE is_converted='0' AND is_deleted='0' AND NOW() BETWEEN created_at AND created_at + INTERVAL validity DAY 
+                        ORDER BY quotation_id DESC"
                 Dim cmd = New MySqlCommand(query, conn)
                 cmd.ExecuteNonQuery()
 

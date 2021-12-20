@@ -166,7 +166,7 @@ Public Class frm_warehouse_delivery_receive
 
                 'Get Count of ims_delivery_receipts
                 Dim get_count = New MySqlCommand("SELECT COUNT(*) FROM ims_delivery_receipts", conn)
-                Dim receipt_id = get_count.ExecuteScalar
+                Dim receipt_id = CInt(get_count.ExecuteScalar) + 1
 
                 'Insert to Deliveries Table
                 Dim deliveries_cmd = New MySqlCommand("INSERT INTO ims_deliveries (item, qty, date_received, purchase_id, receiver, store_id, receipt_id, cost) 

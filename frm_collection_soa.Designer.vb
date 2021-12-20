@@ -204,7 +204,7 @@ Partial Class frm_collection_soa
         Me.grid_soa_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_soa_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_soa_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_soa_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_soa_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_soa_view.Appearance.Row.Options.UseFont = True
         Me.grid_soa_view.Appearance.SelectedRow.BackColor = System.Drawing.Color.White
         Me.grid_soa_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
@@ -258,6 +258,8 @@ Partial Class frm_collection_soa
         '
         'col_date_generated
         '
+        Me.col_date_generated.AppearanceCell.Options.UseTextOptions = True
+        Me.col_date_generated.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_date_generated.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.col_date_generated.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
         Me.col_date_generated.AppearanceHeader.Options.UseFont = True
@@ -268,10 +270,11 @@ Partial Class frm_collection_soa
         Me.col_date_generated.DisplayFormat.FormatString = "MM/dd/yyy"
         Me.col_date_generated.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.col_date_generated.FieldName = "print_date"
+        Me.col_date_generated.MaxWidth = 120
         Me.col_date_generated.Name = "col_date_generated"
         Me.col_date_generated.Visible = True
         Me.col_date_generated.VisibleIndex = 2
-        Me.col_date_generated.Width = 166
+        Me.col_date_generated.Width = 120
         '
         'col_amount
         '

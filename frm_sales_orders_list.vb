@@ -30,8 +30,9 @@ Public Class frm_sales_orders
         End Select
 
         Try
-            conn.Open()
-            Dim query = "SELECT concat('SO',LPAD(order_id,5,0)) as order_id, date_ordered, 
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim query = "SELECT concat('SO',LPAD(order_id,5,0)) as order_id, date_ordered, 
                             AGENT.first_name AS agent, PACKED_BY.first_name AS packed_by, RELEASED_BY.first_name AS released_by, ims_customers.first_name, 
                             transaction_type, payment_status, date_packed, date_released,
                             CONCAT( UPPER( SUBSTRING( payment_type, 1, 1 ) ), LOWER( SUBSTRING( payment_type FROM 2 ) ) ) as payment_type,
@@ -41,20 +42,19 @@ Public Class frm_sales_orders
                             LEFT JOIN ims_users PACKED_BY on PACKED_BY.usr_id=ims_orders.packed_by
                             LEFT JOIN ims_users RELEASED_BY on RELEASED_BY.usr_id=ims_orders.released_by
                             WHERE " & query_filter & " ORDER BY date_ordered DESC"
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.ExecuteNonQuery()
+                Dim cmd = New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
 
-            Dim dt = New DataTable
-            Dim da = New MySqlDataAdapter(cmd)
-            da.Fill(dt)
+                Dim dt = New DataTable
+                Dim da = New MySqlDataAdapter(cmd)
+                da.Fill(dt)
 
-            grid_orders.DataSource = dt
-            grid_orders_view.FocusedRowHandle = -1
+                grid_orders.DataSource = dt
+                grid_orders_view.FocusedRowHandle = -1
 
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub

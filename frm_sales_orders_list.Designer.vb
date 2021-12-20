@@ -153,7 +153,7 @@ Partial Class frm_sales_orders
         '
         Me.cbb_timer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbb_timer.EditValue = "1 min"
-        Me.cbb_timer.Location = New System.Drawing.Point(37, 4)
+        Me.cbb_timer.Location = New System.Drawing.Point(34, 4)
         Me.cbb_timer.Name = "cbb_timer"
         Me.cbb_timer.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.cbb_timer.Properties.Appearance.Options.UseFont = True

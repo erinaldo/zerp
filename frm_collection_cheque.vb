@@ -98,7 +98,8 @@ Public Class frm_collection_cheque
                 Using cmd = New MySqlCommand("SELECT CONCAT('SR', LPAD(sales_return_id, 5, '0')) AS srid, ims_customers.first_name AS customer, amount, created_at
                                         FROM ims_sales_returns
                                         LEFT JOIN ims_customers ON ims_customers.customer_id=ims_sales_returns.customer_id
-                                        WHERE ims_sales_returns.is_deleted=0 AND ims_sales_returns.is_applied=0 AND ims_sales_returns.customer_id=" & cid, connection)
+                                        WHERE ims_sales_returns.is_deleted=0 AND ims_sales_returns.is_applied=0 AND status='Approved'
+                                        AND ims_sales_returns.customer_id=" & cid, connection)
                     Dim dt = New DataTable
                     Dim da = New MySqlDataAdapter(cmd)
                     da.Fill(dt)
@@ -124,13 +125,14 @@ Public Class frm_collection_cheque
 
                 Dim so_nos = String.Empty
                 Using cmd = New MySqlCommand("SELECT collection_id, so_nos, cheques, date_generated, ims_users.first_name AS collected_by, ims_customers.first_name AS c_name, ims_customers.address,
-                                (SELECT value FROM ims_settings WHERE name='store_info') as store_info
+                                (SELECT value FROM ims_settings WHERE name='store_info') as store_info, (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name
                                 FROM ims_collection_receipts 
                                 INNER JOIN ims_customers ON ims_customers.customer_id=ims_collection_receipts.customer_id
                                 INNER JOIN ims_users ON ims_users.usr_id=ims_collection_receipts.collected_by
                                 WHERE collection_id=" & collection_id, connection)
                     Using rdr = cmd.ExecuteReader
                         While rdr.Read
+                            report.Parameters("store_name").Value = rdr("store_name")
                             report.Parameters("store_info").Value = rdr("store_info")
                             report.Parameters("collection_id").Value = "CR" & rdr("collection_id").ToString.PadLeft(5, "0"c)
                             report.Parameters("collection_date").Value = rdr("date_generated")
@@ -353,8 +355,10 @@ Public Class frm_collection_cheque
 
                     'UPDATE SALES RETURN
                     Dim sr_handles = grid_returns_view.GetSelectedRows
+                    Dim return_id = 0
                     If sr_handles.Length > 0 Then
                         Update_SalesReturns(grid_returns_view.GetRowCellValue(sr_handles(0), col_srid).ToString.Replace("SR", ""))
+                        return_id = CInt(grid_returns_view.GetRowCellValue(sr_handles(0), col_srid).ToString.Replace("SR", ""))
                     End If
 
                     'UPDATE ORDERS
@@ -368,7 +372,7 @@ Public Class frm_collection_cheque
                                             status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) , payment_status='PAID' WHERE order_id=" & id, connection)
                         order_cmd.Parameters.AddWithValue("@option", "Cheque")
                         order_cmd.Parameters.AddWithValue("@amount", amount)
-                        order_cmd.Parameters.AddWithValue("@srid", CInt(grid_returns_view.GetRowCellValue(sr_handles(0), col_srid).ToString.Replace("SR", "")))
+                        order_cmd.Parameters.AddWithValue("@srid", return_id)
                         order_cmd.Parameters.AddWithValue("@details", Date.Today & " - " & cheque_number)
                         order_cmd.ExecuteNonQuery()
                     Next

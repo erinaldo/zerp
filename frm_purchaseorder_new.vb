@@ -643,12 +643,12 @@ Public Class frm_purchaseorder_new
     End Sub
 
     'cbb_deliver.SelectedValueChanged 
-    Private Sub cbb_deliver_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbb_deliver.SelectedValueChanged
+    Private Sub cbb_deliver_EditValueChanged(sender As Object, e As EventArgs) Handles cbb_deliver.EditValueChanged
 
         Try
             Using connection = New MySqlConnection(str)
-                conn.Open()
-                Dim cmd = New MySqlCommand("SELECT * FROM `ims_stores` WHERE store_name=@store_name", conn)
+                connection.Open()
+                Dim cmd = New MySqlCommand("SELECT * FROM `ims_stores` WHERE store_name=@store_name", connection)
                 cmd.Parameters.AddWithValue("@store_name", cbb_deliver.Text)
                 Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
@@ -695,26 +695,26 @@ Public Class frm_purchaseorder_new
         If openFileDialog.ShowDialog() = DialogResult.OK Then
             If MsgBox("Click 'Yes' to continue.", vbQuestion + vbYesNo, "Confirmation") = vbYes Then
 
-                'Try
-                'Stream Data from CSV
-                Dim csvData As String = File.ReadAllText(openFileDialog.FileName)
+                Try
+                    'Stream Data from CSV
+                    Dim csvData As String = File.ReadAllText(openFileDialog.FileName)
                     'Get grid_order DataTable
                     Dim dataSource As DataTable = DirectCast(grid_order.DataSource, DataTable)
 
                     Using connection = New MySqlConnection(str)
-                        conn.Open()
+                        connection.Open()
                         Dim not_found_unit = String.Empty, not_active = String.Empty
 
                         For Each row As String In csvData.Split(ControlChars.Lf)
 
                             If Not String.IsNullOrEmpty(row) Then
-                            Dim values = row.Split(","c)
+                                Dim values = row.Split(","c)
 
-                            'SKip if Row is Empty
-                            If String.IsNullOrWhiteSpace(values(0)) Or String.IsNullOrWhiteSpace(values(1)) Then Continue For
+                                'SKip if Row is Empty
+                                If String.IsNullOrWhiteSpace(values(0)) Or String.IsNullOrWhiteSpace(values(1)) Then Continue For
 
                                 Dim cmd = New MySqlCommand("SELECT * FROM ims_inventory 
-                                WHERE winmodel=@winmodel AND supplier=(SELECT id FROM ims_suppliers WHERE supplier=@supname)", conn)
+                                WHERE winmodel=@winmodel AND supplier=(SELECT id FROM ims_suppliers WHERE supplier=@supname)", connection)
                                 cmd.Parameters.AddWithValue("@winmodel", values(1).ToString.Trim)
                                 cmd.Parameters.AddWithValue("@supname", cbb_supplier.Text.Trim)
 
@@ -745,14 +745,14 @@ Public Class frm_purchaseorder_new
                     End Using
 
 
-                    Try
-                    Catch ex As Exception
-                        MsgBox(ex.Message, vbCritical, "Error")
-                    Finally
-                        conn.Close()
+
+                Catch ex As Exception
+                    MsgBox(ex.Message, vbCritical, "Error")
                 End Try
+
                 'Load All Stocks
                 load_AllStocks()
+
             End If
         End If
 
@@ -824,6 +824,7 @@ Public Class frm_purchaseorder_new
         dt.DefaultView.Sort = "winmodel ASC"
         grid_order.DataSource = dt.DefaultView.ToTable
     End Sub
+
 
 End Class
 

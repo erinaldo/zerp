@@ -150,6 +150,7 @@ Public Class frm_sales_view_order
 
                     cb_tax_applied.Checked = rdr("is_withholding_tax_applied")
                     cb_vatable.Checked = rdr("is_vatable")
+                    txt_invoice.Text = rdr("invoice_no").ToString
 
                     If Not IsDBNull(rdr("withholding_tax_percentage")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_percentage") / 100)
                     If Not IsDBNull(rdr("withholding_tax_amount")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_amount"))
@@ -370,12 +371,14 @@ Public Class frm_sales_view_order
 
                 Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, ship_to, order_item, pub_note, payment_type, discount_type, discount_val,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, delivery_fee,
-                        amount_due, shipping_method, trucking, date_released, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info FROM `ims_orders`
+                        amount_due, shipping_method, trucking, date_released, 
+                        (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info FROM `ims_orders`
                         INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer WHERE order_id=@id", conn)
                 cmd.Parameters.AddWithValue("@id", orderid)
                 rdr = cmd.ExecuteReader
 
                 While rdr.Read
+                    report.Parameters("store_name").Value = rdr("store_name")
                     report.Parameters("store_info").Value = rdr("store_info")
                     report.Parameters("orderid").Value = "SO" & rdr("order_id").ToString.PadLeft(5, "0"c)
                     report.Parameters("customer").Value = rdr("first_name")
@@ -899,7 +902,7 @@ Public Class frm_sales_view_order
                 Dim status = lbl_status.Text
                 Dim query = "UPDATE ims_orders SET bill_to=@bill_to, ship_to=@ship_to, trucking=@trucking, payment_status=@payment_status,
                             order_item=@order_item, pub_note=@pub_note, priv_note=@priv_note, terms=@terms,
-                            is_vatable=@is_vatable, discount_val=@discount_val, discount_type=@discount_type,
+                            is_vatable=@is_vatable, invoice_no=@invoice_no, discount_val=@discount_val, discount_type=@discount_type,
                             is_withholding_tax_applied=@is_withholding_tax_applied, withholding_tax_amount=@withholding_tax_amount, withholding_tax_percentage=@withholding_tax_percentage,
                             delivery_fee=@delivery_fee, amount_due=@amount_due, po_reference=@po_reference,
                             payment_type=@payment_type, payment_details=@payment_details, shipping_method=@shipping_method, status=@status WHERE order_id=" & order_id(1)
@@ -914,6 +917,7 @@ Public Class frm_sales_view_order
                 cmd.Parameters.AddWithValue("@payment_type", payment_type)
                 cmd.Parameters.AddWithValue("@payment_details", payment_details)
                 cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
+                cmd.Parameters.AddWithValue("@invoice_no", txt_invoice.Text)
                 cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
                 cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
                 cmd.Parameters.AddWithValue("@is_withholding_tax_applied", cb_tax_applied.Checked)
@@ -1125,7 +1129,18 @@ Public Class frm_sales_view_order
 
     'IF VATABLE
     Private Sub cb_vatable_CheckedChanged(sender As Object, e As EventArgs) Handles cb_vatable.CheckedChanged
-        If cb_tax_applied.Checked Then cb_vatable.Checked = True
+        If cb_tax_applied.Checked Then
+            cb_vatable.Checked = True
+        End If
+
+        If cb_vatable.Checked = True Then
+            lbl_invoice.Visible = True
+            txt_invoice.Visible = True
+        Else
+            lbl_invoice.Visible = False
+            txt_invoice.Visible = False
+        End If
+
     End Sub
 
     'cb_tax_applied.Click

@@ -75,7 +75,7 @@ Public Class frm_accounting_payables
     End Sub
 
     Private Sub btn_view_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view.ButtonClick
-        Dim receipt_id As String = grid_payables_view.GetFocusedRowCellValue(col_id)
+        Dim receipt_id As Integer = grid_payables_view.GetFocusedRowCellValue(col_id)
         Dim frm = New frm_accounting_view_transaction
 
         Try

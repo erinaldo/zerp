@@ -120,6 +120,7 @@ Partial Public Class doc_purchase_order
         Me.withholding_tax_percentage = New DevExpress.XtraReports.Parameters.Parameter()
         Me.withholding_tax_amount = New DevExpress.XtraReports.Parameters.Parameter()
         Me.pub_notes = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -460,6 +461,7 @@ Partial Public Class doc_purchase_order
         '
         'XrLabel1
         '
+        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?store_name")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(100.0!, 9.99999!)
         Me.XrLabel1.Multiline = True
@@ -1086,6 +1088,12 @@ Partial Public Class doc_purchase_order
         Me.pub_notes.Name = "pub_notes"
         Me.pub_notes.Visible = False
         '
+        'store_name
+        '
+        Me.store_name.Description = "store_name"
+        Me.store_name.Name = "store_name"
+        Me.store_name.Visible = False
+        '
         'doc_purchase_order
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter})
@@ -1095,7 +1103,7 @@ Partial Public Class doc_purchase_order
         Me.DataSource = Me.PrintData1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
-        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.supplier, Me.contact_person, Me.delivery_addr, Me.deliver_to, Me.pid, Me.print_date, Me.total, Me.amount_due, Me.discount_type, Me.discount_val, Me.store_info, Me.prepared_by, Me.approved_by, Me.lead_time, Me.approved_date, Me.expiration_date, Me.terms, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.pub_notes})
+        Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.supplier, Me.contact_person, Me.delivery_addr, Me.deliver_to, Me.pid, Me.print_date, Me.total, Me.amount_due, Me.discount_type, Me.discount_val, Me.store_info, Me.prepared_by, Me.approved_by, Me.lead_time, Me.approved_date, Me.expiration_date, Me.terms, Me.is_vatable, Me.is_withholding_tax_applied, Me.withholding_tax_percentage, Me.withholding_tax_amount, Me.pub_notes, Me.store_name})
         Me.Version = "21.1"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1198,4 +1206,5 @@ Partial Public Class doc_purchase_order
 	Friend WithEvents pub_notes As Parameter
 	Friend WithEvents XrLabel35 As XRLabel
 	Friend WithEvents XrLabel18 As XRLabel
+    Friend WithEvents store_name As Parameter
 End Class

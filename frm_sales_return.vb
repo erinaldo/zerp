@@ -16,12 +16,12 @@ Public Class frm_sales_return
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Using cmd = New MySqlCommand("SELECT sales_return_id, amount, created_at, IF(is_applied=1, 'Applied', 'Pending') as status,
+                Using cmd = New MySqlCommand("SELECT CONCAT('SR', LPAD(sales_return_id,5,0)) sales_return_id, amount, created_at, status,
                                 ims_customers.first_name AS customer, ims_users.first_name AS sales_coordinator
                                 FROM ims_sales_returns 
                                 LEFT JOIN ims_customers ON ims_customers.customer_id=ims_sales_returns.customer_id 
                                 LEFT JOIN ims_users ON ims_users.usr_id=ims_sales_returns.created_by 
-                                WHERE ims_sales_returns.is_deleted=0 AND NOT status='Approved'
+                                WHERE ims_sales_returns.is_deleted=0 AND is_applied='0'
                                 ORDER BY sales_return_id DESC", conn)
                     cmd.ExecuteNonQuery()
                     Dim dt = New DataTable
@@ -49,7 +49,7 @@ Public Class frm_sales_return
 
     'View Sales Return
     Private Sub btn_view_order_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view_order.ButtonClick
-        Dim id = grid_returns_view.GetFocusedRowCellValue(col_rid)
+        Dim id = grid_returns_view.GetFocusedRowCellValue(col_rid).ToString.Replace("SR", "")
         Dim frm = New frm_sales_return_new
         frm.Show()
         frm.LoadEdit(id)
