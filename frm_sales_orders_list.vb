@@ -9,7 +9,7 @@ Public Class frm_sales_orders
     'ON LOAD
     Private Sub frm_sales_orders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         load_orders("ON-PROCESS")
-        start_timer()
+        'start_timer() || TIMER WAS DISABLED
     End Sub
 
 

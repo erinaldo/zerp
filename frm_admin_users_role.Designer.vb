@@ -77,6 +77,7 @@ Partial Class frm_admin_users_role
         Me.cb_new_purchase = New System.Windows.Forms.CheckBox()
         Me.cb_purchase_orders = New System.Windows.Forms.CheckBox()
         Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.cb_quotations = New System.Windows.Forms.CheckBox()
         Me.cb_logistics = New System.Windows.Forms.CheckBox()
         Me.cb_orders = New System.Windows.Forms.CheckBox()
         Me.cb_transaction_invoice = New System.Windows.Forms.CheckBox()
@@ -87,11 +88,9 @@ Partial Class frm_admin_users_role
         Me.cb_pickup_deliveries = New System.Windows.Forms.CheckBox()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         Me.cb_catalogue = New System.Windows.Forms.CheckBox()
-        Me.cb_inventory = New System.Windows.Forms.CheckBox()
         Me.cb_new_item = New System.Windows.Forms.CheckBox()
         Me.cb_import_catalogue = New System.Windows.Forms.CheckBox()
         Me.cb_export_catalogue = New System.Windows.Forms.CheckBox()
-        Me.cb_quotations = New System.Windows.Forms.CheckBox()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -675,6 +674,16 @@ Partial Class frm_admin_users_role
         Me.GroupControl4.TabIndex = 19
         Me.GroupControl4.Text = "Sales"
         '
+        'cb_quotations
+        '
+        Me.cb_quotations.AutoSize = True
+        Me.cb_quotations.Location = New System.Drawing.Point(23, 73)
+        Me.cb_quotations.Name = "cb_quotations"
+        Me.cb_quotations.Size = New System.Drawing.Size(79, 17)
+        Me.cb_quotations.TabIndex = 12
+        Me.cb_quotations.Text = "Quotations"
+        Me.cb_quotations.UseVisualStyleBackColor = True
+        '
         'cb_logistics
         '
         Me.cb_logistics.AutoSize = True
@@ -757,7 +766,6 @@ Partial Class frm_admin_users_role
         'GroupControl3
         '
         Me.GroupControl3.Controls.Add(Me.cb_catalogue)
-        Me.GroupControl3.Controls.Add(Me.cb_inventory)
         Me.GroupControl3.Controls.Add(Me.cb_new_item)
         Me.GroupControl3.Controls.Add(Me.cb_import_catalogue)
         Me.GroupControl3.Controls.Add(Me.cb_export_catalogue)
@@ -777,20 +785,10 @@ Partial Class frm_admin_users_role
         Me.cb_catalogue.Text = "Catalogue"
         Me.cb_catalogue.UseVisualStyleBackColor = True
         '
-        'cb_inventory
-        '
-        Me.cb_inventory.AutoSize = True
-        Me.cb_inventory.Location = New System.Drawing.Point(23, 50)
-        Me.cb_inventory.Name = "cb_inventory"
-        Me.cb_inventory.Size = New System.Drawing.Size(74, 17)
-        Me.cb_inventory.TabIndex = 1
-        Me.cb_inventory.Text = "Inventory"
-        Me.cb_inventory.UseVisualStyleBackColor = True
-        '
         'cb_new_item
         '
         Me.cb_new_item.AutoSize = True
-        Me.cb_new_item.Location = New System.Drawing.Point(23, 73)
+        Me.cb_new_item.Location = New System.Drawing.Point(23, 50)
         Me.cb_new_item.Name = "cb_new_item"
         Me.cb_new_item.Size = New System.Drawing.Size(72, 17)
         Me.cb_new_item.TabIndex = 2
@@ -800,7 +798,7 @@ Partial Class frm_admin_users_role
         'cb_import_catalogue
         '
         Me.cb_import_catalogue.AutoSize = True
-        Me.cb_import_catalogue.Location = New System.Drawing.Point(23, 96)
+        Me.cb_import_catalogue.Location = New System.Drawing.Point(23, 73)
         Me.cb_import_catalogue.Name = "cb_import_catalogue"
         Me.cb_import_catalogue.Size = New System.Drawing.Size(110, 17)
         Me.cb_import_catalogue.TabIndex = 3
@@ -810,22 +808,12 @@ Partial Class frm_admin_users_role
         'cb_export_catalogue
         '
         Me.cb_export_catalogue.AutoSize = True
-        Me.cb_export_catalogue.Location = New System.Drawing.Point(23, 119)
+        Me.cb_export_catalogue.Location = New System.Drawing.Point(23, 96)
         Me.cb_export_catalogue.Name = "cb_export_catalogue"
         Me.cb_export_catalogue.Size = New System.Drawing.Size(110, 17)
         Me.cb_export_catalogue.TabIndex = 4
         Me.cb_export_catalogue.Text = "Export Catalogue"
         Me.cb_export_catalogue.UseVisualStyleBackColor = True
-        '
-        'cb_quotations
-        '
-        Me.cb_quotations.AutoSize = True
-        Me.cb_quotations.Location = New System.Drawing.Point(23, 73)
-        Me.cb_quotations.Name = "cb_quotations"
-        Me.cb_quotations.Size = New System.Drawing.Size(79, 17)
-        Me.cb_quotations.TabIndex = 12
-        Me.cb_quotations.Text = "Quotations"
-        Me.cb_quotations.UseVisualStyleBackColor = True
         '
         'frm_admin_users_role
         '
@@ -901,9 +889,8 @@ Partial Class frm_admin_users_role
 	Friend WithEvents cb_catalogue As CheckBox
 	Friend WithEvents cb_import_catalogue As CheckBox
 	Friend WithEvents cb_new_item As CheckBox
-	Friend WithEvents cb_inventory As CheckBox
-	Friend WithEvents cb_export_catalogue As CheckBox
-	Friend WithEvents btn_save As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cb_export_catalogue As CheckBox
+    Friend WithEvents btn_save As DevExpress.XtraEditors.SimpleButton
 	Friend WithEvents btn_close As DevExpress.XtraEditors.SimpleButton
 	Friend WithEvents cb_packing_list As CheckBox
 	Friend WithEvents cb_customers As CheckBox

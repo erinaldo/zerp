@@ -1,8 +1,8 @@
-﻿Imports DevExpress.XtraEditors
+﻿Imports System.IO
+Imports DevExpress.XtraEditors
 Imports MySql.Data.MySqlClient
 Imports Renci.SshNet
 Imports Renci.SshNet.Sftp
-Imports System.IO
 
 Public Class frm_sales_order_epayment_proofs
 

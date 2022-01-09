@@ -1,10 +1,10 @@
-﻿Imports DevExpress.XtraEditors.Controls
+﻿Imports System.Globalization
+Imports System.IO
+Imports System.Net
+Imports DevExpress.XtraEditors.Controls
 Imports MySql.Data.MySqlClient
 Imports Renci.SshNet
 Imports Renci.SshNet.Sftp
-Imports System.Globalization
-Imports System.IO
-Imports System.Net
 
 Public Class frm_product_new
 

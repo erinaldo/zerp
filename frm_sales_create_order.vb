@@ -1,7 +1,4 @@
-﻿Imports DevExpress.XtraEditors
-Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraGrid.Views.Grid
+﻿Imports DevExpress.XtraEditors.Controls
 Imports MySql.Data.MySqlClient
 
 Public Class frm_sales_create_order
@@ -423,6 +420,8 @@ Public Class frm_sales_create_order
 
 
             Try
+
+                'Check if NOT null | Validation
                 If String.IsNullOrEmpty(grid_order.Rows(e.RowIndex).Cells(1).Value) Then Exit Sub
 
                 If e.ColumnIndex.Equals(3) Then
@@ -491,8 +490,7 @@ Public Class frm_sales_create_order
 
                 End If
 
-
-
+                'Computation
                 Dim price As Decimal = grid_order.Rows(e.RowIndex).Cells(3).Value
                 Dim discount As Decimal = grid_order.Rows(e.RowIndex).Cells(4).Value.ToString.Replace("%", "")
                 Dim total_price = price - (price * (discount / 100))

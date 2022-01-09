@@ -224,7 +224,7 @@ Partial Class frm_sales_transaction_invoice
         Me.GridColumn3.AppearanceHeader.Options.UseTextOptions = True
         Me.GridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn3.Caption = "Representative"
-        Me.GridColumn3.FieldName = "agent"
+        Me.GridColumn3.FieldName = "representative"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.OptionsColumn.ReadOnly = True

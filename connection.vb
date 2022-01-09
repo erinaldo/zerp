@@ -1,6 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
-
-Module connection
+﻿Module connection
 
     Public server As String = My.Settings.server
     Public db As String = My.Settings.database

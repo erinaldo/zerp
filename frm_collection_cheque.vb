@@ -73,7 +73,7 @@ Public Class frm_collection_cheque
         Try
             conn.Open()
             Dim cmd = New MySqlCommand("SELECT order_id, date_ordered, amount_due, payment_type FROM ims_orders 
-                            WHERE (payment_type='cheque' OR payment_type='terms') AND payment_status='UNPAID' AND customer='" & cid & "' AND deleted=0", conn)
+                            WHERE (payment_type='cheque' OR payment_type='terms') AND payment_status='UNPAID' AND NOT status='Cancelled' AND customer='" & cid & "' AND deleted=0", conn)
             cmd.ExecuteNonQuery()
 
             Dim dt = New DataTable

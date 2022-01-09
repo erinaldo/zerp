@@ -45,10 +45,10 @@ Partial Class frm_product_catalogue
         Me.grid_catalogue = New DevExpress.XtraGrid.GridControl()
         Me.grid_catalogue_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_pid = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_price = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_winmodel = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_srp_price = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_dealer_price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_vip_price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_main_category = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -202,7 +202,7 @@ Partial Class frm_product_catalogue
         Me.grid_catalogue_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_catalogue_view.Appearance.Row.Options.UseFont = True
         Me.grid_catalogue_view.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
-        Me.grid_catalogue_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_pid, Me.GridColumn3, Me.GridColumn4, Me.col_price, Me.GridColumn6, Me.col_dealer_price, Me.col_vip_price, Me.col_main_category, Me.col_sub_category, Me.col_brand, Me.col_my_qty, Me.col_onhold_qty, Me.col_other_qty})
+        Me.grid_catalogue_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_pid, Me.col_winmodel, Me.col_description, Me.col_srp_price, Me.col_status, Me.col_dealer_price, Me.col_vip_price, Me.col_main_category, Me.col_sub_category, Me.col_brand, Me.col_my_qty, Me.col_onhold_qty, Me.col_other_qty})
         Me.grid_catalogue_view.GridControl = Me.grid_catalogue
         Me.grid_catalogue_view.Name = "grid_catalogue_view"
         Me.grid_catalogue_view.OptionsBehavior.ReadOnly = True
@@ -225,58 +225,58 @@ Partial Class frm_product_catalogue
         Me.col_pid.VisibleIndex = 0
         Me.col_pid.Width = 59
         '
-        'GridColumn3
+        'col_winmodel
         '
-        Me.GridColumn3.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn3.AppearanceHeader.Options.UseForeColor = True
-        Me.GridColumn3.Caption = "Model"
-        Me.GridColumn3.FieldName = "winmodel"
-        Me.GridColumn3.MaxWidth = 200
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 1
-        Me.GridColumn3.Width = 118
+        Me.col_winmodel.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.col_winmodel.AppearanceHeader.Options.UseForeColor = True
+        Me.col_winmodel.Caption = "Model"
+        Me.col_winmodel.FieldName = "winmodel"
+        Me.col_winmodel.MaxWidth = 200
+        Me.col_winmodel.Name = "col_winmodel"
+        Me.col_winmodel.Visible = True
+        Me.col_winmodel.VisibleIndex = 1
+        Me.col_winmodel.Width = 118
         '
-        'GridColumn4
+        'col_description
         '
-        Me.GridColumn4.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn4.AppearanceHeader.Options.UseForeColor = True
-        Me.GridColumn4.Caption = "Description"
-        Me.GridColumn4.FieldName = "description"
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 2
-        Me.GridColumn4.Width = 178
+        Me.col_description.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.col_description.AppearanceHeader.Options.UseForeColor = True
+        Me.col_description.Caption = "Description"
+        Me.col_description.FieldName = "description"
+        Me.col_description.Name = "col_description"
+        Me.col_description.Visible = True
+        Me.col_description.VisibleIndex = 2
+        Me.col_description.Width = 178
         '
-        'col_price
+        'col_srp_price
         '
-        Me.col_price.AppearanceCell.Options.UseTextOptions = True
-        Me.col_price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.col_price.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.col_price.AppearanceHeader.Options.UseForeColor = True
-        Me.col_price.Caption = "SRP"
-        Me.col_price.DisplayFormat.FormatString = "n2"
-        Me.col_price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.col_price.FieldName = "regular_price"
-        Me.col_price.MaxWidth = 100
-        Me.col_price.Name = "col_price"
-        Me.col_price.Visible = True
-        Me.col_price.VisibleIndex = 7
-        Me.col_price.Width = 67
+        Me.col_srp_price.AppearanceCell.Options.UseTextOptions = True
+        Me.col_srp_price.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.col_srp_price.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.col_srp_price.AppearanceHeader.Options.UseForeColor = True
+        Me.col_srp_price.Caption = "SRP"
+        Me.col_srp_price.DisplayFormat.FormatString = "n2"
+        Me.col_srp_price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_srp_price.FieldName = "regular_price"
+        Me.col_srp_price.MaxWidth = 100
+        Me.col_srp_price.Name = "col_srp_price"
+        Me.col_srp_price.Visible = True
+        Me.col_srp_price.VisibleIndex = 7
+        Me.col_srp_price.Width = 67
         '
-        'GridColumn6
+        'col_status
         '
-        Me.GridColumn6.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn6.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.GridColumn6.AppearanceHeader.Options.UseForeColor = True
-        Me.GridColumn6.Caption = "Status"
-        Me.GridColumn6.FieldName = "status"
-        Me.GridColumn6.MaxWidth = 100
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 6
-        Me.GridColumn6.Width = 77
+        Me.col_status.AppearanceCell.Options.UseTextOptions = True
+        Me.col_status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_status.AppearanceHeader.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.col_status.AppearanceHeader.Options.UseForeColor = True
+        Me.col_status.Caption = "Status"
+        Me.col_status.FieldName = "status"
+        Me.col_status.MaxWidth = 100
+        Me.col_status.Name = "col_status"
+        Me.col_status.Visible = True
+        Me.col_status.VisibleIndex = 6
+        Me.col_status.Width = 77
         '
         'col_dealer_price
         '
@@ -1126,10 +1126,10 @@ Partial Class frm_product_catalogue
     Friend WithEvents grid_catalogue As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_catalogue_view As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents col_price As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_winmodel As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_description As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_srp_price As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_status As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents bgw_load_catalogue As System.ComponentModel.BackgroundWorker
     Friend WithEvents SplashScreenManager1 As DevExpress.XtraSplashScreen.SplashScreenManager
     Friend WithEvents col_main_category As DevExpress.XtraGrid.Columns.GridColumn

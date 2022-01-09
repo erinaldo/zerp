@@ -315,11 +315,16 @@ Partial Class frm_sales_quotation_order_list
         '
         'col_validity
         '
+        Me.col_validity.AppearanceCell.Options.UseTextOptions = True
+        Me.col_validity.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_validity.Caption = "Validity"
+        Me.col_validity.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.col_validity.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.col_validity.FieldName = "validity"
         Me.col_validity.Name = "col_validity"
         Me.col_validity.Visible = True
         Me.col_validity.VisibleIndex = 6
+        Me.col_validity.Width = 120
         '
         'col_representative
         '

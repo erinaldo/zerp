@@ -41,8 +41,9 @@ Partial Class frm_collection_payment_ledger
         Me.col_payment_type = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn24 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grid_cash = New DevExpress.XtraGrid.GridControl()
         Me.col_received_by = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.grid_cash = New DevExpress.XtraGrid.GridControl()
+        Me.col_deducted_returns = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -170,7 +171,7 @@ Partial Class frm_collection_payment_ledger
         Me.grid_cash_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_cash_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_cash_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_cash_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_order_id, Me.GridColumn3, Me.col_customer, Me.GridColumn4, Me.GridColumn23, Me.col_amount_due, Me.col_payment_type, Me.GridColumn24, Me.GridColumn18, Me.col_received_by})
+        Me.grid_cash_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_order_id, Me.GridColumn3, Me.col_customer, Me.GridColumn4, Me.GridColumn23, Me.col_amount_due, Me.col_payment_type, Me.GridColumn24, Me.GridColumn18, Me.col_received_by, Me.col_deducted_returns})
         Me.grid_cash_view.GridControl = Me.grid_cash
         Me.grid_cash_view.Name = "grid_cash_view"
         Me.grid_cash_view.OptionsBehavior.Editable = False
@@ -194,10 +195,12 @@ Partial Class frm_collection_payment_ledger
         'GridColumn3
         '
         Me.GridColumn3.Caption = "Balance"
+        Me.GridColumn3.DisplayFormat.FormatString = "n2"
+        Me.GridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn3.FieldName = "balance"
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 6
+        Me.GridColumn3.VisibleIndex = 7
         Me.GridColumn3.Width = 89
         '
         'col_customer
@@ -226,7 +229,10 @@ Partial Class frm_collection_payment_ledger
         'GridColumn23
         '
         Me.GridColumn23.Caption = "Current Balance"
+        Me.GridColumn23.DisplayFormat.FormatString = "n2"
+        Me.GridColumn23.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn23.FieldName = "current_balance"
+        Me.GridColumn23.MinWidth = 120
         Me.GridColumn23.Name = "GridColumn23"
         Me.GridColumn23.Visible = True
         Me.GridColumn23.VisibleIndex = 4
@@ -243,17 +249,20 @@ Partial Class frm_collection_payment_ledger
         Me.col_amount_due.MaxWidth = 200
         Me.col_amount_due.Name = "col_amount_due"
         Me.col_amount_due.Visible = True
-        Me.col_amount_due.VisibleIndex = 7
+        Me.col_amount_due.VisibleIndex = 8
         Me.col_amount_due.Width = 121
         '
         'col_payment_type
         '
         Me.col_payment_type.Caption = "Payment"
+        Me.col_payment_type.DisplayFormat.FormatString = "n2"
+        Me.col_payment_type.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col_payment_type.FieldName = "payment"
+        Me.col_payment_type.MinWidth = 120
         Me.col_payment_type.Name = "col_payment_type"
         Me.col_payment_type.Visible = True
         Me.col_payment_type.VisibleIndex = 5
-        Me.col_payment_type.Width = 100
+        Me.col_payment_type.Width = 120
         '
         'GridColumn24
         '
@@ -274,8 +283,19 @@ Partial Class frm_collection_payment_ledger
         Me.GridColumn18.FieldName = "payment_ref"
         Me.GridColumn18.Name = "GridColumn18"
         Me.GridColumn18.Visible = True
-        Me.GridColumn18.VisibleIndex = 8
+        Me.GridColumn18.VisibleIndex = 9
         Me.GridColumn18.Width = 117
+        '
+        'col_received_by
+        '
+        Me.col_received_by.Caption = "Received By"
+        Me.col_received_by.FieldName = "received_by"
+        Me.col_received_by.MaxWidth = 130
+        Me.col_received_by.MinWidth = 130
+        Me.col_received_by.Name = "col_received_by"
+        Me.col_received_by.Visible = True
+        Me.col_received_by.VisibleIndex = 10
+        Me.col_received_by.Width = 130
         '
         'grid_cash
         '
@@ -291,16 +311,17 @@ Partial Class frm_collection_payment_ledger
         Me.grid_cash.TabIndex = 15
         Me.grid_cash.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_cash_view})
         '
-        'col_received_by
+        'col_deducted_returns
         '
-        Me.col_received_by.Caption = "Received By"
-        Me.col_received_by.FieldName = "received_by"
-        Me.col_received_by.MaxWidth = 130
-        Me.col_received_by.MinWidth = 130
-        Me.col_received_by.Name = "col_received_by"
-        Me.col_received_by.Visible = True
-        Me.col_received_by.VisibleIndex = 9
-        Me.col_received_by.Width = 130
+        Me.col_deducted_returns.Caption = "Deducted Returns"
+        Me.col_deducted_returns.DisplayFormat.FormatString = "n2"
+        Me.col_deducted_returns.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_deducted_returns.FieldName = "returns_amount"
+        Me.col_deducted_returns.MinWidth = 120
+        Me.col_deducted_returns.Name = "col_deducted_returns"
+        Me.col_deducted_returns.Visible = True
+        Me.col_deducted_returns.VisibleIndex = 6
+        Me.col_deducted_returns.Width = 120
         '
         'frm_collection_payment_ledger
         '
@@ -345,4 +366,5 @@ Partial Class frm_collection_payment_ledger
     Friend WithEvents col_payment_type As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grid_cash As DevExpress.XtraGrid.GridControl
     Friend WithEvents col_received_by As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_deducted_returns As DevExpress.XtraGrid.Columns.GridColumn
 End Class

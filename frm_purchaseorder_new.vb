@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
 
 Public Class frm_purchaseorder_new
@@ -573,7 +572,10 @@ Public Class frm_purchaseorder_new
             If e.ColumnIndex.Equals(1) Or e.ColumnIndex.Equals(6) Then
 
                 Try
-                    If IsDBNull(grid_order.CurrentCell.Value) Or String.IsNullOrEmpty(grid_order.Rows(e.RowIndex).Cells(3).Value) Then Return
+
+                    'Check if NOT null | Validation
+                    If IsDBNull(grid_order.Rows(e.RowIndex).Cells(3).Value) Then Exit Sub
+
                     Dim qty As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value
                     Dim cost As Decimal = grid_order.Rows(e.RowIndex).Cells(6).Value
                     Dim total As Decimal = Decimal.Multiply(qty, cost)

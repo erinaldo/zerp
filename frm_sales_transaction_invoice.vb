@@ -21,9 +21,12 @@ Public Class frm_sales_transaction_invoice
 
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("SELECT order_id, date_ordered, date_released, ims_users.first_name as agent, ims_customers.first_name, payment_type, IFNULL(payment_status, 'UNPAID') as payment_status, ship_to, trucking, status, shipping_method FROM `ims_orders`  
+            Dim cmd = New MySqlCommand("SELECT order_id, date_ordered, date_released, 
+                                REPRESENTATIVE.first_name AS representative, SALES_AGENT.first_name AS sales_agent, 
+                                ims_customers.first_name, payment_type, IFNULL(payment_status, 'UNPAID') as payment_status, ship_to, trucking, status, shipping_method FROM `ims_orders`  
                                 INNER JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
-                                INNER JOIN ims_users on ims_orders.agent=ims_users.usr_id
+                                LEFT JOIN ims_users SALES_AGENT ON ims_orders.sales_agent=SALES_AGENT.usr_id
+                                LEFT JOIN ims_users REPRESENTATIVE ON ims_orders.agent=REPRESENTATIVE.usr_id
                                 WHERE (status='Completed' OR status='Released') AND ims_orders.deleted='0'", conn)
             cmd.ExecuteNonQuery()
 

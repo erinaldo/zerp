@@ -1,5 +1,4 @@
 ﻿Imports System.Reflection
-Imports DevExpress.XtraEditors
 
 Public Class frm_splash_screen
     Sub New()

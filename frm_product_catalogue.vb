@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Net
 Imports DevExpress.XtraGrid
 Imports MySql.Data.MySqlClient
 Imports Renci.SshNet
@@ -113,6 +112,7 @@ Public Class frm_product_catalogue
                 Using mySqlDataReader = New MySqlCommand("SELECT store_name FROM ims_stores", conn).ExecuteReader()
                     While mySqlDataReader.Read()
                         Dim str As String = String.Concat("ims_", mySqlDataReader("store_name").ToString().ToLower().Replace(" ", "_"))
+                        'table = String.Concat(table, str, ",")
                         If Not str.Equals(MyStore) Then
                             table = String.Concat(table, str, ",")
                         End If
@@ -196,25 +196,25 @@ Public Class frm_product_catalogue
                 If grid_catalogue_view.RowCount > 0 Then
 
                     With grid_catalogue_view
-                        lbl_pid.Text = .GetRowCellValue(.FocusedRowHandle, "pid")
-                        txt_status.Text = .GetRowCellValue(.FocusedRowHandle, "status")
-                        txt_barcode.Text = .GetRowCellValue(.FocusedRowHandle, "barcode")
-                        txt_winmodel.Text = .GetRowCellValue(.FocusedRowHandle, "winmodel")
-                        txt_description.Text = .GetRowCellValue(.FocusedRowHandle, "description")
-                        txt_retail_price.Text = .GetRowCellValue(.FocusedRowHandle, "regular_price")
+                        lbl_pid.Text = .GetFocusedRowCellValue("pid")
+                        txt_status.Text = .GetFocusedRowCellValue("status")
+                        If Not IsDBNull(.GetFocusedRowCellValue("barcode")) Then txt_barcode.Text = .GetFocusedRowCellValue("barcode") Else txt_barcode.Text = String.Empty
+                        txt_winmodel.Text = .GetFocusedRowCellValue("winmodel")
+                        txt_description.Text = .GetFocusedRowCellValue("description")
+                        txt_retail_price.Text = .GetFocusedRowCellValue("regular_price")
 
-                        txt_main_category.Text = .GetRowCellValue(.FocusedRowHandle, "main_category")
-                        txt_sub_category.Text = .GetRowCellValue(.FocusedRowHandle, "sub_category")
-                        txt_brand.Text = .GetRowCellValue(.FocusedRowHandle, "brand")
+                        txt_main_category.Text = .GetFocusedRowCellValue("main_category")
+                        txt_sub_category.Text = .GetFocusedRowCellValue("sub_category")
+                        txt_brand.Text = .GetFocusedRowCellValue("brand")
 
-                        txt_tags.Text = .GetRowCellValue(.FocusedRowHandle, "tags")
-                        txt_hazards.Text = .GetRowCellValue(.FocusedRowHandle, "hazards")
+                        If Not IsDBNull(.GetFocusedRowCellValue("tags")) Then txt_tags.Text = .GetFocusedRowCellValue("tags") Else txt_tags.Text = String.Empty
+                        If Not IsDBNull(.GetFocusedRowCellValue("hazards")) Then txt_hazards.Text = .GetFocusedRowCellValue("hazards") Else txt_hazards.Text = String.Empty
 
-                        If Not IsDBNull(.GetRowCellValue(.FocusedRowHandle, "length")) Then txt_length.Text = .GetRowCellValue(.FocusedRowHandle, "length") Else txt_length.Text = ""
-                        If Not IsDBNull(.GetRowCellValue(.FocusedRowHandle, "width")) Then txt_width.Text = .GetRowCellValue(.FocusedRowHandle, "width") Else txt_width.Text = ""
-                        If Not IsDBNull(.GetRowCellValue(.FocusedRowHandle, "height")) Then txt_height.Text = .GetRowCellValue(.FocusedRowHandle, "height") Else txt_height.Text = ""
-                        If Not IsDBNull(.GetRowCellValue(.FocusedRowHandle, "weight")) Then txt_weight.Text = .GetRowCellValue(.FocusedRowHandle, "weight") Else txt_weight.Text = ""
-                        If Not IsDBNull(.GetRowCellValue(.FocusedRowHandle, "warranty_period")) Then txt_warranty.Text = .GetRowCellValue(.FocusedRowHandle, "warranty_period") & " Months - " & .GetRowCellValue(.FocusedRowHandle, "warranty_coverage") Else txt_warranty.Text = ""
+                        If Not IsDBNull(.GetFocusedRowCellValue("length")) Then txt_length.Text = .GetFocusedRowCellValue("length") Else txt_length.Text = ""
+                        If Not IsDBNull(.GetFocusedRowCellValue("width")) Then txt_width.Text = .GetFocusedRowCellValue("width") Else txt_width.Text = ""
+                        If Not IsDBNull(.GetFocusedRowCellValue("height")) Then txt_height.Text = .GetFocusedRowCellValue("height") Else txt_height.Text = ""
+                        If Not IsDBNull(.GetFocusedRowCellValue("weight")) Then txt_weight.Text = .GetFocusedRowCellValue("weight") Else txt_weight.Text = ""
+                        If Not IsDBNull(.GetFocusedRowCellValue("warranty_period")) Then txt_warranty.Text = .GetFocusedRowCellValue("warranty_period") & " Months - " & .GetFocusedRowCellValue("warranty_coverage") Else txt_warranty.Text = ""
 
                         'Set Image to Picture Box
                         pb_product.Image = Nothing
@@ -249,9 +249,10 @@ Public Class frm_product_catalogue
     Private Sub lbl_view_more_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbl_view_more.LinkClicked
         Dim more_description As String = grid_catalogue_view.GetFocusedRowCellValue("technical_description")
         Dim frmProductDetail As New frm_product_details()
-        frmProductDetail.txt_details.Text = more_description
+        frmProductDetail.lbl_more_details.Text = more_description
+        'frmProductDetail.txt_details.Text = more_description
         frmProductDetail.Show()
-        frmProductDetail.txt_details.DeselectAll()
+        'frmProductDetail.txt_details.DeselectAll()
     End Sub
 
     'View Stocks

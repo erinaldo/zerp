@@ -42,7 +42,6 @@ Partial Class frm_main
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.menu_product = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_catalogue = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_inventory = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_new_item = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_import_catalogue = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_export_catalogue = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,7 +60,7 @@ Partial Class frm_main
         Me.submenu_daily_delivery = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_delivery_logs = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_stock_management = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_stocks_inventory = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_product_inventory = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_returned_units = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_logistics = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_pick_deliveries = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,12 +72,11 @@ Partial Class frm_main
         Me.menu_accounting = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_account_payables = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_generate = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PaymentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VoucherToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_payment_vouchers = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_payment_cheques = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_payment_cash = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_ForecastAndPayablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_InventoryCount = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_purchasing = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_purchasing_new = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_purchasing_orders = New System.Windows.Forms.ToolStripMenuItem()
@@ -205,7 +203,7 @@ Partial Class frm_main
         '
         'menu_product
         '
-        Me.menu_product.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_catalogue, Me.submenu_inventory, Me.submenu_new_item, Me.submenu_import_catalogue, Me.submenu_export_catalogue})
+        Me.menu_product.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_catalogue, Me.submenu_new_item, Me.submenu_import_catalogue, Me.submenu_export_catalogue})
         Me.menu_product.Name = "menu_product"
         Me.menu_product.Size = New System.Drawing.Size(72, 24)
         Me.menu_product.Text = "Product"
@@ -216,13 +214,6 @@ Partial Class frm_main
         Me.submenu_catalogue.Size = New System.Drawing.Size(197, 24)
         Me.submenu_catalogue.Text = "Catalogue"
         Me.submenu_catalogue.Visible = False
-        '
-        'submenu_inventory
-        '
-        Me.submenu_inventory.Name = "submenu_inventory"
-        Me.submenu_inventory.Size = New System.Drawing.Size(197, 24)
-        Me.submenu_inventory.Text = "Inventory"
-        Me.submenu_inventory.Visible = False
         '
         'submenu_new_item
         '
@@ -322,7 +313,7 @@ Partial Class frm_main
         '
         'menu_warehouse
         '
-        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_stocks_inventory, Me.submenu_returned_units})
+        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_product_inventory, Me.submenu_returned_units})
         Me.menu_warehouse.Name = "menu_warehouse"
         Me.menu_warehouse.Size = New System.Drawing.Size(94, 24)
         Me.menu_warehouse.Text = "Warehouse"
@@ -348,12 +339,12 @@ Partial Class frm_main
         Me.submenu_stock_management.Text = "Stock Management"
         Me.submenu_stock_management.Visible = False
         '
-        'submenu_stocks_inventory
+        'submenu_product_inventory
         '
-        Me.submenu_stocks_inventory.Name = "submenu_stocks_inventory"
-        Me.submenu_stocks_inventory.Size = New System.Drawing.Size(206, 24)
-        Me.submenu_stocks_inventory.Text = "Stocks Inventory"
-        Me.submenu_stocks_inventory.Visible = False
+        Me.submenu_product_inventory.Name = "submenu_product_inventory"
+        Me.submenu_product_inventory.Size = New System.Drawing.Size(206, 24)
+        Me.submenu_product_inventory.Text = "Stock Inventory"
+        Me.submenu_product_inventory.Visible = False
         '
         'submenu_returned_units
         '
@@ -412,7 +403,7 @@ Partial Class frm_main
         '
         'menu_accounting
         '
-        Me.menu_accounting.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_account_payables, Me.submenu_generate, Me.submenu_payment_vouchers, Me.submenu_payment_cheques, Me.submenu_payment_cash, Me.submenu_ForecastAndPayablesToolStripMenuItem})
+        Me.menu_accounting.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_account_payables, Me.submenu_generate, Me.submenu_payment_vouchers, Me.submenu_payment_cheques, Me.submenu_payment_cash, Me.submenu_ForecastAndPayablesToolStripMenuItem, Me.submenu_InventoryCount})
         Me.menu_accounting.Name = "menu_accounting"
         Me.menu_accounting.Size = New System.Drawing.Size(96, 24)
         Me.menu_accounting.Text = "Accounting"
@@ -420,55 +411,48 @@ Partial Class frm_main
         'submenu_account_payables
         '
         Me.submenu_account_payables.Name = "submenu_account_payables"
-        Me.submenu_account_payables.Size = New System.Drawing.Size(225, 24)
+        Me.submenu_account_payables.Size = New System.Drawing.Size(271, 24)
         Me.submenu_account_payables.Text = "Account Payables"
         Me.submenu_account_payables.Visible = False
         '
         'submenu_generate
         '
-        Me.submenu_generate.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PaymentToolStripMenuItem, Me.VoucherToolStripMenuItem})
         Me.submenu_generate.Name = "submenu_generate"
-        Me.submenu_generate.Size = New System.Drawing.Size(225, 24)
-        Me.submenu_generate.Text = "Generate"
+        Me.submenu_generate.Size = New System.Drawing.Size(271, 24)
+        Me.submenu_generate.Text = "Generate Payment && Voucher"
         Me.submenu_generate.Visible = False
-        '
-        'PaymentToolStripMenuItem
-        '
-        Me.PaymentToolStripMenuItem.Name = "PaymentToolStripMenuItem"
-        Me.PaymentToolStripMenuItem.Size = New System.Drawing.Size(134, 24)
-        Me.PaymentToolStripMenuItem.Text = "Payment"
-        '
-        'VoucherToolStripMenuItem
-        '
-        Me.VoucherToolStripMenuItem.Name = "VoucherToolStripMenuItem"
-        Me.VoucherToolStripMenuItem.Size = New System.Drawing.Size(134, 24)
-        Me.VoucherToolStripMenuItem.Text = "Voucher"
         '
         'submenu_payment_vouchers
         '
         Me.submenu_payment_vouchers.Name = "submenu_payment_vouchers"
-        Me.submenu_payment_vouchers.Size = New System.Drawing.Size(225, 24)
+        Me.submenu_payment_vouchers.Size = New System.Drawing.Size(271, 24)
         Me.submenu_payment_vouchers.Text = "Payment Vouchers"
         Me.submenu_payment_vouchers.Visible = False
         '
         'submenu_payment_cheques
         '
         Me.submenu_payment_cheques.Name = "submenu_payment_cheques"
-        Me.submenu_payment_cheques.Size = New System.Drawing.Size(225, 24)
+        Me.submenu_payment_cheques.Size = New System.Drawing.Size(271, 24)
         Me.submenu_payment_cheques.Text = "Payment Cheques"
         Me.submenu_payment_cheques.Visible = False
         '
         'submenu_payment_cash
         '
         Me.submenu_payment_cash.Name = "submenu_payment_cash"
-        Me.submenu_payment_cash.Size = New System.Drawing.Size(225, 24)
+        Me.submenu_payment_cash.Size = New System.Drawing.Size(271, 24)
         Me.submenu_payment_cash.Text = "Payment Cash"
         '
         'submenu_ForecastAndPayablesToolStripMenuItem
         '
         Me.submenu_ForecastAndPayablesToolStripMenuItem.Name = "submenu_ForecastAndPayablesToolStripMenuItem"
-        Me.submenu_ForecastAndPayablesToolStripMenuItem.Size = New System.Drawing.Size(225, 24)
+        Me.submenu_ForecastAndPayablesToolStripMenuItem.Size = New System.Drawing.Size(271, 24)
         Me.submenu_ForecastAndPayablesToolStripMenuItem.Text = "Forecast And Payables"
+        '
+        'submenu_InventoryCount
+        '
+        Me.submenu_InventoryCount.Name = "submenu_InventoryCount"
+        Me.submenu_InventoryCount.Size = New System.Drawing.Size(271, 24)
+        Me.submenu_InventoryCount.Text = "Inventory Count"
         '
         'menu_purchasing
         '
@@ -738,7 +722,7 @@ Partial Class frm_main
     Friend WithEvents submenu_daily_delivery As ToolStripMenuItem
     Friend WithEvents submenu_delivery_logs As ToolStripMenuItem
     Friend WithEvents submenu_packing_list As ToolStripMenuItem
-    Friend WithEvents submenu_stocks_inventory As ToolStripMenuItem
+    Friend WithEvents submenu_product_inventory As ToolStripMenuItem
     Friend WithEvents submenu_price_books As ToolStripMenuItem
     Friend WithEvents menu_collections As ToolStripMenuItem
     Friend WithEvents submenu_payments As ToolStripMenuItem
@@ -753,13 +737,10 @@ Partial Class frm_main
     Friend WithEvents submenu_payment_vouchers As ToolStripMenuItem
     Friend WithEvents submenu_account_payables As ToolStripMenuItem
     Friend WithEvents submenu_generate As ToolStripMenuItem
-    Friend WithEvents VoucherToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PaymentToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents submenu_payment_cheques As ToolStripMenuItem
     Friend WithEvents submenu_settings As ToolStripMenuItem
     Friend WithEvents submenu_approvals As ToolStripMenuItem
     Friend WithEvents submenu_catalogue As ToolStripMenuItem
-    Friend WithEvents submenu_inventory As ToolStripMenuItem
     Friend WithEvents submenu_new_item As ToolStripMenuItem
     Friend WithEvents submenu_import_catalogue As ToolStripMenuItem
     Friend WithEvents submenu_export_catalogue As ToolStripMenuItem
@@ -781,4 +762,5 @@ Partial Class frm_main
     Friend WithEvents submenu_ForecastAndPayablesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents submenu_returns As ToolStripMenuItem
     Friend WithEvents submenu_returned_units As ToolStripMenuItem
+    Friend WithEvents submenu_InventoryCount As ToolStripMenuItem
 End Class

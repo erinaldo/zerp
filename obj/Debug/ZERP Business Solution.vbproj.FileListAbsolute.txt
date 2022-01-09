@@ -645,7 +645,6 @@ D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.exe.config
 D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.pdb
 D:\_workstation\source code\zerp\bin\Debug\ZERP Business Solution.xml
-D:\_workstation\source code\zerp\bin\Debug\BouncyCastle.Crypto.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Charts.v21.1.Core.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.Desktop.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.v21.1.dll
@@ -666,6 +665,8 @@ D:\_workstation\source code\zerp\bin\Debug\DevExpress.Utils.v21.1.UI.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Xpo.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraBars.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.dll
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraEditors.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGauges.v21.1.Core.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGrid.v21.1.dll
@@ -682,25 +683,21 @@ D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeList.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.dll
-D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.dll
-D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.dll
-D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.Streams.dll
-D:\_workstation\source code\zerp\bin\Debug\K4os.Hash.xxHash.dll
+D:\_workstation\source code\zerp\bin\Debug\Guna.UI.dll
+D:\_workstation\source code\zerp\bin\Debug\Guna.UI2.dll
 D:\_workstation\source code\zerp\bin\Debug\MySql.Data.dll
+D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.dll
 D:\_workstation\source code\zerp\bin\Debug\Renci.SshNet.dll
-D:\_workstation\source code\zerp\bin\Debug\System.Buffers.dll
-D:\_workstation\source code\zerp\bin\Debug\System.Memory.dll
-D:\_workstation\source code\zerp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\_workstation\source code\zerp\bin\Debug\Ubiety.Dns.Core.dll
-D:\_workstation\source code\zerp\bin\Debug\Zstandard.Net.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.CodeParser.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraDiagram.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Diagram.v21.1.Core.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Pdf.v21.1.Drawing.dll
-D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Extensions.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeMap.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\Zstandard.Net.dll
+D:\_workstation\source code\zerp\bin\Debug\Ubiety.Dns.Core.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.TreeMap.v21.1.Core.dll
+D:\_workstation\source code\zerp\bin\Debug\System.Buffers.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.Desktop.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Data.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.DataAccess.v21.1.xml
@@ -716,6 +713,8 @@ D:\_workstation\source code\zerp\bin\Debug\DevExpress.Utils.v21.1.UI.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Xpo.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraBars.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.xml
+D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraEditors.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGauges.v21.1.Core.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraGrid.v21.1.xml
@@ -733,20 +732,12 @@ D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.x
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeList.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.xml
-D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.pdb
-D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.xml
-D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.xml
-D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.Streams.xml
-D:\_workstation\source code\zerp\bin\Debug\K4os.Hash.xxHash.xml
 D:\_workstation\source code\zerp\bin\Debug\MySql.Data.xml
+D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.xml
 D:\_workstation\source code\zerp\bin\Debug\Renci.SshNet.xml
-D:\_workstation\source code\zerp\bin\Debug\System.Buffers.xml
-D:\_workstation\source code\zerp\bin\Debug\System.Memory.xml
-D:\_workstation\source code\zerp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraDiagram.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Diagram.v21.1.Core.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.Pdf.v21.1.Drawing.xml
-D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.Wizard.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeMap.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.TreeMap.v21.1.Core.xml
 D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Data.v21.1.resources.dll
@@ -805,6 +796,10 @@ D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraCharts.v21.1.resour
 D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraCharts.v21.1.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraCharts.v21.1.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraCharts.v21.1.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraEditors.v21.1.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraEditors.v21.1.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraEditors.v21.1.resources.dll
@@ -873,28 +868,32 @@ D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Diagram.v21.1.Core.reso
 D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Diagram.v21.1.Core.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Diagram.v21.1.Core.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Diagram.v21.1.Core.resources.dll
-D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
-D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
-D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
-D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.XtraCharts.v21.1.Wizard.resources.dll
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.ResolveComReference.cache
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.control_inventory_side.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_cheque.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_collection_receipt.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_delivery_list.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_draft_receipt.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_payment_voucher.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_order.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_return.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_quotation.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_sales_order_receipt.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_soa.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_transfer_request.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_forecast_payables.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_voucher.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_new_payable.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payables.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_payment.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cash.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cheques.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_vouchers.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_view_transaction.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_approval.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_transfer_reports.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_transfer_view.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque.resources
@@ -903,16 +902,22 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_c
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cheque_view.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_epayment.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_hold.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_payment_ledger.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_payments.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_cash.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_receipts.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_refund.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_picker.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_soa.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_soa_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_terms.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_connection_panel.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_details.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_approval_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_view_ordered_items.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_quotation_order_list.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_create_quotation.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_customers.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_customers_new.resources
@@ -921,7 +926,10 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_logist
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_order_epayment_proofs.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_order_history.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_password_required.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_start_packing.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_unserved_dialog.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_splash_screen.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_deliveries.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_logs.resources
@@ -934,7 +942,7 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_packin
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_price_book.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_transaction_invoice.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_import.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_product_inventory.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_inventory.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_edit.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_list.resources
@@ -945,6 +953,8 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_orders
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_order.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_quotation.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_settings.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_dialog.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_dispatch_dialog.resources
@@ -962,8 +972,10 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_users_
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_report.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_reports.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.Resources.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_packing_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_inventory_count.resources
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.GenerateResource.cache
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe.licenses
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CoreCompileInputs.cache
@@ -971,29 +983,7 @@ D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CopyCom
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.xml
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.pdb
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_banks_new.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_reports.resources
-D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.dll
-D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraCharts.v21.1.UI.xml
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_quotation_order_list.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_payment_ledger.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_new.resources
-D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.dll
-D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.xml
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_return_list.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_collection_receipt.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_receipts.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_return.resources
-D:\_workstation\source code\zerp\bin\Debug\Guna.UI.dll
-D:\_workstation\source code\zerp\bin\Debug\Guna.UI2.dll
-D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payment_cash.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_payment.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_forecast_payables.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_new.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_picker.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_dialog.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_unserved_dialog.resources
+D:\_workstation\source code\zerp\bin\Debug\EPPlus.dll
+D:\_workstation\source code\zerp\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\_workstation\source code\zerp\bin\Debug\EPPlus.xml
+D:\_workstation\source code\zerp\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

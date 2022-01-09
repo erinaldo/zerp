@@ -1,5 +1,4 @@
-﻿Imports System.Globalization
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
@@ -153,7 +152,7 @@ Public Class frm_sales_view_order
                     txt_invoice.Text = rdr("invoice_no").ToString
 
                     If Not IsDBNull(rdr("withholding_tax_percentage")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_percentage") / 100)
-                    If Not IsDBNull(rdr("withholding_tax_amount")) Then lbl_withholding_tax_percentage.Text = FormatPercent(rdr("withholding_tax_amount"))
+                    If Not IsDBNull(rdr("withholding_tax_amount")) Then lbl_withholding_tax_amount.Text = FormatPercent(rdr("withholding_tax_amount"))
 
                     data_to_grid(rdr("order_item"), grid_order, 5)
 

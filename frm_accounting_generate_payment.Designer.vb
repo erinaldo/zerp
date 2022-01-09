@@ -53,6 +53,8 @@ Partial Class frm_accounting_generate_payment
         Me.RepositoryItemMemoEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
         Me.btn_generate = New DevExpress.XtraEditors.SimpleButton()
         Me.panel_cheque = New DevExpress.XtraEditors.PanelControl()
+        Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_collection_ref = New DevExpress.XtraEditors.TextEdit()
         Me.cb_crossed_check = New System.Windows.Forms.CheckBox()
         Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.txt_acc_name = New DevExpress.XtraEditors.TextEdit()
@@ -93,6 +95,7 @@ Partial Class frm_accounting_generate_payment
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.panel_cheque, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_cheque.SuspendLayout()
+        CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -347,13 +350,13 @@ Partial Class frm_accounting_generate_payment
         Me.btn_generate.Appearance.Options.UseBackColor = True
         Me.btn_generate.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.createmodeldifferences_16x16
         Me.btn_generate.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.btn_generate.Location = New System.Drawing.Point(12, 457)
+        Me.btn_generate.Location = New System.Drawing.Point(10, 480)
         Me.btn_generate.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_generate.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_generate.Name = "btn_generate"
-        Me.btn_generate.Size = New System.Drawing.Size(290, 30)
+        Me.btn_generate.Size = New System.Drawing.Size(290, 43)
         Me.btn_generate.TabIndex = 8
-        Me.btn_generate.Text = "Generate Payment"
+        Me.btn_generate.Text = "Generate Payment && Voucher"
         '
         'panel_cheque
         '
@@ -376,8 +379,31 @@ Partial Class frm_accounting_generate_payment
         Me.panel_cheque.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.panel_cheque.LookAndFeel.UseDefaultLookAndFeel = False
         Me.panel_cheque.Name = "panel_cheque"
-        Me.panel_cheque.Size = New System.Drawing.Size(290, 307)
+        Me.panel_cheque.Size = New System.Drawing.Size(290, 281)
         Me.panel_cheque.TabIndex = 14
+        '
+        'LabelControl13
+        '
+        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Roboto", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl13.Appearance.Options.UseFont = True
+        Me.LabelControl13.Location = New System.Drawing.Point(32, 444)
+        Me.LabelControl13.Name = "LabelControl13"
+        Me.LabelControl13.Size = New System.Drawing.Size(85, 15)
+        Me.LabelControl13.TabIndex = 26
+        Me.LabelControl13.Text = "Collection Ref.:"
+        '
+        'txt_collection_ref
+        '
+        Me.txt_collection_ref.EditValue = ""
+        Me.txt_collection_ref.Location = New System.Drawing.Point(134, 439)
+        Me.txt_collection_ref.Name = "txt_collection_ref"
+        Me.txt_collection_ref.Properties.Appearance.Font = New System.Drawing.Font("Roboto", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_collection_ref.Properties.Appearance.Options.UseFont = True
+        Me.txt_collection_ref.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_collection_ref.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.txt_collection_ref.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txt_collection_ref.Size = New System.Drawing.Size(149, 24)
+        Me.txt_collection_ref.TabIndex = 25
         '
         'cb_crossed_check
         '
@@ -773,7 +799,9 @@ Partial Class frm_accounting_generate_payment
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1116, 724)
+        Me.Controls.Add(Me.LabelControl13)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.txt_collection_ref)
         Me.Controls.Add(Me.LabelControl8)
         Me.Controls.Add(Me.grid_returns)
         Me.Controls.Add(Me.PanelControl2)
@@ -797,6 +825,7 @@ Partial Class frm_accounting_generate_payment
         CType(Me.panel_cheque, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_cheque.ResumeLayout(False)
         Me.panel_cheque.PerformLayout()
+        CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -872,4 +901,6 @@ Partial Class frm_accounting_generate_payment
     Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents rb_cash As RadioButton
     Friend WithEvents rb_cheque As RadioButton
+    Friend WithEvents txt_collection_ref As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
 End Class

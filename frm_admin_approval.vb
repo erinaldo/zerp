@@ -19,7 +19,7 @@ Public Class frm_admin_approval
 
 
     '--- FUNCTIONS ----
-    Private Sub load_data()
+    Public Sub load_data()
 
         Try
             conn.Open()
@@ -102,7 +102,7 @@ Public Class frm_admin_approval
 
     '--- CONTROLS ---
 
-
+    'Items/Units Approval
     Private Sub grid_approval_units_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_approval_units_view.RowCellClick
 
         If grid_approval_units_view.FocusedColumn.Name.Equals(col_pid.Name) Then
@@ -112,6 +112,7 @@ Public Class frm_admin_approval
 
     End Sub
 
+    'Purchase Order Approval
     Private Sub grid_po_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_po_view.RowCellClick
 
         If grid_po_view.FocusedColumn.Name.Equals(col_poid.Name) Then
@@ -124,6 +125,7 @@ Public Class frm_admin_approval
         End If
     End Sub
 
+    'Quotation Approval
     Private Sub grid_quotation_view_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles grid_quotation_view.RowCellClick
         If grid_quotation_view.FocusedColumn.Name.Equals(col_quotation_id.Name) Then
             Dim frm = New frm_sales_view_quotation()
@@ -137,6 +139,7 @@ Public Class frm_admin_approval
         End If
     End Sub
 
+    'Stock Transfer Approval
     Private Sub grid_transfer_view_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles grid_transfer_view.RowCellClick
 
         If grid_transfer_view.FocusedColumn.Name.Equals(col_transfer_id.Name) Then
@@ -156,6 +159,7 @@ Public Class frm_admin_approval
         End If
     End Sub
 
+    'Stock Reconcilation Approval
     Private Sub grid_stock_reconcilation_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_stock_reconcilation_view.RowCellClick
         If grid_stock_reconcilation_view.FocusedColumn.Name.Equals(col_reconcile_id.Name) Then
             Dim id = grid_stock_reconcilation_view.GetFocusedRowCellValue(col_reconcile_id)
@@ -198,6 +202,7 @@ Public Class frm_admin_approval
         End If
     End Sub
 
+    'Sales Returns Approval
     Private Sub grid_sales_returns_view_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles grid_sales_returns_view.RowCellClick
         If grid_sales_returns_view.FocusedColumn.Name.Equals(col_srid.Name) Then
             Dim frm = New frm_sales_return_new
@@ -215,4 +220,5 @@ Public Class frm_admin_approval
             frm.cbb_customer.ReadOnly = True
         End If
     End Sub
+
 End Class

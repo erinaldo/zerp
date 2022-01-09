@@ -135,6 +135,7 @@ Partial Class frm_sales_orders
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(112, 27)
         Me.Panel1.TabIndex = 7
+        Me.Panel1.Visible = False
         '
         'PictureEdit1
         '

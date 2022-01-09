@@ -37,7 +37,6 @@ Public Class frm_admin_users_role
 
                     'Product
                     Case "catalogue" : cb_catalogue.Checked = True
-                    Case "inventory" : cb_inventory.Checked = True
                     Case "new_item" : cb_new_item.Checked = True
                     Case "import_catalogue" : cb_import_catalogue.Checked = True
                     Case "export_catalogue" : cb_export_catalogue.Checked = True
@@ -105,7 +104,6 @@ Public Class frm_admin_users_role
 
         'Product
         If cb_catalogue.Checked Then access += "catalogue;"
-        If cb_inventory.Checked Then access += "inventory;"
         If cb_new_item.Checked Then access += "new_item;"
         If cb_import_catalogue.Checked Then access += "import_catalogue;"
         If cb_export_catalogue.Checked Then access += "export_catalogue;"

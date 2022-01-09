@@ -1,9 +1,5 @@
-﻿Imports System.Text.RegularExpressions
-Imports DevExpress.XtraCharts
+﻿Imports DevExpress.XtraCharts
 Imports DevExpress.XtraEditors
-Imports DevExpress.XtraPrinting
-Imports DevExpress.XtraPrintingLinks
-Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
 
 Public Class frm_admin_reports
@@ -48,6 +44,8 @@ Public Class frm_admin_reports
         Dim total_cash As Decimal = 0.00
         Dim total_cheque As Decimal = 0.00
         Dim total_epay As Decimal = 0.00
+        Dim total_nonvatable_sales As Decimal = 0.00
+        Dim total_vatable_sales As Decimal = 0.00
         Dim total_sales As Decimal = 0.00
         Dim total_transactions As Integer = 0
         Dim total_avg_transc_amout As Decimal = 0.00
@@ -58,18 +56,30 @@ Public Class frm_admin_reports
             total_cheque += dt.Rows(i).Item(2)
             total_epay += dt.Rows(i).Item(3)
             total_cash += dt.Rows(i).Item(4)
+            total_nonvatable_sales += dt.Rows(i).Item(5)
+            total_vatable_sales += dt.Rows(i).Item(6)
             total_sales += dt.Rows(i).Item(7)
             total_transactions += dt.Rows(i).Item(8)
         Next
 
-        lbl_totalcost.Text = "Total Cost: " & FormatCurrency(total_cost, 2)
-        lbl_cash.Text = "Cash: " & FormatCurrency(total_cash, 2)
-        lbl_cheques.Text = "Cheque/Terms: " & FormatCurrency(total_cheque, 2)
-        lbl_epay.Text = "E-Pay: " & FormatCurrency(total_epay, 2)
-        lbl_gross_sales.Text = "Total Sales: " & FormatCurrency(total_sales, 2)
-        lbl_no_transactions.Text = "Transactions: " & total_transactions
-        lbl_avg_sales_amount.Text = "Avg. Amount: " & FormatCurrency(total_sales / total_transactions, 2)
-        lbl_ave_sales_margin.Text = "Avg. Margin: " & Math.Round(((total_sales - total_cost) / total_sales) * 100, 0) & "%"
+        'lbl_totalcost.Text = "Total Cost: " & FormatCurrency(total_cost, 2)
+        'lbl_cash.Text = "Cash: " & FormatCurrency(total_cash, 2)
+        'lbl_cheques.Text = "Cheque/Terms: " & FormatCurrency(total_cheque, 2)
+        'lbl_epay.Text = "E-Pay: " & FormatCurrency(total_epay, 2)
+        'lbl_gross_sales.Text = "Total Sales: " & FormatCurrency(total_sales, 2)
+        'lbl_no_transactions.Text = "Transactions: " & total_transactions
+        'lbl_avg_sales_amount.Text = "Avg. Amount: " & FormatCurrency(total_sales / total_transactions, 2)
+        'lbl_ave_sales_margin.Text = "Avg. Margin: " & Math.Round(((total_sales - total_cost) / total_sales) * 100, 0) & "%"
+        lbl_totalcost.Text = FormatCurrency(total_cost, 2)
+        lbl_cash.Text = FormatCurrency(total_cash, 2)
+        lbl_cheques.Text = FormatCurrency(total_cheque, 2)
+        lbl_epay.Text = FormatCurrency(total_epay, 2)
+        lbl_nonvatable_sales.Text = FormatCurrency(total_nonvatable_sales, 2)
+        lbl_vatable_sales.Text = FormatCurrency(total_vatable_sales, 2)
+        lbl_gross_sales.Text = FormatCurrency(total_sales, 2)
+        lbl_no_transactions.Text = total_transactions
+        lbl_avg_sales_amount.Text = FormatCurrency(total_sales / total_transactions, 2)
+        lbl_ave_sales_margin.Text = Math.Round(((total_sales - total_cost) / total_sales) * 100, 0) & "%"
     End Sub
 
 
@@ -104,19 +114,19 @@ Public Class frm_admin_reports
                             WHERE datee BETWEEN @start_date AND @end_date AND payment_status='PAID'
                             GROUP BY datee
                             ORDER BY datee DESC"
-                    Using cmd = New MySqlCommand(query, conn)
-                        cmd.Parameters.AddWithValue("@start_date", dt_start.EditValue)
-                        cmd.Parameters.AddWithValue("@end_date", dt_end.EditValue)
-                        Dim dt = New DataTable
-                        Dim da = New MySqlDataAdapter(cmd)
-                        da.Fill(dt)
+                Using cmd = New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@start_date", dt_start.EditValue)
+                    cmd.Parameters.AddWithValue("@end_date", dt_end.EditValue)
+                    Dim dt = New DataTable
+                    Dim da = New MySqlDataAdapter(cmd)
+                    da.Fill(dt)
 
-                        grid_sales_report.DataSource = dt
-                        chart_SalesOverTime()
-                        LoadTotals()
+                    grid_sales_report.DataSource = dt
+                    chart_SalesOverTime()
+                    LoadTotals()
 
-                    End Using
                 End Using
+            End Using
 
         Catch ex As Exception
             If Not ex.GetType.ToString = "System.DivideByZeroException" Then

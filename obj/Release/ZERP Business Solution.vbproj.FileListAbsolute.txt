@@ -2,7 +2,6 @@ D:\_workstation\source code\zerp\bin\Release\ZERP Business Solution.exe.config
 D:\_workstation\source code\zerp\bin\Release\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\bin\Release\ZERP Business Solution.pdb
 D:\_workstation\source code\zerp\bin\Release\ZERP Business Solution.xml
-D:\_workstation\source code\zerp\bin\Release\BouncyCastle.Crypto.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.Charts.v21.1.Core.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.Data.Desktop.v21.1.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.Data.v21.1.dll
@@ -41,18 +40,12 @@ D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraScheduler.v21.1.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraSpreadsheet.v21.1.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraTreeList.v21.1.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraVerticalGrid.v21.1.dll
-D:\_workstation\source code\zerp\bin\Release\Google.Protobuf.dll
 D:\_workstation\source code\zerp\bin\Release\Guna.UI.dll
 D:\_workstation\source code\zerp\bin\Release\Guna.UI2.dll
-D:\_workstation\source code\zerp\bin\Release\K4os.Compression.LZ4.dll
-D:\_workstation\source code\zerp\bin\Release\K4os.Compression.LZ4.Streams.dll
-D:\_workstation\source code\zerp\bin\Release\K4os.Hash.xxHash.dll
 D:\_workstation\source code\zerp\bin\Release\MySql.Data.dll
 D:\_workstation\source code\zerp\bin\Release\Newtonsoft.Json.dll
 D:\_workstation\source code\zerp\bin\Release\Renci.SshNet.dll
 D:\_workstation\source code\zerp\bin\Release\System.Buffers.dll
-D:\_workstation\source code\zerp\bin\Release\System.Memory.dll
-D:\_workstation\source code\zerp\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
 D:\_workstation\source code\zerp\bin\Release\Ubiety.Dns.Core.dll
 D:\_workstation\source code\zerp\bin\Release\Zstandard.Net.dll
 D:\_workstation\source code\zerp\bin\Release\DevExpress.CodeParser.v21.1.dll
@@ -96,17 +89,9 @@ D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraScheduler.v21.1.Core
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraSpreadsheet.v21.1.xml
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraTreeList.v21.1.xml
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraVerticalGrid.v21.1.xml
-D:\_workstation\source code\zerp\bin\Release\Google.Protobuf.pdb
-D:\_workstation\source code\zerp\bin\Release\Google.Protobuf.xml
-D:\_workstation\source code\zerp\bin\Release\K4os.Compression.LZ4.xml
-D:\_workstation\source code\zerp\bin\Release\K4os.Compression.LZ4.Streams.xml
-D:\_workstation\source code\zerp\bin\Release\K4os.Hash.xxHash.xml
 D:\_workstation\source code\zerp\bin\Release\MySql.Data.xml
 D:\_workstation\source code\zerp\bin\Release\Newtonsoft.Json.xml
 D:\_workstation\source code\zerp\bin\Release\Renci.SshNet.xml
-D:\_workstation\source code\zerp\bin\Release\System.Buffers.xml
-D:\_workstation\source code\zerp\bin\Release\System.Memory.xml
-D:\_workstation\source code\zerp\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 D:\_workstation\source code\zerp\bin\Release\DevExpress.XtraDiagram.v21.1.xml
 D:\_workstation\source code\zerp\bin\Release\DevExpress.Diagram.v21.1.Core.xml
 D:\_workstation\source code\zerp\bin\Release\DevExpress.Pdf.v21.1.Drawing.xml
@@ -313,7 +298,6 @@ D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_sales_pack
 D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_admin_price_book.resources
 D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_sales_transaction_invoice.resources
 D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_product_import.resources
-D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_product_inventory.resources
 D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_purchaseorder_edit.resources
 D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_purchaseorder_new.resources
 D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_purchaseorder_list.resources
@@ -353,4 +337,9 @@ D:\_workstation\source code\zerp\obj\Release\ZERP Business Solution.vbproj.CopyC
 D:\_workstation\source code\zerp\obj\Release\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\obj\Release\ZERP Business Solution.xml
 D:\_workstation\source code\zerp\obj\Release\ZERP Business Solution.pdb
-D:\_workstation\source code\zerp\obj\Release\ZERP Business Solution.vbproj.AssemblyReference.cache
+D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_accounting_inventory_count.resources
+D:\_workstation\source code\zerp\obj\Release\Inventory_Management.frm_warehouse_stock_inventory.resources
+D:\_workstation\source code\zerp\bin\Release\EPPlus.dll
+D:\_workstation\source code\zerp\bin\Release\Microsoft.IO.RecyclableMemoryStream.dll
+D:\_workstation\source code\zerp\bin\Release\EPPlus.xml
+D:\_workstation\source code\zerp\bin\Release\Microsoft.IO.RecyclableMemoryStream.xml

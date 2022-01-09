@@ -23,39 +23,39 @@ Partial Class frm_product_details
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_product_details))
-        Me.txt_details = New DevExpress.XtraEditors.MemoEdit()
-        CType(Me.txt_details.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lbl_more_details = New DevExpress.XtraEditors.LabelControl()
         Me.SuspendLayout()
         '
-        'txt_details
+        'lbl_more_details
         '
-        Me.txt_details.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.lbl_more_details.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_details.Location = New System.Drawing.Point(12, 12)
-        Me.txt_details.Name = "txt_details"
-        Me.txt_details.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.txt_details.Properties.Appearance.Options.UseFont = True
-        Me.txt_details.Properties.ReadOnly = True
-        Me.txt_details.Properties.UseReadOnlyAppearance = False
-        Me.txt_details.Size = New System.Drawing.Size(446, 312)
-        Me.txt_details.TabIndex = 0
+        Me.lbl_more_details.Appearance.BackColor = System.Drawing.Color.White
+        Me.lbl_more_details.Appearance.Options.UseBackColor = True
+        Me.lbl_more_details.Appearance.Options.UseTextOptions = True
+        Me.lbl_more_details.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
+        Me.lbl_more_details.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_more_details.Location = New System.Drawing.Point(12, 13)
+        Me.lbl_more_details.Name = "lbl_more_details"
+        Me.lbl_more_details.Padding = New System.Windows.Forms.Padding(10)
+        Me.lbl_more_details.Size = New System.Drawing.Size(446, 311)
+        Me.lbl_more_details.TabIndex = 2
+        Me.lbl_more_details.Text = "LabelControl1"
         '
         'frm_product_details
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(470, 336)
-        Me.Controls.Add(Me.txt_details)
+        Me.Controls.Add(Me.lbl_more_details)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimizeBox = False
         Me.Name = "frm_product_details"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Product Description"
-        CType(Me.txt_details.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents txt_details As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents lbl_more_details As DevExpress.XtraEditors.LabelControl
 End Class

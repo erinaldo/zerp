@@ -456,7 +456,7 @@ Public Class frm_sales_return_new
                             cmd_returns.Parameters.AddWithValue("@sr_id", Nothing)
                             cmd_returns.Prepare()
 
-                            For i = 0 To grid_return.Rows.Count - 1
+                            For i = 0 To grid_return.Rows.Count - 2
                                 cmd_returns.Parameters(0).Value = grid_return.Rows(i).Cells(5).Value
                                 cmd_returns.Parameters(1).Value = grid_return.Rows(i).Cells(0).Value
                                 cmd_returns.Parameters(2).Value = lbl_store_id.Text
@@ -469,6 +469,7 @@ Public Class frm_sales_return_new
                         MsgBox("Approved!", vbInformation, "Information")
                         Me.Close()
                         frm_main.LoadFrm(New frm_admin_approval)
+
                     End If
                 End Using
             End Using

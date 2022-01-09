@@ -1,5 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
-Imports System.Globalization.CultureInfo
+﻿Imports System.Globalization.CultureInfo
+Imports MySql.Data.MySqlClient
 
 Public Class frm_warehouse_stock_transfer_dispatch_dialog
 

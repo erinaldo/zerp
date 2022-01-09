@@ -1,5 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
+Imports MySql.Data.MySqlClient
 
 Public Class frm_purchaseorder_view_ordered_items
 
@@ -9,7 +9,7 @@ Public Class frm_purchaseorder_view_ordered_items
     Private Sub frm_purchaseorder_view_active_orders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         load_active_orders()
     End Sub
-
+    Dim count As Integer = 0
 
 
     '-- FUNCTIONS ---
@@ -32,17 +32,19 @@ Public Class frm_purchaseorder_view_ordered_items
             conn.Open()
             Dim cmd = New MySqlCommand("SELECT orders, qty_received, concat('PO',LPAD(purchase_id,5,0)) as purchase_id, status,
                         (SELECT supplier FROM ims_suppliers WHERE id=ims_purchase.supplier) as supplier FROM ims_purchase
-                        WHERE (NOT status='Pending' AND NOT status='Completed' AND NOT status='Obsolete') AND deleted='0'", conn)
+                        WHERE (STATUS='Sent' OR STATUS='Partial' OR STATUS='Rejected (Sent)') AND deleted='0'", conn)
             Dim rdr = cmd.ExecuteReader
-
+            'WHERE (NOT status='Pending' AND NOT status='Completed' AND NOT status='Obsolete') AND deleted='0'
+            count = 0
             While rdr.Read
                 set_GridData(dt, rdr("orders"), rdr("qty_received"), rdr("purchase_id"), rdr("status"), rdr("supplier"), False)
+                count += 1
             End While
 
             grid_po.DataSource = dt
 
         Catch ex As Exception
-            MsgBox(ex.Message, vbCritical, "Error")
+            MsgBox(ex.Message & " " & count, vbCritical, "Error")
         Finally
             conn.Close()
         End Try
@@ -67,7 +69,8 @@ Public Class frm_purchaseorder_view_ordered_items
             conn.Open()
             Dim cmd = New MySqlCommand("SELECT orders, qty_received, concat('PO',LPAD(purchase_id,5,0)) as purchase_id, status,
                         (SELECT supplier FROM ims_suppliers WHERE id=ims_purchase.supplier) as supplier FROM ims_purchase
-                        WHERE (status='Completed' OR status='Obsolete') AND deleted='0'", conn)
+                        WHERE(status ='Completed' OR status='Obsolete') AND deleted='0'", conn)
+
             Dim rdr = cmd.ExecuteReader
 
             While rdr.Read

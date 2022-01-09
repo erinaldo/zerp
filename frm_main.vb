@@ -89,8 +89,9 @@ Public Class frm_main
         Try
             conn.Open()
             Dim cmd = New MySqlCommand("SELECT first_name, role, ims_users.role_id, store_name, usr_id, usr_photo FROM ims_users
-                                    INNER JOIN ims_stores ON ims_users.assigned_loc=ims_stores.store_id
-                                    INNER JOIN ims_user_acc_types ON ims_users.role_id=ims_user_acc_types.role_id WHERE username='" & username & "'", conn)
+                                    LEFT JOIN ims_stores ON ims_users.assigned_loc=ims_stores.store_id
+                                    INNER JOIN ims_user_acc_types ON ims_users.role_id=ims_user_acc_types.role_id 
+                                    WHERE username='" & username & "'", conn)
             Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
             While rdr.Read
@@ -325,11 +326,6 @@ Public Class frm_main
         LoadFrm(New frm_warehouse_stock_transfer)
     End Sub
 
-    'Inventory
-    Private Sub InventoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_inventory.Click
-        LoadFrm(New frm_product_inventory)
-    End Sub
-
     'New Product
     Private Sub NewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_new_item.Click
         LoadFrm(New frm_product_new)
@@ -428,8 +424,8 @@ Public Class frm_main
     '---------> Warehouse
 
     'Stock Inventory
-    Private Sub StockLocationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_stocks_inventory.Click
-        LoadFrm(New frm_warehouse_inventory)
+    Private Sub StockLocationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_product_inventory.Click
+        LoadFrm(New frm_warehouse_stock_inventory)
     End Sub
 
     'Daily Deliveries
@@ -486,14 +482,20 @@ Public Class frm_main
 
     '----------> Accounting
 
-    'Generate Cheque
-    Private Sub ChequeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaymentToolStripMenuItem.Click
-        LoadFrm(New frm_accounting_generate_payment)
-    End Sub
+    ''Generate Cheque
+    'Private Sub ChequeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PaymentToolStripMenuItem.Click
+    '    LoadFrm(New frm_accounting_generate_payment)
+    'End Sub
 
-    'Generate Voucher
-    Private Sub VoucherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VoucherToolStripMenuItem.Click
-        LoadFrm(New frm_accounting_generate_voucher)
+    ''Generate Voucher
+    'Private Sub VoucherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VoucherToolStripMenuItem.Click
+    '    LoadFrm(New frm_accounting_generate_voucher)
+    'End Sub
+
+
+    'Generate Payment & Voucher
+    Private Sub submenu_generate_Click(sender As Object, e As EventArgs) Handles submenu_generate.Click
+        LoadFrm(New frm_accounting_generate_payment)
     End Sub
 
     'Account Payables
@@ -519,6 +521,11 @@ Public Class frm_main
     'Forecast and Payables
     Private Sub submenu_ForecastAndPayablesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_ForecastAndPayablesToolStripMenuItem.Click
         LoadFrm(New frm_accounting_forecast_payables)
+    End Sub
+
+    'Inventory Count
+    Private Sub submenu_InventoryCount_Click(sender As Object, e As EventArgs) Handles submenu_InventoryCount.Click
+        LoadFrm(New frm_accounting_inventory_count)
     End Sub
 
 End Class

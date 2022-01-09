@@ -49,27 +49,25 @@ Public Class frm_warehouse_inventory
         Dim pid = CInt(row("Product_ID"))
 
         Try
-            conn.Open()
-            Dim query = "UPDATE " & STORE & " SET location=@location WHERE pid=@pid"
-            Dim cmd = New MySqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@location", location)
-            cmd.Parameters.AddWithValue("@pid", pid)
-            cmd.ExecuteNonQuery()
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim query = "UPDATE " & STORE & " SET location=@location WHERE pid=@pid"
+                Dim cmd = New MySqlCommand(query, connection)
+                cmd.Parameters.AddWithValue("@location", location)
+                cmd.Parameters.AddWithValue("@pid", pid)
+                cmd.ExecuteNonQuery()
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
         ims_InventoryView.SetRowCellValue(e.RowHandle, col_location, location)
-        'Dim id = ims_InventoryView.GetFocusedRowCellValue(col_pid)
-        'Dim location = ims_InventoryView.GetFocusedRowCellValue(col_location).ToString.ToUpper
 
     End Sub
 
     Private Sub ims_InventoryView_EditFormPrepared(sender As Object, e As DevExpress.XtraGrid.Views.Grid.EditFormPreparedEventArgs) Handles ims_InventoryView.EditFormPrepared
-        e.BindableControls("product_id").Enabled = False
+        e.BindableControls("pid").Enabled = False
         e.BindableControls("winmodel").Enabled = False
         e.BindableControls("description").Enabled = False
         e.BindableControls("qty").Enabled = False

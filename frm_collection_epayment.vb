@@ -62,7 +62,7 @@ Public Class frm_collection_epayment
                                 payment_status = If(amount_due = IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PAID',
                                                  If(amount_due < IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'OVERPAID',
                                                  If(amount_due > IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PARTIAL',''))), 
-                                paid_amount=IFNULL(paid_amount,0)+@paid_amount,
+                                paid_amount=IFNULL(paid_amount,0) + @paid_amount + @sr_amount,
                                 applied_sales_return=@srid,
                                 status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) 
                                 WHERE order_id=@order_id", conn)
@@ -75,7 +75,7 @@ Public Class frm_collection_epayment
                 cmd.ExecuteNonQuery()
 
                 'INSERT TO PAYMENT LOGS
-                Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, lbl_amount_due.Text, txt_amount_tendered.Text, lbl_balance.Text, payment_option, reference)
+                Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, lbl_amount_due.Text, txt_amount_tendered.Text, sales_return_amount, lbl_balance.Text, payment_option, reference)
                 Update_SalesReturns(sales_return_id)
 
                 MsgBox("Successful Transaction!", vbInformation, "Information")
@@ -153,7 +153,7 @@ Public Class frm_collection_epayment
                 lbl_balance.Text = FormatCurrency(amount_to_pay - amount_tendered)
             End If
         Else
-                btn_deduct.Text = "Deduct Returns"
+            btn_deduct.Text = "Deduct Returns"
             lbl_amount_due.Text = FormatCurrency(CDec(lbl_amount_due.Text) + CDec(lbl_deduction.Text.Replace("Deducted Amount: ", "")))
             btn_deduct.Appearance.BackColor = Nothing
             lbl_deduction.Visible = False

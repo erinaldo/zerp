@@ -1,8 +1,7 @@
-﻿Imports System.Text
-Imports System.IO
-Imports MySql.Data.MySqlClient
+﻿Imports System.IO
 Imports System.Security.Cryptography
-Imports DevExpress.XtraGrid
+Imports System.Text
+Imports MySql.Data.MySqlClient
 
 Module functions
 
@@ -62,9 +61,6 @@ Module functions
                         Case "catalogue"
                             .menu_product.Visible = True
                             .submenu_catalogue.Visible = True
-                        Case "inventory"
-                            .menu_product.Visible = True
-                            .submenu_inventory.Visible = True
                         Case "new_item"
                             .menu_product.Visible = True
                             .submenu_new_item.Visible = True
@@ -110,7 +106,7 @@ Module functions
                             .submenu_stock_management.Visible = True
                         Case "stock_inventory"
                             .menu_warehouse.Visible = True
-                            .submenu_stocks_inventory.Visible = True
+                            .submenu_product_inventory.Visible = True
 
                         'Collections
                         Case "order_payments"
@@ -235,15 +231,16 @@ Module functions
 
     'Payment Logs
     Public Sub Insert_PaymentLog(connection As MySqlConnection, payment_date As Date, order_id As Integer, customer As String,
-                                  current_balance As Decimal, payment As Decimal, balance As Decimal, payment_gateway As String, payment_ref As String)
+                                  current_balance As Decimal, payment As Decimal, sales_returns As Decimal, balance As Decimal, payment_gateway As String, payment_ref As String)
         'Try
         Using connection
-            Using cmd = New MySqlCommand("INSERT INTO ims_payment_logs (payment_date, order_id, customer_id, current_balance, payment, balance, payment_gateway, payment_ref, received_by)
-                                            VALUES (@payment_date, @order_id, (SELECT customer_id FROM ims_customers WHERE first_name=@customer), @current_balance, @payment, @balance, @payment_gateway, @payment_ref, @received_by)", connection)
+            Using cmd = New MySqlCommand("INSERT INTO ims_payment_logs (payment_date, order_id, customer_id, current_balance, payment, returns_amount, balance, payment_gateway, payment_ref, received_by)
+                                            VALUES (@payment_date, @order_id, (SELECT customer_id FROM ims_customers WHERE first_name=@customer), @current_balance, @payment, @returns_amount, @balance, @payment_gateway, @payment_ref, @received_by)", connection)
                 cmd.Parameters.AddWithValue("@payment_date", payment_date)
                 cmd.Parameters.AddWithValue("@order_id", order_id)
                 cmd.Parameters.AddWithValue("@customer", customer)
                 cmd.Parameters.AddWithValue("@current_balance", current_balance)
+                cmd.Parameters.AddWithValue("@returns_amount", sales_returns)
                 cmd.Parameters.AddWithValue("@payment", payment)
                 cmd.Parameters.AddWithValue("@balance", balance)
                 cmd.Parameters.AddWithValue("@payment_gateway", payment_gateway)

@@ -27,14 +27,19 @@ Partial Class frm_collection_cash
         Me.lbl_title = New Guna.UI.WinForms.GunaLabel()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.btn_paid = New DevExpress.XtraEditors.SimpleButton()
         Me.lbl_amount_due = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_orderid = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_customer = New DevExpress.XtraEditors.LabelControl()
         Me.btn_deduct = New DevExpress.XtraEditors.SimpleButton()
         Me.lbl_deduction = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_amount_tendered = New DevExpress.XtraEditors.TextEdit()
+        Me.lbl_balance = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel2.SuspendLayout()
+        CType(Me.txt_amount_tendered.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel2
@@ -44,7 +49,7 @@ Partial Class frm_collection_cash
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(317, 56)
+        Me.GunaPanel2.Size = New System.Drawing.Size(342, 56)
         Me.GunaPanel2.TabIndex = 14
         '
         'lbl_title
@@ -78,25 +83,17 @@ Partial Class frm_collection_cash
         Me.LabelControl3.TabIndex = 17
         Me.LabelControl3.Text = "Order ID:"
         '
-        'LabelControl4
-        '
-        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl4.Appearance.Options.UseFont = True
-        Me.LabelControl4.Location = New System.Drawing.Point(70, 131)
-        Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(172, 25)
-        Me.LabelControl4.TabIndex = 18
-        Me.LabelControl4.Text = "Total Amount Due"
-        '
         'btn_paid
         '
         Me.btn_paid.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
+        Me.btn_paid.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!)
         Me.btn_paid.Appearance.Options.UseBackColor = True
-        Me.btn_paid.Location = New System.Drawing.Point(163, 214)
+        Me.btn_paid.Appearance.Options.UseFont = True
+        Me.btn_paid.Location = New System.Drawing.Point(172, 385)
         Me.btn_paid.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_paid.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_paid.Name = "btn_paid"
-        Me.btn_paid.Size = New System.Drawing.Size(134, 31)
+        Me.btn_paid.Size = New System.Drawing.Size(150, 47)
         Me.btn_paid.TabIndex = 19
         Me.btn_paid.Text = "PAID"
         '
@@ -115,7 +112,7 @@ Partial Class frm_collection_cash
         Me.lbl_amount_due.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
         Me.lbl_amount_due.Location = New System.Drawing.Point(20, 162)
         Me.lbl_amount_due.Name = "lbl_amount_due"
-        Me.lbl_amount_due.Size = New System.Drawing.Size(277, 42)
+        Me.lbl_amount_due.Size = New System.Drawing.Size(303, 42)
         Me.lbl_amount_due.TabIndex = 20
         Me.lbl_amount_due.Text = "P0.00"
         '
@@ -141,11 +138,13 @@ Partial Class frm_collection_cash
         '
         'btn_deduct
         '
-        Me.btn_deduct.Location = New System.Drawing.Point(20, 214)
+        Me.btn_deduct.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.btn_deduct.Appearance.Options.UseFont = True
+        Me.btn_deduct.Location = New System.Drawing.Point(20, 385)
         Me.btn_deduct.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_deduct.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_deduct.Name = "btn_deduct"
-        Me.btn_deduct.Size = New System.Drawing.Size(134, 31)
+        Me.btn_deduct.Size = New System.Drawing.Size(146, 47)
         Me.btn_deduct.TabIndex = 24
         Me.btn_deduct.Text = "Deduct Returns"
         '
@@ -155,26 +154,100 @@ Partial Class frm_collection_cash
         Me.lbl_deduction.Appearance.ForeColor = System.Drawing.Color.Red
         Me.lbl_deduction.Appearance.Options.UseFont = True
         Me.lbl_deduction.Appearance.Options.UseForeColor = True
-        Me.lbl_deduction.Location = New System.Drawing.Point(20, 254)
+        Me.lbl_deduction.Location = New System.Drawing.Point(20, 439)
         Me.lbl_deduction.Name = "lbl_deduction"
-        Me.lbl_deduction.Size = New System.Drawing.Size(56, 14)
+        Me.lbl_deduction.Size = New System.Drawing.Size(80, 14)
         Me.lbl_deduction.TabIndex = 25
-        Me.lbl_deduction.Text = "Deduction"
+        Me.lbl_deduction.Text = "No Deductions"
         Me.lbl_deduction.Visible = False
+        '
+        'txt_amount_tendered
+        '
+        Me.txt_amount_tendered.Location = New System.Drawing.Point(20, 246)
+        Me.txt_amount_tendered.Name = "txt_amount_tendered"
+        Me.txt_amount_tendered.Properties.Appearance.Font = New System.Drawing.Font("Consolas", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.txt_amount_tendered.Properties.Appearance.Options.UseFont = True
+        Me.txt_amount_tendered.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_amount_tendered.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txt_amount_tendered.Properties.AutoHeight = False
+        Me.txt_amount_tendered.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.txt_amount_tendered.Properties.DisplayFormat.FormatString = "n2"
+        Me.txt_amount_tendered.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txt_amount_tendered.Size = New System.Drawing.Size(303, 42)
+        Me.txt_amount_tendered.TabIndex = 35
+        '
+        'lbl_balance
+        '
+        Me.lbl_balance.Appearance.BackColor = System.Drawing.Color.White
+        Me.lbl_balance.Appearance.Font = New System.Drawing.Font("Consolas", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.lbl_balance.Appearance.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lbl_balance.Appearance.Options.UseBackColor = True
+        Me.lbl_balance.Appearance.Options.UseFont = True
+        Me.lbl_balance.Appearance.Options.UseForeColor = True
+        Me.lbl_balance.Appearance.Options.UseTextOptions = True
+        Me.lbl_balance.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.lbl_balance.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.lbl_balance.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_balance.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.lbl_balance.Location = New System.Drawing.Point(20, 326)
+        Me.lbl_balance.Name = "lbl_balance"
+        Me.lbl_balance.Size = New System.Drawing.Size(303, 42)
+        Me.lbl_balance.TabIndex = 32
+        Me.lbl_balance.Text = "P0.00"
+        '
+        'LabelControl8
+        '
+        Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LabelControl8.Appearance.Options.UseFont = True
+        Me.LabelControl8.Appearance.Options.UseForeColor = True
+        Me.LabelControl8.Location = New System.Drawing.Point(20, 294)
+        Me.LabelControl8.Name = "LabelControl8"
+        Me.LabelControl8.Size = New System.Drawing.Size(68, 26)
+        Me.LabelControl8.TabIndex = 33
+        Me.LabelControl8.Text = "Balance"
+        '
+        'LabelControl9
+        '
+        Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LabelControl9.Appearance.Options.UseFont = True
+        Me.LabelControl9.Appearance.Options.UseForeColor = True
+        Me.LabelControl9.Location = New System.Drawing.Point(20, 214)
+        Me.LabelControl9.Name = "LabelControl9"
+        Me.LabelControl9.Size = New System.Drawing.Size(158, 26)
+        Me.LabelControl9.TabIndex = 34
+        Me.LabelControl9.Text = "Amount Tendered"
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        Me.LabelControl1.Appearance.Options.UseForeColor = True
+        Me.LabelControl1.Location = New System.Drawing.Point(20, 130)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(102, 26)
+        Me.LabelControl1.TabIndex = 36
+        Me.LabelControl1.Text = "Total to Pay"
         '
         'frm_collection_cash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(317, 280)
+        Me.ClientSize = New System.Drawing.Size(342, 465)
+        Me.Controls.Add(Me.LabelControl1)
+        Me.Controls.Add(Me.txt_amount_tendered)
+        Me.Controls.Add(Me.lbl_balance)
+        Me.Controls.Add(Me.LabelControl8)
+        Me.Controls.Add(Me.LabelControl9)
         Me.Controls.Add(Me.lbl_deduction)
         Me.Controls.Add(Me.btn_deduct)
         Me.Controls.Add(Me.lbl_customer)
         Me.Controls.Add(Me.lbl_orderid)
         Me.Controls.Add(Me.lbl_amount_due)
         Me.Controls.Add(Me.btn_paid)
-        Me.Controls.Add(Me.LabelControl4)
         Me.Controls.Add(Me.LabelControl3)
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.GunaPanel2)
@@ -187,6 +260,7 @@ Partial Class frm_collection_cash
         Me.Text = "Cash Payment"
         Me.GunaPanel2.ResumeLayout(False)
         Me.GunaPanel2.PerformLayout()
+        CType(Me.txt_amount_tendered.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -196,11 +270,15 @@ Partial Class frm_collection_cash
     Friend WithEvents lbl_title As Guna.UI.WinForms.GunaLabel
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btn_paid As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lbl_amount_due As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_orderid As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_customer As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btn_deduct As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lbl_deduction As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txt_amount_tendered As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lbl_balance As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
 End Class

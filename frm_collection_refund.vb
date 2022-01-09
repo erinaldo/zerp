@@ -25,7 +25,7 @@ Public Class frm_collection_refund
                 cmd.ExecuteNonQuery()
 
                 'INSERT TO PAYMENT LOGS
-                Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, CDec(lbl_amount_due.Text) * -1, CDec(lbl_amount_due.Text) * -1, 0.00, "REFUND", Nothing)
+                Insert_PaymentLog(conn, Date.Now, lbl_orderid.Text, lbl_customer.Text, CDec(lbl_amount_due.Text) * -1, CDec(lbl_amount_due.Text) * -1, 0.00, 0.00, "REFUND", Nothing)
 
                 MsgBox("Successful Transaction!", vbInformation, "Information")
 

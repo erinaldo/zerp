@@ -1,5 +1,4 @@
-﻿Imports DevExpress.LookAndFeel
-Imports DevExpress.XtraReports.UI
+﻿Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
 
 Public Class frm_accounting_payment_cheques
