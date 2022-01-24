@@ -70,19 +70,19 @@ Public Class frm_purchaseorder_list
                      WHEN CURDATE() = DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time DAY) THEN 'Due Date'
                      WHEN CURDATE() > DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time DAY) AND CURDATE() <= DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time + 7 DAY) THEN 'Overdue'
                      WHEN CURDATE() > DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time + 7 DAY) THEN 'Obsolete'
-                    END) as lead_time_status
+                    END) as lead_time_status, ims_purchase.terms
                     FROM ims_purchase 
                     INNER JOIN ims_users as user ON user.usr_id=created_by
                     LEFT JOIN ims_suppliers ON ims_purchase.supplier=ims_suppliers.id
                     WHERE ims_purchase.deleted='0' AND NOT (status='Completed' OR status='Obsolete')
                     ORDER BY purchase_id DESC", conn)
             ElseIf status.Equals("Completed") Then
-                cmd = New MySqlCommand("SELECT concat('PO',LPAD(purchase_id,5,0))  as 'ID', (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, ims_suppliers.supplier, total, status, date_generated, date_sent, user.first_name AS created_by FROM ims_purchase 
+                cmd = New MySqlCommand("SELECT concat('PO',LPAD(purchase_id,5,0))  as 'ID', (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, ims_suppliers.supplier, total, status, date_generated, date_sent, user.first_name AS created_by, ims_purchase.terms FROM ims_purchase 
                             LEFT JOIN ims_suppliers ON ims_purchase.supplier=ims_suppliers.id
                             INNER JOIN ims_users as user ON user.usr_id=created_by
                             WHERE ims_purchase.deleted='0' AND status='Completed' ORDER BY purchase_id DESC", conn)
             ElseIf status.Equals("Obsolete") Then
-                cmd = New MySqlCommand("SELECT concat('PO',LPAD(purchase_id,5,0))  as 'ID', (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, ims_suppliers.supplier, total, status, date_generated, date_sent, user.first_name AS created_by FROM ims_purchase 
+                cmd = New MySqlCommand("SELECT concat('PO',LPAD(purchase_id,5,0))  as 'ID', (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, ims_suppliers.supplier, total, status, date_generated, date_sent, user.first_name AS created_by, ims_purchase.terms FROM ims_purchase 
                             LEFT JOIN ims_suppliers ON ims_purchase.supplier=ims_suppliers.id
                             INNER JOIN ims_users as user ON user.usr_id=created_by
                             WHERE ims_purchase.deleted='0' AND status='obsolete' ORDER BY purchase_id DESC", conn)
@@ -119,7 +119,6 @@ Public Class frm_purchaseorder_list
 
             frm.Init("_view")
             frm.ShowDialog()
-            int_load("All")
 
         End If
     End Sub
@@ -167,6 +166,6 @@ Public Class frm_purchaseorder_list
 
         frm.Init("_view")
         frm.ShowDialog()
-        int_load("All")
+
     End Sub
 End Class

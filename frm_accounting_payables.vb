@@ -90,7 +90,7 @@ Public Class frm_accounting_payables
             da.Fill(dt)
 
 
-            Dim cmd_get_info = New MySqlCommand("SELECT (SELECT supplier FROM ims_suppliers WHERE id=supplier_id) as supplier,
+            Dim cmd_get_info = New MySqlCommand("SELECT (SELECT supplier FROM ims_suppliers WHERE id=supplier_id) as supplier, is_vatable,
                         CONCAT('PO', LPAD(ims_delivery_receipts.purchase_id,5,0)) as poid, received_date, receipt_type, receipt_ref,
                         withholding_tax_amount,
                         count_by, (SELECT first_name FROM ims_users WHERE usr_id=ims_deliveries.receiver) as encoder, ims_delivery_receipts.discount, return_credit, amount
@@ -110,10 +110,15 @@ Public Class frm_accounting_payables
                 frm.txt_counted_by.Text = rdr("count_by")
                 frm.lbl_ref.Text = rdr("receipt_ref")
                 frm.lbl_type.Text = rdr("receipt_type")
+
+
                 frm.lbl_discount.Text = IIf(IsDBNull(rdr("discount")), "", rdr("discount"))
+                frm.is_vatable = rdr("is_vatable")
+
                 frm.lbl_returned_credit.Text = IIf(rdr("return_credit") <= 0, "", CDec(rdr("return_credit")))
                 frm.txt_total.Text = FormatCurrency(rdr("amount"))
-                frm.txt_ewt.Text = IIf(rdr("withholding_tax_amount") > 0, rdr("withholding_tax_amount"), "")
+                frm.amount = rdr("amount")
+                frm.lbl_ewt.Text = IIf(rdr("withholding_tax_amount") > 0, rdr("withholding_tax_amount"), "")
             End While
 
             frm.grid_transaction.DataSource = dt

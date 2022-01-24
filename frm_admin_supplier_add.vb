@@ -84,33 +84,28 @@ Public Class frm_admin_supplier_add
 
         'Supplier Name
         If String.IsNullOrEmpty(txt_supname.Text) Then
-            Err.SetError(txt_supname, "Please fill the required fields.")
+            MsgBox("Please fill the required fields.", vbInformation, "Information")
             Return True
         End If
 
         'Office Add
         If String.IsNullOrEmpty(txt_officeadd.Text) Then
-            Err.SetError(txt_officeadd, "Please fill the required fields.")
+            MsgBox("Please fill the required fields.", vbInformation, "Information")
             Return True
         End If
 
         'Warehouse Add
         If String.IsNullOrEmpty(txt_warehouseadd.Text) Then
-            Err.SetError(txt_warehouseadd, "Please fill the required fields.")
+            MsgBox("Please fill the required fields.", vbInformation, "Information")
             Return True
         End If
 
         'Lead Time
         If Not num_lead_days.Value > 0 Then
-            Err.SetError(num_lead_days, "Please fill the required fields.")
+            MsgBox("Zero (0) Lead Time is NOT allowed.", vbInformation, "Information")
             Return True
         End If
 
-        'Terms
-        If Not num_terms_days.Value > 0 Then
-            Err.SetError(num_terms_days, "Please fill the required fields.")
-            Return True
-        End If
 
         Return False
 

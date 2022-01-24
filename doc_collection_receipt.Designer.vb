@@ -43,7 +43,6 @@ Partial Public Class doc_collection_receipt
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
         Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel22 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
@@ -312,7 +311,7 @@ Partial Public Class doc_collection_receipt
         '
         'ReportFooter
         '
-        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel37, Me.XrLabel38, Me.XrLabel39, Me.XrLabel11, Me.XrLabel22, Me.XrLabel36, Me.XrLabel21, Me.XrLabel20, Me.XrLabel17})
+        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel37, Me.XrLabel38, Me.XrLabel11, Me.XrLabel22, Me.XrLabel36, Me.XrLabel21, Me.XrLabel20, Me.XrLabel17})
         Me.ReportFooter.HeightF = 224.7949!
         Me.ReportFooter.Name = "ReportFooter"
         Me.ReportFooter.PrintAtBottom = True
@@ -331,6 +330,7 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel37.StylePriority.UsePadding = False
         Me.XrLabel37.StylePriority.UseTextAlignment = False
         Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        Me.XrLabel37.Visible = False
         '
         'XrLabel38
         '
@@ -338,20 +338,6 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel38.Name = "XrLabel38"
         Me.XrLabel38.SizeF = New System.Drawing.SizeF(152.15!, 22.91666!)
         Me.XrLabel38.Text = "Customer:"
-        '
-        'XrLabel39
-        '
-        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?encoded_by")})
-        Me.XrLabel39.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(341.6667!, 48.04986!)
-        Me.XrLabel39.Multiline = True
-        Me.XrLabel39.Name = "XrLabel39"
-        Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel39.SizeF = New System.Drawing.SizeF(152.15!, 23.0!)
-        Me.XrLabel39.StylePriority.UseFont = False
-        Me.XrLabel39.StylePriority.UseTextAlignment = False
-        Me.XrLabel39.Text = "XrLabel21"
-        Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'XrLabel11
         '
@@ -374,6 +360,7 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel22.Name = "XrLabel22"
         Me.XrLabel22.SizeF = New System.Drawing.SizeF(88.6082!, 22.91666!)
         Me.XrLabel22.Text = "Encoded By:"
+        Me.XrLabel22.Visible = False
         '
         'XrLabel36
         '
@@ -524,7 +511,7 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel34.StylePriority.UseTextAlignment = False
         Me.XrLabel34.Text = "XrLabel34"
         Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel34.TextFormatString = "{0:d}"
+        Me.XrLabel34.TextFormatString = "{0:MM/dd/yyyy}"
         '
         'XrLabel33
         '
@@ -539,7 +526,7 @@ Partial Public Class doc_collection_receipt
         Me.XrLabel33.StylePriority.UseTextAlignment = False
         Me.XrLabel33.Text = "XrLabel33"
         Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel33.TextFormatString = "{0:d}"
+        Me.XrLabel33.TextFormatString = "{0:MM/dd/yyyy}"
         '
         'XrLabel32
         '
@@ -1095,7 +1082,6 @@ Partial Public Class doc_collection_receipt
     Friend WithEvents PrintData1 As PrintData
     Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel39 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel11 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel22 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel

@@ -1,6 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
 Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
+Imports Newtonsoft.Json
 
 Public Class frm_warehouse_delivery_receive
 
@@ -19,23 +20,22 @@ Public Class frm_warehouse_delivery_receive
     'Not Payment First
     Private Sub not_payment_first()
 
-        'Validate Receive Counts
         Dim received = 0
         Dim TotalAmount As Decimal = 0.00
 
+        'Validate Receive Counts
         For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
-            received += row.Item(4) + row.Item(5)
-            If CInt(row.Item(5)) > 0 Then
-                TotalAmount += CInt(row.Item(5)) * CDec(row.Item(7))
+            received += row.Item(7) + row.Item(8)
+            If CInt(row.Item(8)) > 0 Then
+                TotalAmount += CInt(row.Item(8)) * CDec(row.Item(5))    'QTY Received * cost
             End If
         Next
 
-
-        'If No Value Detected
         If received = 0 Then
             MsgBox("Can't saved! No values detected.", vbCritical, "Error")
             Exit Sub
         End If
+
 
         Try
             'Deduct Discount to TotalAmount
@@ -84,40 +84,55 @@ Public Class frm_warehouse_delivery_receive
             Dim amount = CDec(txt_amount.Text)
             Dim store = "ims_" & cbb_deliver.Text.Replace(" ", "_").ToLower
             Dim str_qtyReceived = ""
-            Dim date_receieved = Date.Now
+            Dim date_receieved = CDate(dt_receipt.EditValue)
 
-            Dim qtyRemaining = 0, qtyRecieved = 0
-            Dim product_ID(500) As Integer, qty_received(500) As Integer
+            Dim qty_remaining = 0, qty_receieved = 0
+            Dim product_ID(1000) As Integer, qty_received(1000) As Integer
             Dim discount As String
 
+            'Get Discount
             Select Case cbb_discount.SelectedIndex
                 Case 0 : discount = txt_discount.Text & " Pesos OFF"
                 Case 1 : discount = txt_discount.Text & "% OFF"
                 Case Else : discount = ""
             End Select
 
-            'Get Values From Grid 
-            Dim datatable = DirectCast(grid_order.DataSource, DataTable)
 
-            For i = 0 To datatable.Rows.Count - 1
-                product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
-                qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
+            'For i = 0 To TryCast(grid_order.DataSource, DataTable).Rows.Count - 1
+            '    product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
+            '    qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
 
-                qtyRemaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
-                qtyRecieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
+            '    qty_remaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
+            '    qty_receieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
 
-                str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
-            Next
-
-            'For i = 0 To datatable.Rows.Count - 1
-            '    product_ID(i) = CInt(grid_order.Rows(i).Cells(0).Value) 'SKU FOR INSERT TO STORE'S INVENTORY
-            '    qty_received(i) = CInt(grid_order.Rows(i).Cells(5).Value) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
-
-            '    qtyRemaining += grid_order.Rows(i).Cells(6).Value 'REMAINING COUNTS
-            '    qtyRecieved += grid_order.Rows(i).Cells(5).Value 'RECEIVED COUNTS
-
-            '    str_qtyReceived += CInt(grid_order.Rows(i).Cells(4).Value) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+            '    str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
             'Next
+
+            'Get Values From Grid 
+            Dim datatable = TryCast(grid_order.DataSource, DataTable)
+            Dim ListOfOrders = New List(Of PurchaseOrderClass)
+            Dim row_count = 0
+            For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
+
+                product_ID(row_count) = row.Item(0)     'Get PID
+                qty_received(row_count) = row.Item(8)   'Get QTY 
+                qty_receieved += row.Item(8)            'Get Total Received
+                qty_remaining += row.Item(9)            'Get Total Remaining
+
+                row_count += 1
+
+                ListOfOrders.Add(New PurchaseOrderClass With {
+                .pid = row.Item(0),
+                .qty = row.Item(1),
+                .winmodel = row.Item(2),
+                .supmodel = row.Item(3),
+                .description = row.Item(4),
+                .cost = row.Item(5),
+                .total_cost = row.Item(6),
+                .qty_received = row.Item(7) + row.Item(8)
+                })
+
+            Next
 
 
             Try
@@ -148,77 +163,84 @@ Public Class frm_warehouse_delivery_receive
                     End If
                 Next
 
-                'Insert to Merchandice Payables Table
-                Dim payables_cmd = New MySqlCommand("INSERT INTO ims_delivery_receipts (supplier_id, receipt_ref, receipt_type, amount, discount, return_credit, status, received_date, store_id, purchase_id, count_by)
+                'Insert to ims_delivery_receipts
+                Using payables_cmd = New MySqlCommand("INSERT INTO ims_delivery_receipts (supplier_id, receipt_ref, receipt_type, amount, discount, return_credit, status, received_date, store_id, purchase_id, count_by)
 		                VALUES (@supplier_id, @receipt_ref, @receipt_type, @amount, @discount, @return_credit, @status, @received_date, (SELECT store_id FROM ims_stores WHERE store_name=@store_name), @purchase_id, @count_by)", conn)
-                payables_cmd.Parameters.AddWithValue("@supplier_id", supplier_id)
-                payables_cmd.Parameters.AddWithValue("@receipt_ref", receipt_ref)
-                payables_cmd.Parameters.AddWithValue("@receipt_type", receipt_type)
-                payables_cmd.Parameters.AddWithValue("@amount", TotalAmount) 'NONE
-                payables_cmd.Parameters.AddWithValue("@discount", IIf(String.IsNullOrEmpty(discount), Nothing, discount))
-                payables_cmd.Parameters.AddWithValue("@return_credit", IIf(String.IsNullOrWhiteSpace(txt_return_credit.Text), 0, txt_return_credit.Text))
-                payables_cmd.Parameters.AddWithValue("@status", "UNPAID")
-                payables_cmd.Parameters.AddWithValue("@received_date", date_receieved)
-                payables_cmd.Parameters.AddWithValue("@store_name", frm_main.user_store.Text)
-                payables_cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
-                payables_cmd.Parameters.AddWithValue("@count_by", txt_count_by.Text.ToLower.Trim)
-                payables_cmd.ExecuteNonQuery()
+                    payables_cmd.Parameters.AddWithValue("@supplier_id", supplier_id)
+                    payables_cmd.Parameters.AddWithValue("@receipt_ref", receipt_ref)
+                    payables_cmd.Parameters.AddWithValue("@receipt_type", receipt_type)
+                    payables_cmd.Parameters.AddWithValue("@amount", TotalAmount) 'NONE
+                    payables_cmd.Parameters.AddWithValue("@discount", IIf(String.IsNullOrEmpty(discount), Nothing, discount))
+                    payables_cmd.Parameters.AddWithValue("@return_credit", IIf(String.IsNullOrWhiteSpace(txt_return_credit.Text), 0, txt_return_credit.Text))
+                    payables_cmd.Parameters.AddWithValue("@status", "UNPAID")
+                    payables_cmd.Parameters.AddWithValue("@received_date", date_receieved)
+                    payables_cmd.Parameters.AddWithValue("@store_name", frm_main.user_store.Text)
+                    payables_cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
+                    payables_cmd.Parameters.AddWithValue("@count_by", txt_count_by.Text.ToLower.Trim)
+                    payables_cmd.ExecuteNonQuery()
+                End Using
 
                 'Get Count of ims_delivery_receipts
                 Dim get_count = New MySqlCommand("SELECT COUNT(*) FROM ims_delivery_receipts", conn)
                 Dim receipt_id = CInt(get_count.ExecuteScalar) + 1
 
-                'Insert to Deliveries Table
-                Dim deliveries_cmd = New MySqlCommand("INSERT INTO ims_deliveries (item, qty, date_received, purchase_id, receiver, store_id, receipt_id, cost) 
+                'Insert to ims_deliveries
+                Using deliveries_cmd = New MySqlCommand("INSERT INTO ims_deliveries (item, qty, date_received, purchase_id, receiver, store_id, receipt_id, cost) 
                         VALUES (@item, @qty, @date_received, @purchase_id, @userid, (SELECT store_id FROM ims_stores WHERE store_name=@store), @receipt_id, @cost)", conn)
-                deliveries_cmd.Parameters.AddWithValue("@item", 1)
-                deliveries_cmd.Parameters.AddWithValue("@qty", 1)
-                deliveries_cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
-                deliveries_cmd.Parameters.AddWithValue("@userid", frm_main.user_id.Text)
-                deliveries_cmd.Parameters.AddWithValue("@date_received", date_receieved)
-                deliveries_cmd.Parameters.AddWithValue("@store", cbb_deliver.Text)
-                deliveries_cmd.Parameters.AddWithValue("@receipt_id", receipt_id)
-                deliveries_cmd.Parameters.AddWithValue("@cost", 0.00)
-                deliveries_cmd.Prepare()
+                    deliveries_cmd.Parameters.AddWithValue("@item", 1)
+                    deliveries_cmd.Parameters.AddWithValue("@qty", 1)
+                    deliveries_cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
+                    deliveries_cmd.Parameters.AddWithValue("@userid", frm_main.user_id.Text)
+                    deliveries_cmd.Parameters.AddWithValue("@date_received", date_receieved)
+                    deliveries_cmd.Parameters.AddWithValue("@store", cbb_deliver.Text)
+                    deliveries_cmd.Parameters.AddWithValue("@receipt_id", receipt_id)
+                    deliveries_cmd.Parameters.AddWithValue("@cost", 0.00)
+                    deliveries_cmd.Prepare()
 
-                For i = 0 To datatable.Rows.Count - 1
-                    If Not datatable.Rows(i).Item(5) = 0 Then
-                        deliveries_cmd.Parameters(0).Value = product_ID(i)
-                        deliveries_cmd.Parameters(1).Value = qty_received(i)
-                        deliveries_cmd.Parameters(7).Value = CDec(datatable.Rows(i).Item(7))
-                        deliveries_cmd.ExecuteNonQuery()
-                    Else
-                        Continue For
-                    End If
-                Next
+                    For i = 0 To datatable.Rows.Count - 1
+                        If datatable.Rows(i).Item(8) > 0 Then
+                            deliveries_cmd.Parameters(0).Value = product_ID(i)
+                            deliveries_cmd.Parameters(1).Value = qty_received(i)
+                            deliveries_cmd.Parameters(7).Value = datatable.Rows(i).Item(5)
+                            deliveries_cmd.ExecuteNonQuery()
+                        Else
+                            Continue For
+                        End If
+                    Next
+
+                End Using
 
 
                 'Update ims_purchase
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET qty_received=@qty_received, date_completed=@date_completed, status=@status WHERE purchase_id=@purchase_id", conn)
-                cmd.Parameters.AddWithValue("@qty_received", str_qtyReceived)
-                cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
+                'Dim cmd = New MySqlCommand("UPDATE ims_purchase SET qty_received=@qty_received, date_completed=@date_completed, status=@status WHERE purchase_id=@purchase_id", conn)
+                Using cmd = New MySqlCommand("UPDATE ims_purchase SET orders=@orders, date_completed=@date_completed, status=@status WHERE purchase_id=@purchase_id", conn)
+                    cmd.Parameters.AddWithValue("@orders", JsonConvert.SerializeObject(ListOfOrders))
+                    cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
 
-                If qtyRemaining = qtyRecieved Then
-                    cmd.Parameters.AddWithValue("@status", "Completed")
-                    cmd.Parameters.AddWithValue("@date_completed", Date.Now)
-                    cmd.ExecuteNonQuery()
-                    MsgBox("Successfull!", vbInformation + vbOKOnly, "Information")
+                    If qty_remaining = qty_receieved Then
+                        cmd.Parameters.AddWithValue("@status", "Completed")
+                        cmd.Parameters.AddWithValue("@date_completed", Date.Now)
+                        cmd.ExecuteNonQuery()
+                        MsgBox("Successfull!", vbInformation + vbOKOnly, "Information")
 
-                    'Load Deliveries
-                    frm_main.LoadFrm(New frm_warehouse_deliveries)
+                        'Load Deliveries
+                        frm_main.LoadFrm(New frm_warehouse_deliveries)
 
-                Else
-                    cmd.Parameters.AddWithValue("@status", "Partial")
-                    cmd.Parameters.AddWithValue("@date_completed", "")
-                    cmd.ExecuteNonQuery()
-                    MsgBox("Successfull!", vbInformation + vbOKOnly, "Information")
+                    Else
+                        cmd.Parameters.AddWithValue("@status", "Partial")
+                        cmd.Parameters.AddWithValue("@date_completed", "")
+                        cmd.ExecuteNonQuery()
+                        MsgBox("Successfull!", vbInformation + vbOKOnly, "Information")
 
-                    'Refresh Current
-                    Dim frm = New frm_warehouse_delivery_receive
-                    frm_warehouse_deliveries.LoadFrm(frm)
-                    Load_Orders(purchaseID)
+                        'Refresh Current
+                        Dim frm = New frm_warehouse_delivery_receive
+                        frm_warehouse_deliveries.LoadFrm(frm)
+                        Load_Orders(purchaseID)
 
-                End If
+                    End If
+
+                End Using
+
                 cbb_receipt.SelectedIndex = -1
                 txt_ref.Text = String.Empty
                 txt_amount.Text = String.Empty
@@ -226,6 +248,7 @@ Public Class frm_warehouse_delivery_receive
                 txt_discount.Text = String.Empty
                 txt_return_credit.Text = String.Empty
                 cbb_discount.SelectedIndex = -1
+
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
             Finally
@@ -239,25 +262,21 @@ Public Class frm_warehouse_delivery_receive
     'Payment First
     Private Sub payment_first()
 
-        'Validate Receive Counts
         Dim received = 0
         Dim TotalAmount As Decimal = 0.00
 
-        'GET TOTAL
+        'Validate Receive Counts
         For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
-            received += row.Item(4) + row.Item(5)
-            If CInt(row.Item(5)) > 0 Then
-                TotalAmount += CInt(row.Item(5)) * CDec(row.Item(7))
+            received += row.Item(7) + row.Item(8)
+            If CInt(row.Item(8)) > 0 Then
+                TotalAmount += CInt(row.Item(8)) * CDec(row.Item(5))    'QTY Received * cost
             End If
         Next
 
-
-        'If No Value Detected
         If received = 0 Then
             MsgBox("Can't saved! No values detected.", vbCritical, "Error")
             Exit Sub
         End If
-
 
         Try
             'Deduct Discount to TotalAmount
@@ -308,10 +327,10 @@ Public Class frm_warehouse_delivery_receive
             Dim amount = CDec(txt_amount.Text)
             Dim store = "ims_" & cbb_deliver.Text.Replace(" ", "_").ToLower
             Dim str_qtyReceived = ""
-            Dim date_receieved = Date.Now
+            Dim date_receieved = CDate(dt_receipt.EditValue)
 
-            Dim qtyRemaining = 0, qtyRecieved = 0
-            Dim product_ID(500) As Integer, qty_received(500) As Integer
+            Dim qty_remaining = 0, qty_receieved = 0
+            Dim product_ID(1000) As Integer, qty_received(1000) As Integer
             Dim discount As String
 
             Select Case cbb_discount.SelectedIndex
@@ -320,28 +339,43 @@ Public Class frm_warehouse_delivery_receive
                 Case Else : discount = String.Empty
             End Select
 
-            'Get Values From Grid
-            Dim datatable = DirectCast(grid_order.DataSource, DataTable)
+            'Dim datatable = DirectCast(grid_order.DataSource, DataTable)
+            'For i = 0 To datatable.Rows.Count - 1
+            '    product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
+            '    qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
 
-            For i = 0 To datatable.Rows.Count - 1
-                product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
-                qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
+            '    qtyRemaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
+            '    qtyRecieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
 
-                qtyRemaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
-                qtyRecieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
+            '    str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+            'Next
 
-                str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
+            'Get Values From Grid 
+            Dim datatable = TryCast(grid_order.DataSource, DataTable)
+            Dim ListOfOrders = New List(Of PurchaseOrderClass)
+            Dim row_count = 0
+            For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
+
+                product_ID(row_count) = row.Item(0)     'Get PID
+                qty_received(row_count) = row.Item(8)   'Get QTY 
+                qty_receieved += row.Item(8)            'Get Received
+                qty_remaining += row.Item(9)            'Get Remaining
+
+                row_count += 1
+
+                ListOfOrders.Add(New PurchaseOrderClass With {
+                .pid = row.Item(0),
+                .qty = row.Item(1),
+                .winmodel = row.Item(2),
+                .supmodel = row.Item(3),
+                .description = row.Item(4),
+                .cost = row.Item(5),
+                .total_cost = row.Item(6),
+                .qty_received = row.Item(7) + row.Item(8)
+                })
+
             Next
 
-            'For i = 0 To datatable.Rows.Count - 1
-            '    product_ID(i) = CInt(grid_order.Rows(i).Cells(0).Value) 'SKU FOR INSERT TO STORE'S INVENTORY
-            '    qty_received(i) = CInt(grid_order.Rows(i).Cells(5).Value) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
-
-            '    qtyRemaining += grid_order.Rows(i).Cells(6).Value 'REMAINING COUNTS
-            '    qtyRecieved += grid_order.Rows(i).Cells(5).Value 'RECEIVED COUNTS
-
-            '    str_qtyReceived += CInt(grid_order.Rows(i).Cells(4).Value) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
-            'Next
 
 
             Try
@@ -391,23 +425,24 @@ Public Class frm_warehouse_delivery_receive
                 deliveries_cmd.Prepare()
 
                 For i = 0 To datatable.Rows.Count - 1
-                    If Not datatable.Rows(i).Item(5) = 0 Then
+                    If Not datatable.Rows(i).Item(8) > 0 Then
                         deliveries_cmd.Parameters(0).Value = product_ID(i)
                         deliveries_cmd.Parameters(1).Value = qty_received(i)
-                        deliveries_cmd.Parameters(7).Value = CDec(datatable.Rows(i).Item(7))
+                        deliveries_cmd.Parameters(7).Value = CDec(datatable.Rows(i).Item(5))
                         deliveries_cmd.ExecuteNonQuery()
                     Else
                         Continue For
                     End If
                 Next
 
-
                 'Update ims_purchase
-                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET qty_received=@qty_received, date_completed=@date_completed, status=@status WHERE purchase_id=@purchase_id", conn)
+                'Dim cmd = New MySqlCommand("UPDATE ims_purchase SET qty_received=@qty_received, date_completed=@date_completed, status=@status WHERE purchase_id=@purchase_id", conn)
+                Dim cmd = New MySqlCommand("UPDATE ims_purchase SET orders=@orders, date_completed=@date_completed, status=@status WHERE purchase_id=@purchase_id", conn)
+                cmd.Parameters.AddWithValue("@orders", JsonConvert.SerializeObject(ListOfOrders))
                 cmd.Parameters.AddWithValue("@qty_received", str_qtyReceived)
                 cmd.Parameters.AddWithValue("@purchase_id", purchaseID)
 
-                If qtyRemaining = qtyRecieved Then
+                If qty_remaining = qty_receieved Then
                     cmd.Parameters.AddWithValue("@status", "Completed")
                     cmd.Parameters.AddWithValue("@date_completed", Date.Now)
                     cmd.ExecuteNonQuery()
@@ -428,6 +463,8 @@ Public Class frm_warehouse_delivery_receive
                     Load_Orders(purchaseID)
 
                 End If
+
+
                 cbb_receipt.SelectedIndex = -1
                 txt_ref.Text = String.Empty
                 txt_amount.Text = String.Empty
@@ -557,6 +594,7 @@ Public Class frm_warehouse_delivery_receive
 
             txt_poid.Text = "PO" & poid.ToString.PadLeft(5, "0"c)
             lbl_head.Text = txt_poid.Text & " - " & cbb_supplier.Text
+            dt_receipt.EditValue = Date.Today
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
@@ -576,30 +614,64 @@ Public Class frm_warehouse_delivery_receive
             Dim equalseparator As New Regex("\b=\b")
 
             Dim dataTable = New DataTable()
-            dataTable.Columns.Add("col_pid")
-            dataTable.Columns.Add("col_qty")
-            dataTable.Columns.Add("col_model")
-            dataTable.Columns.Add("col_description")
-            dataTable.Columns.Add("col_total_received")
-            dataTable.Columns.Add("col_qty_received")
-            dataTable.Columns.Add("col_remaining")
-            dataTable.Columns.Add("col_unit_price")
+            dataTable.Columns.Add("pid", GetType(Integer))
+            dataTable.Columns.Add("qty", GetType(Integer))
+            dataTable.Columns.Add("winmodel", GetType(String))
+            dataTable.Columns.Add("supmodel", GetType(String)) 'Hidden
+            dataTable.Columns.Add("description", GetType(String))
+            dataTable.Columns.Add("cost", GetType(Decimal)) 'Hidden
+            dataTable.Columns.Add("total", GetType(Decimal)) 'Hidden
+            dataTable.Columns.Add("total_received", GetType(Integer))
+            dataTable.Columns.Add("qty_received", GetType(Integer))
+            dataTable.Columns.Add("remaining", GetType(Integer))
 
             If Not String.IsNullOrEmpty(units) Then
 
-                comma = colonseparator.Split(units)
-                Dim qty_received = received.Split(";")
+                'comma = colonseparator.Split(units)
+                'Dim qty_received = received.Split(";")
 
-                For i = 0 To comma.Length - 1
-                    piece = comma(i).Trim
-                    equal = piece.Split("=")
+                'For i = 0 To comma.Length - 1
+                '    piece = comma(i).Trim
+                '    equal = piece.Split("=")
 
-                    If status.Equals("Sent") Then
-                        no += 1
-                        dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), 0, 0, equal(1), equal(5))
-                    ElseIf status.Equals("Partial") Then
-                        no += 1
-                        dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), qty_received(i), 0, equal(1) - qty_received(i), equal(5))
+                '    If status.Equals("Sent") Then
+                '        no += 1
+                '        dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), 0, 0, equal(1), equal(5))
+                '    ElseIf status.Equals("Partial") Then
+                '        no += 1
+                '        dataTable.Rows.Add(equal(0), equal(1), equal(2), equal(4), qty_received(i), 0, equal(1) - qty_received(i), equal(5))
+                '    End If
+
+                'Next
+
+                Dim PurchaseOrder = JsonConvert.DeserializeObject(Of List(Of PurchaseOrderClass))(units)
+                For Each Order In PurchaseOrder
+                    If Equals(status, "Sent") Then
+                        dataTable.Rows.Add(
+                            Order.pid,
+                            Order.qty,
+                            Order.winmodel,
+                            Order.supmodel,
+                            Order.description,
+                            Order.cost,
+                            Order.total_cost,
+                            0,
+                            0,
+                            Order.qty
+                        )
+                    ElseIf Equals(status, "Partial") Then
+                        dataTable.Rows.Add(
+                            Order.pid,
+                            Order.qty,
+                            Order.winmodel,
+                            Order.supmodel,
+                            Order.description,
+                            Order.cost,
+                            Order.total_cost,
+                            Order.qty_received,
+                            0,
+                            Order.qty - Order.qty_received
+                        )
                     End If
 
                 Next
@@ -618,18 +690,18 @@ Public Class frm_warehouse_delivery_receive
     Private Sub ColorIndicator()
 
         For Each row As DataGridViewRow In grid_order.Rows
-            If row.Cells(6).Value = 0 Then
-                row.Cells(6).Style.BackColor = Color.FromArgb(224, 224, 224)
-                row.Cells(6).Style.ForeColor = Color.Black
+            If row.Cells(9).Value = 0 Then
+                row.Cells(9).Style.BackColor = Color.FromArgb(224, 224, 224)
+                row.Cells(9).Style.ForeColor = Color.Black
 
-                row.Cells(5).Style.BackColor = Color.FromArgb(224, 224, 224)
-                row.Cells(5).Style.ForeColor = Color.Black
+                row.Cells(8).Style.BackColor = Color.FromArgb(224, 224, 224)
+                row.Cells(8).Style.ForeColor = Color.Black
 
-                row.Cells(5).ReadOnly = True
-                row.Cells(6).ReadOnly = True
+                row.Cells(9).ReadOnly = True
+                row.Cells(8).ReadOnly = True
             Else
-                row.Cells(6).Style.BackColor = Color.IndianRed
-                row.Cells(6).Style.ForeColor = Color.White
+                row.Cells(9).Style.BackColor = Color.IndianRed
+                row.Cells(9).Style.ForeColor = Color.White
             End If
 
         Next
@@ -637,7 +709,7 @@ Public Class frm_warehouse_delivery_receive
     End Sub
 
     'Restriction on Cell Edit
-    Private Sub grid_order_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles grid_order.CellEndEdit
+    Private Sub grid_order_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs)
 
         If Not IsNumeric(grid_order.CurrentCell.Value) Then
             grid_order.CurrentCell.Value = 0
@@ -664,46 +736,69 @@ Public Class frm_warehouse_delivery_receive
 
             Dim deliver_to = "", supplier = "", orders = "", received = ""
 
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT orders, ims_suppliers.supplier, (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, qty_received FROM `ims_purchase`
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Using cmd = New MySqlCommand("SELECT orders, ims_suppliers.supplier, (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to, qty_received FROM `ims_purchase`
                                         LEFT JOIN ims_suppliers ON ims_purchase.supplier=ims_suppliers.id
-                                        WHERE purchase_id='" & CInt(txt_poid.Text.Replace("PO", "")) & "'", conn)
-            Using rdr As MySqlDataReader = cmd.ExecuteReader
-                While rdr.Read
-                    supplier = rdr("supplier")
-                    deliver_to = rdr("deliver_to")
-                    orders = rdr("orders")
-                    received = rdr("qty_received")
-                End While
+                                        WHERE purchase_id='" & CInt(txt_poid.Text.Replace("PO", "")) & "'", connection)
+                    Using rdr As MySqlDataReader = cmd.ExecuteReader
+                        While rdr.Read
+                            supplier = rdr("supplier")
+                            deliver_to = rdr("deliver_to")
+                            orders = rdr("orders")
+                            received = rdr("qty_received")
+                        End While
+                    End Using
+                End Using
+
+
+                'Decode Order String to Table
+                'Dim comma(), equal() As String
+                'Dim piece As String
+                'Dim i As Integer
+                'Dim colonseparator As New Regex("\b;\b")
+                'Dim equalseparator As New Regex("\b=\b")
+                Dim store = String.Concat("ims_", deliver_to.ToLower().Replace(" ", "_"))
+
+                If Not String.IsNullOrEmpty(orders) Then
+
+                    'comma = colonseparator.Split(orders)
+                    'Dim qty_received = received.Split(";")
+
+                    'For i = 0 To comma.Length - 1
+                    '    piece = comma(i).Trim
+                    '    equal = piece.Split("=")
+
+                    '    Using get_loc_cmd = New MySqlCommand("SELECT location FROM " & store & " WHERE pid=@pid", conn)
+                    '        get_loc_cmd.Parameters.AddWithValue("@pid", equal(0))
+                    '        table.delivery_list.Rows.Add(String.Empty, equal(2), equal(3), equal(4), get_loc_cmd.ExecuteScalar())
+                    '    End Using
+
+                    'Next
+
+                    Dim PurchaseOrder = JsonConvert.DeserializeObject(Of List(Of PurchaseOrderClass))(orders)
+                    For Each Order In PurchaseOrder
+
+                        'Get Location
+                        Using get_loc_cmd = New MySqlCommand("SELECT location FROM " & store & " WHERE pid=@pid", connection)
+                            get_loc_cmd.Parameters.AddWithValue("@pid", Order.pid)
+
+                            table.delivery_list.Rows.Add(
+                                String.Empty,
+                                Order.winmodel,
+                                Order.supmodel,
+                                Order.description,
+                                get_loc_cmd.ExecuteScalar())
+
+                        End Using
+
+                    Next
+
+                    table.delivery_list.DefaultView.Sort = "supmodel ASC"
+
+                End If
             End Using
 
-            'Decode Order String to Table
-            Dim comma(), equal() As String
-            Dim piece As String
-            Dim i As Integer
-            Dim colonseparator As New Regex("\b;\b")
-            Dim equalseparator As New Regex("\b=\b")
-            Dim store = String.Concat("ims_", deliver_to.ToLower().Replace(" ", "_"))
-
-            If Not String.IsNullOrEmpty(orders) Then
-
-                comma = colonseparator.Split(orders)
-                Dim qty_received = received.Split(";")
-
-                For i = 0 To comma.Length - 1
-                    piece = comma(i).Trim
-                    equal = piece.Split("=")
-
-                    Using get_loc_cmd = New MySqlCommand("SELECT location FROM " & store & " WHERE pid=@pid", conn)
-                        get_loc_cmd.Parameters.AddWithValue("@pid", equal(0))
-                        table.delivery_list.Rows.Add(String.Empty, equal(2), equal(3), equal(4), get_loc_cmd.ExecuteScalar())
-                    End Using
-
-                Next
-
-                table.delivery_list.DefaultView.Sort = "supmodel ASC"
-
-            End If
 
             report.Parameters("pid").Value = txt_poid.Text
             report.Parameters("deliver_to").Value = deliver_to
@@ -714,8 +809,6 @@ Public Class frm_warehouse_delivery_receive
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -750,7 +843,7 @@ Public Class frm_warehouse_delivery_receive
     Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
         Dim dataSource = DirectCast(grid_order.DataSource, DataTable)
         Dim dataViews As DataView = New DataView(dataSource)
-        dataSource.DefaultView.RowFilter = String.Concat(New String() {"col_model LIKE '%", txt_search.Text.Trim(), "%' OR col_description LIKE '%", txt_search.Text.Trim(), "%'"})
+        dataSource.DefaultView.RowFilter = String.Concat(New String() {"winmodel LIKE '%", txt_search.Text.Trim(), "%' OR description LIKE '%", txt_search.Text.Trim(), "%'"})
         grid_order.DataSource = dataSource
         ColorIndicator()
     End Sub

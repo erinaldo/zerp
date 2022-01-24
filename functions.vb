@@ -107,6 +107,12 @@ Module functions
                         Case "stock_inventory"
                             .menu_warehouse.Visible = True
                             .submenu_product_inventory.Visible = True
+                        Case "returned_units"
+                            .menu_warehouse.Visible = True
+                            .submenu_returned_units.Visible = True
+                        Case "for_selluseller"
+                            .menu_warehouse.Visible = True
+                            .submenu_selluseller.Visible = True
 
                         'Collections
                         Case "order_payments"
@@ -290,6 +296,17 @@ Public Class SalesReturnClass
     Public Property unit_price As Decimal
     Public Property total_amount As Decimal
     Public Property pid As String
+End Class
+
+Public Class PurchaseOrderClass
+    Public Property pid As Integer
+    Public Property qty As Double
+    Public Property winmodel As String
+    Public Property supmodel As String
+    Public Property description As String
+    Public Property cost As Decimal
+    Public Property total_cost As Decimal
+    Public Property qty_received As Integer
 End Class
 
 Public Class PurchaseReturnClass

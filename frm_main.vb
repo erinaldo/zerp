@@ -398,8 +398,7 @@ Public Class frm_main
 
     'New Supplier
     Private Sub NewSupplierToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles NewSupplierToolStripMenuItem.Click
-        frm_admin_supplier_add.ShowDialog()
-        frm_admin_supplier.Load_Supppliers()
+        LoadFrm(New frm_admin_supplier_add)
     End Sub
 
     'Registered Supplier
@@ -441,6 +440,11 @@ Public Class frm_main
     'Returned Units
     Private Sub submenu_returned_units_Click(sender As Object, e As EventArgs) Handles submenu_returned_units.Click
         LoadFrm(New frm_warehouse_returns)
+    End Sub
+
+    'SelluSeller
+    Private Sub submenu_selluseller_Click(sender As Object, e As EventArgs) Handles submenu_selluseller.Click
+        LoadFrm(New frm_selluseller)
     End Sub
 
 
@@ -527,5 +531,6 @@ Public Class frm_main
     Private Sub submenu_InventoryCount_Click(sender As Object, e As EventArgs) Handles submenu_InventoryCount.Click
         LoadFrm(New frm_accounting_inventory_count)
     End Sub
+
 
 End Class

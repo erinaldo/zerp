@@ -88,6 +88,7 @@ Partial Class frm_purchaseorder_new
         Me.cbb_discount = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.grid_order = New System.Windows.Forms.DataGridView()
+        Me.txt_supplier_id = New DevExpress.XtraEditors.TextEdit()
         Me.col_sku = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_qty_per_box = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -96,7 +97,6 @@ Partial Class frm_purchaseorder_new
         Me.col_description = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txt_supplier_id = New DevExpress.XtraEditors.TextEdit()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -841,6 +841,19 @@ Partial Class frm_purchaseorder_new
         Me.grid_order.Size = New System.Drawing.Size(1202, 309)
         Me.grid_order.TabIndex = 4
         '
+        'txt_supplier_id
+        '
+        Me.txt_supplier_id.Enabled = False
+        Me.txt_supplier_id.Location = New System.Drawing.Point(394, 72)
+        Me.txt_supplier_id.Name = "txt_supplier_id"
+        Me.txt_supplier_id.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_supplier_id.Properties.Appearance.Options.UseFont = True
+        Me.txt_supplier_id.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_supplier_id.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.txt_supplier_id.Size = New System.Drawing.Size(19, 22)
+        Me.txt_supplier_id.TabIndex = 70
+        Me.txt_supplier_id.Visible = False
+        '
         'col_sku
         '
         Me.col_sku.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -859,7 +872,6 @@ Partial Class frm_purchaseorder_new
         Me.col_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_qty.DataPropertyName = "qty"
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Format = "N0"
         DataGridViewCellStyle5.NullValue = Nothing
         Me.col_qty.DefaultCellStyle = DataGridViewCellStyle5
         Me.col_qty.FillWeight = 80.0!
@@ -934,19 +946,6 @@ Partial Class frm_purchaseorder_new
         Me.col_total.ReadOnly = True
         Me.col_total.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
-        'txt_supplier_id
-        '
-        Me.txt_supplier_id.Enabled = False
-        Me.txt_supplier_id.Location = New System.Drawing.Point(394, 72)
-        Me.txt_supplier_id.Name = "txt_supplier_id"
-        Me.txt_supplier_id.Properties.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_supplier_id.Properties.Appearance.Options.UseFont = True
-        Me.txt_supplier_id.Properties.Appearance.Options.UseTextOptions = True
-        Me.txt_supplier_id.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txt_supplier_id.Size = New System.Drawing.Size(19, 22)
-        Me.txt_supplier_id.TabIndex = 70
-        Me.txt_supplier_id.Visible = False
-        '
         'frm_purchaseorder_new
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1019,13 +1018,6 @@ Partial Class frm_purchaseorder_new
     Friend WithEvents btn_save As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txt_lead_time As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents col_sku As DataGridViewTextBoxColumn
-    Friend WithEvents col_qty As DataGridViewTextBoxColumn
-    Friend WithEvents col_model As DataGridViewTextBoxColumn
-    Friend WithEvents col_sup_model As DataGridViewTextBoxColumn
-    Friend WithEvents col_description As DataGridViewTextBoxColumn
-    Friend WithEvents col_cost As DataGridViewTextBoxColumn
-    Friend WithEvents col_total As DataGridViewTextBoxColumn
     Friend WithEvents btn_import As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_active_orders As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lbl_withholding_tax_percentage As DevExpress.XtraEditors.LabelControl
@@ -1043,6 +1035,12 @@ Partial Class frm_purchaseorder_new
     Friend WithEvents txt_pub_notes As MemoEdit
     Friend WithEvents LabelControl15 As LabelControl
     Friend WithEvents txt_priv_notes As MemoEdit
+    Friend WithEvents col_sku As DataGridViewTextBoxColumn
+    Friend WithEvents col_qty As DataGridViewTextBoxColumn
     Friend WithEvents col_qty_per_box As DataGridViewTextBoxColumn
-
+    Friend WithEvents col_model As DataGridViewTextBoxColumn
+    Friend WithEvents col_sup_model As DataGridViewTextBoxColumn
+    Friend WithEvents col_description As DataGridViewTextBoxColumn
+    Friend WithEvents col_cost As DataGridViewTextBoxColumn
+    Friend WithEvents col_total As DataGridViewTextBoxColumn
 End Class

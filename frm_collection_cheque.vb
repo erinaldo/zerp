@@ -24,7 +24,7 @@ Public Class frm_collection_cheque
         dt_cheque.Columns.Add("payee")
         dt_cheque.Columns.Add("bank")
         grid_cheque.DataSource = dt_cheque
-        'LoadBank()
+        LoadPayee()
 
         cbb_bank.Enabled = False
     End Sub
@@ -34,13 +34,13 @@ Public Class frm_collection_cheque
     '--- FUNCTIONS ---
 
     'Load Banks
-    Private Sub LoadBank()
-        Using conn
-            conn.Open()
-            Using mySqlCommand = New MySqlCommand("SELECT bank FROM ims_cheque_collections GROUP BY bank", conn)
-                Using rdr As MySqlDataReader = mySqlCommand.ExecuteReader()
+    Private Sub LoadPayee()
+        Using connection = New MySqlConnection(str)
+            connection.Open()
+            Using cmd = New MySqlCommand("SELECT payee_name FROM ims_cheque_collections GROUP BY payee_name", connection)
+                Using rdr = cmd.ExecuteReader()
                     While rdr.Read()
-                        cbb_bank.Properties.Items.Add(rdr("bank"))
+                        cbb_payee.Properties.Items.Add(rdr("payee_name"))
                     End While
                 End Using
             End Using
@@ -318,8 +318,8 @@ Public Class frm_collection_cheque
                     connection.Open()
 
                     'INSERT CHEQUE
-                    Dim cheque_cmd = New MySqlCommand("INSERT INTO ims_cheque_collections (cheque_date, cheque_no, amount, acc_name, acc_no, payee_name, customer_id, orders, bank, status, entry_date) 
-                                            VALUES (@cheque_date, @cheque_no, @amount, @acc_name, @acc_no, @payee_name, @customer_id, @orders, @bank, @status, @entry_date)", connection)
+                    Dim cheque_cmd = New MySqlCommand("INSERT INTO ims_cheque_collections (cheque_date, cheque_no, amount, acc_name, acc_no, payee_name, customer_id, orders, bank, status, entry_date, collected_by) 
+                                            VALUES (@cheque_date, @cheque_no, @amount, @acc_name, @acc_no, @payee_name, @customer_id, @orders, @bank, @status, @entry_date, @collected_by)", connection)
                     cheque_cmd.Parameters.AddWithValue("@cheque_no", String.Empty)
                     cheque_cmd.Parameters.AddWithValue("@cheque_date", String.Empty)
                     cheque_cmd.Parameters.AddWithValue("@amount", String.Empty)
@@ -331,6 +331,7 @@ Public Class frm_collection_cheque
                     cheque_cmd.Parameters.AddWithValue("@customer_id", lbl_customer_id.Text)
                     cheque_cmd.Parameters.AddWithValue("@entry_date", Date.Today)
                     cheque_cmd.Parameters.AddWithValue("@status", "RECEIVED")
+                    cheque_cmd.Parameters.AddWithValue("@collected_by", frm_main.user_id.Text)
                     cheque_cmd.Prepare()
 
                     For i = 0 To grid_cheque_view.RowCount - 1
@@ -432,14 +433,14 @@ Public Class frm_collection_cheque
         End If
 
         Dim dataSource As DataTable = TryCast(grid_cheque.DataSource, DataTable)
-        dataSource.Rows.Add(New Object() {txt_no.Text, dt_date.Text, FormatCurrency(CDec(txt_amount.Text)), txt_acc_no.Text, txt_acc_name.Text, txt_payee.Text, cbb_bank.Text})
+        dataSource.Rows.Add(New Object() {txt_no.Text, dt_date.Text, FormatCurrency(CDec(txt_amount.Text)), txt_acc_no.Text, txt_acc_name.Text, cbb_payee.Text, cbb_bank.Text})
         grid_cheque.DataSource = dataSource
         txt_no.Text = String.Empty
         txt_amount.Text = String.Empty
         dt_date.Text = String.Empty
         txt_acc_no.Text = String.Empty
         txt_acc_name.Text = String.Empty
-        txt_payee.Text = String.Empty
+        cbb_payee.Text = String.Empty
         cbb_bank.Text = String.Empty
         ComputeTotal()
 
@@ -479,5 +480,6 @@ Public Class frm_collection_cheque
         Next
 
     End Sub
+
 End Class
 

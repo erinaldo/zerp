@@ -43,6 +43,7 @@ Partial Class frm_purchaseorder_return_list
         Me.col_total_cost = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_createdat = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_voucher = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_new_return = New DevExpress.XtraEditors.SimpleButton()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
@@ -181,7 +182,7 @@ Partial Class frm_purchaseorder_return_list
         Me.grid_returns_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_returns_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_returns_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_rid, Me.col_supplier, Me.col_total_cost, Me.col_createdat, Me.col_status})
+        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_rid, Me.col_supplier, Me.col_total_cost, Me.col_createdat, Me.col_status, Me.col_voucher})
         Me.grid_returns_view.GridControl = Me.grid_returns
         Me.grid_returns_view.Name = "grid_returns_view"
         Me.grid_returns_view.OptionsBehavior.ReadOnly = True
@@ -281,6 +282,17 @@ Partial Class frm_purchaseorder_return_list
         Me.col_status.Visible = True
         Me.col_status.VisibleIndex = 5
         '
+        'col_voucher
+        '
+        Me.col_voucher.AppearanceCell.Options.UseTextOptions = True
+        Me.col_voucher.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_voucher.Caption = "Voucher"
+        Me.col_voucher.FieldName = "voucher_id"
+        Me.col_voucher.MaxWidth = 150
+        Me.col_voucher.Name = "col_voucher"
+        Me.col_voucher.Visible = True
+        Me.col_voucher.VisibleIndex = 6
+        '
         'btn_new_return
         '
         Me.btn_new_return.Appearance.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -339,4 +351,5 @@ Partial Class frm_purchaseorder_return_list
     Friend WithEvents col_createdat As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_new_return As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents col_status As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_voucher As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -45,7 +45,6 @@ Partial Class frm_collection_cheque
         Me.txt_acc_name = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_total = New DevExpress.XtraEditors.TextEdit()
-        Me.txt_payee = New DevExpress.XtraEditors.TextEdit()
         Me.btn_add = New System.Windows.Forms.Button()
         Me.grid_cheque = New DevExpress.XtraGrid.GridControl()
         Me.grid_cheque_view = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -72,6 +71,7 @@ Partial Class frm_collection_cheque
         Me.cbb_bank = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.btn_delete = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbb_payee = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.GunaLinePanel2 = New Guna.UI.WinForms.GunaLinePanel()
         Me.grid_returns = New DevExpress.XtraGrid.GridControl()
         Me.grid_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -96,7 +96,6 @@ Partial Class frm_collection_cheque
         CType(Me.dt_date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_total.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_payee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_cheque, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_cheque_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,6 +106,7 @@ Partial Class frm_collection_cheque
         CType(Me.txt_amount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_bank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.cbb_payee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaLinePanel2.SuspendLayout()
         CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -225,13 +225,6 @@ Partial Class frm_collection_cheque
         Me.txt_total.Properties.UseReadOnlyAppearance = False
         Me.txt_total.Size = New System.Drawing.Size(158, 22)
         Me.txt_total.TabIndex = 42
-        '
-        'txt_payee
-        '
-        Me.txt_payee.Location = New System.Drawing.Point(128, 120)
-        Me.txt_payee.Name = "txt_payee"
-        Me.txt_payee.Size = New System.Drawing.Size(341, 20)
-        Me.txt_payee.TabIndex = 4
         '
         'btn_add
         '
@@ -564,9 +557,11 @@ Partial Class frm_collection_cheque
         '
         Me.btn_delete.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.trash_16x16
         Me.btn_delete.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.btn_delete.Location = New System.Drawing.Point(445, 178)
+        Me.btn_delete.Location = New System.Drawing.Point(422, 178)
+        Me.btn_delete.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_delete.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_delete.Name = "btn_delete"
-        Me.btn_delete.Size = New System.Drawing.Size(24, 23)
+        Me.btn_delete.Size = New System.Drawing.Size(47, 23)
         Me.btn_delete.TabIndex = 9
         '
         'GroupBox1
@@ -574,6 +569,7 @@ Partial Class frm_collection_cheque
         Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.cbb_payee)
         Me.GroupBox1.Controls.Add(Me.GunaLinePanel2)
         Me.GroupBox1.Controls.Add(Me.btn_delete)
         Me.GroupBox1.Controls.Add(Me.cbb_bank)
@@ -583,7 +579,6 @@ Partial Class frm_collection_cheque
         Me.GroupBox1.Controls.Add(Me.GunaLinePanel1)
         Me.GroupBox1.Controls.Add(Me.grid_cheque)
         Me.GroupBox1.Controls.Add(Me.btn_add)
-        Me.GroupBox1.Controls.Add(Me.txt_payee)
         Me.GroupBox1.Controls.Add(Me.txt_total)
         Me.GroupBox1.Controls.Add(Me.LabelControl10)
         Me.GroupBox1.Controls.Add(Me.txt_acc_name)
@@ -601,6 +596,14 @@ Partial Class frm_collection_cheque
         Me.GroupBox1.TabIndex = 37
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cheque Details"
+        '
+        'cbb_payee
+        '
+        Me.cbb_payee.Location = New System.Drawing.Point(128, 119)
+        Me.cbb_payee.Name = "cbb_payee"
+        Me.cbb_payee.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cbb_payee.Size = New System.Drawing.Size(258, 20)
+        Me.cbb_payee.TabIndex = 55
         '
         'GunaLinePanel2
         '
@@ -861,7 +864,6 @@ Partial Class frm_collection_cheque
         CType(Me.dt_date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_total.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_payee.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_cheque, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_cheque_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -873,6 +875,7 @@ Partial Class frm_collection_cheque
         CType(Me.cbb_bank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.cbb_payee.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaLinePanel2.ResumeLayout(False)
         CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).EndInit()
@@ -896,7 +899,6 @@ Partial Class frm_collection_cheque
     Friend WithEvents txt_acc_name As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txt_total As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txt_payee As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btn_add As Button
     Friend WithEvents grid_cheque As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_cheque_view As DevExpress.XtraGrid.Views.Grid.GridView
@@ -941,4 +943,5 @@ Partial Class frm_collection_cheque
     Friend WithEvents col_return_amount As GridColumn
     Friend WithEvents GridView4 As GridView
     Friend WithEvents Label2 As Label
+    Friend WithEvents cbb_payee As ComboBoxEdit
 End Class

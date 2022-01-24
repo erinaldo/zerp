@@ -48,7 +48,6 @@ Partial Class frm_admin_supplier_add
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
         Me.SeparatorControl2 = New DevExpress.XtraEditors.SeparatorControl()
-        Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
         Me.Err = New DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GunaLabel2 = New Guna.UI.WinForms.GunaLabel()
@@ -84,7 +83,6 @@ Partial Class frm_admin_supplier_add
         CType(Me.txt_email.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GunaPanel1.SuspendLayout()
         CType(Me.Err, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,7 +104,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(34, 127)
+        Me.LabelControl1.Location = New System.Drawing.Point(36, 99)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(108, 14)
         Me.LabelControl1.TabIndex = 0
@@ -116,7 +114,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Location = New System.Drawing.Point(34, 173)
+        Me.LabelControl2.Location = New System.Drawing.Point(36, 145)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(94, 14)
         Me.LabelControl2.TabIndex = 1
@@ -124,7 +122,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_supname
         '
-        Me.txt_supname.Location = New System.Drawing.Point(34, 147)
+        Me.txt_supname.Location = New System.Drawing.Point(36, 119)
         Me.txt_supname.Name = "txt_supname"
         Me.txt_supname.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_supname.Properties.Appearance.Options.UseFont = True
@@ -133,7 +131,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_officeadd
         '
-        Me.txt_officeadd.Location = New System.Drawing.Point(34, 192)
+        Me.txt_officeadd.Location = New System.Drawing.Point(36, 164)
         Me.txt_officeadd.Name = "txt_officeadd"
         Me.txt_officeadd.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_officeadd.Properties.Appearance.Options.UseFont = True
@@ -142,7 +140,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_warehouseadd
         '
-        Me.txt_warehouseadd.Location = New System.Drawing.Point(311, 193)
+        Me.txt_warehouseadd.Location = New System.Drawing.Point(313, 165)
         Me.txt_warehouseadd.Name = "txt_warehouseadd"
         Me.txt_warehouseadd.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_warehouseadd.Properties.Appearance.Options.UseFont = True
@@ -153,7 +151,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl3.Appearance.Options.UseFont = True
-        Me.LabelControl3.Location = New System.Drawing.Point(311, 173)
+        Me.LabelControl3.Location = New System.Drawing.Point(313, 145)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(124, 14)
         Me.LabelControl3.TabIndex = 4
@@ -161,7 +159,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_contact
         '
-        Me.txt_contact.Location = New System.Drawing.Point(127, 462)
+        Me.txt_contact.Location = New System.Drawing.Point(129, 434)
         Me.txt_contact.Name = "txt_contact"
         Me.txt_contact.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_contact.Properties.Appearance.Options.UseFont = True
@@ -172,7 +170,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl4.Appearance.Options.UseFont = True
-        Me.LabelControl4.Location = New System.Drawing.Point(28, 465)
+        Me.LabelControl4.Location = New System.Drawing.Point(30, 437)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(88, 14)
         Me.LabelControl4.TabIndex = 6
@@ -180,7 +178,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_position
         '
-        Me.txt_position.Location = New System.Drawing.Point(127, 488)
+        Me.txt_position.Location = New System.Drawing.Point(129, 460)
         Me.txt_position.Name = "txt_position"
         Me.txt_position.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_position.Properties.Appearance.Options.UseFont = True
@@ -191,7 +189,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl5.Appearance.Options.UseFont = True
-        Me.LabelControl5.Location = New System.Drawing.Point(28, 491)
+        Me.LabelControl5.Location = New System.Drawing.Point(30, 463)
         Me.LabelControl5.Name = "LabelControl5"
         Me.LabelControl5.Size = New System.Drawing.Size(46, 14)
         Me.LabelControl5.TabIndex = 8
@@ -199,7 +197,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_telephone
         '
-        Me.txt_telephone.Location = New System.Drawing.Point(127, 514)
+        Me.txt_telephone.Location = New System.Drawing.Point(129, 486)
         Me.txt_telephone.Name = "txt_telephone"
         Me.txt_telephone.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_telephone.Properties.Appearance.Options.UseFont = True
@@ -210,7 +208,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl6.Appearance.Options.UseFont = True
-        Me.LabelControl6.Location = New System.Drawing.Point(28, 517)
+        Me.LabelControl6.Location = New System.Drawing.Point(30, 489)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(86, 14)
         Me.LabelControl6.TabIndex = 10
@@ -218,7 +216,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_mobile
         '
-        Me.txt_mobile.Location = New System.Drawing.Point(448, 462)
+        Me.txt_mobile.Location = New System.Drawing.Point(450, 434)
         Me.txt_mobile.Name = "txt_mobile"
         Me.txt_mobile.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_mobile.Properties.Appearance.Options.UseFont = True
@@ -229,7 +227,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl7.Appearance.Options.UseFont = True
-        Me.LabelControl7.Location = New System.Drawing.Point(361, 465)
+        Me.LabelControl7.Location = New System.Drawing.Point(363, 437)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(61, 14)
         Me.LabelControl7.TabIndex = 12
@@ -237,7 +235,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_fax
         '
-        Me.txt_fax.Location = New System.Drawing.Point(448, 488)
+        Me.txt_fax.Location = New System.Drawing.Point(450, 460)
         Me.txt_fax.Name = "txt_fax"
         Me.txt_fax.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_fax.Properties.Appearance.Options.UseFont = True
@@ -248,7 +246,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl8.Appearance.Options.UseFont = True
-        Me.LabelControl8.Location = New System.Drawing.Point(361, 491)
+        Me.LabelControl8.Location = New System.Drawing.Point(363, 463)
         Me.LabelControl8.Name = "LabelControl8"
         Me.LabelControl8.Size = New System.Drawing.Size(45, 14)
         Me.LabelControl8.TabIndex = 14
@@ -256,7 +254,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_email
         '
-        Me.txt_email.Location = New System.Drawing.Point(448, 514)
+        Me.txt_email.Location = New System.Drawing.Point(450, 486)
         Me.txt_email.Name = "txt_email"
         Me.txt_email.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_email.Properties.Appearance.Options.UseFont = True
@@ -267,7 +265,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl9.Appearance.Options.UseFont = True
-        Me.LabelControl9.Location = New System.Drawing.Point(361, 517)
+        Me.LabelControl9.Location = New System.Drawing.Point(363, 489)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(78, 14)
         Me.LabelControl9.TabIndex = 16
@@ -278,7 +276,7 @@ Partial Class frm_admin_supplier_add
         Me.btn_save.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_save.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.btn_save.Appearance.Options.UseBackColor = True
-        Me.btn_save.Location = New System.Drawing.Point(610, 7)
+        Me.btn_save.Location = New System.Drawing.Point(599, 537)
         Me.btn_save.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_save.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_save.Name = "btn_save"
@@ -289,7 +287,7 @@ Partial Class frm_admin_supplier_add
         'btn_cancel
         '
         Me.btn_cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_cancel.Location = New System.Drawing.Point(521, 7)
+        Me.btn_cancel.Location = New System.Drawing.Point(510, 537)
         Me.btn_cancel.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_cancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_cancel.Name = "btn_cancel"
@@ -303,7 +301,7 @@ Partial Class frm_admin_supplier_add
         Me.LabelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl10.Appearance.Options.UseFont = True
         Me.LabelControl10.Appearance.Options.UseForeColor = True
-        Me.LabelControl10.Location = New System.Drawing.Point(18, 413)
+        Me.LabelControl10.Location = New System.Drawing.Point(20, 385)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(123, 24)
         Me.LabelControl10.TabIndex = 21
@@ -315,7 +313,7 @@ Partial Class frm_admin_supplier_add
         Me.LabelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl11.Appearance.Options.UseFont = True
         Me.LabelControl11.Appearance.Options.UseForeColor = True
-        Me.LabelControl11.Location = New System.Drawing.Point(12, 79)
+        Me.LabelControl11.Location = New System.Drawing.Point(14, 51)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(130, 24)
         Me.LabelControl11.TabIndex = 22
@@ -325,7 +323,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.SeparatorControl1.LineAlignment = DevExpress.XtraEditors.Alignment.Near
         Me.SeparatorControl1.LineThickness = 1
-        Me.SeparatorControl1.Location = New System.Drawing.Point(8, 99)
+        Me.SeparatorControl1.Location = New System.Drawing.Point(10, 71)
         Me.SeparatorControl1.Name = "SeparatorControl1"
         Me.SeparatorControl1.Size = New System.Drawing.Size(685, 23)
         Me.SeparatorControl1.TabIndex = 50
@@ -334,21 +332,10 @@ Partial Class frm_admin_supplier_add
         '
         Me.SeparatorControl2.LineAlignment = DevExpress.XtraEditors.Alignment.Near
         Me.SeparatorControl2.LineThickness = 1
-        Me.SeparatorControl2.Location = New System.Drawing.Point(12, 433)
+        Me.SeparatorControl2.Location = New System.Drawing.Point(14, 405)
         Me.SeparatorControl2.Name = "SeparatorControl2"
         Me.SeparatorControl2.Size = New System.Drawing.Size(685, 23)
         Me.SeparatorControl2.TabIndex = 51
-        '
-        'GunaPanel1
-        '
-        Me.GunaPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.GunaPanel1.Controls.Add(Me.btn_save)
-        Me.GunaPanel1.Controls.Add(Me.btn_cancel)
-        Me.GunaPanel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GunaPanel1.Location = New System.Drawing.Point(0, 610)
-        Me.GunaPanel1.Name = "GunaPanel1"
-        Me.GunaPanel1.Size = New System.Drawing.Size(705, 47)
-        Me.GunaPanel1.TabIndex = 52
         '
         'Err
         '
@@ -379,7 +366,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl12.Appearance.Options.UseFont = True
-        Me.LabelControl12.Location = New System.Drawing.Point(311, 127)
+        Me.LabelControl12.Location = New System.Drawing.Point(313, 99)
         Me.LabelControl12.Name = "LabelControl12"
         Me.LabelControl12.Size = New System.Drawing.Size(111, 14)
         Me.LabelControl12.TabIndex = 54
@@ -389,15 +376,15 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl13.Appearance.Options.UseFont = True
-        Me.LabelControl13.Location = New System.Drawing.Point(516, 127)
+        Me.LabelControl13.Location = New System.Drawing.Point(518, 99)
         Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(88, 14)
+        Me.LabelControl13.Size = New System.Drawing.Size(77, 14)
         Me.LabelControl13.TabIndex = 56
-        Me.LabelControl13.Text = "* Terms (Days):"
+        Me.LabelControl13.Text = "Terms (Days):"
         '
         'txt_acc_name
         '
-        Me.txt_acc_name.Location = New System.Drawing.Point(34, 322)
+        Me.txt_acc_name.Location = New System.Drawing.Point(36, 294)
         Me.txt_acc_name.Name = "txt_acc_name"
         Me.txt_acc_name.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_acc_name.Properties.Appearance.Options.UseFont = True
@@ -408,7 +395,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl14.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl14.Appearance.Options.UseFont = True
-        Me.LabelControl14.Location = New System.Drawing.Point(34, 302)
+        Me.LabelControl14.Location = New System.Drawing.Point(36, 274)
         Me.LabelControl14.Name = "LabelControl14"
         Me.LabelControl14.Size = New System.Drawing.Size(85, 14)
         Me.LabelControl14.TabIndex = 58
@@ -416,7 +403,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_acc_no
         '
-        Me.txt_acc_no.Location = New System.Drawing.Point(34, 368)
+        Me.txt_acc_no.Location = New System.Drawing.Point(36, 340)
         Me.txt_acc_no.Name = "txt_acc_no"
         Me.txt_acc_no.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_acc_no.Properties.Appearance.Options.UseFont = True
@@ -427,7 +414,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl15.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl15.Appearance.Options.UseFont = True
-        Me.LabelControl15.Location = New System.Drawing.Point(34, 348)
+        Me.LabelControl15.Location = New System.Drawing.Point(36, 320)
         Me.LabelControl15.Name = "LabelControl15"
         Me.LabelControl15.Size = New System.Drawing.Size(73, 14)
         Me.LabelControl15.TabIndex = 60
@@ -435,8 +422,12 @@ Partial Class frm_admin_supplier_add
         '
         'PanelControl1
         '
+        Me.PanelControl1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.PanelControl1.Controls.Add(Me.btn_save)
+        Me.PanelControl1.Controls.Add(Me.btn_cancel)
         Me.PanelControl1.Controls.Add(Me.GroupControl1)
         Me.PanelControl1.Controls.Add(Me.num_terms_days)
+        Me.PanelControl1.Controls.Add(Me.LabelControl12)
         Me.PanelControl1.Controls.Add(Me.num_lead_days)
         Me.PanelControl1.Controls.Add(Me.txt_tin_no)
         Me.PanelControl1.Controls.Add(Me.LabelControl18)
@@ -471,10 +462,9 @@ Partial Class frm_admin_supplier_add
         Me.PanelControl1.Controls.Add(Me.txt_officeadd)
         Me.PanelControl1.Controls.Add(Me.LabelControl3)
         Me.PanelControl1.Controls.Add(Me.SeparatorControl2)
-        Me.PanelControl1.Controls.Add(Me.LabelControl12)
-        Me.PanelControl1.Location = New System.Drawing.Point(0, 25)
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 66)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(705, 595)
+        Me.PanelControl1.Size = New System.Drawing.Size(705, 579)
         Me.PanelControl1.TabIndex = 62
         '
         'GroupControl1
@@ -485,7 +475,7 @@ Partial Class frm_admin_supplier_add
         Me.GroupControl1.Controls.Add(Me.txt_tax_rate)
         Me.GroupControl1.Controls.Add(Me.LabelControl19)
         Me.GroupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Light
-        Me.GroupControl1.Location = New System.Drawing.Point(311, 311)
+        Me.GroupControl1.Location = New System.Drawing.Point(313, 283)
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(371, 75)
@@ -545,7 +535,7 @@ Partial Class frm_admin_supplier_add
         'num_terms_days
         '
         Me.num_terms_days.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.num_terms_days.Location = New System.Drawing.Point(610, 125)
+        Me.num_terms_days.Location = New System.Drawing.Point(612, 97)
         Me.num_terms_days.Name = "num_terms_days"
         Me.num_terms_days.Size = New System.Drawing.Size(58, 22)
         Me.num_terms_days.TabIndex = 2
@@ -553,14 +543,14 @@ Partial Class frm_admin_supplier_add
         'num_lead_days
         '
         Me.num_lead_days.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.num_lead_days.Location = New System.Drawing.Point(428, 125)
+        Me.num_lead_days.Location = New System.Drawing.Point(430, 97)
         Me.num_lead_days.Name = "num_lead_days"
         Me.num_lead_days.Size = New System.Drawing.Size(54, 22)
         Me.num_lead_days.TabIndex = 1
         '
         'txt_tin_no
         '
-        Me.txt_tin_no.Location = New System.Drawing.Point(311, 276)
+        Me.txt_tin_no.Location = New System.Drawing.Point(313, 248)
         Me.txt_tin_no.Name = "txt_tin_no"
         Me.txt_tin_no.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_tin_no.Properties.Appearance.Options.UseFont = True
@@ -571,7 +561,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl18.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl18.Appearance.Options.UseFont = True
-        Me.LabelControl18.Location = New System.Drawing.Point(311, 256)
+        Me.LabelControl18.Location = New System.Drawing.Point(313, 228)
         Me.LabelControl18.Name = "LabelControl18"
         Me.LabelControl18.Size = New System.Drawing.Size(47, 14)
         Me.LabelControl18.TabIndex = 67
@@ -581,7 +571,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl17.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl17.Appearance.Options.UseFont = True
-        Me.LabelControl17.Location = New System.Drawing.Point(34, 256)
+        Me.LabelControl17.Location = New System.Drawing.Point(36, 228)
         Me.LabelControl17.Name = "LabelControl17"
         Me.LabelControl17.Size = New System.Drawing.Size(94, 14)
         Me.LabelControl17.TabIndex = 65
@@ -589,7 +579,7 @@ Partial Class frm_admin_supplier_add
         '
         'cbb_bank
         '
-        Me.cbb_bank.Location = New System.Drawing.Point(34, 276)
+        Me.cbb_bank.Location = New System.Drawing.Point(36, 248)
         Me.cbb_bank.Name = "cbb_bank"
         Me.cbb_bank.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cbb_bank.Size = New System.Drawing.Size(222, 20)
@@ -597,7 +587,7 @@ Partial Class frm_admin_supplier_add
         '
         'txt_zipcode
         '
-        Me.txt_zipcode.Location = New System.Drawing.Point(578, 192)
+        Me.txt_zipcode.Location = New System.Drawing.Point(580, 164)
         Me.txt_zipcode.Name = "txt_zipcode"
         Me.txt_zipcode.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.txt_zipcode.Properties.Appearance.Options.UseFont = True
@@ -608,7 +598,7 @@ Partial Class frm_admin_supplier_add
         '
         Me.LabelControl16.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.LabelControl16.Appearance.Options.UseFont = True
-        Me.LabelControl16.Location = New System.Drawing.Point(578, 172)
+        Me.LabelControl16.Location = New System.Drawing.Point(580, 144)
         Me.LabelControl16.Name = "LabelControl16"
         Me.LabelControl16.Size = New System.Drawing.Size(54, 14)
         Me.LabelControl16.TabIndex = 62
@@ -621,7 +611,6 @@ Partial Class frm_admin_supplier_add
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(705, 657)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.GunaPanel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_admin_supplier_add"
@@ -638,7 +627,6 @@ Partial Class frm_admin_supplier_add
         CType(Me.txt_email.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SeparatorControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GunaPanel1.ResumeLayout(False)
         CType(Me.Err, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -685,7 +673,6 @@ Partial Class frm_admin_supplier_add
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents SeparatorControl1 As DevExpress.XtraEditors.SeparatorControl
     Friend WithEvents SeparatorControl2 As DevExpress.XtraEditors.SeparatorControl
-    Friend WithEvents GunaPanel1 As Guna.UI.WinForms.GunaPanel
     Friend WithEvents Err As DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GunaLabel2 As Guna.UI.WinForms.GunaLabel

@@ -419,10 +419,10 @@ Public Class frm_admin_reports
             Using conn = New MySqlConnection(str)
                 conn.Open()
                 Using cmd = New MySqlCommand("SELECT
-	                                            customer, no_of_transc, total_cost, gross_sales AS total_gross, ((gross_sales - total_cost) / gross_sales) margin
+	                                            customer, type, no_of_transc, total_cost, gross_sales AS total_gross, ((gross_sales - total_cost) / gross_sales) margin
                                             FROM (
 	                                            SELECT 
-		                                            ims_customers.first_name AS customer, COUNT(customer) no_of_transc,
+		                                            ims_customers.first_name AS customer, ims_customers.account_type AS type, COUNT(customer) no_of_transc,
 		                                            SUM((SELECT SUM(cost * qty) FROM ims_sales WHERE order_id=ims.order_id)) AS total_cost,
 		                                            SUM((SELECT SUM(price) FROM ims_sales WHERE order_id=ims.order_id)) AS gross_sales
 	                                            FROM ims_orders ims

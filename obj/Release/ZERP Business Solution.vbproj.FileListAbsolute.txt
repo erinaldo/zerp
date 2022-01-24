@@ -343,3 +343,4 @@ D:\_workstation\source code\zerp\bin\Release\EPPlus.dll
 D:\_workstation\source code\zerp\bin\Release\Microsoft.IO.RecyclableMemoryStream.dll
 D:\_workstation\source code\zerp\bin\Release\EPPlus.xml
 D:\_workstation\source code\zerp\bin\Release\Microsoft.IO.RecyclableMemoryStream.xml
+D:\_workstation\source code\zerp\obj\Release\ZERP Business Solution.vbproj.AssemblyReference.cache

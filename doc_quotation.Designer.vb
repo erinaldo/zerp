@@ -454,7 +454,7 @@ Partial Public Class doc_quotation
         Me.XrLabel3.StylePriority.UseFont = False
         Me.XrLabel3.StylePriority.UseTextAlignment = False
         Me.XrLabel3.Text = "QUOTATION"
-        Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel2
         '
@@ -719,9 +719,8 @@ Partial Public Class doc_quotation
         Me.XrLabel23.SizeF = New System.Drawing.SizeF(147.9167!, 17.79165!)
         Me.XrLabel23.StylePriority.UseFont = False
         Me.XrLabel23.StylePriority.UseTextAlignment = False
-        Me.XrLabel23.Text = "[?amount_due!PHP 0,0.00]"
         Me.XrLabel23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
-        Me.XrLabel23.TextFormatString = "{0:PHP 0,0.00}"
+        Me.XrLabel23.TextFormatString = "{0:C2}"
         '
         'XrLabel24
         '

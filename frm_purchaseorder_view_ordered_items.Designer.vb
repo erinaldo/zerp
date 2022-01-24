@@ -41,6 +41,7 @@ Partial Class frm_purchaseorder_view_ordered_items
         Me.col_qty_to_receive = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.col_date_sent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel4.SuspendLayout()
         CType(Me.grid_po, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,7 +141,7 @@ Partial Class frm_purchaseorder_view_ordered_items
         Me.grid_po_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_po_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_po_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_po_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_received_qty, Me.col_poid, Me.col_win_model, Me.col_sup_model, Me.col_description, Me.col_qty, Me.col_po_status, Me.col_supplier, Me.col_qty_to_receive})
+        Me.grid_po_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_received_qty, Me.col_poid, Me.col_win_model, Me.col_sup_model, Me.col_description, Me.col_qty, Me.col_po_status, Me.col_supplier, Me.col_qty_to_receive, Me.col_date_sent})
         Me.grid_po_view.GridControl = Me.grid_po
         Me.grid_po_view.Name = "grid_po_view"
         Me.grid_po_view.OptionsBehavior.Editable = False
@@ -277,6 +278,19 @@ Partial Class frm_purchaseorder_view_ordered_items
         Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
         '
+        'col_date_sent
+        '
+        Me.col_date_sent.AppearanceCell.Options.UseTextOptions = True
+        Me.col_date_sent.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_date_sent.Caption = "Date Sent"
+        Me.col_date_sent.FieldName = "date_sent"
+        Me.col_date_sent.MaxWidth = 120
+        Me.col_date_sent.MinWidth = 120
+        Me.col_date_sent.Name = "col_date_sent"
+        Me.col_date_sent.Visible = True
+        Me.col_date_sent.VisibleIndex = 9
+        Me.col_date_sent.Width = 120
+        '
         'frm_purchaseorder_view_ordered_items
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -318,4 +332,5 @@ Partial Class frm_purchaseorder_view_ordered_items
     Friend WithEvents col_qty_to_receive As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_unfulfilled_orders As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_active_orders As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents col_date_sent As DevExpress.XtraGrid.Columns.GridColumn
 End Class

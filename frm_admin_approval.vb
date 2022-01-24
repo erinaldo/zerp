@@ -134,6 +134,7 @@ Public Class frm_admin_approval
             frm.btn_approved.Location = New Point(1060, 14)
             frm.btn_transfer.Visible = False
             frm.btn_save.Enabled = False
+            frm.grid_quotation.ReadOnly = True
             frm.ShowDialog()
             Me.load_data()
         End If

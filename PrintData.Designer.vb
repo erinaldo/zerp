@@ -835,7 +835,7 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addpurchase_order_slipRow(ByVal qty As Integer, ByVal model As String, ByVal supmodel As String, ByVal description As String, ByVal cost As Decimal, ByVal total_cost As Decimal) As purchase_order_slipRow
+        Public Overloads Function Addpurchase_order_slipRow(ByVal qty As Double, ByVal model As String, ByVal supmodel As String, ByVal description As String, ByVal cost As Decimal, ByVal total_cost As Decimal) As purchase_order_slipRow
             Dim rowpurchase_order_slipRow As purchase_order_slipRow = CType(Me.NewRow,purchase_order_slipRow)
             Dim columnValuesArray() As Object = New Object() {qty, model, supmodel, description, cost, total_cost}
             rowpurchase_order_slipRow.ItemArray = columnValuesArray
@@ -871,7 +871,7 @@ Partial Public Class PrintData
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnqty)
             Me.columnmodel = New Global.System.Data.DataColumn("model", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmodel)
@@ -4667,10 +4667,10 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property qty() As Integer
+        Public Property qty() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tablepurchase_order_slip.qtyColumn),Integer)
+                    Return CType(Me(Me.tablepurchase_order_slip.qtyColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'qty' in table 'purchase_order_slip' is DBNull.", e)
                 End Try

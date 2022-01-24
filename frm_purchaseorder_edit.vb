@@ -2,6 +2,7 @@
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraReports.UI
 Imports MySql.Data.MySqlClient
+Imports Newtonsoft.Json
 
 Public Class frm_purchaseorder_edit
 
@@ -103,33 +104,6 @@ Public Class frm_purchaseorder_edit
 
     End Sub
 
-    'Units to Grid
-    Private Sub set_PurchaseOrder_DataTable(units As String, table As Object)
-
-        Dim comma(), equal() As String
-        Dim piece As String
-        Dim i As Integer
-        Dim colonseparator As New Regex("\b;\b")
-        Dim equalseparator As New Regex("\b=\b")
-
-
-        If Not String.IsNullOrEmpty(units) Then
-
-            comma = colonseparator.Split(units)
-
-            For i = 0 To comma.Length - 1
-                piece = comma(i).Trim
-                equal = piece.Split("=")
-
-                table.purchase_order_slip.Rows.Add(equal(1), equal(2), equal(3), equal(4), equal(5), equal(6).Replace(";", ""))
-            Next
-
-            table.purchase_order_slip.DefaultView.Sort = "supmodel ASC"
-
-        End If
-
-    End Sub
-
     'Set up the fields
     Private Sub SetFields()
 
@@ -158,7 +132,7 @@ Public Class frm_purchaseorder_edit
 
                 btn_delete.Enabled = True
                 btn_save_draft.Enabled = True
-
+                btn_print.Enabled = False
                 grid_order.AllowUserToAddRows = True
 
             Case "For Approval"
@@ -279,7 +253,7 @@ Public Class frm_purchaseorder_edit
         If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial") Then
             grid_order.AllowUserToDeleteRows = False
             grid_order.AllowUserToAddRows = True
-            btn_print.Enabled = True
+            'btn_print.Enabled = True
             btn_approval.Enabled = True
             btn_approval.Text = "Save"
             grid_order.Columns(1).ReadOnly = False
@@ -321,33 +295,54 @@ Public Class frm_purchaseorder_edit
     'Set Units to Grid
     Sub set_GridData(units As String)
 
-        Dim comma(), equal() As String
-        Dim piece As String
-        Dim i As Integer
-        Dim colonseparator As New Regex("\b;\b")
-        Dim equalseparator As New Regex("\b=\b")
+        'Dim comma(), equal() As String
+        'Dim piece As String
+        'Dim i As Integer
+        'Dim colonseparator As New Regex("\b;\b")
+        'Dim equalseparator As New Regex("\b=\b")
+
+        'If grid_order.Rows.Count > 0 Then grid_order.Rows.Clear()
 
         Dim dt = New DataTable
         dt.Columns.Add("sku", GetType(Integer))
-        dt.Columns.Add("qty", GetType(Integer))
+        dt.Columns.Add("qty", GetType(Double))
         dt.Columns.Add("qty_per_box", GetType(Integer))
         dt.Columns.Add("winmodel", GetType(String))
         dt.Columns.Add("supmodel", GetType(String))
         dt.Columns.Add("description", GetType(String))
         dt.Columns.Add("cost", GetType(Decimal))
         dt.Columns.Add("total", GetType(Decimal))
-
-        If grid_order.Rows.Count > 0 Then grid_order.Rows.Clear()
+        dt.Columns.Add("total_received", GetType(Integer))
+        dt.Columns.Add("qty_received", GetType(Integer))
+        dt.Columns.Add("remaining", GetType(Integer))
 
         If Not String.IsNullOrEmpty(units) Then
 
-            comma = colonseparator.Split(units)
+            'comma = colonseparator.Split(units)
 
-            For i = 0 To comma.Length - 1
-                piece = comma(i).Trim
-                equal = piece.Split("=")
+            'For i = 0 To comma.Length - 1
+            '    piece = comma(i).Trim
+            '    equal = piece.Split("=")
 
-                dt.Rows.Add(equal(0), equal(1), 0, equal(2), equal(3), equal(4), equal(5), equal(6).Replace(";", ""))
+            '    dt.Rows.Add(equal(0), equal(1), 0, equal(2), equal(3), equal(4), equal(5), equal(6).Replace(";", ""))
+            'Next
+
+            Dim PurchaseOrder = JsonConvert.DeserializeObject(Of List(Of PurchaseOrderClass))(units)
+            For Each Order In PurchaseOrder
+                'dt.Rows.Add(Order.pid, Order.qty, 0, Order.winmodel, Order.supmodel, Order.description, Order.cost, Order.total_cost)
+                dt.Rows.Add(
+                            Order.pid,
+                            Order.qty,
+                            0,
+                            Order.winmodel,
+                            Order.supmodel,
+                            Order.description,
+                            Order.cost,
+                            Order.total_cost,
+                            Order.qty_received,
+                            0,
+                            Order.qty - Order.qty_received
+                        )
             Next
 
             grid_order.DataSource = dt
@@ -414,7 +409,6 @@ Public Class frm_purchaseorder_edit
                     report.Parameters("contact_person").Value = rdr("contact_person")
                     report.Parameters("delivery_addr").Value = rdr("address")
                     report.Parameters("deliver_to").Value = rdr("deliver_to")
-                    orders = rdr("orders")
                     report.Parameters("prepared_by").Value = rdr("prepared_by")
                     report.Parameters("approved_by").Value = rdr("approved_by")
                     report.Parameters("print_date").Value = Format(rdr("date_sent"), "MM/dd/yyyy")
@@ -430,9 +424,17 @@ Public Class frm_purchaseorder_edit
                     report.Parameters("is_withholding_tax_applied").Value = rdr("is_withholding_tax_applied")
                     report.Parameters("withholding_tax_percentage").Value = rdr("withholding_tax_percentage")
                     report.Parameters("withholding_tax_amount").Value = rdr("withholding_tax_amount")
+
+                    'Set Order to DataTable
+                    Dim PurchaseOrder = JsonConvert.DeserializeObject(Of List(Of PurchaseOrderClass))(rdr("orders"))
+                    For Each Order In PurchaseOrder
+                        table.purchase_order_slip.Rows.Add(Order.qty, Order.winmodel, Order.supmodel, Order.description, Order.cost, Order.total_cost)
+                    Next
+                    'Sort DataTable
+                    table.purchase_order_slip.DefaultView.Sort = "supmodel ASC"
+
                 End While
 
-                set_PurchaseOrder_DataTable(orders, table)
                 report.RequestParameters = False
 
                 report.DataSource = table
@@ -538,7 +540,7 @@ Public Class frm_purchaseorder_edit
     'Digits ONLY
     Private Sub DigitsOnly_KeyPress(sender As Object, e As KeyPressEventArgs)
         If grid_order.CurrentCell.ColumnIndex = 1 Then
-            If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." Then
                 e.Handled = True
             End If
         End If
@@ -577,7 +579,7 @@ Public Class frm_purchaseorder_edit
         'COMBOBOX CHECKER
         If String.IsNullOrEmpty(cbb_supplier.Text) Or
             String.IsNullOrEmpty(cbb_deliver.Text) Or
-            grid_order.Rows.Count < 1 Then Exit Sub
+            grid_order.Rows.Count < 1 Then Return
 
         'TERMS VALIDATOR
         If Not IsNumeric(txt_terms.Text) Then
@@ -585,17 +587,26 @@ Public Class frm_purchaseorder_edit
             Exit Sub
         End If
 
-        Dim orders = String.Empty
+        Dim ListOfOrders = New List(Of PurchaseOrderClass)
+        'Dim orders = String.Empty
         Dim purchase_id = txt_poid.Text
 
         For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
-            'RETURN IF HAS ROW WITH NO VALUE
-            If String.IsNullOrEmpty(row.Item(1).ToString) Or String.IsNullOrEmpty(row.Item(1).ToString) Then
-                MsgBox("Couldn't proceed due to incomplete rows.", vbCritical, "No Values")
-                Return
-            End If
-            If String.IsNullOrEmpty(row.Item(0).ToString) Then Continue For
-            orders = orders & row.Item(0).ToString & "=" & row.Item(1).ToString & "=" & row.Item(3).ToString & "=" & row.Item(4).ToString & "=" & row.Item(5).ToString & "=" & row.Item(6).ToString & "=" & row.Item(7).ToString & ";"
+
+            'If String.IsNullOrEmpty(row.Item(0).ToString) Then Continue For
+            'orders = orders & row.Item(0).ToString & "=" & row.Item(1).ToString & "=" & row.Item(3).ToString & "=" & row.Item(4).ToString & "=" & row.Item(5).ToString & "=" & row.Item(6).ToString & "=" & row.Item(7).ToString & ";"
+
+            ListOfOrders.Add(New PurchaseOrderClass With {
+                .pid = row.Item(0),
+                .qty = row.Item(1),
+                .winmodel = row.Item(3),
+                .supmodel = row.Item(4),
+                .description = row.Item(5),
+                .cost = row.Item(6),
+                .total_cost = row.Item(7),
+                .qty_received = IIf(IsDBNull(row.Item(8)), 0, row.Item(8))
+            })
+
         Next
 
         Try
@@ -610,7 +621,7 @@ Public Class frm_purchaseorder_edit
                     cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim)
                     cmd.Parameters.AddWithValue("@address", txt_del_address.Text.Trim)
                     cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim)
-                    cmd.Parameters.AddWithValue("@orders", orders)
+                    cmd.Parameters.AddWithValue("@orders", JsonConvert.SerializeObject(ListOfOrders))
                     cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
                     cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
                     cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)
@@ -656,7 +667,8 @@ Public Class frm_purchaseorder_edit
             Exit Sub
         End If
 
-        Dim orders = String.Empty
+        Dim ListOfOrders = New List(Of PurchaseOrderClass)
+        'Dim orders = String.Empty
         Dim purchase_id = txt_poid.Text
         Dim status = "UNKNOWN STATUS"
 
@@ -683,13 +695,21 @@ Public Class frm_purchaseorder_edit
         End If
 
         For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
-            'RETURN IF HAS ROW WITH NO VALUE
-            If String.IsNullOrEmpty(row.Item(1).ToString) Or String.IsNullOrEmpty(row.Item(1).ToString) Then
-                MsgBox("Couldn't proceed due to incomplete rows.", vbCritical, "No Values")
-                Return
-            End If
-            If String.IsNullOrEmpty(row.Item(0).ToString) Then Continue For
-            orders = orders & row.Item(0).ToString & "=" & row.Item(1).ToString & "=" & row.Item(3).ToString & "=" & row.Item(4).ToString & "=" & row.Item(5).ToString & "=" & row.Item(6).ToString & "=" & row.Item(7).ToString & ";"
+
+            'If String.IsNullOrEmpty(row.Item(0).ToString) Then Continue For
+            'orders = orders & row.Item(0).ToString & "=" & row.Item(1).ToString & "=" & row.Item(3).ToString & "=" & row.Item(4).ToString & "=" & row.Item(5).ToString & "=" & row.Item(6).ToString & "=" & row.Item(7).ToString & ";"
+
+            ListOfOrders.Add(New PurchaseOrderClass With {
+                .pid = row.Item(0),
+                .qty = row.Item(1),
+                .winmodel = row.Item(3),
+                .supmodel = row.Item(4),
+                .description = row.Item(5),
+                .cost = row.Item(6),
+                .total_cost = row.Item(7),
+                .qty_received = IIf(IsDBNull(row.Item(8)), 0, row.Item(8))
+            })
+
         Next
 
         Try
@@ -704,7 +724,7 @@ Public Class frm_purchaseorder_edit
                     cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim)
                     cmd.Parameters.AddWithValue("@address", txt_del_address.Text.Trim)
                     cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim)
-                    cmd.Parameters.AddWithValue("@orders", orders)
+                    cmd.Parameters.AddWithValue("@orders", JsonConvert.SerializeObject(ListOfOrders))
                     cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
                     cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim)
                     cmd.Parameters.AddWithValue("@discount_type", cbb_discount.Text.Trim)

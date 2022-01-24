@@ -111,26 +111,23 @@ Public Class frm_accounting_generate_payment
     Private Sub PrintCheque(id As Integer, connection As MySqlConnection)
         Dim report = New doc_cheque()
         Dim printTool = New ReportPrintTool(report)
-        Dim amount As Decimal, dt As Date, payee As String = "", is_crossed_check As Boolean
+        Dim amount As Decimal
 
         Dim cmd = New MySqlCommand("SELECT amount, payee, cheque_date, is_crossed_check FROM ims_generated_cheques WHERE id=@id", connection)
         cmd.Parameters.AddWithValue("@id", id)
-        Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-        While rdr.Read
-            payee = rdr("payee")
-            dt = rdr("cheque_date")
-            amount = rdr("amount")
-            is_crossed_check = rdr("is_crossed_check")
-        End While
+        Using rdr As MySqlDataReader = cmd.ExecuteReader
+            While rdr.Read
+                report.Parameters("payee").Value = rdr("payee")
+                report.Parameters("cheque_date").Value = rdr("cheque_date")
+                report.Parameters("amount").Value = rdr("amount")
+                amount = rdr("amount")
+                report.Parameters("ac_payee").Value = rdr("is_crossed_check")
+            End While
+        End Using
 
-        report.Parameters("payee").Value = payee
-        report.Parameters("cheque_date").Value = dt
-        report.Parameters("amount").Value = amount
-        report.Parameters("ac_payee").Value = is_crossed_check
         report.Parameters("AmountWords").Value = AmountInWords(amount)
         report.RequestParameters = False
-
         report.ShowRibbonPreviewDialog()
 
     End Sub
@@ -403,13 +400,14 @@ Public Class frm_accounting_generate_payment
                 End Using
 
                 'GENERATE NEW VOUCHER | //MERGE
-                Using cmd = New MySqlCommand("INSERT INTO ims_payment_vouchers (payment_type, receipts, creation_date, collection_ref, supplier, generated_by)
-                                VALUES (@payment_type, @receipts, CURRENT_TIMESTAMP, @collection_ref, (SELECT id FROM ims_suppliers WHERE supplier=@supplier), @generated_by)", conn)
+                Using cmd = New MySqlCommand("INSERT INTO ims_payment_vouchers (payment_type, receipts, creation_date, collection_ref, supplier, generated_by, voucher_amount)
+                                VALUES (@payment_type, @receipts, CURRENT_TIMESTAMP, @collection_ref, (SELECT id FROM ims_suppliers WHERE supplier=@supplier), @generated_by, @voucher_amount)", conn)
                     cmd.Parameters.AddWithValue("receipts", receipts)
                     cmd.Parameters.AddWithValue("payment_type", "cheque")
                     cmd.Parameters.AddWithValue("collection_ref", txt_collection_ref.Text.Trim)
                     cmd.Parameters.AddWithValue("supplier", cbb_suppliers.Text.Trim)
                     cmd.Parameters.AddWithValue("generated_by", frm_main.user_id.Text)
+                    cmd.Parameters.AddWithValue("voucher_amount", CDec(txt_total_view.Text.Trim))
                     cmd.ExecuteNonQuery()
                 End Using
 
@@ -443,13 +441,15 @@ Public Class frm_accounting_generate_payment
                 End Using
 
                 'UPDATE PURCHASE ORDER RETURNS
-                Using update_returns = New MySqlCommand("UPDATE ims_purchase_returns SET is_applied='1', status='Applied', cheque_no=@cheque WHERE po_return_id=@id", conn)
+                Using update_returns = New MySqlCommand("UPDATE ims_purchase_returns SET is_applied='1', status='Applied', cheque_no=@cheque, voucher_id=@voucher_id WHERE po_return_id=@id", conn)
                     update_returns.Parameters.AddWithValue("@id", 0)
+                    update_returns.Parameters.AddWithValue("@voucher_id", 0)
                     update_returns.Parameters.AddWithValue("@cheque", txt_cheque_no.Text)
                     update_returns.Prepare()
 
                     For i = 0 To grid_returns_view.GetSelectedRows.Length - 1
                         update_returns.Parameters(0).Value = grid_returns_view.GetRowCellValue(grid_returns_view.GetSelectedRows(i), col_rid)
+                        update_returns.Parameters(1).Value = voucher_id
                         update_returns.ExecuteNonQuery()
                     Next
                 End Using
@@ -523,13 +523,14 @@ Public Class frm_accounting_generate_payment
                 End Using
 
                 'GENERATE NEW VOUCHER | //MERGE
-                Using cmd = New MySqlCommand("INSERT INTO ims_payment_vouchers (payment_type, receipts, creation_date, collection_ref, supplier, generated_by)
-                                VALUES (@payment_type, @receipts, CURRENT_TIMESTAMP, @collection_ref, (SELECT id FROM ims_suppliers WHERE supplier=@supplier), @generated_by)", conn)
+                Using cmd = New MySqlCommand("INSERT INTO ims_payment_vouchers (payment_type, receipts, creation_date, collection_ref, supplier, generated_by, voucher_amount)
+                                VALUES (@payment_type, @receipts, CURRENT_TIMESTAMP, @collection_ref, (SELECT id FROM ims_suppliers WHERE supplier=@supplier), @generated_by, @voucher_amount)", conn)
                     cmd.Parameters.AddWithValue("receipts", receipts)
                     cmd.Parameters.AddWithValue("payment_type", "cash")
                     cmd.Parameters.AddWithValue("collection_ref", txt_collection_ref.Text.Trim)
                     cmd.Parameters.AddWithValue("supplier", cbb_suppliers.Text.Trim)
                     cmd.Parameters.AddWithValue("generated_by", frm_main.user_id.Text)
+                    cmd.Parameters.AddWithValue("voucher_amount", CDec(txt_total_view.Text.Trim))
                     cmd.ExecuteNonQuery()
                 End Using
 
@@ -558,13 +559,15 @@ Public Class frm_accounting_generate_payment
                 End Using
 
                 'UPDATE PURCHASE ORDER RETURNS
-                Using update_returns = New MySqlCommand("UPDATE ims_purchase_returns SET is_applied='1', status='Applied', cheque_no=@cheque WHERE po_return_id=@id", conn)
+                Using update_returns = New MySqlCommand("UPDATE ims_purchase_returns SET is_applied='1', status='Applied', cheque_no=@cheque, voucher_id=@voucher_id WHERE po_return_id=@id", conn)
                     update_returns.Parameters.AddWithValue("@id", 0)
+                    update_returns.Parameters.AddWithValue("@voucher_id", 0)
                     update_returns.Parameters.AddWithValue("@cheque", txt_cheque_no.Text)
                     update_returns.Prepare()
 
                     For i = 0 To grid_returns_view.GetSelectedRows.Length - 1
                         update_returns.Parameters(0).Value = grid_returns_view.GetRowCellValue(grid_returns_view.GetSelectedRows(i), col_rid)
+                        update_returns.Parameters(1).Value = voucher_id
                         update_returns.ExecuteNonQuery()
                     Next
                 End Using
@@ -666,20 +669,19 @@ Public Class frm_accounting_generate_payment
     Private Sub grid_receipts_view_SelectionChanged(sender As Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles grid_receipts_view.SelectionChanged
 
         Dim SelectedRows = grid_receipts_view.GetSelectedRows
+        lbl_receipt_no.Text = SelectedRows.Count
 
         If Not SelectedRows.Length = 0 Then
 
             Dim total As Decimal = 0.00
             Dim total_sum As Decimal = 0.00
+            Dim is_month_not_equal = False
 
             With grid_receipts_view
                 For i = 0 To SelectedRows.Length - 1
 
                     If Not Month(.GetRowCellValue(SelectedRows(0), col_due_date)) = Month(.GetRowCellValue(SelectedRows(i), col_due_date)) Then
-                        MsgBox("Warning! Month of due should Equal.", vbExclamation, "Not Equal")
-                        'txt_cheque_date.Text = ""
-                        'txt_total_view.Text = ""
-                        'Exit Sub
+                        is_month_not_equal = True
                     End If
 
                     Dim due_date As Date = .GetRowCellValue(SelectedRows(i), col_due_date)
@@ -690,6 +692,13 @@ Public Class frm_accounting_generate_payment
 
                     total += .GetRowCellValue(SelectedRows(i), col_amount)
                 Next
+
+                If is_month_not_equal = True Then
+                    MsgBox("Warning! Month of due should Equal.", vbExclamation, "Not Equal")
+                    'txt_cheque_date.Text = ""
+                    'txt_total_view.Text = ""
+                    'Exit Sub
+                End If
 
                 txt_total_view.Text = FormatCurrency(total)
                 Dim product_sum = total_sum / total

@@ -91,6 +91,8 @@ Partial Class frm_admin_users_role
         Me.cb_new_item = New System.Windows.Forms.CheckBox()
         Me.cb_import_catalogue = New System.Windows.Forms.CheckBox()
         Me.cb_export_catalogue = New System.Windows.Forms.CheckBox()
+        Me.cb_returned_units = New System.Windows.Forms.CheckBox()
+        Me.cb_for_selluseller = New System.Windows.Forms.CheckBox()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -579,6 +581,8 @@ Partial Class frm_admin_users_role
         '
         'GroupControl5
         '
+        Me.GroupControl5.Controls.Add(Me.cb_for_selluseller)
+        Me.GroupControl5.Controls.Add(Me.cb_returned_units)
         Me.GroupControl5.Controls.Add(Me.cb_daily_delivery)
         Me.GroupControl5.Controls.Add(Me.cb_delivery_logs)
         Me.GroupControl5.Controls.Add(Me.cb_stock_management)
@@ -815,6 +819,26 @@ Partial Class frm_admin_users_role
         Me.cb_export_catalogue.Text = "Export Catalogue"
         Me.cb_export_catalogue.UseVisualStyleBackColor = True
         '
+        'cb_returned_units
+        '
+        Me.cb_returned_units.AutoSize = True
+        Me.cb_returned_units.Location = New System.Drawing.Point(23, 119)
+        Me.cb_returned_units.Name = "cb_returned_units"
+        Me.cb_returned_units.Size = New System.Drawing.Size(98, 17)
+        Me.cb_returned_units.TabIndex = 17
+        Me.cb_returned_units.Text = "Returned Units"
+        Me.cb_returned_units.UseVisualStyleBackColor = True
+        '
+        'cb_for_selluseller
+        '
+        Me.cb_for_selluseller.AutoSize = True
+        Me.cb_for_selluseller.Location = New System.Drawing.Point(23, 142)
+        Me.cb_for_selluseller.Name = "cb_for_selluseller"
+        Me.cb_for_selluseller.Size = New System.Drawing.Size(93, 17)
+        Me.cb_for_selluseller.TabIndex = 18
+        Me.cb_for_selluseller.Text = "For SelluSeller"
+        Me.cb_for_selluseller.UseVisualStyleBackColor = True
+        '
         'frm_admin_users_role
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -932,4 +956,6 @@ Partial Class frm_admin_users_role
 	Friend WithEvents cb_soa As CheckBox
     Friend WithEvents cb_reports As CheckBox
     Friend WithEvents cb_quotations As CheckBox
+    Friend WithEvents cb_for_selluseller As CheckBox
+    Friend WithEvents cb_returned_units As CheckBox
 End Class

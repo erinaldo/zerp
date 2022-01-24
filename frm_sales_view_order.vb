@@ -845,7 +845,7 @@ Public Class frm_sales_view_order
     End Sub
 
     'btn_save
-    Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+    Private Sub btn_save_Click(sender As Object, e As EventArgs, Optional no_confirmation As Boolean = False) Handles btn_save.Click
 
         'Validation
         If String.IsNullOrEmpty(txt_billing.Text) Or grid_order.Rows.Count <= 1 Then
@@ -954,7 +954,8 @@ Public Class frm_sales_view_order
 
                 cmd.ExecuteNonQuery()
 
-                MsgBox("Save Successfully!", vbInformation, "Information")
+                If Not no_confirmation = True Then MsgBox("Save Successfully!", vbInformation, "Information")
+
             End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
@@ -1110,6 +1111,7 @@ Public Class frm_sales_view_order
 
     'Print Draft Invoice
     Private Sub DraftInvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DraftInvoiceToolStripMenuItem.Click
+        btn_save_Click(Nothing, Nothing, True)
         Dim id = lbl_title.Text.Split("#")
         PrintDraftInvoice(id(1))
     End Sub

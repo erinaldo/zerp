@@ -18,9 +18,6 @@ Public Class frm_sales_view_quotation
     '--- ONLOAD ----
     Private Sub frm_sales_view_quotation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Load_AutoCompleteString()
-        If frm_main.user_role_id.Text.Equals("1") = False Then
-            grid_quotation.Columns(3).ReadOnly = False
-        End If
     End Sub
 
 
@@ -32,12 +29,14 @@ Public Class frm_sales_view_quotation
     Public Sub load_data(id As Integer)
         Try
             LoadCustomers()
-            Dim existing_company = String.Empty, discount_type = ""
+            Dim existing_company = String.Empty, discount_type = "", orders = String.Empty
 
-            Using conn
-                conn.Open()
-                Dim query = "SELECT * FROM ims_quotations WHERE quotation_id=" & id & " AND is_deleted=0"
-                Dim cmd = New MySqlCommand(query, conn)
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim query = "SELECT * FROM ims_quotations
+                                LEFT JOIN ims_users ON ims_users.usr_id=ims_quotations.prepared_by
+                                WHERE quotation_id=" & id & " AND is_deleted=0"
+                Dim cmd = New MySqlCommand(query, connection)
                 Dim rdr = cmd.ExecuteReader
 
                 While rdr.Read
@@ -57,11 +56,15 @@ Public Class frm_sales_view_quotation
                             existing_company = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(rdr("company"))
                     End Select
 
+                    lbl_date_generated.Text = "Created at " & CDate(rdr("created_at")).ToString("MMM dd, yyyy")
+                    lbl_created_by.Text = "Created by " & rdr("first_name")
                     txt_contact_person.Text = rdr("contact_person")
                     txt_no.Text = rdr("contact_no")
                     txt_address.Text = rdr("contact_address")
                     txt_delivery_address.Text = rdr("delivery_address")
-                    data_to_grid(rdr("order_item"), grid_quotation)
+
+                    orders = rdr("order_item")
+
                     txt_priv_notes.Text = rdr("priv_note")
                     txt_pub_notes.Text = rdr("pub_note")
                     lbl_total.Text = FormatCurrency(rdr("total"))
@@ -74,6 +77,10 @@ Public Class frm_sales_view_quotation
                     If rdr("status").Equals("Pending") Then
                         btn_transfer.Enabled = False
                         btn_print.Enabled = False
+                    ElseIf rdr("status").Equals("Approved") Then
+                        If Not (frm_main.user_role_id.Text = "1" Or frm_main.user_role_id.Text = "6") Then
+                            grid_quotation.ReadOnly = True
+                        End If
                     End If
 
                     cbb_validity.Text = rdr("validity")
@@ -100,17 +107,23 @@ Public Class frm_sales_view_quotation
                 End While
                 rdr.Close()
 
-                load_remaining_grid()
-
             End Using
+
+            data_to_grid(orders, grid_quotation, "display")
+            load_remaining_grid()
 
             If Not String.IsNullOrEmpty(existing_company) Then cbb_customer.Text = existing_company
             cbb_discount.Text = discount_type
 
+            'Set Cost and Margin Column Visible for Admin and OM
+            If frm_main.user_role_id.Text = "1" Or frm_main.user_role_id.Text = "6" Then
+                grid_quotation.Columns(5).ReadOnly = False
+                grid_quotation.Columns(3).Visible = True
+                grid_quotation.Columns(4).Visible = True
+            End If
+
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -148,7 +161,7 @@ Public Class frm_sales_view_quotation
 
             'Get subtotal
             For Each row As DataGridViewRow In grid_quotation.Rows
-                sub_total += row.Cells(5).Value
+                sub_total += row.Cells(7).Value
             Next
 
             If Not String.IsNullOrWhiteSpace(txt_discount.Text) And Not cbb_discount.SelectedIndex = -1 Then
@@ -180,7 +193,7 @@ Public Class frm_sales_view_quotation
     End Sub
 
     'Set Grid Data
-    Private Sub data_to_grid(units As String, table As Object)
+    Private Sub data_to_grid(units As String, table As Object, mode As String)
 
         Dim comma(), equal() As String
         Dim piece As String
@@ -194,13 +207,29 @@ Public Class frm_sales_view_quotation
 
             comma = colonseparator.Split(units)
 
-            For i = 0 To comma.Length - 1
-                piece = comma(i).Trim
-                equal = piece.Split("=")
+            Using connection = New MySqlConnection(str)
+                connection.Open()
 
-                table.Rows.Add(equal(0), equal(1), equal(2), equal(3), equal(4), equal(5).Replace(";", ""))
+                For i = 0 To comma.Length - 1
+                    piece = comma(i).Trim
+                    equal = piece.Split("=")
+                    Dim cost As Decimal = 0.00
 
-            Next
+                    Using cmd = New MySqlCommand("SELECT cost FROM ims_inventory WHERE winmodel=@model", connection)
+                        cmd.Parameters.AddWithValue("@model", equal(1))
+                        cost = cmd.ExecuteScalar
+                    End Using
+
+                    Select Case mode
+                        Case "display"
+                            table.Rows.Add(equal(0), equal(1), equal(2), cost, CInt(((equal(3) - cost) / equal(3)) * 100) & "%", equal(3), equal(4), equal(5).Replace(";", ""))
+                        Case "print"
+                            table.Rows.Add(equal(0), equal(1), equal(2), equal(3), equal(4), equal(5).Replace(";", ""))
+                    End Select
+
+
+                Next
+            End Using
 
             ComputeTotal()
 
@@ -213,36 +242,40 @@ Public Class frm_sales_view_quotation
 
         grid_remaining.Rows.Clear()
 
-        For i = 0 To grid_quotation.Rows.Count - 2
-            Dim model = grid_quotation.Rows(i).Cells(1).Value
+        Using connection = New MySqlConnection(str)
+            connection.Open()
 
-            Dim cmd = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", conn)
-            cmd.Parameters.AddWithValue("@winmodel", model)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            For i = 0 To grid_quotation.Rows.Count - 2
+                Dim model = grid_quotation.Rows(i).Cells(1).Value
 
-            While rdr.Read
-                grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
-                grid_remaining.CurrentCell = Nothing
-            End While
-
-            rdr.Close()
-        Next
+                Using cmd = New MySqlCommand(get_query() & " WHERE winmodel=@winmodel", connection)
+                    cmd.Parameters.AddWithValue("@winmodel", model)
+                    Using rdr = cmd.ExecuteReader
+                        While rdr.Read
+                            grid_remaining.Rows.Add(rdr("other_qty"), rdr("qty"), rdr("onhold"))
+                            grid_remaining.CurrentCell = Nothing
+                        End While
+                    End Using
+                End Using
+            Next
+        End Using
 
     End Sub
 
     'Get All Store Tables
     Private Function get_all_store_tables(MyStore As String)
+        Dim tables = String.Empty
+        Using connection = New MySqlConnection(str)
+            connection.Open()
+            Using rdr_tbl = New MySqlCommand("SELECT store_name FROM ims_stores", connection).ExecuteReader
 
-        Dim rdr_tbl = New MySqlCommand("SELECT store_name FROM ims_stores", conn).ExecuteReader
-
-        Dim tables = ""
-        While rdr_tbl.Read
-            Dim store = "ims_" & rdr_tbl("store_name").ToString.ToLower.Replace(" ", "_")
-            If store.Equals(MyStore) Then Continue While
-            tables += store & ","
-        End While
-
-        rdr_tbl.Close()
+                While rdr_tbl.Read
+                    Dim store = "ims_" & rdr_tbl("store_name").ToString.ToLower.Replace(" ", "_")
+                    If store.Equals(MyStore) Then Continue While
+                    tables += store & ","
+                End While
+            End Using
+        End Using
 
         Return tables
 
@@ -269,7 +302,7 @@ Public Class frm_sales_view_quotation
         Next
 
         'Dim query = "SELECT (" & other_qty & ") as other_qty, IFNULL(" & STORE_TABLE & ".qty,0) as qty, IFNULL(" & STORE_TABLE & ".on_hold,0) as onhold, ims_inventory.pid, description, winmodel, status, " & GetAccountTypeTable() & " FROM `ims_inventory` LEFT JOIN " & STORE_TABLE & " ON ims_inventory.pid=" & STORE_TABLE & ".pid " & inner_join
-        Dim query = "SELECT (" & other_qty & ") as other_qty, IFNULL(" & STORE_TABLE & ".qty,0) as qty, IFNULL(" & STORE_TABLE & ".on_hold,0) as onhold, ims_inventory.pid, description, winmodel, status, " & GetAccountTypeTable() & " FROM `ims_inventory` LEFT JOIN " & STORE_TABLE & " ON ims_inventory.pid=" & STORE_TABLE & ".pid " & inner_join
+        Dim query = "SELECT (" & other_qty & ") as other_qty, IFNULL(" & STORE_TABLE & ".qty,0) as qty, IFNULL(" & STORE_TABLE & ".on_hold,0) as onhold, ims_inventory.pid, description, winmodel, status, cost, " & GetAccountTypeTable() & " FROM `ims_inventory` LEFT JOIN " & STORE_TABLE & " ON ims_inventory.pid=" & STORE_TABLE & ".pid " & inner_join
 
         Return query
 
@@ -327,47 +360,50 @@ Public Class frm_sales_view_quotation
         Dim rdr As MySqlDataReader
         Dim table = New PrintData
         Dim orders = ""
+
         Try
-            conn.Open()
-            Dim query = "SELECT *, 
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+                Dim query = "SELECT *, 
                         (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info, 
                         DATE_ADD(created_at, INTERVAL terms DAY) AS due_date, prepared.first_name AS prepared_name, 
                         approved.first_name AS approved_name FROM ims_quotations 
                         INNER JOIN ims_users AS prepared ON prepared.usr_id=prepared_by
                         INNER JOIN ims_users AS approved ON approved.usr_id=approved_by
                         WHERE quotation_id=" & id
-            Dim cmd = New MySqlCommand(query, conn)
-            rdr = cmd.ExecuteReader
+                Dim cmd = New MySqlCommand(query, connection)
+                rdr = cmd.ExecuteReader
 
-            While rdr.Read
-                report.Parameters("store_name").Value = rdr("store_name")
-                report.Parameters("quotation_id").Value = "Q" & id.ToString.PadLeft(5, "0"c)
-                report.Parameters("company").Value = rdr("company")
-                report.Parameters("contact_person").Value = rdr("contact_person")
-                report.Parameters("contact_no").Value = rdr("contact_no")
-                report.Parameters("delivery_address").Value = rdr("delivery_address")
-                report.Parameters("total").Value = rdr("total")
-                report.Parameters("pub_notes").Value = rdr("pub_note")
-                report.Parameters("prepared_by").Value = rdr("prepared_name")
-                report.Parameters("approved_name").Value = rdr("approved_name")
-                report.Parameters("store_info").Value = rdr("store_info")
-                report.Parameters("is_term_applied").Value = rdr("is_term_applied")
-                report.Parameters("terms").Value = rdr("terms")
-                report.Parameters("validity").Value = rdr("validity") & " Days"
-                report.Parameters("created_at").Value = rdr("created_at")
-                report.Parameters("due_date").Value = rdr("due_date")
-                report.Parameters("discount_type").Value = rdr("discount_type")
-                report.Parameters("discount_val").Value = rdr("discount_val")
+                While rdr.Read
+                    report.Parameters("store_name").Value = rdr("store_name")
+                    report.Parameters("quotation_id").Value = "Q" & id.ToString.PadLeft(5, "0"c)
+                    report.Parameters("company").Value = rdr("company")
+                    report.Parameters("contact_person").Value = rdr("contact_person")
+                    report.Parameters("contact_no").Value = rdr("contact_no")
+                    report.Parameters("delivery_address").Value = rdr("delivery_address")
+                    report.Parameters("total").Value = rdr("total")
+                    report.Parameters("pub_notes").Value = rdr("pub_note")
+                    report.Parameters("prepared_by").Value = rdr("prepared_name")
+                    report.Parameters("approved_name").Value = rdr("approved_name")
+                    report.Parameters("store_info").Value = rdr("store_info")
+                    report.Parameters("is_term_applied").Value = rdr("is_term_applied")
+                    report.Parameters("terms").Value = rdr("terms")
+                    report.Parameters("validity").Value = rdr("validity") & " Days"
+                    report.Parameters("created_at").Value = rdr("created_at")
+                    report.Parameters("due_date").Value = rdr("due_date")
+                    report.Parameters("discount_type").Value = rdr("discount_type")
+                    report.Parameters("discount_val").Value = rdr("discount_val")
 
-                report.Parameters("is_vatable").Value = rdr("is_vatable")
-                report.Parameters("is_withholding_tax_applied").Value = rdr("is_withholding_tax_applied")
-                report.Parameters("withholding_tax_percentage").Value = rdr("withholding_tax_percentage")
-                report.Parameters("withholding_tax_amount").Value = rdr("withholding_tax_amount")
-                report.Parameters("delivery_charge").Value = IIf(rdr("delivery_fee") > 0, rdr("delivery_fee"), "")
-                orders = rdr("order_item")
-            End While
+                    report.Parameters("is_vatable").Value = rdr("is_vatable")
+                    report.Parameters("is_withholding_tax_applied").Value = rdr("is_withholding_tax_applied")
+                    report.Parameters("withholding_tax_percentage").Value = rdr("withholding_tax_percentage")
+                    report.Parameters("withholding_tax_amount").Value = rdr("withholding_tax_amount")
+                    report.Parameters("delivery_charge").Value = IIf(rdr("delivery_fee") > 0, rdr("delivery_fee"), "")
+                    orders = rdr("order_item")
+                End While
+            End Using
 
-            data_to_grid(orders, table.quotation)
+            data_to_grid(orders, table.quotation, "print")
 
             report.RequestParameters = False
             report.DataSource = table
@@ -377,8 +413,6 @@ Public Class frm_sales_view_quotation
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -392,7 +426,9 @@ Public Class frm_sales_view_quotation
         Dim orders = ""
         For Each row In grid_quotation.Rows
             If String.IsNullOrEmpty(row.Cells(1).value) Then Continue For
-            orders += row.Cells(0).value & "=" & row.Cells(1).value & "=" & row.Cells(2).value & "=" & row.Cells(3).value & "=" & row.Cells(4).Value & "=" & row.Cells(5).Value & ";"
+            orders += row.Cells(0).value & "=" & row.Cells(1).value &
+                "=" & row.Cells(2).value & "=" & row.Cells(5).value &
+                "=" & row.Cells(6).Value & "=" & row.Cells(7).Value & ";"
         Next
 
         'Get Company
@@ -542,11 +578,14 @@ Public Class frm_sales_view_quotation
                     'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
                     grid_quotation.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
                     grid_quotation.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                    Dim cost As Decimal = rdr(GetAccountTypeTable)
-                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
-                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * cost
-                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
+                    Dim price As Decimal = rdr(GetAccountTypeTable)
+                    Dim cost As Decimal = rdr("cost")
+                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost
+                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((price - cost) / price) * 100) & "%"
+                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = price.ToString("n2")
+                    grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
+                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * price
+                    grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
                 End While
 
 
@@ -604,11 +643,14 @@ Public Class frm_sales_view_quotation
                     'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
                     grid_quotation.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
                     grid_quotation.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                    Dim cost As Decimal = rdr(GetAccountTypeTable)
-                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
-                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * cost
-                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
+                    Dim price As Decimal = rdr(GetAccountTypeTable)
+                    Dim cost As Decimal = rdr("cost")
+                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost
+                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((price - cost) / price) * 100) & "%"
+                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = price.ToString("n2")
+                    grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
+                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * price
+                    grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
                 End While
 
             Catch ex As Exception
@@ -619,21 +661,21 @@ Public Class frm_sales_view_quotation
         End If
 
 
-        If e.ColumnIndex.Equals(0) Or e.ColumnIndex.Equals(3) Or e.ColumnIndex.Equals(4) Then
+        If e.ColumnIndex.Equals(0) Or e.ColumnIndex.Equals(5) Or e.ColumnIndex.Equals(6) Then
 
             Try
                 If String.IsNullOrEmpty(grid_quotation.Rows(e.RowIndex).Cells(1).Value) Then Return
 
                 Dim cost As Decimal = 0.00
 
-                If e.ColumnIndex.Equals(3) Then
+                If e.ColumnIndex.Equals(5) Then
                     grid_quotation.CurrentCell.Value = CDec(grid_quotation.CurrentCell.Value)
                 End If
 
-                If e.ColumnIndex.Equals(4) Then
+                If e.ColumnIndex.Equals(6) Then
 
                     'Discount Counter
-                    If discount_counter > 2 Then
+                    If discount_counter > 5 Then
 
                         'Discount Approcal
                         Dim pass As String = ""
@@ -654,8 +696,8 @@ Public Class frm_sales_view_quotation
 
                         If count < 1 Or String.IsNullOrWhiteSpace(pass) Then
                             MsgBox("Password is Incorrect!", vbCritical, "Incorrect Password")
-                            grid_quotation.Rows(e.RowIndex).Cells(5).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * grid_quotation.Rows(e.RowIndex).Cells(3).Value).ToString("n2")
-                            grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
+                            grid_quotation.Rows(e.RowIndex).Cells(7).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * grid_quotation.Rows(e.RowIndex).Cells(5).Value).ToString("n2")
+                            grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
                             Exit Sub
                         End If
 
@@ -679,21 +721,22 @@ Public Class frm_sales_view_quotation
 
 
 
-                Dim price As Decimal = grid_quotation.Rows(e.RowIndex).Cells(3).Value
-                Dim discount As Decimal = grid_quotation.Rows(e.RowIndex).Cells(4).Value.ToString.Replace("%", "")
+                Dim price As Decimal = grid_quotation.Rows(e.RowIndex).Cells(5).Value
+                Dim discount As Decimal = grid_quotation.Rows(e.RowIndex).Cells(6).Value.ToString.Replace("%", "")
                 Dim total_price = price - (price * (discount / 100))
 
                 If total_price < cost Then
                     MsgBox("Price is less than of cost!", vbCritical, "Error")
-                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * price).ToString("n2")
-                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
+                    grid_quotation.Rows(e.RowIndex).Cells(7).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * price).ToString("n2")
+                    grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
                     Exit Sub
                 End If
 
                 Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * total_price
 
-                grid_quotation.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
-                grid_quotation.Rows(e.RowIndex).Cells(4).Value = discount & "%"
+                grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((total_price - cost) / total_price) * 100) & "%"
+                grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
+                grid_quotation.Rows(e.RowIndex).Cells(6).Value = discount & "%"
 
 
             Catch ex As Exception
@@ -701,6 +744,7 @@ Public Class frm_sales_view_quotation
             End Try
 
         End If
+
 
         'Compute Total
         ComputeTotal()
@@ -843,7 +887,7 @@ Public Class frm_sales_view_quotation
                 End Try
 
                 If is_existing_customer = 1 Then
-                    MsgBox("This customer is already registered. Proceding to Order Form..", vbInformation + vbOKOnly, "Information")
+                    MsgBox("This customer is already registered. Proceeding to Sales Order..", vbInformation + vbOKOnly, "Information")
                 End If
 
                 If is_existing_customer = 0 Then
@@ -907,9 +951,9 @@ Public Class frm_sales_view_quotation
                                 .Rows(i).Cells(0).Value,
                                 .Rows(i).Cells(1).Value,
                                 .Rows(i).Cells(2).Value,
-                                .Rows(i).Cells(3).Value,
-                                .Rows(i).Cells(4).Value,
-                                .Rows(i).Cells(5).Value)
+                                .Rows(i).Cells(5).Value,
+                                .Rows(i).Cells(6).Value,
+                                .Rows(i).Cells(7).Value)
                 End With
             Next
 

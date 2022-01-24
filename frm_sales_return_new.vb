@@ -76,7 +76,6 @@ Public Class frm_sales_return_new
         cbb_customer.SelectedIndex = -1
         txt_customer_id.Text = String.Empty
         lbl_account_type.Text = String.Empty
-        lbl_last_order.Text = "Last Order:"
         grid_return.Rows.Clear()
         lbl_total.Text = FormatCurrency(0)
     End Sub
@@ -115,7 +114,7 @@ Public Class frm_sales_return_new
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Dim status = String.Empty
+                Dim status = String.Empty, orders = String.Empty
 
                 Using rdr = New MySqlCommand("SELECT ims_customers.first_name AS customer, units, store_id, status  
                             FROM ims_sales_returns 
@@ -126,32 +125,50 @@ Public Class frm_sales_return_new
                         cbb_customer.Text = rdr("customer")
                         lbl_store_id.Text = rdr("store_id")
                         status = rdr("status")
-
-                        Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of SalesReturnClass))(rdr("units"))
-                        For Each item In itemsObject
-                            grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid)
-                        Next
-                        ComputeTotal()
+                        orders = rdr("units")
                     End While
-
-                    'Update GUI for EDITING
-                    Me.Text = "Edit Sales Return"
-                    lbl_title.Text = "Edit Sales Return"
-                    lbl_action.Text = "Edit"
-                    btn_create.Visible = False
-                    btn_clear.Visible = False
-                    btn_update.Visible = True
-                    btn_delete.Visible = True
-                    btn_update.Location = btn_create.Location
-                    btn_delete.Location = btn_clear.Location
-                    cbb_customer.ReadOnly = True
-
-                    If status.Equals("Approved") Then
-                        grid_return.ReadOnly = True
-                        grid_return.AllowUserToAddRows = False
-                    End If
-
                 End Using
+
+                'Set Items to Grid
+                Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of SalesReturnClass))(orders)
+                For Each item In itemsObject
+                    Using cmd = New MySqlCommand("SELECT purchase_date FROM ims_sales " &
+                                                 "WHERE item=@item AND customer=@customer
+                                                 ORDER BY purchase_date DESC
+                                                 LIMIT 1", conn)
+                        cmd.Parameters.AddWithValue("@item", item.pid)
+                        cmd.Parameters.AddWithValue("@customer", txt_customer_id.Text)
+                        Using rdr = cmd.ExecuteReader
+                            If rdr.HasRows Then
+                                rdr.Read()
+                                grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, rdr("purchase_date"))
+                            Else
+                                grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, "-- NOT FOUND --")
+                            End If
+                        End Using
+                    End Using
+                Next
+
+                'Get Total
+                ComputeTotal()
+
+                'Update GUI for EDITING
+                Me.Text = "Edit Sales Return"
+                lbl_title.Text = "Edit Sales Return"
+                lbl_action.Text = "Edit"
+                btn_create.Visible = False
+                btn_clear.Visible = False
+                btn_update.Visible = True
+                btn_delete.Visible = True
+                btn_update.Location = btn_create.Location
+                btn_delete.Location = btn_clear.Location
+                cbb_customer.ReadOnly = True
+
+                If status.Equals("Approved") Then
+                    grid_return.ReadOnly = True
+                    grid_return.AllowUserToAddRows = False
+                End If
+
             End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
@@ -220,19 +237,30 @@ Public Class frm_sales_return_new
                 Using conn = New MySqlConnection(str)
                     conn.Open()
 
-                    Dim cmd = New MySqlCommand("SELECT pid, winmodel, description, " & GetAccountTypeTable() & " FROM ims_inventory WHERE winmodel=@winmodel", conn)
+                    Dim cmd = New MySqlCommand("SELECT item, inv.winmodel, inv.description, purchase_date, inv." & GetAccountTypeTable() &
+                                               " FROM ims_sales
+                                                LEFT JOIN ims_inventory inv ON inv.pid=ims_sales.item
+                                                WHERE inv.winmodel=@winmodel AND customer=@customer_id
+                                                ORDER BY purchase_date DESC
+                                                LIMIT 1", conn)
                     cmd.Parameters.AddWithValue("@winmodel", grid_return.CurrentCell.Value)
+                    cmd.Parameters.AddWithValue("@customer_id", txt_customer_id.Text)
                     Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-                    While rdr.Read
+                    If rdr.HasRows Then
+                        While rdr.Read
+                            'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
+                            grid_return.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
+                            grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("description")
+                            Dim cost As Decimal = rdr(GetAccountTypeTable())
+                            grid_return.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
+                            grid_return.Rows(e.RowIndex).Cells(5).Value = rdr("item")
+                            grid_return.Rows(e.RowIndex).Cells(6).Value = rdr("purchase_date")
+                        End While
+                    Else
+                        MsgBox("No last order found!", vbCritical, "Not found")
+                    End If
 
-                        'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
-                        grid_return.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
-                        grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                        Dim cost As Decimal = rdr(GetAccountTypeTable())
-                        grid_return.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                        grid_return.Rows(e.RowIndex).Cells(5).Value = rdr("pid")
-                    End While
                 End Using
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
@@ -248,8 +276,14 @@ Public Class frm_sales_return_new
                 Using conn = New MySqlConnection(str)
                     conn.Open()
 
-                    Dim cmd = New MySqlCommand("SELECT pid, winmodel, description, " & GetAccountTypeTable() & " FROM ims_inventory WHERE description=@description", conn)
+                    Dim cmd = New MySqlCommand("SELECT item, inv.winmodel, inv.description, purchase_date, inv." & GetAccountTypeTable() &
+                                               " FROM ims_sales
+                                                LEFT JOIN ims_inventory inv ON inv.pid=ims_sales.item
+                                                WHERE inv.description=@description AND customer=@customer_id
+                                                ORDER BY purchase_date DESC
+                                                LIMIT 1", conn)
                     cmd.Parameters.AddWithValue("@description", grid_return.CurrentCell.Value)
+                    cmd.Parameters.AddWithValue("@customer_id", txt_customer_id.Text)
                     Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
                     While rdr.Read
@@ -259,7 +293,8 @@ Public Class frm_sales_return_new
                         grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("description")
                         Dim cost As Decimal = rdr(GetAccountTypeTable())
                         grid_return.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                        grid_return.Rows(e.RowIndex).Cells(5).Value = rdr("pid")
+                        grid_return.Rows(e.RowIndex).Cells(5).Value = rdr("item")
+                        grid_return.Rows(e.RowIndex).Cells(6).Value = rdr("purchase_date")
                     End While
                 End Using
             Catch ex As Exception
@@ -294,7 +329,7 @@ Public Class frm_sales_return_new
         End If
 
         If MsgBox("Press 'YES' to confirm.", vbYesNo + vbInformation, "Confirmation") = vbYes Then
-            Dim ListOfUnits = New List(Of SalesReturnClass)
+                    Dim ListOfUnits = New List(Of SalesReturnClass)
             For i = 0 To grid_return.RowCount - 2
                 ListOfUnits.Add(New SalesReturnClass With {
                 .qty = grid_return.Rows(i).Cells(0).Value,
@@ -407,17 +442,6 @@ Public Class frm_sales_return_new
                         txt_customer_id.Text = rdr("customer_id")
                         lbl_account_type.Text = rdr("account_type")
                     End Using
-                End Using
-
-                Using cmd = New MySqlCommand("SELECT date_released FROM ims_orders 
-                                WHERE date_released IS NOT NULL AND customer=@customer ORDER BY date_released DESC", conn)
-                    cmd.Parameters.AddWithValue("@customer", txt_customer_id.Text)
-                    Dim last_order As Object = cmd.ExecuteScalar
-                    If last_order IsNot Nothing Then
-                        lbl_last_order.Text = "Last Order:    " & CDate(last_order).ToString("MM-dd-yyyy")
-                    Else
-                        lbl_last_order.Text = "Last Order:   -"
-                    End If
                 End Using
 
                 'RESTRICT OTHER USER FROM CREATING WITH SISTER COMPANY

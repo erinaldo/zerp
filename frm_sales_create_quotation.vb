@@ -15,8 +15,10 @@ Public Class frm_sales_create_quotation
     Private Sub frm_sales_create_quotation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Load_AutoCompleteString()
         LoadCustomers()
-        If frm_main.user_role_id.Text = "1" Then
-            grid_quotation.Columns(3).ReadOnly = False
+        If frm_main.user_role_id.Text = "1" Or frm_main.user_role_id.Text = "6" Then
+            grid_quotation.Columns(5).ReadOnly = False
+            grid_quotation.Columns(3).Visible = True
+            grid_quotation.Columns(4).Visible = True
         End If
     End Sub
 
@@ -118,7 +120,7 @@ Public Class frm_sales_create_quotation
         Next
 
         'Dim query = "SELECT (" & other_qty & ") as other_qty, IFNULL(" & STORE_TABLE & ".qty,0) as qty, IFNULL(" & STORE_TABLE & ".on_hold,0) as onhold, ims_inventory.pid, description, winmodel, status, " & GetAccountTypeTable() & " FROM `ims_inventory` LEFT JOIN " & STORE_TABLE & " ON ims_inventory.pid=" & STORE_TABLE & ".pid " & inner_join
-        Dim query = "SELECT (" & other_qty & ") as other_qty, IFNULL(" & STORE_TABLE & ".qty,0) as qty, IFNULL(" & STORE_TABLE & ".on_hold,0) as onhold, ims_inventory.pid, description, winmodel, status, " & GetAccountTypeTable() & " FROM `ims_inventory` LEFT JOIN " & STORE_TABLE & " ON ims_inventory.pid=" & STORE_TABLE & ".pid " & inner_join
+        Dim query = "SELECT (" & other_qty & ") as other_qty, IFNULL(" & STORE_TABLE & ".qty,0) as qty, IFNULL(" & STORE_TABLE & ".on_hold,0) as onhold, ims_inventory.pid, description, winmodel, status, cost, " & GetAccountTypeTable() & " FROM `ims_inventory` LEFT JOIN " & STORE_TABLE & " ON ims_inventory.pid=" & STORE_TABLE & ".pid " & inner_join
 
         Return query
 
@@ -176,7 +178,7 @@ Public Class frm_sales_create_quotation
 
             'Get subtotal
             For Each row As DataGridViewRow In grid_quotation.Rows
-                sub_total += row.Cells(5).Value
+                sub_total += row.Cells(7).Value
             Next
 
             If Not String.IsNullOrWhiteSpace(txt_discount.Text) And Not cbb_discount.SelectedIndex = -1 Then
@@ -307,11 +309,14 @@ Public Class frm_sales_create_quotation
                     'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
                     grid_quotation.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
                     grid_quotation.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                    Dim cost As Decimal = rdr(GetAccountTypeTable)
-                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
-                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * cost
-                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
+                    Dim price As Decimal = rdr(GetAccountTypeTable)
+                    Dim cost As Decimal = rdr("cost")
+                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost
+                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((price - cost) / price) * 100) & "%"
+                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = price.ToString("n2")
+                    grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
+                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * price
+                    grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
                 End While
 
 
@@ -369,11 +374,14 @@ Public Class frm_sales_create_quotation
                     'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
                     grid_quotation.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
                     grid_quotation.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                    Dim cost As Decimal = rdr(GetAccountTypeTable)
-                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
-                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
-                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * cost
-                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
+                    Dim price As Decimal = rdr(GetAccountTypeTable)
+                    Dim cost As Decimal = rdr("cost")
+                    grid_quotation.Rows(e.RowIndex).Cells(3).Value = cost
+                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((price - cost) / price) * 100) & "%"
+                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = price.ToString("n2")
+                    grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
+                    Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * price
+                    grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
                 End While
 
             Catch ex As Exception
@@ -384,21 +392,21 @@ Public Class frm_sales_create_quotation
         End If
 
 
-        If e.ColumnIndex.Equals(0) Or e.ColumnIndex.Equals(3) Or e.ColumnIndex.Equals(4) Then
+        If e.ColumnIndex.Equals(0) Or e.ColumnIndex.Equals(5) Or e.ColumnIndex.Equals(6) Then
 
             Try
                 If String.IsNullOrEmpty(grid_quotation.Rows(e.RowIndex).Cells(1).Value) Then Return
 
                 Dim cost As Decimal = 0.00
 
-                If e.ColumnIndex.Equals(3) Then
+                If e.ColumnIndex.Equals(5) Then
                     grid_quotation.CurrentCell.Value = CDec(grid_quotation.CurrentCell.Value)
                 End If
 
-                If e.ColumnIndex.Equals(4) Then
+                If e.ColumnIndex.Equals(6) Then
 
                     'Discount Counter
-                    If discount_counter > 2 Then
+                    If discount_counter > 5 Then
 
                         'Discount Approcal
                         Dim pass As String = ""
@@ -419,8 +427,8 @@ Public Class frm_sales_create_quotation
 
                         If count < 1 Or String.IsNullOrWhiteSpace(pass) Then
                             MsgBox("Password is Incorrect!", vbCritical, "Incorrect Password")
-                            grid_quotation.Rows(e.RowIndex).Cells(5).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * grid_quotation.Rows(e.RowIndex).Cells(3).Value).ToString("n2")
-                            grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
+                            grid_quotation.Rows(e.RowIndex).Cells(7).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * grid_quotation.Rows(e.RowIndex).Cells(5).Value).ToString("n2")
+                            grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
                             Exit Sub
                         End If
 
@@ -444,21 +452,22 @@ Public Class frm_sales_create_quotation
 
 
 
-                Dim price As Decimal = grid_quotation.Rows(e.RowIndex).Cells(3).Value
-                Dim discount As Decimal = grid_quotation.Rows(e.RowIndex).Cells(4).Value.ToString.Replace("%", "")
+                Dim price As Decimal = grid_quotation.Rows(e.RowIndex).Cells(5).Value
+                Dim discount As Decimal = grid_quotation.Rows(e.RowIndex).Cells(6).Value.ToString.Replace("%", "")
                 Dim total_price = price - (price * (discount / 100))
 
                 If total_price < cost Then
                     MsgBox("Price is less than of cost!", vbCritical, "Error")
-                    grid_quotation.Rows(e.RowIndex).Cells(5).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * price).ToString("n2")
-                    grid_quotation.Rows(e.RowIndex).Cells(4).Value = "0%"
+                    grid_quotation.Rows(e.RowIndex).Cells(7).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * price).ToString("n2")
+                    grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
                     Exit Sub
                 End If
 
                 Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * total_price
 
-                grid_quotation.Rows(e.RowIndex).Cells(5).Value = total.ToString("n2")
-                grid_quotation.Rows(e.RowIndex).Cells(4).Value = discount & "%"
+                grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((total_price - cost) / total_price) * 100) & "%"
+                grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
+                grid_quotation.Rows(e.RowIndex).Cells(6).Value = discount & "%"
 
 
             Catch ex As Exception
@@ -578,7 +587,7 @@ Public Class frm_sales_create_quotation
         End If
 
         If radio_existing.Checked = True Then
-            If String.IsNullOrEmpty(cbb_customer.Text) Or String.IsNullOrEmpty(txt_contact_person.Text) Or grid_quotation.Rows.Count <= 1 Then
+            If String.IsNullOrEmpty(cbb_customer.Text) Or String.IsNullOrEmpty(txt_contact_person.Text) Or grid_quotation.Rows.Count <= 1 Or cbb_validity.SelectedIndex = -1 Then
                 MsgBox("Complete All Fields!", vbCritical, "Error")
                 Exit Sub
             End If
@@ -588,7 +597,9 @@ Public Class frm_sales_create_quotation
         Dim orders = ""
         For Each row In grid_quotation.Rows
             If String.IsNullOrEmpty(row.Cells(1).value) Then Continue For
-            orders += row.Cells(0).value & "=" & row.Cells(1).value & "=" & row.Cells(2).value & "=" & row.Cells(3).value & "=" & row.Cells(4).Value & "=" & row.Cells(5).Value & ";"
+            orders += row.Cells(0).value & "=" & row.Cells(1).value &
+                "=" & row.Cells(2).value & "=" & row.Cells(5).value &
+                "=" & row.Cells(6).Value & "=" & row.Cells(7).Value & ";"
         Next
 
         'Get Customer Type & Name

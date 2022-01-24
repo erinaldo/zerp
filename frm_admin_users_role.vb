@@ -55,6 +55,8 @@ Public Class frm_admin_users_role
                     Case "delivery_logs" : cb_delivery_logs.Checked = True
                     Case "stock_management" : cb_stock_management.Checked = True
                     Case "stock_inventory" : cb_stock_inventory.Checked = True
+                    Case "returned_units" : cb_returned_units.Checked = True
+                    Case "for_selluseller" : cb_for_selluseller.Checked = True
 
                     'Collections
                     Case "order_payments" : cb_order_payments.Checked = True
@@ -122,6 +124,8 @@ Public Class frm_admin_users_role
         If cb_delivery_logs.Checked Then access += "delivery_logs;"
         If cb_stock_management.Checked Then access += "stock_management;"
         If cb_stock_inventory.Checked Then access += "stock_inventory;"
+        If cb_returned_units.Checked Then access += "returned_units;"
+        If cb_for_selluseller.Checked Then access += "for_selluseller;"
 
         'Collections
         If cb_order_payments.Checked Then access += "order_payments;"

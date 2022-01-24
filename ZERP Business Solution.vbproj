@@ -536,6 +536,12 @@
     <Compile Include="frm_sales_unserved_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_selluseller.Designer.vb">
+      <DependentUpon>frm_selluseller.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_selluseller.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_splash_screen.Designer.vb">
       <DependentUpon>frm_splash_screen.vb</DependentUpon>
     </Compile>
@@ -1015,6 +1021,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales_unserved_dialog.resx">
       <DependentUpon>frm_sales_unserved_dialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_selluseller.resx">
+      <DependentUpon>frm_selluseller.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_splash_screen.resx">
       <DependentUpon>frm_splash_screen.vb</DependentUpon>

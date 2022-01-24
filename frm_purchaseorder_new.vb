@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports DevExpress.XtraEditors.Controls
 Imports MySql.Data.MySqlClient
+Imports Newtonsoft.Json
 
 Public Class frm_purchaseorder_new
 
@@ -256,7 +257,7 @@ Public Class frm_purchaseorder_new
         lbl_total.Text = "₱0.00"
         txt_terms.Text = String.Empty
         txt_search.Text = String.Empty
-
+        grid_stocks.Rows.Clear()
     End Sub
 
     'Create DataTable (grid_order)
@@ -264,7 +265,7 @@ Public Class frm_purchaseorder_new
         Try
             Dim dataTable = New DataTable()
             dataTable.Columns.Add("sku", GetType(Integer))
-            dataTable.Columns.Add("qty", GetType(Integer))
+            dataTable.Columns.Add("qty", GetType(Double))
             dataTable.Columns.Add("qty_per_box", GetType(Integer))
             dataTable.Columns.Add("winmodel", GetType(String))
             dataTable.Columns.Add("supmodel", GetType(String))
@@ -291,26 +292,39 @@ Public Class frm_purchaseorder_new
             Return
         End If
 
-        Dim orders = String.Empty
+        'Dim orders = String.Empty
+        Dim ListOfOrders = New List(Of PurchaseOrderClass)
+
         For Each row As DataRow In DirectCast(grid_order.DataSource, DataTable).Rows
-            'RETURN IF HAS ROW WITH NO VALUE
-            If String.IsNullOrEmpty(row.Item(1).ToString) Or String.IsNullOrEmpty(row.Item(1).ToString) Then
-                MsgBox("Couldn't proceed due to incomplete rows.", vbCritical, "No Values")
-                Return
-            End If
-            If String.IsNullOrEmpty(row.Item(0).ToString) Then Continue For
-            orders = orders & row.Item(0).ToString & "=" & row.Item(1).ToString & "=" & row.Item(3).ToString & "=" & row.Item(4).ToString & "=" & row.Item(5).ToString & "=" & row.Item(6).ToString & "=" & row.Item(7).ToString & ";"
+
+            'If String.IsNullOrEmpty(row.Item(0).ToString) Then Continue For
+            'orders = orders & row.Item(0).ToString & "=" & row.Item(1).ToString & "=" & row.Item(3).ToString & "=" & row.Item(4).ToString & "=" & row.Item(5).ToString & "=" & row.Item(6).ToString & "=" & row.Item(7).ToString & ";"
+
+            ListOfOrders.Add(New PurchaseOrderClass With {
+                .pid = row.Item(0),
+                .qty = row.Item(1),
+                .winmodel = row.Item(3),
+                .supmodel = row.Item(4),
+                .description = row.Item(5),
+                .cost = row.Item(6),
+                .total_cost = row.Item(7),
+                .qty_received = 0
+            })
+
         Next
 
 
         Try
             conn.Open()
-            Dim cmd As MySqlCommand = New MySqlCommand("INSERT INTO ims_purchase (supplier, contact_person, address, deliver_to, orders, is_vatable, discount_val, discount_type, is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage, total, terms, lead_time, notes, pub_notes, status, created_by, date_generated, is_payment_first)" & vbCrLf & "                                        VALUES ((SELECT id FROM ims_suppliers WHERE supplier=@supplier), @contact_person, @address, (SELECT store_id FROM ims_stores WHERE store_name=@deliver_to), @orders, @is_vatable, @discount_val, @discount_type, " & vbCrLf & "                                        @is_withholding_tax_applied, @withholding_tax_amount, @withholding_tax_percentage, @total, @terms, @lead_time, @notes, @pub_notes, @status, @user_id, CURDATE(), @is_payment_first)", Me.conn)
+            Dim cmd As MySqlCommand = New MySqlCommand("INSERT INTO ims_purchase (supplier, contact_person, address, deliver_to, orders, is_vatable, discount_val, discount_type,
+                                                          is_withholding_tax_applied, withholding_tax_amount, withholding_tax_percentage, total, terms, lead_time, notes, pub_notes, status, created_by, date_generated, is_payment_first)
+                                                        VALUES ((SELECT id FROM ims_suppliers WHERE supplier=@supplier), @contact_person, @address, (SELECT store_id FROM ims_stores WHERE store_name=@deliver_to), @orders, @is_vatable, @discount_val, @discount_type,
+                                                          @is_withholding_tax_applied, @withholding_tax_amount, @withholding_tax_percentage, @total, @terms, @lead_time, @notes, @pub_notes, @status, @user_id, CURDATE(), @is_payment_first)", conn)
             cmd.Parameters.AddWithValue("@supplier", cbb_supplier.Text.Trim())
             cmd.Parameters.AddWithValue("@contact_person", txt_contact.Text.Trim())
             cmd.Parameters.AddWithValue("@address", txt_delivery_address.Text.Trim())
             cmd.Parameters.AddWithValue("@deliver_to", cbb_deliver.Text.Trim())
-            cmd.Parameters.AddWithValue("@orders", orders)
+            cmd.Parameters.AddWithValue("@orders", JsonConvert.SerializeObject(ListOfOrders))
             cmd.Parameters.AddWithValue("@is_payment_first", Me.cb_payment_first.Checked)
             cmd.Parameters.AddWithValue("@is_vatable", cb_vatable.Checked)
             cmd.Parameters.AddWithValue("@discount_val", txt_discount.Text.Trim())
@@ -343,7 +357,7 @@ Public Class frm_purchaseorder_new
     'Digits Only in Column Qty
     Private Sub DigitsOnly_KeyPress(sender As Object, e As KeyPressEventArgs)
         If grid_order.CurrentCell.ColumnIndex = 1 Then
-            If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." Then
                 e.Handled = True
             End If
         End If

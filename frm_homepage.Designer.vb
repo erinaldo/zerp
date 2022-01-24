@@ -26,11 +26,18 @@ Partial Class frm_homepage
         Me.txt_welcome = New DevExpress.XtraEditors.LabelControl()
         Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
         Me.GunaGradientPanel1 = New Guna.UI.WinForms.GunaGradientPanel()
+        Me.txt_end = New DevExpress.XtraEditors.TextEdit()
+        Me.txt_begin = New DevExpress.XtraEditors.TextEdit()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.txt_quotes = New DevExpress.XtraEditors.LabelControl()
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaGradientPanel1.SuspendLayout()
+        CType(Me.txt_end.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_begin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GunaPanel1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txt_welcome
@@ -68,6 +75,10 @@ Partial Class frm_homepage
         '
         Me.GunaGradientPanel1.BackgroundImage = CType(resources.GetObject("GunaGradientPanel1.BackgroundImage"), System.Drawing.Image)
         Me.GunaGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.GunaGradientPanel1.Controls.Add(Me.DataGridView1)
+        Me.GunaGradientPanel1.Controls.Add(Me.txt_end)
+        Me.GunaGradientPanel1.Controls.Add(Me.txt_begin)
+        Me.GunaGradientPanel1.Controls.Add(Me.SimpleButton1)
         Me.GunaGradientPanel1.Controls.Add(Me.GunaPanel1)
         Me.GunaGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GunaGradientPanel1.GradientColor1 = System.Drawing.Color.White
@@ -80,6 +91,31 @@ Partial Class frm_homepage
         Me.GunaGradientPanel1.TabIndex = 3
         Me.GunaGradientPanel1.Text = "GunaGradientPanel1"
         '
+        'txt_end
+        '
+        Me.txt_end.Location = New System.Drawing.Point(12, 62)
+        Me.txt_end.Name = "txt_end"
+        Me.txt_end.Size = New System.Drawing.Size(81, 20)
+        Me.txt_end.TabIndex = 3
+        Me.txt_end.Visible = False
+        '
+        'txt_begin
+        '
+        Me.txt_begin.Location = New System.Drawing.Point(12, 36)
+        Me.txt_begin.Name = "txt_begin"
+        Me.txt_begin.Size = New System.Drawing.Size(81, 20)
+        Me.txt_begin.TabIndex = 2
+        Me.txt_begin.Visible = False
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Location = New System.Drawing.Point(12, 96)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(108, 46)
+        Me.SimpleButton1.TabIndex = 1
+        Me.SimpleButton1.Text = "Convert"
+        Me.SimpleButton1.Visible = False
+        '
         'GunaPanel1
         '
         Me.GunaPanel1.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -91,6 +127,15 @@ Partial Class frm_homepage
         Me.GunaPanel1.Name = "GunaPanel1"
         Me.GunaPanel1.Size = New System.Drawing.Size(866, 510)
         Me.GunaPanel1.TabIndex = 0
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 148)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(108, 128)
+        Me.DataGridView1.TabIndex = 2
+        Me.DataGridView1.Visible = False
         '
         'txt_quotes
         '
@@ -121,7 +166,10 @@ Partial Class frm_homepage
         Me.Text = "frm_homepage"
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaGradientPanel1.ResumeLayout(False)
+        CType(Me.txt_end.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_begin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GunaPanel1.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -131,4 +179,8 @@ Partial Class frm_homepage
     Friend WithEvents GunaGradientPanel1 As Guna.UI.WinForms.GunaGradientPanel
     Friend WithEvents GunaPanel1 As Guna.UI.WinForms.GunaPanel
     Friend WithEvents txt_quotes As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents txt_end As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txt_begin As DevExpress.XtraEditors.TextEdit
 End Class

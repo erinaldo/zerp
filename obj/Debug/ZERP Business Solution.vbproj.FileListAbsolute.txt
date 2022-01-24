@@ -683,8 +683,10 @@ D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeList.v21.1.dll
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.dll
+D:\_workstation\source code\zerp\bin\Debug\EPPlus.dll
 D:\_workstation\source code\zerp\bin\Debug\Guna.UI.dll
 D:\_workstation\source code\zerp\bin\Debug\Guna.UI2.dll
+D:\_workstation\source code\zerp\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
 D:\_workstation\source code\zerp\bin\Debug\MySql.Data.dll
 D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.dll
 D:\_workstation\source code\zerp\bin\Debug\Renci.SshNet.dll
@@ -732,6 +734,8 @@ D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraScheduler.v21.1.Core.x
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraSpreadsheet.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraTreeList.v21.1.xml
 D:\_workstation\source code\zerp\bin\Debug\DevExpress.XtraVerticalGrid.v21.1.xml
+D:\_workstation\source code\zerp\bin\Debug\EPPlus.xml
+D:\_workstation\source code\zerp\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 D:\_workstation\source code\zerp\bin\Debug\MySql.Data.xml
 D:\_workstation\source code\zerp\bin\Debug\Newtonsoft.Json.xml
 D:\_workstation\source code\zerp\bin\Debug\Renci.SshNet.xml
@@ -930,6 +934,7 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_start_packing.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_unserved_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_selluseller.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_splash_screen.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_deliveries.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_logs.resources
@@ -983,7 +988,3 @@ D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CopyCom
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.xml
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.pdb
-D:\_workstation\source code\zerp\bin\Debug\EPPlus.dll
-D:\_workstation\source code\zerp\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
-D:\_workstation\source code\zerp\bin\Debug\EPPlus.xml
-D:\_workstation\source code\zerp\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

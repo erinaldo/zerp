@@ -42,6 +42,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.col_date_created = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_print = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_print = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_voucher_amount = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -171,7 +172,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.grid_payments_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_payments_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_payments_view.Appearance.Row.Options.UseFont = True
-        Me.grid_payments_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_payment_type, Me.col_supplier, Me.col_date_created, Me.col_print})
+        Me.grid_payments_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_payment_type, Me.col_supplier, Me.col_date_created, Me.col_print, Me.col_voucher_amount})
         Me.grid_payments_view.GridControl = Me.grid_payments
         Me.grid_payments_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_payments_view.Name = "grid_payments_view"
@@ -230,7 +231,7 @@ Partial Class frm_accounting_payment_vouchers
         Me.col_print.Name = "col_print"
         Me.col_print.OptionsColumn.FixedWidth = True
         Me.col_print.Visible = True
-        Me.col_print.VisibleIndex = 4
+        Me.col_print.VisibleIndex = 5
         '
         'btn_print
         '
@@ -240,6 +241,19 @@ Partial Class frm_accounting_payment_vouchers
         Me.btn_print.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_print.Name = "btn_print"
         Me.btn_print.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'col_voucher_amount
+        '
+        Me.col_voucher_amount.Caption = "Amount"
+        Me.col_voucher_amount.DisplayFormat.FormatString = "n2"
+        Me.col_voucher_amount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col_voucher_amount.FieldName = "voucher_amount"
+        Me.col_voucher_amount.MaxWidth = 120
+        Me.col_voucher_amount.MinWidth = 120
+        Me.col_voucher_amount.Name = "col_voucher_amount"
+        Me.col_voucher_amount.Visible = True
+        Me.col_voucher_amount.VisibleIndex = 4
+        Me.col_voucher_amount.Width = 120
         '
         'frm_accounting_payment_vouchers
         '
@@ -278,4 +292,5 @@ Partial Class frm_accounting_payment_vouchers
     Friend WithEvents col_print As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents btn_print As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents col_payment_type As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_voucher_amount As DevExpress.XtraGrid.Columns.GridColumn
 End Class

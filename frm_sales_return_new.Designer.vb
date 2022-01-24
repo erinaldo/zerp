@@ -23,11 +23,12 @@ Partial Class frm_sales_return_new
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_sales_return_new))
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel3 = New Guna.UI.WinForms.GunaPanel()
@@ -45,6 +46,7 @@ Partial Class frm_sales_return_new
         Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_totalcost = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_pid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_last_order_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txt_customer_id = New DevExpress.XtraEditors.TextEdit()
         Me.cbb_customer = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
@@ -59,7 +61,6 @@ Partial Class frm_sales_return_new
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_account_type = New DevExpress.XtraEditors.LabelControl()
         Me.btn_approved = New DevExpress.XtraEditors.SimpleButton()
-        Me.lbl_last_order = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_store_id = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
@@ -222,18 +223,18 @@ Partial Class frm_sales_return_new
         Me.grid_return.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grid_return.ColumnHeadersHeight = 28
         Me.grid_return.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.grid_return.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_totalcost, Me.col_pid})
+        Me.grid_return.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_totalcost, Me.col_pid, Me.col_last_order_date})
         Me.grid_return.EnableHeadersVisualStyles = False
         Me.grid_return.Location = New System.Drawing.Point(24, 181)
         Me.grid_return.Name = "grid_return"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_return.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grid_return.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.grid_return.Size = New System.Drawing.Size(1029, 398)
         Me.grid_return.TabIndex = 60
         '
@@ -297,6 +298,16 @@ Partial Class frm_sales_return_new
         Me.col_pid.Visible = False
         Me.col_pid.Width = 50
         '
+        'col_last_order_date
+        '
+        Me.col_last_order_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Format = "MM/dd/yyyy"
+        Me.col_last_order_date.DefaultCellStyle = DataGridViewCellStyle6
+        Me.col_last_order_date.HeaderText = "Last Order"
+        Me.col_last_order_date.Name = "col_last_order_date"
+        Me.col_last_order_date.Width = 120
+        '
         'txt_customer_id
         '
         Me.txt_customer_id.Enabled = False
@@ -306,9 +317,8 @@ Partial Class frm_sales_return_new
         Me.txt_customer_id.Properties.Appearance.Options.UseFont = True
         Me.txt_customer_id.Properties.Appearance.Options.UseTextOptions = True
         Me.txt_customer_id.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.txt_customer_id.Size = New System.Drawing.Size(19, 22)
+        Me.txt_customer_id.Size = New System.Drawing.Size(43, 22)
         Me.txt_customer_id.TabIndex = 119
-        Me.txt_customer_id.Visible = False
         '
         'cbb_customer
         '
@@ -483,18 +493,6 @@ Partial Class frm_sales_return_new
         Me.btn_approved.Text = "Approved"
         Me.btn_approved.Visible = False
         '
-        'lbl_last_order
-        '
-        Me.lbl_last_order.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_last_order.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbl_last_order.Appearance.Options.UseFont = True
-        Me.lbl_last_order.Appearance.Options.UseForeColor = True
-        Me.lbl_last_order.Location = New System.Drawing.Point(253, 155)
-        Me.lbl_last_order.Name = "lbl_last_order"
-        Me.lbl_last_order.Size = New System.Drawing.Size(65, 16)
-        Me.lbl_last_order.TabIndex = 135
-        Me.lbl_last_order.Text = "Last Order:"
-        '
         'lbl_store_id
         '
         Me.lbl_store_id.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -515,7 +513,6 @@ Partial Class frm_sales_return_new
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1077, 634)
         Me.Controls.Add(Me.lbl_store_id)
-        Me.Controls.Add(Me.lbl_last_order)
         Me.Controls.Add(Me.btn_approved)
         Me.Controls.Add(Me.lbl_account_type)
         Me.Controls.Add(Me.LabelControl5)
@@ -574,12 +571,12 @@ Partial Class frm_sales_return_new
     Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_account_type As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btn_approved As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents lbl_last_order As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_store_id As DevExpress.XtraEditors.LabelControl
     Friend WithEvents col_qty As DataGridViewTextBoxColumn
     Friend WithEvents col_model As DataGridViewTextBoxColumn
     Friend WithEvents col_description As DataGridViewTextBoxColumn
     Friend WithEvents col_cost As DataGridViewTextBoxColumn
     Friend WithEvents col_totalcost As DataGridViewTextBoxColumn
     Friend WithEvents col_pid As DataGridViewTextBoxColumn
-    Friend WithEvents lbl_store_id As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents col_last_order_date As DataGridViewTextBoxColumn
 End Class

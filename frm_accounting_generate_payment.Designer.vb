@@ -53,8 +53,6 @@ Partial Class frm_accounting_generate_payment
         Me.RepositoryItemMemoEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
         Me.btn_generate = New DevExpress.XtraEditors.SimpleButton()
         Me.panel_cheque = New DevExpress.XtraEditors.PanelControl()
-        Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_collection_ref = New DevExpress.XtraEditors.TextEdit()
         Me.cb_crossed_check = New System.Windows.Forms.CheckBox()
         Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.txt_acc_name = New DevExpress.XtraEditors.TextEdit()
@@ -70,6 +68,8 @@ Partial Class frm_accounting_generate_payment
         Me.txt_cheque_date = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_cheque_no = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_collection_ref = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.cbb_suppliers = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
@@ -87,6 +87,8 @@ Partial Class frm_accounting_generate_payment
         Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.rb_cash = New System.Windows.Forms.RadioButton()
         Me.rb_cheque = New System.Windows.Forms.RadioButton()
+        Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_receipt_no = New DevExpress.XtraEditors.TextEdit()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -95,7 +97,6 @@ Partial Class frm_accounting_generate_payment
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.panel_cheque, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_cheque.SuspendLayout()
-        CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,6 +105,7 @@ Partial Class frm_accounting_generate_payment
         CType(Me.txt_payee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_cheque_date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_cheque_no.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_suppliers.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_total_view.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,6 +114,7 @@ Partial Class frm_accounting_generate_payment
         CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_view_order, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.lbl_receipt_no.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -382,29 +385,6 @@ Partial Class frm_accounting_generate_payment
         Me.panel_cheque.Size = New System.Drawing.Size(290, 281)
         Me.panel_cheque.TabIndex = 14
         '
-        'LabelControl13
-        '
-        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Roboto", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl13.Appearance.Options.UseFont = True
-        Me.LabelControl13.Location = New System.Drawing.Point(32, 444)
-        Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(85, 15)
-        Me.LabelControl13.TabIndex = 26
-        Me.LabelControl13.Text = "Collection Ref.:"
-        '
-        'txt_collection_ref
-        '
-        Me.txt_collection_ref.EditValue = ""
-        Me.txt_collection_ref.Location = New System.Drawing.Point(134, 439)
-        Me.txt_collection_ref.Name = "txt_collection_ref"
-        Me.txt_collection_ref.Properties.Appearance.Font = New System.Drawing.Font("Roboto", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_collection_ref.Properties.Appearance.Options.UseFont = True
-        Me.txt_collection_ref.Properties.Appearance.Options.UseTextOptions = True
-        Me.txt_collection_ref.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.txt_collection_ref.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txt_collection_ref.Size = New System.Drawing.Size(149, 24)
-        Me.txt_collection_ref.TabIndex = 25
-        '
         'cb_crossed_check
         '
         Me.cb_crossed_check.AutoSize = True
@@ -569,6 +549,29 @@ Partial Class frm_accounting_generate_payment
         Me.txt_cheque_no.Properties.Appearance.Options.UseFont = True
         Me.txt_cheque_no.Size = New System.Drawing.Size(100, 22)
         Me.txt_cheque_no.TabIndex = 1
+        '
+        'LabelControl13
+        '
+        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Roboto", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl13.Appearance.Options.UseFont = True
+        Me.LabelControl13.Location = New System.Drawing.Point(32, 444)
+        Me.LabelControl13.Name = "LabelControl13"
+        Me.LabelControl13.Size = New System.Drawing.Size(85, 15)
+        Me.LabelControl13.TabIndex = 26
+        Me.LabelControl13.Text = "Collection Ref.:"
+        '
+        'txt_collection_ref
+        '
+        Me.txt_collection_ref.EditValue = ""
+        Me.txt_collection_ref.Location = New System.Drawing.Point(134, 439)
+        Me.txt_collection_ref.Name = "txt_collection_ref"
+        Me.txt_collection_ref.Properties.Appearance.Font = New System.Drawing.Font("Roboto", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_collection_ref.Properties.Appearance.Options.UseFont = True
+        Me.txt_collection_ref.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_collection_ref.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.txt_collection_ref.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txt_collection_ref.Size = New System.Drawing.Size(149, 24)
+        Me.txt_collection_ref.TabIndex = 25
         '
         'LabelControl3
         '
@@ -793,12 +796,45 @@ Partial Class frm_accounting_generate_payment
         Me.rb_cheque.Text = "Cheque"
         Me.rb_cheque.UseVisualStyleBackColor = True
         '
+        'LabelControl14
+        '
+        Me.LabelControl14.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelControl14.Appearance.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.LabelControl14.Appearance.Options.UseFont = True
+        Me.LabelControl14.Appearance.Options.UseForeColor = True
+        Me.LabelControl14.Location = New System.Drawing.Point(541, 684)
+        Me.LabelControl14.Name = "LabelControl14"
+        Me.LabelControl14.Size = New System.Drawing.Size(134, 22)
+        Me.LabelControl14.TabIndex = 27
+        Me.LabelControl14.Text = "No. of Receipt:"
+        '
+        'lbl_receipt_no
+        '
+        Me.lbl_receipt_no.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_receipt_no.EditValue = ""
+        Me.lbl_receipt_no.Location = New System.Drawing.Point(681, 681)
+        Me.lbl_receipt_no.Name = "lbl_receipt_no"
+        Me.lbl_receipt_no.Properties.Appearance.Font = New System.Drawing.Font("Consolas", 14.25!, System.Drawing.FontStyle.Bold)
+        Me.lbl_receipt_no.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_receipt_no.Properties.Appearance.Options.UseFont = True
+        Me.lbl_receipt_no.Properties.Appearance.Options.UseForeColor = True
+        Me.lbl_receipt_no.Properties.Appearance.Options.UseTextOptions = True
+        Me.lbl_receipt_no.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.lbl_receipt_no.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
+        Me.lbl_receipt_no.Properties.ReadOnly = True
+        Me.lbl_receipt_no.Properties.UseReadOnlyAppearance = False
+        Me.lbl_receipt_no.Size = New System.Drawing.Size(74, 30)
+        Me.lbl_receipt_no.TabIndex = 29
+        '
         'frm_accounting_generate_payment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1116, 724)
+        Me.Controls.Add(Me.lbl_receipt_no)
+        Me.Controls.Add(Me.LabelControl14)
         Me.Controls.Add(Me.LabelControl13)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txt_collection_ref)
@@ -825,7 +861,6 @@ Partial Class frm_accounting_generate_payment
         CType(Me.panel_cheque, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_cheque.ResumeLayout(False)
         Me.panel_cheque.PerformLayout()
-        CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_acc_name.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -834,6 +869,7 @@ Partial Class frm_accounting_generate_payment
         CType(Me.txt_payee.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_cheque_date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_cheque_no.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_collection_ref.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_suppliers.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_total_view.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -844,6 +880,7 @@ Partial Class frm_accounting_generate_payment
         CType(Me.btn_view_order, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.lbl_receipt_no.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -903,4 +940,6 @@ Partial Class frm_accounting_generate_payment
     Friend WithEvents rb_cheque As RadioButton
     Friend WithEvents txt_collection_ref As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_receipt_no As DevExpress.XtraEditors.TextEdit
 End Class

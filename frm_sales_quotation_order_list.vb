@@ -15,7 +15,7 @@ Public Class frm_sales_quotation_order_list
                 conn.Open()
                 Dim query = "SELECT CONCAT('Q',LPAD(quotation_id,5,0)) AS quotation_id, company, ims_users.first_name AS representative, status, created_at, (created_at + INTERVAL validity DAY) validity 
 			            FROM ims_quotations 
-			            INNER JOIN ims_users ON ims_users.usr_id=prepared_by
+			            LEFT JOIN ims_users ON ims_users.usr_id=prepared_by
                         WHERE is_converted='0' AND is_deleted='0' AND NOW() BETWEEN created_at AND created_at + INTERVAL validity DAY 
                         ORDER BY quotation_id DESC"
                 Dim cmd = New MySqlCommand(query, conn)

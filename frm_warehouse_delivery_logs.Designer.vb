@@ -54,6 +54,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_cost = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_reference = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.dt_end = New Guna.UI.WinForms.GunaDateTimePicker()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
@@ -61,7 +62,6 @@ Partial Class frm_warehouse_delivery_logs
         Me.btn_view = New Guna.UI.WinForms.GunaButton()
         Me.dt_start = New Guna.UI.WinForms.GunaDateTimePicker()
         Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
-        Me.col_reference = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -247,7 +247,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.GridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn6.Caption = "Timestamp"
         Me.GridColumn6.ColumnEdit = Me.RepositoryItemTextEdit1
-        Me.GridColumn6.DisplayFormat.FormatString = "0:h:mm tt MM/dd/yyyy"
+        Me.GridColumn6.DisplayFormat.FormatString = "MM/dd/yyyy"
         Me.GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn6.FieldName = "date_received"
         Me.GridColumn6.Name = "GridColumn6"
@@ -299,6 +299,14 @@ Partial Class frm_warehouse_delivery_logs
         Me.col_cost.Visible = True
         Me.col_cost.VisibleIndex = 4
         Me.col_cost.Width = 89
+        '
+        'col_reference
+        '
+        Me.col_reference.Caption = "Reference"
+        Me.col_reference.FieldName = "reference"
+        Me.col_reference.Name = "col_reference"
+        Me.col_reference.Visible = True
+        Me.col_reference.VisibleIndex = 8
         '
         'GridColumn7
         '
@@ -421,14 +429,6 @@ Partial Class frm_warehouse_delivery_logs
         Me.btn_print.Size = New System.Drawing.Size(123, 46)
         Me.btn_print.TabIndex = 24
         Me.btn_print.Text = "Print"
-        '
-        'col_reference
-        '
-        Me.col_reference.Caption = "Reference"
-        Me.col_reference.FieldName = "reference"
-        Me.col_reference.Name = "col_reference"
-        Me.col_reference.Visible = True
-        Me.col_reference.VisibleIndex = 8
         '
         'frm_warehouse_delivery_logs
         '

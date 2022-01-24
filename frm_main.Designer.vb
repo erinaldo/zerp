@@ -62,6 +62,7 @@ Partial Class frm_main
         Me.submenu_stock_management = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_product_inventory = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_returned_units = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_selluseller = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_logistics = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_pick_deliveries = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_collections = New System.Windows.Forms.ToolStripMenuItem()
@@ -197,7 +198,7 @@ Partial Class frm_main
         Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 2, 0, 5)
         Me.MenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.MenuStrip.ShowItemToolTips = True
-        Me.MenuStrip.Size = New System.Drawing.Size(807, 31)
+        Me.MenuStrip.Size = New System.Drawing.Size(927, 31)
         Me.MenuStrip.TabIndex = 0
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -313,7 +314,7 @@ Partial Class frm_main
         '
         'menu_warehouse
         '
-        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_product_inventory, Me.submenu_returned_units})
+        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_product_inventory, Me.submenu_returned_units, Me.submenu_selluseller})
         Me.menu_warehouse.Name = "menu_warehouse"
         Me.menu_warehouse.Size = New System.Drawing.Size(94, 24)
         Me.menu_warehouse.Text = "Warehouse"
@@ -351,6 +352,14 @@ Partial Class frm_main
         Me.submenu_returned_units.Name = "submenu_returned_units"
         Me.submenu_returned_units.Size = New System.Drawing.Size(206, 24)
         Me.submenu_returned_units.Text = "Returned Units"
+        Me.submenu_returned_units.Visible = False
+        '
+        'submenu_selluseller
+        '
+        Me.submenu_selluseller.Name = "submenu_selluseller"
+        Me.submenu_selluseller.Size = New System.Drawing.Size(206, 24)
+        Me.submenu_selluseller.Text = "For SelluSeller"
+        Me.submenu_selluseller.Visible = False
         '
         'menu_logistics
         '
@@ -763,4 +772,5 @@ Partial Class frm_main
     Friend WithEvents submenu_returns As ToolStripMenuItem
     Friend WithEvents submenu_returned_units As ToolStripMenuItem
     Friend WithEvents submenu_InventoryCount As ToolStripMenuItem
+    Friend WithEvents submenu_selluseller As ToolStripMenuItem
 End Class

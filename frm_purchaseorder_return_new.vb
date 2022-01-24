@@ -115,6 +115,7 @@ Public Class frm_purchaseorder_return_new
                         For Each item In itemsObject
                             grid_return.Rows.Add(item.batch_no, item.rid, item.qty, item.model, item.description, item.cost, item.total_cost)
                         Next
+
                         ComputeTotal()
                     End While
 

@@ -21,7 +21,7 @@ Public Class frm_accounting_payment_vouchers
 
         Try
             conn.Open()
-            Dim cmd = New MySqlCommand("SELECT CONCAT('PV', LPAD(payment_id, 5, 0)) as payment_id, UPPER(payment_type) AS payment_type, ims_suppliers.supplier, creation_date FROM ims_payment_vouchers
+            Dim cmd = New MySqlCommand("SELECT CONCAT('PV', LPAD(payment_id, 5, 0)) as payment_id, UPPER(payment_type) AS payment_type, ims_suppliers.supplier, creation_date, voucher_amount FROM ims_payment_vouchers
                                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_payment_vouchers.supplier ORDER BY payment_id DESC", conn)
             cmd.ExecuteNonQuery()
 

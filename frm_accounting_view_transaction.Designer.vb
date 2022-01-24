@@ -58,8 +58,12 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_returned_credit = New DevExpress.XtraEditors.LabelControl()
         Me.txt_sub_total = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_ewt = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_ewt = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_vatables_sales = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_12_vat = New DevExpress.XtraEditors.LabelControl()
         CType(Me.grid_transaction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_transaction_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +88,7 @@ Partial Class frm_accounting_view_transaction
         Me.grid_transaction.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_transaction.MainView = Me.grid_transaction_view
         Me.grid_transaction.Name = "grid_transaction"
-        Me.grid_transaction.Size = New System.Drawing.Size(1020, 422)
+        Me.grid_transaction.Size = New System.Drawing.Size(1020, 346)
         Me.grid_transaction.TabIndex = 13
         Me.grid_transaction.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transaction_view})
         '
@@ -359,17 +363,17 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl6.Appearance.Options.UseFont = True
         Me.LabelControl6.Appearance.Options.UseForeColor = True
-        Me.LabelControl6.Location = New System.Drawing.Point(715, 712)
+        Me.LabelControl6.Location = New System.Drawing.Point(689, 712)
         Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(131, 22)
+        Me.LabelControl6.Size = New System.Drawing.Size(125, 22)
         Me.LabelControl6.TabIndex = 24
-        Me.LabelControl6.Text = "Total Amount:"
+        Me.LabelControl6.Text = "Total Amount"
         '
         'txt_total
         '
         Me.txt_total.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_total.EditValue = ""
-        Me.txt_total.Location = New System.Drawing.Point(852, 708)
+        Me.txt_total.Location = New System.Drawing.Point(829, 708)
         Me.txt_total.Name = "txt_total"
         Me.txt_total.Properties.Appearance.Font = New System.Drawing.Font("Consolas", 14.0!, System.Drawing.FontStyle.Bold)
         Me.txt_total.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
@@ -378,30 +382,30 @@ Partial Class frm_accounting_view_transaction
         Me.txt_total.Properties.Appearance.Options.UseTextOptions = True
         Me.txt_total.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.txt_total.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.txt_total.Size = New System.Drawing.Size(180, 30)
+        Me.txt_total.Size = New System.Drawing.Size(203, 30)
         Me.txt_total.TabIndex = 26
         '
         'LabelControl7
         '
         Me.LabelControl7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic)
-        Me.LabelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.LabelControl7.Appearance.ForeColor = System.Drawing.Color.Crimson
         Me.LabelControl7.Appearance.Options.UseFont = True
         Me.LabelControl7.Appearance.Options.UseForeColor = True
-        Me.LabelControl7.Location = New System.Drawing.Point(790, 683)
+        Me.LabelControl7.Location = New System.Drawing.Point(756, 660)
         Me.LabelControl7.Name = "LabelControl7"
-        Me.LabelControl7.Size = New System.Drawing.Size(90, 15)
+        Me.LabelControl7.Size = New System.Drawing.Size(88, 15)
         Me.LabelControl7.TabIndex = 27
-        Me.LabelControl7.Text = "Returned Credit:"
+        Me.LabelControl7.Text = "Returned Credit"
         '
         'LabelControl11
         '
         Me.LabelControl11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic)
-        Me.LabelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.LabelControl11.Appearance.ForeColor = System.Drawing.Color.Crimson
         Me.LabelControl11.Appearance.Options.UseFont = True
         Me.LabelControl11.Appearance.Options.UseForeColor = True
-        Me.LabelControl11.Location = New System.Drawing.Point(715, 621)
+        Me.LabelControl11.Location = New System.Drawing.Point(752, 546)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(96, 15)
         Me.LabelControl11.TabIndex = 28
@@ -410,95 +414,83 @@ Partial Class frm_accounting_view_transaction
         'lbl_discount
         '
         Me.lbl_discount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_discount.Appearance.BackColor = System.Drawing.Color.White
-        Me.lbl_discount.Appearance.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        Me.lbl_discount.Appearance.Font = New System.Drawing.Font("Consolas", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lbl_discount.Appearance.ForeColor = System.Drawing.Color.Crimson
-        Me.lbl_discount.Appearance.Options.UseBackColor = True
         Me.lbl_discount.Appearance.Options.UseFont = True
         Me.lbl_discount.Appearance.Options.UseForeColor = True
         Me.lbl_discount.Appearance.Options.UseTextOptions = True
         Me.lbl_discount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_discount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_discount.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.lbl_discount.Location = New System.Drawing.Point(818, 615)
+        Me.lbl_discount.Location = New System.Drawing.Point(872, 543)
         Me.lbl_discount.Name = "lbl_discount"
         Me.lbl_discount.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
-        Me.lbl_discount.Size = New System.Drawing.Size(214, 25)
+        Me.lbl_discount.Size = New System.Drawing.Size(160, 21)
         Me.lbl_discount.TabIndex = 29
         Me.lbl_discount.Text = "_discount"
         '
         'lbl_returned_credit
         '
         Me.lbl_returned_credit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbl_returned_credit.Appearance.BackColor = System.Drawing.Color.White
         Me.lbl_returned_credit.Appearance.Font = New System.Drawing.Font("Consolas", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lbl_returned_credit.Appearance.ForeColor = System.Drawing.Color.Crimson
-        Me.lbl_returned_credit.Appearance.Options.UseBackColor = True
         Me.lbl_returned_credit.Appearance.Options.UseFont = True
         Me.lbl_returned_credit.Appearance.Options.UseForeColor = True
         Me.lbl_returned_credit.Appearance.Options.UseTextOptions = True
         Me.lbl_returned_credit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_returned_credit.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_returned_credit.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.lbl_returned_credit.Location = New System.Drawing.Point(897, 677)
+        Me.lbl_returned_credit.Location = New System.Drawing.Point(897, 661)
         Me.lbl_returned_credit.Name = "lbl_returned_credit"
         Me.lbl_returned_credit.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
-        Me.lbl_returned_credit.Size = New System.Drawing.Size(135, 25)
+        Me.lbl_returned_credit.Size = New System.Drawing.Size(135, 15)
         Me.lbl_returned_credit.TabIndex = 30
         Me.lbl_returned_credit.Text = "0.00"
         '
         'txt_sub_total
         '
         Me.txt_sub_total.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_sub_total.Appearance.BackColor = System.Drawing.Color.White
         Me.txt_sub_total.Appearance.Font = New System.Drawing.Font("Consolas", 11.25!, System.Drawing.FontStyle.Bold)
         Me.txt_sub_total.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.txt_sub_total.Appearance.Options.UseBackColor = True
         Me.txt_sub_total.Appearance.Options.UseFont = True
         Me.txt_sub_total.Appearance.Options.UseForeColor = True
         Me.txt_sub_total.Appearance.Options.UseTextOptions = True
         Me.txt_sub_total.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.txt_sub_total.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.txt_sub_total.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.txt_sub_total.Location = New System.Drawing.Point(852, 584)
+        Me.txt_sub_total.Location = New System.Drawing.Point(852, 518)
         Me.txt_sub_total.Name = "txt_sub_total"
         Me.txt_sub_total.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
-        Me.txt_sub_total.Size = New System.Drawing.Size(180, 25)
+        Me.txt_sub_total.Size = New System.Drawing.Size(180, 19)
         Me.txt_sub_total.TabIndex = 32
         Me.txt_sub_total.Text = "P10,00,000.00"
         '
         'LabelControl13
         '
         Me.LabelControl13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic)
         Me.LabelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl13.Appearance.Options.UseFont = True
         Me.LabelControl13.Appearance.Options.UseForeColor = True
-        Me.LabelControl13.Location = New System.Drawing.Point(764, 588)
+        Me.LabelControl13.Location = New System.Drawing.Point(792, 521)
         Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(72, 18)
+        Me.LabelControl13.Size = New System.Drawing.Size(54, 15)
         Me.LabelControl13.TabIndex = 31
-        Me.LabelControl13.Text = "Sub Total:"
+        Me.LabelControl13.Text = "Sub Total"
         '
-        'txt_ewt
+        'lbl_ewt
         '
-        Me.txt_ewt.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_ewt.Appearance.BackColor = System.Drawing.Color.White
-        Me.txt_ewt.Appearance.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.txt_ewt.Appearance.ForeColor = System.Drawing.Color.Crimson
-        Me.txt_ewt.Appearance.Options.UseBackColor = True
-        Me.txt_ewt.Appearance.Options.UseFont = True
-        Me.txt_ewt.Appearance.Options.UseForeColor = True
-        Me.txt_ewt.Appearance.Options.UseTextOptions = True
-        Me.txt_ewt.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.txt_ewt.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.txt_ewt.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
-        Me.txt_ewt.Location = New System.Drawing.Point(897, 646)
-        Me.txt_ewt.Name = "txt_ewt"
-        Me.txt_ewt.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
-        Me.txt_ewt.Size = New System.Drawing.Size(135, 25)
-        Me.txt_ewt.TabIndex = 34
-        Me.txt_ewt.Text = "_ewt"
+        Me.lbl_ewt.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_ewt.Appearance.Font = New System.Drawing.Font("Consolas", 11.25!)
+        Me.lbl_ewt.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_ewt.Appearance.Options.UseFont = True
+        Me.lbl_ewt.Appearance.Options.UseForeColor = True
+        Me.lbl_ewt.Appearance.Options.UseTextOptions = True
+        Me.lbl_ewt.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_ewt.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_ewt.Location = New System.Drawing.Point(897, 626)
+        Me.lbl_ewt.Name = "lbl_ewt"
+        Me.lbl_ewt.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
+        Me.lbl_ewt.Size = New System.Drawing.Size(135, 15)
+        Me.lbl_ewt.TabIndex = 34
+        Me.lbl_ewt.Text = "_ewt"
         '
         'LabelControl14
         '
@@ -507,11 +499,71 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl14.Appearance.Options.UseFont = True
         Me.LabelControl14.Appearance.Options.UseForeColor = True
-        Me.LabelControl14.Location = New System.Drawing.Point(862, 652)
+        Me.LabelControl14.Location = New System.Drawing.Point(791, 627)
         Me.LabelControl14.Name = "LabelControl14"
-        Me.LabelControl14.Size = New System.Drawing.Size(29, 15)
+        Me.LabelControl14.Size = New System.Drawing.Size(57, 15)
         Me.LabelControl14.TabIndex = 33
-        Me.LabelControl14.Text = "EWT:"
+        Me.LabelControl14.Text = "Less EWT"
+        '
+        'LabelControl12
+        '
+        Me.LabelControl12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic)
+        Me.LabelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.LabelControl12.Appearance.Options.UseFont = True
+        Me.LabelControl12.Appearance.Options.UseForeColor = True
+        Me.LabelControl12.Location = New System.Drawing.Point(771, 583)
+        Me.LabelControl12.Name = "LabelControl12"
+        Me.LabelControl12.Size = New System.Drawing.Size(77, 15)
+        Me.LabelControl12.TabIndex = 35
+        Me.LabelControl12.Text = "Vatable Sales"
+        '
+        'LabelControl15
+        '
+        Me.LabelControl15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LabelControl15.Appearance.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Italic)
+        Me.LabelControl15.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.LabelControl15.Appearance.Options.UseFont = True
+        Me.LabelControl15.Appearance.Options.UseForeColor = True
+        Me.LabelControl15.Location = New System.Drawing.Point(795, 606)
+        Me.LabelControl15.Name = "LabelControl15"
+        Me.LabelControl15.Size = New System.Drawing.Size(53, 15)
+        Me.LabelControl15.TabIndex = 36
+        Me.LabelControl15.Text = "12% VAT"
+        '
+        'lbl_vatables_sales
+        '
+        Me.lbl_vatables_sales.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_vatables_sales.Appearance.Font = New System.Drawing.Font("Consolas", 11.25!)
+        Me.lbl_vatables_sales.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_vatables_sales.Appearance.Options.UseFont = True
+        Me.lbl_vatables_sales.Appearance.Options.UseForeColor = True
+        Me.lbl_vatables_sales.Appearance.Options.UseTextOptions = True
+        Me.lbl_vatables_sales.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_vatables_sales.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_vatables_sales.Location = New System.Drawing.Point(897, 579)
+        Me.lbl_vatables_sales.Name = "lbl_vatables_sales"
+        Me.lbl_vatables_sales.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
+        Me.lbl_vatables_sales.Size = New System.Drawing.Size(135, 21)
+        Me.lbl_vatables_sales.TabIndex = 37
+        Me.lbl_vatables_sales.Text = "vat_sales"
+        '
+        'lbl_12_vat
+        '
+        Me.lbl_12_vat.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_12_vat.Appearance.Font = New System.Drawing.Font("Consolas", 11.25!)
+        Me.lbl_12_vat.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_12_vat.Appearance.Options.UseFont = True
+        Me.lbl_12_vat.Appearance.Options.UseForeColor = True
+        Me.lbl_12_vat.Appearance.Options.UseTextOptions = True
+        Me.lbl_12_vat.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.lbl_12_vat.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.lbl_12_vat.Location = New System.Drawing.Point(897, 602)
+        Me.lbl_12_vat.Name = "lbl_12_vat"
+        Me.lbl_12_vat.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
+        Me.lbl_12_vat.Size = New System.Drawing.Size(135, 21)
+        Me.lbl_12_vat.TabIndex = 38
+        Me.lbl_12_vat.Text = "12%_vat_sales"
         '
         'frm_accounting_view_transaction
         '
@@ -519,7 +571,11 @@ Partial Class frm_accounting_view_transaction
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(1044, 750)
-        Me.Controls.Add(Me.txt_ewt)
+        Me.Controls.Add(Me.lbl_12_vat)
+        Me.Controls.Add(Me.lbl_vatables_sales)
+        Me.Controls.Add(Me.LabelControl15)
+        Me.Controls.Add(Me.LabelControl12)
+        Me.Controls.Add(Me.lbl_ewt)
         Me.Controls.Add(Me.LabelControl14)
         Me.Controls.Add(Me.txt_sub_total)
         Me.Controls.Add(Me.LabelControl13)
@@ -593,6 +649,10 @@ Partial Class frm_accounting_view_transaction
     Friend WithEvents lbl_returned_credit As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txt_sub_total As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txt_ewt As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_ewt As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_vatables_sales As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_12_vat As DevExpress.XtraEditors.LabelControl
 End Class

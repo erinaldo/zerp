@@ -59,7 +59,7 @@ Public Class frm_collection_receipts
                             report.Parameters("customer").Value = rdr("c_name")
                             report.Parameters("address").Value = rdr("address")
                             report.Parameters("collected_by").Value = rdr("collected_by")
-                            report.Parameters("encoded_by").Value = rdr("collected_by")
+                            'report.Parameters("encoded_by").Value = rdr("collected_by")
                             so_nos = rdr("so_nos")
 
                             Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of ChequesClass))(rdr("cheques"))

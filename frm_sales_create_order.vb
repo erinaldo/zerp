@@ -226,13 +226,10 @@ Public Class frm_sales_create_order
 
     'Digits Only
     Private Sub DigitsOnly_KeyPress(sender As Object, e As KeyPressEventArgs)
-
         If grid_order.CurrentCell.ColumnIndex = 0 Then
-
             If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso Not e.KeyChar = "." Then
                 e.Handled = True
             End If
-
         End If
     End Sub
 

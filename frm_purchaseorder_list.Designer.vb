@@ -27,11 +27,11 @@ Partial Class frm_purchaseorder_list
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_purchaseorder_list))
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.panel_top = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -66,6 +66,7 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
+        Me.col_terms = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -266,7 +267,7 @@ Partial Class frm_purchaseorder_list
         Me.grid_po_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_po_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_po_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_po_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn6, Me.GridColumn7, Me.col_lead_time_status, Me.col_edd, Me.col_date_generated, Me.col_created_by})
+        Me.grid_po_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn6, Me.GridColumn7, Me.col_lead_time_status, Me.col_edd, Me.col_date_generated, Me.col_created_by, Me.col_terms})
         Me.grid_po_view.GridControl = Me.grid_po
         Me.grid_po_view.Name = "grid_po_view"
         Me.grid_po_view.OptionsBehavior.ReadOnly = True
@@ -285,8 +286,8 @@ Partial Class frm_purchaseorder_list
         '
         Me.btn_view.AutoHeight = False
         Me.btn_view.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
-        Me.btn_view.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.snapmodifytablecellstyle_16x16
+        Me.btn_view.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.btn_view.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_view.Name = "btn_view"
         Me.btn_view.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -357,7 +358,7 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn6.MaxWidth = 150
         Me.GridColumn6.Name = "GridColumn6"
         Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 7
+        Me.GridColumn6.VisibleIndex = 8
         Me.GridColumn6.Width = 114
         '
         'RepositoryItemDateEdit1
@@ -376,7 +377,7 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn7.MinWidth = 120
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 5
+        Me.GridColumn7.VisibleIndex = 6
         Me.GridColumn7.Width = 125
         '
         'col_lead_time_status
@@ -387,7 +388,7 @@ Partial Class frm_purchaseorder_list
         Me.col_lead_time_status.FieldName = "lead_time_status"
         Me.col_lead_time_status.Name = "col_lead_time_status"
         Me.col_lead_time_status.Visible = True
-        Me.col_lead_time_status.VisibleIndex = 9
+        Me.col_lead_time_status.VisibleIndex = 10
         Me.col_lead_time_status.Width = 105
         '
         'col_edd
@@ -401,7 +402,7 @@ Partial Class frm_purchaseorder_list
         Me.col_edd.FieldName = "edd"
         Me.col_edd.Name = "col_edd"
         Me.col_edd.Visible = True
-        Me.col_edd.VisibleIndex = 8
+        Me.col_edd.VisibleIndex = 9
         Me.col_edd.Width = 97
         '
         'col_date_generated
@@ -414,7 +415,7 @@ Partial Class frm_purchaseorder_list
         Me.col_date_generated.FieldName = "date_generated"
         Me.col_date_generated.Name = "col_date_generated"
         Me.col_date_generated.Visible = True
-        Me.col_date_generated.VisibleIndex = 6
+        Me.col_date_generated.VisibleIndex = 7
         Me.col_date_generated.Width = 98
         '
         'col_created_by
@@ -423,7 +424,7 @@ Partial Class frm_purchaseorder_list
         Me.col_created_by.FieldName = "created_by"
         Me.col_created_by.Name = "col_created_by"
         Me.col_created_by.Visible = True
-        Me.col_created_by.VisibleIndex = 10
+        Me.col_created_by.VisibleIndex = 11
         Me.col_created_by.Width = 115
         '
         'btn_fulfilled
@@ -525,6 +526,16 @@ Partial Class frm_purchaseorder_list
         'timer
         '
         '
+        'col_terms
+        '
+        Me.col_terms.AppearanceCell.Options.UseTextOptions = True
+        Me.col_terms.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_terms.Caption = "Terms"
+        Me.col_terms.FieldName = "terms"
+        Me.col_terms.Name = "col_terms"
+        Me.col_terms.Visible = True
+        Me.col_terms.VisibleIndex = 5
+        '
         'frm_purchaseorder_list
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -591,4 +602,5 @@ Partial Class frm_purchaseorder_list
     Friend WithEvents col_purchaser As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_view As GridColumn
     Friend WithEvents btn_view As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents col_terms As GridColumn
 End Class
