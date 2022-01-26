@@ -36,7 +36,7 @@ Public Class frm_admin_approval
 
             'Show Purchase Orders
             Using purchase_cmd = New MySqlCommand("SELECT concat('PO',LPAD(purchase_id,5,0)) as purchase_id, ims_suppliers.supplier, date_generated, status FROM `ims_purchase`
-                                        INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase.supplier WHERE (status='For Approval' OR status='Revised (Approved)' OR status='Revised (Sent)' OR status='Revised (Partial)') AND deleted=0", conn)
+                                        INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase.supplier WHERE (status='For Approval' OR status='Revised (Approved)' OR status='Revised (Sent)' OR status='Revised (Partial)' OR status='Revised (Completed)') AND deleted=0", conn)
                 purchase_cmd.ExecuteNonQuery()
                 Dim dt_purchase = New DataTable
                 Dim da_purchase = New MySqlDataAdapter(purchase_cmd)

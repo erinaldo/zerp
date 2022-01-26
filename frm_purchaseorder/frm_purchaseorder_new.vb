@@ -175,10 +175,11 @@ Public Class frm_purchaseorder_new
     Private Sub ComputeTotal()
         Try
             Dim sub_total As Decimal
+            Dim grid_dt = DirectCast(grid_order.DataSource, DataTable)
 
-            For i = 0 To grid_order.Rows.Count - 1
-                If IsDBNull(grid_order.Rows(i).Cells(7).Value) Then Continue For
-                sub_total += grid_order.Rows(i).Cells(7).Value
+            For i = 0 To grid_dt.Rows.Count - 1
+                If IsDBNull(grid_dt.Rows(i).Item(7)) Then Continue For
+                sub_total += grid_dt.Rows(i).Item(7)
             Next
 
             If Not String.IsNullOrEmpty(txt_discount.Text) And Not cbb_discount.SelectedIndex = -1 Then
@@ -827,7 +828,7 @@ Public Class frm_purchaseorder_new
     End Sub
 
     'Search Box
-    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs)
+    Private Sub txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
         Dim dataSource = DirectCast(grid_order.DataSource, DataTable)
         Dim dataViews = New DataView(dataSource)
         dataSource.DefaultView.RowFilter = String.Concat(New String() {"winmodel LIKE '%", txt_search.Text.Trim(), "%' OR supmodel LIKE '%", txt_search.Text.Trim(), "%' OR description LIKE '%", txt_search.Text.Trim(), "%'"})

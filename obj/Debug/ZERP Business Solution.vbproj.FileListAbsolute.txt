@@ -887,7 +887,6 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_sales_order_
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_soa.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_transfer_request.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_forecast_payables.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_voucher.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_new_payable.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_payables.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_accounting_generate_payment.resources
@@ -958,14 +957,10 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_orders
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_order.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_quotation.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_settings.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_dialog.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_dispatch_dialog.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive_dialog.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_inventory.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_stores.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_store_add.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_supplier.resources
@@ -988,3 +983,6 @@ D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.CopyCom
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.exe
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.xml
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.pdb
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_action_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_list.resources

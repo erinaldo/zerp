@@ -429,7 +429,7 @@ Public Class frm_warehouse_stock_transfer
 
     'btn_reconcile
     Private Sub btn_reconcile_Click(sender As Object, e As EventArgs) Handles btn_reconcile.Click
-        frm_main.LoadFrm(New frm_warehouse_stock_reconcile)
+        frm_main.LoadFrm(New frm_warehouse_stock_reconcile_list)
     End Sub
 
     'lbl_resolved

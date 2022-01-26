@@ -62,6 +62,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.btn_view = New Guna.UI.WinForms.GunaButton()
         Me.dt_start = New Guna.UI.WinForms.GunaDateTimePicker()
         Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
+        Me.GunaButton1 = New Guna.UI.WinForms.GunaButton()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -247,7 +248,7 @@ Partial Class frm_warehouse_delivery_logs
         Me.GridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn6.Caption = "Timestamp"
         Me.GridColumn6.ColumnEdit = Me.RepositoryItemTextEdit1
-        Me.GridColumn6.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn6.DisplayFormat.FormatString = "hh:mm tt MM/dd/yyyy"
         Me.GridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GridColumn6.FieldName = "date_received"
         Me.GridColumn6.Name = "GridColumn6"
@@ -430,12 +431,41 @@ Partial Class frm_warehouse_delivery_logs
         Me.btn_print.TabIndex = 24
         Me.btn_print.Text = "Print"
         '
+        'GunaButton1
+        '
+        Me.GunaButton1.AnimationHoverSpeed = 0.07!
+        Me.GunaButton1.AnimationSpeed = 0.03!
+        Me.GunaButton1.BackColor = System.Drawing.Color.Transparent
+        Me.GunaButton1.BaseColor = System.Drawing.Color.Gray
+        Me.GunaButton1.BorderColor = System.Drawing.Color.Gray
+        Me.GunaButton1.BorderSize = 1
+        Me.GunaButton1.DialogResult = System.Windows.Forms.DialogResult.None
+        Me.GunaButton1.FocusedColor = System.Drawing.Color.Empty
+        Me.GunaButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.GunaButton1.ForeColor = System.Drawing.Color.White
+        Me.GunaButton1.Image = Nothing
+        Me.GunaButton1.ImageSize = New System.Drawing.Size(20, 20)
+        Me.GunaButton1.Location = New System.Drawing.Point(526, 108)
+        Me.GunaButton1.Name = "GunaButton1"
+        Me.GunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.GunaButton1.OnHoverBorderColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.GunaButton1.OnHoverForeColor = System.Drawing.Color.White
+        Me.GunaButton1.OnHoverImage = Nothing
+        Me.GunaButton1.OnPressedColor = System.Drawing.Color.Black
+        Me.GunaButton1.Radius = 2
+        Me.GunaButton1.Size = New System.Drawing.Size(103, 28)
+        Me.GunaButton1.TabIndex = 25
+        Me.GunaButton1.Text = "Checker"
+        Me.GunaButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.GunaButton1.Visible = False
+        '
         'frm_warehouse_delivery_logs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1299, 636)
+        Me.Controls.Add(Me.GunaButton1)
         Me.Controls.Add(Me.btn_print)
         Me.Controls.Add(Me.dt_end)
         Me.Controls.Add(Me.LabelControl2)
@@ -486,4 +516,5 @@ Partial Class frm_warehouse_delivery_logs
     Friend WithEvents col_cost As GridColumn
     Friend WithEvents btn_print As SimpleButton
     Friend WithEvents col_reference As GridColumn
+    Friend WithEvents GunaButton1 As GunaButton
 End Class

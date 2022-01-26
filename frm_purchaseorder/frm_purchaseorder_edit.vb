@@ -203,7 +203,7 @@ Public Class frm_purchaseorder_edit
             Case "Completed"
                 btn_send.Text = "Completed"
                 btn_print.Enabled = True
-                grid_order.ReadOnly = True
+                'grid_order.ReadOnly = True
 
             Case "Rejected"
                 txt_terms.ReadOnly = False
@@ -250,7 +250,7 @@ Public Class frm_purchaseorder_edit
         End If
 
         'Admin Access
-        If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial") Then
+        If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial" Or txt_status.Text = "Completed") Then
             grid_order.AllowUserToDeleteRows = False
             grid_order.AllowUserToAddRows = True
             'btn_print.Enabled = True
@@ -265,6 +265,11 @@ Public Class frm_purchaseorder_edit
                 If i = 5 Then Continue For
                 grid_order.Columns(i).DefaultCellStyle.BackColor = Color.White
             Next
+        End If
+
+        'ZEN ACCESS ONLY
+        If frm_main.user_id.Text = 10 Then
+            grid_order.Columns(8).ReadOnly = False
         End If
 
     End Sub
@@ -451,10 +456,11 @@ Public Class frm_purchaseorder_edit
     Private Sub ComputeTotal()
         Try
             Dim sub_total As Decimal
+            Dim grid_dt = DirectCast(grid_order.DataSource, DataTable)
 
-            For i = 0 To grid_order.Rows.Count - 1
-                If IsDBNull(grid_order.Rows(i).Cells(7).Value) Then Continue For
-                sub_total += grid_order.Rows(i).Cells(7).Value
+            For i = 0 To grid_dt.Rows.Count - 1
+                If IsDBNull(grid_dt.Rows(i).Item(7)) Then Continue For
+                sub_total += grid_dt.Rows(i).Item(7)
             Next
 
             If Not String.IsNullOrEmpty(txt_discount.Text) And Not cbb_discount.SelectedIndex = -1 Then
@@ -687,10 +693,12 @@ Public Class frm_purchaseorder_edit
             Case "Rejected (Approved)" : status = "Revised (Approved)"
             Case "Rejected (Sent)" : status = "Revised (Sent)"
             Case "Rejected (Partial)" : status = "Revised (Partial)"
+
+            Case "Completed" : status = "Revised (Completed)"
         End Select
 
-        'Admin Access | Save As Is!
-        If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial") Then
+        'Admin Access | Save As Is! 
+        If frm_main.user_role_id.Text = "1" And (txt_status.Text = "Approved" Or txt_status.Text = "Sent" Or txt_status.Text = "Partial" Or txt_status.Text = "Completed") Then
             status = txt_status.Text
         End If
 
@@ -840,6 +848,7 @@ Public Class frm_purchaseorder_edit
                         Case "Revised (Approved)" : status = "Approved"
                         Case "Revised (Sent)" : status = "Sent"
                         Case "Revised (Partial)" : status = "Partial"
+                        Case "Revised (Completed)" : status = "Completed"
                     End Select
 
                 Case "Reject"
@@ -848,6 +857,7 @@ Public Class frm_purchaseorder_edit
                         Case "Revised (Approved)" : status = "Rejected (Approved)"
                         Case "Revised (Sent)" : status = "Rejected (Sent)"
                         Case "Revised (Partial)" : status = "Rejected (Partial)"
+                        Case "Revised (Completed)" : status = "Rejected (Completed)"
                     End Select
 
             End Select
@@ -1067,7 +1077,7 @@ Public Class frm_purchaseorder_edit
                 Try
 
                     'Check if NOT null | Validation
-                    If IsDBNull(grid_order.Rows(e.RowIndex).Cells(3).Value) Then Exit Sub
+                    If IsDBNull(grid_order.Rows(e.RowIndex).Cells(3).Value) Then Return
 
                     Dim qty As Decimal = grid_order.Rows(e.RowIndex).Cells(1).Value
                     Dim cost As Decimal = grid_order.Rows(e.RowIndex).Cells(6).Value

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frm_warehouse_returns
+Partial Class frm_warehouse_returns_list
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.

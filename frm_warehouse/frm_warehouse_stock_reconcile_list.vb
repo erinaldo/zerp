@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class frm_warehouse_stock_reconcile
+Public Class frm_warehouse_stock_reconcile_list
 
     ReadOnly conn As New MySqlConnection(str)
 

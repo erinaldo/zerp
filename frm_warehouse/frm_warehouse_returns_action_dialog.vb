@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class frm_warehouse_returns_dialog
+Public Class frm_warehouse_returns_action_dialog
 
 
 

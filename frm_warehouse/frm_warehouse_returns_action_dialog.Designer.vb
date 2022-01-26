@@ -1,6 +1,6 @@
 ﻿
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frm_warehouse_returns_dialog
+Partial Class frm_warehouse_returns_action_dialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class frm_warehouse_returns_dialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_warehouse_returns_dialog))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_warehouse_returns_action_dialog))
         Me.btn_return = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_ok = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()

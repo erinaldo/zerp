@@ -84,7 +84,7 @@ Public Class frm_warehouse_delivery_receive
             Dim amount = CDec(txt_amount.Text)
             Dim store = "ims_" & cbb_deliver.Text.Replace(" ", "_").ToLower
             Dim str_qtyReceived = ""
-            Dim date_receieved = CDate(dt_receipt.EditValue)
+            Dim date_receieved = CDate(String.Concat(CDate(dt_receipt.EditValue).ToString("dd/MM/yyyy"), Date.Now.ToString(" HH:mm")))
 
             Dim qty_remaining = 0, qty_receieved = 0
             Dim product_ID(1000) As Integer, qty_received(1000) As Integer
@@ -182,7 +182,7 @@ Public Class frm_warehouse_delivery_receive
 
                 'Get Count of ims_delivery_receipts
                 Dim get_count = New MySqlCommand("SELECT COUNT(*) FROM ims_delivery_receipts", conn)
-                Dim receipt_id = CInt(get_count.ExecuteScalar) + 1
+                Dim receipt_id = CInt(get_count.ExecuteScalar)
 
                 'Insert to ims_deliveries
                 Using deliveries_cmd = New MySqlCommand("INSERT INTO ims_deliveries (item, qty, date_received, purchase_id, receiver, store_id, receipt_id, cost) 
@@ -327,7 +327,7 @@ Public Class frm_warehouse_delivery_receive
             Dim amount = CDec(txt_amount.Text)
             Dim store = "ims_" & cbb_deliver.Text.Replace(" ", "_").ToLower
             Dim str_qtyReceived = ""
-            Dim date_receieved = CDate(dt_receipt.EditValue)
+            Dim date_receieved = CDate(String.Concat(CDate(dt_receipt.EditValue).ToString("dd/MM/yyyy"), Date.Now.ToString(" HH:mm")))
 
             Dim qty_remaining = 0, qty_receieved = 0
             Dim product_ID(1000) As Integer, qty_received(1000) As Integer
@@ -339,16 +339,6 @@ Public Class frm_warehouse_delivery_receive
                 Case Else : discount = String.Empty
             End Select
 
-            'Dim datatable = DirectCast(grid_order.DataSource, DataTable)
-            'For i = 0 To datatable.Rows.Count - 1
-            '    product_ID(i) = CInt(datatable.Rows(i).Item(0)) 'SKU FOR INSERT TO STORE'S INVENTORY
-            '    qty_received(i) = CInt(datatable.Rows(i).Item(5)) 'RECEIVED FOR INSERT TO STORE'S INVENTORY
-
-            '    qtyRemaining += datatable.Rows(i).Item(6) 'REMAINING COUNTS
-            '    qtyRecieved += datatable.Rows(i).Item(5) 'RECEIVED COUNTS
-
-            '    str_qtyReceived += CInt(datatable.Rows(i).Item(4)) + qty_received(i) & ";" 'TOTAL RECEIVED to be inserted to IMS_PURCHASE
-            'Next
 
             'Get Values From Grid 
             Dim datatable = TryCast(grid_order.DataSource, DataTable)

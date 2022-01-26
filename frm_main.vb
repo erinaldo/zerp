@@ -439,12 +439,12 @@ Public Class frm_main
 
     'Returned Units
     Private Sub submenu_returned_units_Click(sender As Object, e As EventArgs) Handles submenu_returned_units.Click
-        LoadFrm(New frm_warehouse_returns)
+        LoadFrm(New frm_warehouse_returns_list)
     End Sub
 
     'SelluSeller
     Private Sub submenu_selluseller_Click(sender As Object, e As EventArgs) Handles submenu_selluseller.Click
-        LoadFrm(New frm_selluseller)
+        LoadFrm(New frm_warehouse_selluseller)
     End Sub
 
 

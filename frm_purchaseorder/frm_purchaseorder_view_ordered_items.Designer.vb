@@ -39,9 +39,9 @@ Partial Class frm_purchaseorder_view_ordered_items
         Me.col_po_status = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_qty_to_receive = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_date_sent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
-        Me.col_date_sent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GunaPanel4.SuspendLayout()
         CType(Me.grid_po, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,6 +266,21 @@ Partial Class frm_purchaseorder_view_ordered_items
         Me.col_qty_to_receive.Visible = True
         Me.col_qty_to_receive.VisibleIndex = 2
         '
+        'col_date_sent
+        '
+        Me.col_date_sent.AppearanceCell.Options.UseTextOptions = True
+        Me.col_date_sent.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_date_sent.Caption = "Date Sent"
+        Me.col_date_sent.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.col_date_sent.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.col_date_sent.FieldName = "date_sent"
+        Me.col_date_sent.MaxWidth = 120
+        Me.col_date_sent.MinWidth = 120
+        Me.col_date_sent.Name = "col_date_sent"
+        Me.col_date_sent.Visible = True
+        Me.col_date_sent.VisibleIndex = 9
+        Me.col_date_sent.Width = 120
+        '
         'RepositoryItemHyperLinkEdit1
         '
         Me.RepositoryItemHyperLinkEdit1.AutoHeight = False
@@ -277,19 +292,6 @@ Partial Class frm_purchaseorder_view_ordered_items
         Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
-        '
-        'col_date_sent
-        '
-        Me.col_date_sent.AppearanceCell.Options.UseTextOptions = True
-        Me.col_date_sent.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_date_sent.Caption = "Date Sent"
-        Me.col_date_sent.FieldName = "date_sent"
-        Me.col_date_sent.MaxWidth = 120
-        Me.col_date_sent.MinWidth = 120
-        Me.col_date_sent.Name = "col_date_sent"
-        Me.col_date_sent.Visible = True
-        Me.col_date_sent.VisibleIndex = 9
-        Me.col_date_sent.Width = 120
         '
         'frm_purchaseorder_view_ordered_items
         '

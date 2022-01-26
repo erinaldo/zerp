@@ -24,10 +24,10 @@ Public Class frm_warehouse_delivery_logs
                     (SELECT supplier FROM ims_suppliers WHERE id=ims_purchase.supplier) AS supplier, ims_users.first_name, ims_stores.store_name, 
                     CONCAT(ims_delivery_receipts.receipt_type, '#', ims_delivery_receipts.receipt_ref) reference FROM `ims_deliveries`
                     LEFT JOIN ims_delivery_receipts ON ims_delivery_receipts.payable_id=ims_deliveries.receipt_id
-                    INNER JOIN ims_inventory ON ims_inventory.pid=ims_deliveries.item
-                    INNER JOIN ims_users ON ims_users.usr_id=ims_deliveries.receiver
-                    INNER JOIN ims_stores ON ims_stores.store_id=ims_deliveries.store_id
-                    INNER JOIN ims_purchase ON ims_purchase.purchase_id=ims_deliveries.purchase_id
+                    LEFT JOIN ims_inventory ON ims_inventory.pid=ims_deliveries.item
+                    LEFT JOIN ims_users ON ims_users.usr_id=ims_deliveries.receiver
+                    LEFT JOIN ims_stores ON ims_stores.store_id=ims_deliveries.store_id
+                    LEFT JOIN ims_purchase ON ims_purchase.purchase_id=ims_deliveries.purchase_id
                     WHERE date_received BETWEEN CAST(@startDate AS DATE) AND CAST(@endDate AS DATE) 
                     ORDER BY date_received DESC"
         Try
@@ -57,5 +57,28 @@ Public Class frm_warehouse_delivery_logs
 
     Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
         grid_delivered.ShowRibbonPrintPreview()
+    End Sub
+
+    'CHECKER ONLY
+    Private Sub GunaButton1_Click(sender As Object, e As EventArgs) Handles GunaButton1.Click
+        Try
+            Using connect = New MySqlConnection(str)
+                connect.Open()
+                Dim last_count = 0
+
+                Using cmd = New MySqlCommand("SELECT payable_id FROM ims_delivery_receipts", connect)
+                    Using rdr = cmd.ExecuteReader
+                        While rdr.Read
+                            If (rdr("payable_id") - last_count) = 2 Then
+                                MsgBox(rdr("payable_id"))
+                            End If
+                            last_count += 1
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

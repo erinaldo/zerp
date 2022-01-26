@@ -463,7 +463,7 @@ Public Class frm_purchaseorder_return_new
 
             Using connection = New MySqlConnection(str)
                 connection.Open()
-                Using cmd = New MySqlCommand("SELECT po_return_id, batch_no, ims_suppliers.supplier, ims_users.first_name AS created_by, items, total_cost,
+                Using cmd = New MySqlCommand("SELECT po_return_id, ims_suppliers.supplier, ims_users.first_name AS created_by, items, total_cost,
                                     (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT value FROM ims_settings WHERE name='store_info') AS store_info FROM ims_purchase_returns
                                     INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase_returns.supplier_id
                                     INNER JOIN ims_users ON ims_users.usr_id=ims_purchase_returns.created_by

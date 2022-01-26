@@ -24,7 +24,7 @@ Public Class frm_accounting_payables
                         DATE_ADD(received_date, INTERVAL ims_suppliers.terms DAY) as due_date FROM ims_delivery_receipts
                         INNER JOIN ims_suppliers ON ims_suppliers.id=ims_delivery_receipts.supplier_id
                         LEFT JOIN ims_payment_vouchers ON ims_payment_vouchers.payment_id=ims_delivery_receipts.payment_ref
-                        INNER JOIN ims_stores ON ims_stores.store_id=ims_delivery_receipts.store_id " & status
+                        INNER JOIN ims_stores ON ims_stores.store_id=ims_delivery_receipts.store_id " & status & " ORDER BY payable_id DESC"
             Dim cmd = New MySqlCommand(query, conn)
             cmd.ExecuteNonQuery()
 

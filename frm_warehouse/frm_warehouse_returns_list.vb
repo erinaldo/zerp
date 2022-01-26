@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class frm_warehouse_returns
+Public Class frm_warehouse_returns_list
 
 
     Private Sub frm_warehouse_returns_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -45,7 +45,7 @@ Public Class frm_warehouse_returns
     End Sub
 
     Private Sub btn_update_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_update.ButtonClick
-        Dim frm = New frm_warehouse_returns_dialog
+        Dim frm = New frm_warehouse_returns_action_dialog
         frm.lbl_srid.Text = grid_returns_view.GetFocusedRowCellValue(col_srid)
         frm.lbl_winmodel.Text = grid_returns_view.GetFocusedRowCellValue(col_winmodel)
         frm.lbl_qty.Text = grid_returns_view.GetFocusedRowCellValue(col_qty)

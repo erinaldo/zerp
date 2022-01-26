@@ -33,19 +33,19 @@ Partial Class frm_purchaseorder_edit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
         Me.lbl_created_by = New DevExpress.XtraEditors.LabelControl()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
@@ -463,14 +463,14 @@ Partial Class frm_purchaseorder_edit
         Me.grid_stocks.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.grid_stocks.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_stocks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_stocks.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grid_stocks.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grid_stocks.ColumnHeadersHeight = 32
         Me.grid_stocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.grid_stocks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_other})
@@ -491,8 +491,8 @@ Partial Class frm_purchaseorder_edit
         'col_other
         '
         Me.col_other.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.col_other.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.col_other.DefaultCellStyle = DataGridViewCellStyle2
         Me.col_other.HeaderText = "All Stocks"
         Me.col_other.MinimumWidth = 6
         Me.col_other.Name = "col_other"
@@ -869,36 +869,36 @@ Partial Class frm_purchaseorder_edit
         Me.grid_order.BackgroundColor = System.Drawing.Color.GhostWhite
         Me.grid_order.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_order.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_order.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grid_order.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.grid_order.ColumnHeadersHeight = 32
         Me.grid_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.grid_order.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_pid, Me.col_qty, Me.col_qty_per_box, Me.col_model, Me.col_sup_model, Me.col_description, Me.col_cost, Me.col_total, Me.col_total_received, Me.col_to_received, Me.col_remaining})
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle25.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        DataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.grid_order.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer), CType(CType(78, Byte), Integer))
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.grid_order.DefaultCellStyle = DataGridViewCellStyle12
         Me.grid_order.EnableHeadersVisualStyles = False
         Me.grid_order.Location = New System.Drawing.Point(73, 152)
         Me.grid_order.Name = "grid_order"
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_order.RowHeadersDefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grid_order.RowHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.grid_order.RowHeadersWidth = 30
         Me.grid_order.RowTemplate.Height = 23
         Me.grid_order.Size = New System.Drawing.Size(1208, 327)
@@ -908,9 +908,9 @@ Partial Class frm_purchaseorder_edit
         '
         Me.col_pid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_pid.DataPropertyName = "sku"
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.col_pid.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.col_pid.DefaultCellStyle = DataGridViewCellStyle4
         Me.col_pid.FillWeight = 80.0!
         Me.col_pid.HeaderText = "SKU"
         Me.col_pid.Name = "col_pid"
@@ -921,8 +921,8 @@ Partial Class frm_purchaseorder_edit
         '
         Me.col_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_qty.DataPropertyName = "qty"
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.col_qty.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.col_qty.DefaultCellStyle = DataGridViewCellStyle5
         Me.col_qty.FillWeight = 80.0!
         Me.col_qty.HeaderText = "Quantity"
         Me.col_qty.Name = "col_qty"
@@ -931,9 +931,9 @@ Partial Class frm_purchaseorder_edit
         '
         Me.col_qty_per_box.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_qty_per_box.DataPropertyName = "qty_per_box"
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle19.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.col_qty_per_box.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.col_qty_per_box.DefaultCellStyle = DataGridViewCellStyle6
         Me.col_qty_per_box.HeaderText = "Qty Per Box"
         Me.col_qty_per_box.Name = "col_qty_per_box"
         Me.col_qty_per_box.ReadOnly = True
@@ -944,8 +944,8 @@ Partial Class frm_purchaseorder_edit
         '
         Me.col_model.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_model.DataPropertyName = "winmodel"
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.col_model.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.col_model.DefaultCellStyle = DataGridViewCellStyle7
         Me.col_model.FillWeight = 73.71088!
         Me.col_model.HeaderText = "Win. Model"
         Me.col_model.Name = "col_model"
@@ -972,9 +972,9 @@ Partial Class frm_purchaseorder_edit
         '
         Me.col_cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_cost.DataPropertyName = "cost"
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle21.Format = "n2"
-        Me.col_cost.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "n2"
+        Me.col_cost.DefaultCellStyle = DataGridViewCellStyle8
         Me.col_cost.FillWeight = 102.6804!
         Me.col_cost.HeaderText = "Cost"
         Me.col_cost.Name = "col_cost"
@@ -983,9 +983,9 @@ Partial Class frm_purchaseorder_edit
         '
         Me.col_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.col_total.DataPropertyName = "total"
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle22.Format = "n2"
-        Me.col_total.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "n2"
+        Me.col_total.DefaultCellStyle = DataGridViewCellStyle9
         Me.col_total.FillWeight = 125.5929!
         Me.col_total.HeaderText = "Total"
         Me.col_total.Name = "col_total"
@@ -995,9 +995,9 @@ Partial Class frm_purchaseorder_edit
         'col_total_received
         '
         Me.col_total_received.DataPropertyName = "total_received"
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.col_total_received.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.col_total_received.DefaultCellStyle = DataGridViewCellStyle10
         Me.col_total_received.HeaderText = "Received"
         Me.col_total_received.Name = "col_total_received"
         Me.col_total_received.ReadOnly = True
@@ -1017,9 +1017,9 @@ Partial Class frm_purchaseorder_edit
         'col_remaining
         '
         Me.col_remaining.DataPropertyName = "remaining"
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.col_remaining.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.col_remaining.DefaultCellStyle = DataGridViewCellStyle11
         Me.col_remaining.HeaderText = "Remaining"
         Me.col_remaining.Name = "col_remaining"
         Me.col_remaining.ReadOnly = True

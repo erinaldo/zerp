@@ -175,251 +175,245 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="connection.vb" />
+    <Compile Include="modules\connection.vb" />
     <Compile Include="control_inventory_side.Designer.vb">
       <DependentUpon>control_inventory_side.vb</DependentUpon>
     </Compile>
     <Compile Include="control_inventory_side.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="doc_cheque.Designer.vb">
+    <Compile Include="docs\doc_cheque.Designer.vb">
       <DependentUpon>doc_cheque.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_cheque.vb">
+    <Compile Include="docs\doc_cheque.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_collection_receipt.Designer.vb">
+    <Compile Include="docs\doc_collection_receipt.Designer.vb">
       <DependentUpon>doc_collection_receipt.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_collection_receipt.vb">
+    <Compile Include="docs\doc_collection_receipt.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_delivery_list.Designer.vb">
+    <Compile Include="docs\doc_delivery_list.Designer.vb">
       <DependentUpon>doc_delivery_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_delivery_list.vb">
+    <Compile Include="docs\doc_delivery_list.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_draft_receipt.Designer.vb">
+    <Compile Include="docs\doc_draft_receipt.Designer.vb">
       <DependentUpon>doc_draft_receipt.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_draft_receipt.vb">
+    <Compile Include="docs\doc_draft_receipt.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_payment_voucher.Designer.vb">
+    <Compile Include="docs\doc_payment_voucher.Designer.vb">
       <DependentUpon>doc_payment_voucher.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_payment_voucher.vb">
+    <Compile Include="docs\doc_payment_voucher.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_purchase_order.Designer.vb">
+    <Compile Include="docs\doc_purchase_order.Designer.vb">
       <DependentUpon>doc_purchase_order.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_purchase_order.vb">
+    <Compile Include="docs\doc_purchase_order.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_purchase_return.Designer.vb">
+    <Compile Include="docs\doc_purchase_return.Designer.vb">
       <DependentUpon>doc_purchase_return.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_purchase_return.vb">
+    <Compile Include="docs\doc_purchase_return.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_quotation.Designer.vb">
+    <Compile Include="docs\doc_quotation.Designer.vb">
       <DependentUpon>doc_quotation.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_quotation.vb">
+    <Compile Include="docs\doc_quotation.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_sales_order_receipt.Designer.vb">
+    <Compile Include="docs\doc_sales_order_receipt.Designer.vb">
       <DependentUpon>doc_sales_order_receipt.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_sales_order_receipt.vb">
+    <Compile Include="docs\doc_sales_order_receipt.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_soa.Designer.vb">
+    <Compile Include="docs\doc_soa.Designer.vb">
       <DependentUpon>doc_soa.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_soa.vb">
+    <Compile Include="docs\doc_soa.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="doc_transfer_request.Designer.vb">
+    <Compile Include="docs\doc_transfer_request.Designer.vb">
       <DependentUpon>doc_transfer_request.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_transfer_request.vb">
+    <Compile Include="docs\doc_transfer_request.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frm_accounting_forecast_payables.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_forecast_payables.Designer.vb">
       <DependentUpon>frm_accounting_forecast_payables.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_forecast_payables.vb">
+    <Compile Include="frm_accounting\frm_accounting_forecast_payables.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_generate_payment.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_generate_payment.Designer.vb">
       <DependentUpon>frm_accounting_generate_payment.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_generate_payment.vb">
+    <Compile Include="frm_accounting\frm_accounting_generate_payment.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_generate_voucher.Designer.vb">
-      <DependentUpon>frm_accounting_generate_voucher.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_accounting_generate_voucher.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_accounting_new_payable.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_new_payable.Designer.vb">
       <DependentUpon>frm_accounting_new_payable.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_new_payable.vb">
+    <Compile Include="frm_accounting\frm_accounting_new_payable.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_payment_cash.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_payment_cash.Designer.vb">
       <DependentUpon>frm_accounting_payment_cash.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_payment_cash.vb">
+    <Compile Include="frm_accounting\frm_accounting_payment_cash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_payment_cheques.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_payment_cheques.Designer.vb">
       <DependentUpon>frm_accounting_payment_cheques.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_payment_cheques.vb">
+    <Compile Include="frm_accounting\frm_accounting_payment_cheques.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_payment_vouchers.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_payment_vouchers.Designer.vb">
       <DependentUpon>frm_accounting_payment_vouchers.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_payment_vouchers.vb">
+    <Compile Include="frm_accounting\frm_accounting_payment_vouchers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_view_transaction.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_view_transaction.Designer.vb">
       <DependentUpon>frm_accounting_view_transaction.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_view_transaction.vb">
+    <Compile Include="frm_accounting\frm_accounting_view_transaction.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_approval.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_approval.Designer.vb">
       <DependentUpon>frm_admin_approval.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_approval.vb">
+    <Compile Include="frm_admin\frm_admin_approval.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_banks.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_banks.Designer.vb">
       <DependentUpon>frm_admin_banks.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_banks.vb">
+    <Compile Include="frm_admin\frm_admin_banks.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_banks_new.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_banks_new.Designer.vb">
       <DependentUpon>frm_admin_banks_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_banks_new.vb">
+    <Compile Include="frm_admin\frm_admin_banks_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_transfer_reports.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_transfer_reports.Designer.vb">
       <DependentUpon>frm_admin_transfer_reports.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_transfer_reports.vb">
+    <Compile Include="frm_admin\frm_admin_transfer_reports.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_transfer_view.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_transfer_view.Designer.vb">
       <DependentUpon>frm_admin_transfer_view.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_transfer_view.vb">
+    <Compile Include="frm_admin\frm_admin_transfer_view.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_cheque.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_cheque.Designer.vb">
       <DependentUpon>frm_collection_cheque.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_cheque.vb">
+    <Compile Include="frm_collection\frm_collection_cheque.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_cheque_books.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_cheque_books.Designer.vb">
       <DependentUpon>frm_collection_cheque_books.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_cheque_books.vb">
+    <Compile Include="frm_collection\frm_collection_cheque_books.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_cheque_customer.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_cheque_customer.Designer.vb">
       <DependentUpon>frm_collection_cheque_customer.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_cheque_customer.vb">
+    <Compile Include="frm_collection\frm_collection_cheque_customer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_cheque_view.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_cheque_view.Designer.vb">
       <DependentUpon>frm_collection_cheque_view.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_cheque_view.vb">
+    <Compile Include="frm_collection\frm_collection_cheque_view.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_epayment.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_epayment.Designer.vb">
       <DependentUpon>frm_collection_epayment.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_epayment.vb">
+    <Compile Include="frm_collection\frm_collection_epayment.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_hold.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_hold.Designer.vb">
       <DependentUpon>frm_collection_hold.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_hold.vb">
+    <Compile Include="frm_collection\frm_collection_hold.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_accounting_payables.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_payables.Designer.vb">
       <DependentUpon>frm_accounting_payables.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_payables.vb">
+    <Compile Include="frm_accounting\frm_accounting_payables.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_payment_ledger.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_payment_ledger.Designer.vb">
       <DependentUpon>frm_collection_payment_ledger.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_payment_ledger.vb">
+    <Compile Include="frm_collection\frm_collection_payment_ledger.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_payments.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_payments.Designer.vb">
       <DependentUpon>frm_collection_payments.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_payments.vb">
+    <Compile Include="frm_collection\frm_collection_payments.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_cash.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_cash.Designer.vb">
       <DependentUpon>frm_collection_cash.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_cash.vb">
+    <Compile Include="frm_collection\frm_collection_cash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_receipts.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_receipts.Designer.vb">
       <DependentUpon>frm_collection_receipts.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_receipts.vb">
+    <Compile Include="frm_collection\frm_collection_receipts.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_refund.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_refund.Designer.vb">
       <DependentUpon>frm_collection_refund.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_refund.vb">
+    <Compile Include="frm_collection\frm_collection_refund.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_return_picker.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_return_picker.Designer.vb">
       <DependentUpon>frm_sales_return_picker.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_return_picker.vb">
+    <Compile Include="frm_sales\frm_sales_return_picker.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_soa.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_soa.Designer.vb">
       <DependentUpon>frm_collection_soa.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_soa.vb">
+    <Compile Include="frm_collection\frm_collection_soa.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_soa_new.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_soa_new.Designer.vb">
       <DependentUpon>frm_collection_soa_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_soa_new.vb">
+    <Compile Include="frm_collection\frm_collection_soa_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_collection_terms.Designer.vb">
+    <Compile Include="frm_collection\frm_collection_terms.Designer.vb">
       <DependentUpon>frm_collection_terms.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_collection_terms.vb">
+    <Compile Include="frm_collection\frm_collection_terms.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_connection_panel.Designer.vb">
@@ -428,112 +422,112 @@
     <Compile Include="frm_connection_panel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_product_details.Designer.vb">
+    <Compile Include="frm_product\frm_product_details.Designer.vb">
       <DependentUpon>frm_product_details.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_product_details.vb">
+    <Compile Include="frm_product\frm_product_details.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_approval_dialog.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_approval_dialog.Designer.vb">
       <DependentUpon>frm_purchaseorder_approval_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_approval_dialog.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_approval_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_return.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_return.Designer.vb">
       <DependentUpon>frm_purchaseorder_return.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_return.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_return.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_return_new.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_return_new.Designer.vb">
       <DependentUpon>frm_purchaseorder_return_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_return_new.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_return_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_view_ordered_items.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_view_ordered_items.Designer.vb">
       <DependentUpon>frm_purchaseorder_view_ordered_items.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_view_ordered_items.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_view_ordered_items.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_quotation_order_list.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_quotation_order_list.Designer.vb">
       <DependentUpon>frm_sales_quotation_order_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_quotation_order_list.vb">
+    <Compile Include="frm_sales\frm_sales_quotation_order_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_create_quotation.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_create_quotation.Designer.vb">
       <DependentUpon>frm_sales_create_quotation.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_create_quotation.vb">
+    <Compile Include="frm_sales\frm_sales_create_quotation.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_customers.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_customers.Designer.vb">
       <DependentUpon>frm_sales_customers.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_customers.vb">
+    <Compile Include="frm_sales\frm_sales_customers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_customers_new.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_customers_new.Designer.vb">
       <DependentUpon>frm_sales_customers_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_customers_new.vb">
+    <Compile Include="frm_sales\frm_sales_customers_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_logistics.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_logistics.Designer.vb">
       <DependentUpon>frm_sales_logistics.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_logistics.vb">
+    <Compile Include="frm_sales\frm_sales_logistics.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_logistics_new.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_logistics_new.Designer.vb">
       <DependentUpon>frm_sales_logistics_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_logistics_new.vb">
+    <Compile Include="frm_sales\frm_sales_logistics_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_order_epayment_proofs.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_order_epayment_proofs.Designer.vb">
       <DependentUpon>frm_sales_order_epayment_proofs.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_order_epayment_proofs.vb">
+    <Compile Include="frm_sales\frm_sales_order_epayment_proofs.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_order_history.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_order_history.Designer.vb">
       <DependentUpon>frm_sales_order_history.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_order_history.vb">
+    <Compile Include="frm_sales\frm_sales_order_history.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_password_required.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_password_required.Designer.vb">
       <DependentUpon>frm_sales_password_required.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_password_required.vb">
+    <Compile Include="frm_sales\frm_sales_password_required.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_return.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_return.Designer.vb">
       <DependentUpon>frm_sales_return.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_return.vb">
+    <Compile Include="frm_sales\frm_sales_return.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_return_new.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_return_new.Designer.vb">
       <DependentUpon>frm_sales_return_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_return_new.vb">
+    <Compile Include="frm_sales\frm_sales_return_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_start_packing.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_start_packing.Designer.vb">
       <DependentUpon>frm_sales_start_packing.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_start_packing.vb">
+    <Compile Include="frm_sales\frm_sales_start_packing.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_unserved_dialog.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_unserved_dialog.Designer.vb">
       <DependentUpon>frm_sales_unserved_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_unserved_dialog.vb">
+    <Compile Include="frm_sales\frm_sales_unserved_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_selluseller.Designer.vb">
@@ -548,16 +542,16 @@
     <Compile Include="frm_splash_screen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_deliveries.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_deliveries.Designer.vb">
       <DependentUpon>frm_warehouse_deliveries.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_deliveries.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_deliveries.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_delivery_logs.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_delivery_logs.Designer.vb">
       <DependentUpon>frm_warehouse_delivery_logs.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_delivery_logs.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_delivery_logs.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_homepage.Designer.vb">
@@ -578,178 +572,172 @@
     <Compile Include="frm_logistics_deliveries.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_packing_list.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_packing_list.Designer.vb">
       <DependentUpon>frm_sales_packing_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_packing_list.vb">
+    <Compile Include="frm_sales\frm_sales_packing_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_packing_list_view.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_packing_list_view.Designer.vb">
       <DependentUpon>frm_sales_packing_list_view.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_packing_list_view.vb">
+    <Compile Include="frm_sales\frm_sales_packing_list_view.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_price_book.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_price_book.Designer.vb">
       <DependentUpon>frm_admin_price_book.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_price_book.vb">
+    <Compile Include="frm_admin\frm_admin_price_book.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_transaction_invoice.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_transaction_invoice.Designer.vb">
       <DependentUpon>frm_sales_transaction_invoice.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_transaction_invoice.vb">
+    <Compile Include="frm_sales\frm_sales_transaction_invoice.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_product_import.Designer.vb">
+    <Compile Include="frm_product\frm_product_import.Designer.vb">
       <DependentUpon>frm_product_import.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_product_import.vb">
+    <Compile Include="frm_product\frm_product_import.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_inventory.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_inventory.Designer.vb">
       <DependentUpon>frm_warehouse_stock_inventory.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_inventory.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_inventory.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_edit.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_edit.Designer.vb">
       <DependentUpon>frm_purchaseorder_edit.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_edit.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_edit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_new.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_new.Designer.vb">
       <DependentUpon>frm_purchaseorder_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_new.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_purchaseorder_list.Designer.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_list.Designer.vb">
       <DependentUpon>frm_purchaseorder_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_purchaseorder_list.vb">
+    <Compile Include="frm_purchaseorder\frm_purchaseorder_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_delivery_receipts.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_delivery_receipts.Designer.vb">
       <DependentUpon>frm_warehouse_delivery_receipts.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_delivery_receipts.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_delivery_receipts.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_delivery_receive.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_delivery_receive.Designer.vb">
       <DependentUpon>frm_warehouse_delivery_receive.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_delivery_receive.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_delivery_receive.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_create_order.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_create_order.Designer.vb">
       <DependentUpon>frm_sales_create_order.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_create_order.vb">
+    <Compile Include="frm_sales\frm_sales_create_order.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_orders_list.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_orders_list.Designer.vb">
       <DependentUpon>frm_sales_orders_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_orders_list.vb">
+    <Compile Include="frm_sales\frm_sales_orders_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_view_order.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_view_order.Designer.vb">
       <DependentUpon>frm_sales_view_order.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_view_order.vb">
+    <Compile Include="frm_sales\frm_sales_view_order.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales_view_quotation.Designer.vb">
+    <Compile Include="frm_sales\frm_sales_view_quotation.Designer.vb">
       <DependentUpon>frm_sales_view_quotation.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales_view_quotation.vb">
+    <Compile Include="frm_sales\frm_sales_view_quotation.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_settings.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_settings.Designer.vb">
       <DependentUpon>frm_admin_settings.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_settings.vb">
+    <Compile Include="frm_admin\frm_admin_settings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_returns.Designer.vb">
-      <DependentUpon>frm_warehouse_returns.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_returns_list.Designer.vb">
+      <DependentUpon>frm_warehouse_returns_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_returns.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_returns_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_returns_dialog.Designer.vb">
-      <DependentUpon>frm_warehouse_returns_dialog.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_returns_action_dialog.Designer.vb">
+      <DependentUpon>frm_warehouse_returns_action_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_returns_dialog.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_returns_action_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_reconcile.Designer.vb">
-      <DependentUpon>frm_warehouse_stock_reconcile.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_stock_reconcile_list.Designer.vb">
+      <DependentUpon>frm_warehouse_stock_reconcile_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_reconcile.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_reconcile_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_reconcile_new.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_reconcile_new.Designer.vb">
       <DependentUpon>frm_warehouse_stock_reconcile_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_reconcile_new.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_reconcile_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_dispatch_dialog.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_dispatch_dialog.Designer.vb">
       <DependentUpon>frm_warehouse_stock_transfer_dispatch_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_dispatch_dialog.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_dispatch_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_receive_dialog.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive_dialog.Designer.vb">
       <DependentUpon>frm_warehouse_stock_transfer_receive_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_receive_dialog.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_receive.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive.Designer.vb">
       <DependentUpon>frm_warehouse_stock_transfer_receive.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_receive.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_inventory.Designer.vb">
-      <DependentUpon>frm_warehouse_inventory.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_warehouse_inventory.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_admin_stores.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_stores.Designer.vb">
       <DependentUpon>frm_admin_stores.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_stores.vb">
+    <Compile Include="frm_admin\frm_admin_stores.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_store_add.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_store_add.Designer.vb">
       <DependentUpon>frm_admin_store_add.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_store_add.vb">
+    <Compile Include="frm_admin\frm_admin_store_add.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_supplier.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_supplier.Designer.vb">
       <DependentUpon>frm_admin_supplier.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_supplier.vb">
+    <Compile Include="frm_admin\frm_admin_supplier.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_product_new.Designer.vb">
+    <Compile Include="frm_product\frm_product_new.Designer.vb">
       <DependentUpon>frm_product_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_product_new.vb">
+    <Compile Include="frm_product\frm_product_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_product_catalogue.Designer.vb">
+    <Compile Include="frm_product\frm_product_catalogue.Designer.vb">
       <DependentUpon>frm_product_catalogue.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_product_catalogue.vb">
+    <Compile Include="frm_product\frm_product_catalogue.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_main.Designer.vb">
@@ -758,49 +746,49 @@
     <Compile Include="frm_main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_supplier_add.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_supplier_add.Designer.vb">
       <DependentUpon>frm_admin_supplier_add.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_supplier_add.vb">
+    <Compile Include="frm_admin\frm_admin_supplier_add.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_users.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_users.Designer.vb">
       <DependentUpon>frm_admin_users.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_users.vb">
+    <Compile Include="frm_admin\frm_admin_users.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_users_role.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_users_role.Designer.vb">
       <DependentUpon>frm_admin_users_role.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_users_role.vb">
+    <Compile Include="frm_admin\frm_admin_users_role.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer.Designer.vb">
       <DependentUpon>frm_warehouse_stock_transfer.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_new.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_new.Designer.vb">
       <DependentUpon>frm_warehouse_stock_transfer_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_new.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_report.Designer.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_report.Designer.vb">
       <DependentUpon>frm_warehouse_stock_transfer_report.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse_stock_transfer_report.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_report.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_admin_reports.Designer.vb">
+    <Compile Include="frm_admin\frm_admin_reports.Designer.vb">
       <DependentUpon>frm_admin_reports.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_admin_reports.vb">
+    <Compile Include="frm_admin\frm_admin_reports.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="functions.vb" />
+    <Compile Include="modules\functions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -825,16 +813,16 @@
     <Compile Include="PrintData.vb">
       <DependentUpon>PrintData.xsd</DependentUpon>
     </Compile>
-    <Compile Include="doc_packing_list.Designer.vb">
+    <Compile Include="docs\doc_packing_list.Designer.vb">
       <DependentUpon>doc_packing_list.vb</DependentUpon>
     </Compile>
-    <Compile Include="doc_packing_list.vb">
+    <Compile Include="docs\doc_packing_list.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="frm_accounting_inventory_count.Designer.vb">
+    <Compile Include="frm_accounting\frm_accounting_inventory_count.Designer.vb">
       <DependentUpon>frm_accounting_inventory_count.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_accounting_inventory_count.vb">
+    <Compile Include="frm_accounting\frm_accounting_inventory_count.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -842,184 +830,181 @@
     <EmbeddedResource Include="control_inventory_side.resx">
       <DependentUpon>control_inventory_side.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_cheque.resx">
+    <EmbeddedResource Include="docs\doc_cheque.resx">
       <DependentUpon>doc_cheque.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_collection_receipt.resx">
+    <EmbeddedResource Include="docs\doc_collection_receipt.resx">
       <DependentUpon>doc_collection_receipt.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_delivery_list.resx">
+    <EmbeddedResource Include="docs\doc_delivery_list.resx">
       <DependentUpon>doc_delivery_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_draft_receipt.resx">
+    <EmbeddedResource Include="docs\doc_draft_receipt.resx">
       <DependentUpon>doc_draft_receipt.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_payment_voucher.resx">
+    <EmbeddedResource Include="docs\doc_payment_voucher.resx">
       <DependentUpon>doc_payment_voucher.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_purchase_order.resx">
+    <EmbeddedResource Include="docs\doc_purchase_order.resx">
       <DependentUpon>doc_purchase_order.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_purchase_return.resx">
+    <EmbeddedResource Include="docs\doc_purchase_return.resx">
       <DependentUpon>doc_purchase_return.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_quotation.resx">
+    <EmbeddedResource Include="docs\doc_quotation.resx">
       <DependentUpon>doc_quotation.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_sales_order_receipt.resx">
+    <EmbeddedResource Include="docs\doc_sales_order_receipt.resx">
       <DependentUpon>doc_sales_order_receipt.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_soa.resx">
+    <EmbeddedResource Include="docs\doc_soa.resx">
       <DependentUpon>doc_soa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_transfer_request.resx">
+    <EmbeddedResource Include="docs\doc_transfer_request.resx">
       <DependentUpon>doc_transfer_request.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_forecast_payables.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_forecast_payables.resx">
       <DependentUpon>frm_accounting_forecast_payables.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_generate_voucher.resx">
-      <DependentUpon>frm_accounting_generate_voucher.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_new_payable.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_new_payable.resx">
       <DependentUpon>frm_accounting_new_payable.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_payables.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_payables.resx">
       <DependentUpon>frm_accounting_payables.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_generate_payment.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_generate_payment.resx">
       <DependentUpon>frm_accounting_generate_payment.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_payment_cash.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_payment_cash.resx">
       <DependentUpon>frm_accounting_payment_cash.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_payment_cheques.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_payment_cheques.resx">
       <DependentUpon>frm_accounting_payment_cheques.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_payment_vouchers.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_payment_vouchers.resx">
       <DependentUpon>frm_accounting_payment_vouchers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_view_transaction.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_view_transaction.resx">
       <DependentUpon>frm_accounting_view_transaction.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_approval.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_approval.resx">
       <DependentUpon>frm_admin_approval.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_banks.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_banks.resx">
       <DependentUpon>frm_admin_banks.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_banks_new.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_banks_new.resx">
       <DependentUpon>frm_admin_banks_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_transfer_reports.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_transfer_reports.resx">
       <DependentUpon>frm_admin_transfer_reports.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_transfer_view.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_transfer_view.resx">
       <DependentUpon>frm_admin_transfer_view.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_cheque.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_cheque.resx">
       <DependentUpon>frm_collection_cheque.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_cheque_books.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_cheque_books.resx">
       <DependentUpon>frm_collection_cheque_books.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_cheque_customer.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_cheque_customer.resx">
       <DependentUpon>frm_collection_cheque_customer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_cheque_view.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_cheque_view.resx">
       <DependentUpon>frm_collection_cheque_view.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_epayment.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_epayment.resx">
       <DependentUpon>frm_collection_epayment.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_hold.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_hold.resx">
       <DependentUpon>frm_collection_hold.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_payment_ledger.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_payment_ledger.resx">
       <DependentUpon>frm_collection_payment_ledger.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_payments.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_payments.resx">
       <DependentUpon>frm_collection_payments.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_cash.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_cash.resx">
       <DependentUpon>frm_collection_cash.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_receipts.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_receipts.resx">
       <DependentUpon>frm_collection_receipts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_refund.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_refund.resx">
       <DependentUpon>frm_collection_refund.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_return_picker.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_return_picker.resx">
       <DependentUpon>frm_sales_return_picker.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_soa.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_soa.resx">
       <DependentUpon>frm_collection_soa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_soa_new.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_soa_new.resx">
       <DependentUpon>frm_collection_soa_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_collection_terms.resx">
+    <EmbeddedResource Include="frm_collection\frm_collection_terms.resx">
       <DependentUpon>frm_collection_terms.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_connection_panel.resx">
       <DependentUpon>frm_connection_panel.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_product_details.resx">
+    <EmbeddedResource Include="frm_product\frm_product_details.resx">
       <DependentUpon>frm_product_details.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_approval_dialog.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_approval_dialog.resx">
       <DependentUpon>frm_purchaseorder_approval_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_return.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_return.resx">
       <DependentUpon>frm_purchaseorder_return.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_return_new.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_return_new.resx">
       <DependentUpon>frm_purchaseorder_return_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_view_ordered_items.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_view_ordered_items.resx">
       <DependentUpon>frm_purchaseorder_view_ordered_items.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_quotation_order_list.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_quotation_order_list.resx">
       <DependentUpon>frm_sales_quotation_order_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_create_quotation.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_create_quotation.resx">
       <DependentUpon>frm_sales_create_quotation.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_customers.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_customers.resx">
       <DependentUpon>frm_sales_customers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_customers_new.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_customers_new.resx">
       <DependentUpon>frm_sales_customers_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_logistics.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_logistics.resx">
       <DependentUpon>frm_sales_logistics.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_logistics_new.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_logistics_new.resx">
       <DependentUpon>frm_sales_logistics_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_order_epayment_proofs.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_order_epayment_proofs.resx">
       <DependentUpon>frm_sales_order_epayment_proofs.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_order_history.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_order_history.resx">
       <DependentUpon>frm_sales_order_history.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_password_required.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_password_required.resx">
       <DependentUpon>frm_sales_password_required.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_return.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_return.resx">
       <DependentUpon>frm_sales_return.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_return_new.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_return_new.resx">
       <DependentUpon>frm_sales_return_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_start_packing.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_start_packing.resx">
       <DependentUpon>frm_sales_start_packing.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_unserved_dialog.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_unserved_dialog.resx">
       <DependentUpon>frm_sales_unserved_dialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_selluseller.resx">
@@ -1028,10 +1013,10 @@
     <EmbeddedResource Include="frm_splash_screen.resx">
       <DependentUpon>frm_splash_screen.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_deliveries.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_deliveries.resx">
       <DependentUpon>frm_warehouse_deliveries.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_delivery_logs.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_delivery_logs.resx">
       <DependentUpon>frm_warehouse_delivery_logs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_homepage.resx">
@@ -1046,114 +1031,111 @@
     <EmbeddedResource Include="frm_main.resx">
       <DependentUpon>frm_main.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_packing_list.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_packing_list.resx">
       <DependentUpon>frm_sales_packing_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_packing_list_view.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_packing_list_view.resx">
       <DependentUpon>frm_sales_packing_list_view.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_price_book.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_price_book.resx">
       <DependentUpon>frm_admin_price_book.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_transaction_invoice.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_transaction_invoice.resx">
       <DependentUpon>frm_sales_transaction_invoice.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_product_import.resx">
+    <EmbeddedResource Include="frm_product\frm_product_import.resx">
       <DependentUpon>frm_product_import.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_inventory.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_inventory.resx">
       <DependentUpon>frm_warehouse_stock_inventory.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_edit.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_edit.resx">
       <DependentUpon>frm_purchaseorder_edit.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_new.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_new.resx">
       <DependentUpon>frm_purchaseorder_new.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_purchaseorder_list.resx">
+    <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_list.resx">
       <DependentUpon>frm_purchaseorder_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_delivery_receipts.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_delivery_receipts.resx">
       <DependentUpon>frm_warehouse_delivery_receipts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_delivery_receive.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_delivery_receive.resx">
       <DependentUpon>frm_warehouse_delivery_receive.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_create_order.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_create_order.resx">
       <DependentUpon>frm_sales_create_order.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_orders_list.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_orders_list.resx">
       <DependentUpon>frm_sales_orders_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_view_order.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_view_order.resx">
       <DependentUpon>frm_sales_view_order.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales_view_quotation.resx">
+    <EmbeddedResource Include="frm_sales\frm_sales_view_quotation.resx">
       <DependentUpon>frm_sales_view_quotation.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_settings.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_settings.resx">
       <DependentUpon>frm_admin_settings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_returns.resx">
-      <DependentUpon>frm_warehouse_returns.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_returns_list.resx">
+      <DependentUpon>frm_warehouse_returns_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_returns_dialog.resx">
-      <DependentUpon>frm_warehouse_returns_dialog.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_returns_action_dialog.resx">
+      <DependentUpon>frm_warehouse_returns_action_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_reconcile.resx">
-      <DependentUpon>frm_warehouse_stock_reconcile.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_reconcile_list.resx">
+      <DependentUpon>frm_warehouse_stock_reconcile_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_reconcile_new.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_reconcile_new.resx">
       <DependentUpon>frm_warehouse_stock_reconcile_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_transfer_dispatch_dialog.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_dispatch_dialog.resx">
       <DependentUpon>frm_warehouse_stock_transfer_dispatch_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_transfer_receive_dialog.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_receive_dialog.resx">
       <DependentUpon>frm_warehouse_stock_transfer_receive_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_transfer_receive.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_receive.resx">
       <DependentUpon>frm_warehouse_stock_transfer_receive.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_inventory.resx">
-      <DependentUpon>frm_warehouse_inventory.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_stores.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_stores.resx">
       <DependentUpon>frm_admin_stores.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_store_add.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_store_add.resx">
       <DependentUpon>frm_admin_store_add.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_supplier.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_supplier.resx">
       <DependentUpon>frm_admin_supplier.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_product_new.resx">
+    <EmbeddedResource Include="frm_product\frm_product_new.resx">
       <DependentUpon>frm_product_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_product_catalogue.resx">
+    <EmbeddedResource Include="frm_product\frm_product_catalogue.resx">
       <DependentUpon>frm_product_catalogue.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_supplier_add.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_supplier_add.resx">
       <DependentUpon>frm_admin_supplier_add.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_users.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_users.resx">
       <DependentUpon>frm_admin_users.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_users_role.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_users_role.resx">
       <DependentUpon>frm_admin_users_role.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_transfer.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer.resx">
       <DependentUpon>frm_warehouse_stock_transfer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_transfer_new.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_new.resx">
       <DependentUpon>frm_warehouse_stock_transfer_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse_stock_transfer_report.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_report.resx">
       <DependentUpon>frm_warehouse_stock_transfer_report.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_admin_reports.resx">
+    <EmbeddedResource Include="frm_admin\frm_admin_reports.resx">
       <DependentUpon>frm_admin_reports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
@@ -1163,10 +1145,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="doc_packing_list.resx">
+    <EmbeddedResource Include="docs\doc_packing_list.resx">
       <DependentUpon>doc_packing_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_accounting_inventory_count.resx">
+    <EmbeddedResource Include="frm_accounting\frm_accounting_inventory_count.resx">
       <DependentUpon>frm_accounting_inventory_count.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -1565,5 +1547,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

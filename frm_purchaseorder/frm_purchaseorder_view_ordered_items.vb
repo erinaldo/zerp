@@ -19,7 +19,7 @@ Public Class frm_purchaseorder_view_ordered_items
         dt.Columns.Add("poid")
         dt.Columns.Add("po_status")
         dt.Columns.Add("supplier")
-        dt.Columns.Add("date_sent")
+        dt.Columns.Add("date_sent", GetType(Date))
 
         load_active_orders()
 
