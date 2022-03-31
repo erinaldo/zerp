@@ -133,7 +133,7 @@ Public Class frm_product_catalogue
     Private Sub setPriceBooks()
         Dim id As Integer = frm_main.user_role_id.Text
 
-        If id = 1 Or id = 3 Or id = 6 Then
+        If id = 1 Or id = 3 Or id = 6 Or id = 10 Then
             col_dealer_price.Visible = True
             col_vip_price.Visible = True
         End If

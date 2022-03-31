@@ -7,7 +7,16 @@ Public Class frm_collection_cash
     Public Property amount As Decimal = 0.00
     Private Property sales_order_amount As Decimal = 0.00
 
-    '--- ONLOAD ----
+    '-- ONLOAD ---
+    Private Sub frm_collection_cash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Clear Sales Return Values on Load
+        sales_return_amount = 0.00
+        sales_return_id = 0
+    End Sub
+
+
+
+    '--- FUNCTIONS ---
 
     'Load Data
     Public Sub LoadData(orderid As Integer, customer As String, amountdue As String)
@@ -118,5 +127,6 @@ Public Class frm_collection_cash
             lbl_balance.Text = lbl_amount_due.Text
         End If
     End Sub
+
 
 End Class

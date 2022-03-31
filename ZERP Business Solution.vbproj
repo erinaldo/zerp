@@ -71,6 +71,7 @@
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="DevExpress.Charts.v21.1.Core, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -143,6 +144,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
@@ -157,6 +159,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="UIAutomationClient" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -175,11 +178,71 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="docs\doc_purchase_list.Designer.vb">
+      <DependentUpon>doc_purchase_list.vb</DependentUpon>
+    </Compile>
+    <Compile Include="docs\doc_purchase_list.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="docs\doc_stock_transfer.Designer.vb">
+      <DependentUpon>doc_stock_transfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="docs\doc_stock_transfer.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frm_collection\frm_collection_SelectFromSOA_dialog.Designer.vb">
+      <DependentUpon>frm_collection_SelectFromSOA_dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_collection\frm_collection_SelectFromSOA_dialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_logistics\frm_logistics_StockTransferDispatching.Designer.vb">
+      <DependentUpon>frm_logistics_StockTransferDispatching.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_logistics\frm_logistics_StockTransferDispatching.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_approval_dialog.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_approval_dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_approval_dialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_PackageManagement_packed.Designer.vb">
+      <DependentUpon>frm_warehouse_PackageManagement_packed.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_PackageManagement_packed.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_cancel_dialog.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_cancel_dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_cancel_dialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_list.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_list.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_list.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_distribute_new.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_distribute_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_distribute_new.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_request_new.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_request_new.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_request_new.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modules\connection.vb" />
-    <Compile Include="control_inventory_side.Designer.vb">
+    <Compile Include="frm_system\control_inventory_side.Designer.vb">
       <DependentUpon>control_inventory_side.vb</DependentUpon>
     </Compile>
-    <Compile Include="control_inventory_side.vb">
+    <Compile Include="frm_system\control_inventory_side.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="docs\doc_cheque.Designer.vb">
@@ -416,10 +479,10 @@
     <Compile Include="frm_collection\frm_collection_terms.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_connection_panel.Designer.vb">
+    <Compile Include="frm_system\frm_connection_panel.Designer.vb">
       <DependentUpon>frm_connection_panel.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_connection_panel.vb">
+    <Compile Include="frm_system\frm_connection_panel.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_product\frm_product_details.Designer.vb">
@@ -530,52 +593,52 @@
     <Compile Include="frm_sales\frm_sales_unserved_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_selluseller.Designer.vb">
-      <DependentUpon>frm_selluseller.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_selluseller.Designer.vb">
+      <DependentUpon>frm_warehouse_selluseller.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_selluseller.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_selluseller.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_splash_screen.Designer.vb">
+    <Compile Include="frm_system\frm_splash_screen.Designer.vb">
       <DependentUpon>frm_splash_screen.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_splash_screen.vb">
+    <Compile Include="frm_system\frm_splash_screen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_deliveries.Designer.vb">
-      <DependentUpon>frm_warehouse_deliveries.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_ReceivingManagement.Designer.vb">
+      <DependentUpon>frm_warehouse_ReceivingManagement.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_deliveries.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_ReceivingManagement.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_delivery_logs.Designer.vb">
-      <DependentUpon>frm_warehouse_delivery_logs.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_SupplierDeliveries_logs.Designer.vb">
+      <DependentUpon>frm_warehouse_SupplierDeliveries_logs.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_delivery_logs.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_SupplierDeliveries_logs.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_homepage.Designer.vb">
+    <Compile Include="frm_system\frm_homepage.Designer.vb">
       <DependentUpon>frm_homepage.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_homepage.vb">
+    <Compile Include="frm_system\frm_homepage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_login.Designer.vb">
+    <Compile Include="frm_system\frm_login.Designer.vb">
       <DependentUpon>frm_login.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_login.vb">
+    <Compile Include="frm_system\frm_login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_logistics_deliveries.Designer.vb">
-      <DependentUpon>frm_logistics_deliveries.vb</DependentUpon>
+    <Compile Include="frm_logistics\frm_logistics_ReleasingOrderManagement.Designer.vb">
+      <DependentUpon>frm_logistics_ReleasingOrderManagement.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_logistics_deliveries.vb">
+    <Compile Include="frm_logistics\frm_logistics_ReleasingOrderManagement.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_sales\frm_sales_packing_list.Designer.vb">
-      <DependentUpon>frm_sales_packing_list.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_PackageManagement.Designer.vb">
+      <DependentUpon>frm_warehouse_PackageManagement.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_sales\frm_sales_packing_list.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_PackageManagement.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_sales\frm_sales_packing_list_view.Designer.vb">
@@ -626,16 +689,10 @@
     <Compile Include="frm_purchaseorder\frm_purchaseorder_list.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_delivery_receipts.Designer.vb">
-      <DependentUpon>frm_warehouse_delivery_receipts.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_SupplierDeliveries.Designer.vb">
+      <DependentUpon>frm_warehouse_SupplierDeliveries.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_delivery_receipts.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_delivery_receive.Designer.vb">
-      <DependentUpon>frm_warehouse_delivery_receive.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_delivery_receive.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_SupplierDeliveries.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_sales\frm_sales_create_order.Designer.vb">
@@ -692,10 +749,10 @@
     <Compile Include="frm_warehouse\frm_warehouse_stock_reconcile_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_dispatch_dialog.Designer.vb">
-      <DependentUpon>frm_warehouse_stock_transfer_dispatch_dialog.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_dispatch_dialog.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_dispatch_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_dispatch_dialog.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_dispatch_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive_dialog.Designer.vb">
@@ -704,10 +761,10 @@
     <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive.Designer.vb">
-      <DependentUpon>frm_warehouse_stock_transfer_receive.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_receive.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_receive.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_receive.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_receive.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_admin\frm_admin_stores.Designer.vb">
@@ -776,10 +833,10 @@
     <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_new.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_report.Designer.vb">
-      <DependentUpon>frm_warehouse_stock_transfer_report.vb</DependentUpon>
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_report.Designer.vb">
+      <DependentUpon>frm_warehouse_stocktransfer_report.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_warehouse\frm_warehouse_stock_transfer_report.vb">
+    <Compile Include="frm_warehouse\frm_warehouse_stocktransfer_report.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_admin\frm_admin_reports.Designer.vb">
@@ -827,7 +884,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="control_inventory_side.resx">
+    <EmbeddedResource Include="docs\doc_purchase_list.resx">
+      <DependentUpon>doc_purchase_list.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="docs\doc_stock_transfer.resx">
+      <DependentUpon>doc_stock_transfer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_collection\frm_collection_SelectFromSOA_dialog.resx">
+      <DependentUpon>frm_collection_SelectFromSOA_dialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_logistics\frm_logistics_StockTransferDispatching.resx">
+      <DependentUpon>frm_logistics_StockTransferDispatching.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_approval_dialog.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_approval_dialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_PackageManagement_packed.resx">
+      <DependentUpon>frm_warehouse_PackageManagement_packed.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_system\control_inventory_side.resx">
       <DependentUpon>control_inventory_side.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="docs\doc_cheque.resx">
@@ -950,7 +1025,7 @@
     <EmbeddedResource Include="frm_collection\frm_collection_terms.resx">
       <DependentUpon>frm_collection_terms.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_connection_panel.resx">
+    <EmbeddedResource Include="frm_system\frm_connection_panel.resx">
       <DependentUpon>frm_connection_panel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_product\frm_product_details.resx">
@@ -1007,32 +1082,35 @@
     <EmbeddedResource Include="frm_sales\frm_sales_unserved_dialog.resx">
       <DependentUpon>frm_sales_unserved_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_selluseller.resx">
-      <DependentUpon>frm_selluseller.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_selluseller.resx">
+      <DependentUpon>frm_warehouse_selluseller.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_splash_screen.resx">
+    <EmbeddedResource Include="frm_system\frm_splash_screen.resx">
       <DependentUpon>frm_splash_screen.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_deliveries.resx">
-      <DependentUpon>frm_warehouse_deliveries.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_ReceivingManagement.resx">
+      <DependentUpon>frm_warehouse_ReceivingManagement.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_delivery_logs.resx">
-      <DependentUpon>frm_warehouse_delivery_logs.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_cancel_dialog.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_cancel_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_homepage.resx">
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_SupplierDeliveries_logs.resx">
+      <DependentUpon>frm_warehouse_SupplierDeliveries_logs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_system\frm_homepage.resx">
       <DependentUpon>frm_homepage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_login.resx">
+    <EmbeddedResource Include="frm_system\frm_login.resx">
       <DependentUpon>frm_login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_logistics_deliveries.resx">
-      <DependentUpon>frm_logistics_deliveries.vb</DependentUpon>
+    <EmbeddedResource Include="frm_logistics\frm_logistics_ReleasingOrderManagement.resx">
+      <DependentUpon>frm_logistics_ReleasingOrderManagement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_main.resx">
       <DependentUpon>frm_main.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_sales\frm_sales_packing_list.resx">
-      <DependentUpon>frm_sales_packing_list.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_PackageManagement.resx">
+      <DependentUpon>frm_warehouse_PackageManagement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales\frm_sales_packing_list_view.resx">
       <DependentUpon>frm_sales_packing_list_view.vb</DependentUpon>
@@ -1045,6 +1123,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_product\frm_product_import.resx">
       <DependentUpon>frm_product_import.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_list.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_list.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_distribute_new.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_distribute_new.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_request_new.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_request_new.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_inventory.resx">
       <DependentUpon>frm_warehouse_stock_inventory.vb</DependentUpon>
@@ -1060,11 +1147,8 @@
     <EmbeddedResource Include="frm_purchaseorder\frm_purchaseorder_list.resx">
       <DependentUpon>frm_purchaseorder_list.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_delivery_receipts.resx">
-      <DependentUpon>frm_warehouse_delivery_receipts.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_delivery_receive.resx">
-      <DependentUpon>frm_warehouse_delivery_receive.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_SupplierDeliveries.resx">
+      <DependentUpon>frm_warehouse_SupplierDeliveries.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_sales\frm_sales_create_order.resx">
       <DependentUpon>frm_sales_create_order.vb</DependentUpon>
@@ -1093,14 +1177,14 @@
     <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_reconcile_new.resx">
       <DependentUpon>frm_warehouse_stock_reconcile_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_dispatch_dialog.resx">
-      <DependentUpon>frm_warehouse_stock_transfer_dispatch_dialog.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_dispatch_dialog.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_dispatch_dialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_receive_dialog.resx">
       <DependentUpon>frm_warehouse_stock_transfer_receive_dialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_receive.resx">
-      <DependentUpon>frm_warehouse_stock_transfer_receive.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_receive.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_receive.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_admin\frm_admin_stores.resx">
       <DependentUpon>frm_admin_stores.vb</DependentUpon>
@@ -1132,8 +1216,8 @@
     <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_new.resx">
       <DependentUpon>frm_warehouse_stock_transfer_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stock_transfer_report.resx">
-      <DependentUpon>frm_warehouse_stock_transfer_report.vb</DependentUpon>
+    <EmbeddedResource Include="frm_warehouse\frm_warehouse_stocktransfer_report.resx">
+      <DependentUpon>frm_warehouse_stocktransfer_report.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_admin\frm_admin_reports.resx">
       <DependentUpon>frm_admin_reports.vb</DependentUpon>
@@ -1181,6 +1265,7 @@
     <None Include="Resources\dashboard.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\import_template.xlsx" />
     <None Include="Resources\inventory.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1495,6 +1580,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\actions_forbid.svg" />
+    <None Include="Resources\shipment.svg" />
+    <None Include="Resources\loadfrom_16x16.png" />
     <None Include="Resources\article_32x321.png" />
     <None Include="Resources\movepivottable_16x16.png" />
     <None Include="Resources\up_16x161.png" />

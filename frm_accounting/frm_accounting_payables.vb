@@ -74,61 +74,11 @@ Public Class frm_accounting_payables
     End Sub
 
     Private Sub btn_view_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view.ButtonClick
-        Dim receipt_id As Integer = grid_payables_view.GetFocusedRowCellValue(col_id)
+        Dim payable_id As Integer = grid_payables_view.GetFocusedRowCellValue(col_id)
         Dim frm = New frm_accounting_view_transaction
-
-        Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT qty, ims_inventory.winmodel, ims_inventory.supmodel, ims_inventory.description, ims_deliveries.cost, (qty * ims_deliveries.cost) as total_cost FROM ims_deliveries
-                        LEFT JOIN ims_inventory ON ims_inventory.pid=ims_deliveries.item
-                        WHERE receipt_id=@receipt_id", conn)
-            cmd.Parameters.AddWithValue("@receipt_id", receipt_id)
-            cmd.ExecuteNonQuery()
-
-            Dim dt = New DataTable
-            Dim da = New MySqlDataAdapter(cmd)
-            da.Fill(dt)
-
-
-            Dim cmd_get_info = New MySqlCommand("SELECT (SELECT supplier FROM ims_suppliers WHERE id=supplier_id) as supplier, is_vatable,
-                        CONCAT('PO', LPAD(ims_delivery_receipts.purchase_id,5,0)) as poid, received_date, receipt_type, receipt_ref,
-                        withholding_tax_amount,
-                        count_by, (SELECT first_name FROM ims_users WHERE usr_id=ims_deliveries.receiver) as encoder, ims_delivery_receipts.discount, return_credit, amount
-                        FROM ims_delivery_receipts
-                        LEFT JOIN ims_deliveries ON ims_deliveries.receipt_id=ims_delivery_receipts.payable_id                        
-                        LEFT JOIN ims_inventory ON ims_inventory.pid=ims_deliveries.item  
-                        LEFT JOIN ims_purchase ON ims_purchase.purchase_id=ims_delivery_receipts.purchase_id    
-                        WHERE payable_id=@receipt_id", conn)
-            cmd_get_info.Parameters.AddWithValue("@receipt_id", receipt_id)
-            Dim rdr As MySqlDataReader = cmd_get_info.ExecuteReader
-
-            While rdr.Read
-                frm.txt_purchaseID.Text = rdr("poid")
-                frm.txt_supplier.Text = rdr("supplier")
-                frm.txt_received_date.Text = rdr("received_date")
-                frm.txt_encoded_by.Text = rdr("encoder")
-                frm.txt_counted_by.Text = rdr("count_by")
-                frm.lbl_ref.Text = rdr("receipt_ref")
-                frm.lbl_type.Text = rdr("receipt_type")
-
-
-                frm.lbl_discount.Text = IIf(IsDBNull(rdr("discount")), "", rdr("discount"))
-                frm.is_vatable = rdr("is_vatable")
-
-                frm.lbl_returned_credit.Text = IIf(rdr("return_credit") <= 0, "", CDec(rdr("return_credit")))
-                frm.txt_total.Text = FormatCurrency(rdr("amount"))
-                frm.amount = rdr("amount")
-                frm.lbl_ewt.Text = IIf(rdr("withholding_tax_amount") > 0, rdr("withholding_tax_amount"), "")
-            End While
-
-            frm.grid_transaction.DataSource = dt
-            frm.ShowDialog()
-            frm.Dispose()
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        Finally
-            conn.Close()
-        End Try
+        frm.lbl_payable_id.Text = payable_id
+        If frm.ShowDialog() = DialogResult.OK Then
+            load_account_payables("")
+        End If
     End Sub
 End Class

@@ -504,51 +504,51 @@ Public Class frm_product_new
             btn_clear.Visible = False
 
 
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT * FROM ims_inventory WHERE pid=@pid", conn)
-            cmd.Parameters.AddWithValue("@pid", pid)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using connect = New MySqlConnection(str)
+                connect.Open()
 
-            While rdr.Read
-                txt_pid.Text = pid
-                txt_barcode.Text = rdr("barcode")
-                txt_winmodel.Text = rdr("winmodel")
-                txt_supmodel.Text = rdr("supmodel")
-                txt_description.Text = rdr("description")
-                cbb_maincategory.Text = rdr("main_category")
-                cbb_subcategory.Text = rdr("sub_category")
-                cbb_brand.Text = rdr("brand")
-                txt_tags.Text = rdr("tags")
-                txt_baseprice.Text = rdr("base_price")
-                txt_cost.Text = rdr("cost")
-                IIf(Not IsDBNull(rdr("discount")), txt_discount.Text = rdr("discount").ToString, txt_discount.Text = "")
-                txt_srp.Text = rdr("regular_price")
-                If Not IsDBNull(rdr("length")) Then txt_length.Text = rdr("length") Else txt_length.Text = ""
-                If Not IsDBNull(rdr("width")) Then txt_width.Text = rdr("width") Else txt_width.Text = ""
-                If Not IsDBNull(rdr("height")) Then txt_height.Text = rdr("height") Else txt_height.Text = ""
-                If Not IsDBNull(rdr("weight")) Then txt_weight.Text = rdr("weight") Else txt_weight.Text = ""
-                txt_cautions.Text = rdr("hazards")
-                txt_barcode.Text = rdr("barcode")
-                cbb_status.Text = "For Approval"
-                cbb_supplier.SelectedIndex = rdr("supplier")
-                If Not IsDBNull(rdr("serialized")) Then switch_serialize.Checked = rdr("serialized") Else switch_serialize.Checked = False
-                If Not IsDBNull(rdr("ideal_stock")) Then txt_ideal_stock.Text = rdr("ideal_stock") Else txt_ideal_stock.Text = ""
-                If Not IsDBNull(rdr("warning_stock")) Then txt_warning_stock.Text = rdr("warning_stock") Else txt_warning_stock.Text = ""
-                If Not IsDBNull(rdr("stock_duration")) Then txt_stock_duration.Text = rdr("stock_duration") Else txt_stock_duration.Text = ""
-                If Not IsDBNull(rdr("warranty_period")) Then txt_warranty_period.Text = rdr("warranty_period") Else txt_warranty_period.Text = ""
-                txt_warranty_coverage.Text = rdr("warranty_coverage")
-                setImage(rdr("winmodel"))
-            End While
+                Dim cmd = New MySqlCommand("SELECT * FROM ims_inventory WHERE pid=@pid", connect)
+                cmd.Parameters.AddWithValue("@pid", pid)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            old_pid = txt_pid.Text.Trim
-            old_model = txt_winmodel.Text.Trim
-            old_description = txt_description.Text.Trim
-            src = source
+                While rdr.Read
+                    txt_pid.Text = pid
+                    txt_barcode.Text = IIf(IsDBNull(rdr("barcode")), "", rdr("barcode"))
+                    txt_winmodel.Text = rdr("winmodel")
+                    txt_supmodel.Text = rdr("supmodel")
+                    txt_description.Text = rdr("description")
+                    cbb_maincategory.Text = rdr("main_category")
+                    cbb_subcategory.Text = rdr("sub_category")
+                    cbb_brand.Text = rdr("brand")
+                    txt_tags.Text = rdr("tags")
+                    txt_baseprice.Text = rdr("base_price")
+                    txt_cost.Text = rdr("cost")
+                    IIf(Not IsDBNull(rdr("discount")), txt_discount.Text = rdr("discount").ToString, txt_discount.Text = "")
+                    txt_srp.Text = rdr("regular_price")
+                    If Not IsDBNull(rdr("length")) Then txt_length.Text = rdr("length") Else txt_length.Text = ""
+                    If Not IsDBNull(rdr("width")) Then txt_width.Text = rdr("width") Else txt_width.Text = ""
+                    If Not IsDBNull(rdr("height")) Then txt_height.Text = rdr("height") Else txt_height.Text = ""
+                    If Not IsDBNull(rdr("weight")) Then txt_weight.Text = rdr("weight") Else txt_weight.Text = ""
+                    txt_cautions.Text = IIf(IsDBNull(rdr("hazards")), "", rdr("hazards"))
+                    cbb_status.Text = "For Approval"
+                    cbb_supplier.SelectedIndex = rdr("supplier")
+                    If Not IsDBNull(rdr("serialized")) Then switch_serialize.Checked = rdr("serialized") Else switch_serialize.Checked = False
+                    If Not IsDBNull(rdr("ideal_stock")) Then txt_ideal_stock.Text = rdr("ideal_stock") Else txt_ideal_stock.Text = ""
+                    If Not IsDBNull(rdr("warning_stock")) Then txt_warning_stock.Text = rdr("warning_stock") Else txt_warning_stock.Text = ""
+                    If Not IsDBNull(rdr("stock_duration")) Then txt_stock_duration.Text = rdr("stock_duration") Else txt_stock_duration.Text = ""
+                    If Not IsDBNull(rdr("warranty_period")) Then txt_warranty_period.Text = rdr("warranty_period") Else txt_warranty_period.Text = ""
+                    txt_warranty_coverage.Text = IIf(IsDBNull(rdr("warranty_coverage")), "", rdr("warranty_coverage"))
+                    setImage(rdr("winmodel"))
+                End While
+
+                old_pid = txt_pid.Text.Trim
+                old_model = txt_winmodel.Text.Trim
+                old_description = txt_description.Text.Trim
+                src = source
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            If conn.State = ConnectionState.Open Then conn.Close()
         End Try
 
     End Sub

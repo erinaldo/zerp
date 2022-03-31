@@ -58,6 +58,7 @@ Partial Class frm_purchaseorder_list
         Me.col_edd = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_date_generated = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_created_by = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_terms = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.btn_fulfilled = New DevExpress.XtraEditors.SimpleButton()
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.btn_ordered_items = New DevExpress.XtraEditors.SimpleButton()
@@ -66,7 +67,6 @@ Partial Class frm_purchaseorder_list
         Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
-        Me.col_terms = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -427,6 +427,16 @@ Partial Class frm_purchaseorder_list
         Me.col_created_by.VisibleIndex = 11
         Me.col_created_by.Width = 115
         '
+        'col_terms
+        '
+        Me.col_terms.AppearanceCell.Options.UseTextOptions = True
+        Me.col_terms.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_terms.Caption = "Terms"
+        Me.col_terms.FieldName = "terms"
+        Me.col_terms.Name = "col_terms"
+        Me.col_terms.Visible = True
+        Me.col_terms.VisibleIndex = 5
+        '
         'btn_fulfilled
         '
         Me.btn_fulfilled.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
@@ -526,16 +536,6 @@ Partial Class frm_purchaseorder_list
         'timer
         '
         '
-        'col_terms
-        '
-        Me.col_terms.AppearanceCell.Options.UseTextOptions = True
-        Me.col_terms.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_terms.Caption = "Terms"
-        Me.col_terms.FieldName = "terms"
-        Me.col_terms.Name = "col_terms"
-        Me.col_terms.Visible = True
-        Me.col_terms.VisibleIndex = 5
-        '
         'frm_purchaseorder_list
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -544,6 +544,7 @@ Partial Class frm_purchaseorder_list
         Me.ClientSize = New System.Drawing.Size(1367, 716)
         Me.Controls.Add(Me.panel_sub_content)
         Me.Controls.Add(Me.panel_top)
+        Me.KeyPreview = True
         Me.Name = "frm_purchaseorder_list"
         Me.Text = "frm_purchaseorder_list"
         Me.panel_top.ResumeLayout(False)

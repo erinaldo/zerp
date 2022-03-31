@@ -278,6 +278,7 @@ Partial Class frm_sales_transaction_invoice
         Me.btn_print.AutoHeight = False
         EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.employeedirectory_16x16
         Me.btn_print.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_print.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_print.Name = "btn_print"
         Me.btn_print.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '

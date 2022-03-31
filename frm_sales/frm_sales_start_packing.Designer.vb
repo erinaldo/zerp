@@ -57,7 +57,6 @@ Partial Class frm_sales_start_packing
         '
         Me.btn_no.Appearance.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_no.Appearance.Options.UseFont = True
-        Me.btn_no.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btn_no.Location = New System.Drawing.Point(12, 122)
         Me.btn_no.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_no.LookAndFeel.UseDefaultLookAndFeel = False
@@ -74,7 +73,7 @@ Partial Class frm_sales_start_packing
         Me.lbl_id.Name = "lbl_id"
         Me.lbl_id.Size = New System.Drawing.Size(140, 40)
         Me.lbl_id.TabIndex = 3
-        Me.lbl_id.Text = "SO00025"
+        Me.lbl_id.Text = "SO00000"
         '
         'frm_sales_start_packing
         '

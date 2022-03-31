@@ -76,6 +76,8 @@ Partial Public Class doc_soa
         Me.store_info = New DevExpress.XtraReports.Parameters.Parameter()
         Me.total = New DevExpress.XtraReports.Parameters.Parameter()
         Me.store_name = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell7 = New DevExpress.XtraReports.UI.XRTableCell()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,16 +105,16 @@ Partial Public Class doc_soa
         '
         Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(0.00003178914!, 0!)
+        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrTable2.Name = "XrTable2"
         Me.XrTable2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
-        Me.XrTable2.SizeF = New System.Drawing.SizeF(749.9999!, 28.00013!)
+        Me.XrTable2.SizeF = New System.Drawing.SizeF(750.0!, 28.00013!)
         Me.XrTable2.StylePriority.UseBorders = False
         '
         'XrTableRow2
         '
-        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell6, Me.XrTableCell8, Me.XrTableCell9, Me.XrTableCell10})
+        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell7, Me.XrTableCell6, Me.XrTableCell8, Me.XrTableCell9, Me.XrTableCell10})
         Me.XrTableRow2.Name = "XrTableRow2"
         Me.XrTableRow2.Weight = 1.0R
         '
@@ -128,7 +130,7 @@ Partial Public Class doc_soa
         Me.XrTableCell6.StylePriority.UseTextAlignment = False
         Me.XrTableCell6.Text = "[qty]"
         Me.XrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell6.Weight = 1.3724378599648288R
+        Me.XrTableCell6.Weight = 0.90967176887488121R
         '
         'XrTableCell8
         '
@@ -143,7 +145,7 @@ Partial Public Class doc_soa
         Me.XrTableCell8.Text = "[description]"
         Me.XrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         Me.XrTableCell8.TextFormatString = "{0:MM/dd/yyyy}"
-        Me.XrTableCell8.Weight = 0.93222218509913146R
+        Me.XrTableCell8.Weight = 1.5121275153835068R
         '
         'XrTableCell9
         '
@@ -158,7 +160,7 @@ Partial Public Class doc_soa
         Me.XrTableCell9.Text = "[cost!n2]"
         Me.XrTableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         Me.XrTableCell9.TextFormatString = "{0:MM/dd/yyyy}"
-        Me.XrTableCell9.Weight = 0.932221895378039R
+        Me.XrTableCell9.Weight = 1.2154491160107606R
         '
         'XrTableCell10
         '
@@ -369,7 +371,7 @@ Partial Public Class doc_soa
         '
         'XrTableRow1
         '
-        Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell1, Me.XrTableCell2, Me.XrTableCell5, Me.XrTableCell3})
+        Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell4, Me.XrTableCell1, Me.XrTableCell2, Me.XrTableCell5, Me.XrTableCell3})
         Me.XrTableRow1.Name = "XrTableRow1"
         Me.XrTableRow1.Weight = 1.0R
         '
@@ -385,7 +387,7 @@ Partial Public Class doc_soa
         Me.XrTableCell1.StylePriority.UseTextAlignment = False
         Me.XrTableCell1.Text = "Order ID"
         Me.XrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell1.Weight = 1.372438257194061R
+        Me.XrTableCell1.Weight = 0.90967217877222017R
         '
         'XrTableCell2
         '
@@ -398,7 +400,7 @@ Partial Public Class doc_soa
         Me.XrTableCell2.StylePriority.UseTextAlignment = False
         Me.XrTableCell2.Text = "Order Date"
         Me.XrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell2.Weight = 0.93222223245256119R
+        Me.XrTableCell2.Weight = 1.5121277620637303R
         '
         'XrTableCell5
         '
@@ -411,7 +413,7 @@ Partial Public Class doc_soa
         Me.XrTableCell5.StylePriority.UseTextAlignment = False
         Me.XrTableCell5.Text = "Due Date"
         Me.XrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell5.Weight = 0.932222249164714R
+        Me.XrTableCell5.Weight = 1.2154494757962955R
         '
         'XrTableCell3
         '
@@ -660,6 +662,34 @@ Partial Public Class doc_soa
         Me.store_name.Name = "store_name"
         Me.store_name.Visible = False
         '
+        'XrTableCell4
+        '
+        Me.XrTableCell4.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTableCell4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell4.Multiline = True
+        Me.XrTableCell4.Name = "XrTableCell4"
+        Me.XrTableCell4.StylePriority.UseBorders = False
+        Me.XrTableCell4.StylePriority.UseFont = False
+        Me.XrTableCell4.StylePriority.UseTextAlignment = False
+        Me.XrTableCell4.Text = "PO Refrence"
+        Me.XrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrTableCell4.Weight = 0.97207157937315092R
+        '
+        'XrTableCell7
+        '
+        Me.XrTableCell7.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrTableCell7.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[po_ref]")})
+        Me.XrTableCell7.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.XrTableCell7.Multiline = True
+        Me.XrTableCell7.Name = "XrTableCell7"
+        Me.XrTableCell7.StylePriority.UseBorders = False
+        Me.XrTableCell7.StylePriority.UseFont = False
+        Me.XrTableCell7.StylePriority.UseTextAlignment = False
+        Me.XrTableCell7.Text = "XrTableCell7"
+        Me.XrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrTableCell7.Weight = 0.97207140013767945R
+        '
         'doc_soa
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.ReportHeader, Me.PageHeader, Me.ReportFooter})
@@ -735,4 +765,6 @@ Partial Public Class doc_soa
     Friend WithEvents XrLabel23 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel24 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents store_name As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents XrTableCell7 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell4 As DevExpress.XtraReports.UI.XRTableCell
 End Class

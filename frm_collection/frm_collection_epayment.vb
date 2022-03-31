@@ -61,7 +61,7 @@ Public Class frm_collection_epayment
                 Dim cmd = New MySqlCommand("UPDATE ims_orders SET payment_option=@option, payment_details=@details,
                                 payment_status = If(amount_due = IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PAID',
                                                  If(amount_due < IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'OVERPAID',
-                                                 If(amount_due > IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PARTIAL',''))), 
+                                                 If(amount_due > IFNULL(paid_amount, 0) + @paid_amount + @sr_amount, 'PARTIAL','UNKWNOWN PAYMENT STATUS'))), 
                                 paid_amount=IFNULL(paid_amount,0) + @paid_amount + @sr_amount,
                                 applied_sales_return=@srid,
                                 status=IF((status='Released' AND shipping_method='Deliver'), 'Completed', status) 

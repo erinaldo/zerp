@@ -339,7 +339,7 @@ Public Class frm_warehouse_stock_transfer
 
     'btn_dispatch
     Private Sub btn_dispatch_Click(sender As Object, e As EventArgs) Handles btn_dispatch.Click
-        Dim frm = New frm_warehouse_stock_transfer_dispatch_dialog
+        Dim frm = New frm_warehouse_stocktransfer_dispatch_dialog
         frm.txt_transfer_id.Text = grid_stock_transferred_view.GetFocusedRowCellValue(col_id)
         frm.ShowDialog()
     End Sub
@@ -363,7 +363,7 @@ Public Class frm_warehouse_stock_transfer
 
             Try
 
-                Dim frm_receive = New frm_warehouse_stock_transfer_receive
+                Dim frm_receive = New frm_warehouse_stocktransfer_receive
 
                 Using conn
                     conn.Open()
@@ -383,11 +383,11 @@ Public Class frm_warehouse_stock_transfer
                     'Get Data to Form
                     Using rdr = cmd.ExecuteReader
                         While rdr.Read
-                            frm_receive.cbb_source.Properties.Items.Add(rdr("src_store"))
-                            frm_receive.cbb_source.Text = rdr("src_store")
-                            frm_receive.cbb_destination.Properties.Items.Add(rdr("receiver_store"))
-                            frm_receive.cbb_destination.Text = rdr("receiver_store")
-                            frm_receive.lbl_transfer_id.Text = "ST" & id.ToString.PadLeft(5, "0"c)
+                            'frm_receive.txt_source.Properties.Items.Add(rdr("src_store"))
+                            'frm_receive.cbb_source.Text = rdr("src_store")
+                            'frm_receive.cbb_destination.Properties.Items.Add(rdr("receiver_store"))
+                            'frm_receive.cbb_destination.Text = rdr("receiver_store")
+                            'frm_receive.lbl_transfer_id.Text = "ST" & id.ToString.PadLeft(5, "0"c)
                             units = rdr("units")
                             status = rdr("status")
                             received_units = rdr("received_units")
@@ -402,7 +402,7 @@ Public Class frm_warehouse_stock_transfer
                                 Exit Sub
                             Case "Reported", "Resolved"
                                 'MsgBox("Modification is NOT allowed." & vbCrLf & "Reason: ALREADY_REPORTED/RESOLVED/COMPLETED", vbInformation, "Forbidden")
-                                frm_receive.grid_receiver.Enabled = False
+                                frm_receive.grid_TransferStocks.Enabled = False
                                 frm_receive.btn_save.Enabled = False
                         End Select
 
@@ -410,9 +410,9 @@ Public Class frm_warehouse_stock_transfer
                 End Using
 
                 If Not String.IsNullOrEmpty(received_units) Then
-                    set_data_to_grid(units, received_units, frm_receive.grid_receiver)
+                    set_data_to_grid(units, received_units, frm_receive.grid_TransferStocks)
                 Else
-                    set_data_to_fields(units, frm_receive.grid_receiver)
+                    set_data_to_fields(units, frm_receive.grid_TransferStocks)
                 End If
 
                 frm_receive.ShowDialog()

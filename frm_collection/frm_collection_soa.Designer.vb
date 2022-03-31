@@ -22,14 +22,6 @@ Partial Class frm_collection_soa
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
-        Me.GunaPanel3 = New Guna.UI.WinForms.GunaPanel()
-        Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
-        Me.HyperlinkLabelControl1 = New DevExpress.XtraEditors.HyperlinkLabelControl()
-        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
-        Me.HyperlinkLabelControl2 = New DevExpress.XtraEditors.HyperlinkLabelControl()
-        Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
-        Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
         Me.btn_print = New DevExpress.XtraEditors.SimpleButton()
         Me.grid_soa = New DevExpress.XtraGrid.GridControl()
         Me.grid_soa_view = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -42,130 +34,21 @@ Partial Class frm_collection_soa
         Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.btn_new = New DevExpress.XtraEditors.SimpleButton()
         Me.panel_content = New System.Windows.Forms.Panel()
-        Me.GunaPanel2.SuspendLayout()
-        Me.GunaPanel3.SuspendLayout()
-        Me.GunaPanel4.SuspendLayout()
-        Me.GunaPanel1.SuspendLayout()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.link_po_list = New DevExpress.XtraEditors.HyperlinkLabelControl()
+        Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
+        Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
+        Me.lbl_head = New System.Windows.Forms.Label()
         CType(Me.grid_soa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_soa_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemHyperLinkEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_content.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GunaPanel2
-        '
-        Me.GunaPanel2.BackColor = System.Drawing.Color.GhostWhite
-        Me.GunaPanel2.Controls.Add(Me.GunaPanel3)
-        Me.GunaPanel2.Controls.Add(Me.GunaLabel1)
-        Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GunaPanel2.Location = New System.Drawing.Point(0, 0)
-        Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(1186, 78)
-        Me.GunaPanel2.TabIndex = 14
-        '
-        'GunaPanel3
-        '
-        Me.GunaPanel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GunaPanel3.BackColor = System.Drawing.Color.Transparent
-        Me.GunaPanel3.Controls.Add(Me.GunaPanel4)
-        Me.GunaPanel3.Location = New System.Drawing.Point(19, 44)
-        Me.GunaPanel3.Name = "GunaPanel3"
-        Me.GunaPanel3.Size = New System.Drawing.Size(1168, 27)
-        Me.GunaPanel3.TabIndex = 5
-        '
-        'GunaPanel4
-        '
-        Me.GunaPanel4.Controls.Add(Me.HyperlinkLabelControl1)
-        Me.GunaPanel4.Controls.Add(Me.LabelControl6)
-        Me.GunaPanel4.Controls.Add(Me.HyperlinkLabelControl2)
-        Me.GunaPanel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.GunaPanel4.Location = New System.Drawing.Point(0, 0)
-        Me.GunaPanel4.Name = "GunaPanel4"
-        Me.GunaPanel4.Size = New System.Drawing.Size(435, 27)
-        Me.GunaPanel4.TabIndex = 1
-        '
-        'HyperlinkLabelControl1
-        '
-        Me.HyperlinkLabelControl1.Appearance.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.HyperlinkLabelControl1.Appearance.LinkColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.HyperlinkLabelControl1.Appearance.Options.UseFont = True
-        Me.HyperlinkLabelControl1.Appearance.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl1.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl1.AppearanceHovered.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl1.AppearanceHovered.Options.UseForeColor = True
-        Me.HyperlinkLabelControl1.AppearanceHovered.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl1.AppearancePressed.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl1.AppearancePressed.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl1.Enabled = False
-        Me.HyperlinkLabelControl1.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom
-        Me.HyperlinkLabelControl1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
-        Me.HyperlinkLabelControl1.Location = New System.Drawing.Point(70, 5)
-        Me.HyperlinkLabelControl1.Name = "HyperlinkLabelControl1"
-        Me.HyperlinkLabelControl1.ShowLineShadow = False
-        Me.HyperlinkLabelControl1.Size = New System.Drawing.Size(140, 18)
-        Me.HyperlinkLabelControl1.TabIndex = 7
-        Me.HyperlinkLabelControl1.Text = "Statement of Accounts"
-        '
-        'LabelControl6
-        '
-        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl6.Appearance.Options.UseFont = True
-        Me.LabelControl6.Location = New System.Drawing.Point(55, 7)
-        Me.LabelControl6.Name = "LabelControl6"
-        Me.LabelControl6.Size = New System.Drawing.Size(9, 14)
-        Me.LabelControl6.TabIndex = 6
-        Me.LabelControl6.Text = ">"
-        '
-        'HyperlinkLabelControl2
-        '
-        Me.HyperlinkLabelControl2.Appearance.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.HyperlinkLabelControl2.Appearance.LinkColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.HyperlinkLabelControl2.Appearance.Options.UseFont = True
-        Me.HyperlinkLabelControl2.Appearance.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl2.AppearanceDisabled.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl2.AppearanceDisabled.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl2.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl2.AppearanceHovered.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl2.AppearanceHovered.Options.UseForeColor = True
-        Me.HyperlinkLabelControl2.AppearanceHovered.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl2.AppearancePressed.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.HyperlinkLabelControl2.AppearancePressed.Options.UseLinkColor = True
-        Me.HyperlinkLabelControl2.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom
-        Me.HyperlinkLabelControl2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
-        Me.HyperlinkLabelControl2.Location = New System.Drawing.Point(13, 5)
-        Me.HyperlinkLabelControl2.Name = "HyperlinkLabelControl2"
-        Me.HyperlinkLabelControl2.ShowLineShadow = False
-        Me.HyperlinkLabelControl2.Size = New System.Drawing.Size(37, 18)
-        Me.HyperlinkLabelControl2.TabIndex = 5
-        Me.HyperlinkLabelControl2.Text = "Home"
-        '
-        'GunaLabel1
-        '
-        Me.GunaLabel1.AutoSize = True
-        Me.GunaLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
-        Me.GunaLabel1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.GunaLabel1.Location = New System.Drawing.Point(14, 10)
-        Me.GunaLabel1.Name = "GunaLabel1"
-        Me.GunaLabel1.Size = New System.Drawing.Size(288, 31)
-        Me.GunaLabel1.TabIndex = 1
-        Me.GunaLabel1.Text = "Statement of Accounts"
-        '
-        'GunaPanel1
-        '
-        Me.GunaPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GunaPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.GunaPanel1.Controls.Add(Me.btn_print)
-        Me.GunaPanel1.Controls.Add(Me.grid_soa)
-        Me.GunaPanel1.Controls.Add(Me.btn_new)
-        Me.GunaPanel1.Location = New System.Drawing.Point(12, 20)
-        Me.GunaPanel1.Name = "GunaPanel1"
-        Me.GunaPanel1.Size = New System.Drawing.Size(1162, 481)
-        Me.GunaPanel1.TabIndex = 15
         '
         'btn_print
         '
@@ -173,11 +56,11 @@ Partial Class frm_collection_soa
         Me.btn_print.ImageOptions.ImageToTextIndent = 8
         Me.btn_print.ImageOptions.SvgImage = Global.Inventory_Management.My.Resources.Resources.printarea
         Me.btn_print.ImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.btn_print.Location = New System.Drawing.Point(142, 3)
+        Me.btn_print.Location = New System.Drawing.Point(155, 22)
         Me.btn_print.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_print.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_print.Name = "btn_print"
-        Me.btn_print.Size = New System.Drawing.Size(129, 35)
+        Me.btn_print.Size = New System.Drawing.Size(129, 38)
         Me.btn_print.TabIndex = 10
         Me.btn_print.Text = "Print"
         '
@@ -186,13 +69,13 @@ Partial Class frm_collection_soa
         Me.grid_soa.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_soa.Location = New System.Drawing.Point(8, 47)
+        Me.grid_soa.Location = New System.Drawing.Point(20, 66)
         Me.grid_soa.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_soa.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_soa.MainView = Me.grid_soa_view
         Me.grid_soa.Name = "grid_soa"
         Me.grid_soa.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemHyperLinkEdit1, Me.RepositoryItemDateEdit1})
-        Me.grid_soa.Size = New System.Drawing.Size(1145, 431)
+        Me.grid_soa.Size = New System.Drawing.Size(1145, 435)
         Me.grid_soa.TabIndex = 8
         Me.grid_soa.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_soa_view})
         '
@@ -329,22 +212,111 @@ Partial Class frm_collection_soa
         Me.btn_new.ImageOptions.ImageToTextIndent = 8
         Me.btn_new.ImageOptions.SvgImage = Global.Inventory_Management.My.Resources.Resources.actions_addcircled
         Me.btn_new.ImageOptions.SvgImageSize = New System.Drawing.Size(20, 20)
-        Me.btn_new.Location = New System.Drawing.Point(7, 3)
+        Me.btn_new.Location = New System.Drawing.Point(20, 22)
         Me.btn_new.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_new.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_new.Name = "btn_new"
-        Me.btn_new.Size = New System.Drawing.Size(129, 35)
+        Me.btn_new.Size = New System.Drawing.Size(129, 38)
         Me.btn_new.TabIndex = 9
         Me.btn_new.Text = "New SOA"
         '
         'panel_content
         '
-        Me.panel_content.Controls.Add(Me.GunaPanel1)
+        Me.panel_content.Controls.Add(Me.btn_print)
+        Me.panel_content.Controls.Add(Me.btn_new)
+        Me.panel_content.Controls.Add(Me.grid_soa)
         Me.panel_content.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panel_content.Location = New System.Drawing.Point(0, 78)
         Me.panel_content.Name = "panel_content"
         Me.panel_content.Size = New System.Drawing.Size(1186, 513)
         Me.panel_content.TabIndex = 16
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.GhostWhite
+        Me.Panel1.Controls.Add(Me.Panel2)
+        Me.Panel1.Controls.Add(Me.lbl_head)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1186, 78)
+        Me.Panel1.TabIndex = 73
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.link_po_list)
+        Me.Panel2.Controls.Add(Me.LabelControl7)
+        Me.Panel2.Controls.Add(Me.link_home)
+        Me.Panel2.Location = New System.Drawing.Point(19, 44)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(435, 27)
+        Me.Panel2.TabIndex = 82
+        '
+        'link_po_list
+        '
+        Me.link_po_list.Appearance.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.link_po_list.Appearance.LinkColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.link_po_list.Appearance.Options.UseFont = True
+        Me.link_po_list.Appearance.Options.UseLinkColor = True
+        Me.link_po_list.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_po_list.AppearanceHovered.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_po_list.AppearanceHovered.Options.UseForeColor = True
+        Me.link_po_list.AppearanceHovered.Options.UseLinkColor = True
+        Me.link_po_list.AppearancePressed.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_po_list.AppearancePressed.Options.UseLinkColor = True
+        Me.link_po_list.Enabled = False
+        Me.link_po_list.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.link_po_list.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
+        Me.link_po_list.Location = New System.Drawing.Point(68, 5)
+        Me.link_po_list.Name = "link_po_list"
+        Me.link_po_list.ShowLineShadow = False
+        Me.link_po_list.Size = New System.Drawing.Size(140, 18)
+        Me.link_po_list.TabIndex = 7
+        Me.link_po_list.Text = "Statement of Accounts"
+        '
+        'LabelControl7
+        '
+        Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.LabelControl7.Appearance.Options.UseFont = True
+        Me.LabelControl7.Location = New System.Drawing.Point(53, 7)
+        Me.LabelControl7.Name = "LabelControl7"
+        Me.LabelControl7.Size = New System.Drawing.Size(9, 14)
+        Me.LabelControl7.TabIndex = 6
+        Me.LabelControl7.Text = ">"
+        '
+        'link_home
+        '
+        Me.link_home.Appearance.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.link_home.Appearance.LinkColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.link_home.Appearance.Options.UseFont = True
+        Me.link_home.Appearance.Options.UseLinkColor = True
+        Me.link_home.AppearanceDisabled.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_home.AppearanceDisabled.Options.UseLinkColor = True
+        Me.link_home.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_home.AppearanceHovered.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_home.AppearanceHovered.Options.UseForeColor = True
+        Me.link_home.AppearanceHovered.Options.UseLinkColor = True
+        Me.link_home.AppearancePressed.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.link_home.AppearancePressed.Options.UseLinkColor = True
+        Me.link_home.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom
+        Me.link_home.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
+        Me.link_home.Location = New System.Drawing.Point(11, 5)
+        Me.link_home.Name = "link_home"
+        Me.link_home.ShowLineShadow = False
+        Me.link_home.Size = New System.Drawing.Size(37, 18)
+        Me.link_home.TabIndex = 5
+        Me.link_home.Text = "Home"
+        '
+        'lbl_head
+        '
+        Me.lbl_head.AutoSize = True
+        Me.lbl_head.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
+        Me.lbl_head.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.lbl_head.Location = New System.Drawing.Point(14, 10)
+        Me.lbl_head.Name = "lbl_head"
+        Me.lbl_head.Size = New System.Drawing.Size(288, 31)
+        Me.lbl_head.TabIndex = 81
+        Me.lbl_head.Text = "Statement of Accounts"
         '
         'frm_collection_soa
         '
@@ -353,34 +325,23 @@ Partial Class frm_collection_soa
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1186, 591)
         Me.Controls.Add(Me.panel_content)
-        Me.Controls.Add(Me.GunaPanel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Name = "frm_collection_soa"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_collection_soa"
-        Me.GunaPanel2.ResumeLayout(False)
-        Me.GunaPanel2.PerformLayout()
-        Me.GunaPanel3.ResumeLayout(False)
-        Me.GunaPanel4.ResumeLayout(False)
-        Me.GunaPanel4.PerformLayout()
-        Me.GunaPanel1.ResumeLayout(False)
         CType(Me.grid_soa, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_soa_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemHyperLinkEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_content.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents GunaPanel2 As Guna.UI.WinForms.GunaPanel
-    Friend WithEvents GunaPanel3 As Guna.UI.WinForms.GunaPanel
-    Friend WithEvents GunaPanel4 As Guna.UI.WinForms.GunaPanel
-    Friend WithEvents HyperlinkLabelControl1 As DevExpress.XtraEditors.HyperlinkLabelControl
-    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents HyperlinkLabelControl2 As DevExpress.XtraEditors.HyperlinkLabelControl
-    Friend WithEvents GunaLabel1 As Guna.UI.WinForms.GunaLabel
-    Friend WithEvents GunaPanel1 As Guna.UI.WinForms.GunaPanel
     Friend WithEvents grid_soa As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_soa_view As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents col_soa_id As DevExpress.XtraGrid.Columns.GridColumn
@@ -393,4 +354,10 @@ Partial Class frm_collection_soa
     Friend WithEvents btn_new As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents panel_content As Panel
     Friend WithEvents btn_print As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents link_po_list As DevExpress.XtraEditors.HyperlinkLabelControl
+    Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents link_home As DevExpress.XtraEditors.HyperlinkLabelControl
+    Friend WithEvents lbl_head As Label
 End Class

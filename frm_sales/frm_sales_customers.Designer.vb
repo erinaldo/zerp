@@ -53,6 +53,7 @@ Partial Class frm_sales_customers
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.HyperlinkLabelControl2 = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
+        Me.col_tin = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.grid_customer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridview_customer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_edit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,7 +87,7 @@ Partial Class frm_sales_customers
         Me.gridview_customer.Appearance.Row.Options.UseFont = True
         Me.gridview_customer.Appearance.Row.Options.UseTextOptions = True
         Me.gridview_customer.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.gridview_customer.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_edit, Me.col_id, Me.col_fname, Me.col_contact_person, Me.col_type, Me.col_contact, Me.col_addr, Me.col_shipping, Me.col_trucking, Me.col_terms, Me.col_credit_limit, Me.col_used_credit, Me.col_remaining_credit, Me.col_other_notes, Me.col_assigned_agents})
+        Me.gridview_customer.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_edit, Me.col_id, Me.col_fname, Me.col_contact_person, Me.col_type, Me.col_contact, Me.col_addr, Me.col_shipping, Me.col_trucking, Me.col_terms, Me.col_credit_limit, Me.col_used_credit, Me.col_remaining_credit, Me.col_other_notes, Me.col_assigned_agents, Me.col_tin})
         Me.gridview_customer.GridControl = Me.grid_customer
         Me.gridview_customer.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.gridview_customer.Name = "gridview_customer"
@@ -357,6 +358,12 @@ Partial Class frm_sales_customers
         Me.GunaLabel1.TabIndex = 1
         Me.GunaLabel1.Text = "Customers"
         '
+        'col_tin
+        '
+        Me.col_tin.Caption = "TIN"
+        Me.col_tin.FieldName = "tin_no"
+        Me.col_tin.Name = "col_tin"
+        '
         'frm_sales_customers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -403,4 +410,5 @@ Partial Class frm_sales_customers
     Friend WithEvents col_remaining_credit As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_used_credit As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_assigned_agents As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col_tin As DevExpress.XtraGrid.Columns.GridColumn
 End Class

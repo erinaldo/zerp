@@ -90,6 +90,8 @@ Partial Class frm_collection_cheque
         Me.btn_cancel = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_total_amount_cheques = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_select_from_soa = New System.Windows.Forms.Button()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.txt_no.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_acc_no.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dt_date.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -787,7 +789,7 @@ Partial Class frm_collection_cheque
         '
         Me.lbl_customer_id.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_customer_id.Appearance.Options.UseFont = True
-        Me.lbl_customer_id.Location = New System.Drawing.Point(323, 81)
+        Me.lbl_customer_id.Location = New System.Drawing.Point(286, 100)
         Me.lbl_customer_id.Name = "lbl_customer_id"
         Me.lbl_customer_id.Size = New System.Drawing.Size(9, 14)
         Me.lbl_customer_id.TabIndex = 51
@@ -838,12 +840,37 @@ Partial Class frm_collection_cheque
         Me.lbl_total_amount_cheques.TabIndex = 56
         Me.lbl_total_amount_cheques.Text = "₱0.00"
         '
+        'btn_select_from_soa
+        '
+        Me.btn_select_from_soa.BackColor = System.Drawing.Color.SteelBlue
+        Me.btn_select_from_soa.FlatAppearance.BorderSize = 0
+        Me.btn_select_from_soa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_select_from_soa.ForeColor = System.Drawing.Color.White
+        Me.btn_select_from_soa.Location = New System.Drawing.Point(344, 76)
+        Me.btn_select_from_soa.Name = "btn_select_from_soa"
+        Me.btn_select_from_soa.Size = New System.Drawing.Size(107, 22)
+        Me.btn_select_from_soa.TabIndex = 57
+        Me.btn_select_from_soa.Text = "Select from SOA"
+        Me.btn_select_from_soa.UseVisualStyleBackColor = False
+        '
+        'LabelControl4
+        '
+        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl4.Appearance.Options.UseFont = True
+        Me.LabelControl4.Location = New System.Drawing.Point(323, 80)
+        Me.LabelControl4.Name = "LabelControl4"
+        Me.LabelControl4.Size = New System.Drawing.Size(11, 14)
+        Me.LabelControl4.TabIndex = 58
+        Me.LabelControl4.Text = "or"
+        '
         'frm_collection_cheque
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(970, 584)
+        Me.Controls.Add(Me.LabelControl4)
+        Me.Controls.Add(Me.btn_select_from_soa)
         Me.Controls.Add(Me.lbl_total_amount_cheques)
         Me.Controls.Add(Me.LabelControl11)
         Me.Controls.Add(Me.btn_cancel)
@@ -944,4 +971,6 @@ Partial Class frm_collection_cheque
     Friend WithEvents GridView4 As GridView
     Friend WithEvents Label2 As Label
     Friend WithEvents cbb_payee As ComboBoxEdit
+    Friend WithEvents btn_select_from_soa As Button
+    Friend WithEvents LabelControl4 As LabelControl
 End Class

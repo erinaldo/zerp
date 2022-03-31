@@ -1313,7 +1313,9 @@ Partial Public Class PrintData
         
         Private columnqty As Global.System.Data.DataColumn
         
-        Private columntotal_box As Global.System.Data.DataColumn
+        Private columninnerbox_qty As Global.System.Data.DataColumn
+        
+        Private columnmasterbox_qty As Global.System.Data.DataColumn
         
         Private columnmodel As Global.System.Data.DataColumn
         
@@ -1366,9 +1368,17 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property total_boxColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property innerbox_qtyColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntotal_box
+                Return Me.columninnerbox_qty
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property masterbox_qtyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmasterbox_qty
             End Get
         End Property
         
@@ -1433,9 +1443,9 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addtransferred_unitsRow(ByVal qty As Integer, ByVal total_box As String, ByVal model As String, ByVal description As String, ByVal location As String) As transferred_unitsRow
+        Public Overloads Function Addtransferred_unitsRow(ByVal qty As Decimal, ByVal innerbox_qty As String, ByVal masterbox_qty As String, ByVal model As String, ByVal description As String, ByVal location As String) As transferred_unitsRow
             Dim rowtransferred_unitsRow As transferred_unitsRow = CType(Me.NewRow,transferred_unitsRow)
-            Dim columnValuesArray() As Object = New Object() {qty, total_box, model, description, location}
+            Dim columnValuesArray() As Object = New Object() {qty, innerbox_qty, masterbox_qty, model, description, location}
             rowtransferred_unitsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtransferred_unitsRow)
             Return rowtransferred_unitsRow
@@ -1459,7 +1469,8 @@ Partial Public Class PrintData
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnqty = MyBase.Columns("qty")
-            Me.columntotal_box = MyBase.Columns("total_box")
+            Me.columninnerbox_qty = MyBase.Columns("innerbox_qty")
+            Me.columnmasterbox_qty = MyBase.Columns("masterbox_qty")
             Me.columnmodel = MyBase.Columns("model")
             Me.columndescription = MyBase.Columns("description")
             Me.columnlocation = MyBase.Columns("location")
@@ -1468,10 +1479,12 @@ Partial Public Class PrintData
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnqty = New Global.System.Data.DataColumn("qty", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnqty)
-            Me.columntotal_box = New Global.System.Data.DataColumn("total_box", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntotal_box)
+            Me.columninnerbox_qty = New Global.System.Data.DataColumn("innerbox_qty", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninnerbox_qty)
+            Me.columnmasterbox_qty = New Global.System.Data.DataColumn("masterbox_qty", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmasterbox_qty)
             Me.columnmodel = New Global.System.Data.DataColumn("model", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmodel)
             Me.columndescription = New Global.System.Data.DataColumn("description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -2904,6 +2917,8 @@ Partial Public Class PrintData
         
         Private columntotal As Global.System.Data.DataColumn
         
+        Private columnpo_ref As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2972,6 +2987,14 @@ Partial Public Class PrintData
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property po_refColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpo_ref
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3008,9 +3031,9 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddsoaRow(ByVal order_id As String, ByVal order_date As Date, ByVal due_date As Date, ByVal total As Decimal) As soaRow
+        Public Overloads Function AddsoaRow(ByVal order_id As String, ByVal order_date As Date, ByVal due_date As Date, ByVal total As Decimal, ByVal po_ref As String) As soaRow
             Dim rowsoaRow As soaRow = CType(Me.NewRow,soaRow)
-            Dim columnValuesArray() As Object = New Object() {order_id, order_date, due_date, total}
+            Dim columnValuesArray() As Object = New Object() {order_id, order_date, due_date, total, po_ref}
             rowsoaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowsoaRow)
             Return rowsoaRow
@@ -3037,6 +3060,7 @@ Partial Public Class PrintData
             Me.columnorder_date = MyBase.Columns("order_date")
             Me.columndue_date = MyBase.Columns("due_date")
             Me.columntotal = MyBase.Columns("total")
+            Me.columnpo_ref = MyBase.Columns("po_ref")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3050,6 +3074,8 @@ Partial Public Class PrintData
             MyBase.Columns.Add(Me.columndue_date)
             Me.columntotal = New Global.System.Data.DataColumn("total", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntotal)
+            Me.columnpo_ref = New Global.System.Data.DataColumn("po_ref", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpo_ref)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4969,10 +4995,10 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property qty() As Integer
+        Public Property qty() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tabletransferred_units.qtyColumn),Integer)
+                    Return CType(Me(Me.tabletransferred_units.qtyColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'qty' in table 'transferred_units' is DBNull.", e)
                 End Try
@@ -4984,16 +5010,31 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property total_box() As String
+        Public Property innerbox_qty() As String
             Get
                 Try 
-                    Return CType(Me(Me.tabletransferred_units.total_boxColumn),String)
+                    Return CType(Me(Me.tabletransferred_units.innerbox_qtyColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'total_box' in table 'transferred_units' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'innerbox_qty' in table 'transferred_units' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tabletransferred_units.total_boxColumn) = value
+                Me(Me.tabletransferred_units.innerbox_qtyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property masterbox_qty() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tabletransferred_units.masterbox_qtyColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'masterbox_qty' in table 'transferred_units' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletransferred_units.masterbox_qtyColumn) = value
             End Set
         End Property
         
@@ -5056,14 +5097,26 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Istotal_boxNull() As Boolean
-            Return Me.IsNull(Me.tabletransferred_units.total_boxColumn)
+        Public Function Isinnerbox_qtyNull() As Boolean
+            Return Me.IsNull(Me.tabletransferred_units.innerbox_qtyColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Settotal_boxNull()
-            Me(Me.tabletransferred_units.total_boxColumn) = Global.System.Convert.DBNull
+        Public Sub Setinnerbox_qtyNull()
+            Me(Me.tabletransferred_units.innerbox_qtyColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Ismasterbox_qtyNull() As Boolean
+            Return Me.IsNull(Me.tabletransferred_units.masterbox_qtyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setmasterbox_qtyNull()
+            Me(Me.tabletransferred_units.masterbox_qtyColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5919,6 +5972,21 @@ Partial Public Class PrintData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property po_ref() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesoa.po_refColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'po_ref' in table 'soa' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesoa.po_refColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isorder_idNull() As Boolean
             Return Me.IsNull(Me.tablesoa.order_idColumn)
         End Function
@@ -5963,6 +6031,18 @@ Partial Public Class PrintData
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SettotalNull()
             Me(Me.tablesoa.totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Ispo_refNull() As Boolean
+            Return Me.IsNull(Me.tablesoa.po_refColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setpo_refNull()
+            Me(Me.tablesoa.po_refColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

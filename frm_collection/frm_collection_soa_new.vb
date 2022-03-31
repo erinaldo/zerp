@@ -10,10 +10,7 @@ Public Class frm_collection_soa_new
 
     '--- ONLOAD ----
     Private Sub frm_collection_soa_new_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Guna2ShadowForm.SetShadowForm(Me)
-
         LoadCustomers()
-
     End Sub
 
 

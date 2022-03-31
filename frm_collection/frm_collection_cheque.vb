@@ -8,7 +8,9 @@ Public Class frm_collection_cheque
 
     ReadOnly conn As New MySqlConnection(str)
     Public Property customer_id = 0
-    Public Property customer_name = ""
+    Public Property customer_name = String.Empty
+    Public Property soa_id As Integer = 0
+
     Dim dt_cheque As New DataTable
     Dim itemsObject As String
     Dim ListOfItem As List(Of ChequesClass) = New List(Of ChequesClass)
@@ -479,6 +481,36 @@ Public Class frm_collection_cheque
             End If
         Next
 
+    End Sub
+
+    'Show SOA Dialog Selector
+    Private Sub btn_select_from_soa_Click(sender As Object, e As EventArgs) Handles btn_select_from_soa.Click
+        Dim frm = New frm_collection_SelectFromSOA_dialog
+        If frm.ShowDialog() = DialogResult.OK Then
+            Try
+                Using conn = New MySqlConnection(str)
+                    conn.Open()
+                    Using cmd = New MySqlCommand("SELECT order_id, date_ordered, amount_due, payment_type FROM ims_orders 
+                            WHERE (payment_type='cheque' OR payment_type='terms') AND payment_status='UNPAID' AND NOT status='Cancelled' AND soa_id='" & soa_id & "' AND deleted=0", conn)
+                        cmd.ExecuteNonQuery()
+
+                        Dim dt = New DataTable
+                        Dim da = New MySqlDataAdapter(cmd)
+                        da.Fill(dt)
+
+                        grid_transaction.DataSource = dt
+
+                        'Select All Rows
+                        For i = 0 To grid_transaction_view.RowCount - 1
+                            grid_transaction_view.SelectRow(i)
+                        Next
+
+                    End Using
+                End Using
+            Catch ex As Exception
+                MsgBox(ex.Message, vbCritical, "Error")
+            End Try
+        End If
     End Sub
 
 End Class

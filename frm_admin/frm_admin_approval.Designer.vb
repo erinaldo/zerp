@@ -36,6 +36,16 @@ Partial Class frm_admin_approval
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.panel_top = New Guna.UI.WinForms.GunaLinePanel()
         Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
@@ -43,7 +53,6 @@ Partial Class frm_admin_approval
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.GunaLabel1 = New Guna.UI.WinForms.GunaLabel()
-        Me.TablePanel2 = New DevExpress.Utils.Layout.TablePanel()
         Me.grid_quotation = New DevExpress.XtraGrid.GridControl()
         Me.grid_quotation_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_quotation_id = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -69,6 +78,11 @@ Partial Class frm_admin_approval
         Me.col_transfer_from = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_transfer_status = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_transfer_to = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_action = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_print_stockTransfer = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.col_transferType = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_created_by = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_created_at = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.grid_po = New DevExpress.XtraGrid.GridControl()
@@ -77,7 +91,6 @@ Partial Class frm_admin_approval
         Me.col_date_generated = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_supplier = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_po_status = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.TablePanel1 = New DevExpress.Utils.Layout.TablePanel()
         Me.grid_sales_returns = New DevExpress.XtraGrid.GridControl()
         Me.grid_sales_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_srid = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -90,11 +103,29 @@ Partial Class frm_admin_approval
         Me.col_model = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.tab_control = New System.Windows.Forms.TabControl()
+        Me.tab_purchaseOrder = New System.Windows.Forms.TabPage()
+        Me.tab_quotation = New System.Windows.Forms.TabPage()
+        Me.tab_salesReturns = New System.Windows.Forms.TabPage()
+        Me.tab_units = New System.Windows.Forms.TabPage()
+        Me.tab_stockTransfer = New System.Windows.Forms.TabPage()
+        Me.tab_transferReport = New System.Windows.Forms.TabPage()
+        Me.grid_transferReport = New DevExpress.XtraGrid.GridControl()
+        Me.grid_transferReport_view = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.col_reportID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.btn_view_report = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
+        Me.tab_reconcilations = New System.Windows.Forms.TabPage()
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel2.SuspendLayout()
-        CType(Me.TablePanel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TablePanel2.SuspendLayout()
         CType(Me.grid_quotation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_quotation_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_stock_reconcilation, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,14 +134,24 @@ Partial Class frm_admin_approval
         CType(Me.btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_transfer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_transfer_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_print_stockTransfer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_po, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TablePanel1.SuspendLayout()
         CType(Me.grid_sales_returns, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_sales_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_approval_units, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_approval_units_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_control.SuspendLayout()
+        Me.tab_purchaseOrder.SuspendLayout()
+        Me.tab_quotation.SuspendLayout()
+        Me.tab_salesReturns.SuspendLayout()
+        Me.tab_units.SuspendLayout()
+        Me.tab_stockTransfer.SuspendLayout()
+        Me.tab_transferReport.SuspendLayout()
+        CType(Me.grid_transferReport, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_transferReport_view, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_view_report, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tab_reconcilations.SuspendLayout()
         Me.SuspendLayout()
         '
         'panel_top
@@ -214,33 +255,17 @@ Partial Class frm_admin_approval
         Me.GunaLabel1.TabIndex = 1
         Me.GunaLabel1.Text = "Approvals"
         '
-        'TablePanel2
-        '
-        Me.TablePanel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TablePanel2.Columns.AddRange(New DevExpress.Utils.Layout.TablePanelColumn() {New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 55.0!)})
-        Me.TablePanel2.Controls.Add(Me.grid_quotation)
-        Me.TablePanel2.Controls.Add(Me.LabelControl5)
-        Me.TablePanel2.Controls.Add(Me.LabelControl3)
-        Me.TablePanel2.Controls.Add(Me.grid_stock_reconcilation)
-        Me.TablePanel2.Controls.Add(Me.LabelControl4)
-        Me.TablePanel2.Controls.Add(Me.grid_transfer)
-        Me.TablePanel2.Location = New System.Drawing.Point(12, 93)
-        Me.TablePanel2.Name = "TablePanel2"
-        Me.TablePanel2.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 25.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 171.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 51.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 255.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 116.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 26.0!)})
-        Me.TablePanel2.Size = New System.Drawing.Size(613, 657)
-        Me.TablePanel2.TabIndex = 0
-        '
         'grid_quotation
         '
-        Me.TablePanel2.SetColumn(Me.grid_quotation, 0)
-        Me.grid_quotation.Location = New System.Drawing.Point(3, 29)
+        Me.grid_quotation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_quotation.Location = New System.Drawing.Point(8, 57)
         Me.grid_quotation.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_quotation.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_quotation.MainView = Me.grid_quotation_view
         Me.grid_quotation.Name = "grid_quotation"
-        Me.TablePanel2.SetRow(Me.grid_quotation, 1)
-        Me.grid_quotation.Size = New System.Drawing.Size(607, 215)
+        Me.grid_quotation.Size = New System.Drawing.Size(1178, 560)
         Me.grid_quotation.TabIndex = 16
         Me.grid_quotation.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_quotation_view})
         '
@@ -285,50 +310,44 @@ Partial Class frm_admin_approval
         '
         'LabelControl5
         '
-        Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.LabelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl5.Appearance.Options.UseFont = True
         Me.LabelControl5.Appearance.Options.UseForeColor = True
         Me.LabelControl5.Appearance.Options.UseTextOptions = True
         Me.LabelControl5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.TablePanel2.SetColumn(Me.LabelControl5, 0)
-        Me.LabelControl5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl5.Location = New System.Drawing.Point(3, 3)
+        Me.LabelControl5.Location = New System.Drawing.Point(8, 15)
         Me.LabelControl5.Name = "LabelControl5"
-        Me.TablePanel2.SetRow(Me.LabelControl5, 0)
-        Me.LabelControl5.Size = New System.Drawing.Size(607, 20)
+        Me.LabelControl5.Size = New System.Drawing.Size(217, 29)
         Me.LabelControl5.TabIndex = 15
         Me.LabelControl5.Text = "Quotation Approvals"
         '
         'LabelControl3
         '
-        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.LabelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl3.Appearance.Options.UseFont = True
         Me.LabelControl3.Appearance.Options.UseForeColor = True
         Me.LabelControl3.Appearance.Options.UseTextOptions = True
         Me.LabelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.TablePanel2.SetColumn(Me.LabelControl3, 0)
-        Me.LabelControl3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl3.Location = New System.Drawing.Point(3, 250)
+        Me.LabelControl3.Location = New System.Drawing.Point(8, 15)
         Me.LabelControl3.Name = "LabelControl3"
-        Me.TablePanel2.SetRow(Me.LabelControl3, 2)
-        Me.LabelControl3.Size = New System.Drawing.Size(607, 20)
+        Me.LabelControl3.Size = New System.Drawing.Size(168, 29)
         Me.LabelControl3.TabIndex = 4
         Me.LabelControl3.Text = "Stock Transfers"
         '
         'grid_stock_reconcilation
         '
-        Me.TablePanel2.SetColumn(Me.grid_stock_reconcilation, 0)
-        Me.grid_stock_reconcilation.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_stock_reconcilation.Location = New System.Drawing.Point(3, 496)
+        Me.grid_stock_reconcilation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_stock_reconcilation.Location = New System.Drawing.Point(8, 57)
         Me.grid_stock_reconcilation.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_stock_reconcilation.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_stock_reconcilation.MainView = Me.grid_stock_reconcilation_view
         Me.grid_stock_reconcilation.Name = "grid_stock_reconcilation"
         Me.grid_stock_reconcilation.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_edit, Me.btn_delete})
-        Me.TablePanel2.SetRow(Me.grid_stock_reconcilation, 5)
-        Me.grid_stock_reconcilation.Size = New System.Drawing.Size(607, 158)
+        Me.grid_stock_reconcilation.Size = New System.Drawing.Size(1178, 560)
         Me.grid_stock_reconcilation.TabIndex = 14
         Me.grid_stock_reconcilation.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_stock_reconcilation_view})
         '
@@ -445,31 +464,30 @@ Partial Class frm_admin_approval
         '
         'LabelControl4
         '
-        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.LabelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl4.Appearance.Options.UseFont = True
         Me.LabelControl4.Appearance.Options.UseForeColor = True
         Me.LabelControl4.Appearance.Options.UseTextOptions = True
         Me.LabelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.TablePanel2.SetColumn(Me.LabelControl4, 0)
-        Me.LabelControl4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl4.Location = New System.Drawing.Point(3, 470)
+        Me.LabelControl4.Location = New System.Drawing.Point(8, 15)
         Me.LabelControl4.Name = "LabelControl4"
-        Me.TablePanel2.SetRow(Me.LabelControl4, 4)
-        Me.LabelControl4.Size = New System.Drawing.Size(607, 20)
+        Me.LabelControl4.Size = New System.Drawing.Size(158, 29)
         Me.LabelControl4.TabIndex = 6
         Me.LabelControl4.Text = "Reconcilations"
         '
         'grid_transfer
         '
-        Me.TablePanel2.SetColumn(Me.grid_transfer, 0)
-        Me.grid_transfer.Location = New System.Drawing.Point(3, 276)
+        Me.grid_transfer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_transfer.Location = New System.Drawing.Point(8, 57)
         Me.grid_transfer.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_transfer.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_transfer.MainView = Me.grid_transfer_view
         Me.grid_transfer.Name = "grid_transfer"
-        Me.TablePanel2.SetRow(Me.grid_transfer, 3)
-        Me.grid_transfer.Size = New System.Drawing.Size(607, 188)
+        Me.grid_transfer.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_print_stockTransfer})
+        Me.grid_transfer.Size = New System.Drawing.Size(1178, 560)
         Me.grid_transfer.TabIndex = 5
         Me.grid_transfer.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transfer_view})
         '
@@ -483,25 +501,24 @@ Partial Class frm_admin_approval
         Me.grid_transfer_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_transfer_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_transfer_view.Appearance.Row.Options.UseFont = True
-        Me.grid_transfer_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_transfer_id, Me.col_transfer_from, Me.col_transfer_status, Me.col_transfer_to})
+        Me.grid_transfer_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_transfer_id, Me.col_transfer_from, Me.col_transfer_status, Me.col_transfer_to, Me.col_action, Me.col_transferType, Me.col_created_by, Me.col_created_at})
         Me.grid_transfer_view.GridControl = Me.grid_transfer
         Me.grid_transfer_view.Name = "grid_transfer_view"
-        Me.grid_transfer_view.OptionsBehavior.Editable = False
+        Me.grid_transfer_view.OptionsBehavior.ReadOnly = True
         '
         'col_transfer_id
         '
-        Me.col_transfer_id.AppearanceCell.ForeColor = System.Drawing.Color.SlateBlue
-        Me.col_transfer_id.AppearanceCell.Options.UseForeColor = True
         Me.col_transfer_id.AppearanceCell.Options.UseTextOptions = True
         Me.col_transfer_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_transfer_id.AppearanceHeader.Options.UseTextOptions = True
         Me.col_transfer_id.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_transfer_id.Caption = "Transfer ID"
         Me.col_transfer_id.FieldName = "transfer_id"
+        Me.col_transfer_id.MaxWidth = 90
         Me.col_transfer_id.Name = "col_transfer_id"
         Me.col_transfer_id.Visible = True
-        Me.col_transfer_id.VisibleIndex = 0
-        Me.col_transfer_id.Width = 82
+        Me.col_transfer_id.VisibleIndex = 1
+        Me.col_transfer_id.Width = 80
         '
         'col_transfer_from
         '
@@ -509,16 +526,19 @@ Partial Class frm_admin_approval
         Me.col_transfer_from.FieldName = "transfer_from"
         Me.col_transfer_from.Name = "col_transfer_from"
         Me.col_transfer_from.Visible = True
-        Me.col_transfer_from.VisibleIndex = 1
+        Me.col_transfer_from.VisibleIndex = 3
         Me.col_transfer_from.Width = 169
         '
         'col_transfer_status
         '
+        Me.col_transfer_status.AppearanceCell.Options.UseTextOptions = True
+        Me.col_transfer_status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_transfer_status.Caption = "Status"
         Me.col_transfer_status.FieldName = "status"
+        Me.col_transfer_status.MaxWidth = 100
         Me.col_transfer_status.Name = "col_transfer_status"
         Me.col_transfer_status.Visible = True
-        Me.col_transfer_status.VisibleIndex = 3
+        Me.col_transfer_status.VisibleIndex = 5
         Me.col_transfer_status.Width = 96
         '
         'col_transfer_to
@@ -527,55 +547,100 @@ Partial Class frm_admin_approval
         Me.col_transfer_to.FieldName = "transfer_to"
         Me.col_transfer_to.Name = "col_transfer_to"
         Me.col_transfer_to.Visible = True
-        Me.col_transfer_to.VisibleIndex = 2
+        Me.col_transfer_to.VisibleIndex = 4
         Me.col_transfer_to.Width = 132
+        '
+        'col_action
+        '
+        Me.col_action.ColumnEdit = Me.btn_print_stockTransfer
+        Me.col_action.MaxWidth = 50
+        Me.col_action.Name = "col_action"
+        Me.col_action.Visible = True
+        Me.col_action.VisibleIndex = 0
+        Me.col_action.Width = 50
+        '
+        'btn_print_stockTransfer
+        '
+        Me.btn_print_stockTransfer.AutoHeight = False
+        EditorButtonImageOptions3.Image = Global.Inventory_Management.My.Resources.Resources.loadfrom_16x16
+        Me.btn_print_stockTransfer.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_print_stockTransfer.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print_stockTransfer.Name = "btn_print_stockTransfer"
+        Me.btn_print_stockTransfer.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'col_transferType
+        '
+        Me.col_transferType.AppearanceCell.Options.UseTextOptions = True
+        Me.col_transferType.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_transferType.Caption = "Transfer Type"
+        Me.col_transferType.FieldName = "transfer_type"
+        Me.col_transferType.MaxWidth = 120
+        Me.col_transferType.Name = "col_transferType"
+        Me.col_transferType.Visible = True
+        Me.col_transferType.VisibleIndex = 2
+        '
+        'col_created_by
+        '
+        Me.col_created_by.Caption = "Created by"
+        Me.col_created_by.FieldName = "created_by"
+        Me.col_created_by.MaxWidth = 150
+        Me.col_created_by.Name = "col_created_by"
+        Me.col_created_by.Visible = True
+        Me.col_created_by.VisibleIndex = 6
+        '
+        'col_created_at
+        '
+        Me.col_created_at.AppearanceCell.Options.UseTextOptions = True
+        Me.col_created_at.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_created_at.Caption = "Created at"
+        Me.col_created_at.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.col_created_at.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.col_created_at.FieldName = "created_at"
+        Me.col_created_at.MaxWidth = 120
+        Me.col_created_at.Name = "col_created_at"
+        Me.col_created_at.Visible = True
+        Me.col_created_at.VisibleIndex = 7
         '
         'LabelControl1
         '
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl1.Appearance.Options.UseFont = True
         Me.LabelControl1.Appearance.Options.UseForeColor = True
         Me.LabelControl1.Appearance.Options.UseTextOptions = True
         Me.LabelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
         Me.LabelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.TablePanel1.SetColumn(Me.LabelControl1, 0)
-        Me.LabelControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl1.Location = New System.Drawing.Point(3, 471)
+        Me.LabelControl1.Location = New System.Drawing.Point(8, 15)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.TablePanel1.SetRow(Me.LabelControl1, 4)
         Me.LabelControl1.Size = New System.Drawing.Size(579, 20)
         Me.LabelControl1.TabIndex = 1
         Me.LabelControl1.Text = "Inactive Units"
         '
         'LabelControl2
         '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.LabelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl2.Appearance.Options.UseFont = True
         Me.LabelControl2.Appearance.Options.UseForeColor = True
         Me.LabelControl2.Appearance.Options.UseTextOptions = True
         Me.LabelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.TablePanel1.SetColumn(Me.LabelControl2, 0)
-        Me.LabelControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl2.Location = New System.Drawing.Point(3, 3)
+        Me.LabelControl2.Location = New System.Drawing.Point(8, 15)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.TablePanel1.SetRow(Me.LabelControl2, 0)
-        Me.LabelControl2.Size = New System.Drawing.Size(579, 21)
+        Me.LabelControl2.Size = New System.Drawing.Size(182, 29)
         Me.LabelControl2.TabIndex = 3
         Me.LabelControl2.Text = "Purchase Orders"
         '
         'grid_po
         '
-        Me.TablePanel1.SetColumn(Me.grid_po, 0)
-        Me.grid_po.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_po.Location = New System.Drawing.Point(3, 30)
+        Me.grid_po.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_po.Location = New System.Drawing.Point(8, 57)
         Me.grid_po.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_po.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_po.MainView = Me.grid_po_view
         Me.grid_po.Name = "grid_po"
-        Me.TablePanel1.SetRow(Me.grid_po, 1)
-        Me.grid_po.Size = New System.Drawing.Size(579, 215)
+        Me.grid_po.Size = New System.Drawing.Size(1178, 560)
         Me.grid_po.TabIndex = 2
         Me.grid_po.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_po_view})
         '
@@ -640,37 +705,17 @@ Partial Class frm_admin_approval
         Me.col_po_status.VisibleIndex = 3
         Me.col_po_status.Width = 94
         '
-        'TablePanel1
-        '
-        Me.TablePanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TablePanel1.Appearance.BackColor = System.Drawing.Color.White
-        Me.TablePanel1.Appearance.Options.UseBackColor = True
-        Me.TablePanel1.Columns.AddRange(New DevExpress.Utils.Layout.TablePanelColumn() {New DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 30.04!)})
-        Me.TablePanel1.Controls.Add(Me.grid_sales_returns)
-        Me.TablePanel1.Controls.Add(Me.LabelControl6)
-        Me.TablePanel1.Controls.Add(Me.grid_approval_units)
-        Me.TablePanel1.Controls.Add(Me.LabelControl1)
-        Me.TablePanel1.Controls.Add(Me.grid_po)
-        Me.TablePanel1.Controls.Add(Me.LabelControl2)
-        Me.TablePanel1.Location = New System.Drawing.Point(631, 93)
-        Me.TablePanel1.Name = "TablePanel1"
-        Me.TablePanel1.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 27.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 221.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 194.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!)})
-        Me.TablePanel1.Size = New System.Drawing.Size(585, 657)
-        Me.TablePanel1.TabIndex = 8
-        '
         'grid_sales_returns
         '
-        Me.TablePanel1.SetColumn(Me.grid_sales_returns, 0)
-        Me.grid_sales_returns.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_sales_returns.Location = New System.Drawing.Point(3, 277)
+        Me.grid_sales_returns.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_sales_returns.Location = New System.Drawing.Point(8, 57)
         Me.grid_sales_returns.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_sales_returns.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_sales_returns.MainView = Me.grid_sales_returns_view
         Me.grid_sales_returns.Name = "grid_sales_returns"
-        Me.TablePanel1.SetRow(Me.grid_sales_returns, 3)
-        Me.grid_sales_returns.Size = New System.Drawing.Size(579, 188)
+        Me.grid_sales_returns.Size = New System.Drawing.Size(1178, 560)
         Me.grid_sales_returns.TabIndex = 5
         Me.grid_sales_returns.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_sales_returns_view})
         '
@@ -724,33 +769,30 @@ Partial Class frm_admin_approval
         '
         'LabelControl6
         '
-        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.LabelControl6.Appearance.Options.UseFont = True
         Me.LabelControl6.Appearance.Options.UseForeColor = True
         Me.LabelControl6.Appearance.Options.UseTextOptions = True
         Me.LabelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
         Me.LabelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.TablePanel1.SetColumn(Me.LabelControl6, 0)
-        Me.LabelControl6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelControl6.Location = New System.Drawing.Point(3, 251)
+        Me.LabelControl6.Location = New System.Drawing.Point(8, 15)
         Me.LabelControl6.Name = "LabelControl6"
-        Me.TablePanel1.SetRow(Me.LabelControl6, 2)
         Me.LabelControl6.Size = New System.Drawing.Size(579, 20)
         Me.LabelControl6.TabIndex = 4
         Me.LabelControl6.Text = "Sales Returns"
         '
         'grid_approval_units
         '
-        Me.TablePanel1.SetColumn(Me.grid_approval_units, 0)
-        Me.grid_approval_units.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid_approval_units.Location = New System.Drawing.Point(3, 497)
+        Me.grid_approval_units.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_approval_units.Location = New System.Drawing.Point(8, 57)
         Me.grid_approval_units.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_approval_units.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_approval_units.MainView = Me.grid_approval_units_view
         Me.grid_approval_units.Name = "grid_approval_units"
-        Me.TablePanel1.SetRow(Me.grid_approval_units, 5)
-        Me.grid_approval_units.Size = New System.Drawing.Size(579, 157)
+        Me.grid_approval_units.Size = New System.Drawing.Size(1178, 560)
         Me.grid_approval_units.TabIndex = 0
         Me.grid_approval_units.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_approval_units_view})
         '
@@ -811,15 +853,255 @@ Partial Class frm_admin_approval
         Me.col_status.VisibleIndex = 3
         Me.col_status.Width = 104
         '
+        'tab_control
+        '
+        Me.tab_control.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tab_control.Controls.Add(Me.tab_purchaseOrder)
+        Me.tab_control.Controls.Add(Me.tab_quotation)
+        Me.tab_control.Controls.Add(Me.tab_salesReturns)
+        Me.tab_control.Controls.Add(Me.tab_units)
+        Me.tab_control.Controls.Add(Me.tab_stockTransfer)
+        Me.tab_control.Controls.Add(Me.tab_transferReport)
+        Me.tab_control.Controls.Add(Me.tab_reconcilations)
+        Me.tab_control.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!)
+        Me.tab_control.Location = New System.Drawing.Point(12, 93)
+        Me.tab_control.Name = "tab_control"
+        Me.tab_control.SelectedIndex = 0
+        Me.tab_control.Size = New System.Drawing.Size(1204, 657)
+        Me.tab_control.TabIndex = 9
+        '
+        'tab_purchaseOrder
+        '
+        Me.tab_purchaseOrder.Controls.Add(Me.LabelControl2)
+        Me.tab_purchaseOrder.Controls.Add(Me.grid_po)
+        Me.tab_purchaseOrder.Location = New System.Drawing.Point(4, 27)
+        Me.tab_purchaseOrder.Name = "tab_purchaseOrder"
+        Me.tab_purchaseOrder.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_purchaseOrder.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_purchaseOrder.TabIndex = 1
+        Me.tab_purchaseOrder.Text = "Purchase Order"
+        Me.tab_purchaseOrder.UseVisualStyleBackColor = True
+        '
+        'tab_quotation
+        '
+        Me.tab_quotation.Controls.Add(Me.grid_quotation)
+        Me.tab_quotation.Controls.Add(Me.LabelControl5)
+        Me.tab_quotation.Location = New System.Drawing.Point(4, 27)
+        Me.tab_quotation.Name = "tab_quotation"
+        Me.tab_quotation.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_quotation.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_quotation.TabIndex = 0
+        Me.tab_quotation.Text = "Quotation"
+        Me.tab_quotation.UseVisualStyleBackColor = True
+        '
+        'tab_salesReturns
+        '
+        Me.tab_salesReturns.Controls.Add(Me.grid_sales_returns)
+        Me.tab_salesReturns.Controls.Add(Me.LabelControl6)
+        Me.tab_salesReturns.Location = New System.Drawing.Point(4, 27)
+        Me.tab_salesReturns.Name = "tab_salesReturns"
+        Me.tab_salesReturns.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_salesReturns.TabIndex = 2
+        Me.tab_salesReturns.Text = "Sales Returns"
+        Me.tab_salesReturns.UseVisualStyleBackColor = True
+        '
+        'tab_units
+        '
+        Me.tab_units.Controls.Add(Me.grid_approval_units)
+        Me.tab_units.Controls.Add(Me.LabelControl1)
+        Me.tab_units.Location = New System.Drawing.Point(4, 27)
+        Me.tab_units.Name = "tab_units"
+        Me.tab_units.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_units.TabIndex = 3
+        Me.tab_units.Text = "Units"
+        Me.tab_units.UseVisualStyleBackColor = True
+        '
+        'tab_stockTransfer
+        '
+        Me.tab_stockTransfer.Controls.Add(Me.LabelControl3)
+        Me.tab_stockTransfer.Controls.Add(Me.grid_transfer)
+        Me.tab_stockTransfer.Location = New System.Drawing.Point(4, 27)
+        Me.tab_stockTransfer.Name = "tab_stockTransfer"
+        Me.tab_stockTransfer.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_stockTransfer.TabIndex = 4
+        Me.tab_stockTransfer.Text = "Stock Transfer"
+        Me.tab_stockTransfer.UseVisualStyleBackColor = True
+        '
+        'tab_transferReport
+        '
+        Me.tab_transferReport.Controls.Add(Me.grid_transferReport)
+        Me.tab_transferReport.Controls.Add(Me.LabelControl8)
+        Me.tab_transferReport.Location = New System.Drawing.Point(4, 27)
+        Me.tab_transferReport.Name = "tab_transferReport"
+        Me.tab_transferReport.Padding = New System.Windows.Forms.Padding(3)
+        Me.tab_transferReport.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_transferReport.TabIndex = 6
+        Me.tab_transferReport.Text = "Transfer Report"
+        Me.tab_transferReport.UseVisualStyleBackColor = True
+        '
+        'grid_transferReport
+        '
+        Me.grid_transferReport.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grid_transferReport.Location = New System.Drawing.Point(8, 57)
+        Me.grid_transferReport.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grid_transferReport.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grid_transferReport.MainView = Me.grid_transferReport_view
+        Me.grid_transferReport.Name = "grid_transferReport"
+        Me.grid_transferReport.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_view_report})
+        Me.grid_transferReport.Size = New System.Drawing.Size(1178, 560)
+        Me.grid_transferReport.TabIndex = 6
+        Me.grid_transferReport.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transferReport_view})
+        '
+        'grid_transferReport_view
+        '
+        Me.grid_transferReport_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Bold)
+        Me.grid_transferReport_view.Appearance.HeaderPanel.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
+        Me.grid_transferReport_view.Appearance.HeaderPanel.Options.UseFont = True
+        Me.grid_transferReport_view.Appearance.HeaderPanel.Options.UseForeColor = True
+        Me.grid_transferReport_view.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.grid_transferReport_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.grid_transferReport_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_transferReport_view.Appearance.Row.Options.UseFont = True
+        Me.grid_transferReport_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_reportID, Me.GridColumn2, Me.GridColumn3, Me.GridColumn5, Me.GridColumn4, Me.GridColumn8, Me.GridColumn9, Me.GridColumn6})
+        Me.grid_transferReport_view.GridControl = Me.grid_transferReport
+        Me.grid_transferReport_view.Name = "grid_transferReport_view"
+        Me.grid_transferReport_view.OptionsBehavior.ReadOnly = True
+        '
+        'col_reportID
+        '
+        Me.col_reportID.AppearanceCell.Options.UseTextOptions = True
+        Me.col_reportID.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.col_reportID.Caption = "Report ID"
+        Me.col_reportID.FieldName = "transfer_report_id"
+        Me.col_reportID.MaxWidth = 80
+        Me.col_reportID.Name = "col_reportID"
+        Me.col_reportID.Visible = True
+        Me.col_reportID.VisibleIndex = 1
+        Me.col_reportID.Width = 80
+        '
+        'GridColumn2
+        '
+        Me.GridColumn2.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn2.AppearanceHeader.Options.UseTextOptions = True
+        Me.GridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn2.Caption = "Transfer ID"
+        Me.GridColumn2.FieldName = "transfer_id"
+        Me.GridColumn2.MaxWidth = 90
+        Me.GridColumn2.Name = "GridColumn2"
+        Me.GridColumn2.Visible = True
+        Me.GridColumn2.VisibleIndex = 2
+        Me.GridColumn2.Width = 90
+        '
+        'GridColumn3
+        '
+        Me.GridColumn3.Caption = "Source"
+        Me.GridColumn3.FieldName = "src_storeName"
+        Me.GridColumn3.Name = "GridColumn3"
+        Me.GridColumn3.Visible = True
+        Me.GridColumn3.VisibleIndex = 3
+        Me.GridColumn3.Width = 260
+        '
+        'GridColumn5
+        '
+        Me.GridColumn5.Caption = "Destination"
+        Me.GridColumn5.FieldName = "des_storeName"
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 4
+        Me.GridColumn5.Width = 275
+        '
+        'GridColumn4
+        '
+        Me.GridColumn4.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn4.Caption = "Status"
+        Me.GridColumn4.FieldName = "status"
+        Me.GridColumn4.MaxWidth = 100
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.Visible = True
+        Me.GridColumn4.VisibleIndex = 5
+        Me.GridColumn4.Width = 100
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.Caption = "Reported by"
+        Me.GridColumn8.FieldName = "reported_by"
+        Me.GridColumn8.MaxWidth = 150
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 6
+        Me.GridColumn8.Width = 150
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn9.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn9.Caption = "Reported at"
+        Me.GridColumn9.DisplayFormat.FormatString = "MM/dd/yyyy"
+        Me.GridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.GridColumn9.FieldName = "received_date"
+        Me.GridColumn9.MaxWidth = 120
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 7
+        Me.GridColumn9.Width = 120
+        '
+        'GridColumn6
+        '
+        Me.GridColumn6.ColumnEdit = Me.btn_view_report
+        Me.GridColumn6.MaxWidth = 50
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 0
+        Me.GridColumn6.Width = 50
+        '
+        'btn_view_report
+        '
+        Me.btn_view_report.AutoHeight = False
+        EditorButtonImageOptions4.Image = Global.Inventory_Management.My.Resources.Resources.loadfrom_16x16
+        Me.btn_view_report.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_view_report.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_view_report.Name = "btn_view_report"
+        Me.btn_view_report.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'LabelControl8
+        '
+        Me.LabelControl8.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
+        Me.LabelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.LabelControl8.Appearance.Options.UseFont = True
+        Me.LabelControl8.Appearance.Options.UseForeColor = True
+        Me.LabelControl8.Appearance.Options.UseTextOptions = True
+        Me.LabelControl8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.LabelControl8.Location = New System.Drawing.Point(8, 15)
+        Me.LabelControl8.Name = "LabelControl8"
+        Me.LabelControl8.Size = New System.Drawing.Size(248, 29)
+        Me.LabelControl8.TabIndex = 5
+        Me.LabelControl8.Text = "Stock Transfers Report"
+        '
+        'tab_reconcilations
+        '
+        Me.tab_reconcilations.Controls.Add(Me.grid_stock_reconcilation)
+        Me.tab_reconcilations.Controls.Add(Me.LabelControl4)
+        Me.tab_reconcilations.Location = New System.Drawing.Point(4, 27)
+        Me.tab_reconcilations.Name = "tab_reconcilations"
+        Me.tab_reconcilations.Size = New System.Drawing.Size(1196, 626)
+        Me.tab_reconcilations.TabIndex = 5
+        Me.tab_reconcilations.Text = "Reconcilations"
+        Me.tab_reconcilations.UseVisualStyleBackColor = True
+        '
         'frm_admin_approval
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1228, 762)
-        Me.Controls.Add(Me.TablePanel2)
-        Me.Controls.Add(Me.TablePanel1)
         Me.Controls.Add(Me.panel_top)
+        Me.Controls.Add(Me.tab_control)
         Me.Name = "frm_admin_approval"
         Me.Text = "frm_admin_approval"
         Me.panel_top.ResumeLayout(False)
@@ -827,9 +1109,6 @@ Partial Class frm_admin_approval
         Me.GunaPanel5.ResumeLayout(False)
         Me.GunaPanel2.ResumeLayout(False)
         Me.GunaPanel2.PerformLayout()
-        CType(Me.TablePanel2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TablePanel2.ResumeLayout(False)
-        Me.TablePanel2.PerformLayout()
         CType(Me.grid_quotation, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_quotation_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_stock_reconcilation, System.ComponentModel.ISupportInitialize).EndInit()
@@ -838,15 +1117,29 @@ Partial Class frm_admin_approval
         CType(Me.btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_transfer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_transfer_view, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_print_stockTransfer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_po, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_po_view, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TablePanel1.ResumeLayout(False)
-        Me.TablePanel1.PerformLayout()
         CType(Me.grid_sales_returns, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_sales_returns_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_approval_units, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_approval_units_view, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_control.ResumeLayout(False)
+        Me.tab_purchaseOrder.ResumeLayout(False)
+        Me.tab_purchaseOrder.PerformLayout()
+        Me.tab_quotation.ResumeLayout(False)
+        Me.tab_quotation.PerformLayout()
+        Me.tab_salesReturns.ResumeLayout(False)
+        Me.tab_units.ResumeLayout(False)
+        Me.tab_stockTransfer.ResumeLayout(False)
+        Me.tab_stockTransfer.PerformLayout()
+        Me.tab_transferReport.ResumeLayout(False)
+        Me.tab_transferReport.PerformLayout()
+        CType(Me.grid_transferReport, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_transferReport_view, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_view_report, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tab_reconcilations.ResumeLayout(False)
+        Me.tab_reconcilations.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -858,8 +1151,6 @@ Partial Class frm_admin_approval
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents link_home As DevExpress.XtraEditors.HyperlinkLabelControl
     Friend WithEvents GunaLabel1 As Guna.UI.WinForms.GunaLabel
-    Friend WithEvents TablePanel1 As DevExpress.Utils.Layout.TablePanel
-    Friend WithEvents TablePanel2 As DevExpress.Utils.Layout.TablePanel
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents grid_approval_units As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_approval_units_view As DevExpress.XtraGrid.Views.Grid.GridView
@@ -905,5 +1196,29 @@ Partial Class frm_admin_approval
     Friend WithEvents col_customer As GridColumn
     Friend WithEvents col_amount As GridColumn
     Friend WithEvents LabelControl6 As LabelControl
-
+    Friend WithEvents tab_control As TabControl
+    Friend WithEvents tab_quotation As TabPage
+    Friend WithEvents tab_purchaseOrder As TabPage
+    Friend WithEvents tab_salesReturns As TabPage
+    Friend WithEvents tab_units As TabPage
+    Friend WithEvents tab_stockTransfer As TabPage
+    Friend WithEvents tab_reconcilations As TabPage
+    Friend WithEvents col_action As GridColumn
+    Friend WithEvents btn_print_stockTransfer As RepositoryItemButtonEdit
+    Friend WithEvents col_transferType As GridColumn
+    Friend WithEvents col_created_by As GridColumn
+    Friend WithEvents col_created_at As GridColumn
+    Friend WithEvents tab_transferReport As TabPage
+    Friend WithEvents grid_transferReport As GridControl
+    Friend WithEvents grid_transferReport_view As GridView
+    Friend WithEvents GridColumn2 As GridColumn
+    Friend WithEvents GridColumn3 As GridColumn
+    Friend WithEvents GridColumn4 As GridColumn
+    Friend WithEvents GridColumn5 As GridColumn
+    Friend WithEvents btn_view_report As RepositoryItemButtonEdit
+    Friend WithEvents col_reportID As GridColumn
+    Friend WithEvents GridColumn8 As GridColumn
+    Friend WithEvents GridColumn9 As GridColumn
+    Friend WithEvents LabelControl8 As LabelControl
+    Friend WithEvents GridColumn6 As GridColumn
 End Class

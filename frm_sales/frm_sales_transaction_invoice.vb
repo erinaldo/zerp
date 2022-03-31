@@ -55,7 +55,7 @@ Public Class frm_sales_transaction_invoice
             Using connection = New MySqlConnection(str)
                 connection.Open()
 
-                Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
+                Dim cmd = New MySqlCommand("SELECT order_id, ims_customers.first_name, ims_customers.contact_person, ims_customers.account_type, address, ship_to, order_item, pub_note, payment_type, payment_status, DATE_ADD(date_released, INTERVAL ims_customers.terms DAY) AS due_date,
                         ims_orders.terms, amount_due, shipping_method, trucking, date_released, delivery_fee, 
                         (SELECT VALUE FROM ims_settings WHERE NAME='store_info') AS store_info, (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name,
                         is_vatable, is_withholding_tax_applied, withholding_tax_percentage, withholding_tax_amount, discount_type, discount_val, applied_sales_return, CONCAT('SR', LPAD(sales_return_id, 5, '0')) AS srid, IFNULL(ims_sales_returns.amount, 0) as amount,
@@ -72,6 +72,14 @@ Public Class frm_sales_transaction_invoice
                 rdr = cmd.ExecuteReader
 
                 While rdr.Read
+
+                    If rdr("account_type").ToString.Equals("Sister Company") Then
+                        If Not (frm_main.user_role_id.Text = 1 Or frm_main.user_role_id.Text = 2 Or frm_main.user_role_id.Text = 4 Or frm_main.user_role_id.Text = 6) Then
+                            MsgBox("Requires priviledge to access.", vbExclamation, "Forbidden")
+                            Return
+                        End If
+                    End If
+
                     report.Parameters("store_name").Value = rdr("store_name")
                     report.Parameters("store_info").Value = rdr("store_info")
                     report.Parameters("orderid").Value = String.Concat("SO", rdr("order_id").ToString().PadLeft(5, "0"c))
@@ -95,6 +103,7 @@ Public Class frm_sales_transaction_invoice
                     report.Parameters("deduction_srid").Value = rdr("srid")
                     report.Parameters("deduction_customer").Value = rdr("first_name")
                     report.Parameters("deduction_total").Value = rdr("amount")
+                    report.Parameters("credits").Value = rdr("amount")
                     report.Parameters("is_withholding_tax_applied").Value = rdr("is_withholding_tax_applied")
                     report.Parameters("withholding_tax_percentage").Value = rdr("withholding_tax_percentage")
                     report.Parameters("withholding_tax_amount").Value = rdr("withholding_tax_amount")

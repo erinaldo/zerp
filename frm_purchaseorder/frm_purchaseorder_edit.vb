@@ -385,8 +385,8 @@ Public Class frm_purchaseorder_edit
 
     End Sub
 
-    'Print
-    Private Sub PrintSlip(id As String)
+    'Print Purchase Order Slip
+    Private Sub PrintPurchaseOrderSlip(id As String)
         Dim report = New doc_purchase_order()
         Dim printTool = New ReportPrintTool(report)
         Dim table = New PrintData
@@ -434,6 +434,64 @@ Public Class frm_purchaseorder_edit
                     Dim PurchaseOrder = JsonConvert.DeserializeObject(Of List(Of PurchaseOrderClass))(rdr("orders"))
                     For Each Order In PurchaseOrder
                         table.purchase_order_slip.Rows.Add(Order.qty, Order.winmodel, Order.supmodel, Order.description, Order.cost, Order.total_cost)
+                    Next
+                    'Sort DataTable
+                    table.purchase_order_slip.DefaultView.Sort = "supmodel ASC"
+
+                End While
+
+                report.RequestParameters = False
+
+                report.DataSource = table
+                report.ShowRibbonPreviewDialog()
+            End Using
+
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical, "Error")
+        End Try
+
+    End Sub
+
+    'Print Purchase Slip
+    Private Sub PrintPurchaseSlip(id As String)
+        Dim report = New doc_purchase_list()
+        Dim printTool = New ReportPrintTool(report)
+        Dim table = New PrintData
+
+        Try
+            Using connection = New MySqlConnection(str)
+                connection.Open()
+
+                Dim query = "SELECT purchase_id, ims_suppliers.supplier, ims_purchase.contact_person, address, orders, pub_notes,
+                (SELECT store_name FROM ims_stores WHERE store_id=deliver_to) as deliver_to,
+                (SELECT VALUE FROM ims_settings WHERE NAME='store_name') AS store_name, (SELECT value FROM ims_settings WHERE name='store_info') as store_info,
+                date_sent, ims_users.first_name as prepared_by,
+                (SELECT first_name FROM ims_users WHERE usr_id=approved_by) as approved_by, approved_date, DATE_ADD(date_sent, INTERVAL ims_purchase.lead_time DAY) as lead_time, ims_purchase.terms FROM ims_purchase
+                INNER JOIN ims_suppliers ON ims_suppliers.id=ims_purchase.supplier
+                INNER JOIN ims_users ON ims_users.usr_id=ims_purchase.created_by WHERE purchase_id='" & id & "'"
+                Dim rdr As MySqlDataReader = New MySqlCommand(query, connection).ExecuteReader
+
+                While rdr.Read
+                    report.Parameters("store_name").Value = rdr("store_name")
+                    report.Parameters("store_info").Value = rdr("store_info") & vbCrLf & "Email: purchasing@winlandene.com"
+                    report.Parameters("pid").Value = String.Concat("PO", rdr("purchase_id").ToString().PadLeft(5, "0"c))
+                    report.Parameters("supplier").Value = rdr("supplier")
+                    report.Parameters("contact_person").Value = rdr("contact_person")
+                    report.Parameters("delivery_addr").Value = rdr("address")
+                    report.Parameters("deliver_to").Value = rdr("deliver_to")
+                    report.Parameters("prepared_by").Value = rdr("prepared_by")
+                    report.Parameters("approved_by").Value = rdr("approved_by")
+                    report.Parameters("print_date").Value = Format(rdr("date_sent"), "MM/dd/yyyy")
+                    report.Parameters("lead_time").Value = rdr("lead_time")
+                    report.Parameters("expiration_date").Value = DateAdd("d", 7, CDate(rdr("lead_time")))
+                    report.Parameters("approved_date").Value = rdr("approved_date")
+                    report.Parameters("terms").Value = rdr("terms")
+                    report.Parameters("pub_notes").Value = rdr("pub_notes")
+
+                    'Set Order to DataTable
+                    Dim PurchaseOrder = JsonConvert.DeserializeObject(Of List(Of PurchaseOrderClass))(rdr("orders"))
+                    For Each Order In PurchaseOrder
+                        table.purchase_order_slip.Rows.Add(Order.qty, Order.winmodel, Order.supmodel, Order.description)
                     Next
                     'Sort DataTable
                     table.purchase_order_slip.DefaultView.Sort = "supmodel ASC"
@@ -786,8 +844,7 @@ Public Class frm_purchaseorder_edit
 
     'btn_print
     Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
-        Dim id As Integer = txt_poid.Text.Replace("PO", "")
-        PrintSlip(id)
+        CMS_print.Show(btn_print, New Point(btn_print.Width - CMS_print.Width, btn_print.Height))
     End Sub
 
     'btn_send
@@ -812,7 +869,7 @@ Public Class frm_purchaseorder_edit
                     MsgBox("Your Purchase order has been tagged as SENT!", vbInformation, "Information")
                     Me.Close()
                     frm_main.LoadFrm(New frm_purchaseorder_list)
-                    PrintSlip(txt_poid.Text.Replace("PO", ""))
+                    PrintPurchaseOrderSlip(txt_poid.Text.Replace("PO", ""))
                 End If
 
             Catch ex As Exception
@@ -1242,6 +1299,18 @@ Public Class frm_purchaseorder_edit
             MsgBox(ex.Message, vbCritical, "Error")
         End Try
 
+    End Sub
+
+    'Print Purchase Order Slip
+    Private Sub CMS_strip_purchase_order_Click(sender As Object, e As EventArgs) Handles CMS_strip_purchase_order.Click
+        Dim id As Integer = txt_poid.Text.Replace("PO", "")
+        PrintPurchaseOrderSlip(id)
+    End Sub
+
+    'Print Purchase Slip
+    Private Sub CMS_strip_purchase_slip_Click(sender As Object, e As EventArgs) Handles CMS_strip_purchase_slip.Click
+        Dim id As Integer = txt_poid.Text.Replace("PO", "")
+        PrintPurchaseSlip(id)
     End Sub
 
 End Class

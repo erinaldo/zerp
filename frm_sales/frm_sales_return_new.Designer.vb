@@ -23,12 +23,13 @@ Partial Class frm_sales_return_new
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_sales_return_new))
         Me.GunaPanel2 = New Guna.UI.WinForms.GunaPanel()
         Me.GunaPanel3 = New Guna.UI.WinForms.GunaPanel()
@@ -40,13 +41,6 @@ Partial Class frm_sales_return_new
         Me.HyperlinkLabelControl2 = New DevExpress.XtraEditors.HyperlinkLabelControl()
         Me.lbl_title = New Guna.UI.WinForms.GunaLabel()
         Me.grid_return = New System.Windows.Forms.DataGridView()
-        Me.col_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_model = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_description = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_totalcost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_pid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_last_order_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txt_customer_id = New DevExpress.XtraEditors.TextEdit()
         Me.cbb_customer = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
@@ -62,6 +56,14 @@ Partial Class frm_sales_return_new
         Me.lbl_account_type = New DevExpress.XtraEditors.LabelControl()
         Me.btn_approved = New DevExpress.XtraEditors.SimpleButton()
         Me.lbl_store_id = New DevExpress.XtraEditors.LabelControl()
+        Me.col_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_model = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_description = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_totalcost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_pid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_last_order_date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_last_qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -223,90 +225,20 @@ Partial Class frm_sales_return_new
         Me.grid_return.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.grid_return.ColumnHeadersHeight = 28
         Me.grid_return.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.grid_return.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_totalcost, Me.col_pid, Me.col_last_order_date})
+        Me.grid_return.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_qty, Me.col_model, Me.col_description, Me.col_cost, Me.col_totalcost, Me.col_pid, Me.col_last_order_date, Me.col_last_qty})
         Me.grid_return.EnableHeadersVisualStyles = False
         Me.grid_return.Location = New System.Drawing.Point(24, 181)
         Me.grid_return.Name = "grid_return"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_return.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.grid_return.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.grid_return.Size = New System.Drawing.Size(1029, 398)
         Me.grid_return.TabIndex = 60
-        '
-        'col_qty
-        '
-        Me.col_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.Format = "N0"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.col_qty.DefaultCellStyle = DataGridViewCellStyle2
-        Me.col_qty.FillWeight = 80.0!
-        Me.col_qty.HeaderText = "Qty"
-        Me.col_qty.Name = "col_qty"
-        Me.col_qty.Width = 80
-        '
-        'col_model
-        '
-        Me.col_model.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.col_model.DefaultCellStyle = DataGridViewCellStyle3
-        Me.col_model.FillWeight = 73.71088!
-        Me.col_model.HeaderText = "Model"
-        Me.col_model.Name = "col_model"
-        Me.col_model.Width = 150
-        '
-        'col_description
-        '
-        Me.col_description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.col_description.FillWeight = 137.4594!
-        Me.col_description.HeaderText = "Description"
-        Me.col_description.Name = "col_description"
-        '
-        'col_cost
-        '
-        Me.col_cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.col_cost.DefaultCellStyle = DataGridViewCellStyle4
-        Me.col_cost.FillWeight = 102.6804!
-        Me.col_cost.HeaderText = "Price"
-        Me.col_cost.Name = "col_cost"
-        Me.col_cost.ReadOnly = True
-        Me.col_cost.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'col_totalcost
-        '
-        Me.col_totalcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.Format = "n2"
-        Me.col_totalcost.DefaultCellStyle = DataGridViewCellStyle5
-        Me.col_totalcost.HeaderText = "Total"
-        Me.col_totalcost.Name = "col_totalcost"
-        Me.col_totalcost.ReadOnly = True
-        Me.col_totalcost.Width = 120
-        '
-        'col_pid
-        '
-        Me.col_pid.HeaderText = "PID"
-        Me.col_pid.Name = "col_pid"
-        Me.col_pid.Visible = False
-        Me.col_pid.Width = 50
-        '
-        'col_last_order_date
-        '
-        Me.col_last_order_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Format = "MM/dd/yyyy"
-        Me.col_last_order_date.DefaultCellStyle = DataGridViewCellStyle6
-        Me.col_last_order_date.HeaderText = "Last Order"
-        Me.col_last_order_date.Name = "col_last_order_date"
-        Me.col_last_order_date.Width = 120
         '
         'txt_customer_id
         '
@@ -506,6 +438,89 @@ Partial Class frm_sales_return_new
         Me.lbl_store_id.Text = "lbl_store_id"
         Me.lbl_store_id.Visible = False
         '
+        'col_qty
+        '
+        Me.col_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Format = "N0"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.col_qty.DefaultCellStyle = DataGridViewCellStyle2
+        Me.col_qty.FillWeight = 80.0!
+        Me.col_qty.HeaderText = "Qty"
+        Me.col_qty.Name = "col_qty"
+        Me.col_qty.Width = 80
+        '
+        'col_model
+        '
+        Me.col_model.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.col_model.DefaultCellStyle = DataGridViewCellStyle3
+        Me.col_model.FillWeight = 73.71088!
+        Me.col_model.HeaderText = "Model"
+        Me.col_model.Name = "col_model"
+        Me.col_model.Width = 150
+        '
+        'col_description
+        '
+        Me.col_description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.col_description.FillWeight = 137.4594!
+        Me.col_description.HeaderText = "Description"
+        Me.col_description.Name = "col_description"
+        '
+        'col_cost
+        '
+        Me.col_cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle4.Format = "N2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.col_cost.DefaultCellStyle = DataGridViewCellStyle4
+        Me.col_cost.FillWeight = 102.6804!
+        Me.col_cost.HeaderText = "Last Price"
+        Me.col_cost.Name = "col_cost"
+        Me.col_cost.ReadOnly = True
+        Me.col_cost.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'col_totalcost
+        '
+        Me.col_totalcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.Format = "n2"
+        Me.col_totalcost.DefaultCellStyle = DataGridViewCellStyle5
+        Me.col_totalcost.HeaderText = "Total"
+        Me.col_totalcost.Name = "col_totalcost"
+        Me.col_totalcost.ReadOnly = True
+        Me.col_totalcost.Width = 120
+        '
+        'col_pid
+        '
+        Me.col_pid.HeaderText = "PID"
+        Me.col_pid.Name = "col_pid"
+        Me.col_pid.Visible = False
+        Me.col_pid.Width = 50
+        '
+        'col_last_order_date
+        '
+        Me.col_last_order_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle6.Format = "MM/dd/yyyy"
+        Me.col_last_order_date.DefaultCellStyle = DataGridViewCellStyle6
+        Me.col_last_order_date.HeaderText = "Last Order"
+        Me.col_last_order_date.Name = "col_last_order_date"
+        Me.col_last_order_date.ReadOnly = True
+        Me.col_last_order_date.Width = 120
+        '
+        'col_last_qty
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.col_last_qty.DefaultCellStyle = DataGridViewCellStyle7
+        Me.col_last_qty.HeaderText = "Last QTY"
+        Me.col_last_qty.Name = "col_last_qty"
+        Me.col_last_qty.ReadOnly = True
+        Me.col_last_qty.Width = 77
+        '
         'frm_sales_return_new
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -579,4 +594,5 @@ Partial Class frm_sales_return_new
     Friend WithEvents col_totalcost As DataGridViewTextBoxColumn
     Friend WithEvents col_pid As DataGridViewTextBoxColumn
     Friend WithEvents col_last_order_date As DataGridViewTextBoxColumn
+    Friend WithEvents col_last_qty As DataGridViewTextBoxColumn
 End Class

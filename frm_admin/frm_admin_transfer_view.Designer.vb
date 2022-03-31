@@ -28,6 +28,7 @@ Partial Class frm_admin_transfer_view
         Me.btn_approved = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_declined = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_view = New DevExpress.XtraEditors.SimpleButton()
+        Me.lbl_transfer_type = New DevExpress.XtraEditors.LabelControl()
         Me.SuspendLayout()
         '
         'LabelControl1
@@ -87,12 +88,24 @@ Partial Class frm_admin_transfer_view
         Me.btn_view.TabIndex = 4
         Me.btn_view.Text = "View Units"
         '
+        'lbl_transfer_type
+        '
+        Me.lbl_transfer_type.Appearance.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.lbl_transfer_type.Appearance.Options.UseFont = True
+        Me.lbl_transfer_type.Location = New System.Drawing.Point(94, 219)
+        Me.lbl_transfer_type.Name = "lbl_transfer_type"
+        Me.lbl_transfer_type.Size = New System.Drawing.Size(78, 16)
+        Me.lbl_transfer_type.TabIndex = 5
+        Me.lbl_transfer_type.Text = "Transfer Type"
+        Me.lbl_transfer_type.Visible = False
+        '
         'frm_admin_transfer_view
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(278, 242)
+        Me.Controls.Add(Me.lbl_transfer_type)
         Me.Controls.Add(Me.btn_view)
         Me.Controls.Add(Me.btn_declined)
         Me.Controls.Add(Me.btn_approved)
@@ -115,4 +128,5 @@ Partial Class frm_admin_transfer_view
     Friend WithEvents btn_approved As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_declined As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_view As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lbl_transfer_type As DevExpress.XtraEditors.LabelControl
 End Class

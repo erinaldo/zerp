@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_accounting_payment_cheques
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frm_accounting_payment_cheques
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -48,14 +48,14 @@ Partial Class frm_accounting_payment_cheques
         Me.col_status = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.cbb_status = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.col_print = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemButtonEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.btn_print = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
         CType(Me.grid_payments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_payments_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_status, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_print, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -66,7 +66,7 @@ Partial Class frm_accounting_payment_cheques
         Me.GunaPanel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.GunaPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GunaPanel4.Name = "GunaPanel4"
-        Me.GunaPanel4.Size = New System.Drawing.Size(961, 78)
+        Me.GunaPanel4.Size = New System.Drawing.Size(930, 78)
         Me.GunaPanel4.TabIndex = 13
         '
         'GunaPanel5
@@ -77,7 +77,7 @@ Partial Class frm_accounting_payment_cheques
         Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
         Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(926, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(895, 27)
         Me.GunaPanel5.TabIndex = 5
         '
         'GunaPanel1
@@ -166,18 +166,18 @@ Partial Class frm_accounting_payment_cheques
         Me.grid_payments.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_payments.MainView = Me.grid_payments_view
         Me.grid_payments.Name = "grid_payments"
-        Me.grid_payments.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonEdit1, Me.cbb_status})
-        Me.grid_payments.Size = New System.Drawing.Size(913, 463)
+        Me.grid_payments.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_print, Me.cbb_status})
+        Me.grid_payments.Size = New System.Drawing.Size(882, 579)
         Me.grid_payments.TabIndex = 14
         Me.grid_payments.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_payments_view})
         '
         'grid_payments_view
         '
-        Me.grid_payments_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_payments_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_payments_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_payments_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_payments_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_payments_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_payments_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_payments_view.Appearance.Row.Options.UseFont = True
         Me.grid_payments_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_supplier, Me.col_cheque_no, Me.col_cheque_date, Me.col_bank, Me.col_payee, Me.col_acc_no, Me.col_acc_name, Me.col_amount, Me.col_status, Me.col_print})
         Me.grid_payments_view.GridControl = Me.grid_payments
@@ -299,33 +299,35 @@ Partial Class frm_accounting_payment_cheques
         '
         Me.cbb_status.AutoHeight = False
         Me.cbb_status.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cbb_status.Items.AddRange(New Object() {"OUTSTANDING", "CLEAR", "VOID"})
+        Me.cbb_status.Items.AddRange(New Object() {"OUTSTANDING", "CLEAR"})
+        Me.cbb_status.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cbb_status.Name = "cbb_status"
         Me.cbb_status.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'col_print
         '
         Me.col_print.Caption = "Print"
-        Me.col_print.ColumnEdit = Me.RepositoryItemButtonEdit1
+        Me.col_print.ColumnEdit = Me.btn_print
         Me.col_print.Name = "col_print"
         Me.col_print.OptionsColumn.FixedWidth = True
         Me.col_print.Visible = True
         Me.col_print.VisibleIndex = 10
         '
-        'RepositoryItemButtonEdit1
+        'btn_print
         '
-        Me.RepositoryItemButtonEdit1.AutoHeight = False
-        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.createmodeldifferences_16x16
-        Me.RepositoryItemButtonEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-        Me.RepositoryItemButtonEdit1.Name = "RepositoryItemButtonEdit1"
-        Me.RepositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        Me.btn_print.AutoHeight = False
+        EditorButtonImageOptions1.Image = Global.Inventory_Management.My.Resources.Resources.print_16x16
+        Me.btn_print.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_print.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_print.Name = "btn_print"
+        Me.btn_print.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
         'frm_accounting_payment_cheques
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(961, 574)
+        Me.ClientSize = New System.Drawing.Size(930, 690)
         Me.Controls.Add(Me.grid_payments)
         Me.Controls.Add(Me.GunaPanel4)
         Me.Name = "frm_accounting_payment_cheques"
@@ -338,7 +340,7 @@ Partial Class frm_accounting_payment_cheques
         CType(Me.grid_payments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_payments_view, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_status, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_print, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -355,7 +357,7 @@ Partial Class frm_accounting_payment_cheques
     Friend WithEvents col_id As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_supplier As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_print As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemButtonEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents btn_print As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents col_cheque_no As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_cheque_date As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_bank As DevExpress.XtraGrid.Columns.GridColumn

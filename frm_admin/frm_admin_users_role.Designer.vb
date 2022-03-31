@@ -69,10 +69,12 @@ Partial Class frm_admin_users_role
         Me.cb_payment_vouchers = New System.Windows.Forms.CheckBox()
         Me.cb_payment_cheques = New System.Windows.Forms.CheckBox()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
-        Me.cb_daily_delivery = New System.Windows.Forms.CheckBox()
+        Me.cb_for_selluseller = New System.Windows.Forms.CheckBox()
+        Me.cb_receiving_mgmt = New System.Windows.Forms.CheckBox()
         Me.cb_delivery_logs = New System.Windows.Forms.CheckBox()
         Me.cb_stock_management = New System.Windows.Forms.CheckBox()
         Me.cb_stock_inventory = New System.Windows.Forms.CheckBox()
+        Me.cb_package_mgmt = New System.Windows.Forms.CheckBox()
         Me.GroupControl9 = New DevExpress.XtraEditors.GroupControl()
         Me.cb_new_purchase = New System.Windows.Forms.CheckBox()
         Me.cb_purchase_orders = New System.Windows.Forms.CheckBox()
@@ -83,7 +85,6 @@ Partial Class frm_admin_users_role
         Me.cb_transaction_invoice = New System.Windows.Forms.CheckBox()
         Me.cb_create_order = New System.Windows.Forms.CheckBox()
         Me.cb_customers = New System.Windows.Forms.CheckBox()
-        Me.cb_packing_list = New System.Windows.Forms.CheckBox()
         Me.GroupControl10 = New DevExpress.XtraEditors.GroupControl()
         Me.cb_pickup_deliveries = New System.Windows.Forms.CheckBox()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
@@ -91,8 +92,6 @@ Partial Class frm_admin_users_role
         Me.cb_new_item = New System.Windows.Forms.CheckBox()
         Me.cb_import_catalogue = New System.Windows.Forms.CheckBox()
         Me.cb_export_catalogue = New System.Windows.Forms.CheckBox()
-        Me.cb_returned_units = New System.Windows.Forms.CheckBox()
-        Me.cb_for_selluseller = New System.Windows.Forms.CheckBox()
         Me.GunaPanel2.SuspendLayout()
         Me.GunaPanel3.SuspendLayout()
         Me.GunaPanel4.SuspendLayout()
@@ -582,31 +581,41 @@ Partial Class frm_admin_users_role
         'GroupControl5
         '
         Me.GroupControl5.Controls.Add(Me.cb_for_selluseller)
-        Me.GroupControl5.Controls.Add(Me.cb_returned_units)
-        Me.GroupControl5.Controls.Add(Me.cb_daily_delivery)
+        Me.GroupControl5.Controls.Add(Me.cb_receiving_mgmt)
         Me.GroupControl5.Controls.Add(Me.cb_delivery_logs)
         Me.GroupControl5.Controls.Add(Me.cb_stock_management)
         Me.GroupControl5.Controls.Add(Me.cb_stock_inventory)
+        Me.GroupControl5.Controls.Add(Me.cb_package_mgmt)
         Me.GroupControl5.Location = New System.Drawing.Point(381, 49)
         Me.GroupControl5.Name = "GroupControl5"
         Me.GroupControl5.Size = New System.Drawing.Size(169, 212)
         Me.GroupControl5.TabIndex = 20
         Me.GroupControl5.Text = "Warehouse"
         '
-        'cb_daily_delivery
+        'cb_for_selluseller
         '
-        Me.cb_daily_delivery.AutoSize = True
-        Me.cb_daily_delivery.Location = New System.Drawing.Point(23, 27)
-        Me.cb_daily_delivery.Name = "cb_daily_delivery"
-        Me.cb_daily_delivery.Size = New System.Drawing.Size(91, 17)
-        Me.cb_daily_delivery.TabIndex = 13
-        Me.cb_daily_delivery.Text = "Daily Delivery"
-        Me.cb_daily_delivery.UseVisualStyleBackColor = True
+        Me.cb_for_selluseller.AutoSize = True
+        Me.cb_for_selluseller.Location = New System.Drawing.Point(23, 142)
+        Me.cb_for_selluseller.Name = "cb_for_selluseller"
+        Me.cb_for_selluseller.Size = New System.Drawing.Size(93, 17)
+        Me.cb_for_selluseller.TabIndex = 18
+        Me.cb_for_selluseller.Text = "For SelluSeller"
+        Me.cb_for_selluseller.UseVisualStyleBackColor = True
+        '
+        'cb_receiving_mgmt
+        '
+        Me.cb_receiving_mgmt.AutoSize = True
+        Me.cb_receiving_mgmt.Location = New System.Drawing.Point(23, 73)
+        Me.cb_receiving_mgmt.Name = "cb_receiving_mgmt"
+        Me.cb_receiving_mgmt.Size = New System.Drawing.Size(137, 17)
+        Me.cb_receiving_mgmt.TabIndex = 13
+        Me.cb_receiving_mgmt.Text = "Receiving Management"
+        Me.cb_receiving_mgmt.UseVisualStyleBackColor = True
         '
         'cb_delivery_logs
         '
         Me.cb_delivery_logs.AutoSize = True
-        Me.cb_delivery_logs.Location = New System.Drawing.Point(23, 50)
+        Me.cb_delivery_logs.Location = New System.Drawing.Point(23, 96)
         Me.cb_delivery_logs.Name = "cb_delivery_logs"
         Me.cb_delivery_logs.Size = New System.Drawing.Size(90, 17)
         Me.cb_delivery_logs.TabIndex = 14
@@ -616,7 +625,7 @@ Partial Class frm_admin_users_role
         'cb_stock_management
         '
         Me.cb_stock_management.AutoSize = True
-        Me.cb_stock_management.Location = New System.Drawing.Point(23, 73)
+        Me.cb_stock_management.Location = New System.Drawing.Point(23, 27)
         Me.cb_stock_management.Name = "cb_stock_management"
         Me.cb_stock_management.Size = New System.Drawing.Size(117, 17)
         Me.cb_stock_management.TabIndex = 15
@@ -626,12 +635,22 @@ Partial Class frm_admin_users_role
         'cb_stock_inventory
         '
         Me.cb_stock_inventory.AutoSize = True
-        Me.cb_stock_inventory.Location = New System.Drawing.Point(23, 96)
+        Me.cb_stock_inventory.Location = New System.Drawing.Point(23, 119)
         Me.cb_stock_inventory.Name = "cb_stock_inventory"
-        Me.cb_stock_inventory.Size = New System.Drawing.Size(103, 17)
+        Me.cb_stock_inventory.Size = New System.Drawing.Size(74, 17)
         Me.cb_stock_inventory.TabIndex = 16
-        Me.cb_stock_inventory.Text = "Stock Inventory"
+        Me.cb_stock_inventory.Text = "Inventory"
         Me.cb_stock_inventory.UseVisualStyleBackColor = True
+        '
+        'cb_package_mgmt
+        '
+        Me.cb_package_mgmt.AutoSize = True
+        Me.cb_package_mgmt.Location = New System.Drawing.Point(23, 50)
+        Me.cb_package_mgmt.Name = "cb_package_mgmt"
+        Me.cb_package_mgmt.Size = New System.Drawing.Size(131, 17)
+        Me.cb_package_mgmt.TabIndex = 10
+        Me.cb_package_mgmt.Text = "Package Management"
+        Me.cb_package_mgmt.UseVisualStyleBackColor = True
         '
         'GroupControl9
         '
@@ -671,7 +690,6 @@ Partial Class frm_admin_users_role
         Me.GroupControl4.Controls.Add(Me.cb_transaction_invoice)
         Me.GroupControl4.Controls.Add(Me.cb_create_order)
         Me.GroupControl4.Controls.Add(Me.cb_customers)
-        Me.GroupControl4.Controls.Add(Me.cb_packing_list)
         Me.GroupControl4.Location = New System.Drawing.Point(206, 49)
         Me.GroupControl4.Name = "GroupControl4"
         Me.GroupControl4.Size = New System.Drawing.Size(169, 212)
@@ -691,7 +709,7 @@ Partial Class frm_admin_users_role
         'cb_logistics
         '
         Me.cb_logistics.AutoSize = True
-        Me.cb_logistics.Location = New System.Drawing.Point(23, 165)
+        Me.cb_logistics.Location = New System.Drawing.Point(23, 142)
         Me.cb_logistics.Name = "cb_logistics"
         Me.cb_logistics.Size = New System.Drawing.Size(66, 17)
         Me.cb_logistics.TabIndex = 11
@@ -711,7 +729,7 @@ Partial Class frm_admin_users_role
         'cb_transaction_invoice
         '
         Me.cb_transaction_invoice.AutoSize = True
-        Me.cb_transaction_invoice.Location = New System.Drawing.Point(23, 142)
+        Me.cb_transaction_invoice.Location = New System.Drawing.Point(23, 119)
         Me.cb_transaction_invoice.Name = "cb_transaction_invoice"
         Me.cb_transaction_invoice.Size = New System.Drawing.Size(120, 17)
         Me.cb_transaction_invoice.TabIndex = 1
@@ -737,16 +755,6 @@ Partial Class frm_admin_users_role
         Me.cb_customers.TabIndex = 9
         Me.cb_customers.Text = "Customers"
         Me.cb_customers.UseVisualStyleBackColor = True
-        '
-        'cb_packing_list
-        '
-        Me.cb_packing_list.AutoSize = True
-        Me.cb_packing_list.Location = New System.Drawing.Point(23, 119)
-        Me.cb_packing_list.Name = "cb_packing_list"
-        Me.cb_packing_list.Size = New System.Drawing.Size(81, 17)
-        Me.cb_packing_list.TabIndex = 10
-        Me.cb_packing_list.Text = "Packing List"
-        Me.cb_packing_list.UseVisualStyleBackColor = True
         '
         'GroupControl10
         '
@@ -819,26 +827,6 @@ Partial Class frm_admin_users_role
         Me.cb_export_catalogue.Text = "Export Catalogue"
         Me.cb_export_catalogue.UseVisualStyleBackColor = True
         '
-        'cb_returned_units
-        '
-        Me.cb_returned_units.AutoSize = True
-        Me.cb_returned_units.Location = New System.Drawing.Point(23, 119)
-        Me.cb_returned_units.Name = "cb_returned_units"
-        Me.cb_returned_units.Size = New System.Drawing.Size(98, 17)
-        Me.cb_returned_units.TabIndex = 17
-        Me.cb_returned_units.Text = "Returned Units"
-        Me.cb_returned_units.UseVisualStyleBackColor = True
-        '
-        'cb_for_selluseller
-        '
-        Me.cb_for_selluseller.AutoSize = True
-        Me.cb_for_selluseller.Location = New System.Drawing.Point(23, 142)
-        Me.cb_for_selluseller.Name = "cb_for_selluseller"
-        Me.cb_for_selluseller.Size = New System.Drawing.Size(93, 17)
-        Me.cb_for_selluseller.TabIndex = 18
-        Me.cb_for_selluseller.Text = "For SelluSeller"
-        Me.cb_for_selluseller.UseVisualStyleBackColor = True
-        '
         'frm_admin_users_role
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -895,67 +883,66 @@ Partial Class frm_admin_users_role
     End Sub
 
     Friend WithEvents GunaPanel2 As Guna.UI.WinForms.GunaPanel
-	Friend WithEvents GunaPanel3 As Guna.UI.WinForms.GunaPanel
-	Friend WithEvents GunaPanel4 As Guna.UI.WinForms.GunaPanel
-	Friend WithEvents HyperlinkLabelControl1 As DevExpress.XtraEditors.HyperlinkLabelControl
-	Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents HyperlinkLabelControl2 As DevExpress.XtraEditors.HyperlinkLabelControl
-	Friend WithEvents GunaLabel1 As Guna.UI.WinForms.GunaLabel
-	Friend WithEvents Panel1 As Panel
-	Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents acc_role As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents acc_name As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents acc_id As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents cb_catalogue As CheckBox
-	Friend WithEvents cb_import_catalogue As CheckBox
-	Friend WithEvents cb_new_item As CheckBox
+    Friend WithEvents GunaPanel3 As Guna.UI.WinForms.GunaPanel
+    Friend WithEvents GunaPanel4 As Guna.UI.WinForms.GunaPanel
+    Friend WithEvents HyperlinkLabelControl1 As DevExpress.XtraEditors.HyperlinkLabelControl
+    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents HyperlinkLabelControl2 As DevExpress.XtraEditors.HyperlinkLabelControl
+    Friend WithEvents GunaLabel1 As Guna.UI.WinForms.GunaLabel
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents acc_role As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents acc_name As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents acc_id As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents cb_catalogue As CheckBox
+    Friend WithEvents cb_import_catalogue As CheckBox
+    Friend WithEvents cb_new_item As CheckBox
     Friend WithEvents cb_export_catalogue As CheckBox
     Friend WithEvents btn_save As DevExpress.XtraEditors.SimpleButton
-	Friend WithEvents btn_close As DevExpress.XtraEditors.SimpleButton
-	Friend WithEvents cb_packing_list As CheckBox
-	Friend WithEvents cb_customers As CheckBox
-	Friend WithEvents cb_create_order As CheckBox
-	Friend WithEvents cb_orders As CheckBox
-	Friend WithEvents GroupControl5 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents cb_daily_delivery As CheckBox
-	Friend WithEvents cb_delivery_logs As CheckBox
-	Friend WithEvents cb_stock_management As CheckBox
-	Friend WithEvents cb_stock_inventory As CheckBox
-	Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents GroupControl6 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents cb_order_payments As CheckBox
-	Friend WithEvents cb_new_cheque_payment As CheckBox
-	Friend WithEvents cb_cheque_book As CheckBox
-	Friend WithEvents GroupControl7 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents cb_user_accounts As CheckBox
-	Friend WithEvents cb_approvals As CheckBox
-	Friend WithEvents cb_price_book As CheckBox
-	Friend WithEvents GroupControl8 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents cb_account_payables As CheckBox
-	Friend WithEvents cb_generate As CheckBox
-	Friend WithEvents cb_payment_vouchers As CheckBox
-	Friend WithEvents cb_payment_cheques As CheckBox
-	Friend WithEvents GroupControl9 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents cb_new_purchase As CheckBox
-	Friend WithEvents cb_purchase_orders As CheckBox
-	Friend WithEvents GroupControl10 As DevExpress.XtraEditors.GroupControl
-	Friend WithEvents cb_pickup_deliveries As CheckBox
-	Friend WithEvents cb_transaction_invoice As CheckBox
-	Friend WithEvents cb_stores As CheckBox
-	Friend WithEvents cb_suppliers As CheckBox
-	Friend WithEvents cb_settings As CheckBox
-	Friend WithEvents cb_logistics As CheckBox
-	Friend WithEvents acc_username As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
-	Friend WithEvents Panel2 As Panel
-	Friend WithEvents cb_soa As CheckBox
+    Friend WithEvents btn_close As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cb_package_mgmt As CheckBox
+    Friend WithEvents cb_customers As CheckBox
+    Friend WithEvents cb_create_order As CheckBox
+    Friend WithEvents cb_orders As CheckBox
+    Friend WithEvents GroupControl5 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cb_receiving_mgmt As CheckBox
+    Friend WithEvents cb_delivery_logs As CheckBox
+    Friend WithEvents cb_stock_management As CheckBox
+    Friend WithEvents cb_stock_inventory As CheckBox
+    Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GroupControl6 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cb_order_payments As CheckBox
+    Friend WithEvents cb_new_cheque_payment As CheckBox
+    Friend WithEvents cb_cheque_book As CheckBox
+    Friend WithEvents GroupControl7 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cb_user_accounts As CheckBox
+    Friend WithEvents cb_approvals As CheckBox
+    Friend WithEvents cb_price_book As CheckBox
+    Friend WithEvents GroupControl8 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cb_account_payables As CheckBox
+    Friend WithEvents cb_generate As CheckBox
+    Friend WithEvents cb_payment_vouchers As CheckBox
+    Friend WithEvents cb_payment_cheques As CheckBox
+    Friend WithEvents GroupControl9 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cb_new_purchase As CheckBox
+    Friend WithEvents cb_purchase_orders As CheckBox
+    Friend WithEvents GroupControl10 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents cb_pickup_deliveries As CheckBox
+    Friend WithEvents cb_transaction_invoice As CheckBox
+    Friend WithEvents cb_stores As CheckBox
+    Friend WithEvents cb_suppliers As CheckBox
+    Friend WithEvents cb_settings As CheckBox
+    Friend WithEvents cb_logistics As CheckBox
+    Friend WithEvents acc_username As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents cb_soa As CheckBox
     Friend WithEvents cb_reports As CheckBox
     Friend WithEvents cb_quotations As CheckBox
     Friend WithEvents cb_for_selluseller As CheckBox
-    Friend WithEvents cb_returned_units As CheckBox
 End Class

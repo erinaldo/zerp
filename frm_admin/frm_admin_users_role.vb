@@ -46,16 +46,15 @@ Public Class frm_admin_users_role
                     Case "quotations" : cb_quotations.Checked = True
                     Case "create_order" : cb_create_order.Checked = True
                     Case "customers" : cb_customers.Checked = True
-                    Case "packing_list" : cb_packing_list.Checked = True
                     Case "transaction_invoice" : cb_transaction_invoice.Checked = True
                     Case "logistics" : cb_logistics.Checked = True
 
                     'Warehouse
-                    Case "daily_delivery" : cb_daily_delivery.Checked = True
+                    Case "daily_delivery" : cb_receiving_mgmt.Checked = True
                     Case "delivery_logs" : cb_delivery_logs.Checked = True
                     Case "stock_management" : cb_stock_management.Checked = True
                     Case "stock_inventory" : cb_stock_inventory.Checked = True
-                    Case "returned_units" : cb_returned_units.Checked = True
+                    Case "packing_list" : cb_package_mgmt.Checked = True
                     Case "for_selluseller" : cb_for_selluseller.Checked = True
 
                     'Collections
@@ -115,16 +114,15 @@ Public Class frm_admin_users_role
         If cb_quotations.Checked Then access += "quotations;"
         If cb_create_order.Checked Then access += "create_order;"
         If cb_customers.Checked Then access += "customers;"
-        If cb_packing_list.Checked Then access += "packing_list;"
         If cb_transaction_invoice.Checked Then access += "transaction_invoice;"
         If cb_logistics.Checked Then access += "logistics;"
 
         'Warehouse
-        If cb_daily_delivery.Checked Then access += "daily_delivery;"
+        If cb_receiving_mgmt.Checked Then access += "daily_delivery;"
         If cb_delivery_logs.Checked Then access += "delivery_logs;"
         If cb_stock_management.Checked Then access += "stock_management;"
         If cb_stock_inventory.Checked Then access += "stock_inventory;"
-        If cb_returned_units.Checked Then access += "returned_units;"
+        If cb_package_mgmt.Checked Then access += "packing_list;"
         If cb_for_selluseller.Checked Then access += "for_selluseller;"
 
         'Collections

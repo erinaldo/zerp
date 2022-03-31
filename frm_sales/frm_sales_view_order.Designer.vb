@@ -119,6 +119,8 @@ Partial Class frm_sales_view_order
         Me.btn_refund = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_epayment = New DevExpress.XtraEditors.SimpleButton()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lbl_invoice = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_invoice = New DevExpress.XtraEditors.TextEdit()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         Me.txt_terms = New System.Windows.Forms.NumericUpDown()
         Me.txt_sales_agent = New DevExpress.XtraEditors.TextEdit()
@@ -138,8 +140,7 @@ Partial Class frm_sales_view_order
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.btn_modify = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_unserved = New DevExpress.XtraEditors.SimpleButton()
-        Me.lbl_invoice = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_invoice = New DevExpress.XtraEditors.TextEdit()
+        Me.lbl_cant_edit = New System.Windows.Forms.Label()
         Me.GunaPanel2.SuspendLayout()
         CType(Me.txt_delivery_fee.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_po_ref.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -160,6 +161,7 @@ Partial Class frm_sales_view_order
         CType(Me.txt_discount.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
+        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel3.SuspendLayout()
         CType(Me.txt_terms, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_sales_agent.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -169,7 +171,6 @@ Partial Class frm_sales_view_order
         CType(Me.lbl_credits_available.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl_account_type.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl_cid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GunaPanel2
@@ -596,7 +597,6 @@ Partial Class frm_sales_view_order
         '
         'btn_delete
         '
-        Me.btn_delete.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_delete.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_delete.Appearance.Options.UseFont = True
         Me.btn_delete.ImageOptions.Image = Global.Inventory_Management.My.Resources.Resources.trash_32x32
@@ -866,18 +866,18 @@ Partial Class frm_sales_view_order
         Me.print_contextmenu.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.print_contextmenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DraftInvoiceToolStripMenuItem, Me.PackingSlipToolStripMenuItem})
         Me.print_contextmenu.Name = "print_contextmenu"
-        Me.print_contextmenu.Size = New System.Drawing.Size(142, 48)
+        Me.print_contextmenu.Size = New System.Drawing.Size(150, 48)
         '
         'DraftInvoiceToolStripMenuItem
         '
         Me.DraftInvoiceToolStripMenuItem.Name = "DraftInvoiceToolStripMenuItem"
-        Me.DraftInvoiceToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.DraftInvoiceToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.DraftInvoiceToolStripMenuItem.Text = "Draft Invoice"
         '
         'PackingSlipToolStripMenuItem
         '
         Me.PackingSlipToolStripMenuItem.Name = "PackingSlipToolStripMenuItem"
-        Me.PackingSlipToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.PackingSlipToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.PackingSlipToolStripMenuItem.Text = "Packing Slip"
         '
         'cbb_discount
@@ -1138,6 +1138,34 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel2.Size = New System.Drawing.Size(712, 172)
         Me.Guna2Panel2.TabIndex = 123
         '
+        'lbl_invoice
+        '
+        Me.lbl_invoice.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.lbl_invoice.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
+        Me.lbl_invoice.Appearance.Options.UseFont = True
+        Me.lbl_invoice.Appearance.Options.UseForeColor = True
+        Me.lbl_invoice.Location = New System.Drawing.Point(291, 102)
+        Me.lbl_invoice.Name = "lbl_invoice"
+        Me.lbl_invoice.Size = New System.Drawing.Size(67, 16)
+        Me.lbl_invoice.TabIndex = 118
+        Me.lbl_invoice.Text = "Invoice No.:"
+        Me.lbl_invoice.Visible = False
+        '
+        'txt_invoice
+        '
+        Me.txt_invoice.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_invoice.EditValue = ""
+        Me.txt_invoice.Location = New System.Drawing.Point(364, 99)
+        Me.txt_invoice.Name = "txt_invoice"
+        Me.txt_invoice.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.txt_invoice.Properties.Appearance.Options.UseFont = True
+        Me.txt_invoice.Properties.Appearance.Options.UseTextOptions = True
+        Me.txt_invoice.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.txt_invoice.Properties.BeepOnError = False
+        Me.txt_invoice.Size = New System.Drawing.Size(93, 22)
+        Me.txt_invoice.TabIndex = 119
+        Me.txt_invoice.Visible = False
+        '
         'Guna2Panel3
         '
         Me.Guna2Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1189,6 +1217,7 @@ Partial Class frm_sales_view_order
         '
         Me.txt_terms.Font = New System.Drawing.Font("Arial", 9.7!)
         Me.txt_terms.Location = New System.Drawing.Point(318, 144)
+        Me.txt_terms.Maximum = New Decimal(New Integer() {360, 0, 0, 0})
         Me.txt_terms.Name = "txt_terms"
         Me.txt_terms.Size = New System.Drawing.Size(73, 22)
         Me.txt_terms.TabIndex = 120
@@ -1387,33 +1416,19 @@ Partial Class frm_sales_view_order
         Me.btn_unserved.TabIndex = 129
         Me.btn_unserved.Text = "Unserved"
         '
-        'lbl_invoice
+        'lbl_cant_edit
         '
-        Me.lbl_invoice.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.lbl_invoice.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
-        Me.lbl_invoice.Appearance.Options.UseFont = True
-        Me.lbl_invoice.Appearance.Options.UseForeColor = True
-        Me.lbl_invoice.Location = New System.Drawing.Point(291, 102)
-        Me.lbl_invoice.Name = "lbl_invoice"
-        Me.lbl_invoice.Size = New System.Drawing.Size(67, 16)
-        Me.lbl_invoice.TabIndex = 118
-        Me.lbl_invoice.Text = "Invoice No.:"
-        Me.lbl_invoice.Visible = False
-        '
-        'txt_invoice
-        '
-        Me.txt_invoice.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_invoice.EditValue = ""
-        Me.txt_invoice.Location = New System.Drawing.Point(364, 99)
-        Me.txt_invoice.Name = "txt_invoice"
-        Me.txt_invoice.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.txt_invoice.Properties.Appearance.Options.UseFont = True
-        Me.txt_invoice.Properties.Appearance.Options.UseTextOptions = True
-        Me.txt_invoice.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.txt_invoice.Properties.BeepOnError = False
-        Me.txt_invoice.Size = New System.Drawing.Size(93, 22)
-        Me.txt_invoice.TabIndex = 119
-        Me.txt_invoice.Visible = False
+        Me.lbl_cant_edit.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.lbl_cant_edit.AutoSize = True
+        Me.lbl_cant_edit.BackColor = System.Drawing.Color.GhostWhite
+        Me.lbl_cant_edit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.lbl_cant_edit.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lbl_cant_edit.Location = New System.Drawing.Point(854, 542)
+        Me.lbl_cant_edit.Name = "lbl_cant_edit"
+        Me.lbl_cant_edit.Size = New System.Drawing.Size(318, 15)
+        Me.lbl_cant_edit.TabIndex = 130
+        Me.lbl_cant_edit.Text = "Modification of Quotation based orders requires privilege."
+        Me.lbl_cant_edit.Visible = False
         '
         'frm_sales_view_order
         '
@@ -1421,6 +1436,7 @@ Partial Class frm_sales_view_order
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1409, 785)
+        Me.Controls.Add(Me.lbl_cant_edit)
         Me.Controls.Add(Me.btn_unserved)
         Me.Controls.Add(Me.btn_modify)
         Me.Controls.Add(Me.Guna2Panel3)
@@ -1463,6 +1479,7 @@ Partial Class frm_sales_view_order
         Me.Guna2Panel1.PerformLayout()
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
+        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel3.ResumeLayout(False)
         Me.Guna2Panel3.PerformLayout()
         CType(Me.txt_terms, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1473,8 +1490,8 @@ Partial Class frm_sales_view_order
         CType(Me.lbl_credits_available.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbl_account_type.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbl_cid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_invoice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -1572,4 +1589,5 @@ Partial Class frm_sales_view_order
     Friend WithEvents btn_unserved As SimpleButton
     Friend WithEvents lbl_invoice As LabelControl
     Friend WithEvents txt_invoice As TextEdit
+    Friend WithEvents lbl_cant_edit As Label
 End Class

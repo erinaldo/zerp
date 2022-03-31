@@ -9,6 +9,18 @@ Public Class frm_admin_transfer_view
 
     'btn_view | Print Units to be Transferred
     Private Sub btn_view_Click(sender As Object, e As EventArgs) Handles btn_view.Click
+
+        Select Case lbl_transfer_type.Text
+            Case "Request"
+                Dim frm = New frm_warehouse_stocktransfer_request_new
+                frm.print_transfer_request(txt_transfer_id.Text)
+            Case "Distribute"
+                Dim frm = New frm_warehouse_stocktransfer_distribute_new
+                frm.print_transfer_distribute(txt_transfer_id.Text)
+        End Select
+
+
+        Return
         Dim id = CInt(txt_transfer_id.Text.Replace("ST", ""))
 
         Try
@@ -83,20 +95,21 @@ Public Class frm_admin_transfer_view
     'btn_approved | Approve Transfer Request
     Private Sub btn_approved_Click(sender As Object, e As EventArgs) Handles btn_approved.Click
 
-        Dim ans = MsgBox("Do you want Approve this Transfer Request?.", vbYesNo + vbQuestion, "Confirmation")
+        Dim ans = MsgBox("Press 'Yes' to Approve it.", vbYesNo + vbQuestion, "Confirmation")
 
         If ans = vbYes Then
             Dim id = CInt(txt_transfer_id.Text.Replace("ST", ""))
 
             Try
                 conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_transferred_stocks SET approved_by=@approved_by, status=@status WHERE id = " & id, conn)
+                Dim cmd = New MySqlCommand("UPDATE ims_stock_transfer SET approved_by=@approved_by, status=@status WHERE transfer_id = " & id, conn)
                 cmd.Parameters.AddWithValue("approved_by", frm_main.user_id.Text)
                 cmd.Parameters.AddWithValue("status", "Approved")
                 cmd.ExecuteNonQuery()
 
+                MsgBox("Approved! ", vbInformation, "Information")
+
                 Me.Close()
-                frm_main.LoadFrm(New frm_admin_approval)
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")
@@ -118,14 +131,13 @@ Public Class frm_admin_transfer_view
 
             Try
                 conn.Open()
-                Dim cmd = New MySqlCommand("UPDATE ims_transferred_stocks SET approved_by=@approved_by, status='Declined' WHERE id = " & id, conn)
+                Dim cmd = New MySqlCommand("UPDATE ims_stock_transfer SET approved_by=@approved_by, status='Declined' WHERE transfer_id = " & id, conn)
                 cmd.Parameters.AddWithValue("approved_by", frm_main.user_id.Text)
                 cmd.ExecuteNonQuery()
 
-                MsgBox("Transfer Request has been Declined! ", vbExclamation, "Declined")
+                MsgBox("Declined!", vbInformation, "Information")
 
                 Me.Close()
-                frm_main.LoadFrm(New frm_admin_approval)
 
             Catch ex As Exception
                 MsgBox(ex.Message, vbCritical, "Error")

@@ -57,16 +57,18 @@ Public Class frm_sales_customers
             frm.num_terms.Value = .GetFocusedRowCellValue(col_terms)
             frm.cbb_shipping.Text = .GetFocusedRowCellValue(col_shipping)
             frm.txt_credit_limit.Text = .GetFocusedRowCellValue(col_credit_limit)
-            frm.LoadSheet(IIf(IsDBNull(.GetFocusedRowCellValue(col_other_notes)), "", .GetFocusedRowCellValue(col_other_notes)))
+            frm.txt_tin.Text = .GetFocusedRowCellValue(col_tin)
+            Dim assigned_agent = .GetFocusedRowCellValue(col_assigned_agents)
+            frm.cbb_agents.Text = IIf(IsDBNull(assigned_agent), "Unassigned", assigned_agent)
+            frm.LoadSheet(IIf(IsDBNull(.GetFocusedRowCellValue(col_other_notes)), String.Empty, .GetFocusedRowCellValue(col_other_notes)))
             frm.btn_delete_customer.Visible = True
 
             'Access for Admin
-            If frm_main.user_role_id.Text = 1 Then
-                frm.lbl_credit_limit.Visible = True
-                frm.txt_credit_limit.Visible = True
-                frm.LabelControl2.Visible = True
-                frm.num_terms.Visible = True
+            If frm_main.user_role_id.Text = 1 Or frm_main.user_role_id.Text = 6 Then
+                frm.txt_credit_limit.Enabled = True
+                frm.num_terms.Enabled = True
                 frm.cbb_account_type.Enabled = True
+                frm.cbb_agents.Enabled = True
             End If
 
         End With

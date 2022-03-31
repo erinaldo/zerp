@@ -236,7 +236,8 @@ Public Class frm_sales_packing_list_view
 
     'btn_print
     Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
-        print_packing_list(txt_orderid.Text)
+        'print_packing_list(txt_orderid.Text)
+        frm_sales_view_order.print_packing_list(txt_orderid.Text)
     End Sub
 
     'btn_pack
@@ -314,4 +315,5 @@ Public Class frm_sales_packing_list_view
     Private Sub txt_rolls_no_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_rolls_no.KeyPress
         e.Handled = Not (Char.IsDigit(e.KeyChar) Or Char.IsControl(e.KeyChar))
     End Sub
+
 End Class

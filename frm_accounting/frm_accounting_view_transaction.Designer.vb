@@ -26,12 +26,12 @@ Partial Class frm_accounting_view_transaction
         Me.grid_transaction = New DevExpress.XtraGrid.GridControl()
         Me.grid_transaction_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_qty = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_pid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_winmodel = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_supmodel = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_cost = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_total_cost = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btn_close = New DevExpress.XtraEditors.SimpleButton()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
@@ -39,16 +39,16 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.dtp_received_date = New System.Windows.Forms.DateTimePicker()
         Me.txt_counted_by = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_encoded_by = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_received_date = New DevExpress.XtraEditors.TextEdit()
         Me.txt_purchaseID = New DevExpress.XtraEditors.TextEdit()
         Me.txt_supplier = New DevExpress.XtraEditors.TextEdit()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
-        Me.lbl_type = New DevExpress.XtraEditors.LabelControl()
-        Me.lbl_ref = New DevExpress.XtraEditors.LabelControl()
+        Me.txt_ref = New System.Windows.Forms.TextBox()
+        Me.cbb_type = New System.Windows.Forms.ComboBox()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_total = New DevExpress.XtraEditors.TextEdit()
@@ -64,13 +64,15 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_vatables_sales = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_12_vat = New DevExpress.XtraEditors.LabelControl()
+        Me.lbl_payable_id = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_close = New DevExpress.XtraEditors.SimpleButton()
+        Me.btn_update = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.grid_transaction, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_transaction_view, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.txt_counted_by.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_encoded_by.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_received_date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_purchaseID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_supplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +90,7 @@ Partial Class frm_accounting_view_transaction
         Me.grid_transaction.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_transaction.MainView = Me.grid_transaction_view
         Me.grid_transaction.Name = "grid_transaction"
-        Me.grid_transaction.Size = New System.Drawing.Size(1020, 346)
+        Me.grid_transaction.Size = New System.Drawing.Size(1093, 346)
         Me.grid_transaction.TabIndex = 13
         Me.grid_transaction.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_transaction_view})
         '
@@ -100,7 +102,7 @@ Partial Class frm_accounting_view_transaction
         Me.grid_transaction_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_transaction_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_transaction_view.Appearance.Row.Options.UseFont = True
-        Me.grid_transaction_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_qty, Me.col_winmodel, Me.col_supmodel, Me.col_description, Me.col_cost, Me.col_total_cost})
+        Me.grid_transaction_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_qty, Me.col_pid, Me.col_winmodel, Me.col_supmodel, Me.col_description, Me.col_cost, Me.col_total_cost})
         Me.grid_transaction_view.GridControl = Me.grid_transaction
         Me.grid_transaction_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_transaction_view.Name = "grid_transaction_view"
@@ -121,31 +123,51 @@ Partial Class frm_accounting_view_transaction
         Me.col_qty.VisibleIndex = 0
         Me.col_qty.Width = 64
         '
+        'col_pid
+        '
+        Me.col_pid.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_pid.AppearanceCell.Options.UseBackColor = True
+        Me.col_pid.Caption = "PID"
+        Me.col_pid.FieldName = "pid"
+        Me.col_pid.Name = "col_pid"
+        Me.col_pid.OptionsColumn.AllowEdit = False
+        Me.col_pid.Visible = True
+        Me.col_pid.VisibleIndex = 1
+        '
         'col_winmodel
         '
+        Me.col_winmodel.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_winmodel.AppearanceCell.Options.UseBackColor = True
         Me.col_winmodel.Caption = "Win. Model"
         Me.col_winmodel.FieldName = "winmodel"
         Me.col_winmodel.Name = "col_winmodel"
+        Me.col_winmodel.OptionsColumn.AllowEdit = False
         Me.col_winmodel.Visible = True
-        Me.col_winmodel.VisibleIndex = 1
+        Me.col_winmodel.VisibleIndex = 2
         Me.col_winmodel.Width = 148
         '
         'col_supmodel
         '
+        Me.col_supmodel.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_supmodel.AppearanceCell.Options.UseBackColor = True
         Me.col_supmodel.Caption = "Sup. Model"
         Me.col_supmodel.FieldName = "supmodel"
         Me.col_supmodel.Name = "col_supmodel"
+        Me.col_supmodel.OptionsColumn.AllowEdit = False
         Me.col_supmodel.Visible = True
-        Me.col_supmodel.VisibleIndex = 2
+        Me.col_supmodel.VisibleIndex = 3
         Me.col_supmodel.Width = 162
         '
         'col_description
         '
+        Me.col_description.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_description.AppearanceCell.Options.UseBackColor = True
         Me.col_description.Caption = "Description"
         Me.col_description.FieldName = "description"
         Me.col_description.Name = "col_description"
+        Me.col_description.OptionsColumn.AllowEdit = False
         Me.col_description.Visible = True
-        Me.col_description.VisibleIndex = 3
+        Me.col_description.VisibleIndex = 4
         Me.col_description.Width = 444
         '
         'col_cost
@@ -156,27 +178,21 @@ Partial Class frm_accounting_view_transaction
         Me.col_cost.FieldName = "cost"
         Me.col_cost.Name = "col_cost"
         Me.col_cost.Visible = True
-        Me.col_cost.VisibleIndex = 4
+        Me.col_cost.VisibleIndex = 5
         '
         'col_total_cost
         '
+        Me.col_total_cost.AppearanceCell.BackColor = System.Drawing.Color.Lavender
+        Me.col_total_cost.AppearanceCell.Options.UseBackColor = True
         Me.col_total_cost.Caption = "Total Cost"
         Me.col_total_cost.DisplayFormat.FormatString = "c2"
         Me.col_total_cost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col_total_cost.FieldName = "total_cost"
         Me.col_total_cost.Name = "col_total_cost"
+        Me.col_total_cost.OptionsColumn.AllowEdit = False
         Me.col_total_cost.Visible = True
-        Me.col_total_cost.VisibleIndex = 5
+        Me.col_total_cost.VisibleIndex = 6
         Me.col_total_cost.Width = 109
-        '
-        'btn_close
-        '
-        Me.btn_close.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btn_close.Location = New System.Drawing.Point(12, 701)
-        Me.btn_close.Name = "btn_close"
-        Me.btn_close.Size = New System.Drawing.Size(99, 33)
-        Me.btn_close.TabIndex = 14
-        Me.btn_close.Text = "Close"
         '
         'GridColumn1
         '
@@ -197,31 +213,31 @@ Partial Class frm_accounting_view_transaction
         '
         'LabelControl2
         '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.LabelControl2.Appearance.Options.UseFont = True
         Me.LabelControl2.Location = New System.Drawing.Point(23, 16)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(99, 18)
+        Me.LabelControl2.Size = New System.Drawing.Size(77, 15)
         Me.LabelControl2.TabIndex = 16
         Me.LabelControl2.Text = "Receipt Ref.#:"
         '
         'LabelControl3
         '
-        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.LabelControl3.Appearance.Options.UseFont = True
         Me.LabelControl3.Location = New System.Drawing.Point(24, 40)
         Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(96, 18)
+        Me.LabelControl3.Size = New System.Drawing.Size(74, 15)
         Me.LabelControl3.TabIndex = 17
         Me.LabelControl3.Text = "Receipt Type:"
         '
         'LabelControl4
         '
-        Me.LabelControl4.Location = New System.Drawing.Point(220, 20)
+        Me.LabelControl4.Location = New System.Drawing.Point(224, 20)
         Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(74, 13)
+        Me.LabelControl4.Size = New System.Drawing.Size(70, 13)
         Me.LabelControl4.TabIndex = 18
-        Me.LabelControl4.Text = "Received Date:"
+        Me.LabelControl4.Text = "Received Date"
         '
         'LabelControl5
         '
@@ -233,11 +249,11 @@ Partial Class frm_accounting_view_transaction
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.dtp_received_date)
         Me.PanelControl1.Controls.Add(Me.txt_counted_by)
         Me.PanelControl1.Controls.Add(Me.LabelControl9)
         Me.PanelControl1.Controls.Add(Me.txt_encoded_by)
         Me.PanelControl1.Controls.Add(Me.LabelControl8)
-        Me.PanelControl1.Controls.Add(Me.txt_received_date)
         Me.PanelControl1.Controls.Add(Me.txt_purchaseID)
         Me.PanelControl1.Controls.Add(Me.txt_supplier)
         Me.PanelControl1.Controls.Add(Me.LabelControl5)
@@ -250,10 +266,21 @@ Partial Class frm_accounting_view_transaction
         Me.PanelControl1.Size = New System.Drawing.Size(733, 75)
         Me.PanelControl1.TabIndex = 20
         '
+        'dtp_received_date
+        '
+        Me.dtp_received_date.CustomFormat = "MM/dd/yyyy"
+        Me.dtp_received_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtp_received_date.Location = New System.Drawing.Point(300, 16)
+        Me.dtp_received_date.Name = "dtp_received_date"
+        Me.dtp_received_date.Size = New System.Drawing.Size(116, 21)
+        Me.dtp_received_date.TabIndex = 29
+        '
         'txt_counted_by
         '
         Me.txt_counted_by.Location = New System.Drawing.Point(547, 41)
         Me.txt_counted_by.Name = "txt_counted_by"
+        Me.txt_counted_by.Properties.Appearance.BackColor = System.Drawing.Color.Lavender
+        Me.txt_counted_by.Properties.Appearance.Options.UseBackColor = True
         Me.txt_counted_by.Properties.ReadOnly = True
         Me.txt_counted_by.Properties.UseReadOnlyAppearance = False
         Me.txt_counted_by.Size = New System.Drawing.Size(158, 20)
@@ -271,6 +298,8 @@ Partial Class frm_accounting_view_transaction
         '
         Me.txt_encoded_by.Location = New System.Drawing.Point(547, 15)
         Me.txt_encoded_by.Name = "txt_encoded_by"
+        Me.txt_encoded_by.Properties.Appearance.BackColor = System.Drawing.Color.Lavender
+        Me.txt_encoded_by.Properties.Appearance.Options.UseBackColor = True
         Me.txt_encoded_by.Properties.ReadOnly = True
         Me.txt_encoded_by.Properties.UseReadOnlyAppearance = False
         Me.txt_encoded_by.Size = New System.Drawing.Size(158, 20)
@@ -284,19 +313,12 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl8.TabIndex = 25
         Me.LabelControl8.Text = "Encoded by:"
         '
-        'txt_received_date
-        '
-        Me.txt_received_date.Location = New System.Drawing.Point(305, 17)
-        Me.txt_received_date.Name = "txt_received_date"
-        Me.txt_received_date.Properties.ReadOnly = True
-        Me.txt_received_date.Properties.UseReadOnlyAppearance = False
-        Me.txt_received_date.Size = New System.Drawing.Size(96, 20)
-        Me.txt_received_date.TabIndex = 22
-        '
         'txt_purchaseID
         '
         Me.txt_purchaseID.Location = New System.Drawing.Point(101, 17)
         Me.txt_purchaseID.Name = "txt_purchaseID"
+        Me.txt_purchaseID.Properties.Appearance.BackColor = System.Drawing.Color.Lavender
+        Me.txt_purchaseID.Properties.Appearance.Options.UseBackColor = True
         Me.txt_purchaseID.Properties.ReadOnly = True
         Me.txt_purchaseID.Properties.UseReadOnlyAppearance = False
         Me.txt_purchaseID.Size = New System.Drawing.Size(96, 20)
@@ -306,43 +328,44 @@ Partial Class frm_accounting_view_transaction
         '
         Me.txt_supplier.Location = New System.Drawing.Point(101, 43)
         Me.txt_supplier.Name = "txt_supplier"
+        Me.txt_supplier.Properties.Appearance.BackColor = System.Drawing.Color.Lavender
+        Me.txt_supplier.Properties.Appearance.Options.UseBackColor = True
         Me.txt_supplier.Properties.ReadOnly = True
         Me.txt_supplier.Properties.UseReadOnlyAppearance = False
-        Me.txt_supplier.Size = New System.Drawing.Size(300, 20)
+        Me.txt_supplier.Size = New System.Drawing.Size(315, 20)
         Me.txt_supplier.TabIndex = 20
         '
         'PanelControl2
         '
         Me.PanelControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelControl2.Controls.Add(Me.txt_ref)
+        Me.PanelControl2.Controls.Add(Me.cbb_type)
         Me.PanelControl2.Controls.Add(Me.LabelControl2)
         Me.PanelControl2.Controls.Add(Me.LabelControl3)
-        Me.PanelControl2.Controls.Add(Me.lbl_type)
-        Me.PanelControl2.Controls.Add(Me.lbl_ref)
         Me.PanelControl2.Location = New System.Drawing.Point(754, 66)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(278, 75)
+        Me.PanelControl2.Size = New System.Drawing.Size(351, 75)
         Me.PanelControl2.TabIndex = 29
         '
-        'lbl_type
+        'txt_ref
         '
-        Me.lbl_type.Appearance.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_type.Appearance.Options.UseFont = True
-        Me.lbl_type.Location = New System.Drawing.Point(143, 40)
-        Me.lbl_type.Name = "lbl_type"
-        Me.lbl_type.Size = New System.Drawing.Size(38, 19)
-        Me.lbl_type.TabIndex = 24
-        Me.lbl_type.Text = "Type"
+        Me.txt_ref.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.txt_ref.Location = New System.Drawing.Point(118, 12)
+        Me.txt_ref.Name = "txt_ref"
+        Me.txt_ref.Size = New System.Drawing.Size(121, 21)
+        Me.txt_ref.TabIndex = 26
         '
-        'lbl_ref
+        'cbb_type
         '
-        Me.lbl_ref.Appearance.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lbl_ref.Appearance.Options.UseFont = True
-        Me.lbl_ref.Location = New System.Drawing.Point(143, 16)
-        Me.lbl_ref.Name = "lbl_ref"
-        Me.lbl_ref.Size = New System.Drawing.Size(54, 19)
-        Me.lbl_ref.TabIndex = 23
-        Me.lbl_ref.Text = "123456"
+        Me.cbb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbb_type.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.cbb_type.FormattingEnabled = True
+        Me.cbb_type.Items.AddRange(New Object() {"DR", "SI-NV", "SI-VAT", "OR-NV", "OR-VAT"})
+        Me.cbb_type.Location = New System.Drawing.Point(118, 38)
+        Me.cbb_type.Name = "cbb_type"
+        Me.cbb_type.Size = New System.Drawing.Size(121, 23)
+        Me.cbb_type.TabIndex = 25
         '
         'LabelControl10
         '
@@ -363,7 +386,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl6.Appearance.Options.UseFont = True
         Me.LabelControl6.Appearance.Options.UseForeColor = True
-        Me.LabelControl6.Location = New System.Drawing.Point(689, 712)
+        Me.LabelControl6.Location = New System.Drawing.Point(762, 712)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(125, 22)
         Me.LabelControl6.TabIndex = 24
@@ -373,7 +396,8 @@ Partial Class frm_accounting_view_transaction
         '
         Me.txt_total.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_total.EditValue = ""
-        Me.txt_total.Location = New System.Drawing.Point(829, 708)
+        Me.txt_total.Enabled = False
+        Me.txt_total.Location = New System.Drawing.Point(902, 708)
         Me.txt_total.Name = "txt_total"
         Me.txt_total.Properties.Appearance.Font = New System.Drawing.Font("Consolas", 14.0!, System.Drawing.FontStyle.Bold)
         Me.txt_total.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
@@ -392,7 +416,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl7.Appearance.ForeColor = System.Drawing.Color.Crimson
         Me.LabelControl7.Appearance.Options.UseFont = True
         Me.LabelControl7.Appearance.Options.UseForeColor = True
-        Me.LabelControl7.Location = New System.Drawing.Point(756, 660)
+        Me.LabelControl7.Location = New System.Drawing.Point(829, 660)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(88, 15)
         Me.LabelControl7.TabIndex = 27
@@ -405,7 +429,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl11.Appearance.ForeColor = System.Drawing.Color.Crimson
         Me.LabelControl11.Appearance.Options.UseFont = True
         Me.LabelControl11.Appearance.Options.UseForeColor = True
-        Me.LabelControl11.Location = New System.Drawing.Point(752, 546)
+        Me.LabelControl11.Location = New System.Drawing.Point(825, 546)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(96, 15)
         Me.LabelControl11.TabIndex = 28
@@ -421,7 +445,7 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_discount.Appearance.Options.UseTextOptions = True
         Me.lbl_discount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_discount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_discount.Location = New System.Drawing.Point(872, 543)
+        Me.lbl_discount.Location = New System.Drawing.Point(945, 543)
         Me.lbl_discount.Name = "lbl_discount"
         Me.lbl_discount.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_discount.Size = New System.Drawing.Size(160, 21)
@@ -438,7 +462,7 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_returned_credit.Appearance.Options.UseTextOptions = True
         Me.lbl_returned_credit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_returned_credit.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_returned_credit.Location = New System.Drawing.Point(897, 661)
+        Me.lbl_returned_credit.Location = New System.Drawing.Point(970, 661)
         Me.lbl_returned_credit.Name = "lbl_returned_credit"
         Me.lbl_returned_credit.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_returned_credit.Size = New System.Drawing.Size(135, 15)
@@ -455,7 +479,7 @@ Partial Class frm_accounting_view_transaction
         Me.txt_sub_total.Appearance.Options.UseTextOptions = True
         Me.txt_sub_total.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.txt_sub_total.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.txt_sub_total.Location = New System.Drawing.Point(852, 518)
+        Me.txt_sub_total.Location = New System.Drawing.Point(925, 518)
         Me.txt_sub_total.Name = "txt_sub_total"
         Me.txt_sub_total.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.txt_sub_total.Size = New System.Drawing.Size(180, 19)
@@ -469,7 +493,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl13.Appearance.Options.UseFont = True
         Me.LabelControl13.Appearance.Options.UseForeColor = True
-        Me.LabelControl13.Location = New System.Drawing.Point(792, 521)
+        Me.LabelControl13.Location = New System.Drawing.Point(865, 521)
         Me.LabelControl13.Name = "LabelControl13"
         Me.LabelControl13.Size = New System.Drawing.Size(54, 15)
         Me.LabelControl13.TabIndex = 31
@@ -485,7 +509,7 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_ewt.Appearance.Options.UseTextOptions = True
         Me.lbl_ewt.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_ewt.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_ewt.Location = New System.Drawing.Point(897, 626)
+        Me.lbl_ewt.Location = New System.Drawing.Point(970, 626)
         Me.lbl_ewt.Name = "lbl_ewt"
         Me.lbl_ewt.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_ewt.Size = New System.Drawing.Size(135, 15)
@@ -499,7 +523,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl14.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl14.Appearance.Options.UseFont = True
         Me.LabelControl14.Appearance.Options.UseForeColor = True
-        Me.LabelControl14.Location = New System.Drawing.Point(791, 627)
+        Me.LabelControl14.Location = New System.Drawing.Point(864, 627)
         Me.LabelControl14.Name = "LabelControl14"
         Me.LabelControl14.Size = New System.Drawing.Size(57, 15)
         Me.LabelControl14.TabIndex = 33
@@ -512,7 +536,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl12.Appearance.Options.UseFont = True
         Me.LabelControl12.Appearance.Options.UseForeColor = True
-        Me.LabelControl12.Location = New System.Drawing.Point(771, 583)
+        Me.LabelControl12.Location = New System.Drawing.Point(844, 583)
         Me.LabelControl12.Name = "LabelControl12"
         Me.LabelControl12.Size = New System.Drawing.Size(77, 15)
         Me.LabelControl12.TabIndex = 35
@@ -525,7 +549,7 @@ Partial Class frm_accounting_view_transaction
         Me.LabelControl15.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(57, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.LabelControl15.Appearance.Options.UseFont = True
         Me.LabelControl15.Appearance.Options.UseForeColor = True
-        Me.LabelControl15.Location = New System.Drawing.Point(795, 606)
+        Me.LabelControl15.Location = New System.Drawing.Point(868, 606)
         Me.LabelControl15.Name = "LabelControl15"
         Me.LabelControl15.Size = New System.Drawing.Size(53, 15)
         Me.LabelControl15.TabIndex = 36
@@ -541,7 +565,7 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_vatables_sales.Appearance.Options.UseTextOptions = True
         Me.lbl_vatables_sales.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_vatables_sales.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_vatables_sales.Location = New System.Drawing.Point(897, 579)
+        Me.lbl_vatables_sales.Location = New System.Drawing.Point(970, 579)
         Me.lbl_vatables_sales.Name = "lbl_vatables_sales"
         Me.lbl_vatables_sales.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_vatables_sales.Size = New System.Drawing.Size(135, 21)
@@ -558,19 +582,51 @@ Partial Class frm_accounting_view_transaction
         Me.lbl_12_vat.Appearance.Options.UseTextOptions = True
         Me.lbl_12_vat.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_12_vat.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.lbl_12_vat.Location = New System.Drawing.Point(897, 602)
+        Me.lbl_12_vat.Location = New System.Drawing.Point(970, 602)
         Me.lbl_12_vat.Name = "lbl_12_vat"
         Me.lbl_12_vat.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
         Me.lbl_12_vat.Size = New System.Drawing.Size(135, 21)
         Me.lbl_12_vat.TabIndex = 38
         Me.lbl_12_vat.Text = "12%_vat_sales"
         '
+        'lbl_payable_id
+        '
+        Me.lbl_payable_id.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbl_payable_id.Location = New System.Drawing.Point(1053, 47)
+        Me.lbl_payable_id.Name = "lbl_payable_id"
+        Me.lbl_payable_id.Size = New System.Drawing.Size(52, 13)
+        Me.lbl_payable_id.TabIndex = 39
+        Me.lbl_payable_id.Text = "Payable ID"
+        Me.lbl_payable_id.Visible = False
+        '
+        'btn_close
+        '
+        Me.btn_close.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btn_close.Location = New System.Drawing.Point(12, 701)
+        Me.btn_close.Name = "btn_close"
+        Me.btn_close.Size = New System.Drawing.Size(99, 33)
+        Me.btn_close.TabIndex = 14
+        Me.btn_close.Text = "Close"
+        '
+        'btn_update
+        '
+        Me.btn_update.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btn_update.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
+        Me.btn_update.Appearance.Options.UseBackColor = True
+        Me.btn_update.Location = New System.Drawing.Point(117, 701)
+        Me.btn_update.Name = "btn_update"
+        Me.btn_update.Size = New System.Drawing.Size(99, 33)
+        Me.btn_update.TabIndex = 40
+        Me.btn_update.Text = "Update"
+        '
         'frm_accounting_view_transaction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(1044, 750)
+        Me.ClientSize = New System.Drawing.Size(1117, 750)
+        Me.Controls.Add(Me.btn_update)
+        Me.Controls.Add(Me.lbl_payable_id)
         Me.Controls.Add(Me.lbl_12_vat)
         Me.Controls.Add(Me.lbl_vatables_sales)
         Me.Controls.Add(Me.LabelControl15)
@@ -602,7 +658,6 @@ Partial Class frm_accounting_view_transaction
         Me.PanelControl1.PerformLayout()
         CType(Me.txt_counted_by.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_encoded_by.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_received_date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_purchaseID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_supplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -619,7 +674,6 @@ Partial Class frm_accounting_view_transaction
     Friend WithEvents col_qty As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_description As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_winmodel As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents btn_close As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents col_supmodel As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
@@ -632,9 +686,6 @@ Partial Class frm_accounting_view_transaction
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txt_encoded_by As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lbl_ref As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents lbl_type As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txt_received_date As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txt_purchaseID As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txt_supplier As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
@@ -655,4 +706,11 @@ Partial Class frm_accounting_view_transaction
     Friend WithEvents LabelControl15 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_vatables_sales As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lbl_12_vat As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents lbl_payable_id As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents btn_close As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btn_update As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents dtp_received_date As DateTimePicker
+    Friend WithEvents txt_ref As TextBox
+    Friend WithEvents cbb_type As ComboBox
+    Friend WithEvents col_pid As DevExpress.XtraGrid.Columns.GridColumn
 End Class

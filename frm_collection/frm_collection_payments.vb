@@ -212,4 +212,12 @@ Public Class frm_collection_payments
         frm_collection_receipts.ShowDialog()
     End Sub
 
+    'Refresh via F5
+    Private Sub frm_collection_payments_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F5 Then
+            load_cash_orders()
+            load_cheque_orders()
+            load_epay_orders()
+        End If
+    End Sub
 End Class

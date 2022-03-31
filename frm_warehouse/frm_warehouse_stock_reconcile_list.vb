@@ -41,7 +41,7 @@ Public Class frm_warehouse_stock_reconcile_list
     '--- CONTROLS ----
 
     'btn_stock_transfer
-    Private Sub btn_stock_transfer_Click(sender As Object, e As EventArgs) Handles btn_stock_transfer.Click
+    Private Sub btn_stock_transfer_Click(sender As Object, e As EventArgs) 
         frm_main.LoadFrm(New frm_warehouse_stock_transfer)
     End Sub
 

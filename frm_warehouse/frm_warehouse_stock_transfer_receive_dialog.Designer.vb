@@ -116,7 +116,7 @@ Partial Class frm_warehouse_stock_transfer_receive_dialog
         Me.btn_retrieve.TabIndex = 6
         Me.btn_retrieve.Text = "Retrieve"
         '
-        'frm_warehouse_receive_dialog
+        'frm_warehouse_stock_transfer_receive_dialog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -131,9 +131,9 @@ Partial Class frm_warehouse_stock_transfer_receive_dialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frm_warehouse_receive_dialog"
+        Me.Name = "frm_warehouse_stock_transfer_receive_dialog"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Receive Stocks Dialog"
+        Me.Text = "Receive Stocks Transfer"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.txt_stock_transfer_id.Properties, System.ComponentModel.ISupportInitialize).EndInit()

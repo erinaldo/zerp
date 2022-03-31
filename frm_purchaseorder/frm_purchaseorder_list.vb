@@ -168,4 +168,17 @@ Public Class frm_purchaseorder_list
         frm.ShowDialog()
 
     End Sub
+
+    'Refresh via F5
+    Private Sub frm_collection_payments_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F5 Then
+            If btn_fulfilled.Text.Equals("Fulfilled Orders") Then
+                int_load("All")
+
+            ElseIf btn_fulfilled.Text.Equals("Close") Then
+                int_load("Completed")
+            End If
+        End If
+    End Sub
+
 End Class

@@ -84,9 +84,6 @@ Module functions
                         Case "customers"
                             .menu_sales.Visible = True
                             .submenu_customers.Visible = True
-                        Case "packing_list"
-                            .menu_sales.Visible = True
-                            .submenu_packing_list.Visible = True
                         Case "transaction_invoice"
                             .menu_sales.Visible = True
                             .submenu_invoices.Visible = True
@@ -97,7 +94,7 @@ Module functions
                         'Warehouse
                         Case "daily_delivery"
                             .menu_warehouse.Visible = True
-                            .submenu_daily_delivery.Visible = True
+                            .submenu_ReceivingManagement.Visible = True
                         Case "delivery_logs"
                             .menu_warehouse.Visible = True
                             .submenu_delivery_logs.Visible = True
@@ -107,9 +104,9 @@ Module functions
                         Case "stock_inventory"
                             .menu_warehouse.Visible = True
                             .submenu_product_inventory.Visible = True
-                        Case "returned_units"
+                        Case "packing_list"
                             .menu_warehouse.Visible = True
-                            .submenu_returned_units.Visible = True
+                            .submenu_packageManagement.Visible = True
                         Case "for_selluseller"
                             .menu_warehouse.Visible = True
                             .submenu_selluseller.Visible = True
@@ -131,7 +128,7 @@ Module functions
                         'Logistics
                         Case "pickup_deliveries"
                             .menu_logistics.Visible = True
-                            .submenu_pick_deliveries.Visible = True
+                            .submenu_order_management.Visible = True
 
                         'Purchasing
                         Case "new_purchase"
@@ -275,7 +272,36 @@ Module functions
         End Try
     End Sub
 
+    'Get CBM from Catalog
+    Public Function GetCBM(item As String, conn As MySqlConnection)
+        Dim cbm = 0.00
+
+        Using cmd = New MySqlCommand("SELECT (IFNULL(length, 0) * IFNULL(width, 0) * IFNULL(height, 0)) / 100 AS cbm 
+                        FROM ims_inventory WHERE pid=@pid", conn)
+            cmd.Parameters.AddWithValue("@pid", item)
+            cbm = cmd.ExecuteScalar
+        End Using
+
+        Return cbm
+
+    End Function
+
+    'Get KGS from Inventory
+    Public Function GetKGS(item As String, conn As MySqlConnection)
+        Dim kgs = 0.00
+
+        Using cmd = New MySqlCommand("SELECT IFNULL(weight, 0) AS kgs 
+                        FROM ims_inventory WHERE pid=@pid", conn)
+            cmd.Parameters.AddWithValue("@pid", item)
+            kgs = cmd.ExecuteScalar
+        End Using
+
+        Return kgs
+
+    End Function
+
 End Module
+
 
 
 
@@ -290,12 +316,15 @@ Public Class ChequesClass
 End Class
 
 Public Class SalesReturnClass
-    Public Property qty As Integer
+    Public Property qty As Decimal
     Public Property model As String
     Public Property description As String
     Public Property unit_price As Decimal
     Public Property total_amount As Decimal
     Public Property pid As String
+    Public Property purchase_date As Date
+    Public Property last_qty As Decimal
+
 End Class
 
 Public Class PurchaseOrderClass
@@ -324,3 +353,4 @@ Public Class SalesCustomerBankAccounts
     Public Property bank_acc_no As String
     Public Property bank_acc_name As String
 End Class
+

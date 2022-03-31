@@ -33,6 +33,7 @@ Partial Class frm_purchaseorder_edit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -114,6 +115,9 @@ Partial Class frm_purchaseorder_edit
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.txt_contact = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.CMS_print = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.CMS_strip_purchase_order = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CMS_strip_purchase_slip = New System.Windows.Forms.ToolStripMenuItem()
         Me.GunaPanel4.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
         Me.GunaPanel1.SuspendLayout()
@@ -134,6 +138,7 @@ Partial Class frm_purchaseorder_edit
         CType(Me.grid_order, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_supplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_contact.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CMS_print.SuspendLayout()
         Me.SuspendLayout()
         '
         'GunaPanel4
@@ -1095,6 +1100,24 @@ Partial Class frm_purchaseorder_edit
         Me.LabelControl3.TabIndex = 47
         Me.LabelControl3.Text = "Contact Person:"
         '
+        'CMS_print
+        '
+        Me.CMS_print.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CMS_strip_purchase_order, Me.CMS_strip_purchase_slip})
+        Me.CMS_print.Name = "CMS_print"
+        Me.CMS_print.Size = New System.Drawing.Size(181, 70)
+        '
+        'CMS_strip_purchase_order
+        '
+        Me.CMS_strip_purchase_order.Name = "CMS_strip_purchase_order"
+        Me.CMS_strip_purchase_order.Size = New System.Drawing.Size(180, 22)
+        Me.CMS_strip_purchase_order.Text = "Purchase Order"
+        '
+        'CMS_strip_purchase_slip
+        '
+        Me.CMS_strip_purchase_slip.Name = "CMS_strip_purchase_slip"
+        Me.CMS_strip_purchase_slip.Size = New System.Drawing.Size(180, 22)
+        Me.CMS_strip_purchase_slip.Text = "Purchase List"
+        '
         'frm_purchaseorder_edit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1129,6 +1152,7 @@ Partial Class frm_purchaseorder_edit
         CType(Me.grid_order, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_supplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_contact.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.CMS_print.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1203,4 +1227,7 @@ Partial Class frm_purchaseorder_edit
     Friend WithEvents col_total_received As DataGridViewTextBoxColumn
     Friend WithEvents col_to_received As DataGridViewTextBoxColumn
     Friend WithEvents col_remaining As DataGridViewTextBoxColumn
+    Friend WithEvents CMS_print As ContextMenuStrip
+    Friend WithEvents CMS_strip_purchase_order As ToolStripMenuItem
+    Friend WithEvents CMS_strip_purchase_slip As ToolStripMenuItem
 End Class

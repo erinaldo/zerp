@@ -90,10 +90,10 @@ Public Class frm_product_import
 
             Using connection = New MySqlConnection(str)
                 connection.Open()
-                Dim query = "INSERT INTO ims_inventory (pid, barcode, winmodel, supmodel, description, technical_description, main_category, sub_category, brand, type, tags, base_price, cost, discount, regular_price, dealer_price, vip_price, length, width, height, weight, hazards, status, supplier, serialized, qty_per_box, ideal_stock, warning_stock, stock_duration, warranty_period, warranty_coverage, date_entry) 
-                        VALUES (@pid, @barcode, @winmodel, @supmodel, @description, @technical_description, @main_category, @sub_category, @brand, @type, @tags, @base_price, @cost, @discount, @regular_price, @dealer_price, @vip_price, @length, @width, @height, @weight, @hazards, @status, @supplier, @serialized, @qty_per_box, @ideal_stock, @warning_stock, @stock_duration, @warranty_period, @warranty_coverage, @date_entry)
+                Dim query = "INSERT INTO ims_inventory (pid, barcode, winmodel, supmodel, description, technical_description, main_category, sub_category, brand, type, tags, base_price, cost, discount, regular_price, dealer_price, vip_price, length, width, height, weight, hazards, status, supplier, serialized, qty_per_box, masterbox_qty, min_order_qty, ideal_stock, warning_stock, stock_duration, warranty_period, warranty_coverage, date_entry) 
+                        VALUES (@pid, @barcode, @winmodel, @supmodel, @description, @technical_description, @main_category, @sub_category, @brand, @type, @tags, @base_price, @cost, @discount, @regular_price, @dealer_price, @vip_price, @length, @width, @height, @weight, @hazards, @status, @supplier, @serialized, @qty_per_box, @masterbox_qty, @min_order_qty, @ideal_stock, @warning_stock, @stock_duration, @warranty_period, @warranty_coverage, @date_entry)
                         ON DUPLICATE KEY UPDATE barcode=@barcode, winmodel=@winmodel, supmodel=@supmodel, description=@description, technical_description=@technical_description, main_category=@main_category, sub_category=@sub_category, brand=@brand, type=@type, tags=@tags, base_price=@base_price, cost=@cost, discount=@discount, regular_price=@regular_price, dealer_price=@dealer_price, vip_price=@vip_price,
-                        length=@length, width=@width, height=@height, weight=@weight, hazards=@hazards, status=@status, supplier=@supplier, serialized=@serialized, qty_per_box=@qty_per_box, ideal_stock=@ideal_stock, warning_stock=@warning_stock, stock_duration=@stock_duration, warranty_period=@warranty_period, warranty_coverage=@warranty_coverage, date_entry=@date_entry"
+                        length=@length, width=@width, height=@height, weight=@weight, hazards=@hazards, status=@status, supplier=@supplier, serialized=@serialized, qty_per_box=@qty_per_box, masterbox_qty=@masterbox_qty, min_order_qty=@min_order_qty, ideal_stock=@ideal_stock, warning_stock=@warning_stock, stock_duration=@stock_duration, warranty_period=@warranty_period, warranty_coverage=@warranty_coverage, date_entry=@date_entry"
                 Using insert_cmd = New MySqlCommand(query, connection)
                     insert_cmd.Parameters.AddWithValue("@pid", String.Empty)
                     insert_cmd.Parameters.AddWithValue("@barcode", Nothing)
@@ -121,6 +121,8 @@ Public Class frm_product_import
                     insert_cmd.Parameters.AddWithValue("@hazards", Nothing)
                     insert_cmd.Parameters.AddWithValue("@serialized", DBNull.Value)
                     insert_cmd.Parameters.AddWithValue("@qty_per_box", Nothing)
+                    insert_cmd.Parameters.AddWithValue("@masterbox_qty", Nothing)
+                    insert_cmd.Parameters.AddWithValue("@min_order_qty", Nothing)
                     insert_cmd.Parameters.AddWithValue("@ideal_stock", DBNull.Value)
                     insert_cmd.Parameters.AddWithValue("@warning_stock", DBNull.Value)
                     insert_cmd.Parameters.AddWithValue("@stock_duration", DBNull.Value)
@@ -199,12 +201,14 @@ Public Class frm_product_import
                             insert_cmd.Parameters(23).Value = WorkSheet.Cells(i, 24).Value 'Hazards
                             insert_cmd.Parameters(24).Value = WorkSheet.Cells(i, 25).Value 'Serialized
                             insert_cmd.Parameters(25).Value = IIf(Not String.IsNullOrEmpty(WorkSheet.Cells(i, 26).Value), WorkSheet.Cells(i, 26).Value, 0) 'Qty per Box
-                            insert_cmd.Parameters(26).Value = WorkSheet.Cells(i, 27).Value 'Ideal Stock
-                            insert_cmd.Parameters(27).Value = WorkSheet.Cells(i, 28).Value 'Warning Stock
-                            insert_cmd.Parameters(28).Value = WorkSheet.Cells(i, 29).Value 'Stock Duration
-                            insert_cmd.Parameters(29).Value = WorkSheet.Cells(i, 30).Value 'Warranty Period
-                            insert_cmd.Parameters(30).Value = WorkSheet.Cells(i, 31).Value 'Warranty Coverage
-                            insert_cmd.Parameters(31).Value = WorkSheet.Cells(i, 32).Value 'Entry Date
+                            insert_cmd.Parameters(26).Value = IIf(Not String.IsNullOrEmpty(WorkSheet.Cells(i, 26).Value), WorkSheet.Cells(i, 26).Value, 0) 'MasterBox Qty
+                            insert_cmd.Parameters(27).Value = IIf(Not String.IsNullOrEmpty(WorkSheet.Cells(i, 26).Value), WorkSheet.Cells(i, 26).Value, 0) 'Minimum Order Qty
+                            insert_cmd.Parameters(28).Value = WorkSheet.Cells(i, 27).Value 'Ideal Stock
+                            insert_cmd.Parameters(29).Value = WorkSheet.Cells(i, 28).Value 'Warning Stock
+                            insert_cmd.Parameters(30).Value = WorkSheet.Cells(i, 29).Value 'Stock Duration
+                            insert_cmd.Parameters(31).Value = WorkSheet.Cells(i, 30).Value 'Warranty Period
+                            insert_cmd.Parameters(32).Value = WorkSheet.Cells(i, 31).Value 'Warranty Coverage
+                            insert_cmd.Parameters(33).Value = WorkSheet.Cells(i, 32).Value 'Entry Date
 
                             insert_cmd.ExecuteNonQuery()
 
@@ -487,7 +491,7 @@ Public Class frm_product_import
             End With
 
             If sfd.ShowDialog = DialogResult.OK Then
-                My.Computer.FileSystem.WriteAllBytes(sfd.FileName, My.Resources.ZERP_Imports, False)
+                My.Computer.FileSystem.WriteAllBytes(sfd.FileName, My.Resources.import_template, False)
             End If
         End Using
 

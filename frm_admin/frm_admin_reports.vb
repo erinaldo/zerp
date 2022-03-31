@@ -465,15 +465,15 @@ Public Class frm_admin_reports
 
             If rb_gross_sales.Checked Then 'Show Gross Sales in Chart
                 For i = 0 To dt.Rows.Count - 1
-                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CDec(dt.Rows(i).Item(5))))
-                Next
-            ElseIf rb_margin.Checked Then 'Show Average Sales Margin in Chart
-                For i = 0 To dt.Rows.Count - 1
-                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CInt(dt.Rows(i).Item(8).ToString.Replace("%", ""))))
+                    SalesSeries.Points.Add(New SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CDec(dt.Rows(i).Item(7))))
                 Next
             ElseIf rb_transactions.Checked Then 'Show Total Transactions in Chart
                 For i = 0 To dt.Rows.Count - 1
-                    SalesSeries.Points.Add(New DevExpress.XtraCharts.SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CInt(dt.Rows(i).Item(6))))
+                    SalesSeries.Points.Add(New SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CInt(dt.Rows(i).Item(8))))
+                Next
+            ElseIf rb_margin.Checked Then 'Show Average Sales Margin in Chart
+                For i = 0 To dt.Rows.Count - 1
+                    SalesSeries.Points.Add(New SeriesPoint(CDate(dt.Rows(i).Item(0)).ToString("MM/dd/yyyy"), CInt(dt.Rows(i).Item(10) * 100)))
                 Next
             End If
 

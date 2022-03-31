@@ -52,13 +52,15 @@ Public Class frm_collection_soa
                 connection.Open()
 
                 Using cmd = New MySqlCommand("SELECT date_released, DATE_ADD(date_released, INTERVAL ims_orders.terms DAY) AS due_date,
-                        CONCAT('SO',LPAD(order_id,5,0)) AS order_id, amount_due FROM ims_orders
-                        INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer WHERE soa_id=@soa_id", connection)
+                        CONCAT('SO',LPAD(order_id,5,0)) AS order_id, amount_due, po_reference 
+                        FROM ims_orders
+                        INNER JOIN ims_customers ON ims_customers.customer_id=ims_orders.customer 
+                        WHERE soa_id=@soa_id", connection)
                     cmd.Parameters.AddWithValue("@soa_id", soa_id)
 
                     Using rdr = cmd.ExecuteReader
                         While rdr.Read
-                            table.soa.Rows.Add(rdr("order_id"), rdr("date_released"), rdr("due_date"), rdr("amount_due"))
+                            table.soa.Rows.Add(rdr("order_id"), rdr("date_released"), rdr("due_date"), rdr("amount_due"), rdr("po_reference"))
                         End While
                     End Using
 

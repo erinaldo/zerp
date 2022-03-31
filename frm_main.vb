@@ -301,11 +301,6 @@ Public Class frm_main
         LoadFrm(New frm_sales_customers)
     End Sub
 
-    'Packing List
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles submenu_packing_list.Click
-        LoadFrm(New frm_sales_packing_list)
-    End Sub
-
     'Invoice List
     Private Sub submenu_invoices_Click(sender As Object, e As EventArgs) Handles submenu_invoices.Click
         frm_sales_transaction_invoice.Show()
@@ -320,11 +315,6 @@ Public Class frm_main
 
 
     '---------> PRODUCTS 
-
-    'Stock Management
-    Private Sub StockManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_stock_management.Click
-        LoadFrm(New frm_warehouse_stock_transfer)
-    End Sub
 
     'New Product
     Private Sub NewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_new_item.Click
@@ -428,23 +418,33 @@ Public Class frm_main
     End Sub
 
     'Daily Deliveries
-    Private Sub DeliveriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_daily_delivery.Click
-        LoadFrm(New frm_warehouse_deliveries)
+    Private Sub DeliveriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_ReceivingManagement.Click
+        LoadFrm(New frm_warehouse_receivingManagement)
     End Sub
 
     'Delivery Logs
     Private Sub DeliveryLogsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_delivery_logs.Click
-        LoadFrm(New frm_warehouse_delivery_logs)
+        LoadFrm(New frm_warehouse_SupplierDeliveries_logs)
     End Sub
 
     'Returned Units
-    Private Sub submenu_returned_units_Click(sender As Object, e As EventArgs) Handles submenu_returned_units.Click
+    Private Sub submenu_returned_units_Click(sender As Object, e As EventArgs) 
         LoadFrm(New frm_warehouse_returns_list)
     End Sub
 
     'SelluSeller
     Private Sub submenu_selluseller_Click(sender As Object, e As EventArgs) Handles submenu_selluseller.Click
         LoadFrm(New frm_warehouse_selluseller)
+    End Sub
+
+    'Reconcile
+    Private Sub submenu2_reconcile_Click(sender As Object, e As EventArgs) Handles submenu2_reconcile.Click
+        LoadFrm(New frm_warehouse_stock_reconcile_list)
+    End Sub
+
+    'Stock Transfer
+    Private Sub submenu2_StockTransfer_Click(sender As Object, e As EventArgs) Handles submenu2_StockTransfer.Click
+        LoadFrm(New frm_warehouse_stocktransfer_list)
     End Sub
 
 
@@ -476,11 +476,15 @@ Public Class frm_main
 
     '----------> Logistics
 
-    'Pickup and Deliveries
-    Private Sub PickupDeliveriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_pick_deliveries.Click
-        LoadFrm(New frm_logistics_deliveries)
+    'Order Releasing Management
+    Private Sub PickupDeliveriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles submenu_order_management.Click
+        LoadFrm(New frm_logistics_ReleasingOrderManagement)
     End Sub
 
+    'Stock Transfer Dispatching
+    Private Sub submenu_StockTransferDispatching_Click(sender As Object, e As EventArgs) Handles submenu_StockTransferDispatching.Click
+        LoadFrm(New frm_logistics_StockTransferDispatching)
+    End Sub
 
 
 
@@ -532,5 +536,9 @@ Public Class frm_main
         LoadFrm(New frm_accounting_inventory_count)
     End Sub
 
+    'Packing List
+    Private Sub submenu_packageManagement_Click(sender As Object, e As EventArgs) Handles submenu_packageManagement.Click
+        LoadFrm(New frm_warehouse_PackageManagement)
+    End Sub
 
 End Class

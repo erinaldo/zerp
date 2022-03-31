@@ -22,14 +22,13 @@ Partial Class frm_warehouse_stock_reconcile_list
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_warehouse_stock_reconcile_list))
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.btn_stock_transfer = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_refresh = New DevExpress.XtraEditors.SimpleButton()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -74,21 +73,6 @@ Partial Class frm_warehouse_stock_reconcile_list
         Me.Guna2Panel2.ShadowDecoration.Parent = Me.Guna2Panel2
         Me.Guna2Panel2.Size = New System.Drawing.Size(973, 10)
         Me.Guna2Panel2.TabIndex = 19
-        '
-        'btn_stock_transfer
-        '
-        Me.btn_stock_transfer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_stock_transfer.Appearance.BackColor = System.Drawing.SystemColors.Control
-        Me.btn_stock_transfer.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btn_stock_transfer.Appearance.Options.UseBackColor = True
-        Me.btn_stock_transfer.Appearance.Options.UseFont = True
-        Me.btn_stock_transfer.Location = New System.Drawing.Point(848, 40)
-        Me.btn_stock_transfer.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.btn_stock_transfer.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_stock_transfer.Name = "btn_stock_transfer"
-        Me.btn_stock_transfer.Size = New System.Drawing.Size(130, 44)
-        Me.btn_stock_transfer.TabIndex = 8
-        Me.btn_stock_transfer.Text = "Stock Transfer"
         '
         'btn_refresh
         '
@@ -203,11 +187,11 @@ Partial Class frm_warehouse_stock_reconcile_list
         '
         'grid_stock_transferred_view
         '
-        Me.grid_stock_transferred_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Nunito", 9.749999!)
+        Me.grid_stock_transferred_view.Appearance.HeaderPanel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.grid_stock_transferred_view.Appearance.HeaderPanel.Options.UseFont = True
         Me.grid_stock_transferred_view.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.grid_stock_transferred_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.grid_stock_transferred_view.Appearance.Row.Font = New System.Drawing.Font("Nunito", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grid_stock_transferred_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_stock_transferred_view.Appearance.Row.Options.UseFont = True
         Me.grid_stock_transferred_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_id, Me.col_status, Me.col_store, Me.col_item, Me.col_delete, Me.col_qty, Me.col_type})
         Me.grid_stock_transferred_view.GridControl = Me.grid_stock_transferred
@@ -270,8 +254,8 @@ Partial Class frm_warehouse_stock_reconcile_list
         'btn_delete
         '
         Me.btn_delete.AutoHeight = False
-        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
-        Me.btn_delete.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        Me.btn_delete.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.btn_delete.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_delete.Name = "btn_delete"
         Me.btn_delete.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -401,7 +385,6 @@ Partial Class frm_warehouse_stock_reconcile_list
         '
         Me.panel_top.BackColor = System.Drawing.Color.GhostWhite
         Me.panel_top.Controls.Add(Me.btn_reconcile)
-        Me.panel_top.Controls.Add(Me.btn_stock_transfer)
         Me.panel_top.Controls.Add(Me.GunaPanel2)
         Me.panel_top.Controls.Add(Me.GunaLabel11)
         Me.panel_top.Dock = System.Windows.Forms.DockStyle.Top
@@ -412,14 +395,14 @@ Partial Class frm_warehouse_stock_reconcile_list
         Me.panel_top.Size = New System.Drawing.Size(1120, 78)
         Me.panel_top.TabIndex = 16
         '
-        'frm_warehouse_stock_reconcile
+        'frm_warehouse_stock_reconcile_list
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1120, 666)
         Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.panel_top)
-        Me.Name = "frm_warehouse_stock_reconcile"
+        Me.Name = "frm_warehouse_stock_reconcile_list"
         Me.Text = "frm_warehouse_stock_reconcile"
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel1.PerformLayout()
@@ -436,7 +419,6 @@ Partial Class frm_warehouse_stock_reconcile_list
     End Sub
 
     Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents btn_stock_transfer As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_refresh As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents btn_request_transfer As DevExpress.XtraEditors.SimpleButton

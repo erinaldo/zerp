@@ -13,7 +13,9 @@ Public Class frm_sales_return_new
         Load_AutoCompleteString()
         LoadCustomers()
         cbb_customer.Select()
-        If frm_main.user_role_id.Text = "1" Then grid_return.Columns(3).ReadOnly = False
+        If frm_main.user_role_id.Text = "1" Or frm_main.user_role_id.Text = "6" Then
+            grid_return.Columns(3).ReadOnly = False
+        End If
     End Sub
 
 
@@ -30,7 +32,7 @@ Public Class frm_sales_return_new
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Dim query = "SELECT ims_inventory.winmodel, ims_inventory.description FROM " & STORE_TABLE & " RIGHT JOIN ims_inventory ON " & STORE_TABLE & ".pid=ims_inventory.pid"
+                Dim query = "SELECT winmodel, description FROM ims_inventory" '& STORE_TABLE & " RIGHT JOIN ims_inventory ON " & STORE_TABLE & ".pid=ims_inventory.pid"
                 Dim cmd = New MySqlCommand(query, conn)
                 Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
@@ -132,21 +134,24 @@ Public Class frm_sales_return_new
                 'Set Items to Grid
                 Dim itemsObject = JsonConvert.DeserializeObject(Of List(Of SalesReturnClass))(orders)
                 For Each item In itemsObject
-                    Using cmd = New MySqlCommand("SELECT purchase_date FROM ims_sales " &
-                                                 "WHERE item=@item AND customer=@customer
-                                                 ORDER BY purchase_date DESC
-                                                 LIMIT 1", conn)
-                        cmd.Parameters.AddWithValue("@item", item.pid)
-                        cmd.Parameters.AddWithValue("@customer", txt_customer_id.Text)
-                        Using rdr = cmd.ExecuteReader
-                            If rdr.HasRows Then
-                                rdr.Read()
-                                grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, rdr("purchase_date"))
-                            Else
-                                grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, "-- NOT FOUND --")
-                            End If
-                        End Using
-                    End Using
+
+                    grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, item.purchase_date, item.last_qty)
+
+                    'Using cmd = New MySqlCommand("SELECT purchase_date FROM ims_sales " &
+                    '                             "WHERE item=@item AND customer=@customer
+                    '                             ORDER BY purchase_date DESC
+                    '                             LIMIT 1", conn)
+                    '    cmd.Parameters.AddWithValue("@item", item.pid)
+                    '    cmd.Parameters.AddWithValue("@customer", txt_customer_id.Text)
+                    '    Using rdr = cmd.ExecuteReader
+                    '        If rdr.HasRows Then
+                    '            rdr.Read()
+                    '            grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, rdr("purchase_date"))
+                    '        Else
+                    '            grid_return.Rows.Add(item.qty, item.model, item.description, item.unit_price, item.total_amount, item.pid, "-- NOT FOUND --")
+                    '        End If
+                    '    End Using
+                    'End Using
                 Next
 
                 'Get Total
@@ -189,6 +194,26 @@ Public Class frm_sales_return_new
         Return account_type
 
     End Function
+
+    'Check Grid Values
+    Private Function CheckGridValue()
+
+        For i = 0 To grid_return.Rows.Count - 2
+            If Not (String.IsNullOrEmpty(grid_return.Rows(i).Cells(0).Value) Or String.IsNullOrEmpty(grid_return.Rows(i).Cells(4).Value)) Then
+                If grid_return.Rows(i).Cells(0).Value < 1 Or grid_return.Rows(i).Cells(4).Value < 1 Then
+                    MsgBox("Grid values MUST NOT equal to ZERO!", vbExclamation, "Error")
+                    Return True
+                End If
+            Else
+                MsgBox("Incomplete grid values!", vbExclamation, "Error")
+                Return True
+            End If
+        Next
+
+        Return False
+
+    End Function
+
 
 
 
@@ -237,7 +262,7 @@ Public Class frm_sales_return_new
                 Using conn = New MySqlConnection(str)
                     conn.Open()
 
-                    Dim cmd = New MySqlCommand("SELECT item, inv.winmodel, inv.description, purchase_date, inv." & GetAccountTypeTable() &
+                    Dim cmd = New MySqlCommand("SELECT qty, item, inv.winmodel, inv.description, purchase_date, ims_sales.cost" & 'inv." & GetAccountTypeTable() &
                                                " FROM ims_sales
                                                 LEFT JOIN ims_inventory inv ON inv.pid=ims_sales.item
                                                 WHERE inv.winmodel=@winmodel AND customer=@customer_id
@@ -249,13 +274,13 @@ Public Class frm_sales_return_new
 
                     If rdr.HasRows Then
                         While rdr.Read
-                            'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
                             grid_return.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
                             grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                            Dim cost As Decimal = rdr(GetAccountTypeTable())
+                            Dim cost As Decimal = rdr("cost") 'rdr(GetAccountTypeTable())
                             grid_return.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
                             grid_return.Rows(e.RowIndex).Cells(5).Value = rdr("item")
                             grid_return.Rows(e.RowIndex).Cells(6).Value = rdr("purchase_date")
+                            grid_return.Rows(e.RowIndex).Cells(7).Value = rdr("qty")
                         End While
                     Else
                         MsgBox("No last order found!", vbCritical, "Not found")
@@ -276,7 +301,7 @@ Public Class frm_sales_return_new
                 Using conn = New MySqlConnection(str)
                     conn.Open()
 
-                    Dim cmd = New MySqlCommand("SELECT item, inv.winmodel, inv.description, purchase_date, inv." & GetAccountTypeTable() &
+                    Dim cmd = New MySqlCommand("SELECT qty, item, inv.winmodel, inv.description, purchase_date, ims_sales.cost" & 'inv." & GetAccountTypeTable() &
                                                " FROM ims_sales
                                                 LEFT JOIN ims_inventory inv ON inv.pid=ims_sales.item
                                                 WHERE inv.description=@description AND customer=@customer_id
@@ -291,10 +316,11 @@ Public Class frm_sales_return_new
                         'grid_order.Rows(e.RowIndex).Cells(0).Value = 1
                         grid_return.Rows(e.RowIndex).Cells(1).Value = rdr("winmodel").ToString.ToUpper
                         grid_return.Rows(e.RowIndex).Cells(2).Value = rdr("description")
-                        Dim cost As Decimal = rdr(GetAccountTypeTable())
+                        Dim cost As Decimal = rdr("cost") 'rdr(GetAccountTypeTable())
                         grid_return.Rows(e.RowIndex).Cells(3).Value = cost.ToString("n2")
                         grid_return.Rows(e.RowIndex).Cells(5).Value = rdr("item")
                         grid_return.Rows(e.RowIndex).Cells(6).Value = rdr("purchase_date")
+                        grid_return.Rows(e.RowIndex).Cells(7).Value = rdr("qty")
                     End While
                 End Using
             Catch ex As Exception
@@ -302,11 +328,13 @@ Public Class frm_sales_return_new
             End Try
         End If
 
-        If e.ColumnIndex.Equals(0) Or e.ColumnIndex.Equals(3) Or e.ColumnIndex.Equals(4) Then
+        If e.ColumnIndex.Equals(0) Or e.ColumnIndex.Equals(3) Or e.ColumnIndex.Equals(4) Or e.ColumnIndex.Equals(1) Then
             If String.IsNullOrEmpty(grid_return.Rows(e.RowIndex).Cells(1).Value) Then Return
 
             grid_return.Rows(e.RowIndex).Cells(3).Value = CDec(grid_return.Rows(e.RowIndex).Cells(3).Value)
-            grid_return.Rows(e.RowIndex).Cells(4).Value = CDec(grid_return.Rows(e.RowIndex).Cells(0).Value * grid_return.Rows(e.RowIndex).Cells(3).Value)
+            If Not String.IsNullOrEmpty(grid_return.Rows(e.RowIndex).Cells(0).Value) Then
+                grid_return.Rows(e.RowIndex).Cells(4).Value = CDec(grid_return.Rows(e.RowIndex).Cells(0).Value * grid_return.Rows(e.RowIndex).Cells(3).Value)
+            End If
         End If
 
         'Compute Total
@@ -328,6 +356,11 @@ Public Class frm_sales_return_new
             Return
         End If
 
+        'CHECK GRID
+        If CheckGridValue() Then
+            Return
+        End If
+
         If MsgBox("Press 'YES' to confirm.", vbYesNo + vbInformation, "Confirmation") = vbYes Then
                     Dim ListOfUnits = New List(Of SalesReturnClass)
             For i = 0 To grid_return.RowCount - 2
@@ -337,7 +370,9 @@ Public Class frm_sales_return_new
                 .description = grid_return.Rows(i).Cells(2).Value,
                 .unit_price = grid_return.Rows(i).Cells(3).Value,
                 .total_amount = grid_return.Rows(i).Cells(4).Value,
-                .pid = grid_return.Rows(i).Cells(5).Value
+                .pid = grid_return.Rows(i).Cells(5).Value,
+                .purchase_date = grid_return.Rows(i).Cells(6).Value,
+                .last_qty = grid_return.Rows(i).Cells(7).Value
             })
             Next
 
@@ -373,6 +408,11 @@ Public Class frm_sales_return_new
             Return
         End If
 
+        'CHECK GRID
+        If CheckGridValue() Then
+            Return
+        End If
+
         If MsgBox("Press 'YES' to confirm.", vbYesNo + vbInformation, "Confirmation") = vbYes Then
             Dim ListOfUnits = New List(Of SalesReturnClass)
             For i = 0 To grid_return.RowCount - 2
@@ -382,7 +422,9 @@ Public Class frm_sales_return_new
                 .description = grid_return.Rows(i).Cells(2).Value,
                 .unit_price = grid_return.Rows(i).Cells(3).Value,
                 .total_amount = grid_return.Rows(i).Cells(4).Value,
-                .pid = grid_return.Rows(i).Cells(5).Value
+                .pid = grid_return.Rows(i).Cells(5).Value,
+                .purchase_date = grid_return.Rows(i).Cells(6).Value,
+                .last_qty = grid_return.Rows(i).Cells(7).Value
             })
             Next
 

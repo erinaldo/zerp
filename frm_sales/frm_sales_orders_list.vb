@@ -32,7 +32,7 @@ Public Class frm_sales_orders
         Try
             Using connection = New MySqlConnection(str)
                 connection.Open()
-                Dim query = "SELECT concat('SO',LPAD(order_id,5,0)) as order_id, date_ordered, 
+                Dim query = "SELECT concat('SO',LPAD(order_id,5,0)) as order_id, date_ordered, po_reference,
                             AGENT.first_name AS agent, PACKED_BY.first_name AS packed_by, RELEASED_BY.first_name AS released_by, ims_customers.first_name, 
                             transaction_type, payment_status, date_packed, date_released,
                             CONCAT( UPPER( SUBSTRING( payment_type, 1, 1 ) ), LOWER( SUBSTRING( payment_type FROM 2 ) ) ) as payment_type,
@@ -85,12 +85,7 @@ Public Class frm_sales_orders
         btn.Appearance.BackColor = DXSkinColors.FillColors.Primary
     End Sub
 
-
-
-    '--- CONTROLS ----
-
-    'Timer
-    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
+    Private Sub load_baseOn_active()
         If btn_sort_all.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
             load_orders("ALL")
         ElseIf btn_sort_onprocess.Appearance.BackColor.Equals(DXSkinColors.FillColors.Primary) Then
@@ -102,16 +97,27 @@ Public Class frm_sales_orders
         End If
     End Sub
 
+
+    '--- CONTROLS ----
+
+    'Timer
+    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
+        load_baseOn_active()
+    End Sub
+
     'Timer Selection
     Private Sub cbb_timer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbb_timer.SelectedIndexChanged
         start_timer()
     End Sub
 
-    'CTRL + N | Show New Order
+    'CTRL + N | Show New Order, F5 | Sales Order
     Private Sub frm_sales_orders_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.N AndAlso e.Modifiers = Keys.Control Then
             Dim frm = New frm_sales_create_order
             frm.Show()
+
+        ElseIf e.KeyCode = Keys.F5 Then
+            load_baseOn_active()
         End If
     End Sub
 

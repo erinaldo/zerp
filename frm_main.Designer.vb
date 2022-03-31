@@ -53,18 +53,20 @@ Partial Class frm_main
         Me.submenu_customers = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewCustomerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegisteredCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_packing_list = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_invoices = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_logistics = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_warehouse = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_daily_delivery = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_ReceivingManagement = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_delivery_logs = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_stock_management = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu2_StockTransfer = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu2_reconcile = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_product_inventory = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_returned_units = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_packageManagement = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_selluseller = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_logistics = New System.Windows.Forms.ToolStripMenuItem()
-        Me.submenu_pick_deliveries = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_order_management = New System.Windows.Forms.ToolStripMenuItem()
+        Me.submenu_StockTransferDispatching = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu_collections = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_payments = New System.Windows.Forms.ToolStripMenuItem()
         Me.submenu_payment_new = New System.Windows.Forms.ToolStripMenuItem()
@@ -198,7 +200,7 @@ Partial Class frm_main
         Me.MenuStrip.Padding = New System.Windows.Forms.Padding(6, 2, 0, 5)
         Me.MenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.MenuStrip.ShowItemToolTips = True
-        Me.MenuStrip.Size = New System.Drawing.Size(927, 31)
+        Me.MenuStrip.Size = New System.Drawing.Size(807, 31)
         Me.MenuStrip.TabIndex = 0
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -239,7 +241,7 @@ Partial Class frm_main
         '
         'menu_sales
         '
-        Me.menu_sales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_create_order, Me.submenu_orders, Me.submenu_quotations, Me.submenu_returns, Me.submenu_customers, Me.submenu_packing_list, Me.submenu_invoices, Me.submenu_logistics})
+        Me.menu_sales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_create_order, Me.submenu_orders, Me.submenu_quotations, Me.submenu_returns, Me.submenu_customers, Me.submenu_invoices, Me.submenu_logistics})
         Me.menu_sales.Name = "menu_sales"
         Me.menu_sales.Size = New System.Drawing.Size(55, 24)
         Me.menu_sales.Text = "Sales"
@@ -291,13 +293,6 @@ Partial Class frm_main
         Me.RegisteredCustomersToolStripMenuItem.Size = New System.Drawing.Size(222, 24)
         Me.RegisteredCustomersToolStripMenuItem.Text = "Registered Customers"
         '
-        'submenu_packing_list
-        '
-        Me.submenu_packing_list.Name = "submenu_packing_list"
-        Me.submenu_packing_list.Size = New System.Drawing.Size(204, 24)
-        Me.submenu_packing_list.Text = "Packaging Dept."
-        Me.submenu_packing_list.Visible = False
-        '
         'submenu_invoices
         '
         Me.submenu_invoices.Name = "submenu_invoices"
@@ -314,66 +309,85 @@ Partial Class frm_main
         '
         'menu_warehouse
         '
-        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_daily_delivery, Me.submenu_delivery_logs, Me.submenu_stock_management, Me.submenu_product_inventory, Me.submenu_returned_units, Me.submenu_selluseller})
+        Me.menu_warehouse.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_stock_management, Me.submenu_packageManagement, Me.submenu_ReceivingManagement, Me.submenu_delivery_logs, Me.submenu_product_inventory, Me.submenu_selluseller})
         Me.menu_warehouse.Name = "menu_warehouse"
         Me.menu_warehouse.Size = New System.Drawing.Size(94, 24)
         Me.menu_warehouse.Text = "Warehouse"
         '
-        'submenu_daily_delivery
+        'submenu_ReceivingManagement
         '
-        Me.submenu_daily_delivery.Name = "submenu_daily_delivery"
-        Me.submenu_daily_delivery.Size = New System.Drawing.Size(206, 24)
-        Me.submenu_daily_delivery.Text = "Daily Delivery"
-        Me.submenu_daily_delivery.Visible = False
+        Me.submenu_ReceivingManagement.Name = "submenu_ReceivingManagement"
+        Me.submenu_ReceivingManagement.Size = New System.Drawing.Size(234, 24)
+        Me.submenu_ReceivingManagement.Text = "Receiving Management"
+        Me.submenu_ReceivingManagement.Visible = False
         '
         'submenu_delivery_logs
         '
         Me.submenu_delivery_logs.Name = "submenu_delivery_logs"
-        Me.submenu_delivery_logs.Size = New System.Drawing.Size(206, 24)
+        Me.submenu_delivery_logs.Size = New System.Drawing.Size(234, 24)
         Me.submenu_delivery_logs.Text = "Delivery Logs"
         Me.submenu_delivery_logs.Visible = False
         '
         'submenu_stock_management
         '
+        Me.submenu_stock_management.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu2_StockTransfer, Me.submenu2_reconcile})
         Me.submenu_stock_management.Name = "submenu_stock_management"
-        Me.submenu_stock_management.Size = New System.Drawing.Size(206, 24)
+        Me.submenu_stock_management.Size = New System.Drawing.Size(234, 24)
         Me.submenu_stock_management.Text = "Stock Management"
         Me.submenu_stock_management.Visible = False
+        '
+        'submenu2_StockTransfer
+        '
+        Me.submenu2_StockTransfer.Name = "submenu2_StockTransfer"
+        Me.submenu2_StockTransfer.Size = New System.Drawing.Size(180, 24)
+        Me.submenu2_StockTransfer.Text = "Stock Transfer"
+        '
+        'submenu2_reconcile
+        '
+        Me.submenu2_reconcile.Name = "submenu2_reconcile"
+        Me.submenu2_reconcile.Size = New System.Drawing.Size(180, 24)
+        Me.submenu2_reconcile.Text = "Reconcile"
         '
         'submenu_product_inventory
         '
         Me.submenu_product_inventory.Name = "submenu_product_inventory"
-        Me.submenu_product_inventory.Size = New System.Drawing.Size(206, 24)
-        Me.submenu_product_inventory.Text = "Stock Inventory"
+        Me.submenu_product_inventory.Size = New System.Drawing.Size(234, 24)
+        Me.submenu_product_inventory.Text = "Inventory"
         Me.submenu_product_inventory.Visible = False
         '
-        'submenu_returned_units
+        'submenu_packageManagement
         '
-        Me.submenu_returned_units.Name = "submenu_returned_units"
-        Me.submenu_returned_units.Size = New System.Drawing.Size(206, 24)
-        Me.submenu_returned_units.Text = "Returned Units"
-        Me.submenu_returned_units.Visible = False
+        Me.submenu_packageManagement.Name = "submenu_packageManagement"
+        Me.submenu_packageManagement.Size = New System.Drawing.Size(234, 24)
+        Me.submenu_packageManagement.Text = "Package Management"
+        Me.submenu_packageManagement.Visible = False
         '
         'submenu_selluseller
         '
         Me.submenu_selluseller.Name = "submenu_selluseller"
-        Me.submenu_selluseller.Size = New System.Drawing.Size(206, 24)
+        Me.submenu_selluseller.Size = New System.Drawing.Size(234, 24)
         Me.submenu_selluseller.Text = "For SelluSeller"
         Me.submenu_selluseller.Visible = False
         '
         'menu_logistics
         '
-        Me.menu_logistics.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_pick_deliveries})
+        Me.menu_logistics.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.submenu_order_management, Me.submenu_StockTransferDispatching})
         Me.menu_logistics.Name = "menu_logistics"
         Me.menu_logistics.Size = New System.Drawing.Size(78, 24)
         Me.menu_logistics.Text = "Logistics"
         '
-        'submenu_pick_deliveries
+        'submenu_order_management
         '
-        Me.submenu_pick_deliveries.Name = "submenu_pick_deliveries"
-        Me.submenu_pick_deliveries.Size = New System.Drawing.Size(219, 24)
-        Me.submenu_pick_deliveries.Text = "Pickup and Deliveries"
-        Me.submenu_pick_deliveries.Visible = False
+        Me.submenu_order_management.Name = "submenu_order_management"
+        Me.submenu_order_management.Size = New System.Drawing.Size(276, 24)
+        Me.submenu_order_management.Text = "Order Releasing Management"
+        Me.submenu_order_management.Visible = False
+        '
+        'submenu_StockTransferDispatching
+        '
+        Me.submenu_StockTransferDispatching.Name = "submenu_StockTransferDispatching"
+        Me.submenu_StockTransferDispatching.Size = New System.Drawing.Size(276, 24)
+        Me.submenu_StockTransferDispatching.Text = "Stock Transfer Dispatching"
         '
         'menu_collections
         '
@@ -728,9 +742,8 @@ Partial Class frm_main
     Friend WithEvents RegisteredSupplierToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RegisteredCustomersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents panel_top As Guna.UI.WinForms.GunaGradientPanel
-    Friend WithEvents submenu_daily_delivery As ToolStripMenuItem
+    Friend WithEvents submenu_ReceivingManagement As ToolStripMenuItem
     Friend WithEvents submenu_delivery_logs As ToolStripMenuItem
-    Friend WithEvents submenu_packing_list As ToolStripMenuItem
     Friend WithEvents submenu_product_inventory As ToolStripMenuItem
     Friend WithEvents submenu_price_books As ToolStripMenuItem
     Friend WithEvents menu_collections As ToolStripMenuItem
@@ -738,7 +751,7 @@ Partial Class frm_main
     Friend WithEvents submenu_payment_new As ToolStripMenuItem
     Friend WithEvents submenu_cheque_book As ToolStripMenuItem
     Friend WithEvents menu_logistics As ToolStripMenuItem
-    Friend WithEvents submenu_pick_deliveries As ToolStripMenuItem
+    Friend WithEvents submenu_order_management As ToolStripMenuItem
     Friend WithEvents menu_purchasing As ToolStripMenuItem
     Friend WithEvents submenu_purchasing_new As ToolStripMenuItem
     Friend WithEvents submenu_purchasing_orders As ToolStripMenuItem
@@ -770,7 +783,10 @@ Partial Class frm_main
     Friend WithEvents submenu_payment_cash As ToolStripMenuItem
     Friend WithEvents submenu_ForecastAndPayablesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents submenu_returns As ToolStripMenuItem
-    Friend WithEvents submenu_returned_units As ToolStripMenuItem
     Friend WithEvents submenu_InventoryCount As ToolStripMenuItem
     Friend WithEvents submenu_selluseller As ToolStripMenuItem
+    Friend WithEvents submenu2_StockTransfer As ToolStripMenuItem
+    Friend WithEvents submenu2_reconcile As ToolStripMenuItem
+    Friend WithEvents submenu_packageManagement As ToolStripMenuItem
+    Friend WithEvents submenu_StockTransferDispatching As ToolStripMenuItem
 End Class

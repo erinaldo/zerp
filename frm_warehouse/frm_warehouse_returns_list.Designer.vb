@@ -22,134 +22,45 @@ Partial Class frm_warehouse_returns_list
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Me.GunaPanel4 = New Guna.UI.WinForms.GunaPanel()
-        Me.GunaPanel5 = New Guna.UI.WinForms.GunaPanel()
-        Me.GunaPanel1 = New Guna.UI.WinForms.GunaPanel()
-        Me.link_po_list = New DevExpress.XtraEditors.HyperlinkLabelControl()
-        Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
-        Me.link_home = New DevExpress.XtraEditors.HyperlinkLabelControl()
-        Me.GunaLabel2 = New Guna.UI.WinForms.GunaLabel()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Me.btn_update = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.grid_returns = New DevExpress.XtraGrid.GridControl()
         Me.grid_returns_view = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.col_winmodel = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_qty = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_store = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_pid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_description = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_srid = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col_ac = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.btn_update = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.col_id = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GunaPanel4.SuspendLayout()
-        Me.GunaPanel5.SuspendLayout()
-        Me.GunaPanel1.SuspendLayout()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txt_warehouse = New System.Windows.Forms.TextBox()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.btn_received = New DevExpress.XtraEditors.SimpleButton()
+        Me.txt_created_by = New System.Windows.Forms.TextBox()
+        Me.txt_customer = New System.Windows.Forms.TextBox()
+        Me.txt_srid = New System.Windows.Forms.TextBox()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.lbl_head = New System.Windows.Forms.Label()
+        CType(Me.btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
-        'GunaPanel4
+        'btn_update
         '
-        Me.GunaPanel4.BackColor = System.Drawing.Color.GhostWhite
-        Me.GunaPanel4.Controls.Add(Me.GunaPanel5)
-        Me.GunaPanel4.Controls.Add(Me.GunaLabel2)
-        Me.GunaPanel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GunaPanel4.Location = New System.Drawing.Point(0, 0)
-        Me.GunaPanel4.Name = "GunaPanel4"
-        Me.GunaPanel4.Size = New System.Drawing.Size(1142, 78)
-        Me.GunaPanel4.TabIndex = 11
-        '
-        'GunaPanel5
-        '
-        Me.GunaPanel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GunaPanel5.BackColor = System.Drawing.Color.Transparent
-        Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
-        Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
-        Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(1111, 27)
-        Me.GunaPanel5.TabIndex = 5
-        '
-        'GunaPanel1
-        '
-        Me.GunaPanel1.Controls.Add(Me.link_po_list)
-        Me.GunaPanel1.Controls.Add(Me.LabelControl7)
-        Me.GunaPanel1.Controls.Add(Me.link_home)
-        Me.GunaPanel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.GunaPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.GunaPanel1.Name = "GunaPanel1"
-        Me.GunaPanel1.Size = New System.Drawing.Size(435, 27)
-        Me.GunaPanel1.TabIndex = 0
-        '
-        'link_po_list
-        '
-        Me.link_po_list.Appearance.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.link_po_list.Appearance.LinkColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.link_po_list.Appearance.Options.UseFont = True
-        Me.link_po_list.Appearance.Options.UseLinkColor = True
-        Me.link_po_list.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_po_list.AppearanceHovered.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_po_list.AppearanceHovered.Options.UseForeColor = True
-        Me.link_po_list.AppearanceHovered.Options.UseLinkColor = True
-        Me.link_po_list.AppearancePressed.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_po_list.AppearancePressed.Options.UseLinkColor = True
-        Me.link_po_list.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom
-        Me.link_po_list.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
-        Me.link_po_list.Location = New System.Drawing.Point(70, 5)
-        Me.link_po_list.Name = "link_po_list"
-        Me.link_po_list.ShowLineShadow = False
-        Me.link_po_list.Size = New System.Drawing.Size(93, 18)
-        Me.link_po_list.TabIndex = 7
-        Me.link_po_list.Text = "Returned Units"
-        '
-        'LabelControl7
-        '
-        Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.LabelControl7.Appearance.Options.UseFont = True
-        Me.LabelControl7.Location = New System.Drawing.Point(55, 7)
-        Me.LabelControl7.Name = "LabelControl7"
-        Me.LabelControl7.Size = New System.Drawing.Size(9, 14)
-        Me.LabelControl7.TabIndex = 6
-        Me.LabelControl7.Text = ">"
-        '
-        'link_home
-        '
-        Me.link_home.Appearance.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.link_home.Appearance.LinkColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText
-        Me.link_home.Appearance.Options.UseFont = True
-        Me.link_home.Appearance.Options.UseLinkColor = True
-        Me.link_home.AppearanceDisabled.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_home.AppearanceDisabled.Options.UseLinkColor = True
-        Me.link_home.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_home.AppearanceHovered.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_home.AppearanceHovered.Options.UseForeColor = True
-        Me.link_home.AppearanceHovered.Options.UseLinkColor = True
-        Me.link_home.AppearancePressed.LinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.link_home.AppearancePressed.Options.UseLinkColor = True
-        Me.link_home.LineStyle = System.Drawing.Drawing2D.DashStyle.Custom
-        Me.link_home.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
-        Me.link_home.Location = New System.Drawing.Point(13, 5)
-        Me.link_home.Name = "link_home"
-        Me.link_home.ShowLineShadow = False
-        Me.link_home.Size = New System.Drawing.Size(37, 18)
-        Me.link_home.TabIndex = 5
-        Me.link_home.Text = "Home"
-        '
-        'GunaLabel2
-        '
-        Me.GunaLabel2.AutoSize = True
-        Me.GunaLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
-        Me.GunaLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(213, Byte), Integer), CType(CType(115, Byte), Integer), CType(CType(45, Byte), Integer))
-        Me.GunaLabel2.Location = New System.Drawing.Point(14, 10)
-        Me.GunaLabel2.Name = "GunaLabel2"
-        Me.GunaLabel2.Size = New System.Drawing.Size(196, 31)
-        Me.GunaLabel2.TabIndex = 1
-        Me.GunaLabel2.Text = "Returned Units"
+        Me.btn_update.AutoHeight = False
+        EditorButtonImageOptions3.Image = Global.Inventory_Management.My.Resources.Resources.pencolor_16x16
+        Me.btn_update.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.btn_update.Name = "btn_update"
+        Me.btn_update.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
         'grid_returns
         '
@@ -157,13 +68,12 @@ Partial Class frm_warehouse_returns_list
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grid_returns.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.grid_returns.Location = New System.Drawing.Point(12, 108)
+        Me.grid_returns.Location = New System.Drawing.Point(12, 126)
         Me.grid_returns.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grid_returns.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grid_returns.MainView = Me.grid_returns_view
         Me.grid_returns.Name = "grid_returns"
-        Me.grid_returns.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_update})
-        Me.grid_returns.Size = New System.Drawing.Size(1118, 486)
+        Me.grid_returns.Size = New System.Drawing.Size(510, 350)
         Me.grid_returns.TabIndex = 12
         Me.grid_returns.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_returns_view})
         '
@@ -175,7 +85,7 @@ Partial Class frm_warehouse_returns_list
         Me.grid_returns_view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.grid_returns_view.Appearance.Row.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grid_returns_view.Appearance.Row.Options.UseFont = True
-        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_winmodel, Me.col_qty, Me.col_store, Me.col_pid, Me.col_description, Me.col_srid, Me.col_ac, Me.col_id})
+        Me.grid_returns_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_winmodel, Me.col_qty, Me.col_pid, Me.col_description, Me.col_id})
         Me.grid_returns_view.GridControl = Me.grid_returns
         Me.grid_returns_view.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.grid_returns_view.Name = "grid_returns_view"
@@ -189,8 +99,8 @@ Partial Class frm_warehouse_returns_list
         Me.col_winmodel.FieldName = "winmodel"
         Me.col_winmodel.Name = "col_winmodel"
         Me.col_winmodel.Visible = True
-        Me.col_winmodel.VisibleIndex = 4
-        Me.col_winmodel.Width = 143
+        Me.col_winmodel.VisibleIndex = 1
+        Me.col_winmodel.Width = 120
         '
         'col_qty
         '
@@ -198,21 +108,11 @@ Partial Class frm_warehouse_returns_list
         Me.col_qty.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.col_qty.Caption = "Qty"
         Me.col_qty.FieldName = "qty"
+        Me.col_qty.MaxWidth = 100
         Me.col_qty.Name = "col_qty"
         Me.col_qty.Visible = True
-        Me.col_qty.VisibleIndex = 3
+        Me.col_qty.VisibleIndex = 0
         Me.col_qty.Width = 86
-        '
-        'col_store
-        '
-        Me.col_store.Caption = "Warehouse"
-        Me.col_store.FieldName = "store_name"
-        Me.col_store.MaxWidth = 250
-        Me.col_store.MinWidth = 150
-        Me.col_store.Name = "col_store"
-        Me.col_store.Visible = True
-        Me.col_store.VisibleIndex = 6
-        Me.col_store.Width = 243
         '
         'col_pid
         '
@@ -222,8 +122,6 @@ Partial Class frm_warehouse_returns_list
         Me.col_pid.FieldName = "pid"
         Me.col_pid.MinWidth = 80
         Me.col_pid.Name = "col_pid"
-        Me.col_pid.Visible = True
-        Me.col_pid.VisibleIndex = 2
         Me.col_pid.Width = 95
         '
         'col_description
@@ -233,37 +131,8 @@ Partial Class frm_warehouse_returns_list
         Me.col_description.MinWidth = 250
         Me.col_description.Name = "col_description"
         Me.col_description.Visible = True
-        Me.col_description.VisibleIndex = 5
-        Me.col_description.Width = 457
-        '
-        'col_srid
-        '
-        Me.col_srid.AppearanceCell.Options.UseTextOptions = True
-        Me.col_srid.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.col_srid.Caption = "SRID"
-        Me.col_srid.FieldName = "srid"
-        Me.col_srid.MaxWidth = 120
-        Me.col_srid.Name = "col_srid"
-        Me.col_srid.Visible = True
-        Me.col_srid.VisibleIndex = 7
-        Me.col_srid.Width = 118
-        '
-        'col_ac
-        '
-        Me.col_ac.Caption = "Action"
-        Me.col_ac.ColumnEdit = Me.btn_update
-        Me.col_ac.Name = "col_ac"
-        Me.col_ac.Visible = True
-        Me.col_ac.VisibleIndex = 0
-        '
-        'btn_update
-        '
-        Me.btn_update.AutoHeight = False
-        EditorButtonImageOptions2.Image = Global.Inventory_Management.My.Resources.Resources.pencolor_16x16
-        Me.btn_update.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-        Me.btn_update.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.btn_update.Name = "btn_update"
-        Me.btn_update.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        Me.col_description.VisibleIndex = 2
+        Me.col_description.Width = 250
         '
         'col_id
         '
@@ -272,47 +141,180 @@ Partial Class frm_warehouse_returns_list
         Me.col_id.Caption = "ID"
         Me.col_id.FieldName = "id"
         Me.col_id.Name = "col_id"
-        Me.col_id.Visible = True
-        Me.col_id.VisibleIndex = 1
         '
-        'frm_warehouse_returns
+        'LabelControl4
+        '
+        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl4.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LabelControl4.Appearance.Options.UseFont = True
+        Me.LabelControl4.Appearance.Options.UseForeColor = True
+        Me.LabelControl4.Location = New System.Drawing.Point(12, 15)
+        Me.LabelControl4.Name = "LabelControl4"
+        Me.LabelControl4.Size = New System.Drawing.Size(32, 16)
+        Me.LabelControl4.TabIndex = 131
+        Me.LabelControl4.Text = "SRID"
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl1.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        Me.LabelControl1.Appearance.Options.UseForeColor = True
+        Me.LabelControl1.Location = New System.Drawing.Point(12, 41)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(57, 16)
+        Me.LabelControl1.TabIndex = 132
+        Me.LabelControl1.Text = "Customer"
+        '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.txt_warehouse)
+        Me.Panel1.Controls.Add(Me.LabelControl3)
+        Me.Panel1.Controls.Add(Me.btn_received)
+        Me.Panel1.Controls.Add(Me.txt_created_by)
+        Me.Panel1.Controls.Add(Me.txt_customer)
+        Me.Panel1.Controls.Add(Me.txt_srid)
+        Me.Panel1.Controls.Add(Me.LabelControl2)
+        Me.Panel1.Controls.Add(Me.grid_returns)
+        Me.Panel1.Controls.Add(Me.LabelControl4)
+        Me.Panel1.Controls.Add(Me.LabelControl1)
+        Me.Panel1.Location = New System.Drawing.Point(12, 71)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(534, 523)
+        Me.Panel1.TabIndex = 133
+        '
+        'txt_warehouse
+        '
+        Me.txt_warehouse.Location = New System.Drawing.Point(103, 92)
+        Me.txt_warehouse.Name = "txt_warehouse"
+        Me.txt_warehouse.ReadOnly = True
+        Me.txt_warehouse.Size = New System.Drawing.Size(224, 20)
+        Me.txt_warehouse.TabIndex = 139
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl3.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LabelControl3.Appearance.Options.UseFont = True
+        Me.LabelControl3.Appearance.Options.UseForeColor = True
+        Me.LabelControl3.Location = New System.Drawing.Point(12, 93)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(55, 16)
+        Me.LabelControl3.TabIndex = 138
+        Me.LabelControl3.Text = "Submit to"
+        '
+        'btn_received
+        '
+        Me.btn_received.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_received.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
+        Me.btn_received.Appearance.Options.UseBackColor = True
+        Me.btn_received.Location = New System.Drawing.Point(429, 483)
+        Me.btn_received.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.btn_received.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.btn_received.Name = "btn_received"
+        Me.btn_received.Size = New System.Drawing.Size(93, 31)
+        Me.btn_received.TabIndex = 137
+        Me.btn_received.Text = "Receive"
+        '
+        'txt_created_by
+        '
+        Me.txt_created_by.Location = New System.Drawing.Point(103, 66)
+        Me.txt_created_by.Name = "txt_created_by"
+        Me.txt_created_by.ReadOnly = True
+        Me.txt_created_by.Size = New System.Drawing.Size(184, 20)
+        Me.txt_created_by.TabIndex = 136
+        '
+        'txt_customer
+        '
+        Me.txt_customer.Location = New System.Drawing.Point(103, 40)
+        Me.txt_customer.Name = "txt_customer"
+        Me.txt_customer.ReadOnly = True
+        Me.txt_customer.Size = New System.Drawing.Size(184, 20)
+        Me.txt_customer.TabIndex = 135
+        '
+        'txt_srid
+        '
+        Me.txt_srid.Location = New System.Drawing.Point(103, 14)
+        Me.txt_srid.Name = "txt_srid"
+        Me.txt_srid.ReadOnly = True
+        Me.txt_srid.Size = New System.Drawing.Size(100, 20)
+        Me.txt_srid.TabIndex = 134
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Appearance.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LabelControl2.Appearance.Options.UseFont = True
+        Me.LabelControl2.Appearance.Options.UseForeColor = True
+        Me.LabelControl2.Location = New System.Drawing.Point(12, 67)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(66, 16)
+        Me.LabelControl2.TabIndex = 133
+        Me.LabelControl2.Text = "Created by"
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.Lavender
+        Me.Panel5.Controls.Add(Me.lbl_head)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(0, 0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(558, 42)
+        Me.Panel5.TabIndex = 134
+        '
+        'lbl_head
+        '
+        Me.lbl_head.AutoSize = True
+        Me.lbl_head.Font = New System.Drawing.Font("Tahoma", 16.0!)
+        Me.lbl_head.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.lbl_head.Location = New System.Drawing.Point(12, 9)
+        Me.lbl_head.Name = "lbl_head"
+        Me.lbl_head.Size = New System.Drawing.Size(218, 27)
+        Me.lbl_head.TabIndex = 0
+        Me.lbl_head.Text = "Receive Sales Return"
+        '
+        'frm_warehouse_returns_list
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1142, 606)
-        Me.Controls.Add(Me.grid_returns)
-        Me.Controls.Add(Me.GunaPanel4)
-        Me.Name = "frm_warehouse_returns"
+        Me.BackColor = System.Drawing.Color.GhostWhite
+        Me.ClientSize = New System.Drawing.Size(558, 606)
+        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Panel1)
+        Me.Name = "frm_warehouse_returns_list"
         Me.Text = "frm_warehouse_returns"
-        Me.GunaPanel4.ResumeLayout(False)
-        Me.GunaPanel4.PerformLayout()
-        Me.GunaPanel5.ResumeLayout(False)
-        Me.GunaPanel1.ResumeLayout(False)
-        Me.GunaPanel1.PerformLayout()
+        CType(Me.btn_update, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_returns, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grid_returns_view, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btn_update, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents GunaPanel4 As Guna.UI.WinForms.GunaPanel
-    Friend WithEvents GunaPanel5 As Guna.UI.WinForms.GunaPanel
-    Friend WithEvents GunaPanel1 As Guna.UI.WinForms.GunaPanel
-    Friend WithEvents link_po_list As DevExpress.XtraEditors.HyperlinkLabelControl
-    Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents link_home As DevExpress.XtraEditors.HyperlinkLabelControl
-    Friend WithEvents GunaLabel2 As Guna.UI.WinForms.GunaLabel
     Friend WithEvents grid_returns As DevExpress.XtraGrid.GridControl
     Friend WithEvents grid_returns_view As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents col_winmodel As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_qty As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents col_store As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_pid As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_description As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents col_srid As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents btn_update As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
-    Friend WithEvents col_ac As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents col_id As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents lbl_head As Label
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents txt_created_by As TextBox
+    Friend WithEvents txt_customer As TextBox
+    Friend WithEvents txt_srid As TextBox
+    Friend WithEvents btn_update As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents btn_received As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txt_warehouse As TextBox
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
 End Class

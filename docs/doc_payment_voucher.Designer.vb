@@ -1638,6 +1638,10 @@ Partial Public Class doc_payment_voucher
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.voucher_id, Me.voucher_date, Me.supplier, Me.collection_ref, Me.total_amount, Me.generated_by, Me.store_info, Me.payment_type, Me.contact_person, Me.store_name})
         Me.RequestParameters = False
         Me.Version = "21.1"
+        Me.Watermark.Font = New System.Drawing.Font("Arial", 150.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Watermark.ForeColor = System.Drawing.Color.Silver
+        Me.Watermark.ShowBehind = False
+        Me.Watermark.TextTransparency = 90
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintData1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()

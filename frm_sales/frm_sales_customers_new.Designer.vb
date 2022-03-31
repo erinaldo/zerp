@@ -53,6 +53,8 @@ Partial Class frm_sales_customers_new
         Me.lbl_credit_limit = New DevExpress.XtraEditors.LabelControl()
         Me.txt_credit_limit = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.txt_tin = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.cbb_agents = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
         Me.panel_admin = New System.Windows.Forms.Panel()
@@ -75,6 +77,7 @@ Partial Class frm_sales_customers_new
         CType(Me.txt_credit_limit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
+        CType(Me.txt_tin.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbb_agents.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panel_admin.SuspendLayout()
         CType(Me.txt_contact_person.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -164,7 +167,7 @@ Partial Class frm_sales_customers_new
         Me.btn_apply.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_apply.Appearance.Options.UseBackColor = True
         Me.btn_apply.Appearance.Options.UseFont = True
-        Me.btn_apply.Location = New System.Drawing.Point(928, 613)
+        Me.btn_apply.Location = New System.Drawing.Point(928, 658)
         Me.btn_apply.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_apply.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_apply.Name = "btn_apply"
@@ -177,7 +180,7 @@ Partial Class frm_sales_customers_new
         Me.btn_cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_cancel.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_cancel.Appearance.Options.UseFont = True
-        Me.btn_cancel.Location = New System.Drawing.Point(832, 613)
+        Me.btn_cancel.Location = New System.Drawing.Point(832, 658)
         Me.btn_cancel.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_cancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_cancel.Name = "btn_cancel"
@@ -212,6 +215,7 @@ Partial Class frm_sales_customers_new
         Me.num_terms.BorderColor = System.Drawing.Color.Silver
         Me.num_terms.ButtonColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.num_terms.ButtonForeColor = System.Drawing.Color.White
+        Me.num_terms.Enabled = False
         Me.num_terms.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.num_terms.ForeColor = System.Drawing.Color.Black
         Me.num_terms.Location = New System.Drawing.Point(357, 3)
@@ -228,7 +232,7 @@ Partial Class frm_sales_customers_new
         Me.LabelControl5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.LabelControl5.Appearance.Options.UseFont = True
         Me.LabelControl5.LineVisible = True
-        Me.LabelControl5.Location = New System.Drawing.Point(16, 196)
+        Me.LabelControl5.Location = New System.Drawing.Point(14, 237)
         Me.LabelControl5.Name = "LabelControl5"
         Me.LabelControl5.Size = New System.Drawing.Size(82, 16)
         Me.LabelControl5.TabIndex = 26
@@ -238,7 +242,7 @@ Partial Class frm_sales_customers_new
         '
         Me.cbb_account_type.EditValue = "Regular"
         Me.cbb_account_type.Enabled = False
-        Me.cbb_account_type.Location = New System.Drawing.Point(123, 191)
+        Me.cbb_account_type.Location = New System.Drawing.Point(121, 232)
         Me.cbb_account_type.Name = "cbb_account_type"
         Me.cbb_account_type.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.cbb_account_type.Properties.Appearance.Options.UseFont = True
@@ -254,7 +258,7 @@ Partial Class frm_sales_customers_new
         Me.LabelControl6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.LabelControl6.Appearance.Options.UseFont = True
         Me.LabelControl6.LineVisible = True
-        Me.LabelControl6.Location = New System.Drawing.Point(17, 264)
+        Me.LabelControl6.Location = New System.Drawing.Point(15, 305)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(84, 16)
         Me.LabelControl6.TabIndex = 28
@@ -262,7 +266,7 @@ Partial Class frm_sales_customers_new
         '
         'txt_trucking
         '
-        Me.txt_trucking.Location = New System.Drawing.Point(123, 263)
+        Me.txt_trucking.Location = New System.Drawing.Point(121, 304)
         Me.txt_trucking.Name = "txt_trucking"
         Me.txt_trucking.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.txt_trucking.Properties.Appearance.Options.UseFont = True
@@ -272,7 +276,7 @@ Partial Class frm_sales_customers_new
         '
         'cbb_shipping
         '
-        Me.cbb_shipping.Location = New System.Drawing.Point(123, 227)
+        Me.cbb_shipping.Location = New System.Drawing.Point(121, 268)
         Me.cbb_shipping.Name = "cbb_shipping"
         Me.cbb_shipping.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.cbb_shipping.Properties.Appearance.Options.UseFont = True
@@ -288,7 +292,7 @@ Partial Class frm_sales_customers_new
         Me.LabelControl7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.LabelControl7.Appearance.Options.UseFont = True
         Me.LabelControl7.LineVisible = True
-        Me.LabelControl7.Location = New System.Drawing.Point(16, 234)
+        Me.LabelControl7.Location = New System.Drawing.Point(14, 275)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(54, 16)
         Me.LabelControl7.TabIndex = 30
@@ -319,6 +323,7 @@ Partial Class frm_sales_customers_new
         'txt_credit_limit
         '
         Me.txt_credit_limit.EditValue = "0.00"
+        Me.txt_credit_limit.Enabled = False
         Me.txt_credit_limit.Location = New System.Drawing.Point(107, 4)
         Me.txt_credit_limit.Name = "txt_credit_limit"
         Me.txt_credit_limit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
@@ -339,6 +344,8 @@ Partial Class frm_sales_customers_new
         '
         Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupControl1.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl1.Controls.Add(Me.txt_tin)
+        Me.GroupControl1.Controls.Add(Me.LabelControl10)
         Me.GroupControl1.Controls.Add(Me.cbb_agents)
         Me.GroupControl1.Controls.Add(Me.LabelControl9)
         Me.GroupControl1.Controls.Add(Me.panel_admin)
@@ -361,14 +368,36 @@ Partial Class frm_sales_customers_new
         Me.GroupControl1.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(452, 418)
+        Me.GroupControl1.Size = New System.Drawing.Size(452, 440)
         Me.GroupControl1.TabIndex = 35
         Me.GroupControl1.Text = "Customer Details"
+        '
+        'txt_tin
+        '
+        Me.txt_tin.Location = New System.Drawing.Point(123, 181)
+        Me.txt_tin.Name = "txt_tin"
+        Me.txt_tin.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
+        Me.txt_tin.Properties.Appearance.Options.UseFont = True
+        Me.txt_tin.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat
+        Me.txt_tin.Size = New System.Drawing.Size(200, 24)
+        Me.txt_tin.TabIndex = 40
+        '
+        'LabelControl10
+        '
+        Me.LabelControl10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
+        Me.LabelControl10.Appearance.Options.UseFont = True
+        Me.LabelControl10.LineVisible = True
+        Me.LabelControl10.Location = New System.Drawing.Point(16, 185)
+        Me.LabelControl10.Name = "LabelControl10"
+        Me.LabelControl10.Size = New System.Drawing.Size(81, 16)
+        Me.LabelControl10.TabIndex = 41
+        Me.LabelControl10.Text = "TIN (Optional)"
         '
         'cbb_agents
         '
         Me.cbb_agents.EditValue = "Unassigned"
-        Me.cbb_agents.Location = New System.Drawing.Point(126, 366)
+        Me.cbb_agents.Enabled = False
+        Me.cbb_agents.Location = New System.Drawing.Point(124, 407)
         Me.cbb_agents.Name = "cbb_agents"
         Me.cbb_agents.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.cbb_agents.Properties.Appearance.Options.UseFont = True
@@ -384,7 +413,7 @@ Partial Class frm_sales_customers_new
         Me.LabelControl9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.749999!)
         Me.LabelControl9.Appearance.Options.UseFont = True
         Me.LabelControl9.LineVisible = True
-        Me.LabelControl9.Location = New System.Drawing.Point(19, 369)
+        Me.LabelControl9.Location = New System.Drawing.Point(17, 410)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(93, 16)
         Me.LabelControl9.TabIndex = 39
@@ -396,11 +425,10 @@ Partial Class frm_sales_customers_new
         Me.panel_admin.Controls.Add(Me.num_terms)
         Me.panel_admin.Controls.Add(Me.LabelControl2)
         Me.panel_admin.Controls.Add(Me.lbl_credit_limit)
-        Me.panel_admin.Location = New System.Drawing.Point(16, 318)
+        Me.panel_admin.Location = New System.Drawing.Point(14, 359)
         Me.panel_admin.Name = "panel_admin"
         Me.panel_admin.Size = New System.Drawing.Size(431, 41)
         Me.panel_admin.TabIndex = 37
-        Me.panel_admin.Visible = False
         '
         'LabelControl8
         '
@@ -440,7 +468,7 @@ Partial Class frm_sales_customers_new
         Me.sheet_customer.Options.Behavior.Worksheet.Insert = DevExpress.XtraSpreadsheet.DocumentCapability.Disabled
         Me.sheet_customer.Options.Behavior.Worksheet.Rename = DevExpress.XtraSpreadsheet.DocumentCapability.Disabled
         Me.sheet_customer.Options.Behavior.Worksheet.Unhide = DevExpress.XtraSpreadsheet.DocumentCapability.Disabled
-        Me.sheet_customer.Size = New System.Drawing.Size(543, 530)
+        Me.sheet_customer.Size = New System.Drawing.Size(543, 575)
         Me.sheet_customer.TabIndex = 9
         Me.sheet_customer.Text = "SpreadsheetControl1"
         '
@@ -451,7 +479,7 @@ Partial Class frm_sales_customers_new
         Me.btn_delete_customer.Appearance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
         Me.btn_delete_customer.Appearance.Options.UseBackColor = True
         Me.btn_delete_customer.Appearance.Options.UseFont = True
-        Me.btn_delete_customer.Location = New System.Drawing.Point(475, 613)
+        Me.btn_delete_customer.Location = New System.Drawing.Point(475, 658)
         Me.btn_delete_customer.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_delete_customer.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_delete_customer.Name = "btn_delete_customer"
@@ -467,11 +495,11 @@ Partial Class frm_sales_customers_new
         Me.GroupControl2.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupControl2.AppearanceCaption.Options.UseFont = True
         Me.GroupControl2.Controls.Add(Me.grid_bank)
-        Me.GroupControl2.Location = New System.Drawing.Point(12, 495)
+        Me.GroupControl2.Location = New System.Drawing.Point(12, 517)
         Me.GroupControl2.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.GroupControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(452, 151)
+        Me.GroupControl2.Size = New System.Drawing.Size(452, 174)
         Me.GroupControl2.TabIndex = 37
         Me.GroupControl2.Text = "Bank Details"
         '
@@ -485,7 +513,7 @@ Partial Class frm_sales_customers_new
         Me.grid_bank.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_bank, Me.col_bank_acc_no, Me.col_bank_acc_name})
         Me.grid_bank.Location = New System.Drawing.Point(11, 41)
         Me.grid_bank.Name = "grid_bank"
-        Me.grid_bank.Size = New System.Drawing.Size(427, 95)
+        Me.grid_bank.Size = New System.Drawing.Size(427, 118)
         Me.grid_bank.TabIndex = 0
         '
         'col_bank
@@ -508,7 +536,7 @@ Partial Class frm_sales_customers_new
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
-        Me.ClientSize = New System.Drawing.Size(1030, 658)
+        Me.ClientSize = New System.Drawing.Size(1030, 703)
         Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.btn_delete_customer)
         Me.Controls.Add(Me.sheet_customer)
@@ -533,6 +561,7 @@ Partial Class frm_sales_customers_new
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
+        CType(Me.txt_tin.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbb_agents.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panel_admin.ResumeLayout(False)
         Me.panel_admin.PerformLayout()
@@ -578,4 +607,6 @@ Partial Class frm_sales_customers_new
     Friend WithEvents col_bank As DataGridViewTextBoxColumn
     Friend WithEvents col_bank_acc_no As DataGridViewTextBoxColumn
     Friend WithEvents col_bank_acc_name As DataGridViewTextBoxColumn
+    Friend WithEvents txt_tin As TextEdit
+    Friend WithEvents LabelControl10 As LabelControl
 End Class

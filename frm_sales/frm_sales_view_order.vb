@@ -17,7 +17,12 @@ Public Class frm_sales_view_order
     '#### ONLOAD #####
     Private Sub frm_sales_view_order_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Load_AutoCompleteString()
-        If frm_main.user_role_id.Text.Equals("1") Then grid_order.Columns(3).ReadOnly = False
+
+        'Enable Price Editing for Administrator and Operation Staff
+        If frm_main.user_role_id.Text = 1 Or frm_main.user_role_id.Text = 6 Then
+            grid_order.Columns(3).ReadOnly = False
+        End If
+
     End Sub
 
 
@@ -106,6 +111,9 @@ Public Class frm_sales_view_order
                     'Set Payment Status
                     Select Case rdr("payment_status")
                         Case "UNPAID" : lbl_payment_status.Text = "UNPAID"
+                        Case "PENDING CONFIRMATION"
+                            lbl_payment_status.Text = "PENDING CONFIRMATION"
+                            lbl_payment_status.Appearance.BackColor = Color.Yellow
                         Case "HOLD"
                             lbl_payment_status.Text = rdr("payment_status")
                             lbl_payment_status.Appearance.BackColor = Color.Blue
@@ -210,6 +218,15 @@ Public Class frm_sales_view_order
 
             End Select
 
+            'Disable grid_order IF FROM Quotation
+            If Not String.IsNullOrEmpty(txt_quote_id.Text) Then
+                If Not (frm_main.user_role_id.Text = 1 Or frm_main.user_role_id.Text = 6) Then
+                    grid_order.Enabled = False
+                    grid_order.AllowUserToAddRows = False
+                    lbl_cant_edit.Visible = True
+                End If
+            End If
+
             ComputeTotal()
 
         Catch ex As Exception
@@ -311,7 +328,7 @@ Public Class frm_sales_view_order
     End Sub
 
     'Print
-    Private Sub print_packing_list(id As String)
+    Public Sub print_packing_list(id As Integer)
         Dim report = New doc_packing_list()
         Dim printTool = New ReportPrintTool(report)
         Dim rdr As MySqlDataReader
@@ -321,13 +338,12 @@ Public Class frm_sales_view_order
         Try
             Using conn = New MySqlConnection(str)
                 conn.Open()
-                Dim query = "SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
+                Dim query = "SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, 
+                            ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, 
+                            ims_orders.priv_note, trucking, shipping_method, po_reference
+                            FROM `ims_orders` 
                             LEFT JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
-                            LEFT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'
-                            UNION
-                         SELECT ims_orders.order_id, ims_customers.first_name as customer, ims_customers.contact_person, ims_users.first_name as agent, ims_orders.order_item, ims_orders.ship_to, ims_orders.date_ordered, ims_orders.priv_note, trucking, shipping_method FROM `ims_orders` 
-                            RIGHT JOIN ims_customers on ims_orders.customer=ims_customers.customer_id
-                            RIGHT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'"
+                            LEFT JOIN ims_users on ims_orders.agent=ims_users.usr_id WHERE order_id='" & id & "'"
                 Dim cmd = New MySqlCommand(query, conn)
                 rdr = cmd.ExecuteReader
 
@@ -341,6 +357,7 @@ Public Class frm_sales_view_order
                     report.Parameters("priv_notes").Value = rdr("priv_note")
                     report.Parameters("trucking").Value = rdr("trucking")
                     report.Parameters("shipping_method").Value = rdr("shipping_method")
+                    report.Parameters("po_reference").Value = rdr("po_reference")
 
                     data_to_grid(rdr("order_item"), table.packing_list, 3)
 

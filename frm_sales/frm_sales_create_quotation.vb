@@ -454,18 +454,18 @@ Public Class frm_sales_create_quotation
 
                 Dim price As Decimal = grid_quotation.Rows(e.RowIndex).Cells(5).Value
                 Dim discount As Decimal = grid_quotation.Rows(e.RowIndex).Cells(6).Value.ToString.Replace("%", "")
-                Dim total_price = price - (price * (discount / 100))
+                Dim discounted_price = price - (price * (discount / 100))
 
-                If total_price < cost Then
+                If discounted_price < cost Then
                     MsgBox("Price is less than of cost!", vbCritical, "Error")
                     grid_quotation.Rows(e.RowIndex).Cells(7).Value = CDec(grid_quotation.Rows(e.RowIndex).Cells(0).Value * price).ToString("n2")
                     grid_quotation.Rows(e.RowIndex).Cells(6).Value = "0%"
                     Exit Sub
                 End If
 
-                Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * total_price
+                Dim total As Decimal = grid_quotation.Rows(e.RowIndex).Cells(0).Value * discounted_price
 
-                grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((total_price - cost) / total_price) * 100) & "%"
+                grid_quotation.Rows(e.RowIndex).Cells(4).Value = CInt(((discounted_price - cost) / discounted_price) * 100) & "%"
                 grid_quotation.Rows(e.RowIndex).Cells(7).Value = total.ToString("n2")
                 grid_quotation.Rows(e.RowIndex).Cells(6).Value = discount & "%"
 

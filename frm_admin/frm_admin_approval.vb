@@ -45,13 +45,31 @@ Public Class frm_admin_approval
             End Using
 
             'Show Transfer Approvals
-            Using transfer_cmd = New MySqlCommand("SELECT CONCAT('ST', LPAD(id, 5,0)) as transfer_id, (SELECT store_name FROM ims_stores WHERE store_id=src_store) as transfer_from,
-                                 (SELECT store_name FROM ims_stores WHERE store_id=receiver_store) as transfer_to, status FROM ims_transferred_stocks WHERE (status = 'Pending' OR status = 'Reported') AND is_deleted=0", conn)
+            Using transfer_cmd = New MySqlCommand("SELECT CONCAT('ST', LPAD(transfer_id, 5,0)) as transfer_id, transfer_type, (SELECT store_name FROM ims_stores WHERE store_id=src_store_id) as transfer_from,
+                                 linked_warehouse AS transfer_to, status, ims_users.first_name AS created_by, created_at
+                                FROM ims_stock_transfer 
+                                INNER JOIN ims_users ON ims_users.usr_id=ims_stock_transfer.created_by
+                                WHERE status = 'For Approval' AND is_deleted=0", conn)
                 transfer_cmd.ExecuteNonQuery()
                 Dim dt_transfer = New DataTable
                 Dim da_transfer = New MySqlDataAdapter(transfer_cmd)
                 da_transfer.Fill(dt_transfer)
                 grid_transfer.DataSource = dt_transfer
+            End Using
+
+            'Show Transfer Reports
+            Using transfer_report_cmd = New MySqlCommand("SELECT transfer_report_id, CONCAT('ST', LPAD(transfer_id, 5,0)) AS transfer_id, ims_users.first_name AS reported_by, received_date, status,
+                                src_tbl.store_name AS src_storeName, des_tbl.store_name AS des_storeName
+                                FROM ims_stock_transfer_reports
+                                LEFT JOIN ims_users ON ims_users.usr_id=ims_stock_transfer_reports.received_by
+                                LEFT JOIN ims_stores AS src_tbl ON src_tbl.store_id=ims_stock_transfer_reports.source_store_id
+                                LEFT JOIN ims_stores AS des_tbl ON des_tbl.store_id=ims_stock_transfer_reports.destination_store_id
+                                WHERE status = 'Pending'", conn)
+                transfer_report_cmd.ExecuteNonQuery()
+                Dim dt_transfer = New DataTable
+                Dim da_transfer = New MySqlDataAdapter(transfer_report_cmd)
+                da_transfer.Fill(dt_transfer)
+                grid_transferReport.DataSource = dt_transfer
             End Using
 
             'Show Reconcilations
@@ -140,26 +158,6 @@ Public Class frm_admin_approval
         End If
     End Sub
 
-    'Stock Transfer Approval
-    Private Sub grid_transfer_view_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles grid_transfer_view.RowCellClick
-
-        If grid_transfer_view.FocusedColumn.Name.Equals(col_transfer_id.Name) Then
-            Dim status = grid_transfer_view.GetFocusedRowCellValue(col_transfer_status)
-
-            If status.Equals("Pending") Then
-                Dim frm = New frm_admin_transfer_view
-                frm.txt_transfer_id.Text = grid_transfer_view.GetFocusedRowCellValue(col_transfer_id)
-                frm.ShowDialog()
-
-            ElseIf status.Equals("Reported") Then
-                Dim frm = New frm_admin_transfer_reports
-                frm.load_report(grid_transfer_view.GetFocusedRowCellValue(col_transfer_id).ToString.Remove(0, 2))
-                frm.ShowDialog()
-            End If
-            load_data()
-        End If
-    End Sub
-
     'Stock Reconcilation Approval
     Private Sub grid_stock_reconcilation_view_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles grid_stock_reconcilation_view.RowCellClick
         If grid_stock_reconcilation_view.FocusedColumn.Name.Equals(col_reconcile_id.Name) Then
@@ -220,6 +218,48 @@ Public Class frm_admin_approval
             frm.btn_approved.Location = frm.btn_create.Location
             frm.cbb_customer.ReadOnly = True
         End If
+    End Sub
+
+    'Stock Transfer Approval
+    Private Sub btn_print_stockTransfer_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_print_stockTransfer.ButtonClick
+        Dim stid = CInt(grid_transfer_view.GetFocusedRowCellValue(col_transfer_id).ToString.Replace("ST", ""))
+        Dim status = grid_transfer_view.GetFocusedRowCellValue(col_transfer_status)
+        Dim transfer_type = grid_transfer_view.GetFocusedRowCellValue(col_transferType)
+
+        'Dim frm = New frm_admin_transfer_view
+        'frm.txt_transfer_id.Text = grid_transfer_view.GetFocusedRowCellValue(col_transfer_id)
+        'frm.lbl_transfer_type.Text = grid_transfer_view.GetFocusedRowCellValue(col_transferType)
+        'frm.ShowDialog()
+
+        If transfer_type = "Distribute" Then
+            Dim frm = New frm_warehouse_stocktransfer_distribute_new
+            frm.LoadEdit(stid)
+            frm.btn_approved.Visible = True
+            frm.btn_save.Enabled = False
+            frm.btn_print.Enabled = False
+            frm.btn_delete.Enabled = False
+
+        ElseIf transfer_type = "Request" Then
+            Dim frm = New frm_warehouse_stocktransfer_request_new
+            frm.LoadEdit(stid)
+            frm.btn_approved.Visible = True
+            frm.btn_save.Enabled = False
+            frm.btn_print.Enabled = False
+            frm.btn_delete.Enabled = False
+
+        End If
+
+        load_data()
+    End Sub
+
+    'Stock Transfer Report
+    Private Sub btn_view_report_stockTransfer_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_view_report.ButtonClick
+        Dim reportID = CInt(grid_transferReport_view.GetFocusedRowCellValue(col_reportID))
+
+        Dim frm = New frm_admin_transfer_reports
+        frm.lbl_reportID.Text = reportID
+        frm.ShowDialog()
+        load_data()
     End Sub
 
 End Class

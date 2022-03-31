@@ -222,7 +222,8 @@ Public Class frm_sales_view_quotation
 
                     Select Case mode
                         Case "display"
-                            table.Rows.Add(equal(0), equal(1), equal(2), cost, CInt(((equal(3) - cost) / equal(3)) * 100) & "%", equal(3), equal(4), equal(5).Replace(";", ""))
+                            Dim discounted_price = equal(3) - (equal(3) * (equal(4).Replace("%", "") / 100))
+                            table.Rows.Add(equal(0), equal(1), equal(2), cost, CInt(((discounted_price - cost) / discounted_price) * 100) & "%", equal(3), equal(4), equal(5).Replace(";", ""))
                         Case "print"
                             table.Rows.Add(equal(0), equal(1), equal(2), equal(3), equal(4), equal(5).Replace(";", ""))
                     End Select
@@ -945,7 +946,7 @@ Public Class frm_sales_view_quotation
             End With
 
             'Transfer Grid Quotation Data
-            For i = 0 To grid_quotation.Rows.Count - 1
+            For i = 0 To grid_quotation.Rows.Count - 2
                 With grid_quotation
                     frm.grid_order.Rows.Add(
                                 .Rows(i).Cells(0).Value,
@@ -958,7 +959,7 @@ Public Class frm_sales_view_quotation
             Next
 
             'Transfer Grid Remaining Data
-            For i = 0 To grid_remaining.Rows.Count - 1
+            For i = 0 To grid_remaining.Rows.Count - 2
                 With grid_remaining
                     frm.grid_remaining.Rows.Add(
                                 .Rows(i).Cells(0).Value,
@@ -968,6 +969,8 @@ Public Class frm_sales_view_quotation
             Next
 
             frm.ComputeTotal()
+            frm.grid_order.AllowUserToAddRows = False
+            frm.grid_order.Enabled = False
             Me.Dispose()
 
         End If

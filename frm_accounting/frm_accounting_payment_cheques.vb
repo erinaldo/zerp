@@ -3,7 +3,6 @@ Imports MySql.Data.MySqlClient
 
 Public Class frm_accounting_payment_cheques
 
-    ReadOnly conn As New MySqlConnection(str)
 
     '--- ONLOAD ----
     Private Sub frm_accounting_payment_cheques_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,21 +20,20 @@ Public Class frm_accounting_payment_cheques
     Private Sub load_generated_cheques()
 
         Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT LPAD(ims_generated_cheques.id, 5, 0) as id, cheque_no, cheque_date, ims_generated_cheques.bank, payee, ims_generated_cheques.acc_no, ims_generated_cheques.acc_name, amount, ims_suppliers.supplier, status FROM `ims_generated_cheques`
-                                        INNER JOIN ims_suppliers ON ims_suppliers.id=ims_generated_cheques.supplier ORDER BY ims_generated_cheques.id DESC", conn)
-            cmd.ExecuteNonQuery()
+            Using connect = New MySqlConnection(str)
+                connect.Open()
+                Dim cmd = New MySqlCommand("SELECT LPAD(ims_generated_cheques.id, 5, 0) as id, cheque_no, cheque_date, ims_generated_cheques.bank, payee, ims_generated_cheques.acc_no, ims_generated_cheques.acc_name, amount, ims_suppliers.supplier, status FROM `ims_generated_cheques`
+                                        INNER JOIN ims_suppliers ON ims_suppliers.id=ims_generated_cheques.supplier ORDER BY ims_generated_cheques.id DESC", connect)
+                cmd.ExecuteNonQuery()
 
-            Dim dt = New DataTable
-            Dim da = New MySqlDataAdapter(cmd)
-            da.Fill(dt)
+                Dim dt = New DataTable
+                Dim da = New MySqlDataAdapter(cmd)
+                da.Fill(dt)
 
-            grid_payments.DataSource = dt
-
+                grid_payments.DataSource = dt
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
@@ -134,16 +132,15 @@ Public Class frm_accounting_payment_cheques
             If ans = vbYes Then
 
                 Try
-                    conn.Open()
-                    Dim cmd = New MySqlCommand("UPDATE ims_generated_cheques SET status=@status WHERE id=@id", conn)
-                    cmd.Parameters.AddWithValue("@status", grid_payments_view.GetFocusedRowCellValue(col_status))
-                    cmd.Parameters.AddWithValue("@id", grid_payments_view.GetRowCellValue(e.RowHandle, col_id))
-                    cmd.ExecuteNonQuery()
-
+                    Using connect = New MySqlConnection(str)
+                        connect.Open()
+                        Dim cmd = New MySqlCommand("UPDATE ims_generated_cheques SET status=@status WHERE id=@id", connect)
+                        cmd.Parameters.AddWithValue("@status", grid_payments_view.GetFocusedRowCellValue(col_status))
+                        cmd.Parameters.AddWithValue("@id", grid_payments_view.GetRowCellValue(e.RowHandle, col_id))
+                        cmd.ExecuteNonQuery()
+                    End Using
                 Catch ex As Exception
                     MsgBox(ex.Message, vbCritical, "Error")
-                Finally
-                    conn.Close()
                 End Try
 
             End If
@@ -152,41 +149,45 @@ Public Class frm_accounting_payment_cheques
 
     End Sub
 
-    Private Sub RepositoryItemButtonEdit1_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles RepositoryItemButtonEdit1.ButtonClick
+    Private Sub RepositoryItemButtonEdit1_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles btn_print.ButtonClick
         Dim report = New doc_cheque()
         Dim printTool = New ReportPrintTool(report)
         Dim id = grid_payments_view.GetFocusedRowCellValue(col_id)
         Dim amount As Decimal, dt As Date, payee As String = "", is_crossed_check As Boolean
 
         Try
-            conn.Open()
-            Dim cmd = New MySqlCommand("SELECT amount, payee, cheque_date, is_crossed_check FROM ims_generated_cheques WHERE id=@id", conn)
-            cmd.Parameters.AddWithValue("@id", id)
-            Dim rdr As MySqlDataReader = cmd.ExecuteReader
+            Using connect = New MySqlConnection(str)
+                connect.Open()
+                Dim cmd = New MySqlCommand("SELECT amount, payee, cheque_date, is_crossed_check FROM ims_generated_cheques WHERE id=@id", connect)
+                cmd.Parameters.AddWithValue("@id", id)
+                Dim rdr As MySqlDataReader = cmd.ExecuteReader
 
-            While rdr.Read
-                payee = rdr("payee")
-                dt = rdr("cheque_date")
-                amount = rdr("amount")
-                is_crossed_check = rdr("is_crossed_check")
-            End While
+                While rdr.Read
+                    payee = rdr("payee")
+                    dt = rdr("cheque_date")
+                    amount = rdr("amount")
+                    is_crossed_check = rdr("is_crossed_check")
+                End While
 
-            report.Parameters("payee").Value = payee
-            report.Parameters("cheque_date").Value = dt
-            report.Parameters("amount").Value = amount
-            report.Parameters("ac_payee").Value = is_crossed_check
-            report.Parameters("AmountWords").Value = AmountInWords(amount)
-            report.RequestParameters = False
+                report.Parameters("payee").Value = payee
+                report.Parameters("cheque_date").Value = dt
+                report.Parameters("amount").Value = amount
+                report.Parameters("ac_payee").Value = is_crossed_check
+                report.Parameters("AmountWords").Value = AmountInWords(amount)
+                report.RequestParameters = False
 
-            report.ShowRibbonPreviewDialog()
-
+                report.ShowRibbonPreviewDialog()
+            End Using
 
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical, "Error")
-        Finally
-            conn.Close()
         End Try
 
     End Sub
 
+    Private Sub grid_payments_view_ShowingEditor(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles grid_payments_view.ShowingEditor
+        If grid_payments_view.GetFocusedRowCellValue(col_status).Equals("VOIDED") Then
+            e.Cancel = True
+        End If
+    End Sub
 End Class

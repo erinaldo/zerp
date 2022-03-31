@@ -26,8 +26,6 @@ Partial Class frm_admin_transfer_reports
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_admin_transfer_reports))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lbl_title = New Guna.UI.WinForms.GunaLabel()
@@ -45,12 +43,15 @@ Partial Class frm_admin_transfer_reports
         Me.txt_destination = New DevExpress.XtraEditors.TextEdit()
         Me.btn_cancel = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_apply = New DevExpress.XtraEditors.SimpleButton()
-        Me.grid_receiver = New System.Windows.Forms.DataGridView()
+        Me.grid_report = New System.Windows.Forms.DataGridView()
+        Me.lbl_reportID = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txt_reported_date = New DevExpress.XtraEditors.TextEdit()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txt_reported_by = New DevExpress.XtraEditors.TextEdit()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.descriptiom = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_received = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_missing = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.txt_transfer_id.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,7 +59,9 @@ Partial Class frm_admin_transfer_reports
         Me.GroupBox1.SuspendLayout()
         CType(Me.txt_source.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_destination.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grid_receiver, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_report, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_reported_date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_reported_by.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -111,9 +114,9 @@ Partial Class frm_admin_transfer_reports
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.Label2.Location = New System.Drawing.Point(16, 370)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 15)
+        Me.Label2.Size = New System.Drawing.Size(79, 15)
         Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Incident Report"
+        Me.Label2.Text = "Incident Note"
         '
         'txt_report
         '
@@ -255,16 +258,16 @@ Partial Class frm_admin_transfer_reports
         Me.btn_apply.TabIndex = 83
         Me.btn_apply.Text = "Apply"
         '
-        'grid_receiver
+        'grid_report
         '
-        Me.grid_receiver.AllowUserToAddRows = False
-        Me.grid_receiver.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.grid_report.AllowUserToAddRows = False
+        Me.grid_report.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grid_receiver.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
-        Me.grid_receiver.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
-        Me.grid_receiver.BackgroundColor = System.Drawing.Color.GhostWhite
-        Me.grid_receiver.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.grid_report.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.grid_report.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.grid_report.BackgroundColor = System.Drawing.Color.GhostWhite
+        Me.grid_report.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!)
@@ -272,18 +275,71 @@ Partial Class frm_admin_transfer_reports
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.grid_receiver.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.grid_receiver.ColumnHeadersHeight = 28
-        Me.grid_receiver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.grid_receiver.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.descriptiom, Me.DataGridViewTextBoxColumn2, Me.col_received, Me.col_missing})
-        Me.grid_receiver.EnableHeadersVisualStyles = False
-        Me.grid_receiver.Location = New System.Drawing.Point(18, 184)
-        Me.grid_receiver.Margin = New System.Windows.Forms.Padding(0)
-        Me.grid_receiver.MultiSelect = False
-        Me.grid_receiver.Name = "grid_receiver"
-        Me.grid_receiver.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Nunito", 9.749999!)
-        Me.grid_receiver.Size = New System.Drawing.Size(758, 175)
-        Me.grid_receiver.TabIndex = 85
+        Me.grid_report.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.grid_report.ColumnHeadersHeight = 28
+        Me.grid_report.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.grid_report.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.descriptiom, Me.col_missing})
+        Me.grid_report.EnableHeadersVisualStyles = False
+        Me.grid_report.Location = New System.Drawing.Point(18, 184)
+        Me.grid_report.Margin = New System.Windows.Forms.Padding(0)
+        Me.grid_report.MultiSelect = False
+        Me.grid_report.Name = "grid_report"
+        Me.grid_report.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.749999!)
+        Me.grid_report.Size = New System.Drawing.Size(758, 175)
+        Me.grid_report.TabIndex = 85
+        '
+        'lbl_reportID
+        '
+        Me.lbl_reportID.AutoSize = True
+        Me.lbl_reportID.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.lbl_reportID.Location = New System.Drawing.Point(294, 96)
+        Me.lbl_reportID.Name = "lbl_reportID"
+        Me.lbl_reportID.Size = New System.Drawing.Size(59, 15)
+        Me.lbl_reportID.TabIndex = 86
+        Me.lbl_reportID.Text = "Report ID"
+        Me.lbl_reportID.Visible = False
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.Label5.Location = New System.Drawing.Point(391, 152)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(86, 15)
+        Me.Label5.TabIndex = 90
+        Me.Label5.Text = "Date of Report"
+        '
+        'txt_reported_date
+        '
+        Me.txt_reported_date.Location = New System.Drawing.Point(499, 149)
+        Me.txt_reported_date.Name = "txt_reported_date"
+        Me.txt_reported_date.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.txt_reported_date.Properties.Appearance.Options.UseFont = True
+        Me.txt_reported_date.Properties.ReadOnly = True
+        Me.txt_reported_date.Properties.UseReadOnlyAppearance = False
+        Me.txt_reported_date.Size = New System.Drawing.Size(239, 22)
+        Me.txt_reported_date.TabIndex = 89
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.Label6.Location = New System.Drawing.Point(392, 124)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(73, 15)
+        Me.Label6.TabIndex = 88
+        Me.Label6.Text = "Reported by"
+        '
+        'txt_reported_by
+        '
+        Me.txt_reported_by.Location = New System.Drawing.Point(499, 121)
+        Me.txt_reported_by.Name = "txt_reported_by"
+        Me.txt_reported_by.Properties.Appearance.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.txt_reported_by.Properties.Appearance.Options.UseFont = True
+        Me.txt_reported_by.Properties.ReadOnly = True
+        Me.txt_reported_by.Properties.UseReadOnlyAppearance = False
+        Me.txt_reported_by.Size = New System.Drawing.Size(239, 22)
+        Me.txt_reported_by.TabIndex = 87
         '
         'DataGridViewTextBoxColumn1
         '
@@ -315,31 +371,10 @@ Partial Class frm_admin_transfer_reports
         Me.descriptiom.Name = "descriptiom"
         Me.descriptiom.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridViewTextBoxColumn2.FillWeight = 80.0!
-        Me.DataGridViewTextBoxColumn2.HeaderText = "To Receive"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 80
-        '
-        'col_received
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.col_received.DefaultCellStyle = DataGridViewCellStyle5
-        Me.col_received.HeaderText = "Received"
-        Me.col_received.Name = "col_received"
-        Me.col_received.ReadOnly = True
-        Me.col_received.Width = 76
-        '
         'col_missing
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.col_missing.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.col_missing.DefaultCellStyle = DataGridViewCellStyle4
         Me.col_missing.HeaderText = "Missing"
         Me.col_missing.Name = "col_missing"
         Me.col_missing.ReadOnly = True
@@ -351,7 +386,12 @@ Partial Class frm_admin_transfer_reports
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.GhostWhite
         Me.ClientSize = New System.Drawing.Size(792, 608)
-        Me.Controls.Add(Me.grid_receiver)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txt_reported_date)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.txt_reported_by)
+        Me.Controls.Add(Me.lbl_reportID)
+        Me.Controls.Add(Me.grid_report)
         Me.Controls.Add(Me.btn_cancel)
         Me.Controls.Add(Me.btn_apply)
         Me.Controls.Add(Me.Label4)
@@ -376,7 +416,9 @@ Partial Class frm_admin_transfer_reports
         Me.GroupBox1.PerformLayout()
         CType(Me.txt_source.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_destination.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grid_receiver, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_report, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_reported_date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_reported_by.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -398,11 +440,14 @@ Partial Class frm_admin_transfer_reports
     Friend WithEvents txt_destination As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btn_cancel As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_apply As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents grid_receiver As DataGridView
+    Friend WithEvents grid_report As DataGridView
+    Friend WithEvents lbl_reportID As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txt_reported_date As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txt_reported_by As DevExpress.XtraEditors.TextEdit
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents descriptiom As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents col_received As DataGridViewTextBoxColumn
     Friend WithEvents col_missing As DataGridViewTextBoxColumn
 End Class

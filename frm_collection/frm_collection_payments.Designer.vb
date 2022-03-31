@@ -973,6 +973,7 @@ Partial Class frm_collection_payments
         Me.Controls.Add(Me.btn_payment_history)
         Me.Controls.Add(Me.SplitContainer2)
         Me.Controls.Add(Me.GunaPanel2)
+        Me.KeyPreview = True
         Me.Name = "frm_collection_payments"
         Me.Text = "frm_accounting_payments"
         Me.GunaPanel2.ResumeLayout(False)

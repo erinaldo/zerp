@@ -872,7 +872,6 @@ D:\_workstation\source code\zerp\bin\Debug\de\DevExpress.Diagram.v21.1.Core.reso
 D:\_workstation\source code\zerp\bin\Debug\es\DevExpress.Diagram.v21.1.Core.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ja\DevExpress.Diagram.v21.1.Core.resources.dll
 D:\_workstation\source code\zerp\bin\Debug\ru\DevExpress.Diagram.v21.1.Core.resources.dll
-D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
 D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.ResolveComReference.cache
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.control_inventory_side.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_cheque.resources
@@ -933,15 +932,10 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_return_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_start_packing.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_unserved_dialog.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_selluseller.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_splash_screen.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_deliveries.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_logs.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_homepage.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_login.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_logistics_deliveries.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_main.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_packing_list.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_packing_list_view.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_price_book.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_transaction_invoice.resources
@@ -950,17 +944,13 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_st
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_edit.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_new.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_purchaseorder_list.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_receipts.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_delivery_receive.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_create_order.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_orders.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_order.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_sales_view_quotation.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_settings.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_new.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_dispatch_dialog.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive_dialog.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_receive.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_stores.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_store_add.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_supplier.resources
@@ -971,7 +961,6 @@ D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_users.
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_users_role.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_new.resources
-D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_transfer_report.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_admin_reports.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.Resources.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_packing_list.resources
@@ -986,3 +975,29 @@ D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.pdb
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_list.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_returns_action_dialog.resources
 D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stock_reconcile_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_selluseller.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_list.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_distribute_new.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_request_new.resources
+D:\_workstation\source code\zerp\bin\Debug\Google.Protobuf.dll
+D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\_workstation\source code\zerp\bin\Debug\System.Memory.dll
+D:\_workstation\source code\zerp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\_workstation\source code\zerp\bin\Debug\K4os.Compression.LZ4.dll
+D:\_workstation\source code\zerp\bin\Debug\K4os.Hash.xxHash.dll
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_stock_transfer.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_dispatch_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_receivingManagement.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_SupplierDeliveries_logs.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_SupplierDeliveries.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_receive.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_report.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_PackageManagement.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_logistics_StockTransferDispatching.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_logistics_ReleasingOrderManagement.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_PackageManagement_packed.resources
+D:\_workstation\source code\zerp\obj\Debug\ZERP Business Solution.vbproj.AssemblyReference.cache
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_approval_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_collection_SelectFromSOA_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.frm_warehouse_stocktransfer_cancel_dialog.resources
+D:\_workstation\source code\zerp\obj\Debug\Inventory_Management.doc_purchase_list.resources

@@ -90,6 +90,7 @@ Partial Class frm_sales_orders
         Me.col_date_released = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_released_by = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col_packed_by = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col_po_ref = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.panel_top.SuspendLayout()
         Me.GunaPanel5.SuspendLayout()
@@ -111,7 +112,7 @@ Partial Class frm_sales_orders
         Me.panel_top.Dock = System.Windows.Forms.DockStyle.Top
         Me.panel_top.Location = New System.Drawing.Point(0, 0)
         Me.panel_top.Name = "panel_top"
-        Me.panel_top.Size = New System.Drawing.Size(1466, 78)
+        Me.panel_top.Size = New System.Drawing.Size(1514, 78)
         Me.panel_top.TabIndex = 11
         '
         'GunaPanel5
@@ -123,7 +124,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel5.Controls.Add(Me.GunaPanel1)
         Me.GunaPanel5.Location = New System.Drawing.Point(19, 44)
         Me.GunaPanel5.Name = "GunaPanel5"
-        Me.GunaPanel5.Size = New System.Drawing.Size(1444, 27)
+        Me.GunaPanel5.Size = New System.Drawing.Size(1492, 27)
         Me.GunaPanel5.TabIndex = 5
         '
         'Panel1
@@ -131,7 +132,7 @@ Partial Class frm_sales_orders
         Me.Panel1.Controls.Add(Me.PictureEdit1)
         Me.Panel1.Controls.Add(Me.cbb_timer)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel1.Location = New System.Drawing.Point(1332, 0)
+        Me.Panel1.Location = New System.Drawing.Point(1380, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(112, 27)
         Me.Panel1.TabIndex = 7
@@ -255,7 +256,7 @@ Partial Class frm_sales_orders
         Me.GunaPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GunaPanel2.Location = New System.Drawing.Point(0, 78)
         Me.GunaPanel2.Name = "GunaPanel2"
-        Me.GunaPanel2.Size = New System.Drawing.Size(1466, 638)
+        Me.GunaPanel2.Size = New System.Drawing.Size(1514, 638)
         Me.GunaPanel2.TabIndex = 12
         '
         'btn_sort_cancelled
@@ -268,7 +269,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_cancelled.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_cancelled.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_cancelled.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_cancelled.Location = New System.Drawing.Point(1131, 20)
+        Me.btn_sort_cancelled.Location = New System.Drawing.Point(1179, 20)
         Me.btn_sort_cancelled.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_cancelled.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_cancelled.Name = "btn_sort_cancelled"
@@ -286,7 +287,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_completed.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_completed.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_completed.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_completed.Location = New System.Drawing.Point(1239, 20)
+        Me.btn_sort_completed.Location = New System.Drawing.Point(1287, 20)
         Me.btn_sort_completed.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_completed.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_completed.Name = "btn_sort_completed"
@@ -304,7 +305,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_all.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_all.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_all.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_all.Location = New System.Drawing.Point(1347, 20)
+        Me.btn_sort_all.Location = New System.Drawing.Point(1395, 20)
         Me.btn_sort_all.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_all.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_all.Name = "btn_sort_all"
@@ -324,7 +325,7 @@ Partial Class frm_sales_orders
         Me.btn_sort_onprocess.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
         Me.btn_sort_onprocess.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
         Me.btn_sort_onprocess.ImageOptions.ImageToTextIndent = 5
-        Me.btn_sort_onprocess.Location = New System.Drawing.Point(1023, 20)
+        Me.btn_sort_onprocess.Location = New System.Drawing.Point(1071, 20)
         Me.btn_sort_onprocess.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.btn_sort_onprocess.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btn_sort_onprocess.Name = "btn_sort_onprocess"
@@ -398,7 +399,7 @@ Partial Class frm_sales_orders
         Me.grid_orders.MainView = Me.grid_orders_view
         Me.grid_orders.Name = "grid_orders"
         Me.grid_orders.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.btn_view_order})
-        Me.grid_orders.Size = New System.Drawing.Size(1429, 554)
+        Me.grid_orders.Size = New System.Drawing.Size(1477, 554)
         Me.grid_orders.TabIndex = 8
         Me.grid_orders.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grid_orders_view})
         '
@@ -416,7 +417,7 @@ Partial Class frm_sales_orders
         Me.grid_orders_view.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.grid_orders_view.Appearance.SelectedRow.Options.UseBackColor = True
         Me.grid_orders_view.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.grid_orders_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_order_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.GridColumn10, Me.GridColumn5, Me.col_date_ordered, Me.col_date_packed, Me.col_date_released, Me.col_released_by, Me.col_packed_by})
+        Me.grid_orders_view.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.col_view, Me.col_order_id, Me.GridColumn2, Me.GridColumn3, Me.GridColumn7, Me.GridColumn9, Me.GridColumn10, Me.GridColumn5, Me.col_date_ordered, Me.col_date_packed, Me.col_date_released, Me.col_released_by, Me.col_packed_by, Me.col_po_ref})
         Me.grid_orders_view.GridControl = Me.grid_orders
         Me.grid_orders_view.Name = "grid_orders_view"
         Me.grid_orders_view.OptionsBehavior.ReadOnly = True
@@ -468,7 +469,7 @@ Partial Class frm_sales_orders
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
         Me.GridColumn2.VisibleIndex = 2
-        Me.GridColumn2.Width = 151
+        Me.GridColumn2.Width = 150
         '
         'GridColumn3
         '
@@ -480,7 +481,7 @@ Partial Class frm_sales_orders
         Me.GridColumn3.MinWidth = 130
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 3
+        Me.GridColumn3.VisibleIndex = 4
         Me.GridColumn3.Width = 130
         '
         'GridColumn7
@@ -495,7 +496,7 @@ Partial Class frm_sales_orders
         Me.GridColumn7.MinWidth = 100
         Me.GridColumn7.Name = "GridColumn7"
         Me.GridColumn7.Visible = True
-        Me.GridColumn7.VisibleIndex = 5
+        Me.GridColumn7.VisibleIndex = 6
         Me.GridColumn7.Width = 100
         '
         'GridColumn9
@@ -510,7 +511,7 @@ Partial Class frm_sales_orders
         Me.GridColumn9.MinWidth = 100
         Me.GridColumn9.Name = "GridColumn9"
         Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 4
+        Me.GridColumn9.VisibleIndex = 5
         Me.GridColumn9.Width = 100
         '
         'GridColumn10
@@ -525,7 +526,7 @@ Partial Class frm_sales_orders
         Me.GridColumn10.MinWidth = 120
         Me.GridColumn10.Name = "GridColumn10"
         Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 6
+        Me.GridColumn10.VisibleIndex = 7
         Me.GridColumn10.Width = 120
         '
         'GridColumn5
@@ -540,8 +541,8 @@ Partial Class frm_sales_orders
         Me.GridColumn5.MinWidth = 100
         Me.GridColumn5.Name = "GridColumn5"
         Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 7
-        Me.GridColumn5.Width = 150
+        Me.GridColumn5.VisibleIndex = 8
+        Me.GridColumn5.Width = 100
         '
         'col_date_ordered
         '
@@ -558,7 +559,7 @@ Partial Class frm_sales_orders
         Me.col_date_ordered.Name = "col_date_ordered"
         Me.col_date_ordered.OptionsColumn.AllowEdit = False
         Me.col_date_ordered.Visible = True
-        Me.col_date_ordered.VisibleIndex = 8
+        Me.col_date_ordered.VisibleIndex = 9
         Me.col_date_ordered.Width = 100
         '
         'col_date_packed
@@ -576,7 +577,7 @@ Partial Class frm_sales_orders
         Me.col_date_packed.Name = "col_date_packed"
         Me.col_date_packed.OptionsColumn.AllowEdit = False
         Me.col_date_packed.Visible = True
-        Me.col_date_packed.VisibleIndex = 9
+        Me.col_date_packed.VisibleIndex = 10
         Me.col_date_packed.Width = 100
         '
         'col_date_released
@@ -594,7 +595,7 @@ Partial Class frm_sales_orders
         Me.col_date_released.Name = "col_date_released"
         Me.col_date_released.OptionsColumn.AllowEdit = False
         Me.col_date_released.Visible = True
-        Me.col_date_released.VisibleIndex = 10
+        Me.col_date_released.VisibleIndex = 12
         Me.col_date_released.Width = 100
         '
         'col_released_by
@@ -605,7 +606,7 @@ Partial Class frm_sales_orders
         Me.col_released_by.MinWidth = 130
         Me.col_released_by.Name = "col_released_by"
         Me.col_released_by.Visible = True
-        Me.col_released_by.VisibleIndex = 12
+        Me.col_released_by.VisibleIndex = 13
         Me.col_released_by.Width = 130
         '
         'col_packed_by
@@ -619,6 +620,16 @@ Partial Class frm_sales_orders
         Me.col_packed_by.VisibleIndex = 11
         Me.col_packed_by.Width = 130
         '
+        'col_po_ref
+        '
+        Me.col_po_ref.Caption = "P.O. Ref"
+        Me.col_po_ref.FieldName = "po_reference"
+        Me.col_po_ref.MinWidth = 100
+        Me.col_po_ref.Name = "col_po_ref"
+        Me.col_po_ref.Visible = True
+        Me.col_po_ref.VisibleIndex = 3
+        Me.col_po_ref.Width = 100
+        '
         'timer
         '
         '
@@ -627,7 +638,7 @@ Partial Class frm_sales_orders
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1466, 716)
+        Me.ClientSize = New System.Drawing.Size(1514, 716)
         Me.Controls.Add(Me.GunaPanel2)
         Me.Controls.Add(Me.panel_top)
         Me.KeyPreview = True
@@ -686,4 +697,5 @@ Partial Class frm_sales_orders
     Friend WithEvents btn_sort_cancelled As SimpleButton
     Friend WithEvents col_released_by As GridColumn
     Friend WithEvents col_packed_by As GridColumn
+    Friend WithEvents col_po_ref As GridColumn
 End Class
